@@ -1062,6 +1062,28 @@
      "note": null
     },
     {
+     "id": "mourning-fields",
+     "title": "The Mourning Fields",
+     "where": "The Mourning Fields",
+     "mood": "Hush — a farm lullaby slowed to a whisper over fields of sleeping kin; tender, grey, almost home.",
+     "classic": "play/assets/audio/music/mourning-fields.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/mourning-fields.mp3",
+     "loop_start": 3.971,
+     "note": null
+    },
+    {
+     "id": "penumbra-underways",
+     "title": "The Underways",
+     "where": "The Underways · The Last Watch",
+     "mood": "The last road — a heartbeat in the dark under the Ring, a lone faltering melody, and starlight glinting down a shaft from far above.",
+     "classic": "play/assets/audio/music/penumbra-underways.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/penumbra-underways.mp3",
+     "loop_start": 8.963,
+     "note": null
+    },
+    {
      "id": "undertide",
      "title": "The Sun Ledges",
      "where": "The Sun Ledges · The Undertide: Kelp Vaults · The Undertide: Bell Galleries · The Undertide: the Drowned Stair · The Drowned Lamp",

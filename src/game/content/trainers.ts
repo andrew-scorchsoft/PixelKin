@@ -1807,6 +1807,63 @@ export const TRAINERS: TrainerRegistry = {
     ],
     payout: 1072, // route 16 × ace 67
   },
+  // ---- Lane N3 (walkthrough/11 Parts C + D): the Mourning Fields' two acolytes (route
+  // class) and the Penumbra Underways' last watch (keeper class, the Umbral Approach's).
+  mournfields_ines: {
+    id: 'mournfields_ines',
+    name: 'INES',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 113, level: 48 }, // Omenire — Lunar/Dark
+      { species_id: 85, level: 50 }, // Stillwarden — Frost/Dark (ace)
+    ],
+    payout: 800, // route 16 × ace 50
+  },
+  mournfields_corran: {
+    id: 'mournfields_corran',
+    name: 'CORRAN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 125, level: 49 }, // Crystalune — Lunar/Frost
+      { species_id: 142, level: 50 }, // Embergone — Dark/Ember
+      { species_id: 138, level: 51 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 816, // route 16 × ace 51
+  },
+  underways_watch_a: {
+    id: 'underways_watch_a',
+    name: 'ODALIE',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 143, level: 52 }, // Whorlix — Storm/Dark
+      { species_id: 135, level: 53 }, // Liminalux — Dark/Light
+      { species_id: 138, level: 54 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1080, // keeper 20 × ace 54
+  },
+  underways_watch_b: {
+    id: 'underways_watch_b',
+    name: 'BRAN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 113, level: 53 }, // Omenire — Lunar/Dark
+      { species_id: 127, level: 53 }, // Lunvane — Light/Lunar
+      { species_id: 85, level: 54 }, // Stillwarden — Frost/Dark
+      { species_id: 142, level: 55 }, // Embergone — Dark/Ember (ace)
+    ],
+    payout: 1100, // keeper 20 × ace 55
+  },
+  underways_watch_c: {
+    id: 'underways_watch_c',
+    name: 'HESK',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 135, level: 54 }, // Liminalux — Dark/Light
+      { species_id: 15, level: 55 }, // Pyriven — Ember/Dark
+      { species_id: 138, level: 56 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1120, // keeper 20 × ace 56
+  },
   // The Lumenary sparring partners (2026-10 economy review): content/sparring.ts.
   ...SPAR_TRAINERS,
 };

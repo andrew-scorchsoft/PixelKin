@@ -250,6 +250,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'undertide_iii', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the three-bell maze, the keeper\'s ledge (rest), Tide-bell Tuning (a Lumen Drop + the shortcut race)' },
     { map_id: 'undertide_iv', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the Drowned Stair: a Lumen Drop, a Hearth Coal, the keeper\'s 2,000w purse, the last page' },
     { map_id: 'farlamp_drowned', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the relight (the isles\' dawn) + FARLUME #177 (lv 68) + the store\'s Star-chart' },
+    // ---- Lane N3 (11-the-hollowing-country.md Parts C + D)
+    { map_id: 'mourning_fields', region: 'outer', optional: true, reward: 'the north loop (Coldfog I, Stillwater, the Rimeway); the field shrine; the sleepers wake at dawn' },
+    { map_id: 'penumbra_underways', region: 'central', optional: true, reward: 'the last road: the strongest Dark/Light beds, a Starglass Shard' },
+    { map_id: 'penumbra_underways_b1', region: 'central', optional: true, reward: 'the Last Watch (rest point), the view up the Spire\'s shaft, the last Lumen Drop' },
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -515,6 +519,15 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'undertide_i', to_map: 'undertide_ii', via_warp: 'ladder_down', bidirectional: true },
     { from_map: 'undertide_iii', to_map: 'undertide_iv', via_warp: 'ladder_down', bidirectional: true },
     { from_map: 'undertide_iv', to_map: 'farlamp_drowned', via_warp: 'ladder_down', bidirectional: true },
+    // ---- Lane N3: the Mourning Fields (the north loop) + the Penumbra Underways. The
+    // Fields own their three seams (Stillwater's and Coldfog I's sides are Lane N1's).
+    { from_map: 'mourning_fields', to_map: 'coldfog_marches_i', via_warp: 'to_coldfog', bidirectional: true },
+    { from_map: 'mourning_fields', to_map: 'stillwater', via_warp: 'to_stillwater', bidirectional: true },
+    { from_map: 'mourning_fields', to_map: 'rimeway_descent', via_warp: 'to_rimeway', bidirectional: true },
+    { from_map: 'penumbra_ring', to_map: 'penumbra_underways', via_warp: 'to_underways_w', requires_flag: 'flag:hub_unlocked', requires_ability: 'starreach', bidirectional: true },
+    { from_map: 'penumbra_ring', to_map: 'penumbra_underways', via_warp: 'to_underways_e', requires_flag: 'flag:hub_unlocked', requires_ability: 'starreach', bidirectional: true },
+    { from_map: 'penumbra_underways', to_map: 'penumbra_underways_b1', via_warp: 'ladder_down_w', bidirectional: true },
+    { from_map: 'penumbra_underways', to_map: 'penumbra_underways_b1', via_warp: 'ladder_down_e', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

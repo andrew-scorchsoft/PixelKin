@@ -82,6 +82,13 @@
       "rarity": "uncommon",
       "min": 34,
       "max": 35
+    },
+    {
+      "area": "penumbra_underways",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 53,
+      "max": 55
     }
   ],
   "scripted": false,

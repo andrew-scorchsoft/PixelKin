@@ -95,6 +95,20 @@
       "rarity": "common",
       "min": 60,
       "max": 65
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 61
+    },
+    {
+      "area": "penumbra_underways",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 54,
+      "max": 55
     }
   ],
   "scripted": false,

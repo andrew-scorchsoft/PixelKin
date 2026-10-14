@@ -39,6 +39,9 @@ import { ASHFALL_DIALOGUE, ASHFALL_SCRIPTS } from './ashfall';
 import { UNDERTIDE_DIALOGUE, UNDERTIDE_SCRIPTS } from './undertide';
 // The Lumenary sparring partners (2026-10 economy review).
 import { SPARRING_DIALOGUE, SPARRING_SCRIPTS } from '../sparring';
+// Lane N3 (walkthrough/11 Parts C + D): the Mourning Fields + the Penumbra Underways.
+import { MOURNFIELDS_DIALOGUE, MOURNFIELDS_SCRIPTS } from './mournfields';
+import { UNDERWAYS_DIALOGUE, UNDERWAYS_SCRIPTS } from './underways';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -63,6 +66,8 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...ASHFALL_SCRIPTS,
   ...UNDERTIDE_SCRIPTS,
   ...SPARRING_SCRIPTS,
+  ...MOURNFIELDS_SCRIPTS, // Lane N3
+  ...UNDERWAYS_SCRIPTS, // Lane N3
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -88,4 +93,6 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...ASHFALL_DIALOGUE,
   ...UNDERTIDE_DIALOGUE,
   ...SPARRING_DIALOGUE,
+  ...MOURNFIELDS_DIALOGUE, // Lane N3
+  ...UNDERWAYS_DIALOGUE, // Lane N3
 };

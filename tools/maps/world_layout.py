@@ -86,6 +86,7 @@ NODE_KINDS: dict[str, str] = {
     # the marshes (off Nightreach)
     "coldfog_marches_ii": "route", "coldfog_marches_i": "route", "drownlight_beacon": "landmark",
     "hollowfen_stillworks": "landmark",
+    "mourning_fields": "route",  # Lane N3 (walkthrough/11 Part C): the north loop
     # THE WILD WAYS — the Wick-Run (09 §2 A): Sunvault Climb I down the west flank to the sea
     "wickrun_crest": "route", "wickrun_chute": "route", "wickrun_trestles": "route",
     "wickrun_traverse": "route", "wickrun_lower": "route", "wickrun_foot": "route",
@@ -222,6 +223,8 @@ ROADS: list[tuple[str, str, str]] = [
     ("rimeway_ascent", "rimeway_fold", "road"),
     ("rimeway_fold", "rimeway_descent", "gate"),
     ("coldfog_marches_ii", "rimeway_descent", "road"),
+    ("coldfog_marches_i", "mourning_fields", "road"),   # Lane N3: the north loop
+    ("mourning_fields", "rimeway_descent", "road"),     # ...and its col road down
     # THE WILD WAYS — the Wick-Run (one-way chutes; the Tallow Lift is the ride home)
     ("sunvault_climb_i", "wickrun_crest", "road"),
     ("wickrun_crest", "wickrun_chute", "road"),

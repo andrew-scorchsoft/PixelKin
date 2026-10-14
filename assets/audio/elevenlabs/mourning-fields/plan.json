@@ -1,0 +1,199 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a music box turns over once, alone, a soft rocking arpeggio in D minor, the mist pad breathing in underneath}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 waltz-time lullaby sway",
+    "D minor, tender and unresolved",
+    "soft pulse-wave lead singing a slow lullaby melody",
+    "music-box arpeggios in the treble",
+    "thin low string pad like evening mist over a field",
+    "gentle triangle bass rocking root and fifth",
+    "a single glassy bell at the end of each phrase",
+    "quiet, grey, tender, melancholy, kind",
+    "strong singable melody",
+    "instrumental",
+    "music box alone",
+    "quiet opening"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "fade out",
+    "ritardando",
+    "horror",
+    "aggressive",
+    "epic orchestral",
+    "guitar",
+    "loud drums",
+    "ending"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "low"
+  },
+  {
+   "text": "[Main Theme]\n{the lullaby melody: a gentle rising lift that reaches a little too high, then settles down toward home and stops just short of it on the fifth; slow, singable, rocking in three}",
+   "duration_ms": 16000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 waltz-time lullaby sway",
+    "D minor, tender and unresolved",
+    "soft pulse-wave lead singing a slow lullaby melody",
+    "music-box arpeggios in the treble",
+    "thin low string pad like evening mist over a field",
+    "gentle triangle bass rocking root and fifth",
+    "a single glassy bell at the end of each phrase",
+    "quiet, grey, tender, melancholy, kind",
+    "strong singable melody",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "lullaby"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "fade out",
+    "ritardando",
+    "horror",
+    "aggressive",
+    "epic orchestral",
+    "guitar",
+    "loud drums",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the lullaby again, the music box now answering each phrase like a sleeper sighing, a faint bell at the end of the line}",
+   "duration_ms": 16000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 waltz-time lullaby sway",
+    "D minor, tender and unresolved",
+    "soft pulse-wave lead singing a slow lullaby melody",
+    "music-box arpeggios in the treble",
+    "thin low string pad like evening mist over a field",
+    "gentle triangle bass rocking root and fifth",
+    "a single glassy bell at the end of each phrase",
+    "quiet, grey, tender, melancholy, kind",
+    "strong singable melody",
+    "instrumental",
+    "music box counter-melody",
+    "tender"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "fade out",
+    "ritardando",
+    "horror",
+    "aggressive",
+    "epic orchestral",
+    "guitar",
+    "loud drums",
+    "ending"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: up to B-flat major for a moment, the lead rests and the music box carries a warmer, almost hopeful phrase over the strings, like a memory of harvest, then it greys again toward D minor}",
+   "duration_ms": 16000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 waltz-time lullaby sway",
+    "D minor, tender and unresolved",
+    "soft pulse-wave lead singing a slow lullaby melody",
+    "music-box arpeggios in the treble",
+    "thin low string pad like evening mist over a field",
+    "gentle triangle bass rocking root and fifth",
+    "a single glassy bell at the end of each phrase",
+    "quiet, grey, tender, melancholy, kind",
+    "strong singable melody",
+    "instrumental",
+    "B-flat major",
+    "warm memory",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "fade out",
+    "ritardando",
+    "horror",
+    "aggressive",
+    "epic orchestral",
+    "guitar",
+    "loud drums",
+    "ending"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the lullaby returns, softer, the lift reaching and the settle hanging on the fifth; the last bar rocks straight back into the theme}",
+   "duration_ms": 16000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 waltz-time lullaby sway",
+    "D minor, tender and unresolved",
+    "soft pulse-wave lead singing a slow lullaby melody",
+    "music-box arpeggios in the treble",
+    "thin low string pad like evening mist over a field",
+    "gentle triangle bass rocking root and fifth",
+    "a single glassy bell at the end of each phrase",
+    "quiet, grey, tender, melancholy, kind",
+    "strong singable melody",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "fade out",
+    "ritardando",
+    "horror",
+    "aggressive",
+    "epic orchestral",
+    "guitar",
+    "loud drums",
+    "ending"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

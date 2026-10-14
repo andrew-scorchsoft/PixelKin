@@ -94,6 +94,15 @@ with a return compressor down to the Rimeway. The ground is the fallow fields th
 quieted: sleeping kin under grey blankets of coldfog, scarecrow lamp-posts, two acolyte sight
 trainers, a seen-before-reached field shrine, a cache. Lv 48–52.
 
+**Built (Lane N3):** `tools/maps/build_mourning_fields.py`; scripts in
+`content/regions/mournfields.ts`; props drawn by `tools/maps/draw_mournfields_objects.py`.
+The bank (row 10) is a scree ledge across the west half: hop down from the Stillwater road
+straight to the Coldfog gate; going up means east across the barley-drift crossing to the one
+walk-up (x 17, guarded by Ines) and back west. The shrine shelf is entered by the drop from
+the upper terrace and left by a ledge. The sleepers and the scarecrow-lamps have `flag:dawn`
+twins. Acolytes: Ines (ace 50), Corran (ace 51). Rimeway Descent's north road (cols 16–19)
+is the col.
+
 ## D · The Penumbra Underways — the last road (endgame)
 
 The genre's "last road" before the climax is missing. Two portal cave floors under the Penumbra
@@ -105,6 +114,14 @@ Ring, gated `flag:hub_unlocked` + `starreach`, optional but tempting:
 - A seen-before-reached view up into the Spire's shaft.
 
 It never connects to the Spire itself. You come back out into the Ring.
+
+**Built (Lane N3):** `tools/maps/build_penumbra_underways.py` (+ two mouths in
+`build_penumbra_ring.py`); scripts in `content/regions/underways.ts`. A loop: in by the Ring's
+SW mouth (4–5,32), down the west galleries (Odalie, ace 54; a Starglass Shard), down to B1,
+the Last Watch (Bran, ace 55; Old Maudry; the watch-fire rest point; the view up the Spire's
+shaft, a solid prop), and up through the east galleries (Hesk, ace 56) to the SE mouth
+(22–23,32). Both mouths stand on islets in the starlit dark and are gated `flag:hub_unlocked`
++ `starreach`. The last Lumen Drop is in B1's south-east pocket (the slump drops into it).
 
 ## E · Density on the existing late maps
 

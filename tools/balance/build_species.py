@@ -1292,6 +1292,46 @@ for _area, _terrain, _rows_ in LOWTINDER_TABLES:
 CURATED_AREAS |= {"tinderwick_bay", "lowtinder", "lowtinder_cellar", "lowtinder_cellar_b2",
                   "lowtinder_school_garden", "lowtinder_lamphouse", "lowtinder_school"}
 
+# ---- Lane N3 (walkthrough/11 Parts C + D): the Mourning Fields + the Penumbra Underways
+# MIRROR of the built in-map tables (build_mourning_fields.py NIGHT/DAY,
+# build_penumbra_underways.py F1_/B1_ tables — the maps are the truth):
+# (area, terrain, [(kin_id, weight, lo, hi)]). The Fields' day rows are the post-dawn
+# twins. The Hollowing family (#178-#180, Lane N4) joins the Fields' night table only
+# once its species exist (the builder applies the same rule).
+MOURNING_TABLES = [
+    ("mourning_fields", "tall_grass", [(138, 22, 49, 51), (113, 18, 48, 50), (85, 16, 49, 51),
+                                       (125, 14, 48, 50), (58, 12, 49, 51), (142, 10, 50, 52),
+                                       (135, 6, 51, 52), (180, 14, 48, 51), (179, 8, 50, 52)]),
+    ("mourning_fields", "tall_grass", [(127, 22, 56, 61), (58, 18, 56, 61), (125, 16, 57, 62),
+                                       (107, 14, 57, 62), (140, 14, 56, 61), (9, 10, 57, 62),
+                                       (129, 6, 60, 62)]),
+    ("penumbra_underways", "cave", [(138, 24, 52, 54), (113, 18, 52, 54), (143, 16, 52, 54),
+                                    (15, 14, 53, 55), (85, 14, 53, 55), (135, 14, 53, 55)]),
+    ("penumbra_underways", "tall_grass", [(127, 30, 52, 54), (135, 25, 53, 55), (107, 20, 53, 55),
+                                          (40, 15, 53, 55), (140, 10, 54, 55)]),
+    ("penumbra_underways_b1", "cave", [(135, 24, 54, 56), (138, 22, 54, 56), (113, 16, 54, 56),
+                                       (142, 14, 54, 56), (143, 14, 54, 56), (144, 6, 55, 56)]),
+    ("penumbra_underways_b1", "tall_grass", [(40, 26, 54, 56), (107, 22, 54, 56), (127, 20, 54, 56),
+                                             (37, 14, 55, 56), (135, 12, 54, 56), (129, 6, 56, 56)]),
+]
+
+
+def _slug_of(kid):
+    import glob as _glob
+    hits = sorted(_glob.glob(os.path.join(ROOT, "src/game/data/species", f"{kid:03d}_*.json")))
+    return os.path.basename(hits[0])[4:-5] if hits else None
+
+
+for _area, _terrain, _rows_ in MOURNING_TABLES:
+    for _kid, _w, _lo, _hi in _rows_:
+        _slug = _slug_of(_kid)
+        if _slug is None:          # a Lane N4 kin not merged yet
+            continue
+        EXTRA_ENCOUNTERS.setdefault(_slug, []).append({
+            "area": _area, "terrain": _terrain,
+            "rarity": _mire_rarity(_w), "min": _lo, "max": _hi})
+CURATED_AREAS |= {"mourning_fields", "penumbra_underways", "penumbra_underways_b1"}
+
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though
 # tier/rarity alone wouldn't mark them scripted. #148 Lampling is C1
 # "Lampling's Trail" at the Vesper Crossroads — its old umbral_spire row was a
