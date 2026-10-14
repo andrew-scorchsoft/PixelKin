@@ -105,6 +105,13 @@
       "rarity": "common",
       "min": 58,
       "max": 64
+    },
+    {
+      "area": "tinderwick_bay",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 19,
+      "max": 20
     }
   ],
   "scripted": false,

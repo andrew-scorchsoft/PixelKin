@@ -29,6 +29,8 @@ import { PAUL_DIALOGUE, PAUL_SCRIPTS } from './paul';
 import { JESTHOUSE_DIALOGUE, JESTHOUSE_SCRIPTS } from './jesthouse';
 // The inn folk (2026-10): Hesper the Echo-Reader (every inn) + Ottilie the Namewright.
 import { INNFOLK_DIALOGUE, INNFOLK_SCRIPTS } from './innfolk';
+// Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay, the town under the bay.
+import { LOWTINDER_DIALOGUE, LOWTINDER_SCRIPTS } from './lowtinder';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -48,6 +50,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...PAUL_SCRIPTS,
   ...JESTHOUSE_SCRIPTS,
   ...INNFOLK_SCRIPTS,
+  ...LOWTINDER_SCRIPTS, // Lane E
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -68,4 +71,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...PAUL_DIALOGUE,
   ...JESTHOUSE_DIALOGUE,
   ...INNFOLK_DIALOGUE,
+  ...LOWTINDER_DIALOGUE, // Lane E
 };

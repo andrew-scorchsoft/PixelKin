@@ -449,6 +449,13 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 60
+    },
+    {
+     "area": "lowtinder_school_garden",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 24,
+     "max": 26
     }
    ],
    "scripted": false,
@@ -1395,6 +1402,34 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 62
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 18,
+     "max": 19
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowtinder_cellar",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 19,
+     "max": 22
+    },
+    {
+     "area": "lowtinder_cellar_b2",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 20,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -1472,7 +1507,36 @@
     "weight_kg": 2.1,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "lowtinder",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 20,
+     "max": 21
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "water",
+     "rarity": "rare",
+     "min": 20,
+     "max": 21
+    },
+    {
+     "area": "lowtinder_cellar",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 21,
+     "max": 22
+    },
+    {
+     "area": "lowtinder_cellar_b2",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 22,
+     "max": 23
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Hovering humanoid silhouette ringed by a spinning debris-halo of cinders, orange core glowing at the heart, long wispy arms; dynamic at 48px.",
@@ -1677,6 +1741,13 @@
      "rarity": "uncommon",
      "min": 9,
      "max": 11
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
     }
    ],
    "scripted": false,
@@ -2093,6 +2164,41 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 64
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 17,
+     "max": 19
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowtinder_cellar",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 19,
+     "max": 21
+    },
+    {
+     "area": "lowtinder_school_garden",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 24,
+     "max": 26
     }
    ],
    "scripted": false,
@@ -2210,6 +2316,13 @@
      "rarity": "common",
      "min": 58,
      "max": 64
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "water",
+     "rarity": "rare",
+     "min": 19,
+     "max": 20
     }
    ],
    "scripted": false,
@@ -2332,6 +2445,13 @@
      "rarity": "rare",
      "min": 58,
      "max": 64
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "deep",
+     "rarity": "common",
+     "min": 58,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -2438,6 +2558,20 @@
      "rarity": "uncommon",
      "min": 58,
      "max": 64
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 17,
+     "max": 19
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
     }
    ],
    "scripted": false,
@@ -2576,6 +2710,13 @@
      "rarity": "common",
      "min": 57,
      "max": 64
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 18,
+     "max": 20
     }
    ],
    "scripted": false,
@@ -2663,6 +2804,13 @@
      "rarity": "uncommon",
      "min": 58,
      "max": 60
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "deep",
+     "rarity": "common",
+     "min": 58,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -2785,6 +2933,34 @@
      "rarity": "common",
      "min": 56,
      "max": 62
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 17,
+     "max": 19
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 17,
+     "max": 18
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 18,
+     "max": 19
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
     }
    ],
    "scripted": false,
@@ -2967,6 +3143,20 @@
      "rarity": "common",
      "min": 55,
      "max": 61
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowtinder_cellar_b2",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 21,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -3042,7 +3232,15 @@
     "weight_kg": 52,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "tinderwick_bay",
+     "terrain": "deep",
+     "rarity": "common",
+     "min": 58,
+     "max": 61
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Streamlined low-slung body, swept-back shell ridges like breaking waves, twin luminous teal eye-stalks, long trailing fin-limbs. Seafoam-blue and deep indigo palette, white crest markings.",
@@ -3247,6 +3445,13 @@
      "rarity": "very_rare",
      "min": 22,
      "max": 24
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "deep",
+     "rarity": "rare",
+     "min": 60,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -3458,6 +3663,27 @@
      "rarity": "rare",
      "min": 11,
      "max": 12
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 18,
+     "max": 19
+    },
+    {
+     "area": "lowtinder_cellar",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 20,
+     "max": 22
+    },
+    {
+     "area": "lowtinder_cellar_b2",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 21,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -4255,7 +4481,15 @@
     "weight_kg": 14,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "lowtinder_school_garden",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 24,
+     "max": 27
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Short bipedal figure draped in a thick cape of glowing green moss-fronds; a wooden face-plate with amber eyes showing through the moss hood; stubby arms ending in leaf-fans; a round body hidden under the living mantle; warm and eerie at 32px.",
@@ -4424,6 +4658,20 @@
      "rarity": "uncommon",
      "min": 24,
      "max": 26
+    },
+    {
+     "area": "lowtinder_cellar",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 20,
+     "max": 22
+    },
+    {
+     "area": "lowtinder_cellar_b2",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 20,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -18255,7 +18503,15 @@
     "weight_kg": 0.4,
     "habitat": "isles"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "tinderwick_bay",
+     "terrain": "deep",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 60
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A tiny round-bodied lantern-fish fry seen side-on, swimming upright: a big head with huge round dark eyes, a small smiling underbite, stubby frilled pectoral fins and a short fanned tail. A thin curved stalk rises from its brow and ends in a round glowing lure-bulb held out in front of its face. At 64px it reads as a chubby baby fish carrying its own little lamp.",
@@ -18443,7 +18699,15 @@
     "weight_kg": 7.5,
     "habitat": "isles"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "tinderwick_bay",
+     "terrain": "deep",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 60
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A small sturdy hermit crab, three-quarter view: a pebble-grey plated body, two mismatched claws (one big, one small), stalked eyes and short jointed legs. On its back, instead of a shell, it wears a little brass lantern housing with cracked, chipped glass panes and a dark unlit wick inside. At 64px it reads as a crab carrying a broken lantern as its home.",

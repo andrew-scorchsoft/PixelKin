@@ -75,6 +75,20 @@
       "rarity": "uncommon",
       "min": 24,
       "max": 26
+    },
+    {
+      "area": "lowtinder_cellar",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 20,
+      "max": 22
+    },
+    {
+      "area": "lowtinder_cellar_b2",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 20,
+      "max": 23
     }
   ],
   "scripted": false,

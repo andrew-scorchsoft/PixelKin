@@ -2320,6 +2320,18 @@
       "overhang": 1,
       "walk_under": true,
       "solid": false
+    },
+    {
+      "id": "buoy_pearlmoor_deep",
+      "sprite": "markers_sea_buoy",
+      "at": {
+        "tx": 1,
+        "ty": 21
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
     }
   ],
   "warps": [
@@ -3358,6 +3370,18 @@
       "movement": "wander",
       "ambient": true,
       "wander_radius": 1
+    },
+    {
+      "id": "cache_pearlmoor_deep",
+      "at": {
+        "tx": 1,
+        "ty": 22
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_pearlmoor_deep",
+      "hidden_when_flag": "flag:picked_pearlmoor_deep"
     }
   ],
   "gates": [

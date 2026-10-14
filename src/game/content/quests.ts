@@ -420,6 +420,27 @@ export const QUESTS: QuestRegistry = [
     ],
     done_flag: 'flag:q_works_done',
   },
+  // ---- Lane E (walkthrough/10 Part III): Lowtinder, the town under the bay ----
+  {
+    id: 'lowtinder_bell',
+    name: 'The Town Bell',
+    region: 'south',
+    giver: 'Gran Tallow, Lowtinder',
+    blurb: 'Old Tinderwick\'s bell lies in the belfry pit under Gran Tallow\'s cellar. The winch-key is somewhere in the stores — she put it somewhere safe, then forgot where safe was.',
+    start_flag: 'flag:q_lowtinder',
+    stage_flags: ['flag:lowtinder_winch_key', 'flag:q_lowtinder_bell'],
+    done_flag: 'flag:q_lowtinder_bell_home',
+  },
+  {
+    id: 'lowtinder_light',
+    name: 'The Old Tinder Light',
+    region: 'south',
+    giver: 'Gran Tallow, Lowtinder',
+    blurb: 'Gran Tallow kept the Tinder Light on the outer reef for thirty-one years. Nobody\'s boat crosses the deep — but she would give her teeth to see it once more.',
+    start_flag: 'flag:q_lowtinder_light',
+    stage_flags: ['flag:lowtinder_reef_rowed'],
+    done_flag: 'flag:lowtinder_grandmother_beaten',
+  },
 ];
 
 /** Lookup by id. */

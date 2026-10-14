@@ -140,6 +140,8 @@ const UNIQUE_SPRITE: Record<string, string> = {
   oldlight_juggler: 'juggler', oldlight_pie_thrower: 'pie_thrower', oldlight_critic: 'critic',
   oldlight_mirror: 'player_front', // THE MIRROR wears your own face
   oldlight_headliners: 'punchwheel', // Mr. Punchwheel presents his act
+  // Lane E (walkthrough/10 Part III): Gran Tallow on her reef, by the old Tinder Light
+  lowtinder_ottery: 'ottery',
 };
 
 function pick<T>(xs: T[], seed: string): T {

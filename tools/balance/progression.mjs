@@ -90,6 +90,9 @@ const trend = []; // [midLevel, bst, weight]
 // Each Wild Ways lane appends its encounter-bearing maps here.
 const TREND_SKIP_AREAS = new Set([
   'old_seams_i', 'old_seams_ii', 'old_seams_iii', // the Old Seams (D)
+  // Lane E (10 Part III): Lowtinder & Tinderwick Bay — optional, Tidecall-opened
+  // mid-game beds (17-27) + the post-game deep reef (58-62); off the journey.
+  'tinderwick_bay', 'lowtinder', 'lowtinder_cellar', 'lowtinder_cellar_b2', 'lowtinder_school_garden',
 ]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
@@ -229,7 +232,10 @@ const JOURNEY = [
       T('Osprey (plank-courier)', 'route', [K(17, 31), K(18, 60)]),
       T('Tarn (reed-lamplighter)', 'route', [K(17, 31), K(18, 59)]),
     ],
-    income: { quests: 200, valuables: 600, finds: 600 }, // + the fen west-bank wick-purse (300)
+    // Lane E (10 Part III): Lowtinder opens with Tidecall, right here — quests +=
+    // "The Town Bell"'s fair-chest (1,500, script.tinderwick_bell_ceremony);
+    // finds += the flooded-yard jar (400) + the lamp-school's fee-tin (600).
+    income: { quests: 1700, valuables: 600, finds: 1600 }, // + the fen west-bank wick-purse (300)
     spend: { tallow_balm: 3 },
     checkpoint: { name: 'Lowleaf arrival', rec: 18 },
   },
@@ -445,7 +451,9 @@ const JOURNEY = [
       T('Warden Mer (Round)', 'vigilant', [K(68, 135), K(68, 138), K(68, 85), K(69, 140), K(69, 145), K(69, 146)]),
       T('Star-tender Fenn', 'cor', [K(68, 9), K(68, 107), K(68, 125), K(69, 87), K(69, 131), K(70, 129)]),
     ],
-    income: { quests: 0, valuables: 9000, finds: 5000 }, // Starglass caches + the storm-tithe; payouts come from the trainer loop
+    // Lane E (10 Part III): + the deep backtrack's skiff-only buoy-caches — the
+    // Pearlmoor Starglass (1,500) + the Dimglass Moth-amber (600) = +2,100 valuables.
+    income: { quests: 0, valuables: 11100, finds: 5000 }, // Starglass caches + the storm-tithe; payouts come from the trainer loop
     spend: { bright_balm: 4 },
     checkpoint: { name: 'The Last Lesson (Fenn)', rec: 67, ace: 70 },
   },
@@ -557,6 +565,13 @@ const BUILT_PAYOUTS = {
   mire_eelcatcher: ['route', 40, 640], // the landing
   mire_lampdiver: ['route', 42, 672], // the Glassmere
   mire_acolyte: ['route', 43, 688], // the drowned chapel
+  // Lane E (10 Part III): Lowtinder & Tinderwick Bay — optional, BUILT_PAYOUTS-only
+  bay_diver: ['route', 19, 304],
+  bay_nethand: ['route', 20, 320],
+  lt_mudlark: ['route', 20, 320],
+  lt_lampwright: ['keeper', 21, 420],
+  lt_cellar_keeper: ['keeper', 22, 440],
+  lowtinder_ottery: ['warden', 66, 3960], // Gran Tallow's reef bout (post-game, rematchable)
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

@@ -219,6 +219,14 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // Sunvault Climb rebuild (S)
     { map_id: 'sunvault_climb_iii', region: 'west' }, // route: the Gilt Face (ladder pitches, the trestle over the gully)
     { map_id: 'sunvault_climb_iv', region: 'west' }, // route: the Sun Ledges (planks + ledges to the observatory hill)
+    // ---- Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay (optional, Tidecall) ----
+    { map_id: 'tinderwick_bay', region: 'south', optional: true, reward: 'the drowned roofs, two skerries, a Star-chart; the outer deep reef and the old Tinder Light (skiff)' },
+    { map_id: 'lowtinder', region: 'south', optional: true, reward: 'the drowned old town: Embrift (never wild before), Grandmother Tallow, the Bell Cellar' },
+    { map_id: 'lowtinder_lamphouse', region: 'south' }, // interior: Grandmother Ottery Tallow's dry upper floor (rest point)
+    { map_id: 'lowtinder_school', region: 'south' }, // interior: the old lamp-school
+    { map_id: 'lowtinder_school_garden', region: 'south', optional: true, reward: 'Mossmantle (never wild before) — Brightlight only' },
+    { map_id: 'lowtinder_cellar', region: 'south', optional: true, reward: 'the winch-key' },
+    { map_id: 'lowtinder_cellar_b2', region: 'south', optional: true, reward: 'the old town bell, a Lumen Drop, the climb up Tinderwick\'s well' },
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -442,6 +450,17 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunvault_climb_ii', to_map: 'sunvault_climb_iii', via_warp: 'to_climb_iii', bidirectional: true },
     { from_map: 'sunvault_climb_iii', to_map: 'sunvault_climb_iv', via_warp: 'to_climb_iv', bidirectional: true },
     { from_map: 'sunvault_climb_iv', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
+    // ---- Lane E (walkthrough/10 Part III): Tinderwick Bay + Lowtinder, the town under the bay
+    // home's south shore swims off its east columns into the bay (Tidecall); the bay's east
+    // edge swims into Lowtinder; the Bell Cellar is two floors under the lamp-house. The
+    // cellar's far end climbs Tinderwick's well (a one-way `travel`, not an edge).
+    { from_map: 'tinderwick', to_map: 'tinderwick_bay', via_warp: 'to_bay_21', requires_ability: 'tidecall', bidirectional: true },
+    { from_map: 'tinderwick_bay', to_map: 'lowtinder', via_warp: 'to_lowtinder_6', requires_ability: 'tidecall', bidirectional: true },
+    { from_map: 'lowtinder', to_map: 'lowtinder_lamphouse', via_warp: 'to_lamphouse', bidirectional: true },
+    { from_map: 'lowtinder', to_map: 'lowtinder_school', via_warp: 'to_school', bidirectional: true },
+    { from_map: 'lowtinder_school', to_map: 'lowtinder_school_garden', via_warp: 'to_garden', requires_flag: 'flag:lamplight_brightlight', bidirectional: true },
+    { from_map: 'lowtinder', to_map: 'lowtinder_cellar', via_warp: 'to_cellar', bidirectional: true },
+    { from_map: 'lowtinder_cellar', to_map: 'lowtinder_cellar_b2', via_warp: 'ladder_down', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

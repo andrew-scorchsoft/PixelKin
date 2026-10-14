@@ -59,6 +59,8 @@ NODE_KINDS: dict[str, str] = {
     "dimglass_coast_ii": "route", "tideglass_cavern": "landmark", "gullcry_rock": "landmark",
     "pearlmoor_quay": "town", "pearlmoor_breakwater": "landmark", "pearlmoor_wanderwood": "landmark",
     "wayward_rise": "landmark",
+    # Lane E (10 Part III): the bay under the beach + the drowned old town
+    "tinderwick_bay": "route", "lowtinder": "town",
     "dawnstead": "town",
     # the hub + the bay road home + the mountain road
     "vesper_crossroads": "hub", "lanternway_tinderwick": "route",
@@ -155,6 +157,9 @@ ROADS: list[tuple[str, str, str]] = [
     ("dimglass_coast", "tideglass_cavern", "gate"),
     ("dimglass_coast_ii", "tideglass_cavern", "gate"),
     ("dimglass_coast_ii", "gullcry_rock", "gate"),
+    # Lane E (10 Part III): swum with Tidecall off the beach, then east
+    ("tinderwick", "tinderwick_bay", "gate"),
+    ("tinderwick_bay", "lowtinder", "gate"),
     ("pearlmoor_quay", "pearlmoor_breakwater", "gate"),
     ("pearlmoor_quay", "pearlmoor_wanderwood", "road"),   # up through the allotment
     ("pearlmoor_wanderwood", "wayward_rise", "road"),     # north out of the glade

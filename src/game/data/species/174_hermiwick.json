@@ -82,7 +82,15 @@
     "weight_kg": 7.5,
     "habitat": "isles"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "tinderwick_bay",
+      "terrain": "deep",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 60
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "A small sturdy hermit crab, three-quarter view: a pebble-grey plated body, two mismatched claws (one big, one small), stalked eyes and short jointed legs. On its back, instead of a shell, it wears a little brass lantern housing with cracked, chipped glass panes and a dark unlit wick inside. At 64px it reads as a crab carrying a broken lantern as its home.",

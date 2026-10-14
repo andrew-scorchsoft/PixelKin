@@ -56,6 +56,19 @@ SHOP = {"at": (4, 13), "w": 5, "h": 4, "door_col": 2}
 LUMENARY = {"at": (17, 2), "w": 6, "h": 6, "door_col": 2}   # arch straddles cols 2-3
 COTTAGE = {"at": (3, 3), "w": 5, "h": 5, "door_col": 2}
 
+# Lane E: columns of the bottom sea row covered by the drowned roofs/tower.
+SEA_SOLID_COLS = {5, 6, 7, 8, 11, 12, 13, 14, 16, 17, 18, 19, 20}
+# The swim-off columns: the open sea EAST of the drowned bell-tower (the beach's
+# world-craft props — rowboat, crab pots, net rack — stand on the strand further
+# west, and the off-lane proof forbids them lengthening any walk to a warp). West
+# of the tower the sea row is just a bump at the map edge: the way out to the bay
+# is past the tower, where the old fisher stands looking.
+SWIM_COLS = range(21, 28)
+# Lane E: the square's bell-gallows (top-left; solid row = BELL[1] + 2) — just
+# south of the street, west of the spine, clear of the store lane (cols 4-6).
+BELL = (7, 10)
+
+
 def door_tile(b):
     return (b["at"][0] + b["door_col"], b["at"][1] + b["h"] - 1)
 
@@ -196,6 +209,31 @@ objects = [
     {"id": "vigil_scar_hearthfall", "sprite": "vigil_star_scar", "at": {"tx": 25, "ty": 8},
      "w": 1, "h": 1, "solid": False, "requires_flag": "flag:dawn"},
 ]
+# Lane E objects join AFTER the deco scatter below, so the shipped scatter (an
+# rng walk over the avoid set) is reproduced exactly — no reshuffled tufts.
+LANE_E_OBJECTS = [
+    # The garden's old WELL (was world-craft's `wc_well`; same id, sprite and
+    # footprint) — it is the top of the old town's bell-shaft: the Bell Cellar's
+    # far end climbs up it into the square (content/regions/lowtinder.ts).
+    {"id": "wc_well", "sprite": "tinderwick_well", "at": {"tx": 17, "ty": 10},
+     "w": 2, "h": 3, "overhang": 1, "walk_under": True},
+    # ---- Lane E (walkthrough/10 Part III): LOWTINDER, the town under the bay ----
+    # The seed, visible from minute one: drowned roof-ridges and the old town's
+    # bell-tower stand out of the sea below the beach (lowtinderforge.py). Solid
+    # — you can't swim through a roof — so the bay swim warps skip their columns.
+    {"id": "lt_ridge_w", "sprite": "lowtinder_roof_ridge", "at": {"tx": 16, "ty": 22}, "w": 3, "h": 2},
+    {"id": "lt_belltower", "sprite": "lowtinder_belltower", "at": {"tx": 19, "ty": 20},
+     "w": 2, "h": 4, "overhang": 3},
+    {"id": "lt_ridge_e", "sprite": "lowtinder_roof_ridge_b", "at": {"tx": 5, "ty": 22}, "w": 4, "h": 2},
+    {"id": "lt_ridge_m", "sprite": "lowtinder_roof_ridge_b", "at": {"tx": 11, "ty": 22}, "w": 4, "h": 2},
+    # The square's empty bell-gallows ("keep the frame, it'll want somewhere to
+    # hang") — and its flag-swapped twin once the old bell comes home ("The Town
+    # Bell"): same footprint, same solidity (collision is flag-blind).
+    {"id": "bell_frame", "sprite": "lowtinder_bell_frame", "at": {"tx": BELL[0], "ty": BELL[1]},
+     "w": 2, "h": 3, "overhang": 2, "hidden_when_flag": "flag:q_lowtinder_bell_home"},
+    {"id": "bell_hung", "sprite": "lowtinder_bell_hung", "at": {"tx": BELL[0], "ty": BELL[1]},
+     "w": 2, "h": 3, "overhang": 2, "requires_flag": "flag:q_lowtinder_bell_home"},
+]
 building_cells = set()
 for o in objects:
     if not o.get("solid", True):
@@ -241,6 +279,15 @@ for (x, y) in [(2, 21), (25, 20), (11, 20)]:                     # shore boulder
 for (x, y) in [(23, 11), (26, 13)]:                              # pondside rocks
     deco[y * W + x] = gid("boulder")
 mk.scatter_decor(deco, base, W, H, rng, density=0.16, avoid=avoid)
+# Lane E: the bell-gallows + the drowned seed join now; no scatter under them.
+objects += LANE_E_OBJECTS
+for o in LANE_E_OBJECTS:
+    if o["id"] == "wc_well":
+        continue                      # the well always stood over the flowerbeds
+    for yy in range(o["at"]["ty"], o["at"]["ty"] + o["h"]):
+        for xx in range(o["at"]["tx"], o["at"]["tx"] + o["w"]):
+            if deco[yy * W + xx] not in (gid("buoy"), gid("boulder")):
+                deco[yy * W + xx] = 0
 
 # ---- assemble ---------------------------------------------------------------
 # The verge's tables: the journey band, and its flag:dawn day-form twin (R4 —
@@ -298,6 +345,15 @@ m = {
          "requires_flag": "flag:vigil_reading_1", "blocked_ref": "npc.vigil_scar_sealed",
          "transition": "fade"},
     ] + [
+        # Lane E: the south shore is open sea — with Tidecall you swim straight
+        # off the bottom edge into Tinderwick Bay (build_tinderwick_bay.py, at
+        # world (0,24)). One warp per open water column (wide entrances warp on
+        # every tile); the drowned roofs/tower columns are solid.
+        {"id": f"to_bay_{x}", "at": {"tx": x, "ty": H - 1}, "trigger": "step_on",
+         "to_map": "tinderwick_bay", "to": {"tx": x, "ty": 0}, "facing": "down",
+         "transition": "fade"}
+        for x in SWIM_COLS
+    ] + [
         # R8: WEST through the hedge gap to Duskapple Orchard — ungated (safe,
         # always open; it's where the courier's cart threw a wheel with Fenn's
         # satchel aboard). Landing ON the orchard's return warps.
@@ -328,6 +384,13 @@ m = {
         {"id": "sign_beacon", "kind": "sign",
          "at": {"tx": sign_tiles["sign_beacon"][0], "ty": sign_tiles["sign_beacon"][1]},
          "activation": "interact", "ref": "sign.beacon_door"},
+        # Lane E: the bell-gallows (empty plaque -> the old bell, ringable) and
+        # the old well (the garden's world-craft well, 17-18 x 10-12) — both
+        # answer Confirm from any side of the object (triggerOnObjectAt).
+        {"id": "bell_frame_read", "kind": "script", "at": {"tx": BELL[0], "ty": BELL[1] + 2},
+         "activation": "interact", "ref": "script.tinderwick_bell"},
+        {"id": "old_well", "kind": "script", "at": {"tx": 18, "ty": 12},
+         "activation": "interact", "ref": "script.tinderwick_well"},
     ],
     "encounters": [
         {"id": "verge_grass", "terrain": "tall_grass", "rect": dict(VERGE_RECT),
@@ -397,6 +460,17 @@ m = {
         # star in Duskapple Orchard (script stages itself on dusk_begins/gleam/dawn).
         {"id": "peril_neighbour", "at": {"tx": 2, "ty": 10}, "facing": "up", "sprite": "npc_old_woman",
          "movement": "static", "dialogue_ref": "script.peril_tinderwick_neighbour"},
+        # Lane E: the old fisher on the sand, looking at the drowned bell-tower —
+        # "that's where the town WAS" (the seed; his script stages itself on
+        # Tidecall and the bell). Off every lane, on open sand.
+        {"id": "lt_old_fisher", "at": {"tx": 16, "ty": 21}, "facing": "right", "sprite": "fisher_man",
+         "movement": "static", "dialogue_ref": "script.lowtinder_fisher"},
+        # Lane E "The Town Bell": Brisa waits by the empty gallows once the bell
+        # is raised below, and runs the hanging ceremony.
+        {"id": "brisa_bell", "at": {"tx": BELL[0] + 2, "ty": BELL[1] + 1}, "facing": "left",
+         "sprite": "npc_lampwarden", "movement": "static",
+         "dialogue_ref": "script.tinderwick_bell_ceremony",
+         "requires_flag": "flag:q_lowtinder_bell", "hidden_when_flag": "flag:q_lowtinder_bell_home"},
         # The wick-purse safety net (one per early area) — now on the WEST strand.
         {"id": "cache_purse", "at": {"tx": 1, "ty": 20}, "facing": "down",
          "sprite": "item_cache", "movement": "static",

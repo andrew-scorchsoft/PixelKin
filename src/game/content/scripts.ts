@@ -5182,6 +5182,9 @@ export const SCRIPTS: ScriptRegistry = {
       op: 'say', if_flag: 'gleam:tide', unless_flag: 'gleam:verdant', speaker: 'ANDREW',
       text: 'Sable Quill keeps the Verdant, at Lowleaf Hollow. Not there yet? East out of Pearlmoor on the fen road — Tidecall walks you over the deep channels that stopped you before — and Lowleaf\'s at the far end.',
     },
+    // Lane E (walkthrough/10 Part III): the Tide stage also tips the home secret —
+    // a nested run so its own guard (not met Gran Tallow yet) stacks on the stage's.
+    { op: 'run', ref: 'script.andrew_hint_lowtinder', if_flag: 'gleam:tide', unless_flag: 'gleam:verdant' },
     {
       op: 'say', if_flag: 'gleam:verdant', unless_flag: 'gleam:stone', speaker: 'ANDREW',
       text: 'Otho Grist keeps the Stone, in the headframe hall at Cinderhead Mine — talk to him before you go wandering his galleries. Not there yet? Through the deep wood behind Lowleaf; Glimmerstep opens its dark. Honest word: he WILL flatten you, so come back a few levels heavier.',

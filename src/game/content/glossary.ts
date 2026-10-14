@@ -434,6 +434,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A tall, crooked house beside the Wayward Arms, three floors of evidence about one man, none of which agrees: tickets from the maple country and the cape country, a museum of t-shirts, a WANTED poster he swears is a joke. He is never in. His granddaughter Lottie usually is.',
     unlock_flag: 'flag:paul_house_seen',
   },
+  // Lane E (walkthrough/10 Part III) — the town under the bay
+  {
+    id: 'lowtinder',
+    term: 'Lowtinder',
+    desc: 'Old Tinderwick, the shore town that went under the bay the winter the water rose, forty years ago. The town moved up the bluff. Gran Tallow, its last Lampwarden, did not — she says it is not drowned, only having a lie-in.',
+    unlock_flag: 'flag:q_lowtinder',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

@@ -63,7 +63,15 @@
     "weight_kg": 52,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "tinderwick_bay",
+      "terrain": "deep",
+      "rarity": "common",
+      "min": 58,
+      "max": 61
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Streamlined low-slung body, swept-back shell ridges like breaking waves, twin luminous teal eye-stalks, long trailing fin-limbs. Seafoam-blue and deep indigo palette, white crest markings.",

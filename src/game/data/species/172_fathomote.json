@@ -74,7 +74,15 @@
     "weight_kg": 0.4,
     "habitat": "isles"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "tinderwick_bay",
+      "terrain": "deep",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 60
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "A tiny round-bodied lantern-fish fry seen side-on, swimming upright: a big head with huge round dark eyes, a small smiling underbite, stubby frilled pectoral fins and a short fanned tail. A thin curved stalk rises from its brow and ends in a round glowing lure-bulb held out in front of its face. At 64px it reads as a chubby baby fish carrying its own little lamp.",
