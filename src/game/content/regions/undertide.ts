@@ -235,6 +235,7 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
     { op: 'musicCrossfade', key: 'farlamp-relit', ms: 1200 },
     { op: 'narrate', text: 'THE FARLAMP BURNS. Its beam goes up through a fathom of water and out across the sea, and the Fogwall, which has lain on these isles eleven winters, begins to lift.' },
     { op: 'tint', color: '#ffd890', alpha: 0, ms: 1100 },
+    { op: 'narrate', text: 'All the way up the Undertide, the keepers\' tide-lamps flicker on along the races, one after another, like a held breath let go.' },
     { op: 'narrate', text: 'Up in Driftholm they will be at their windows with their small lamps. They will see the old light out on the water. Some of them will cry, and say it\'s the salt.' },
     { op: 'narrate', text: 'No new star rises for this. It isn\'t that kind of light. It is the isles\' own morning, and it\'s enough.' },
     { op: 'letterbox', on: false },
@@ -312,6 +313,7 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I felt it from Driftholm. Eleven winters I\'ve slept with my back to the sea, and this morning I woke facing it.' },
     { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I came down the long stair the way I went up it, with a small lamp. Didn\'t need it. Every tide-lamp on the races was burning.' },
     { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'You read my log, I expect. All my hurrying. Look at her. Stubborn and lovely, same as ever. Thank you for coming all the way down.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'The light\'s woken the old races, too. There were islets on the Galleries and the Stair we used to row out to for the quiet. Go and see what the sea\'s kept on them.' },
   ],
 
   // ---- the keeper's desk + the store's sluice ------------------------------------
