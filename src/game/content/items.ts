@@ -844,16 +844,18 @@ export const ITEMS: ItemRegistry = {
     desc: 'A stub of candle burning in a stoppered jar. The only thing in Stillwater that moves when you breathe on it.',
     category: 'key',
   },
-  // "The Way Home": Tessaly's own old shop-lamps — three given once (a four-map
-  // escort pays), each a conditional charge, ×3.0 on a DOZING kin (the lamps that
-  // once sang kin to sleep now call them home). Never sold.
+  // "The Way Home": Tessaly's own old shop-lamp — ONE, given once (a four-map
+  // escort pays), a REUSABLE keepsake (the throw never spends it): ×3.0 on a kin
+  // worn below a quarter of its health — a lamp to bring the lost home. Distinct
+  // from the Fields' doze charms by design. Never sold.
   tessalys_lamp: {
     id: 'tessalys_lamp',
     name: 'Tessaly\'s Lamp',
-    desc: 'A Pale Vault shop-lamp that once sang kin to sleep. Raised to a dozing kin it calls it home threefold; to a wakeful one it is only a lamp.',
+    desc: 'The Pale Vault shop-lamp Tessaly carried home. Raised to a kin worn to its last quarter it calls it home threefold, and it never burns down. A lamp to bring the lost home.',
     category: 'charge',
     catch_bonus: 3.0,
-    condition: { kind: 'status', status: 'doze' },
+    condition: { kind: 'hp_below', ratio: 0.25 },
+    reusable: true,
   },
   // ---- Lane N2 (walkthrough/11 Part B): the Drownlight's relight reward — the
   // Shutterkeeper's latch. A conditional charge (the Aurora Charm pattern, the

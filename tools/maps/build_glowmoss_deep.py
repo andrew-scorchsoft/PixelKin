@@ -188,11 +188,16 @@ m = {
     # that absence IS the Hollowing. Once the null-lantern is relit
     # (flag:met_hollowing) the chamber wakes: a quiet flag-gated cave-floor bed
     # blooms in (EncounterZone.requires_flag) — life seeping back, not a thicket.
+    # 2026-10: the young Hollowing-touched moths (#136 Mothdim, #133 Flutterwane —
+    # glow drained, still seeking warmth) drift in to the relit lamp, under their
+    # kindling levels. Their only wild bed (mirrored in build_species.py).
     "encounters": [
         {"id": "drained_woken", "terrain": "cave", "rect": {"tx": 14, "ty": 6, "w": 8, "h": 7},
          "encounter_rate": 0.06, "requires_flag": "flag:met_hollowing",
-         "table": [{"kin_id": 38, "weight": 55, "min_level": 20, "max_level": 22},
-                   {"kin_id": 67, "weight": 45, "min_level": 21, "max_level": 22}]},
+         "table": [{"kin_id": 38, "weight": 35, "min_level": 20, "max_level": 22},
+                   {"kin_id": 67, "weight": 30, "min_level": 21, "max_level": 22},
+                   {"kin_id": 136, "weight": 20, "min_level": 18, "max_level": 19},
+                   {"kin_id": 133, "weight": 15, "min_level": 20, "max_level": 21}]},
         {"id": "glow_b", "terrain": "tall_grass", "rect": {"tx": 4, "ty": 11, "w": 8, "h": 4},
          "encounter_rate": 0.12,
          "table": [{"kin_id": 56, "weight": 45, "min_level": 20, "max_level": 22},

@@ -323,7 +323,7 @@
       "h": 1
     },
     {
-      "id": "stove",
+      "id": "stove_open",
       "sprite": "interior_stove",
       "at": {
         "tx": 4,
@@ -332,7 +332,21 @@
       "w": 2,
       "h": 2,
       "overhang": 1,
-      "walk_under": true
+      "walk_under": true,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "stove_banked",
+      "sprite": "stillwater_stove_banked",
+      "at": {
+        "tx": 4,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "tea_table",

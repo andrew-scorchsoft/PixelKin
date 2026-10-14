@@ -1507,6 +1507,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **A gated warp's `blocked_ref` may be a `script.*`** (played as a cutscene — someone standing there
   says "not yet", staged on flags: Wanderer Hob at the Wanderwood gap). Prefer that to a bare sign line
   for any long-term "come back later" gate, and open a journal teaser on first contact so it's remembered.
+- **A map that stacks a new accent set must list it in `world/maps.ts` `tilesets` too** — no CI gate
+  catches a missing one; the map just fails to load in-game (Coldfog I + `stillwater_set`'s `murkpool`,
+  2026-10). Concave pools need a FULL family (inner corners): the shared `murk` is a 9-slice.
 - **One-way exits are `travel`, not warps** (Lowtinder's well climb into Tinderwick): audit_warps
   rejects a warp with no return; a scripted `travel` is the legal one-way door.
 

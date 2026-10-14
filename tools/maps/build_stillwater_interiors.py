@@ -72,6 +72,17 @@ def hearth(objects: list, tx: int) -> None:
                     "overhang": 1, "walk_under": True, "hidden_when_flag": "flag:dawn"})
 
 
+def stove(objects: list, tx: int) -> None:
+    """The cook-stove, the same flag-pair as the hearth (one footprint): BANKED —
+    its firebox shut behind a louvred iron door — until the dawn, then the open
+    stove. (The r2 review: an open, glowing stove beside a banked hearth.)"""
+    wall_mount(objects, "stove", tx, oid="stove_open")["requires_flag"] = "flag:dawn"
+    sp = _MANIFEST["stillwater_stove_banked"]
+    objects.append({"id": "stove_banked", "sprite": "stillwater_stove_banked",
+                    "at": {"tx": tx, "ty": 1}, "w": sp["tw"], "h": sp["th"],
+                    "overhang": 1, "walk_under": True, "hidden_when_flag": "flag:dawn"})
+
+
 def out_warp(door_x, H, tx, ty):
     return [{"id": "to_town", "at": {"tx": door_x, "ty": H - 1}, "trigger": "step_on",
              "to_map": "stillwater", "to": {"tx": tx, "ty": ty}, "facing": "down",
@@ -105,6 +116,17 @@ def build_hall():
     still(objects, "wool_basket", 16, 11)
     still(objects, "wool_basket", 2, 4, oid="wool_b")
     still(objects, "blanket_kin_b", 14, 11, oid="hall_sleeper_b")
+    # the r2 review: the lower half was bare floor. A back row of memorial benches,
+    # the reading lectern (the ledger of put-out lamps) where the reader keeps it,
+    # boxes of spare shutters by the walls, baskets of the sprigs they tuck in.
+    for n, x in enumerate((3, 11)):
+        place(objects, "pew", x, 11, oid=f"pew_back_{n}")
+    still(objects, "lectern", 16, 9)
+    still(objects, "shutter_box", 1, 8, oid="shutter_box_w")
+    still(objects, "shutter_box", 16, 6, oid="shutter_box_e")
+    still(objects, "sprig_basket", 7, 12, oid="sprigs_w")
+    still(objects, "sprig_basket", 11, 12, oid="sprigs_e")
+    still(objects, "sprig_basket", 13, 3, oid="sprigs_wall")
     triggers = [{"id": f"wall_read_{x}", "kind": "script", "at": {"tx": x, "ty": 2},
                  "activation": "interact", "ref": "script.still_shutter_wall"}
                 for x in (5, 6, 7, 11, 12)]
@@ -113,7 +135,7 @@ def build_hall():
     npcs = [
         npc("hall_keeper", (12, 4), "hollowing_elder", "script.still_hall_keeper"),
         npc("hall_mourner", (6, 10), "npc_woman", "script.still_hall_mourner", facing="up"),
-        npc("hall_reader", (16, 8), "hollowing_acolyte", "script.still_hall_reader", facing="left"),
+        npc("hall_reader", (16, 8), "hollowing_acolyte", "script.still_hall_reader", facing="down"),
     ]
     return mapdef("stillwater_quiet_hall", "The Quiet Hall", W, H, SHUTTER_SET, base, over,
                   objects, out_warp(door_x, H, 15, 15), triggers, npcs, HUSH_MUSIC)
@@ -185,7 +207,7 @@ def build_home_a():
     objects: list = []
     hearth(objects, 1)                                        # screened; open at dawn
     still(objects, "old_chairs", 1, 5, oid="old_chairs")      # backs to the hearth
-    wall_mount(objects, "stove", 4)
+    stove(objects, 4)                                         # banked too; open at dawn
     place(objects, "table", 6, 2, oid="tea_table")
     place(objects, "stool", 8, 3, oid="tea_stool")
     place(objects, "rug", 4, 5, solid=False)

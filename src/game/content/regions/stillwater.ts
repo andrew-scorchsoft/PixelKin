@@ -283,10 +283,10 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
   ],
   'script.still_tessaly_home': [
     { op: 'say', speaker: 'TESSALY', text: 'You came. I\'m home. The shop\'s still there, shutters and all. Somebody\'s been sweeping the step. Three winters, and somebody swept my step.' },
-    { op: 'say', speaker: 'TESSALY', text: 'These were my own lamps, the three I used to sing the sleeping kin quiet with. I want you to carry them now. Hold one up to a kin that\'s dozing and it won\'t lull it any deeper. It\'ll call it home.' },
+    { op: 'say', speaker: 'TESSALY', text: 'This was my own lamp, the one I hung in the shop window so the lost could find the door. I want you to carry it now. Hold it up to a kin that\'s worn to its last scrap of strength and it won\'t frighten it. It\'ll call it home. And it never burns down. It brought me home, didn\'t it?' },
     { op: 'sfx', key: 'world-keyitem' },
-    { op: 'giveItem', item: 'tessalys_lamp', count: 3 },
-    { op: 'say', text: 'You got three TESSALY\'S LAMPS! Each one burns threefold on a dozing kin.' },
+    { op: 'giveItem', item: 'tessalys_lamp', count: 1 },
+    { op: 'say', text: 'You got TESSALY\'S LAMP! It burns threefold on a kin below a quarter of its health, and it is never spent.' },
     { op: 'setFlag', flag: TESS_DONE },
   ],
   'script.still_tessaly_after': [
@@ -528,7 +528,8 @@ const wallLeaf = (bits: string): CutsceneStep[] => {
   const missing = WALL_LAMPS.filter((_, i) => bits[i] === '0');
   const found = 3 - missing.length;
   const head = found === 2 ? 'Two of three. Only one left:' : 'One of three, then. Still to find:';
-  return [{ op: 'say', speaker: 'KEEPER WENNA', text: `${head} ${missing.join(', and ')}. Read what was left at its foot, then come back to me.` }];
+  const tail = missing.length === 1 ? 'Read what was left at its foot' : 'Read what was left at each one\'s foot';
+  return [{ op: 'say', speaker: 'KEEPER WENNA', text: `${head} ${missing.join(', and ')}. ${tail}, then come back to me.` }];
 };
 for (const bits of ['0', '1', '00', '01', '10', '11']) {
   const n = bits.length + 1;

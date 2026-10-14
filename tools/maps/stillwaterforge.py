@@ -582,7 +582,95 @@ def old_chairs():
     return img(a)
 
 
+def stove_banked():
+    """2x2 WALL piece, the SAME footprint + silhouette as interior_stove: the cook-
+    stove banked for the Long Dusk — its firebox shut behind a louvred iron door,
+    latched, only a hair of ember at the sill; the kettle left cold on the plate.
+    (Home A: the open stove swaps back in at flag:dawn, with its hearth.)"""
+    src = Image.open(REPO / "assets/tilesets/interior/objects/stove.png").convert("RGBA")
+    a = np.asarray(src).astype("int16").copy()
+    hot = (a[..., 0] > 150) & (a[..., 1] > 50) & (a[..., 2] < 110) & (a[..., 3] > 0)
+    ys, xs = np.where(hot[16:])                              # the firebox (lower half)
+    y0, y1, x0, x1 = 16 + ys.min(), 16 + ys.max(), xs.min(), xs.max()
+    fill(a, x0, y0, x1, y1, IRON[1])                         # the iron door, shut
+    for y in range(y0 + 1, y1, 2):                           # louvres
+        a[y, x0 + 1:x1] = IRON[2]
+    a[y0, x0:x1 + 1] = IRON[3]                               # lit top edge of the door
+    a[y0:y1 + 1, (x0 + x1) // 2] = IRON[0]                   # where its leaves meet
+    a[(y0 + y1) // 2, (x0 + x1) // 2 - 1:(x0 + x1) // 2 + 2] = BRASS[2]   # the latch
+    outline(a, x0 - 1, y0 - 1, x1 + 1, y1 + 1, INK)
+    for x in range(x0 + 1, x1, 2):                           # banked: an ember hair at the sill
+        a[y1 + 1, x] = FLAME[0]
+    warm = (a[..., 0] > a[..., 2] + 60) & (a[..., 1] > 60) & (a[..., 3] > 0)
+    warm[y1 + 1:, :] = False                                 # (keep the ember hair)
+    warm[16:, :] &= False                                    # only the kettle, up top
+    a[warm, :3] = (a[warm, :3] * np.array([0.70, 0.74, 0.86])).astype(np.int16)  # cold brass
+    return img(a)
+
+
+# ---- the r2 review: the Quiet Hall's lower half, dressed ----------------------------
+def lectern():
+    """1x2 (interior) the reading lectern: a slanted desk on one post, the ledger of
+    put-out lamps open on it, a ribbon marker; a hooded reading-lamp, capped."""
+    a = canvas(1, 2)
+    fill(a, 7, 14, 8, 27, WOOD[1])                            # the post
+    a[14:28, 7] = WOOD[2]
+    fill(a, 4, 27, 11, 29, WOOD[1]); outline(a, 4, 27, 11, 29, INK)   # the foot
+    outline(a, 6, 14, 9, 27, INK)
+    for y in range(6, 14):                                    # the slanted desk
+        x0, x1 = 1 + (13 - y) // 3, 14 - (13 - y) // 3
+        a[y, x0:x1 + 1] = WOOD[2] if y > 7 else WOOD[1]
+    fill(a, 3, 7, 12, 11, PALE[2])                            # the open ledger
+    a[7:12, 7] = PALE[0]                                      # its gutter
+    for y in (8, 10):
+        a[y, 4:7] = PALE[0]
+        a[y, 9:12] = PALE[0]
+    a[11:15, 10] = hx("#7a4a4a")                             # a ribbon marker
+    outline(a, 1, 6, 14, 13, INK)
+    fill(a, 11, 1, 14, 5, IRON[2]); a[1, 11:15] = IRON[3]     # the hooded lamp, capped
+    outline(a, 11, 1, 14, 5, INK)
+    contact_shadow(a, 3, 12, 30)
+    return img(a)
+
+
+def shutter_box():
+    """1x1 (interior) a box of spare shutters, painted and stacked on edge — the
+    village keeps them ready, the way other villages keep candles."""
+    a = canvas(1, 1)
+    fill(a, 1, 7, 14, 14, WOOD[1]); a[7, 1:15] = WOOD[2]
+    outline(a, 1, 7, 14, 14, INK)
+    for n, x in enumerate((3, 6, 9, 12)):                     # shutters on edge
+        top = 2 + (n % 2)
+        fill(a, x - 1, top, x + 1, 8, SHUT[1 + n % 2])
+        a[top + 2, x - 1:x + 2] = SHUT[0]
+        a[top + 4, x - 1:x + 2] = SHUT[0]
+        outline(a, x - 1, top, x + 1, 8, INK)
+    contact_shadow(a, 1, 14, 15)
+    return img(a)
+
+
+def sprig_basket():
+    """1x1 (interior) a shallow basket of dried sprigs — one is tucked into the
+    shutter-wall for every lamp put out; the rest wait here."""
+    a = canvas(1, 1)
+    fill(a, 2, 9, 13, 14, WOOD[1])
+    for x in range(3, 13, 2):
+        a[10:14, x] = WOOD[2]
+    outline(a, 2, 9, 13, 14, INK)
+    STEM = [hx("#5a5a44"), hx("#7a7a5a"), hx("#a09a74")]
+    for (x, h, lean) in [(4, 6, -1), (6, 8, 0), (8, 7, 1), (10, 6, 1), (12, 5, 0)]:
+        for k in range(h):
+            xx = x + (lean if k > h // 2 else 0)
+            a[9 - k, xx] = STEM[1]
+        a[9 - h, x + lean] = STEM[2]                         # a dry seed-head
+        a[10 - h, x + lean] = STEM[0]
+    contact_shadow(a, 2, 13, 15)
+    return img(a)
+
+
 PIECES.update({
+    "lectern": lectern, "shutter_box": shutter_box, "sprig_basket": sprig_basket,
+    "stove_banked": stove_banked,
     "hearth_banked": hearth_banked, "waystone": waystone, "crag_boulders": crag_boulders,
     "wash_line": wash_line, "woodpile": woodpile, "punt": punt, "kin_basket": kin_basket,
     "spinning_wheel": spinning_wheel, "candle_sill": candle_sill, "old_chairs": old_chairs,

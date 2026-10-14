@@ -104,6 +104,11 @@ owed: list[str] = []
 # with BLIGHT-context rims — the shared `cliff` would ring teal-green here
 COLDFOG_REF = mk.register_tileset(
     "coldfog_set", index=mk.REPO / "assets/tilesets/coldfog/coldfog_set.index.json")
+# (2026-10, r2 review) the dead pools' FULL family `murkpool` (inner corners + nubs,
+# so a pool can be a lobed blob) lives in stillwater_set — the coldfog_set is shared
+# by seven maps and is not grown for one
+STILL_REF = mk.register_tileset(
+    "stillwater_set", index=mk.REPO / "assets/tilesets/stillwater/stillwater_set.index.json")
 
 # ---- terrain presence grids --------------------------------------------------------
 cliff = mk.make_grid(W, H)      # the map-edge walls + the bluff
@@ -157,17 +162,28 @@ pt.terrace(cliff, deco, W, H, BLUFF, gap=(5, 6), gap_side="left", rng=rng)
 pt.ledge_run(deco, W, H, BLUFF.y1, BLUFF.x0 + 2, BLUFF.x1 - 2, rng, family="scree")
 
 # ---- the dead shallows (murk — water-over-blight, NO life, NO zone) ----------------
-mk.blob(murk, W, H, 5.0, 18.5, 3.0, 2.2)               # west pool
-mk.blob(murk, W, H, 2.9, 20.4, 1.2, 0.8)               #  (R10: ragged lobes — never a
-mk.blob(murk, W, H, 7.0, 16.6, 1.0, 0.7)               #   ruled box, audit_visual)
-mk.blob(murk, W, H, 14.5, 17.5, 2.8, 1.9)              # east pool (the islet cache)
-mk.blob(murk, W, H, 12.4, 18.7, 0.9, 0.7)
-mk.blob(murk, W, H, 4.5, 8.5, 2.6, 2.0)                # north-west pool
-mk.blob(murk, W, H, 6.6, 9.8, 1.1, 0.7)
-mk.blob(murk, W, H, 12.5, 22.5, 1.7, 1.2)              # fringe-line pool
-# the islet (dry ground under the valuable cache — priced on Tidecall)
-for (x, y) in [(14, 17), (15, 17)]:
-    murk[y * W + x] = 0
+# 2026-10 (r2 review): the four pools are drawn row by row as LOBED blobs — no edge
+# runs straight for long, every pool has a bay or a spit — and painted with the full
+# `murkpool` family (stillwater_set), whose inner corners let the outline bite in.
+POOLS = {
+    # north-west pool: a round pond with an east lobe
+    7: [(3, 5)], 8: [(2, 6)], 9: [(2, 7)], 10: [(3, 6)],
+    # west pool: a round pond with a west lobe; the east pool rings ONE stone islet
+    16: [(5, 7), (13, 16)],
+    17: [(4, 7), (12, 14), (16, 17)],
+    18: [(3, 7), (12, 17)],
+    19: [(3, 7), (13, 16)],
+    20: [(2, 6)],
+    21: [(3, 5)],
+    # the fringe-line pool, leaning west
+    22: [(12, 14)], 23: [(11, 13)],
+}
+for y, spans in POOLS.items():
+    for (x0, x1) in spans:
+        for x in range(x0, x1 + 1):
+            murk[y * W + x] = 1
+# the islet (dry ground under the valuable cache — priced on Tidecall) is the
+# single (15,17) cell the east pool's rows leave
 
 # ---- the lane: fringe only (it ENDS at the blight line — touch #1) ------------------
 mk.vline(path, W, H, 8, 23, 29)
@@ -237,8 +253,8 @@ terrain_layers = [
      "set": "vesper_overworld_set", "depth": 0, "data": blighttuft},
     {"name": "t_goldtuft", "role": "terrain", "terrain": "goldtuft",
      "set": "vesper_overworld_set", "depth": 0, "data": goldtuft},
-    {"name": "t_murk", "role": "terrain", "terrain": "murk",
-     "set": "vesper_overworld_set", "depth": 0, "data": murk},
+    {"name": "t_murk", "role": "terrain", "terrain": "murkpool",
+     "set": "stillwater_set", "depth": 0, "data": murk},
     {"name": "t_fogcrag", "role": "terrain", "terrain": "fogcrag",
      "set": "coldfog_set", "depth": 0, "data": cliff},
     {"name": "t_tree", "role": "terrain", "terrain": "tree",
@@ -248,7 +264,7 @@ terrain_layers = [
 m: dict = {
     "id": "coldfog_marches_i", "display_name": "Coldfog Marches",
     "width": W, "height": H, "tile_width": 16, "tile_height": 16, "kind": "route",
-    "tilesets": [mk.shared_tileset_ref(), COLDFOG_REF],
+    "tilesets": [mk.shared_tileset_ref(), COLDFOG_REF, STILL_REF],
     "objects": [], "warps": [], "triggers": [], "encounters": [], "npcs": [],
     "gates": [],
     "music": "assets/audio/music/coldfog-marches-a.mp3",
@@ -417,7 +433,10 @@ owed += pt.cache(m, cid="coldfog_murk_pearl", at=(15, 17))    # valuable, the de
 # ---- encounters (band 46-48; murk carries NOTHING — the water is dead) --------------
 # 2026-10 (Part A review): at 46+ every line wears its KINDLED form (Mothdim/
 # Nullmoth -> Voidmantle, Flutterwane/Wispwane -> Liminalux, Cindersob -> Embergone);
-# the base forms survive only in the gold pocket, below their kindling levels.
+# 2026-10 (r2 review): the lv 17-21 base-form pocket read as a bug in a lv 46 map;
+# the gold patch is now the half-lit bed (Liminalux + the lone Light exception) and
+# the young moths live where the Hollowing's drain is young too: Glowmoss Deep's
+# drained chamber (build_glowmoss_deep.py `drained_woken`, band 18-21).
 TABLE_I = [
     {"kin_id": 138, "weight": 30, "min_level": 46, "max_level": 48},  # Voidmantle
     {"kin_id": 135, "weight": 26, "min_level": 46, "max_level": 48},  # Liminalux
@@ -426,10 +445,10 @@ TABLE_I = [
     {"kin_id": 180, "weight": 14, "min_level": 46, "max_level": 48},  # Lullwing, down from the village
 ]
 TABLE_GOLD = [
-    # the one patch the fog never drained: the YOUNG still hatch here, kept small
-    {"kin_id": 133, "weight": 38, "min_level": 19, "max_level": 21},  # Flutterwane (kindles 22)
-    {"kin_id": 136, "weight": 37, "min_level": 17, "max_level": 19},  # Mothdim (kindles 20)
-    {"kin_id": 140, "weight": 5, "min_level": 47, "max_level": 48},   # Wisprestored —
+    # the one patch the fog never drained: the half-lit gather at its edge
+    {"kin_id": 135, "weight": 60, "min_level": 46, "max_level": 48},  # Liminalux (Dark/Light)
+    {"kin_id": 138, "weight": 32, "min_level": 46, "max_level": 48},  # Voidmantle
+    {"kin_id": 140, "weight": 8, "min_level": 47, "max_level": 48},   # Wisprestored —
     # the LONE Light exception (w<=5): the Solarium's dying echo, only here
 ]
 band_grid = mk.make_grid(W, H)

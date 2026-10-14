@@ -3570,6 +3570,13 @@
       "tw": 6,
       "th": 5
     },
+    "stillwater_lectern": {
+      "path": "assets/sprites/objects/stillwater_lectern.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
     "stillwater_old_chairs": {
       "path": "assets/sprites/objects/stillwater_old_chairs.webp",
       "width": 32,
@@ -3605,6 +3612,13 @@
       "tw": 1,
       "th": 3
     },
+    "stillwater_shutter_box": {
+      "path": "assets/sprites/objects/stillwater_shutter_box.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "stillwater_shutter_wall": {
       "path": "assets/sprites/objects/stillwater_shutter_wall.webp",
       "width": 64,
@@ -3614,6 +3628,20 @@
     },
     "stillwater_spinning_wheel": {
       "path": "assets/sprites/objects/stillwater_spinning_wheel.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "stillwater_sprig_basket": {
+      "path": "assets/sprites/objects/stillwater_sprig_basket.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "stillwater_stove_banked": {
+      "path": "assets/sprites/objects/stillwater_stove_banked.webp",
       "width": 32,
       "height": 32,
       "tw": 2,
