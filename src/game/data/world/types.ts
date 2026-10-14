@@ -238,6 +238,9 @@ export interface MapAmbience {
   footprints?: 'auto' | 'all' | 'none';
   /** Global gids lifted off their layer and bobbed 1px (buoys); `MapRenderer`. */
   bob_gids?: number[];
+  /** Story-state overrides: the FIRST rule whose flag is held replaces this whole
+   *  block (read on map entry) — the Fogwall's mist lifts after `flag:isles_dawn`. */
+  when?: { flag: WorldFlag; ambience: MapAmbience }[];
 }
 
 export type AbilityGateEffect = 'make_passable' | 'remove_tile' | 'set_flag';

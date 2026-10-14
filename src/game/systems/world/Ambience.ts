@@ -585,7 +585,8 @@ export class Ambience {
     private readonly map: RuntimeMap,
     private readonly host: AmbienceHost,
   ) {
-    this.cfg = map.def.ambience ?? {};
+    const base = map.def.ambience ?? {};
+    this.cfg = base.when?.find((w) => host.flag(w.flag))?.ambience ?? base;
     this.outdoor = OUTDOOR_KINDS.has(map.def.kind);
     const now = scene.time.now;
 

@@ -679,6 +679,8 @@ export class WorldScene extends Phaser.Scene {
     'sunken_solarium_lumenary',
     'wickstead_school', // Master Mallow's lie-down in the lamp-school
     'wayward_arms', // the corner chair: a night talked away (content/regions/hotel.ts)
+    'driftholm_inn', // the Farlamp Isles (10)
+    'gullwrack_hut', // the keeper's hut on Gullwrack Isle (10)
   ]);
 
   /**
