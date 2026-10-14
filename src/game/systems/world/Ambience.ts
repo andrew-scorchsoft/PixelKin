@@ -108,6 +108,9 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   // lit sprites that had no pool (review 2026-10): the Pale Vault camp + brackets,
   // the Tideglass lenses, and the Old Light's lamp room
   pale_vault_camp_lit: { hx: 24, hy: 15, radius: 20, color: 0xffb05a },
+  // the Penumbra Underways (11 Part D): the watch's braziers + unhooded lamps, lit at dawn
+  underways_brazier_lit: { hx: 8, hy: 5, radius: 14, color: 0xff9a4a },
+  underways_watch_lamp_lit: { hx: 8, hy: 12, radius: 13, color: 0xffd089 },
   pale_vault_bracket_lit: { hx: 6, hy: 6, radius: 12, color: 0xcaf0ff },
   tideglass_lens_lit: { hx: 16, hy: 8, radius: 14, color: 0x9fe7ff },
   pearlmoor_oldlight_lit: { hx: 35, hy: 29, radius: 26, color: 0xfff096 },

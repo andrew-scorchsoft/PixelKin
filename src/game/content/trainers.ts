@@ -1835,6 +1835,7 @@ export const TRAINERS: TrainerRegistry = {
     id: 'underways_watch_a',
     name: 'ODALIE',
     title: 'Hollowing Acolyte',
+    sprite: 'sky_watcher', // FD3: matches her star_watcher walk sheet (grey hair, watch coat)
     party: [
       { species_id: 143, level: 52 }, // Whorlix — Storm/Dark
       { species_id: 135, level: 53 }, // Liminalux — Dark/Light

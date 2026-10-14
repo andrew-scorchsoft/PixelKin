@@ -3393,7 +3393,7 @@
         "ty": 12
       },
       "facing": "right",
-      "sprite": "hollowing_acolyte",
+      "sprite": "star_watcher",
       "movement": "static",
       "dialogue_ref": "script.underways_watch_a_fire",
       "requires_flag": "flag:underways_watch_kept"
@@ -3417,7 +3417,7 @@
         "ty": 14
       },
       "facing": "up",
-      "sprite": "hollowing_acolyte",
+      "sprite": "pass_walker",
       "movement": "static",
       "dialogue_ref": "script.underways_watch_c_fire",
       "requires_flag": "flag:underways_watch_kept"
@@ -3455,6 +3455,79 @@
       "color": "#0a0818",
       "alpha": 0.16
     },
-    "sound_bed": "amb-drips"
+    "sound_bed": "amb-drips",
+    "when": [
+      {
+        "flag": "flag:dawn",
+        "ambience": {
+          "particles": [
+            {
+              "kind": "dust",
+              "density": 0.6,
+              "area": {
+                "tx": 12,
+                "ty": 2,
+                "w": 8,
+                "h": 7
+              }
+            },
+            {
+              "kind": "starglint",
+              "density": 0.2
+            }
+          ],
+          "tint": {
+            "color": "#1a1828",
+            "alpha": 0.08
+          },
+          "sound_bed": "amb-drips",
+          "beams": [
+            {
+              "from": {
+                "tx": 16,
+                "ty": 1.2
+              },
+              "a": {
+                "tx": 15.3,
+                "ty": 6.6
+              },
+              "b": {
+                "tx": 16.7,
+                "ty": 6.6
+              },
+              "period_s": 16,
+              "width": 3,
+              "color": "#e8eeff"
+            }
+          ],
+          "light_sources_extra": [
+            {
+              "at": {
+                "tx": 15.5,
+                "ty": 5.6
+              },
+              "radius": 34,
+              "color": "#e8eeff"
+            },
+            {
+              "at": {
+                "tx": 15.5,
+                "ty": 8.2
+              },
+              "radius": 20,
+              "color": "#dfe6ff"
+            },
+            {
+              "at": {
+                "tx": 16,
+                "ty": 10.4
+              },
+              "radius": 14,
+              "color": "#dfe6ff"
+            }
+          ]
+        }
+      }
+    ]
   }
 }
