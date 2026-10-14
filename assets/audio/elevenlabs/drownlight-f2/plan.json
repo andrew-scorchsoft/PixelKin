@@ -1,0 +1,187 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a held low string D and one bell note ringing down from far above, the ocarina breathing in}",
+   "duration_ms": 4737,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D phrygian",
+    "3/4 waltz-time hymn",
+    "a hollow ocarina-like lead carrying the hymn an octave low",
+    "glass bells echoing each phrase one bar later, like light down a shaft",
+    "a low bowed string pedal on D",
+    "a quiet woodblock tick on every other beat",
+    "colder, darker, hushed, stone and salt",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "lone instrument opening"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "d9I5aE5h3fzG1TXLu1Or",
+    "range": {
+     "start_ms": 4700,
+     "end_ms": 34700
+    }
+   },
+   "condition_strength": "high"
+  },
+  {
+   "text": "[Main Theme]\n{the tower's hymn on a hollow ocarina, low and darkened, every second step flattened, the glass bells answering each phrase a bar behind}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D phrygian",
+    "3/4 waltz-time hymn",
+    "a hollow ocarina-like lead carrying the hymn an octave low",
+    "glass bells echoing each phrase one bar later, like light down a shaft",
+    "a low bowed string pedal on D",
+    "a quiet woodblock tick on every other beat",
+    "colder, darker, hushed, stone and salt",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "echoing bells"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the hymn again, the bell echoes closer, a cello doubling the ocarina underneath}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D phrygian",
+    "3/4 waltz-time hymn",
+    "a hollow ocarina-like lead carrying the hymn an octave low",
+    "glass bells echoing each phrase one bar later, like light down a shaft",
+    "a low bowed string pedal on D",
+    "a quiet woodblock tick on every other beat",
+    "colder, darker, hushed, stone and salt",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "counter-melody",
+    "colder"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: the bells alone tracing the hymn's shape over the string pedal, then the ocarina rejoining}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D phrygian",
+    "3/4 waltz-time hymn",
+    "a hollow ocarina-like lead carrying the hymn an octave low",
+    "glass bells echoing each phrase one bar later, like light down a shaft",
+    "a low bowed string pedal on D",
+    "a quiet woodblock tick on every other beat",
+    "colder, darker, hushed, stone and salt",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "contrasting section",
+    "bell-led"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the darkened hymn on ocarina with the echoing bells, the last bar leading straight back into the theme}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D phrygian",
+    "3/4 waltz-time hymn",
+    "a hollow ocarina-like lead carrying the hymn an octave low",
+    "glass bells echoing each phrase one bar later, like light down a shaft",
+    "a low bowed string pedal on D",
+    "a quiet woodblock tick on every other beat",
+    "colder, darker, hushed, stone and salt",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

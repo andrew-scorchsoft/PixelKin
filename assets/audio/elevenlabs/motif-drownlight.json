@@ -1,0 +1,8 @@
+{
+ "song_id": "d9I5aE5h3fzG1TXLu1Or",
+ "range": {
+  "start_ms": 4700,
+  "end_ms": 34700
+ },
+ "note": "THE DROWNLIGHT FAMILY MOTIF (the keeper's hymn: a slow flute hymn over turning harp, a clockwork tick): the drownlight-f1 remaster's stored take (unconditioned anchor, 76 BPM, 3/4, D minor; flute over harp, a clockwork tick); range = its Main Theme + Reprise opening after the 2-bar intro (30 s API cap). drownlight-f2, drownlight-lantern and drownlight-relit condition on this via \"motif\": {\"source\": \"drownlight\"} (music-cue-family skill; lane N2, walkthrough/11 Part B). Re-upload public/assets/audio/music/remaster/drownlight-f1.mp3 via generate_music.py --upload if the stored song is ever dropped."
+}

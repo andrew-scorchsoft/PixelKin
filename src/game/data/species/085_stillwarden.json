@@ -168,6 +168,20 @@
       "max": 66
     },
     {
+      "area": "drownlight_f1",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 51,
+      "max": 52
+    },
+    {
+      "area": "drownlight_f2",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 51,
+      "max": 53
+    },
+    {
       "area": "farlamp_fogwall",
       "terrain": "water",
       "rarity": "uncommon",

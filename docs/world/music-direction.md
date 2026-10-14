@@ -692,3 +692,30 @@ relative F major ("looking out to sea from the harbour wall").
 - **Checks.** All seams are ≤ 0.24, all five pass `dead_air.py`, and all sit at -15.5 LUFS.
   `farlamp-sound` and `undertide` set `max_stall` (sea and cave hush).
 - **Battles.** None here. Farlume uses the Three Hours' `battle-hours`.
+
+## The Drownlight — one keeper's hymn, darker as you climb (2026-10)
+
+The Hollowing's first shuttered lamp ([`walkthrough/11-the-hollowing-country.md`](./walkthrough/11-the-hollowing-country.md)
+Part B, lane N2) is a **cue family** (the `music-cue-family` skill) on its own tune: the keeper's hymn.
+One direction to the top — each floor is colder and emptier than the one below — then the payoff.
+
+**The motif** (D minor, 3/4): the beam sweeping **down** the dark — a falling arpeggio, a sigh, a slow
+climb back to the leading tone. Deliberately unlike the Farlamp's rising rope-pull.
+
+```
+| A5 F5 D5 | E5h A4 | Bb4 C5 D5 | C#5h. | A5 F5 D5 | G5h Bb5 | A5 G5 E5 | F5h.  |
+| D6 C6 A5 | Bb5h G5 | A5 F5 D5 | E5h.  | F5 E5 D5 | Bb5h A5 | G5 E5 C#5 | D5h. |
+```
+
+| Cue | Where | Transformation | Classic | Remaster |
+|---|---|---|---|---|
+| `drownlight-f1` (anchor) | the Oil Stores | The hymn straight: flute lead, harp arpeggios, pad, walking bass, the lens clockwork ticking every beat. | `snes`, 76 BPM 3/4, D minor, 16 bars / 37.9 s | **anchor** (unconditioned) → `motif-drownlight.json` |
+| `drownlight-f2` | the Lens Gallery | Darkened to D **Phrygian** (E→E♭, no leading tone), an octave down on a hollow triangle; a glass bell echoes each phrase a bar late — the light leaking down the wells. Pedal-D bass, the tick every other beat. | `snes`, 76 BPM, 16 bars / 37.9 s | motif `high` |
+| `drownlight-lantern` | the Lantern Room (the Shutterkeeper) | **Fragments**: the first bar of each phrase on low strings, then silence where the rest should be, over a drone rocking between a bare fifth and a held minor second. One high bell every four bars: the thread of light at the shutters' seam. Ends on the dominant, unresolved. | `snes`, 66 BPM, 16 bars / 43.7 s | motif `medium` |
+| `drownlight-relit` | the relight + the foot afterwards (`music_when` `flag:drownlight_relit`) | **Turned major**: F→F♯, C→C♯, B♭→B on brighter chords; flute and bell doubled, strings, harp, a soft processional kit. The lamp beat with no Gleam. | `snes`, 84 BPM, D major, 16 bars / 34.3 s | motif `high` |
+
+Remasters: `drownlight-f1` is the unconditioned anchor (take `d9I5aE5h3fzG1TXLu1Or`, Main Theme at
+4.7–34.7 s); the other three condition on it with `"motif": {"source": "drownlight"}` on its 76 grid.
+Openings: a lone flute over a held harp chord (f1); a low string D and one far bell (f2); an organ
+drone with a single bell (lantern; its lead silence trimmed); a bright harp sweep and chime (relit).
+Seams 0.25–0.34, all pass `dead_air.py`, -15.5 LUFS. Battles here use `battle-nightfall` (classic-only).

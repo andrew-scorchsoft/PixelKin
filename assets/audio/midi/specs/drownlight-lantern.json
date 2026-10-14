@@ -1,0 +1,49 @@
+{
+  "title": "The Drownlight - The Lantern Room",
+  "_note": "Drownlight family rung 3 (drownlight_lantern): the darkest. The hymn in FRAGMENTS \u2014 the first bar of each phrase on low strings, the rest left as silence \u2014 over a drone that rocks between a bare fifth and a held minor second (D/E-flat). One high bell every four bars is the thread of light at the shutters' seam; the clockwork ticks once a bar. 66 BPM. It never resolves: the last bar hangs on the dominant.",
+  "era": "snes",
+  "tempo": 66,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D phrygian (fragmentary)",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "strings",
+      "octave": 4,
+      "gain": 0.8,
+      "notes": "A4q F4q D4q Eb4h. rh. rh. A4q F4q D4q G4h. rh. rh. D5q C5q A4q Bb4h. rh. rh. F4q Eb4q D4q Bb4h. rh. A3h."
+    },
+    {
+      "name": "thread",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.3,
+      "notes": "rh. rh. rh A6q@40 rh. rh. rh. rh A6q@40 rh. rh. rh. rh A6q@40 rh. rh. rh. rh A6q@40 rh."
+    },
+    {
+      "name": "drone",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.38,
+      "notes": "D3+A3h.@50 D3+Eb3h.@44 D3+A3h.@50 D3+Eb3h.@44 D3+A3h.@50 D3+Eb3h.@44 D3+A3h.@50 D3+Eb3h.@44 D3+A3h.@50 D3+Eb3h.@44 D3+A3h.@50 D3+Eb3h.@44 D3+A3h.@50 D3+Eb3h.@44 D3+A3h.@50 D3+Eb3h.@44"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.55,
+      "notes": "D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60 D2h.@60"
+    },
+    {
+      "name": "clockwork",
+      "voice": "drums",
+      "gain": 0.22,
+      "notes": "q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq q hat@34 rq rq"
+    }
+  ]
+}

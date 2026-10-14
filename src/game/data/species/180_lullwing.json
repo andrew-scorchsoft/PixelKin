@@ -78,6 +78,20 @@
   },
   "encounters": [
     {
+      "area": "drownlight_f1",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 51,
+      "max": 52
+    },
+    {
+      "area": "drownlight_f2",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 51,
+      "max": 53
+    },
+    {
       "area": "mourning_fields",
       "terrain": "tall_grass",
       "rarity": "uncommon",

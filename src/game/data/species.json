@@ -10179,6 +10179,20 @@
      "max": 66
     },
     {
+     "area": "drownlight_f1",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 51,
+     "max": 52
+    },
+    {
+     "area": "drownlight_f2",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 51,
+     "max": 53
+    },
+    {
      "area": "farlamp_fogwall",
      "terrain": "water",
      "rarity": "uncommon",
@@ -10483,6 +10497,13 @@
      "rarity": "common",
      "min": 58,
      "max": 65
+    },
+    {
+     "area": "drownlight_f2",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 51,
+     "max": 53
     }
    ],
    "scripted": false,
@@ -15913,6 +15934,13 @@
      "max": 62
     },
     {
+     "area": "drownlight_f1",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 50,
+     "max": 52
+    },
+    {
      "area": "stillwater",
      "terrain": "tall_grass",
      "rarity": "uncommon",
@@ -16011,6 +16039,13 @@
      "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 51,
+     "max": 53
+    },
+    {
+     "area": "drownlight_f2",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 52,
      "max": 53
     },
     {
@@ -16155,6 +16190,13 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 62
+    },
+    {
+     "area": "drownlight_f1",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 50,
+     "max": 51
     }
    ],
    "scripted": false,
@@ -16288,6 +16330,13 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 63
+    },
+    {
+     "area": "drownlight_f1",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 50,
+     "max": 51
     },
     {
      "area": "stillwater",
@@ -16440,6 +16489,13 @@
      "rarity": "uncommon",
      "min": 65,
      "max": 67
+    },
+    {
+     "area": "drownlight_f2",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 51,
+     "max": 53
     },
     {
      "area": "mourning_fields",
@@ -20504,6 +20560,20 @@
    },
    "encounters": [
     {
+     "area": "drownlight_f1",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 50,
+     "max": 52
+    },
+    {
+     "area": "drownlight_f2",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 51,
+     "max": 53
+    },
+    {
      "area": "stillwater",
      "terrain": "tall_grass",
      "rarity": "common",
@@ -20622,6 +20692,13 @@
    },
    "encounters": [
     {
+     "area": "drownlight_f2",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 53,
+     "max": 53
+    },
+    {
      "area": "mourning_fields",
      "terrain": "tall_grass",
      "rarity": "rare",
@@ -20730,6 +20807,20 @@
     "habitat": "north_hollow"
    },
    "encounters": [
+    {
+     "area": "drownlight_f1",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 51,
+     "max": 52
+    },
+    {
+     "area": "drownlight_f2",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 51,
+     "max": 53
+    },
     {
      "area": "mourning_fields",
      "terrain": "tall_grass",

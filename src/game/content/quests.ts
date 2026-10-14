@@ -533,6 +533,19 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:q_still_lamp_1', 'flag:q_still_lamp_2', 'flag:q_still_lamp_3'],
     done_flag: 'flag:q_still_wall_done',
   },
+  // ---- Lane N2 (walkthrough/11 Part B): the Drownlight — the first lamp the
+  // Hollowing put out. Climb it in the dark, hear the Shutterkeeper out; after the
+  // dawn, relight it (flags: content/regions/drownlight.ts).
+  {
+    id: 'north_drownlight',
+    name: 'The Drownlight',
+    region: 'outer',
+    giver: 'Maudry Kell, the Shutterkeeper',
+    blurb: 'The north coast\'s lighthouse, shuttered fourteen winters ago by its own keeper. Climb it past the leaking light-wells and hear her out; she will not light it while the sky is dark.',
+    start_flag: 'flag:drownlight_entered',
+    stage_flags: ['flag:drownlight_keeper_beaten', 'flag:dawn'],
+    done_flag: 'flag:drownlight_relit',
+  },
 ];
 
 /** Lookup by id. */
