@@ -15936,10 +15936,10 @@
    },
    "encounters": [
     {
-     "area": "coldfog_marches_i",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 19,
+     "area": "glowmoss_deep",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 20,
      "max": 21
     }
    ],
@@ -16231,6 +16231,13 @@
      "max": 62
     },
     {
+     "area": "coldfog_marches_i",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
      "area": "coldfog_marches_ii",
      "terrain": "tall_grass",
      "rarity": "common",
@@ -16332,10 +16339,10 @@
      "max": 62
     },
     {
-     "area": "coldfog_marches_i",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 17,
+     "area": "glowmoss_deep",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 18,
      "max": 19
     }
    ],

@@ -114,7 +114,7 @@ Quest charms (Tide Charm, Drift Charm, Wrecklight Charm, the Marsh Lamp —
 E1's ×2.0 deep-growth conditional — the Aurora Charm and Sun Charm — N2's and
 X2's ×2.5 conditionals on Frost-met / Solar-met kin — the caretaker's **Bright
 Lamp** (X1, item id `caretaker_lamp`, an unconditional ×2.5), Tessaly's Lamp (×3, given
-once as a stack of THREE for the Stillwater escort, ×3.0 on a dozing kin), the Starlamp, and
+once as ONE reusable keepsake for the Stillwater escort, ×3.0 on a kin below 25% HP — never spent), the Starlamp, and
 the Drownlight's **Shutter Charm** (ONE, reusable — `reusable: true`, never spent — ×2.5 on Dark kin),
 the festival Glow Salve) have **no price** — unbuyable, unsellable, earned only. Now that status conditions run (Part B, BUILT), add
 next: **Soothing Tea** (cure any status, ~200w) and **Rekindle Drop** (wake a

@@ -68,10 +68,10 @@
   },
   "encounters": [
     {
-      "area": "coldfog_marches_i",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 19,
+      "area": "glowmoss_deep",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 20,
       "max": 21
     }
   ],

@@ -2852,15 +2852,27 @@
       "table": [
         {
           "kin_id": 38,
-          "weight": 55,
+          "weight": 35,
           "min_level": 20,
           "max_level": 22
         },
         {
           "kin_id": 67,
-          "weight": 45,
+          "weight": 30,
           "min_level": 21,
           "max_level": 22
+        },
+        {
+          "kin_id": 136,
+          "weight": 20,
+          "min_level": 18,
+          "max_level": 19
+        },
+        {
+          "kin_id": 133,
+          "weight": 15,
+          "min_level": 20,
+          "max_level": 21
         }
       ]
     },

@@ -81,8 +81,8 @@ the shutter-grey kit `build_stillwater_interior_set.py`, the `flagway` lane fami
 - **Quests:** *A Light Left On* (`flag:q_still_candle*` — Linnet's candle to the willow hollow or
   to Maren; a Starglass Shard either way); *The Way Home* (`flag:q_still_tessaly*` — she waits
   in Coldfog I, then Coldfog II, then home at Pale Vault `pale_vault_glacier` (6,22) via
-  `hand_placed_data.py`; reward: **three Tessaly's Lamps**, conditional charges ×3.0 on a
-  dozing kin); *The Shutter-wall* (`flag:q_still_wall`, three cold lamps: Coldfog I `named_lamp_1`,
+  `hand_placed_data.py`; reward: **Tessaly's Lamp**, ONE reusable keepsake charge, ×3.0 on a
+  kin below 25% HP); *The Shutter-wall* (`flag:q_still_wall`, three cold lamps: Coldfog I `named_lamp_1`,
   Coldfog II `named_lamp_2`, Stillwater's far shore; a Lumen Drop + 1,500w; Wenna names
   whichever lamps are still missing).
 - **Hearths:** every Stillwater hearth (the inn, both homes) is BANKED behind a louvred
@@ -94,8 +94,10 @@ the shutter-grey kit `build_stillwater_interior_set.py`, the `flagway` lane fami
   window opens with a lamp and a child at it (`stillwater_window_lit`), the mist thins
   (ambience `when`), the meadows' day-forms rise, every resident gets a dawn line, the hearths open.
 - **Wild levels:** every line at 46+ wears its kindled form (Voidmantle, Liminalux, Embergone,
-  Omenire) in Stillwater and both Coldfog marshes; the base Flutterwane/Mothdim live only in
-  Coldfog I's gold pocket (lv 17-21, below their kindling).
+  Omenire) in Stillwater and both Coldfog marshes, wild AND in the acolytes' parties; Coldfog I's
+  gold pocket is the half-lit bed (Liminalux, Voidmantle, the lone Wisprestored). The base
+  Mothdim/Flutterwane now live only in Glowmoss Deep's drained chamber (lv 18-21, after the
+  null-lantern is relit), below their kindling.
 - **Music:** `stillwater` (classic chip, snes register, 72 BPM 3/4 D minor) + remaster.
   Backdrop `stillwater-a.webp`; chart `stillwater` (unlocks the LORE entry).
 

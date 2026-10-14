@@ -76,20 +76,29 @@ tuft = mk.make_grid(W, H)       # the grey meadows (blighttuft)
 path = mk.make_grid(W, H)
 deco = mk.make_grid(W, H)
 
-# BORDERS: fogcrag all round (the village sits in a bowl of grey crags), organic
-mk.rect(crag, W, H, 0, 0, W - 1, 1)
+# BORDERS: fogcrag all round (the village sits in a bowl of grey crags), organic.
+# 2026-10 (r2 review): the old one-cell bumps read as battlement stubs. The north rim
+# is now a real CLIFF seen from the village (level-design §11 r8): a plateau top, then
+# a TWO-tile face (stillwater_set `fogface`, pinned below) whose depth steps in runs of
+# three or more, and the side/south shoulders are smooth blobs, never plus-shapes.
 mk.rect(crag, W, H, 0, 0, 1, H - 1)
 mk.rect(crag, W, H, 28, 0, 29, H - 1)
 mk.rect(crag, W, H, 0, 28, W - 1, H - 1)
-mk.organic_border(crag, W, H, depth=0,
-                  bumps=[(1, 7, 2), (1, 18, 2), (1, 25, 2), (28, 9, 2), (28, 19, 2),
-                         (8, 1, 1), (22, 1, 1), (3, 1, 1), (26, 1, 1),
-                         (12, 28, 2), (17, 28, 2), (27, 27, 1),
-                         # 2026-10: deeper, broken crag so its S faces show (r8)
-                         (6, 1, 2), (24, 0, 2), (0, 22, 2), (29, 14, 2), (15, 29, 2)],
-                  rng=rng)
-# the crag headland that breaks the mere's north shore (its face drops to the water)
-mk.blob(crag, W, H, 17.0, 2.2, 1.3, 1.1)
+# the mere sits in a BAY of the cliff: deeper over the two meadows, one row back
+# over the water, so the face steps only twice and drops straight into the mere
+NORTH_DEPTH = {x: (3 if 9 <= x <= 20 else 4) for x in range(W)}
+for x, d in NORTH_DEPTH.items():
+    for y in range(d):
+        crag[y * W + x] = 1
+for (cx, cy, rx, ry) in [(1.0, 7.4, 2.5, 1.9),     # west shoulders
+                         (1.0, 18.2, 2.2, 1.9),
+                         (0.8, 23.0, 2.4, 1.8),
+                         (28.6, 9.4, 2.3, 1.9),    # east shoulders
+                         (29.0, 14.0, 1.6, 1.7),
+                         (28.6, 19.4, 2.2, 1.8),
+                         (14.9, 28.6, 3.8, 1.8),   # the south crag between the arms
+                         (27.6, 27.6, 1.7, 1.7)]:
+    mk.blob(crag, W, H, cx, cy, rx, ry)
 for x in list(CF_COLS) + list(MF_COLS):
     for y in range(25, H):
         crag[y * W + x] = 0
@@ -99,12 +108,28 @@ for (x, y) in [(3, 27), (8, 27), (21, 27), (26, 27)]:   # soften the gap shoulde
 # ---- THE STILL WATER (touch #1) ------------------------------------------------------
 # its own drawn family (`mere`, stillwater_set): a deep-bitten rounded shore with a
 # laid-stone lip and the lip's reflection, never the stepped box the plain murk made.
-mk.blob(murk, W, H, 15.4, 4.9, 7.0, 2.3)
-mk.blob(murk, W, H, 11.0, 3.9, 2.2, 1.3)
+# 2026-10 (r2): drawn row by row as a bitten, lobed outline — a west lobe, the
+# headland's bay, a reed spit off the east shore and a stone islet — so no edge runs
+# straight for more than a few tiles.
+MERE_ROWS = {
+    3: [(10, 20)],
+    4: [(9, 22)],
+    5: [(9, 22)],
+    6: [(9, 21)],
+    7: [(11, 12), (14, 17), (19, 19)],
+}
+for y, spans in MERE_ROWS.items():
+    for (x0, x1) in spans:
+        for x in range(x0, x1 + 1):
+            murk[y * W + x] = 1
 JETTY = [(15, 7, "mere_jetty_root"), (15, 6, "mere_jetty"), (15, 5, "mere_jetty_end")]
 for (x, y) in [(14, 4), (15, 4), (16, 4), (14, 5), (16, 5), (14, 6), (16, 6), (17, 5),
                (14, 7), (16, 7), (15, 7), (15, 6), (15, 5)]:
     murk[y * W + x] = 1                                    # open water round the jetty
+MERE_ISLET = (11, 5)                                       # a stone islet, reeds on it
+MERE_SPIT = [(20, 6), (21, 6)]                             # a reed spit off the east shore
+for (x, y) in [MERE_ISLET] + MERE_SPIT:
+    murk[y * W + x] = 0
 for x in range(9, 23):
     murk[8 * W + x] = 0                                    # the shore walk stays dry
 
@@ -248,8 +273,8 @@ for n, (x, y) in enumerate([(4, 17), (10, 14), (21, 17), (26, 17), (7, 22), (22,
 
 # the far-shore cold lamp (the Shutter-wall's third name) — seen across the water
 # from the square, reached the long way round the mere's east shore
-obj("far_shore_lamp", "coldfog_doused_lamp", (24, 1), 1, 3, overhang=2, walk_under=True)
-trig("far_shore_lamp_read", (24, 3), "script.still_coldlamp_3")
+obj("far_shore_lamp", "coldfog_doused_lamp", (24, 2), 1, 3, overhang=2, walk_under=True)
+trig("far_shore_lamp_read", (24, 5), "script.still_coldlamp_3")
 
 # ---- the willow hollow (quest 1's hiding place) + the notice by the hall -------------
 obj("mere_willow", "coldfog_dead_willow", (5, 2), 3, 4, overhang=2, walk_under=True)
@@ -298,16 +323,32 @@ def is_crag(x, y):
 
 
 # the crag rim, dressed: slate boulders, dead trees and shuttered lamps on the TOP
-# (every footprint cell is crag — nothing here touches walkable ground)
+# (every footprint cell is crag — nothing here touches walkable ground — and the
+# base row sits on the plateau, never on the two-tile face: see is_face, below)
+def is_face(x, y):
+    """Would (x, y) be pinned as part of the two-tile face? (mirrors FACE_PINS)"""
+    for fy in (y, y + 1):
+        if is_crag(x, fy) and not is_crag(x, fy + 1) and 0 < fy < H - 1 \
+                and is_crag(x, fy - 1) and (fy - 2 < 0 or is_crag(x, fy - 2)) \
+                and (is_crag(x - 1, fy) or is_crag(x + 1, fy)):
+            return True
+    return False
+
+
+def on_top(x, y, w, h):
+    return all(is_crag(x + dx, y + dy) for dx in range(w) for dy in range(h)) and \
+        not any(is_face(x + dx, y + h - 1) for dx in range(w))
+
+
 for n, (x, y) in enumerate([(0, 3), (27, 4), (0, 11), (28, 22), (11, 28), (19, 28), (27, 12),
-                            (0, 26)]):
-    if all(is_crag(x + dx, y + dy) for dx in (0, 1) for dy in (0, 1)):
+                            (0, 26), (2, 0), (24, 0)]):
+    if on_top(x, y, 2, 2):
         obj(f"crag_boulders_{n}", "stillwater_crag_boulders", (x, y), 2, 2)
 for n, (x, y) in enumerate([(13, 0), (21, 0), (28, 27)]):
-    if all(is_crag(x + dx, y + dy) for dx in (0, 1) for dy in (0, 1, 2)):
+    if on_top(x, y, 2, 3):
         obj(f"crag_tree_{n}", "hushfrost_dead_tree", (x, y), 2, 3)
 for n, (x, y) in enumerate([(0, 8), (29, 7), (29, 25), (1, 27), (8, 0), (26, 0)]):
-    if all(is_crag(x, y + dy) for dy in (0, 1, 2)):
+    if on_top(x, y, 1, 3):
         obj(f"crag_lamp_{n}", "stillwater_shut_lamp", (x, y), 1, 3)
 
 # ---- people ------------------------------------------------------------------------
@@ -350,7 +391,7 @@ owed += pt.sign(m, deco, W, sid="stillwater", at=(8, 27))
 owed += pt.sign(m, deco, W, sid="stillwater_hall", at=(14, 15))
 owed += pt.sign(m, deco, W, sid="stillwater_mourning", at=(21, 26))
 owed += pt.cache(m, cid="stillwater_meadow", at=(3, 4))        # NW meadow nook
-owed += pt.cache(m, cid="stillwater_far_shore", at=(26, 3))    # round the mere, by the cold lamp
+owed += pt.cache(m, cid="stillwater_far_shore", at=(26, 4))    # round the mere, by the cold lamp
 
 # ---- encounters (night 48-52; the dawn wakes the beds into their day forms) ----------
 NIGHT = [
@@ -399,18 +440,31 @@ busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["
 # the mere's reed-fringe: grey reeds on the shore cells (with the stone lip, the
 # shore reads as a bank, not a cut-out)
 reeds = [gid("mere_reeds_a", set="stillwater_set"), gid("mere_reeds_b", set="stillwater_set")]
+deco[MERE_ISLET[1] * W + MERE_ISLET[0]] = gid("boulder")      # the stone islet
+busy.add(MERE_ISLET)
+for (x, y) in MERE_SPIT:                                       # the reed spit, always reeded
+    deco[y * W + x] = reeds[(x + y) % 2]
+    busy.add((x, y))
 for y in range(1, H - 1):
     for x in range(1, W - 1):
         if (x, y) in busy or deco[y * W + x] or y == 8:
             continue
         if any(murk[(y + dy) * W + x + dx] for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0))):
-            if rng.random() < 0.7:
+            if rng.random() < 0.85:
                 deco[y * W + x] = rng.choice(reeds)
                 busy.add((x, y))
 for (x, y) in [(9, 19), (2, 12), (27, 22), (20, 2)]:
     if (x, y) not in busy and deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
         busy.add((x, y))
+# the crag's plateau top: scree and grey moss so it reads as rock ground, not a sheet
+# (top cells only — the face carries its own cracks)
+scree = [gid("g_pebble"), gid("greymoss_b"), gid("g_pebble"), gid("boulder")]
+for y in range(H):
+    for x in range(W):
+        if crag[y * W + x] and not is_face(x, y) and (x, y) not in busy \
+                and deco[y * W + x] == 0 and (x * 31 + y * 17) % 7 == 0:
+            deco[y * W + x] = scree[(x + 3 * y) % len(scree)]
 litter = [gid("greymoss_a"), gid("greymoss_b"), gid("g_pebble")]
 for y in range(2, 27):
     for x in range(2, 28):
@@ -448,8 +502,39 @@ m["layers"] = [
     {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)},
 ]
 
+# ---- the crag's TWO-tile face (stillwater_set `fogface`, level-design §11 r8) ---------
+# Wherever the crag's foot has crag two deep above it (off-map counts as crag), the
+# last two rows are pinned as one tall face: plateau top -> lit lip -> jogged, cracked
+# rock -> toe -> contact shadow. A run's open ends take the `_w`/`_e` turn-back tiles;
+# a one-cell-wide column keeps the plain one-tile fogcrag face (no stubby slab).
+def crag_at(x, y):
+    if x < 0 or x >= W or y < 0:
+        return True
+    return y < H and bool(crag[y * W + x])
+
+
+LIP_WAVE = [5, 4, 4, 5, 6, 6, 5, 5, 4, 5, 6, 5, 4, 4, 5, 6]   # never jumps >1px
+FACE_PINS: dict[tuple[int, int], str] = {}
+for y in range(1, H - 1):
+    for x in range(W):
+        if not crag[y * W + x] or crag_at(x, y + 1) or not crag_at(x, y - 1) \
+                or not crag_at(x, y - 2):
+            continue
+        w_open, e_open = not crag_at(x - 1, y), not crag_at(x + 1, y)
+        if w_open and e_open:
+            continue
+        if w_open or e_open:
+            side = "_w" if w_open else "_e"
+            FACE_PINS[(x, y - 1)] = f"fogface_upper{side}"
+            FACE_PINS[(x, y)] = f"fogface_lower{side}"
+            continue
+        c = (x * 7 + y * 3) % 3                               # crack layout
+        lip = LIP_WAVE[(x + 5 * y) % len(LIP_WAVE)]           # the rim wanders 1px
+        FACE_PINS[(x, y - 1)] = f"fogface_upper_c{c}_l{lip}"
+        FACE_PINS[(x, y)] = f"fogface_lower_c{c}"
+
 if __name__ == "__main__":
-    ok = mk.finalize(m, scale=3, pin_base={(x, y): n for (x, y, n) in JETTY})
+    ok = mk.finalize(m, scale=3, pin_base={**FACE_PINS, **{(x, y): n for (x, y, n) in JETTY}})
     pt.report(sorted(set(owed)))
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

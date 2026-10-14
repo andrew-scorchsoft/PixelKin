@@ -1874,8 +1874,8 @@ export const TRAINERS: TrainerRegistry = {
     name: 'BRIN',
     title: 'Hollowing Acolyte',
     party: [
-      { species_id: 136, level: 47 }, // Mothdim — Dark
-      { species_id: 141, level: 48 }, // Cindersob — Dark/Ember (ace)
+      { species_id: 138, level: 47 }, // Voidmantle — Dark (Mothdim kindles at 20; at 47 it wears its final form)
+      { species_id: 142, level: 48 }, // Embergone — Dark/Ember (ace)
     ],
     payout: 960, // keeper 20 × ace 48
     music: 'battle-nightfall',
@@ -1885,9 +1885,9 @@ export const TRAINERS: TrainerRegistry = {
     name: 'FENWICK',
     title: 'Hollowing Elder',
     party: [
-      { species_id: 133, level: 48 }, // Flutterwane — Dark/Light
+      { species_id: 135, level: 48 }, // Liminalux — Dark/Light
       { species_id: 180, level: 48 }, // the dream-moth — Dark/Lunar
-      { species_id: 137, level: 49 }, // Nullmoth — Dark (ace)
+      { species_id: 138, level: 49 }, // Voidmantle — Dark (ace)
     ],
     payout: 980, // keeper 20 × ace 49
     music: 'battle-nightfall',
@@ -1897,7 +1897,7 @@ export const TRAINERS: TrainerRegistry = {
     name: 'ODRAN',
     title: 'Hollowing Acolyte',
     party: [
-      { species_id: 139, level: 49 }, // WispwaneNull — Dark/Light
+      { species_id: 135, level: 49 }, // Liminalux — Dark/Light
       { species_id: 142, level: 50 }, // Embergone — Dark/Ember (ace)
     ],
     payout: 1000, // keeper 20 × ace 50
@@ -1909,7 +1909,7 @@ export const TRAINERS: TrainerRegistry = {
     title: 'Hollowing Elder',
     party: [
       { species_id: 179, level: 49 }, // the lantern-keeper — Dark/Light
-      { species_id: 137, level: 49 }, // Nullmoth — Dark
+      { species_id: 180, level: 49 }, // the dream-moth — Dark/Lunar
       { species_id: 138, level: 50 }, // Voidmantle — Dark (ace)
     ],
     payout: 1000, // keeper 20 × ace 50
@@ -1921,7 +1921,7 @@ export const TRAINERS: TrainerRegistry = {
     title: 'Hollowing Acolyte',
     party: [
       { species_id: 180, level: 49 }, // the dream-moth — Dark/Lunar
-      { species_id: 136, level: 49 }, // Mothdim — Dark
+      { species_id: 138, level: 49 }, // Voidmantle — Dark (Mothdim's final form; at 49 no base moth is left)
       { species_id: 113, level: 50 }, // Omenire — Lunar/Dark (ace)
     ],
     payout: 1000, // keeper 20 × ace 50
@@ -1944,7 +1944,7 @@ export const TRAINERS: TrainerRegistry = {
     name: 'GRISEL',
     title: 'Hollowing Lamplighter',
     party: [
-      { species_id: 141, level: 50 }, // Cindersob — Dark/Ember
+      { species_id: 180, level: 50 }, // the dream-moth — Dark/Lunar
       { species_id: 179, level: 51 }, // the lantern-keeper — Dark/Light
       { species_id: 142, level: 51 }, // Embergone — Dark/Ember
       { species_id: 138, level: 52 }, // Voidmantle — Dark (ace)

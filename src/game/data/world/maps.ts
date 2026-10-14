@@ -1018,6 +1018,8 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: {
       vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
       coldfog_set: 'assets/tilesets/coldfog_set.webp',
+      // the dead pools' full `murkpool` family (lobed blobs, 2026-10 r2 review)
+      stillwater_set: 'assets/tilesets/stillwater_set.webp',
     },
     kind: 'route',
     music: 'assets/audio/music/coldfog-marches-a.mp3',

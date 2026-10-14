@@ -168,6 +168,133 @@ def mere_reeds(v: int = 0):
     return img(a)
 
 
+# ---- THE CRAG'S FACE (2026-10, r2 review): `fogface` ------------------------------
+# The coldfog_set `fogcrag` face is one tile tall (lip -> 8px face -> shadow), which on
+# Stillwater's bowl of crags read as a flat blanket with battlement stubs. These two
+# tiles stack into a TWO-tile face (level-design §11 r8, kept exactly: plateau top ->
+# lit lip -> streaked face -> contact shadow -> drained ground), pinned by the builder
+# over the crag's last two rows wherever the face runs at least three cells wide.
+# Same CLIFF palette as fogcrag, so the 1-tile corners meet it cleanly.
+CLIFF = gbaforge.CLIFF
+FACE_ROWS = 24                       # the face, upper-tile row 6 to the toe (both tiles)
+FACE_ROW0 = 6                        # f[0] sits on the upper tile's row 6
+FACE_LIPS = (4, 5, 6)                # the lip's pixel row: varied so the rim never rules
+# per-variant rock slabs: (crack columns, jog rows) — a crack jogs one pixel sideways
+# at each jog row so it reads as split rock, never a ruled plank seam
+FACE_CRACKS = [
+    [(3, (6, 15)), (9, (3, 12, 19)), (13, (9, 17))],
+    [(5, (4, 13, 20)), (11, (8, 16))],
+    [(2, (10, 18)), (7, (5, 14)), (12, (2, 11, 20))],
+]
+# short ledges (x0, x1, face-row): a lit top pixel over a dark undercut
+FACE_LEDGES = [
+    [(4, 8, 7), (10, 13, 14), (1, 3, 19)],
+    [(6, 10, 10), (12, 15, 4), (1, 4, 17)],
+    [(3, 6, 12), (8, 11, 3), (13, 15, 18)],
+]
+
+
+def _face_px(v: int):
+    """The whole two-tile face as one 16 x FACE_ROWS RGB array: lit high, dark at
+    the toe; jogged cracks with a lamp-lit edge; short chipped ledges."""
+    f = np.zeros((FACE_ROWS, 16, 3), dtype=np.int16)
+    for y in range(FACE_ROWS):
+        k = 0.86 - 0.24 * (y / (FACE_ROWS - 1))            # light falls off down the face
+        f[y, :] = sh(CLIFF, k)
+    for (x, jogs) in FACE_CRACKS[v % len(FACE_CRACKS)]:
+        cx = x
+        for y in range(FACE_ROWS):
+            if y in jogs:
+                cx = cx + (1 if (cx + y) % 2 else -1)
+                cx = max(1, min(14, cx))
+            k = 0.86 - 0.24 * (y / (FACE_ROWS - 1))
+            f[y, cx] = sh(CLIFF, k * 0.66)
+            f[y, cx + 1] = sh(CLIFF, min(1.2, k * 1.16), 4)
+    for (x0, x1, y) in FACE_LEDGES[v % len(FACE_LEDGES)]:
+        k = 0.86 - 0.24 * (y / (FACE_ROWS - 1))
+        f[y, x0:x1] = sh(CLIFF, k * 1.26, 6)
+        f[y + 1, x0:x1] = sh(CLIFF, k * 0.62)
+    return f
+
+
+def fogface_upper(v: int = 0, lip: int = 5):
+    """The top half of a two-tile face: plateau top, the lit lip (at pixel row `lip`
+    — the builder walks neighbours through 4/5/6 so the rim wanders), the face begins."""
+    a = np.asarray(gbaforge.cliff_top(v).convert("RGBA")).astype(np.int16).copy()
+    a[lip, :, :3] = sh(CLIFF, 1.40, 16)                     # lit lip
+    a[lip + 1, :, :3] = sh(CLIFF, 1.08, 6)                  # the lip's rounded shoulder
+    f = _face_px(v)
+    a[lip + 2:16, :, :3] = f[lip + 2 - FACE_ROW0:16 - FACE_ROW0]
+    return img(a)
+
+
+def fogface_lower(v: int = 0):
+    """The foot of a two-tile face: face runs on, darkens to its toe, contact shadow,
+    then the drained ground below."""
+    g = np.asarray(gbaforge.blight_fill(v).convert("RGBA")).astype(np.int16)
+    a = np.asarray(gbaforge.cliff_top(v).convert("RGBA")).astype(np.int16).copy()
+    f = _face_px(v)
+    off = 16 - FACE_ROW0                                    # rows drawn by the upper tile
+    a[0:12, :, :3] = f[off:off + 12]
+    a[12, :, :3] = sh(CLIFF, 0.50)                          # the toe
+    a[13, :, :3] = sh(CLIFF, 0.32)                          # contact shadow
+    a[14:, :] = g[14:, :]
+    for x in ((2 + 7 * v) % 15, (9 + 4 * v) % 15):          # a fallen chip at the foot
+        a[14, x, :3] = sh(CLIFF, 0.80)
+    return img(a)
+
+
+# ---- COLDFOG I's DEAD POOLS (2026-10, r2 review): `murkpool` ----------------------
+# The shared `murk` is a 9-slice with no inner corners, so every pool painted with it
+# had to stay a convex box (the review's "filled rectangles"). This is the same dead
+# water (gbaforge.MURK, no foam, no light) as a FULL family — inner corners, nubs,
+# strips — with a deep shore bite (t=5) and wide rounded corners (r=5), so a pool can
+# be any lobed blob. Mud-dark wet ground and a broken grey scum line, exactly the
+# murk_edge register. Collision mirrors `murk` (water, Tidecall-swimmable, no zone).
+POOL_T, POOL_R = 4, 7
+
+
+def murkpool_tile(role: str, v: int = 0):
+    fill = gbaforge.murk_fill(v)
+    if role == "fill":
+        return fill
+    m = gbaforge.overlay_mask(role, POOL_T, POOL_R)          # True = land
+    a = np.asarray(fill.convert("RGBA")).astype(np.int16).copy()
+    o = np.asarray(gbaforge.blight_fill(v).convert("RGBA")).astype(np.int16)
+    a[m] = o[m]
+    water = ~m
+    scum = gbaforge._dilate(m, 1) & water                     # water px touching land
+    shallow = gbaforge._dilate(m, 2) & water & ~scum
+    wet1 = gbaforge._dilate(water, 1) & m                     # land px touching water
+    wet2 = gbaforge._dilate(water, 2) & m & ~wet1
+    MURK = gbaforge.MURK
+    a[shallow, :3] = sh(MURK, 1.30, 8)
+    for (y, x) in zip(*np.where(scum)):
+        a[y, x, :3] = sh(MURK, 1.08, 4) if (x + 2 * y) % 5 == 4 else (112, 120, 114)
+    a[wet1, :3] = (np.clip(a[wet1, :3] * 0.62, 0, 255)).astype(np.int16)   # black mud
+    a[wet2, :3] = (np.clip(a[wet2, :3] * 0.84, 0, 255)).astype(np.int16)   # damp
+    return img(a)
+
+
+def fogface_end(im, side: str, half: str):
+    """A face tile at the run's west/east end: the outer two pixels give back to the
+    drained ground behind a dark rim (the fogcrag corner_sw/se convention)."""
+    a = np.asarray(im.convert("RGBA")).astype(np.int16).copy()
+    g = np.asarray(gbaforge.blight_fill(1).convert("RGBA")).astype(np.int16)
+    rows = slice(0, 16) if half == "lower" else slice(0, 16)
+    if side == "w":
+        a[rows, :2] = g[rows, :2]
+        a[rows, 2, :3] = sh(CLIFF, 0.45)
+        a[rows, 3, :3] = np.minimum(a[rows, 3, :3] + 14, 255)   # the rounded shoulder
+    else:
+        a[rows, 14:] = g[rows, 14:]
+        a[rows, 13, :3] = sh(CLIFF, 0.45)
+        a[rows, 12, :3] = (a[rows, 12, :3] * 0.85).astype(np.int16)
+    if half == "lower":
+        a[14:, :] = g[14:, :]                                    # the ground runs on below
+    return img(a)
+
+
 def main() -> None:
     TILES_DIR.mkdir(parents=True, exist_ok=True)
     tiles: list[dict] = []
@@ -213,6 +340,28 @@ def main() -> None:
         mere_reeds(v).save(TILES_DIR / fn)
         index[name] = len(tiles)
         tiles.append({"file": fn, "role": "deco", "collides": False})
+
+    # APPENDED (2026-10, r2 review) — the crag's two-tile face (pinned, not autotiled):
+    # three crack layouts (c0-c2), each upper in three lip heights (l4-l6).
+    def add_face(name: str, im):
+        fn = f"{len(tiles):03d}_{name}.png"
+        im.save(TILES_DIR / fn)
+        index[name] = len(tiles)
+        tiles.append({"file": fn, "role": "cliff", "terrain": "fogcrag", "collides": True})
+
+    for v in (0, 1, 2):
+        for lip in FACE_LIPS:
+            add_face(f"fogface_upper_c{v}_l{lip}", fogface_upper(v, lip))
+        add_face(f"fogface_lower_c{v}", fogface_lower(v))
+    # the face's two ends: the crag's west/east side turns back into the drained ground
+    for side in ("w", "e"):
+        for half, fn_ in (("upper", fogface_upper), ("lower", fogface_lower)):
+            add_face(f"fogface_{half}_{side}", fogface_end(fn_(1), side, half))
+
+    # APPENDED (2026-10, r2 review) — Coldfog I's lobed dead pools (`murkpool`).
+    for role in ROLES + ["end_n", "end_s", "end_w", "end_e", "single"]:
+        add_mere(f"murkpool_{role}", murkpool_tile(role, 0), role, terrain="murkpool")
+    add_mere("murkpool_fill_v1", murkpool_tile("fill", 1), "fill", terrain="murkpool")
 
     manifest = {"name": "stillwater_set", "columns": 6, "tiles": tiles}
     (TILES_DIR / "tileset.manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")

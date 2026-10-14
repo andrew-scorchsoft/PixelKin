@@ -1365,15 +1365,15 @@ STILLWATER_TABLES = [
                     (142, 14, 56, 61)]),                                   # day (flag:dawn)
     ("stillwater", [(178, 70, 42, 44), (180, 30, 46, 48)]),                # the yard, night
     ("stillwater", [(178, 50, 42, 44), (179, 30, 55, 58), (140, 20, 55, 58)]),  # the yard, day
-    # Coldfog I/II (2026-10 Part A review: kindled forms at 46+; the base forms only
-    # in Coldfog I's gold pocket, below their kindling levels). MIRROR of the
-    # builders' TABLE_I/TABLE_GOLD/TABLE_II + hand_placed_data's day tables.
+    # Coldfog I/II (2026-10 Part A review: kindled forms at 46+; r2: the base-form
+    # gold pocket is gone — Mothdim/Flutterwane moved to Glowmoss Deep, below). MIRROR
+    # of the builders' TABLE_I/TABLE_GOLD/TABLE_II + hand_placed_data's day tables.
     ("coldfog_marches_i", [(138, 30, 46, 48), (135, 26, 46, 48), (113, 16, 47, 48),
                            (142, 14, 46, 48), (180, 14, 46, 48)]),
-    ("coldfog_marches_i", [(133, 38, 19, 21), (136, 37, 17, 19), (140, 5, 47, 48)]),   # gold
+    ("coldfog_marches_i", [(135, 60, 46, 48), (138, 32, 46, 48), (140, 8, 47, 48)]),   # gold
     ("coldfog_marches_i", [(140, 26, 58, 65), (135, 26, 55, 62), (138, 16, 56, 62),
                            (142, 12, 56, 62), (180, 12, 55, 60), (113, 8, 56, 62)]),     # day
-    ("coldfog_marches_i", [(140, 50, 59, 65), (133, 30, 19, 21), (136, 20, 17, 19)]),  # gold, day
+    ("coldfog_marches_i", [(140, 50, 59, 65), (135, 35, 56, 62), (138, 15, 56, 62)]),  # gold, day
     ("coldfog_marches_ii", [(138, 26, 48, 50), (135, 22, 48, 50), (142, 22, 48, 50),
                             (113, 14, 49, 50), (180, 16, 48, 50)]),
     ("coldfog_marches_ii", [(140, 24, 60, 65), (135, 24, 57, 64), (138, 18, 57, 63),
@@ -1392,6 +1392,13 @@ for _area, _tab in STILLWATER_TABLES:
         _have = EXTRA_ENCOUNTERS.setdefault(_SW_SLUG[_k], [])
         if _row not in _have:          # a bed that keeps its night table by day
             _have.append(_row)
+# Glowmoss Deep's DRAINED chamber (build_glowmoss_deep.py `drained_woken`, cave,
+# flag:met_hollowing): the young Hollowing-touched moths drift in to the relit
+# null-lantern, under their kindling levels (Mothdim 20, Flutterwane 22). Their
+# only wild bed. MIRROR of the builder's table (the map is the truth).
+for _slug_, _rar_, _lo_, _hi_ in [("mothdim", "uncommon", 18, 19), ("flutterwane", "uncommon", 20, 21)]:
+    EXTRA_ENCOUNTERS.setdefault(_slug_, []).append({
+        "area": "glowmoss_deep", "terrain": "cave", "rarity": _rar_, "min": _lo_, "max": _hi_})
 CURATED_AREAS |= {"stillwater", "stillwater_quiet_hall", "stillwater_shutter",
                   "stillwater_lampmaker", "stillwater_home_a", "stillwater_home_b"}
 
