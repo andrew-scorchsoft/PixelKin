@@ -1149,6 +1149,17 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_sunvault_brass",
       "hidden_when_flag": "flag:picked_sunvault_brass"
+    },
+    {
+      "id": "climber_iv",
+      "at": {
+        "tx": 10,
+        "ty": 31
+      },
+      "facing": "up",
+      "sprite": "frost_herder",
+      "movement": "look_around",
+      "dialogue_ref": "script.sunvault_climber_iv"
     }
   ],
   "gates": [],

@@ -154,6 +154,13 @@
       "rarity": "common",
       "min": 54,
       "max": 56
+    },
+    {
+      "area": "stillwater",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 50,
+      "max": 52
     }
   ],
   "scripted": false,

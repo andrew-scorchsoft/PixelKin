@@ -466,6 +466,19 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'Old Tinderwick, the shore town that went under the bay the winter the water rose, forty years ago. The town moved up the bluff. Gran Tallow, its last Lampwarden, did not — she says it is not drowned, only having a lie-in.',
     unlock_flag: 'flag:q_lowtinder',
   },
+  // ---- Lane N1 (walkthrough/11 Part A): the Hollowing's own country ----
+  {
+    id: 'stillwater',
+    term: 'Stillwater',
+    desc: 'The Hollowing\'s village, north of the Coldfog marshes: shuttered lamps, soft voices, kin asleep under grey blankets. Its mere went still the winter the dark came and never rippled again. Travellers are tolerated, and asked to speak softly.',
+    unlock_flag: 'chart:stillwater',
+  },
+  {
+    id: 'the_shutter_wall',
+    term: 'the shutter-wall',
+    desc: 'A wall of small grey shutters in Stillwater\'s Quiet Hall, each painted with the name of a lamp the Hollowing put to sleep. Not a list of victories: a list of goodbyes.',
+    unlock_flag: 'flag:q_still_wall',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

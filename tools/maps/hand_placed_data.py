@@ -590,3 +590,39 @@ for _mid, (_hall, _gleam, _x, _y) in _SPAR_POSTS.items():
 PLACEMENTS["pearlmoor_quay"].setdefault("triggers", []).append(
     {"id": "egg_nudge_fen", "kind": "cutscene", "at": {"tx": 26, "ty": 12}, "activation": "step_on",
      "ref": "script.egg_nudge_fen", "requires_flag": "gleam:tide", "hidden_when_flag": "flag:egg_nudge_seen"})
+# ---- Lane N1 (walkthrough/11 Part A + E, 2026-10): the Hollowing's Country.
+# Tessaly's homecoming at Pale Vault ("The Way Home": flag-staged, she arrives only
+# once you've walked her through both Coldfog maps); the Nightreach lane's two
+# lamplighters (they point the curious north, through Coldfog, to Stillwater); and
+# a talkable climber on each of Sunvault Climb II-IV. Tiles proven foot-standable
+# and clear of warps/triggers/NPCs (audit_npc_footing).
+_N1_NPCS = {
+    "pale_vault_glacier": [
+        {"id": "tessaly_home", "at": {"tx": 6, "ty": 22}, "facing": "down", "sprite": "fen_folk",
+         "movement": "static", "dialogue_ref": "script.still_tessaly_home",
+         "requires_flag": "flag:q_still_tessaly_fog2", "hidden_when_flag": "flag:q_still_tessaly_done"},
+        {"id": "tessaly_after", "at": {"tx": 6, "ty": 22}, "facing": "down", "sprite": "fen_folk",
+         "movement": "look_around", "dialogue_ref": "script.still_tessaly_after",
+         "requires_flag": "flag:q_still_tessaly_done"},
+    ],
+    "lanternway_nightreach": [
+        {"id": "lane_lamplighter_a", "at": {"tx": 6, "ty": 8}, "facing": "right", "sprite": "lamplighter",
+         "movement": "static", "dialogue_ref": "script.nightlane_lamplighter_a"},
+        {"id": "lane_lamplighter_b", "at": {"tx": 16, "ty": 10}, "facing": "left", "sprite": "npc_woman",
+         "movement": "look_around", "dialogue_ref": "script.nightlane_lamplighter_b"},
+    ],
+    "sunvault_climb_ii": [
+        {"id": "climber_ii", "at": {"tx": 6, "ty": 26}, "facing": "right", "sprite": "pass_walker",
+         "movement": "look_around", "dialogue_ref": "script.sunvault_climber_ii"},
+    ],
+    "sunvault_climb_iii": [
+        {"id": "climber_iii", "at": {"tx": 24, "ty": 22}, "facing": "left", "sprite": "kite_weaver",
+         "movement": "look_around", "dialogue_ref": "script.sunvault_climber_iii"},
+    ],
+    "sunvault_climb_iv": [
+        {"id": "climber_iv", "at": {"tx": 10, "ty": 31}, "facing": "up", "sprite": "frost_herder",
+         "movement": "look_around", "dialogue_ref": "script.sunvault_climber_iv"},
+    ],
+}
+for _mid, _npcs in _N1_NPCS.items():
+    PLACEMENTS.setdefault(_mid, {}).setdefault("npcs", []).extend(_npcs)

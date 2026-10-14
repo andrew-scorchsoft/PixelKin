@@ -502,6 +502,37 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:isles_log_3', 'flag:picked_undertide_tuned'],
     done_flag: 'flag:q_isles_bells_tuned',
   },
+  // ---- Lane N1 (walkthrough/11 Part A): Stillwater, the Hollowing's village ----
+  {
+    id: 'still_candle',
+    name: 'A Light Left On',
+    region: 'outer',
+    giver: 'Pip, Stillwater',
+    blurb: 'Pip keeps one forbidden candle in a jar. Hide it in the old willow by the still water, or show it to her mother, Maren.',
+    start_flag: 'flag:q_still_candle',
+    stage_flags: ['flag:q_still_candle_hidden', 'flag:q_still_candle_shown'],
+    done_flag: 'flag:q_still_candle_done',
+  },
+  {
+    id: 'still_way_home',
+    name: 'The Way Home',
+    region: 'outer',
+    giver: 'Tessaly, Stillwater',
+    blurb: 'Tessaly wants to go home to Pale Vault but can\'t face the fog alone. Walk ahead with your lamp through both Coldfog marshes and meet her at home.',
+    start_flag: 'flag:q_still_tessaly',
+    stage_flags: ['flag:q_still_tessaly_fog1', 'flag:q_still_tessaly_fog2'],
+    done_flag: 'flag:q_still_tessaly_done',
+  },
+  {
+    id: 'still_shutter_wall',
+    name: 'The Shutter-wall',
+    region: 'outer',
+    giver: 'Keeper Wenna, the Quiet Hall',
+    blurb: 'The Quiet Hall keeps the names of the lamps the Hollowing put out. Find three of them still standing: the Wayfare Lamp in the near fog, the Market Lamp in the deep fog, the First Lamp across the still water.',
+    start_flag: 'flag:q_still_wall',
+    stage_flags: ['flag:q_still_lamp_1', 'flag:q_still_lamp_2', 'flag:q_still_lamp_3'],
+    done_flag: 'flag:q_still_wall_done',
+  },
 ];
 
 /** Lookup by id. */

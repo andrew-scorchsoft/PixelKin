@@ -807,6 +807,25 @@ export const ITEMS: ItemRegistry = {
     teach_move: 'maelstrom',
     price: 4000,
   },
+  // ---- Lane N1 (walkthrough/11 Part A): Stillwater's two quest items -------------
+  // "A Light Left On": Pip's forbidden candle, carried to the willow or to her mother.
+  still_candle: {
+    id: 'still_candle',
+    name: 'Pip\'s Candle',
+    desc: 'A stub of candle burning in a stoppered jar. The only thing in Stillwater that moves when you breathe on it.',
+    category: 'key',
+  },
+  // "The Way Home": Tessaly's own old lamp — a one-per-game conditional charge, ×3.0
+  // on a DOZING kin (the lamp that once sang kin to sleep now calls them home).
+  // Never sold.
+  tessalys_lamp: {
+    id: 'tessalys_lamp',
+    name: 'Tessaly\'s Lamp',
+    desc: 'A Pale Vault shop-lamp that once sang kin to sleep. Raised to a dozing kin it calls it home threefold; to a wakeful one it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 3.0,
+    condition: { kind: 'status', status: 'doze' },
+  },
 };
 
 export function getItem(id: string): ItemDef | undefined {

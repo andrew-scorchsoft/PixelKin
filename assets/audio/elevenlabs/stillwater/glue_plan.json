@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "VHTHiLXPUjO6v8gvFOqy",
+   "range": {
+    "start_ms": 69000,
+    "end_ms": 89000
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments with the soft echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 time, a slow rocking hymn pulse",
+    "D minor, turning to B-flat major for a hymn",
+    "a soft muted music box with a felt damper carrying the melody",
+    "a quiet pulse-wave lead doubling the music box",
+    "a hushed sampled string pad holding hymn chords",
+    "a low soft bass note on each bar",
+    "very quiet and tender, a whispering village where kin sleep",
+    "melancholy, gentle and kind",
+    "strong singable melody",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "VHTHiLXPUjO6v8gvFOqy",
+   "range": {
+    "start_ms": 6000,
+    "end_ms": 16000
+   }
+  }
+ ]
+}

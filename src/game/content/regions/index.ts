@@ -42,6 +42,8 @@ import { SPARRING_DIALOGUE, SPARRING_SCRIPTS } from '../sparring';
 // Lane N3 (walkthrough/11 Parts C + D): the Mourning Fields + the Penumbra Underways.
 import { MOURNFIELDS_DIALOGUE, MOURNFIELDS_SCRIPTS } from './mournfields';
 import { UNDERWAYS_DIALOGUE, UNDERWAYS_SCRIPTS } from './underways';
+// Lane N1 (11-the-hollowing-country.md Parts A + E): Stillwater + the late-north density.
+import { STILLWATER_DIALOGUE, STILLWATER_SCRIPTS } from './stillwater';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -68,6 +70,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SPARRING_SCRIPTS,
   ...MOURNFIELDS_SCRIPTS, // Lane N3
   ...UNDERWAYS_SCRIPTS, // Lane N3
+  ...STILLWATER_SCRIPTS, // Lane N1
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -95,4 +98,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...SPARRING_DIALOGUE,
   ...MOURNFIELDS_DIALOGUE, // Lane N3
   ...UNDERWAYS_DIALOGUE, // Lane N3
+  ...STILLWATER_DIALOGUE, // Lane N1
 };

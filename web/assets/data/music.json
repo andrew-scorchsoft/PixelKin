@@ -746,7 +746,7 @@
     {
      "id": "interior-hush",
      "title": "Indoors — the quiet after",
-     "where": "Apprentice's House · The Boathouse · The Keeper's Bothy",
+     "where": "Apprentice's House · The Boathouse · The Keeper's Bothy · The Quiet Hall · Ines and Tam's Cottage",
      "mood": "The Quiet After — the hometown lullaby played softly in a frightened house; the fire still lit, a music box that keeps trying to rise.",
      "classic": "play/assets/audio/music/interior-hush.mp3",
      "classic_loop_start": null,
@@ -757,7 +757,7 @@
     {
      "id": "interior-unease",
      "title": "Indoors — a cold hearth",
-     "where": "Hollowfen Stillworks",
+     "where": "Hollowfen Stillworks · Maren's House",
      "mood": "Cold Hearth — glass tones and a music box winding down in a room the warmth has left; eerie, beautiful, and strangely gentle.",
      "classic": "play/assets/audio/music/interior-unease.mp3",
      "classic_loop_start": null,
@@ -768,7 +768,7 @@
     {
      "id": "shop-counter",
      "title": "Shops",
-     "where": "Tinderwick General Store · Pearlmoor Chandlery · The Kite-Maker's · Creel & Daughter, Chandlers",
+     "where": "Tinderwick General Store · Pearlmoor Chandlery · The Kite-Maker's · Creel & Daughter, Chandlers · The Dark-Lamp Maker",
      "mood": "The Counter Bell — a bouncy little shop tune with a doorbell for a hook; browse as long as you like.",
      "classic": "play/assets/audio/music/shop-counter.mp3",
      "classic_loop_start": null,
@@ -779,7 +779,7 @@
     {
      "id": "inn-rest",
      "title": "Inns — rest a while",
-     "where": "The Wayward Arms · Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn · The Lamplighters' Rest",
+     "where": "The Wayward Arms · Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn · The Lamplighters' Rest · The Shutter",
      "mood": "Rest a while — a fire's glow, a full kettle and a warm bed; the hometown tune settled into a contented waltz.",
      "classic": "play/assets/audio/music/inn-rest.mp3",
      "classic_loop_start": null,
@@ -1081,6 +1081,17 @@
      "classic_loop_start": null,
      "remaster": "play/assets/audio/music/remaster/penumbra-underways.mp3",
      "loop_start": 8.963,
+     "note": null
+    },
+    {
+     "id": "stillwater",
+     "title": "Stillwater",
+     "where": "Stillwater",
+     "mood": "A hush-hymn: a music-box with a felt damper, sung softly by tired, kind people who believe the dark is mercy.",
+     "classic": "play/assets/audio/music/stillwater.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/stillwater.mp3",
+     "loop_start": 8.615,
      "note": null
     },
     {

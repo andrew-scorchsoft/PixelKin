@@ -87,6 +87,8 @@ NODE_KINDS: dict[str, str] = {
     "coldfog_marches_ii": "route", "coldfog_marches_i": "route", "drownlight_beacon": "landmark",
     "hollowfen_stillworks": "landmark",
     "mourning_fields": "route",  # Lane N3 (walkthrough/11 Part C): the north loop
+    # Lane N1 (11 Part A): the Hollowing's village, north of Coldfog I
+    "stillwater": "town",
     # THE WILD WAYS — the Wick-Run (09 §2 A): Sunvault Climb I down the west flank to the sea
     "wickrun_crest": "route", "wickrun_chute": "route", "wickrun_trestles": "route",
     "wickrun_traverse": "route", "wickrun_lower": "route", "wickrun_foot": "route",
@@ -218,6 +220,7 @@ ROADS: list[tuple[str, str, str]] = [
     ("coldfog_marches_ii", "coldfog_marches_i", "gate"),
     ("coldfog_marches_i", "drownlight_beacon", "gate"),
     ("coldfog_marches_ii", "hollowfen_stillworks", "gate"),
+    ("coldfog_marches_i", "stillwater", "road"),  # Lane N1 (11 Part A)
     # the Rimeway (09-the-wild-ways §2 C): Pale Vault -> the Fold -> the Rime Gate -> the marsh
     ("pale_vault_glacier", "rimeway_ascent", "road"),
     ("rimeway_ascent", "rimeway_fold", "road"),
@@ -225,6 +228,7 @@ ROADS: list[tuple[str, str, str]] = [
     ("coldfog_marches_ii", "rimeway_descent", "road"),
     ("coldfog_marches_i", "mourning_fields", "road"),   # Lane N3: the north loop
     ("mourning_fields", "rimeway_descent", "road"),     # ...and its col road down
+    ("stillwater", "mourning_fields", "road"),          # closes the north loop
     # THE WILD WAYS — the Wick-Run (one-way chutes; the Tallow Lift is the ride home)
     ("sunvault_climb_i", "wickrun_crest", "road"),
     ("wickrun_crest", "wickrun_chute", "road"),

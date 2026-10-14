@@ -104,6 +104,8 @@ const TREND_SKIP_AREAS = new Set([
   'undertide_i', 'undertide_ii', 'undertide_iii', 'undertide_iv',
   // Lane N3 (11 Parts C + D): the Mourning Fields (48-52) + the Underways (52-56), optional
   'mourning_fields', 'penumbra_underways', 'penumbra_underways_b1',
+  // Lane N1 (11 Part A): Stillwater, the Hollowing's village — optional + late (48-52)
+  'stillwater',
 ]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
@@ -630,6 +632,14 @@ const BUILT_PAYOUTS = {
   spar_pale_vault: ['keeper', 39, 780],
   spar_sunken_solarium: ['keeper', 45, 900],
   spar_nightreach: ['keeper', 51, 1020],
+  // Lane N1 (11 Parts A + E): the Hollowing's Country — optional + late, BUILT_PAYOUTS-only
+  coldfog_acolyte_north: ['keeper', 48, 960],
+  coldfog_acolyte_east: ['keeper', 49, 980],
+  coldfog_acolyte_deep: ['keeper', 50, 1000],
+  coldfog_acolyte_west: ['keeper', 50, 1000],
+  still_acolyte_hale: ['keeper', 50, 1000],
+  still_acolyte_vesna: ['keeper', 51, 1020],
+  still_lamplighter_grisel: ['keeper', 52, 1040],
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

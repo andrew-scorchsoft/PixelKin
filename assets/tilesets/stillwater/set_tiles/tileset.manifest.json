@@ -1,0 +1,125 @@
+{
+  "name": "stillwater_set",
+  "columns": 6,
+  "tiles": [
+    {
+      "file": "000_flagway_corner_nw.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "corner_nw",
+      "collides": false
+    },
+    {
+      "file": "001_flagway_edge_n.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "edge_n",
+      "collides": false
+    },
+    {
+      "file": "002_flagway_corner_ne.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "corner_ne",
+      "collides": false
+    },
+    {
+      "file": "003_flagway_edge_w.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "edge_w",
+      "collides": false
+    },
+    {
+      "file": "004_flagway_fill.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "fill",
+      "collides": false
+    },
+    {
+      "file": "005_flagway_edge_e.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "edge_e",
+      "collides": false
+    },
+    {
+      "file": "006_flagway_corner_sw.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "corner_sw",
+      "collides": false
+    },
+    {
+      "file": "007_flagway_edge_s.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "edge_s",
+      "collides": false
+    },
+    {
+      "file": "008_flagway_corner_se.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "corner_se",
+      "collides": false
+    },
+    {
+      "file": "009_flagway_strip_h.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "strip_h",
+      "collides": false
+    },
+    {
+      "file": "010_flagway_strip_v.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "strip_v",
+      "collides": false
+    },
+    {
+      "file": "011_flagway_inner_nw.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "inner_nw",
+      "collides": false
+    },
+    {
+      "file": "012_flagway_inner_ne.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "inner_ne",
+      "collides": false
+    },
+    {
+      "file": "013_flagway_inner_sw.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "inner_sw",
+      "collides": false
+    },
+    {
+      "file": "014_flagway_inner_se.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "inner_se",
+      "collides": false
+    },
+    {
+      "file": "015_flagway_fill_v1.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "fill",
+      "collides": false
+    },
+    {
+      "file": "016_flagway_fill_v2.png",
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "fill",
+      "collides": false
+    }
+  ]
+}

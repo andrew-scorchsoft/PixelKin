@@ -24,7 +24,7 @@ is the point — Coldfog is optional, late, and entered from the hub; the
 Crossroads inn is 2 short legs back (I is one screen south of it). A heal
 here would tell the player the fen is safe. It must not feel safe; it must
 feel ASLEEP.
-NO TRAINERS (the I-side note applies — hooks name zero; the §11 r7 gameplay
+(SUPERSEDED 2026-10 by walkthrough/11 Part E: two acolytes, a mourner and Tessaly — see the density block at the end.) NO TRAINERS (the I-side note applies — hooks name zero; the §11 r7 gameplay
 load is carried by the full-corridor blight crossing + the murk-priced finds).
 
 HANDSHAKE (W3-internal, built both sides): I's `to_marsh_ii` at (8,0)/(9,0)
@@ -384,6 +384,51 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
     {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)},
 ]
+
+# ---- the Hollowing's Country density (walkthrough/11 Part E, 2026-10) --------------
+# The deep fog is still asleep, but no longer empty: two acolytes walk it (sight
+# trainers, keeper class — they speak first, then ask), a mourner keeps the
+# quieted camp, the Shutter-wall's second cold lamp stands on the old bank, Tessaly
+# rests here on her way home, and the Lamplight-STARLIGHT nook in the west reeds
+# finally gives something back. Zero humour still; nobody here is cruel.
+m["npcs"] += [
+    {"id": "coldfog_acolyte_deep", "at": {"tx": 25, "ty": 12}, "facing": "up",
+     "sprite": "hollowing_acolyte", "movement": "static",
+     "dialogue_ref": "script.coldfog_acolyte_deep", "sight_range": 4,
+     "defeated_flag": "flag:coldfog_acolyte_deep_beaten",
+     "hidden_when_flag": "flag:coldfog_acolyte_deep_beaten"},
+    {"id": "coldfog_acolyte_deep_after", "at": {"tx": 25, "ty": 12}, "facing": "up",
+     "sprite": "hollowing_acolyte", "movement": "look_around",
+     "dialogue_ref": "npc.coldfog_acolyte_deep_after",
+     "requires_flag": "flag:coldfog_acolyte_deep_beaten"},
+    {"id": "coldfog_acolyte_west", "at": {"tx": 7, "ty": 12}, "facing": "right",
+     "sprite": "hollowing_elder", "movement": "static",
+     "dialogue_ref": "script.coldfog_acolyte_west", "sight_range": 5,
+     "defeated_flag": "flag:coldfog_acolyte_west_beaten",
+     "hidden_when_flag": "flag:coldfog_acolyte_west_beaten"},
+    {"id": "coldfog_acolyte_west_after", "at": {"tx": 7, "ty": 12}, "facing": "right",
+     "sprite": "hollowing_elder", "movement": "look_around",
+     "dialogue_ref": "npc.coldfog_acolyte_west_after",
+     "requires_flag": "flag:coldfog_acolyte_west_beaten"},
+    {"id": "camp_mourner", "at": {"tx": 7, "ty": 9}, "facing": "down",
+     "sprite": "npc_old_woman", "movement": "static",
+     "dialogue_ref": "script.coldfog_camp_mourner"},
+    {"id": "tessaly_fog2", "at": {"tx": 20, "ty": 15}, "facing": "right",
+     "sprite": "fen_folk", "movement": "static", "dialogue_ref": "script.still_tessaly_fog2",
+     "requires_flag": "flag:q_still_tessaly_fog1",
+     "hidden_when_flag": "flag:q_still_tessaly_fog2"},
+    {"id": "cache_coldfog_deep_starlight", "at": {"tx": 2, "ty": 14}, "facing": "down",
+     "sprite": "item_cache", "movement": "static",
+     "dialogue_ref": "script.pickup_coldfog_deep_starlight",
+     "requires_flag": "flag:lamplight_starlight",
+     "hidden_when_flag": "flag:picked_coldfog_deep_starlight"},
+]
+m["objects"].append(
+    {"id": "named_lamp_2", "sprite": "coldfog_doused_lamp", "at": {"tx": 12, "ty": 17},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True})
+m["triggers"].append(
+    {"id": "named_lamp_2_read", "kind": "script", "at": {"tx": 12, "ty": 20},
+     "activation": "interact", "ref": "script.still_coldlamp_2"})
 
 if __name__ == "__main__":
     ok = mk.finalize(m, scale=3)

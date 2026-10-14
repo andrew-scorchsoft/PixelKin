@@ -682,6 +682,7 @@ export class WorldScene extends Phaser.Scene {
     'driftholm_inn', // the Farlamp Isles (10)
     'gullwrack_hut', // the keeper's hut on Gullwrack Isle (10)
     'lowtinder_lamphouse', // Gran Tallow's fire under the bay (10 Part III)
+    'stillwater_shutter', // the Hollowing's inn (11 Part A)
   ]);
 
   /**

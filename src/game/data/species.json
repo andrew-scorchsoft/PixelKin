@@ -13296,6 +13296,13 @@
      "rarity": "uncommon",
      "min": 54,
      "max": 56
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 49,
+     "max": 51
     }
    ],
    "scripted": false,
@@ -15766,6 +15773,13 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 63
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 55,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -15897,6 +15911,13 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 62
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -16026,6 +16047,13 @@
      "rarity": "uncommon",
      "min": 54,
      "max": 56
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 50,
+     "max": 52
     }
    ],
    "scripted": false,
@@ -16260,6 +16288,13 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 63
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -16426,6 +16461,13 @@
      "rarity": "common",
      "min": 54,
      "max": 56
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 50,
+     "max": 52
     }
    ],
    "scripted": false,
@@ -16667,6 +16709,20 @@
      "rarity": "uncommon",
      "min": 54,
      "max": 55
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 62
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 58
     }
    ],
    "scripted": false,
@@ -20446,7 +20502,22 @@
     "weight_kg": 1.1,
     "habitat": "north_hollow"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 42,
+     "max": 44
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 42,
+     "max": 44
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A small round kin shaped like a candle-snuffer's bell cap, front three-quarter view: a tarnished-brass cone that is body and hat in one, its tip curling up into a tiny wisp of grey smoke, a soft charcoal-grey face peeping out from under the wide brim with two big sleepy half-closed eyes and a small content smile, and two stubby charcoal feet. A faint warm ember-glow shows under the rim where it last sat on a flame. At 64px it reads as a tiny sleepy brass cap on little legs.",
@@ -20556,6 +20627,20 @@
      "rarity": "rare",
      "min": 50,
      "max": 52
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 49,
+     "max": 52
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -20651,6 +20736,27 @@
      "rarity": "uncommon",
      "min": 48,
      "max": 51
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 48,
+     "max": 51
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 59
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 46,
+     "max": 48
     }
    ],
    "scripted": false,

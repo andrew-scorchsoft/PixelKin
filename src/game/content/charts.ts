@@ -293,6 +293,16 @@ export const CHARTS: readonly ChartEntry[] = [
     art: AREA('driftholm'),
     maps: ['driftholm'],
   },
+  // Lane N1 (walkthrough/11 Part A): the Hollowing's village (its LORE entry unlocks on this chart)
+  {
+    id: 'stillwater',
+    name: 'Stillwater',
+    subtitle: 'The Hollowing\'s village: shuttered lamps, soft voices, kin asleep under grey blankets.',
+    region: 'outer',
+    kind: 'area',
+    art: AREA('stillwater'),
+    maps: ['stillwater'],
+  },
 ];
 
 /** Display order + label for each region group in the gallery. */
