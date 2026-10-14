@@ -345,6 +345,27 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
     ],
     dawn: [{ text: '"Hhhmm!" The ash-grass on its back has gone a little green at the tips.' }],
   },
+  // --- Lane E (10 Part III): Lowtinder, the town under the bay ----------------
+  13: { // Ashlette — warms itself in the drowned hearths (Lowtinder)
+    lines: [
+      { text: '"Fff." It sits in an old fireplace that has not had a fire in forty years, and glows, so now it has one.', react: 'hop' },
+      { text: '"Tsss." A drop of sea lands on its back and steams. It looks offended at the whole ocean.' },
+    ],
+    dawn: [{ text: '"Fff-fff!" It basks in a square of real sunlight on the old cobbles, belly-up.' }],
+  },
+  20: { // Tidmote — the tide-pool glimmer (Lowtinder, the bay)
+    lines: [
+      { text: '"Plip." It bobs in a puddle that used to be somebody\'s kitchen, and blinks a little light at you.', react: 'hop' },
+      { text: '"Plip-plip." It drifts round your boots like you are a rock worth circling.' },
+    ],
+  },
+  39: { // Mossmantle — the moss that kept the lamp-school's lesson (the moss-garden)
+    lines: [
+      { text: '"Mmmm." Its mossy cloak glows a little brighter as your lamp comes near, like a pupil answering a question.', react: 'twirl' },
+      { text: '"Mm." It shuffles over and settles by your feet, warm and damp and quite pleased with itself.' },
+    ],
+    dawn: [{ text: '"Mmmm!" A thread of daylight finds the garden through the fallen roof. It leans toward it, every frond at once.' }],
+  },
 };
 
 /** The event scripts (spread into content/scripts.ts SCRIPTS). Lore, finds and

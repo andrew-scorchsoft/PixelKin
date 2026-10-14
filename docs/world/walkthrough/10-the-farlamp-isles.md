@@ -416,3 +416,54 @@ four runners:
 - Tinderwick Bay's reef
 
 Lane: **E** (Tinderwick Bay, Lowtinder, cellar, the well, the bell, the grandmother, deep backtrack).
+
+### Part III — BUILT (Lane E, 2026-10)
+
+What shipped, and where it differs from the plan above:
+
+- **Maps** (all through their builders + the four runners; `check_rebuild` reproduces them):
+  `tinderwick_bay` (0,24) 28×28 and `lowtinder` (28,24) 26×28 (`world_geometry --check` closes);
+  `lowtinder_cellar` (B1) + `lowtinder_cellar_b2` (B2) — `build_lowtinder_cellar.py`;
+  `lowtinder_lamphouse`, `lowtinder_school` and a seventh map, **`lowtinder_school_garden`**
+  (the moss-garden is its own small cave-kind floor behind the classroom's north door, so it can
+  carry real glowmoss; the door is `requires_flag: flag:lamplight_brightlight` with a diegetic
+  `blocked_ref`) — `build_lowtinder_interiors.py`. Props are drawn in `tools/maps/lowtinderforge.py`
+  (derived from Tinderwick's own masters: drowned roof-ridges, the bell-tower, half-sunk houses,
+  the lamp-house, the lamp-school, the bell-gallows empty/hung, the sunk/raised bell, the winch,
+  the garden door, the old Tinder Light).
+- **Home's seed** (`build_tinderwick.py`): three drowned roof-ridges + the bell-tower stand in the
+  sea below the beach; the old fisher (`lt_old_fisher`, 16,21) watches them; the square gains the
+  EMPTY bell-gallows at (7,10) with its plaque. **Swim warps leave from the sea row's east columns
+  only (x 21–27, past the tower)**: the beach's world-craft props (rowboat, crab pots, net rack)
+  can't be proven off-lane against warps further west, so the way out is past the bell-tower,
+  where the fisher points. The garden well (`wc_well`) moved from world-craft into the builder.
+- **The loops.** Lowtinder: landing → the Upper Street (the dry rise) → hop the roof-line sand
+  ledges (row 9) → the lower street → back up the landing slope. The big one: Bell Cellar B2's rope
+  up the old shaft is a one-way `travel` (`script.lowtinder_well_climb`, not a warp/edge) landing
+  beside Tinderwick's well at (19,11).
+- **"The Town Bell"**: Gran Tallow (`flag:q_lowtinder`) → the winch-key in B1's winter store
+  (`flag:lowtinder_winch_key`) → the B2 winch raises the bell (`flag:q_lowtinder_bell`; the
+  `bell_sunk`/`bell_raised` pair swaps) → Brisa waits by the gallows and runs the ceremony
+  (`flag:q_lowtinder_bell_home`; the `bell_frame`/`bell_hung` pair swaps; 1,500w fair-chest) → the
+  bell is ringable after, and rings on the dawn. Journal: `lowtinder_bell`, `lowtinder_light`.
+  LORE: `lowtinder`. Andrew's Tide stage adds one line (`script.andrew_hint_lowtinder`, guarded
+  unless `flag:q_lowtinder`); NEXT is unchanged (it's the main path only).
+- **Gran Tallow** (`lowtinder_lamphouse`, a rest point via her fireside `heal`): post-dawn she asks
+  to be rowed to the Tinder Light once `flag:q_isles_afloat` (the skiff) is held
+  (`flag:q_lowtinder_light`); the reef scene (`script.lowtinder_reef_row`, `flag:lowtinder_at_reef`
+  while she's out there) → battle `lowtinder_ottery` (ace 66, warden 3,960w, rematchable from her
+  reef placement) → 3 Lumen Drops (`flag:lowtinder_reef_rowed`, `flag:lowtinder_grandmother_beaten`).
+  Battle sprite `ottery` (trainerArt unique) + walk-sheet `ottery` are packed.
+- **Beds**: bay shallows 17–20 (Tidmaren the swimmer rare), sea-grass 17–19, Lowtinder 18–21
+  (EMBRIFT #14, wild nowhere else), B1 19–22, B2 20–23, the moss-garden 24–27 (MOSSMANTLE #39,
+  wild nowhere else), the reef `deep` 58–62 (Brinewrath, Prismare, Tidwraith, Fathomote,
+  Hermiwick, rare Glostrael). Mirrored in `build_species.py` `LOWTINDER_TABLES`; all in
+  `TREND_SKIP_AREAS`. Trainers: two swimmers, a mudlark, a lampwright, the cellar keeper (class
+  payouts, `BUILT_PAYOUTS`).
+- **The deep backtrack**: buoy-caches on deep tiles whose every neighbour is deep (only the skiff
+  reaches them) at Gullcry Rock (15,6 — its two outer columns are now always deep), Pearlmoor
+  harbour (1,22), Dimglass Coast II (16,26), Vigil Hearthfall (22,12) — `hand_placed_data.py`
+  `_DEEP_CACHES` + `audit_npc_footing.ALLOW` — and the bay's west reef skerry (5,24).
+- **Audio**: `lowtinder` (tinderwick-a's melody note-for-note at 72 BPM in A minor, triangle lead
+  then a music-box pass) and `bell-cellar` (the lullaby's first notes as a slow bell toll), classic
+  + remaster. Backdrops `lowtinder-a.webp`, `bell-cellar-a.webp`.

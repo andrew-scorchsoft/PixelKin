@@ -23,6 +23,9 @@ What's out here (three signature touches):
 Levels: shallows 17-20 (Tide kin; Tidmaren the swimmer rare), sea-grass 17-19,
 the deep reef 58-62 (post-game). Mirrored in build_species.py EXTRA_ENCOUNTERS.
 
+audit_flow WARN (justified): `loop` — a sea route walks back the way it swam in; the
+bay's return compressor is the Bell Cellar's climb up Tinderwick's well (one map over).
+
 Run:  python3 tools/maps/build_tinderwick_bay.py
 """
 from __future__ import annotations

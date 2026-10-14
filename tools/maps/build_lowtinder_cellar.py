@@ -21,6 +21,10 @@ belfry pit), joined by a mutual ladder pair.
 
 Levels: B1 19-22, B2 20-23 (cave rolls rect-wide). Mirrored in build_species.py.
 
+audit_flow WARNs on B1 (justified): `free-pass` / `loop` — the cellars roll CAVE encounters
+rect-wide (the audit counts painted tiles only), and B1's loop is the region-scale one:
+down the ladder, up Tinderwick's well, home along the beach.
+
 Run:  python3 tools/maps/build_lowtinder_cellar.py
 """
 from __future__ import annotations
