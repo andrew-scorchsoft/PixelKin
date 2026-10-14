@@ -1,0 +1,91 @@
+{
+ "id": "drownlight-relit",
+ "kind": "loop",
+ "where": "The Drownlight relit (after the dawn) — its lantern room and its foot, the beam out over the coast and the buoys waking",
+ "mood": "The Keeper's Hymn turned major — the lamp turning again: flute and bells over swelling strings and harp, warm and grateful.",
+ "bpm": 76,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "high",
+  "source": "drownlight"
+ },
+ "_note": "Lane N2, Drownlight family RELIGHT: the anchor's hymn in D MAJOR, whole and warm (the minor -> major lamp beat). On the 76 grid; brightness comes from harmony and orchestration. Never name the tune or mention the reference in a brief.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "76 BPM",
+  "D major",
+  "3/4 waltz-time hymn",
+  "airy sampled flute and glass bells together carrying the hymn",
+  "sampled strings swelling warmly underneath",
+  "harp arpeggios turning like a lighthouse lens",
+  "soft brushed snare and a gentle bass drum on each downbeat",
+  "warm, grateful, lit, a homecoming",
+  "strong singable melody, instantly hummable and pleasant on repeat",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "heavy drums",
+  "electric guitar",
+  "heavy sub bass",
+  "fade out",
+  "ending",
+  "horror",
+  "silence",
+  "sparse",
+  "ambient drone"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a bright harp sweep and a bell chime, the flute rising straight into the hymn}",
+   "styles": [
+    "bright opening"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the tower's hymn in D major on flute and glass bells, up a fourth, a lift to the bright major third, then home, over harp arpeggios}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "major key"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the hymn again, strings swelling under it, a horn adding a warm counter-line}",
+   "styles": [
+    "counter-melody",
+    "fuller"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast in G major: the strings carry the tune while the harp turns and turns, the light sweeping out over the sea}",
+   "styles": [
+    "contrasting section",
+    "soaring"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the major hymn on flute and bells, the last bar lifting straight back into the top of the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

@@ -39,6 +39,8 @@ import { ASHFALL_DIALOGUE, ASHFALL_SCRIPTS } from './ashfall';
 import { UNDERTIDE_DIALOGUE, UNDERTIDE_SCRIPTS } from './undertide';
 // The Lumenary sparring partners (2026-10 economy review).
 import { SPARRING_DIALOGUE, SPARRING_SCRIPTS } from '../sparring';
+// Lane N2 (walkthrough/11 Part B): the Drownlight, the first lamp the Hollowing put out.
+import { DROWNLIGHT_DIALOGUE, DROWNLIGHT_SCRIPTS } from './drownlight';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -63,6 +65,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...ASHFALL_SCRIPTS,
   ...UNDERTIDE_SCRIPTS,
   ...SPARRING_SCRIPTS,
+  ...DROWNLIGHT_SCRIPTS, // Lane N2
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -88,4 +91,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...ASHFALL_DIALOGUE,
   ...UNDERTIDE_DIALOGUE,
   ...SPARRING_DIALOGUE,
+  ...DROWNLIGHT_DIALOGUE, // Lane N2
 };

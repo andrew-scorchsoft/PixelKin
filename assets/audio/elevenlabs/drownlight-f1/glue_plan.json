@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "d9I5aE5h3fzG1TXLu1Or",
+   "range": {
+    "start_ms": 56000,
+    "end_ms": 76000
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 waltz-time hymn",
+    "airy sampled flute carrying a slow sea-hymn melody",
+    "harp arpeggios rising and falling like a turning lens",
+    "warm sampled string pad underneath",
+    "a soft clockwork tick on every beat from a small woodblock",
+    "melancholy, tended, patient, cold stone and lamp-oil",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "d9I5aE5h3fzG1TXLu1Or",
+   "range": {
+    "start_ms": 4737,
+    "end_ms": 14737
+   }
+  }
+ ]
+}

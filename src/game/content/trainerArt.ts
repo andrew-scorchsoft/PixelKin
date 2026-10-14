@@ -146,6 +146,8 @@ const UNIQUE_SPRITE: Record<string, string> = {
   oldlight_headliners: 'punchwheel', // Mr. Punchwheel presents his act
   // Lane E (walkthrough/10 Part III): Gran Tallow on her reef, by the old Tinder Light
   lowtinder_ottery: 'ottery',
+  // Lane N2 (walkthrough/11 Part B): the Drownlight's Shutterkeeper
+  drownlight_shutterkeeper: 'shutterkeeper',
 };
 
 function pick<T>(xs: T[], seed: string): T {

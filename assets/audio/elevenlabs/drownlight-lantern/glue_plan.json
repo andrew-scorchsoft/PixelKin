@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "f0me30UKXFL8do9ikkkC",
+   "range": {
+    "start_ms": 59000,
+    "end_ms": 79000
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 time with a slow half-time feel",
+    "a solo cello playing the hymn in long held fragments",
+    "a soft pipe organ holding a continuous low drone under every bar",
+    "a single high glass bell now and then, like a thin seam of light",
+    "a slow clockwork tick once a bar",
+    "solemn, elegiac, grieving, quiet and close",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "f0me30UKXFL8do9ikkkC",
+   "range": {
+    "start_ms": 4737,
+    "end_ms": 14737
+   }
+  }
+ ]
+}

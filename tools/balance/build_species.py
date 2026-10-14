@@ -1122,6 +1122,28 @@ for _area, _by_terrain in UNDERTIDE_TABLES.items():
             EXTRA_ENCOUNTERS.setdefault(_UT_SLUG[_k], []).append(
                 {"area": _area, "terrain": _terrain, "rarity": _ut_rarity(_w), "min": _lo, "max": _hi})
 
+# ---- Lane N2 (walkthrough/11 Part B): THE DROWNLIGHT — MIRROR of
+# tools/maps/build_drownlight_tower.py TABLES (the map is the truth; keep both in
+# step). Cave = rect-wide in the tower's rooms. Ids, not slugs: #178-#180 are lane
+# N4's Hollowing family, resolved by position in selected.json (dex id = index + 1)
+# so this block never hard-codes another lane's names; an id not yet in the
+# roster is skipped. Weights -> rarity as the Undertide's (_ut_rarity).
+DROWNLIGHT_TABLES = {
+    "drownlight_f1": [(137, 24, 50, 51), (136, 14, 50, 51), (134, 18, 50, 52),
+                      (85, 14, 51, 52), (178, 22, 50, 52), (180, 8, 51, 52)],
+    "drownlight_f2": [(138, 20, 51, 53), (135, 8, 52, 53), (87, 14, 51, 53),
+                      (85, 12, 51, 53), (178, 20, 51, 53), (180, 18, 51, 53),
+                      (179, 8, 53, 53)],
+}
+with open(SEL) as _fh:
+    _DL_SLUG = {i + 1: re.sub(r"[^a-z0-9]+", "_", c["name"].lower()).strip("_")
+                for i, c in enumerate(json.load(_fh))}
+for _area, _tab in DROWNLIGHT_TABLES.items():
+    for (_k, _w, _lo, _hi) in _tab:
+        if _k in _DL_SLUG:
+            EXTRA_ENCOUNTERS.setdefault(_DL_SLUG[_k], []).append(
+                {"area": _area, "terrain": "cave", "rarity": _ut_rarity(_w), "min": _lo, "max": _hi})
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -1195,6 +1217,9 @@ CURATED_AREAS = {
     # Lane C2 — the Farlamp Isles' Undertide (mirrored above, UNDERTIDE_TABLES); the
     # Drowned Lamp is Farlume's room, encounter-free, listed so nothing claims it.
     "undertide_i", "undertide_ii", "undertide_iii", "undertide_iv", "farlamp_drowned",
+    # Lane N2 — the Drownlight (mirrored above, DROWNLIGHT_TABLES); the lantern room
+    # is the Shutterkeeper's, encounter-free, listed so nothing generated claims it.
+    "drownlight_f1", "drownlight_f2", "drownlight_lantern",
 }
 
 # The Old Light's hall tables (R10) — MIRROR of build_pearlmoor_oldlight.py's

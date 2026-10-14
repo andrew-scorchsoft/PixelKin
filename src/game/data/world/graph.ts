@@ -250,6 +250,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'undertide_iii', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the three-bell maze, the keeper\'s ledge (rest), Tide-bell Tuning (a Lumen Drop + the shortcut race)' },
     { map_id: 'undertide_iv', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the Drowned Stair: a Lumen Drop, a Hearth Coal, the keeper\'s 2,000w purse, the last page' },
     { map_id: 'farlamp_drowned', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the relight (the isles\' dawn) + FARLUME #177 (lv 68) + the store\'s Star-chart' },
+    // ---- Lane N2 (walkthrough/11 Part B): the Drownlight, above drownlight_beacon
+    { map_id: 'drownlight_f1', region: 'outer', optional: true, reward: 'the shutter-crank lesson; a Starglass Shard in the nook' }, // interior
+    { map_id: 'drownlight_f2', region: 'outer', optional: true, reward: 'the gallery ring of shutters; the watch-cot (rest); a Lumen Drop' }, // interior
+    { map_id: 'drownlight_lantern', region: 'outer', optional: true, reward: 'the Shutterkeeper; after the dawn, the relight + the Shutter Charm' }, // interior
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -515,6 +519,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'undertide_i', to_map: 'undertide_ii', via_warp: 'ladder_down', bidirectional: true },
     { from_map: 'undertide_iii', to_map: 'undertide_iv', via_warp: 'ladder_down', bidirectional: true },
     { from_map: 'undertide_iv', to_map: 'farlamp_drowned', via_warp: 'ladder_down', bidirectional: true },
+    // ---- Lane N2: the Drownlight (door, then stairs; the upper floors want Emberward)
+    { from_map: 'drownlight_beacon', to_map: 'drownlight_f1', via_warp: 'to_tower_4', bidirectional: true },
+    { from_map: 'drownlight_f1', to_map: 'drownlight_f2', via_warp: 'up_stairs', requires_ability: 'emberward', bidirectional: true },
+    { from_map: 'drownlight_f2', to_map: 'drownlight_lantern', via_warp: 'up_stairs', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

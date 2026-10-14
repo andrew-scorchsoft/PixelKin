@@ -466,6 +466,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'Old Tinderwick, the shore town that went under the bay the winter the water rose, forty years ago. The town moved up the bluff. Gran Tallow, its last Lampwarden, did not — she says it is not drowned, only having a lie-in.',
     unlock_flag: 'flag:q_lowtinder',
   },
+  // Lane N2 (walkthrough/11 Part B) — the Hollowing's first lamp
+  {
+    id: 'drownlight',
+    term: 'the Drownlight',
+    desc: 'The north coast\'s lighthouse, kept thirty-one winters by Maudry Kell. Fourteen winters ago, three before the sky went dark, she banked its lamp and bolted it in iron shutters: the first light the Hollowing put out. A keeper never kills a lamp, so it burned on behind the iron.',
+    unlock_flag: 'flag:drownlight_entered',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

@@ -1,0 +1,89 @@
+{
+ "id": "drownlight-lantern",
+ "kind": "loop",
+ "where": "The Drownlight's lantern room — the Shutterkeeper beside the banked, shuttered lamp",
+ "mood": "The Keeper's Hymn in pieces — a solo cello remembering the tune phrase by phrase over a held organ drone, one high bell like the thread of light at the shutters' seam.",
+ "bpm": 76,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "medium",
+  "source": "drownlight"
+ },
+ "_note": "Lane N2, Drownlight family rung 3 (the darkest): the hymn in fragments on solo cello over a continuous organ drone; half-time feel on the 76 grid. Kept CONTINUOUS (a held drone under every bar) so it never reads as dead air. Never name the tune or mention the reference in a brief.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "76 BPM",
+  "D minor",
+  "3/4 time with a slow half-time feel",
+  "a solo cello playing the hymn in long held fragments",
+  "a soft pipe organ holding a continuous low drone under every bar",
+  "a single high glass bell now and then, like a thin seam of light",
+  "a slow clockwork tick once a bar",
+  "solemn, elegiac, grieving, quiet and close",
+  "strong singable melody, instantly hummable and pleasant on repeat",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "heavy drums",
+  "electric guitar",
+  "heavy sub bass",
+  "fade out",
+  "ending",
+  "horror",
+  "silence"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{the organ drone swells in on low D with a single high bell, the cello drawing its bow}",
+   "styles": [
+    "drone opening"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the tower's hymn on solo cello, slow and held, each phrase trailing off into the organ drone before the next begins}",
+   "styles": [
+    "main theme",
+    "fragmentary melody",
+    "held notes"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the hymn fragments again, a viola joining low and close, the bell ringing once like a thread of light}",
+   "styles": [
+    "counter-melody",
+    "elegiac"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the organ shifts to a darker chord and the cello climbs, aching, then sinks back}",
+   "styles": [
+    "contrasting section",
+    "grieving"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the cello's hymn returns over the drone, the last bar lifting back to the first fragment}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

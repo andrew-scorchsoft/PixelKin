@@ -1807,6 +1807,61 @@ export const TRAINERS: TrainerRegistry = {
     ],
     payout: 1072, // route 16 × ace 67
   },
+  // ---- Lane N2 (walkthrough/11 Part B): THE DROWNLIGHT — three acolytes who
+  // sit with the shutters (keeper class, sight trainers) and the SHUTTERKEEPER
+  // (warden class, 'smart'; a one-time optional bout, ace = #179 the shuttered
+  // lantern-keeper — lane N4's kin). Lines in content/regions/drownlight.ts.
+  drownlight_acolyte_odell: {
+    id: 'drownlight_acolyte_odell',
+    name: 'ODELL',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 137, level: 50 }, // Nullmoth — Dark
+      { species_id: 85, level: 51 }, // Stillwarden — Frost/Dark (ace)
+    ],
+    payout: 1020, // keeper 20 × ace 51
+    music: 'battle-nightfall',
+  },
+  drownlight_acolyte_prue: {
+    id: 'drownlight_acolyte_prue',
+    name: 'PRUE',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 134, level: 51 }, // Wispwane — Dark/Light
+      { species_id: 178, level: 51 }, // the snuffer-cap (#178, lane N4) — Dark/Ember
+      { species_id: 87, level: 52 }, // Prismantus — Light/Frost (ace)
+    ],
+    payout: 1040, // keeper 20 × ace 52
+    music: 'battle-nightfall',
+  },
+  drownlight_acolyte_hask: {
+    id: 'drownlight_acolyte_hask',
+    name: 'HASK',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 136, level: 52 }, // Mothdim — Dark
+      { species_id: 141, level: 52 }, // Cindersob — Dark/Ember
+      { species_id: 138, level: 53 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1060, // keeper 20 × ace 53
+    music: 'battle-nightfall',
+  },
+  drownlight_shutterkeeper: {
+    id: 'drownlight_shutterkeeper',
+    name: 'MAUDRY KELL',
+    title: 'Shutterkeeper',
+    party: [
+      { species_id: 85, level: 52 }, // Stillwarden — Frost/Dark
+      { species_id: 135, level: 53 }, // Liminalux — Dark/Light
+      { species_id: 113, level: 53 }, // Omenire — Lunar/Dark
+      { species_id: 179, level: 54 }, // the shuttered lantern-keeper (#179, lane N4) — Dark/Light (ace)
+    ],
+    intro_ref: 'trainer.drownlight_shutterkeeper.intro',
+    defeat_ref: 'trainer.drownlight_shutterkeeper.defeat',
+    payout: 3240, // warden 60 × ace 54
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
   // The Lumenary sparring partners (2026-10 economy review): content/sparring.ts.
   ...SPAR_TRAINERS,
 };
@@ -2191,6 +2246,12 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.lowtinder_ottery.defeat': [
     { speaker: 'GRAN TALLOW', text: 'Outshone! By a Wayfarer in a borrowed boat. Oh, I haven\'t had this much fun since the water came up.' },
+  ],  // ---- Lane N2 (walkthrough/11 Part B): the Shutterkeeper ----
+  'trainer.drownlight_shutterkeeper.intro': [
+    { speaker: 'MAUDRY KELL', text: 'Thirty-one winters I kept this light. Let\'s see what yours is made of.' },
+  ],
+  'trainer.drownlight_shutterkeeper.defeat': [
+    { speaker: 'MAUDRY KELL', text: 'Steady. Steady all the way down. ...My girl rowed like that.' },
   ],
 };
 
