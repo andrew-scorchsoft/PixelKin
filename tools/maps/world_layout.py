@@ -152,6 +152,130 @@ def compute_nodes(world: dict[str, dict]) -> None:
             NODES[n] = (int(round(MARGIN + (cx - x0) * k)), int(round(MARGIN + (cy - y0) * k)), kind)
 
 
+# ---------------------------------------------------------------------------
+# THE CLASSIC GRID (2026-10). The MAP screen is the genre's town map: every
+# place is ONE same-size square on a coarse grid, roads are straight runs of
+# cells with right-angle bends, and the land is drawn round them. Map SIZE no
+# longer shows (a route was drawn as big as a town). The grid comes from the
+# honest layout: snap each node to a GRID_U cell, nudge collisions to the
+# nearest free cell, then squeeze long empty stretches to MAX_GAP cells so the
+# chart isn't mostly sea. Order is kept, so north is still north — and
+# grid_honesty() FAILs any walked link the grid would draw backwards.
+# ---------------------------------------------------------------------------
+GRID_U = 10         # virtual units per grid cell before squeezing
+MAX_GAP = 2         # longest empty run kept between occupied rows/columns
+KIND_PRIORITY = {"hub": 0, "town": 1, "dungeon": 2, "route": 3, "landmark": 4}
+# hand-picked raw cells for a nudge the nearest-free rule gets wrong (it put
+# the Stillworks on the Nightreach road)
+GRID_PIN: dict[str, tuple[int, int]] = {"hollowfen_stillworks": (12, 7)}
+GRID: dict[str, tuple[int, int]] = {}
+GRID_SIZE: dict[str, int] = {"cols": 0, "rows": 0}
+ROAD_PATHS: dict[tuple[str, str], list[list[int]]] = {}
+
+
+def compute_grid() -> list[str]:
+    notes: list[str] = []
+    taken: dict[tuple[int, int], str] = {}
+    raw: dict[str, tuple[int, int]] = {}
+    order = sorted(NODES, key=lambda n: (KIND_PRIORITY[NODES[n][2]], n))
+    for n in order:
+        x, y, _k = NODES[n]
+        fx, fy = x / GRID_U, y / GRID_U
+        cell = GRID_PIN.get(n, (round(fx), round(fy)))
+        if cell in taken:
+            near = sorted(
+                ((cx, cy) for cx in range(cell[0] - 3, cell[0] + 4) for cy in range(cell[1] - 3, cell[1] + 4)
+                 if (cx, cy) not in taken),
+                key=lambda c: ((c[0] - fx) ** 2 + (c[1] - fy) ** 2, c[1], c[0]))
+            notes.append(f"{n} nudged {cell} -> {near[0]} (shared a cell with {taken[cell]})")
+            cell = near[0]
+        taken[cell] = n
+        raw[n] = cell
+
+    def squeeze(vals: list[int]) -> dict[int, int]:
+        out: dict[int, int] = {}
+        prev = None
+        for v in sorted(set(vals)):
+            out[v] = 1 if prev is None else out[prev] + min(v - prev, MAX_GAP)
+            prev = v
+        return out
+
+    cx = squeeze([c[0] for c in raw.values()])
+    cy = squeeze([c[1] for c in raw.values()])
+    for n, (gx, gy) in raw.items():
+        GRID[n] = (cx[gx], cy[gy])
+    GRID_SIZE["cols"] = max(g[0] for g in GRID.values()) + 2
+    GRID_SIZE["rows"] = max(g[1] for g in GRID.values()) + 2
+    return notes
+
+
+def route_roads() -> list[str]:
+    """Lay every road as right-angle runs of cells: try the two L-bends, then
+    the Z-bends through each row/column between, and keep the one that crosses
+    the fewest other places (then the fewest cells already carrying a road)."""
+    notes: list[str] = []
+    node_at = {c: n for n, c in GRID.items()}
+    used: set[tuple[int, int]] = set()
+
+    def cells(pts: list[tuple[int, int]]) -> list[tuple[int, int]]:
+        out = []
+        for (ax, ay), (bx, by) in zip(pts, pts[1:]):
+            sx = (bx > ax) - (bx < ax)
+            sy = (by > ay) - (by < ay)
+            x, y = ax, ay
+            while (x, y) != (bx, by):
+                x, y = x + sx, y + sy
+                out.append((x, y))
+        return out
+
+    order = sorted(ROADS, key=lambda r: (r[2] == "car", r[2] != "road"))
+    for a, b, kind in order:
+        if a not in GRID or b not in GRID:
+            continue
+        A, B = GRID[a], GRID[b]
+        if kind == "car" or A[0] == B[0] or A[1] == B[1]:
+            ROAD_PATHS[(a, b)] = [list(A), list(B)]
+            if kind != "car":
+                hits = [node_at[c] for c in cells([A, B])[:-1] if c in node_at]
+                if hits:
+                    notes.append(f"{a} - {b} runs through {', '.join(hits)}")
+                used.update(cells([A, B]))
+            continue
+        cands = [[A, (B[0], A[1]), B], [A, (A[0], B[1]), B]]
+        for mx in range(min(A[0], B[0]) + 1, max(A[0], B[0])):
+            cands.append([A, (mx, A[1]), (mx, B[1]), B])
+        for my in range(min(A[1], B[1]) + 1, max(A[1], B[1])):
+            cands.append([A, (A[0], my), (B[0], my), B])
+
+        def score(pts):
+            cs = cells(pts)[:-1]
+            return (sum(c in node_at for c in cs), sum(c in used for c in cs), len(pts))
+        best = min(cands, key=score)
+        hits = [node_at[c] for c in cells(best)[:-1] if c in node_at]
+        if hits:
+            notes.append(f"{a} - {b} runs through {', '.join(hits)}")
+        used.update(cells(best))
+        ROAD_PATHS[(a, b)] = [list(p) for p in best]
+    return notes
+
+
+def grid_honesty(links, member) -> list[str]:
+    """The grid must still draw every walked straight link the way it's walked."""
+    fails, seen = [], set()
+    for a, b, exit_e, _pin, _spread in links:
+        na, nb = member.get(a), member.get(b)
+        if na is None or nb is None or na == nb or na not in GRID or nb not in GRID:
+            continue
+        if (na, nb, exit_e) in seen:
+            continue
+        seen.add((na, nb, exit_e))
+        dx, dy = GRID[nb][0] - GRID[na][0], GRID[nb][1] - GRID[na][1]
+        along = {"n": -dy, "s": dy, "e": dx, "w": -dx}[exit_e]
+        if along <= 0:
+            fails.append(f"grid reversed {a} exits {exit_e.upper()} but the grid puts {nb} at ({dx:+d},{dy:+d})")
+    return fails
+
+
 # Roads drawn between nodes. kind: 'road' (walked route), 'lane' (Lanternway
 # spoke — abstracted country lane), 'gate' (Gift/flag-gated passage), 'pass'
 # (through-cave passage). Derived links are verified against shipped warps.
@@ -428,6 +552,8 @@ def render(world) -> None:
 def main() -> int:
     world = load_world()
     compute_nodes(world)
+    for note in compute_grid():
+        print(f"  [·] grid        {note}")
     links = straight_links(world)
     fails: list[str] = []
 
@@ -463,6 +589,9 @@ def main() -> int:
         if a not in NODES or b not in NODES:
             fails.append(f"ghost road    {a} <-> {b} references an unknown node")
 
+    for note in route_roads():
+        print(f"  [·] grid road   {note}")
+    fails += grid_honesty(links, member)
     for f in fails:
         print(f"  [F] {f}")
     for s in bends:
@@ -471,12 +600,13 @@ def main() -> int:
     # ---- emit ------------------------------------------------------------------
     layout = {
         "box": dict(BOX),
+        "grid": dict(GRID_SIZE),
         "nodes": [
-            {"id": n, "x": x, "y": y, "kind": kind, "region": region_of(n),
+            {"id": n, "x": x, "y": y, "gx": GRID[n][0], "gy": GRID[n][1], "kind": kind, "region": region_of(n),
              "name": world[n].get("display_name", n)}
             for n, (x, y, kind) in NODES.items() if n in world
         ],
-        "roads": [{"a": a, "b": b, "kind": kind} for a, b, kind in ROADS
+        "roads": [{"a": a, "b": b, "kind": kind, "path": ROAD_PATHS.get((a, b), [])} for a, b, kind in ROADS
                   if a in world and b in world],
         "members": dict(sorted(member.items())),
     }
