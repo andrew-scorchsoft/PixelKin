@@ -234,12 +234,30 @@ by design, the sinks that matter (charts, balms) are already bought, and the sha
 exists to protect the MID-game, where a struggling player needs income without a farm. Kept
 outside every solvency leg, as before.
 
+### Final pass (2026-10-14) — coordinator's closing scores
+
+After round 2, each open item went back to its lane and was verified in renders and in-game
+shots before merge; all 26 CI gates are green on the merged build (v1.31). Closing scores
+(round-2 scores adjusted only where the named finding is now visibly fixed):
+
+| Area | R2 | Final | What moved it |
+|---|--:|--:|---|
+| Ashfall Shelf + Kiln Gully | 81.5 | **85** | the furnace wakes when the Last Pane is taken (the kiln's "oh!"); a boulder ridge instead of the trench strip; crest wood over the flat wall-top; dressed store and loft |
+| Farlamp Isles surface | 85.25 | **86** | marooned-skerry lore made consistent; keel-up boats on trestles; Gullwrack's slab became a boulder-and-nest ridge; island interiors (sea-washed kit, nets, wheel, lamp-lens) |
+| Undertide + Drowned Lamp | 87.5 | **87.5** | (no further change) |
+| Lowtinder & Tinderwick Bay | 85.75 | **87** | ragged tower weed; organic shelf edge and lobed skerry; B1 moss blobs + flood dressing; a dressed belfry; tidal streets |
+| Economy | 8.5/10 | **9/10** | plus a tithe ceiling of 300w + 300w per Gleam (owner's ask); the day purse runs before the prizes |
+
+Known, accepted: a few Undertide pools are still pill-shaped; sea maps have no designed loop
+(open water by nature); Bram/Gran/Ondine rematches stay uncooled (see the decision above).
+
 ## Score history
 
 The newest score is first.
 
 | Date | Plan | Stage | Total | Notes |
 |---|---|---|--:|---|
+| 2026-10-14 | All four areas | final (coordinator) | 85 / 86 / 87.5 / 87 | every area at or over the bar; v1.31 |
 | 2026-10-14 | Undertide | built, independent r2 | 87.5 | per-floor props, depth creatures |
 | 2026-10-14 | Lowtinder & Bay | built, independent r2 | 85.75 | the bay channel, the drowned look |
 | 2026-10-14 | Farlamp Isles surface | built, independent r2 | 85.25 | sea shapes, fog fixed, distinct isles |
