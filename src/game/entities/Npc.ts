@@ -196,22 +196,24 @@ const SPRITE_COLORS: Record<string, string> = {
  * a pickup script and vanish via hidden_when_flag.
  */
 const PARCEL = [
+  // A smaller parcel (2026-10, owner: "doesn't need the full square"): 10×7 box
+  // + bow, bottom-anchored on its contact shadow, ~2/3 the old footprint.
   '................',
   '................',
-  '....RR....RR....',
-  '...RrRR..RRrR...',
-  '...RrrRRRRrrR...',
-  '....RRRrrRRR....',
-  '..oooooRRooooo..',
-  '..oWwwwRrwwwwo..',
-  '..owwwwRrwwwso..',
-  '..oRRRRRrRRRRo..',
-  '..orrrrrrrrrro..',
-  '..owwwwRrwwwso..',
-  '..owwwwRrwwsso..',
-  '..osssssRssssso.',
-  '...oooooooooooo.',
-  '...,,,,,,,,,,,..',
+  '................',
+  '................',
+  '................',
+  '.....RR..RR.....',
+  '....RrRRRRrR....',
+  '.....RRrrRR.....',
+  '...ooooRroooo...',
+  '...oWwwRrwwso...',
+  '...oRRRRrRRRo...',
+  '...orrrrrrrro...',
+  '...owwwRrwwso...',
+  '...osssRrssso...',
+  '...oooooooooo...',
+  '....,,,,,,,,....',
 ];
 const PARCEL_INK: Record<string, string> = {
   o: '#2a1a14', // outline
@@ -223,7 +225,7 @@ const PARCEL_INK: Record<string, string> = {
   ',': 'rgba(0,0,0,0.35)', // contact shadow
 };
 /** Glint spots, one per frame (x, y): it twinkles round the bow. */
-const PARCEL_GLINT: [number, number][] = [[4, 2], [11, 2], [12, 7], [3, 7]];
+const PARCEL_GLINT: [number, number][] = [[5, 5], [10, 5], [11, 9], [4, 9]];
 
 export function ensureItemCacheSprite(scene: Phaser.Scene, key: string): void {
   if (scene.textures.exists(key)) return;
