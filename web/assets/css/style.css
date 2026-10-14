@@ -318,6 +318,63 @@ a { color: var(--diamond); text-decoration: none; }
 }
 .band-actions { text-align: center; margin-top: 2.25rem; }
 
+/* ---- the trailer: the hosted Scorchsoft player, 16:9, framed like a game screen ---- */
+.hero-trailer {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 0.9rem;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--diamond);
+    text-decoration: none;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+.hero-trailer:hover, .hero-trailer:focus-visible { color: var(--bone); }
+.hero-trailer-ico {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: var(--fire);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    position: relative;
+    flex: none;
+}
+.hero-trailer-ico::after {
+    content: '';
+    position: absolute;
+    left: 0.58rem;
+    top: 0.42rem;
+    border-style: solid;
+    border-width: 0.33rem 0 0.33rem 0.5rem;
+    border-color: transparent transparent transparent #fff;
+}
+.trailer { padding-top: clamp(2rem, 6vw, 3.5rem); }
+.trailer-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000 url("../img/trailer-poster.jpg") center / cover no-repeat;
+    border: 1px solid var(--panel-edge);
+    box-shadow: 0 0 0 4px rgba(11, 16, 38, 0.9), 0 0 0 5px rgba(159, 231, 255, 0.18), var(--shadow);
+}
+.trailer-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+@media (max-width: 520px) {
+    /* edge to edge on a phone: the video is the point, not the margin */
+    .trailer { padding-left: 0; padding-right: 0; }
+    .trailer .band-title, .trailer .band-sub { padding: 0 1.25rem; }
+    .trailer-frame { border-radius: 0; border-left: 0; border-right: 0; box-shadow: none; }
+}
+
 /* Features ------------------------------------------------------------------ */
 .feature-grid {
     display: grid;
