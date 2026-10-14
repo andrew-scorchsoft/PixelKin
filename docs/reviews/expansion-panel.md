@@ -767,3 +767,95 @@ the nearest thing to one).
 | 2026-10-14 | Hollowing's Country: Drownlight | 2nd fix round, independent r3 | **86.3** | finals at band, one reusable Shutter Charm, dressed hall: clears |
 | 2026-10-14 | Hollowing's Country: Mourning Fields | 2nd fix round, independent r3 | 83.8 | Brook Piece, knot toggle, five candles; Rimeway base forms, no Fields-only kin |
 | 2026-10-14 | Hollowing's Country: Underways | 2nd fix round, independent r3 | 84.5 | watch gathers, JesterFull bed, loop; same sheet ×3, dawn echo |
+
+## Plan 4 — final independent review (after the third fix round)
+
+A fourth reviewer, fresh to the fix lanes, re-scored the region on 2026-10-14 against the third
+review's "smallest changes to clear 85" list (commits `d7f1f185` A, `f68e2a82` D, `4ea5fe8c`
+C, `0827ffb0` keepsake charges, `007b0d5e` guide). Evidence: `render_map.py` renders of
+Stillwater (scale 2 and 4, with crops of both flanks and the Willow Path), Coldfog I (4× crop of
+the gold pocket), the Fields and Underways B1; 17 in-game shots (`shoot.mjs --batch`): the mere
+at dusk and dawn, the Willow Path, the Back Walk, both Stillwater flanks, Coldfog I's gold
+pocket at dusk and dawn (`--abilities emberward`), an Auravane battle there, the B1 fire with
+the watch kept (dusk and dawn), B1's shaft at dusk and dawn, the Brook Piece at dusk and dawn,
+a Lumournis battle in it, and a Rimeway-descent battle. Every wild table on the eight region
+maps plus the three Rimeway maps was checked against kindle levels (0 rows ≥3 levels past
+kindling). Gates, all green: `tsc` clean; `validate.mjs` 180 species, 0 errors, 0 warnings;
+`simulate.mjs` exit 0; `progression.mjs` PASS; `check_content` exit 0 (no E-lines);
+`audit_journey` PASS (one pre-existing dead-band warning, not in this region); `audit_visual
+--all` 75 maps, 0 FAIL, 0 warn; `audit_warps` and `audit_npc_footing` PASS; `audit_flow`
+PASS on Stillwater, Coldfog I and the Fields; `render_walkable` 0 real issues on Stillwater,
+Coldfog I, the Fields, B1 and the Rimeway descent; `check_rebuild` 168/168 maps reproduce.
+
+### Did the third review's list land?
+
+| Part | Item | Status |
+|---|---|---|
+| A | Flank cliff faces | **Done.** The six one-tile stubs are gone. Each flank is a clean rim with one 2×4 buttress whose foot carries the real two-tile `fogface`. (Nit: on the east one, the slate notch above the face reads a little like low ground sitting *above* the village.) |
+| A | Break the cross-and-ring | **Done.** The Willow Path is a worn stair-stepped diagonal from the shore walk up to the willow hollow (Grisel moved to the shore). The Back Walk bows up between the two south homes, a dry way round the tuft strip between the south gates. Both read in game. |
+| A | Tessaly's Lamp under the Beacon | **Done.** ×2.0 below 25% HP, still reusable; the desc ("calls it home twice over"), `04-capture.md`, `10-economy.md` and the guide all agree. The Shutter Charm got the same treatment (×2.0 on Dark). Both now sit a notch under the Beacon's ×2.5. |
+| A | Gold pocket as a curio | **Done.** Five tuft cells, a rare #116 **Auravane** (46–48, dawn 58–63, w8) and a survey-peg sign that explains it ("the Solarium's light came this far once"). Auravane is the pocket's own, but it's wild in the Sunvault and Helia Vault too, so it's a curio rather than a region-only kin. Battle shot and confirmed. |
+| A | Dawn mere | **Done, modestly.** The punt's prow-lamp is lit, there are lamplight reflection columns under the two opened lamps and pale sheen streaks across the water, and a faint warm tint. The water itself is still the night navy. |
+| C | Rimeway finals | **Done.** Ascent, Fold and Descent all roll kindled forms (the Descent rolls Voidmantle, Liminalux, Wisprestored and others at 46–48). The three maps are in `TREND_SKIP_AREAS`; `progression.mjs` still passes. |
+| C | A Fields-only bed | **Done.** The Brook Piece is long grass with its own table, and **Lumournis** (#66) is wild nowhere else (rare 51–52 at dusk, uncommon 59–62 at dawn). Lowleaf's dawn rare became Fernlance. The marker stone and the tender's dawn line hint at it. It's soft-unique, though: it kindles from Glowsip (Lowleaf, lv 19), and Sable fields it as her ace. |
+| D | Three distinct watcher sheets | **Done.** Odalie wears `star_watcher` (battle sprite `sky_watcher`), Bran the grey hood and Hesk `pass_walker`, on their posts and at the fire. Clemency's `hollowing_elder` makes a fourth. Shot and confirmed. |
+| D | Bran's dawn line | **Done.** "Eleven winters of cards with one eye on the dark… both eyes on the hand. He still can't bluff." It no longer echoes Clemency's line and sits with hers (he came down, sat silent, then cards). |
+| D | B1's dawn | **Done, and well.** A pale pool and a slow beam fall down the Spire shaft and spill down the root neck, the dusk wash thins, and the braziers and watch lamps light with real pools (new `LIGHT_SOURCES` rows). You can see it from the fire. |
+
+### Bugs and new problems
+
+No blocking bugs and no new softlocks. All gates are green.
+
+- **Guide drift (docs only).** `docs/guide/25-the-hollowings-country.md` was written before this
+  round: its Brook Piece section and the "near marsh, golden patch" tables (lines ~77 and ~489)
+  don't mention Lumournis's bed or Auravane. `docs/guide/23-the-wild-ways.md` still says
+  "**Vaultclaw** lives only on the Fold", but it also rolls on the Ascent and in Farlamp
+  Gullwrack (the walkthrough doc was fixed in `42907880`; the guide wasn't).
+- **Wispwane (#134) now has no wild bed anywhere.** That's a side effect of the Rimeway finals
+  pass. It's fine by design (it's a middle stage, reached by kindling Flutterwane from Glowmoss
+  Deep's drained chamber), but the dex's "Found:" line will be empty. Note it so nobody
+  "restores" a base-form row.
+- **Coldfog I's gold pocket looks blocky.** Under the named lamp post, the two flat
+  `goldgrass` cells next to the new tufts read as a square-edged L on the slate. `audit_visual`
+  passes, but a blob or a tuft on (15–16,20) would soften it.
+- **Nits, all from earlier rounds.** The watchers' and Clemency's sheets carry the old purple
+  chroma rim (`fix_purple_rim.py` candidates). Stillwater's mere water keeps its night colour at
+  dawn.
+
+### Scores
+
+| # | Dimension (wt) | A · Stillwater + Coldfog | B · Drownlight | C · Mourning Fields | D · Underways |
+|---|---|--:|--:|--:|--:|
+| 1 | Exploration (15) | 9: real flank faces; the Willow Path to the willow hollow; a gold curio with a sign | 8.5 | 8.5: the Brook Piece now pays in kin too | 8.5 |
+| 2 | Navigation (15) | 8: two off-axis lanes break the template; still a ring at heart | 8.5 | 8.5 | 8.5 |
+| 3 | Reward (15) | 8: Tessaly's Lamp is now a fair keepsake; Auravane as a curio | 8.5: the Shutter Charm at ×2.0 is still a lasting capstone | 8.5: a hidden nook with a rare final, a coal and Tussock is a real "oh" | 8 |
+| 4 | Story (10) | 9 | 9.5 | 9 | 9.5: three distinct watchers; Bran's own dawn voice |
+| 5 | Return (10) | 9: the lit punt and reflections | 9.5 | 9 | 9: B1 visibly greets the morning |
+| 6 | Pacing (10) | 8.5 | 8.5 | 8.5: the loop's Rimeway road is at band, in finals | 9 |
+| 7 | Creature (10) | 8: Auravane curio (not region-only) | 7.5 | 8: Lumournis wild only here (soft-unique, like JesterFull) | 7.5 |
+| 8 | Clarity (5) | 9 | 8.5 | 8.5 | 9 |
+| 9 | Originality (5) | 9 | 9 | 9 | 9.5: one sheet per watcher |
+| 10 | Cost (5) | 8 | 8.5 | 8 | 8 |
+| | **Total** | **85.0** | **86.3** | **85.5** | **85.8** |
+
+(Totals: A 850/10 → 85.0; B 862.5/10 → 86.3; C 855/10 → 85.5; D 857.5/10 → 85.8.)
+
+**Verdict: all four parts clear the 85 bar, and no dimension is under 6 (the lowest is 7.5).**
+B holds at 86.3. D reaches 85.8, C 85.5 and A **85.0, exactly on the bar**. A is the marginal one:
+its lift rests on the flank, lane and curio fixes, and the gold pocket's blocky look is the
+first thing to fix if anyone wants headroom. The third round did what the list asked, with no
+regressions, and the whole pipeline still reproduces. Ship the region.
+
+**Residual nice-to-haves (not needed to ship):** sync the two guide pages above; soften the
+gold pocket's flat cells; give the mere a paler dawn water tint; one tower-only roll on
+Drownlight F2; run `fix_purple_rim.py` over the Hollowing cast sheets; give A a region-only
+kin (Wisprestored as its own rare in Stillwater's meadow would do).
+
+### Score history (append)
+
+| Date | Plan | Stage | Total | Notes |
+|---|---|---|--:|---|
+| 2026-10-14 | Hollowing's Country: Stillwater + Coldfog | 3rd fix round, independent r4 | **85.0** | flank faces, Willow Path + Back Walk, Auravane curio, keepsake ×2.0: clears (on the bar) |
+| 2026-10-14 | Hollowing's Country: Drownlight | 3rd fix round, independent r4 | **86.3** | unchanged; Shutter Charm ×2.0 |
+| 2026-10-14 | Hollowing's Country: Mourning Fields | 3rd fix round, independent r4 | **85.5** | Rimeway finals, Lumournis in the Brook Piece: clears |
+| 2026-10-14 | Hollowing's Country: Underways | 3rd fix round, independent r4 | **85.8** | three sheets, Bran's own dawn line, B1's shaft at dawn: clears |
