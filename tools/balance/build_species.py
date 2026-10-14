@@ -784,18 +784,26 @@ def _cave(area, lo_hi_rarity):
     return [{"area": area, "terrain": "cave", "rarity": r, "min": lo, "max": hi}
             for (lo, hi, r) in lo_hi_rarity]
 ASHFALL_ENCOUNTERS = {
+    # (third pass) the ash beds and the green beds run DIFFERENT mixes — the ash is
+    # slag country (Stone/Ember + Stonebark), the green is the wind's (Storm +
+    # Voltcrag); the dex merges same-terrain rows per area (W6 rule)
     "gravelo":     _rows("cinderwind_ashfall", [(31, 33, "common")]),
     "sparkrat":    _rows("cinderwind_ashfall", [(30, 31, "common")]),
     "flintbeak":   _rows("cinderwind_ashfall", [(30, 32, "common")]),
-    "galefox":     _rows("cinderwind_ashfall", [(30, 32, "uncommon")]),
+    "galefox":     _rows("cinderwind_ashfall", [(30, 32, "common")]),
+    "thrumble":    _rows("cinderwind_ashfall", [(30, 31, "common")]),
     "pyrolith":    _rows("cinderwind_ashfall", [(32, 33, "uncommon")])
                    + _cave("cinderwind_kiln", [(34, 35, "uncommon")]),
-    "stonebark":   _rows("cinderwind_ashfall", [(30, 31, "rare")]),
+    "stonebark":   _rows("cinderwind_ashfall", [(30, 31, "uncommon")]),
+    "voltcrag":    _rows("cinderwind_ashfall", [(32, 33, "rare")]),
     "lumecite":    _cave("cinderwind_kiln", [(33, 35, "common")]),
     "riddlestone": _cave("cinderwind_kiln", [(33, 35, "common")]),
     "orebound":    _cave("cinderwind_kiln", [(33, 33, "uncommon")]),
     "pyriven":     _cave("cinderwind_kiln", [(34, 35, "uncommon")]),
-    "prismara":    _cave("cinderwind_kiln", [(35, 35, "rare")]),
+    # the kiln's signature: the only pre-dawn wild Scorchwing (its other placement is
+    # the post-dawn Hearthfall vigil) — a moth-hawk drawn to the old furnace's coals
+    "scorchwing":  _cave("cinderwind_kiln", [(34, 35, "rare")]),
+    "prismara":    _cave("cinderwind_kiln", [(35, 35, "very_rare")]),
 }
 for _slug, _rows_ in ASHFALL_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
