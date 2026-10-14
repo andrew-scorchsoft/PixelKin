@@ -135,10 +135,10 @@ GRANTS["mirelight_chapel"] = ["flag:mirelight_tobin_found"]                  # T
 # Point (the skiff + `deepdive`) only after Fenn lights her prow-lamp AT DAWNSTEAD,
 # post-dawn — so the launch is credited to Dawnstead (the Point itself is reachable
 # from the first hour, which would hand the deep out before Tidecall). The
-# fog-glass waits in Undertide II under Kelpcrown (credited to its surface mouth —
-# the cave lane may move it onto undertide_ii); Elder Creel opens the well-stair.
+# fog-glass waits in Undertide II, under Kelpcrown (the cave lane's map); Elder
+# Creel opens the well-stair.
 GRANTS["dawnstead"] = ["flag:q_isles_afloat", "deepdive"]
-GRANTS["farlamp_kelpcrown"] = ["flag:q_isles_fogglass"]
+GRANTS["undertide_ii"] = ["flag:q_isles_fogglass"]
 GRANTS["driftholm_elder"] = ["flag:q_isles_wellstair"]
 POSTGAME_FLAGS = {"flag:dawn"}
 

@@ -225,11 +225,10 @@ obj("farlamp_slip", "farlamp_slip", (SLIP_X[0], 27), 2, 3, solid=False, bob=Fals
 
 if __name__ == "__main__":
     mk.deep_water(m)
-    # the Shelfwater seam: the south edge rows out (x 1-28 <-> farlamp_shelfwater
-    # x 1-28; not the corners, which would land on the Shelfwater's side seams)
+    # the Shelfwater seam: the slip rows out (x 9-10 <-> farlamp_shelfwater x 9-10)
     # once Ione has put you afloat. Added AFTER deep_water so its
     # channel-to-warps rule doesn't shoal the open sea.
-    for x in range(1, W - 1):
+    for x in SLIP_X:   # the slip's last plank is the way out (the rest of the edge is deep sea)
         m["warps"].append({"id": f"to_shelf_{x}", "at": {"tx": x, "ty": H - 1},
                            "trigger": "step_on", "to_map": "farlamp_shelfwater",
                            "to": {"tx": x, "ty": 1}, "facing": "down", "transition": "fade",

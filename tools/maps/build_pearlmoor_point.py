@@ -279,10 +279,10 @@ if __name__ == "__main__":
     m["tilesets"].append(mk.register_tileset("farlamp_set", index=farlamp_kit.FARLAMP_INDEX))
     above_l = next(ly for ly in m["layers"] if ly["role"] == "above")["data"]
     above_l[13 * W + 13] = gid("blink_far", set="farlamp_set")
-    # the Farlamp Sound seam: every tile of the south edge rows out to the Sound
-    # (x 0-19 <-> farlamp_sound x 0-19), once Ione has put you afloat. Added AFTER
+    # the Farlamp Sound seam: the launch slip rows out to the Sound (x 6-7 <->
+    # farlamp_sound x 6-7), once Ione has put you afloat. Added AFTER
     # deep_water so its channel-to-warps rule doesn't shoal the open sea.
-    for x in range(W):
+    for x in SLIP_X:   # the slip's last plank is the way out (the rest of the edge is deep sea)
         m["warps"].append({"id": f"to_sound_{x}", "at": {"tx": x, "ty": H - 1},
                            "trigger": "step_on", "to_map": "farlamp_sound",
                            "to": {"tx": x, "ty": 1}, "facing": "down", "transition": "fade",

@@ -641,12 +641,15 @@ def build_kelpcrown() -> Sea:
 # =============================================================================
 #  the seams + the mainland side
 # =============================================================================
-# Lightkeeper's Point's south edge (row 13, x 0-19) <-> the Sound's north edge;
-# the Wick-Run Foot's south edge (row 29) <-> the Shelfwater's north edge. The
-# mainland builders own their side (build_pearlmoor_point.py / build_wickrun_foot.py
-# import these and add the AFLOAT-gated warps); every tile of both seams is water.
-POINT_SEAM = range(0, 20)
-FOOT_SEAM = range(1, 29)
+# Lightkeeper's Point's south edge <-> the Sound's north edge, and the Wick-Run
+# Foot's south edge <-> the Shelfwater's north edge — through the two launch
+# SLIPS only (their planks run down to the map edge): you put out from a slip and
+# come home to it. The rest of both seams is open deep water with no warp (the
+# mainland's harbour shallows). The mainland builders own their side
+# (build_pearlmoor_point.py / build_wickrun_foot.py: AFLOAT-gated warps on the
+# slip's last plank, with a "no boat" line).
+POINT_SEAM = (6, 7)       # the Point's launch slip (its planks run to the edge)
+FOOT_SEAM = (9, 10)       # the Wick-Run Foot's slip
 
 
 def mainland_seams(sound: Sea, shelf: Sea) -> None:
