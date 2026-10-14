@@ -872,18 +872,6 @@
       "hidden_when_flag": "flag:picked_gullcry_charm"
     },
     {
-      "id": "amb_glostern",
-      "at": {
-        "tx": 10,
-        "ty": 5
-      },
-      "facing": "down",
-      "sprite": "kin_29_overworld",
-      "movement": "wander",
-      "ambient": true,
-      "wander_radius": 1
-    },
-    {
       "id": "driftletter_2",
       "at": {
         "tx": 11,
@@ -894,6 +882,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_driftletter_2",
       "hidden_when_flag": "flag:driftletter_2"
+    },
+    {
+      "id": "amb_glostern",
+      "at": {
+        "tx": 10,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "kin_29_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [

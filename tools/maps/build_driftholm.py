@@ -51,7 +51,7 @@ INN = (2, 11)                   # 6x6, 2-wide door at cols 2-3
 CHANDLERY = (19, 9)             # 6x5, door col 3
 ELDER = (14, 20)                # 7x4, door col 3
 BOATHOUSE = (2, 5)              # 7x5, 2-wide door at cols 2-3
-KEEPHOUSE = (8, 19)             # 5x7, door col 2 (Edda Quill's schoolhouse-home; not enterable)
+KEEPHOUSE = (8, 19)             # 5x7, door col 2 (Maudie Brack's schoolhouse-home; not enterable)
 COTTAGE_A = (23, 15)            # 5x5, door col 2 (Marra's; latched)
 COTTAGE_B = (22, 21)            # 5x5, door col 2 (Hesk's; latched)
 
@@ -223,23 +223,23 @@ def build() -> Sea:
     N("marra_day", (3, 4), "fisher_woman", "script.letter_home_1", facing="down",
       movement="look_around", requires_flag=DAWN)
     N("tobin", (13, 10), "lamplighter", "script.letter_home_2", facing="left")
-    N("edda_night", (12, 26), "npc_woman", "script.letter_home_3", facing="up",
+    N("maudie_night", (12, 26), "npc_woman", "script.letter_home_3", facing="up",
       movement="look_around", hidden_when_flag=DAWN)
-    N("edda_day", (15, 16), "npc_woman", "script.letter_home_3", facing="down",
+    N("maudie_day", (15, 16), "npc_woman", "script.letter_home_3", facing="down",
       movement="look_around", requires_flag=DAWN)
     N("hesk", (25, 26), "fisher_man", "script.letter_home_4", facing="up",
       movement="look_around")
     # the island's children: indoors-quiet before the dawn, out on the quay after
-    N("child_night", (18, 13), "village_child", "npc.driftholm_child", facing="down",
+    N("child_night", (18, 13), "village_child", "script.driftholm_child", facing="down",
       hidden_when_flag=DAWN)
-    N("child_day", (21, 8), "village_child", "npc.driftholm_child_day", facing="down",
+    N("child_day", (21, 8), "village_child", "script.driftholm_child_day", facing="down",
       movement="wander", wander_radius=2, requires_flag=DAWN)
     N("kelper", (6, 18), "fen_folk", "npc.driftholm_kelper", facing="left",
       movement="look_around")
     N("cat", (9, 15), "cottage_cat", "npc.driftholm_cat", facing="down")
     s.owed += ["script.bram_fathom", "script.letter_home_1", "script.letter_home_2",
-               "script.letter_home_3", "script.letter_home_4", "npc.driftholm_child",
-               "npc.driftholm_child_day", "npc.driftholm_kelper", "npc.driftholm_cat"]
+               "script.letter_home_3", "script.letter_home_4", "script.driftholm_child",
+               "script.driftholm_child_day", "npc.driftholm_kelper", "npc.driftholm_cat"]
     s.kin("amb_hermiwick", (4, 7), 174, radius=1)
 
     # ---- the Fogwall seam: mirror the Fogwall's own south-edge warps --------------------

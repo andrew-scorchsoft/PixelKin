@@ -3058,18 +3058,6 @@
       "hidden_when_flag": "flag:has_tin_rower"
     },
     {
-      "id": "amb_brinelet",
-      "at": {
-        "tx": 12,
-        "ty": 5
-      },
-      "facing": "down",
-      "sprite": "kin_26_overworld",
-      "movement": "wander",
-      "ambient": true,
-      "wander_radius": 1
-    },
-    {
       "id": "driftletter_1",
       "at": {
         "tx": 13,
@@ -3080,6 +3068,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_driftletter_1",
       "hidden_when_flag": "flag:driftletter_1"
+    },
+    {
+      "id": "amb_brinelet",
+      "at": {
+        "tx": 12,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "kin_26_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [

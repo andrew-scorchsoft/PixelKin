@@ -10,7 +10,7 @@ other forge's full re-run ever touches it:
     assets/tilesets/farlamp/objects/<stem>.png   ->  packed as `farlamp_<stem>`
 
 The Driftholm BUILDINGS (inn, chandlery, elder's house, boathouse, two cottages)
-(+ the Gullwrack keeper's hut) are image-gen masters in the same folder (generated once with gpt-image-2.5's
+(+ the Gullwrack keeper's hut and Ione's half-planked `hull` on its trestles) are image-gen masters in the same folder (generated once with gpt-image-2.5's
 native alpha and snapped to a tile multiple) — this script never rewrites them:
 it only draws the stems listed in PIECES.
 
@@ -21,7 +21,6 @@ seen slightly from above, 1px ink outline, lit top-left, a hard contact shadow.
   skerry_light           3x3  the far lamp on its skerry (the blink is an animated
                               tile drawn by build_farlamp_set.py over its lamp-room)
   fogbank_a / fogbank_b  4x2 / 3x2  translucent fog banks (hidden after the isles' dawn)
-  hull                   3x2  Ione's lamp-boat, half-planked on trestles
   slip                   2x3  the launch slip's planked ramp (walk-on)
   kelp_rack              2x2  a kelp-drying frame hung with dark ribbons
   well_shut / well_open  2x2  Driftholm's well-stair: lid chained / lid off, steps down
@@ -285,38 +284,7 @@ def fogbank_b():
 # =============================================================================
 #  THE POINT + THE BOATYARD
 # =============================================================================
-def hull():
-    """3x2: the Farlamp lamp-boat on trestles, half re-planked — new pale
-    strakes over the old tarred ones, a bare prow-post waiting for its lamp."""
-    a = canvas(3, 2)
-    # trestles
-    for x in (8, 38):
-        rect(a, x, 22, x + 1, 30, "b"); rect(a, x + 1, 22, x + 1, 30, "B")
-        rect(a, x - 3, 30, x + 4, 30, "b")
-    # the hull in side profile (bow to the east)
-    for x in range(2, 46):
-        t = (x - 2) / 43
-        keel = 22 - int(3 * (1 - (2 * t - 1) ** 2))
-        top = 9 if x < 40 else 9 + (x - 40)
-        rect(a, x, top, x, keel, "k")
-        if x < 3 or x > 44:
-            continue
-        for y in range(top + 1, keel):
-            band = (y - top) // 3
-            new = x > 18 and band < 3
-            ch = ("N" if band == 0 else "n") if new else ("b" if band % 2 else "B")
-            a[y, x] = rgba(PAL[ch])
-    rect(a, 3, 10, 44, 10, "n")             # the gunwale
-    rect(a, 3, 9, 40, 9, "k")
-    # the prow-post + an empty lamp-hook
-    rect(a, 43, 2, 44, 10, "k"); px(a, 43, 3, "n")
-    rect(a, 41, 2, 44, 2, "k"); rect(a, 41, 3, 41, 5, "i")
-    inked(a, 39, 5, 43, 9, "u")
-    # a pot of tar + a plank leaning on the far trestle
-    inked(a, 18, 24, 23, 30, "i", hi="I")
-    rect(a, 19, 24, 22, 24, "K")
-    contact(a, 2, 46, 31)
-    return img(a)
+
 
 
 def slip():
@@ -496,7 +464,7 @@ def ruin_pillar():
 PIECES = {
     "buoy_lit": buoy_lit, "buoy_dark": buoy_dark, "skerry_light": skerry_light,
     "fogbank_a": fogbank_a, "fogbank_b": fogbank_b,
-    "hull": hull, "slip": slip, "kelp_rack": kelp_rack,
+    "slip": slip, "kelp_rack": kelp_rack,
     "well_shut": well_shut, "well_open": well_open,
     "waystone": waystone, "looking_glass": looking_glass,
     "ruin_wall": ruin_wall, "ruin_pillar": ruin_pillar,

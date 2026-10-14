@@ -439,7 +439,7 @@ export const QUESTS: QuestRegistry = [
     name: 'Letters Home',
     region: 'south',
     giver: 'the folk of Driftholm',
-    blurb: 'Driftholm threw its letters into the sea for eleven winters. Bring each driftletter back to the one who wrote it: Marra by the kelp-racks, Lorne at the lamp-stone, Edda the schoolteacher, Hesk the net-mender, and Elder Creel.',
+    blurb: 'Driftholm threw its letters into the sea for eleven winters. Bring each driftletter back to the one who wrote it: Marra by the kelp-racks, Lorne at the lamp-stone, Maudie the schoolteacher, Hesk the net-mender, and Elder Creel.',
     start_flag: 'flag:q_isles_driftholm',
     count_prefix: 'flag:isles_letter_home_',
     count_total: 5,

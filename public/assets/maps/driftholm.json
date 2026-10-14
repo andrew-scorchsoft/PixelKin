@@ -1173,7 +1173,7 @@
       "dialogue_ref": "script.letter_home_2"
     },
     {
-      "id": "edda_night",
+      "id": "maudie_night",
       "at": {
         "tx": 12,
         "ty": 26
@@ -1185,7 +1185,7 @@
       "hidden_when_flag": "flag:isles_dawn"
     },
     {
-      "id": "edda_day",
+      "id": "maudie_day",
       "at": {
         "tx": 15,
         "ty": 16
@@ -1216,7 +1216,7 @@
       "facing": "down",
       "sprite": "village_child",
       "movement": "static",
-      "dialogue_ref": "npc.driftholm_child",
+      "dialogue_ref": "script.driftholm_child",
       "hidden_when_flag": "flag:isles_dawn"
     },
     {
@@ -1228,7 +1228,7 @@
       "facing": "down",
       "sprite": "village_child",
       "movement": "wander",
-      "dialogue_ref": "npc.driftholm_child_day",
+      "dialogue_ref": "script.driftholm_child_day",
       "wander_radius": 2,
       "requires_flag": "flag:isles_dawn"
     },

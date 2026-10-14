@@ -585,7 +585,7 @@ def build_kelpcrown() -> Sea:
     tufts(s, s.tallgrass, [(7.5, 16.5, 3.0), (8.5, 21.6, 3.2), (9.5, 27, 3.0), (25, 12, 1.5)])
     # the Tidecall pools: freshwater-and-sea pools the tide fills (pond = water over grass)
     for (cx, cy, rx, ry) in ((20.5, 21.5, 2.6, 1.7), (19, 22.6, 1.8, 1.2), (22, 20.6, 1.4, 1.1),
-                             (12.2, 14.2, 1.5, 1.1), (11.2, 15, 1.1, 0.9)):
+                             (11.6, 14.6, 1.9, 1.3), (10.4, 15.6, 1.4, 1.0), (12.8, 13.6, 1.1, 0.9)):
         mk.blob(s.pond, W, H, cx, cy, rx, ry)
     # the lane: east landing -> the ruins -> the ridge mouth; a branch south
     # the pool's islet (two tiles of turf in the big pool — swim out for the cache)

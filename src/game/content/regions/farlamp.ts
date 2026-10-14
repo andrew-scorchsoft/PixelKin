@@ -187,7 +187,7 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   ]),
   'script.pickup_driftletter_3': driftletter(3, 'in the wrack at the tideline', [
     '"I am the schoolteacher at Driftholm. These are my pupils, so that somebody outside the fog knows their names:',
-    'Wynn Lowe, Petra and Cass Dunnet, Bree Sallow, Ottar Creel, and the Fathom twins, who will not sit still. They are well. They are learning their letters by lamplight. Edda Brack."',
+    'Wynn Lowe, Petra and Cass Dunnet, Bree Sallow, Ottar Creel, and the Fathom twins, who will not sit still. They are well. They are learning their letters by lamplight. Maudie Brack."',
   ]),
   'script.pickup_driftletter_4': driftletter(4, 'among the reeds at the water\'s edge', [
     '"Kelp bread, the Driftholm way, in case we\'re forgot: a measure of dried kelp, ground fine, two of barley, salt from the pans, warm water, and patience.',
@@ -332,7 +332,7 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   ], [
     { text: 'Your Old Light on the Point, the one we could see? Tell whoever keeps it that a lamp-boy said thank you.' },
   ]),
-  'script.letter_home_3': letterHome(3, 'EDDA', [
+  'script.letter_home_3': letterHome(3, 'MAUDIE', [
     'My register. You found my register! Wynn, Petra, Cass, Bree, Ottar, the twins... someone out there knew their names all this time.',
     'They\'re great lumps now, the lot of them. Please take this. A teacher\'s salary is mostly coal.',
   ], [{ op: 'giveItem', item: 'hearth_coal', count: 1 }], 'You got a HEARTH COAL!', [
@@ -357,6 +357,19 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'NAN CREEL', text: 'My own hand. "Send us a flame." I wrote that on the worst night of the first winter, and threw it as far as these arms would throw.' },
     { op: 'say', speaker: 'NAN CREEL', text: 'And here you are, with the flame. Well. Some letters take their time.' },
     { op: 'setFlag', flag: home(5) },
+  ],
+
+  // ---- the bell-ringers' child (Lane C2's "Tide-bell Tuning": the skipping rhyme
+  // is the puzzle's hint; once the Bell Galleries are tuned she thanks you — the
+  // Lumen Drop is in the ringers' tin down there, so no second prize up here) ----
+  'script.driftholm_child': [
+    { op: 'say', speaker: 'OTTAR', unless_flag: 'flag:q_isles_bells_tuned', text: 'Mam says I\'m not to go past the quay lamps. She says the fog has teeth. Has it got teeth?' },
+    { op: 'say', speaker: 'OTTAR', unless_flag: 'flag:q_isles_bells_tuned', text: 'We skip to the old bells. "Deep calls, shoal answers, harbour brings them home!" Nobody\'s heard them ring in AGES.' },
+    { op: 'say', speaker: 'OTTAR', if_flag: 'flag:q_isles_bells_tuned', text: 'It was YOU! We heard the bells come up the well, deep and shoal and harbour, just like the rhyme. Gran cried. Thank you!' },
+  ],
+  'script.driftholm_child_day': [
+    { op: 'say', speaker: 'OTTAR', text: 'I can see ALL the way to the mainland! There\'s a lighthouse! And it\'s got a big brass face on it!' },
+    { op: 'say', speaker: 'OTTAR', if_flag: 'flag:q_isles_bells_tuned', text: 'And the bells! Did you hear the bells this morning? Deep, shoal, harbour!' },
   ],
 
   // ---- Driftholm's counter, inn and keeper -----------------------------------
@@ -513,7 +526,7 @@ export const FARLAMP_DIALOGUE: DialogueRegistry = {
     { text: 'A Driftholm lamp-stone, lit and humming. It knows the other waystones of Vesperholm. TRAVEL from the pause menu takes you home from here.' },
   ],
   'sign.driftholm_schoolhouse': [
-    { speaker: 'EDDA', text: '(Through the door:) School\'s out! Find me in the square, or at the bottom of the lane.' },
+    { speaker: 'MAUDIE', text: '(Through the door:) School\'s out! Find me in the square, or at the bottom of the lane.' },
   ],
   'sign.driftholm_cottage_marra': [
     { text: 'The door\'s on the latch. Kelp hangs drying from the lintel, and the house smells of salt and smoke.' },
@@ -541,12 +554,6 @@ export const FARLAMP_DIALOGUE: DialogueRegistry = {
   ],
   'npc.shelf_kelper_after': [
     { speaker: 'ROWAN', text: 'The kelp on these reefs is the best in the isles. I come out at low water and nobody bothers me. Except you.' },
-  ],
-  'npc.driftholm_child': [
-    { text: 'Mam says I\'m not to go past the quay lamps. Mam says the fog has teeth. Has it got teeth?' },
-  ],
-  'npc.driftholm_child_day': [
-    { text: 'I can see ALL the way to the mainland! There\'s a lighthouse! And it\'s got a big brass face on it!' },
   ],
   'npc.driftholm_kelper': [
     { text: 'Eleven winters of kelp by lamplight. You get so you can tell the good fronds by feel.' },

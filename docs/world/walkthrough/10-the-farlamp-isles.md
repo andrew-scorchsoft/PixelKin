@@ -87,12 +87,12 @@ can lock out a save that's already past the dawn.
 
 | id | name | kind | at (x,y) | size | links / role | levels |
 |---|---|---|---|---|---|---|
-| `farlamp_sound` | Farlamp Sound | route (sea) | (-21,-69) | 27×33 | Top edge = Lightkeeper's Point's south beach (the slip). Deep sea with islets, two boat-trainers, sea encounters. West → `farlamp_shelfwater`; south → `farlamp_gullwrack`. | 58–61 |
-| `farlamp_shelfwater` | The Shelfwater | route (sea) | (-51,-66) | 30×30 | Top edge = Wick-Run Foot's beach (a second launch). Reef islets, mixed shallow and deep water, a sunken-hull cache. West → Fogwall; south → Kelpcrown. | 59–62 |
-| `farlamp_fogwall` | The Fogwall | route (sea) | (-83,-66) | 32×36 | Heavy mist. Without the fog-glass a step_on band turns you round ("you lose the buoys…"). With it, a lantern-buoy lane (MapObjects `requires_flag`) leads south to Driftholm. The blinking lamp is here. | 60–63 |
-| `farlamp_gullwrack` | Gullwrack Isle | route | (-21,-36) | 27×34 | Gull-cliffs, ledges and tall sea-grass. **Undertide I** mouth. A keeper's hut (rest point). | 60–62 |
-| `farlamp_kelpcrown` | Kelpcrown Isle | route | (-51,-36) | 30×34 | Ruins of the old keepers' quarter, kelp-terraces. **Undertide II** mouth; Tidecall pools. | 60–63 |
-| `driftholm` | Driftholm | town | (-83,-30) | 32×30 | Island town: inn (rest), chandlery shop, elder's house, the boathouse, the well-stair (→ Undertide III, gated `q_isles_wellstair`), a TRAVEL waystone (`content/waystones.ts`) so the way home is one menu away. | — |
+| `farlamp_sound` **(BUILT, C1)** | Farlamp Sound | route (sea) | (-21,-69) | 27×33 | Top edge = Lightkeeper's Point's south beach (the slip). Deep sea with islets, two boat-trainers, sea encounters. West → `farlamp_shelfwater`; south → `farlamp_gullwrack`. | 58–61 |
+| `farlamp_shelfwater` **(BUILT, C1)** | The Shelfwater | route (sea) | (-51,-66) | 30×30 | Top edge = Wick-Run Foot's beach (a second launch). Reef islets, mixed shallow and deep water, a sunken-hull cache. West → Fogwall; south → Kelpcrown. | 59–62 |
+| `farlamp_fogwall` **(BUILT, C1)** | The Fogwall | route (sea) | (-83,-66) | 32×36 | Heavy mist. Without the fog-glass a step_on band turns you round ("you lose the buoys…"). With it, a lantern-buoy lane (MapObjects `requires_flag`) leads south to Driftholm. The blinking lamp is here. | 60–63 |
+| `farlamp_gullwrack` **(BUILT, C1)** | Gullwrack Isle | route | (-21,-36) | 27×34 | Gull-cliffs, ledges and tall sea-grass. **Undertide I** mouth. A keeper's hut (rest point). | 60–62 |
+| `farlamp_kelpcrown` **(BUILT, C1)** | Kelpcrown Isle | route | (-51,-36) | 30×34 | Ruins of the old keepers' quarter, kelp-terraces. **Undertide II** mouth; Tidecall pools. | 60–63 |
+| `driftholm` **(BUILT, C1)** | Driftholm | town | (-83,-30) | 32×30 | Island town: inn (rest), chandlery shop, elder's house, the boathouse, the well-stair (→ Undertide III, gated `q_isles_wellstair`), a TRAVEL waystone (`content/waystones.ts`) so the way home is one menu away. | — |
 | `undertide_i` **(BUILT, C2)** | The Undertide | cave | portal | 30×28 | Under Gullwrack. Shallow channels + **tide-races** (`flows` rail on water, flag-switched by tide-bells). Ladder down to II. | 61–63 |
 | `undertide_ii` **(BUILT, C2)** | The Undertide — Kelp Vaults | cave | portal | 30×30 | Joins Gullwrack to Kelpcrown underground. The **fog-glass** at its heart. | 61–64 |
 | `undertide_iii` **(BUILT, C2)** | The Undertide — Bell Galleries | cave | portal | 30×30 | From Driftholm's well-stair. The big tide-bell maze: three bells, every race ends on a ledge in every bell state (the Old Seams invariant). | 62–65 |
@@ -149,6 +149,120 @@ Three Hours' legendary battle cue.
 **Art:** skiff walk-sheet (`player_indi_skiff`, the 4×4 layout; procedural fallback), Driftholm
 buildings + boathouse + well-stair, the drowned lighthouse, lantern-buoys, bottle pickup,
 tide-bell, fog-glass, battle backdrops (sea, isle, Undertide, the Drowned Lamp).
+
+### 4b. BUILT (lane C1, 2026-10): the sea, the two isles, Driftholm, the mainland hooks
+
+**Status: BUILT.** Six outdoor maps at the §4 positions (`world_geometry --check` closes), five
+interiors, the mainland hooks, and the content in `content/regions/farlamp.ts`.
+
+**Builders.**
+- `tools/maps/build_farlamp_isles.py` builds all five sea/isle maps on `tools/maps/farlamp_kit.py`.
+  The kit paints its own deep water: every water cell more than 1.5 tiles (Euclidean) from
+  dry ground is deep. `mapkit.deep_water` would cut shallow channels to every islet, which on
+  an open sea stripes the deep. The kit's `link()` stitches each shared edge tile for tile,
+  landing one tile inboard.
+- `build_driftholm.py` builds the town. It also writes the Fogwall seam on both sides,
+  mirrored from the Fogwall's shipped south-edge warps.
+- `build_farlamp_interiors.py` builds the five rooms on the roomkit.
+- Drawn kit: `tools/maps/farlampforge.py` → `farlamp_*` objects (lantern-buoys dark/lit, the
+  skerry light, fog banks, the slip, kelp racks, the well-stair shut/open, the lamp-stone,
+  the looking-glass, ruin wall/pillar).
+- Image-gen masters in the same folder: the inn, chandlery, elder's house, boathouse, two
+  cottages, the keeper's hut and Ione's hull.
+- `build_farlamp_set.py` draws a tiny animated accent set (`farlamp_set`). Its `blink_lamp`
+  tile sits in the `above` layer over the skerry light, and `blink_far` on the Point's horizon.
+  This is how the far lamp blinks.
+
+**The crossing.** You put out through two **launch slips**, planked ramps whose last plank is
+the map edge:
+- Lightkeeper's Point cols 6–7 ↔ `farlamp_sound` (6–7, 0).
+- the Wick-Run Foot cols 9–10 ↔ `farlamp_shelfwater` (9–10, 0).
+
+Each is gated `flag:q_isles_afloat`, with a "no boat" line until then (`sign.point_slip_end`
+/ `sign.foot_slip_end`). The rest of both seams is open deep water with no warp. The sea maps
+link edge to edge:
+- Sound W ↔ Shelfwater E
+- Shelfwater W ↔ Fogwall E
+- Sound S ↔ Gullwrack N
+- Shelfwater S ↔ Kelpcrown N
+- Gullwrack W ↔ Kelpcrown E
+- Fogwall S ↔ Driftholm N (x 4–27)
+
+Corner tiles are skipped, so no landing sits on a third map's seam.
+
+**The maps.**
+- **Sound** (58–61): Gannet Stack (cache), the wreck bar, Cormorant Holm with **Calder** the
+  oarsman (route trainer, ace 61), the reef under an old dark buoy line, the cliff-foot cove
+  (Hearth Coal), Tern Islet (the sign), the anchor rock. Ambient Tidwraith, Hermiwick and
+  Fathomote.
+- **Shelfwater** (59–62): two wide SHALLOW reef flats (Tidecall), the sunken lamp-tender
+  *Heron* (Hearth Coal + 800w), Skerry of the Oar with **Rowan** the kelp-farmer (ace 62),
+  the kelp holm.
+- **Fogwall** (60–63): heavy mist (`MapAmbience` + 12 fog-bank objects, all
+  `hidden_when_flag: isles_dawn`).
+  - The **turn-round band** covers every water tile of row 13 (`script.fogwall_turned`:
+    "...if only you had a glass to read the buoys by…", then `travel` back to (29,7)), hidden
+    once `flag:q_isles_fogglass`.
+  - The **far lamp** on its skerry (16,17) blinks.
+  - Eight **lantern-buoys** (dark → lit with the glass) mark the lane south to Driftholm.
+- **Gullwrack Isle** (60–62):
+  - The gull-cliffs over the **Undertide I mouth (13,9)**, as contracted.
+  - The **High Meadow**, a cliff-rimmed sea-grass shelf: you climb in by the north gap and hop
+    its south ledge down to the bothy fields (the loop).
+  - **The keeper's bothy** (`gullwrack_hut`, a sleeping rest point, Sorrel).
+  - Dunes with dune-grass, and the east landing under the mainland's sea-cliffs.
+- **Kelpcrown Isle** (60–63): the keepers' ruins (the **2,000w purse**), two kelp terraces
+  with ledges (a Star-chart: Tempest), the **Tidecall pools** with an islet cache, and the
+  **Undertide II mouth (10,9)**, as contracted. The west edge is reef cliff, because
+  Driftholm's coast lies beyond.
+
+Every 15×10 screen of every sea map carries an islet, a wreck, a trainer, a buoy, a cache or
+an ambient kin (checked). `audit_visual` shows 0 warnings.
+
+**Driftholm (32×30).**
+- The harbour quay with boats drawn up dry, and the boathouse spit with its slip.
+- The square with the **well-stair** (16,12). It's chained (`script.creel_well_locked`) until
+  Nan Creel's key; then `farlamp_well_open` and the stair steps appear.
+- The **lamp-stone** (TRAVEL waystone `driftholm`, landing (14,10), `chart:driftholm`).
+- The inn, chandlery, elder's house, the schoolteacher's tall house, two cottages, kelp
+  racks, a fish stall and a lantern string.
+- The **arrival band** across the quay (`script.driftholm_arrival`, I5). Nan Creel also sets
+  the flag, so an arrival by the spit can't skip it.
+- Day-forms after `flag:isles_dawn`: the harbour fog lifts, Marra, Maudie and the child move
+  out, the inn fisher changes his line, the ambience clears, and `music_when` →
+  `driftholm-dawn`.
+
+**People and quests.**
+- **Ione Fathom** (the Point) runs the chain in a nested if/else ladder: seed → letters
+  needed (she names all five coasts) → I1 → wait → I3. The skiff, `giveAbility deepdive` and
+  `flag:q_isles_afloat` come at I3.
+- **Fenn** (Dawnstead): his four staged placements now run `script.fenn_isles_*` wrappers.
+  While `q_isles` is held and the prow-lamp is unlit, he offers to light it (I2). He never
+  names its first keeper.
+- **Nan Creel**: the well-stair (I5), her own letter, and the Letters Home tally. With all
+  five home she gives 3 Deep Charms and a Lumen Drop.
+- **Letters Home**: Marra, Lorne, Maudie and Hesk read their letters back, each with a small
+  payoff.
+- **Bram Fathom**: waits until the isles' dawn, then fights. He's `vigilant` class, ace 70
+  (5,600w), with a re-runnable rematch at ace 72 (5,760w).
+- **Ottar** (Nan's grandchild): skips to the bell rhyme (C2's hint) and thanks you once the
+  bells are tuned.
+- Journal entries: **The Farlamp** (counts driftletters n/5 and names the shores) and
+  **Letters Home** (n/5). LORE adds four entries. The Andrew/NEXT chain gains six post-dawn
+  isles stages.
+
+**Driftletters** (`tools/maps/hand_placed_data.py`, item-cache glints on foot ground):
+Dimglass Coast I (13,14), Gullcry Rock (11,7), Wick-Run Foot (23,24), the Glassmere
+(12,19), the Drownlight Beacon (4,11).
+
+**Economy.**
+- `farlamp_skiff` (key) and `deep_charm` (×3.0 on the deep, 900w) are in
+  `progression.mjs PRICES` and `10-economy.md`.
+- The two route trainers and Bram (+ rematch) are in `BUILT_PAYOUTS`.
+- The isles' beds are in `TREND_SKIP_AREAS`. Tables are mirrored in `build_species.py`
+  `FARLAMP_TABLES` and `CURATED_AREAS`.
+- The audits model the launch through `audit_region.GRANTS["dawnstead"]`, because the
+  prow-lamp is lit there, post-dawn.
 
 ### 5. BUILT (lane C2, 2026-10): the Undertide + the Drowned Lamp
 

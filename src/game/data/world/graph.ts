@@ -467,8 +467,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunvault_climb_ii', to_map: 'sunvault_climb_iii', via_warp: 'to_climb_iii', bidirectional: true },
     { from_map: 'sunvault_climb_iii', to_map: 'sunvault_climb_iv', via_warp: 'to_climb_iv', bidirectional: true },
     { from_map: 'sunvault_climb_iv', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
-    // ---- THE FARLAMP ISLES (Lane C1): the launches, the sea seams, Driftholm's doors,
-    // and the two surface cave mouths (the Undertide's own edges are Lane C2's)
+    // ---- THE FARLAMP ISLES (Lane C1): the launches, the sea seams, Driftholm's doors
+    // (the three cave mouths' edges are declared bidirectionally by Lane C2)
     { from_map: 'pearlmoor_point', to_map: 'farlamp_sound', via_warp: 'to_sound_6', requires_flag: 'flag:q_isles_afloat', bidirectional: true },
     { from_map: 'wickrun_foot', to_map: 'farlamp_shelfwater', via_warp: 'to_shelf_9', requires_flag: 'flag:q_isles_afloat', bidirectional: true },
     { from_map: 'farlamp_sound', to_map: 'farlamp_shelfwater', via_warp: 'to_shelf_0', requires_ability: 'deepdive', bidirectional: true },
@@ -482,9 +482,6 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'driftholm', to_map: 'driftholm_elder', via_warp: 'enter_elder', bidirectional: true },
     { from_map: 'driftholm', to_map: 'driftholm_boathouse', via_warp: 'enter_boathouse_2', bidirectional: true },
     { from_map: 'farlamp_gullwrack', to_map: 'gullwrack_hut', via_warp: 'to_hut', bidirectional: true },
-    { from_map: 'farlamp_gullwrack', to_map: 'undertide_i', via_warp: 'to_undertide', bidirectional: true },
-    { from_map: 'farlamp_kelpcrown', to_map: 'undertide_ii', via_warp: 'to_undertide', bidirectional: true },
-    { from_map: 'driftholm', to_map: 'undertide_iii', via_warp: 'to_wellstair', requires_flag: 'flag:q_isles_wellstair', bidirectional: true },
 
     // Lane A — the Ashfall Shelf (walkthrough/10 Part II)
     { from_map: 'cinderwind_scarp', to_map: 'cinderwind_ashfall', via_warp: 'to_ashfall', bidirectional: true },
