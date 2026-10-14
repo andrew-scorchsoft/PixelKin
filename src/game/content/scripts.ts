@@ -5339,6 +5339,56 @@ export const SCRIPTS: ScriptRegistry = {
   //   F  on the last one                           (q_south_wander → _done)
   //   G  found them all                            (q_south_wander_done)
   // ---------------------------------------------------------------------------
+  // Leaving Pearlmoor for the fen with the Tide Gleam but no egg (owner, 2026-10):
+  // Andrew runs over ONCE and spells out exactly where it is from where you stand —
+  // gym first, then the harbour; or straight to the harbour; or back to the lamp.
+  // A step_on tile in front of the fen exit (the quay's one-tile choke, (26,12);
+  // tools/maps/hand_placed_data.py). Never says what the egg is.
+  'script.egg_nudge_fen': [
+    { op: 'run', ref: 'script.egg_nudge_body', unless_flag: 'flag:chickenpig_caught' },
+    { op: 'setFlag', flag: 'flag:egg_nudge_seen' },
+  ],
+  'script.egg_nudge_body': [
+    { op: 'emote', actor: 'andrew_road', emote: 'alert' },
+    { op: 'say', speaker: 'ANDREW', text: '{name}! Hang on! Wait up!' },
+    // one straight leg per move (the cutscene walk is greedy x-then-y; route
+    // computed on the real collision model from his fence at (10,17))
+    { op: 'move', actor: 'andrew_road', to: { tx: 21, ty: 17 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 21, ty: 16 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 22, ty: 16 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 22, ty: 13 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 23, ty: 13 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 23, ty: 12 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 25, ty: 12 }, speed: 2 },
+    { op: 'face', actor: 'andrew_road', facing: 'right' },
+    { op: 'face', actor: 'player', facing: 'left' },
+    { op: 'say', speaker: 'ANDREW', text: 'Are you sure you want to head out this way? You\'ve not found the easter egg yet, and it\'s back the other way. Right here in Pearlmoor.' },
+    {
+      op: 'say', unless_flag: 'flag:q_south_booji', speaker: 'ANDREW',
+      text: 'Here\'s how. First, the Lifting House at the very top of the quay, the gym. Ask the lifters about the old man they\'re always on about. Ask ALL of them.',
+    },
+    {
+      op: 'say', unless_flag: 'flag:q_south_booji', speaker: 'ANDREW',
+      text: 'Then down to the harbour: through the moor-gate at the south end of the quay, out along the breakwater, past the bell, right to where the boards give up.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_south_booji', unless_flag: 'flag:q_south_booji_met', speaker: 'ANDREW',
+      text: 'You\'ve had the lifters\' stories already, so go straight down to the harbour. Through the moor-gate at the south end of the quay, along the breakwater, past the bell, right out where the boards give up. He\'ll be there.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_south_booji_met', speaker: 'ANDREW',
+      text: 'You\'ve met him, so you\'re close. Go back down the breakwater to his dark lamp. Something\'s asleep at the foot of it. Ask him to wake it.',
+    },
+    { op: 'say', speaker: 'ANDREW', text: 'The fen\'ll keep. It\'s been wet for years. Or go on, and ask me about THE EASTER EGG on any fence when you\'re ready.' },
+    { op: 'move', actor: 'andrew_road', to: { tx: 23, ty: 12 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 23, ty: 13 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 22, ty: 13 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 22, ty: 16 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 21, ty: 16 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 21, ty: 17 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 10, ty: 17 }, speed: 2 },
+    { op: 'face', actor: 'andrew_road', facing: 'down' },
+  ],
   'script.andrew_egg': [
     // A
     {

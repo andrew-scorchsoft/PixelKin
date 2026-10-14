@@ -2882,6 +2882,18 @@
       },
       "activation": "interact",
       "ref": "sign.pearlmoor_point_way"
+    },
+    {
+      "id": "egg_nudge_fen",
+      "kind": "cutscene",
+      "at": {
+        "tx": 26,
+        "ty": 12
+      },
+      "activation": "step_on",
+      "ref": "script.egg_nudge_fen",
+      "requires_flag": "gleam:tide",
+      "hidden_when_flag": "flag:egg_nudge_seen"
     }
   ],
   "encounters": [

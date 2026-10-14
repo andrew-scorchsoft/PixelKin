@@ -582,3 +582,11 @@ for _mid, (_hall, _gleam, _x, _y) in _SPAR_POSTS.items():
         {"id": "hall_sparrer", "at": {"tx": _x, "ty": _y}, "facing": "right" if _x < 8 else "left",
          "sprite": "npc_man" if _hall in ("pearlmoor", "cinderhead", "sunken_solarium") else "npc_woman",
          "movement": "static", "requires_flag": _gleam, "dialogue_ref": f"script.spar_{_hall}"})
+
+# Andrew's egg nudge (2026-10, owner): leaving Pearlmoor for the fen with the Tide
+# Gleam but the egg unfound, Andrew runs over once and spells out the next step
+# (script.egg_nudge_fen). (26,12) is the quay's one-tile choke in front of the
+# fen exit, so it can't be walked round.
+PLACEMENTS["pearlmoor_quay"].setdefault("triggers", []).append(
+    {"id": "egg_nudge_fen", "kind": "cutscene", "at": {"tx": 26, "ty": 12}, "activation": "step_on",
+     "ref": "script.egg_nudge_fen", "requires_flag": "gleam:tide", "hidden_when_flag": "flag:egg_nudge_seen"})
