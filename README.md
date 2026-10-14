@@ -63,7 +63,9 @@ kit (chutes, ice slides, rails, ladders, bridges you pass under, bike ramps). Ba
 **Lowtinder** — old Tinderwick, drowned under the bay — opens to Tidecall mid-game; and after
 the dawn the **Farlamp Skiff** rows you out to the **Farlamp Isles**, an archipelago still lost
 in its own fog, with a sea-cave maze of bell-switched tide-races and a drowned lighthouse to
-relight. Along the way: eight earned Gleams (never
+relight. Late in the journey, the north beyond the Coldfog is the **Hollowing's Country**:
+Stillwater, their own village, the Drownlight lighthouse they shuttered first, the Mourning
+Fields and the Penumbra Underways, their last watch. Along the way: eight earned Gleams (never
 handed over flat), six traversal-gating **Lantern Gifts**, a working **wick
 economy** (shops, Star-charts, trainer payouts — tuned end-to-end by a journey
 model), seven battle statuses, Kindling and bond, the Hearth for kin storage,

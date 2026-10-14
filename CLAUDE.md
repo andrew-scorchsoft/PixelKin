@@ -208,7 +208,11 @@ go digging on every task.
   and the post-dawn **Farlamp Isles** (rowed in the **Farlamp Skiff** — a KEY ITEM, not a 7th
   Gift: Ione at Lightkeeper's Point, 3 of 5 driftletters, Fenn lights the prow-lamp; Driftholm,
   the Undertide's bell-switched tide-races, the Drowned Lamp relit → `flag:isles_dawn`, Farlume).
-  Scored against `docs/reviews/expansion-panel.md` (bar 85).
+  Scored against `docs/reviews/expansion-panel.md` (bar 85). **The Hollowing's Country** (2026-10,
+  `walkthrough/11`, optional + late, off Coldfog I): **Stillwater** (the Hollowing's village, 3 quests),
+  the **Drownlight** (3 floors of shutter-crank glare puzzles; Maudry Kell the Shutterkeeper; relit
+  after the dawn → the reusable Shutter Charm), the **Mourning Fields** (the north loop to the Rimeway)
+  and the **Penumbra Underways** (hub + Starreach; Old Clemency's last watch; never reaches the Spire).
 - **The journey is canon, written before the game.** `docs/world/walkthrough/` is the
   start-to-finish **user-journey blueprint** — golden thread, five interlocking arcs (Wren,
   the Hollowing/Còr, Fenn, the celestial calendar, festivals), the level curve, the

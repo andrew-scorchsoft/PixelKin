@@ -2,6 +2,17 @@
   "_note": "The player-facing changelog: the in-game \"the world has changed\" notice (content/whatsnew.ts) AND the website changelog page (web/site.mjs) both read this. Newest first. NO SPOILERS for the hidden real-people content - see whatsnew.ts.",
   "entries": [
     {
+      "version": "1.32",
+      "date": "2026-10-14",
+      "notes": [
+        "North of the Coldfog Marches lies Stillwater, the village where the Hollowing live: shuttered lamps, sleeping kin and kind, tired people. Three of them have something to ask of you.",
+        "The Drownlight, the north coast's dark lighthouse, can be climbed at last. Swing the shutter-cranks to turn its glare aside, hear its keeper out, and after the dawn, light it again.",
+        "The Mourning Fields join Coldfog, Stillwater and the Rimeway into one loop, with a field shrine, sleeping kin under wool quilts and a moth that comes to no other field.",
+        "Once all eight Gleams are lit, look below the Penumbra Ring: the Underways hold the Hollowing's last watch, a fire to rest at, and a view up the Spire's shaft.",
+        "Three new kin keep the dark gently: Dousecap, who kindles into Shutterwick, and Lullwing. pixelk.in now has a Wayfarer's Guide, an old-style walkthrough for when you're stuck."
+      ]
+    },
+    {
       "version": "1.31",
       "date": "2026-10-14",
       "notes": [
