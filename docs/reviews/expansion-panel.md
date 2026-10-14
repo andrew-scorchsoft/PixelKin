@@ -214,12 +214,36 @@ CI gates pass. **No area cleared 85.**
 | Economy (own 10-pt rubric) | 7.5/10 | A four-hall sparring rotation farmed forever; the repeat silver run lost money pre-ribbon | **Fixed:** one shared sparring rest; the silver purse waits for free rentals |
 
 
+### Independent review (2026-10-14, round 2)
+
+A fresh reviewer verified every round-1 finding against what renders, not what the lanes
+claimed.
+
+| Area | R1 | R2 | Verdict | Still open → final pass |
+|---|--:|--:|---|---|
+| Ashfall Shelf + Kiln Gully | 74.5 | 81.5 | under | kiln "oh!" beat (the furnace wakes when the pane is taken), a ≥3-wide crest mass in place of the trench strip, broken-up wall-top |
+| Farlamp Isles surface | 75.5 | 85.25 | ✅ | lore holes (the salvager/fishers marooned on fog-free skerries), quay boats, a Gullwrack slab, island-specific interiors |
+| Undertide + Drowned Lamp | 82 | 87.5 | ✅ | (some pools still pill-shaped; race-tile edges hard; left as is) |
+| Lowtinder & Tinderwick Bay | 81.5 | 85.75 | ✅ | tower weed rectangle, straight shelf edge, B1 moss/ore-cart, a sparse B2, dry streets |
+| Economy | 7.5 | 8.5/10 | ✅ | see the decision below |
+
+**Economy decision: post-dawn rematches stay uncooled.** The reviewer noted that Bram (5,760w), Gran
+Tallow (3,960w) and Ondine (1,072w) re-run with no rest, outpacing the sparrers after the dawn. That
+matches every existing post-game rematch (Wren, the Vigilants, Fenn): post-dawn wicks are plentiful
+by design, the sinks that matter (charts, balms) are already bought, and the shared sparring rest
+exists to protect the MID-game, where a struggling player needs income without a farm. Kept
+outside every solvency leg, as before.
+
 ## Score history
 
 The newest score is first.
 
 | Date | Plan | Stage | Total | Notes |
 |---|---|---|--:|---|
+| 2026-10-14 | Undertide | built, independent r2 | 87.5 | per-floor props, depth creatures |
+| 2026-10-14 | Lowtinder & Bay | built, independent r2 | 85.75 | the bay channel, the drowned look |
+| 2026-10-14 | Farlamp Isles surface | built, independent r2 | 85.25 | sea shapes, fog fixed, distinct isles |
+| 2026-10-14 | Ashfall Shelf | built, independent r2 | 81.5 | slabs gone; the kiln lacks an "oh!" |
 | 2026-10-14 | Lowtinder & Bay | built, independent r1 | 81.5 | the bay a corner hop; B1 thin |
 | 2026-10-14 | Undertide | built, independent r1 | 82 | props repeat per floor |
 | 2026-10-14 | Farlamp Isles surface | built, independent r1 | 75.5 | thin sea; fog-bank bug |
