@@ -115,15 +115,15 @@
       "area": "farlamp_sound",
       "terrain": "water",
       "rarity": "rare",
-      "min": 58,
-      "max": 61
+      "min": 62,
+      "max": 65
     },
     {
       "area": "farlamp_fogwall",
       "terrain": "water",
       "rarity": "rare",
-      "min": 60,
-      "max": 62
+      "min": 64,
+      "max": 66
     },
     {
       "area": "tinderwick_bay",

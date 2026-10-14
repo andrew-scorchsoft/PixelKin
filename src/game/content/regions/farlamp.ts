@@ -146,7 +146,7 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   'script.point_looking_glass': [
     { op: 'say', text: 'A brass looking-glass on a tripod, aimed south across the water. You put your eye to it.' },
     { op: 'narrate', unless_flag: IDAWN, text: 'Grey fog, a wall of it, lying on the sea. Then, deep inside it, a pinprick of light. It glows. It goes out. It glows again.' },
-    { op: 'narrate', if_flag: IDAWN, text: 'Open sea, green islands, a little town by a harbour. And on its skerry, the Farlamp, burning steady in the daylight.' },
+    { op: 'narrate', if_flag: IDAWN, text: 'Open sea, green islands, a little town by a harbour. Out on its black rock the little watch-light still blinks, and under the water beside it there\'s a great gold glow: the Farlamp, burning where it drowned.' },
     { op: 'setFlag', flag: RUMOUR },
   ],
 
@@ -220,9 +220,33 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'ROWAN', text: 'Good. You\'ll want to be good where you\'re going. The fog west eats boats. The keepers used to read the buoys through some sort of glass.' },
     { op: 'setFlag', flag: 'flag:shelf_kelper_beaten' },
   ],
+  // pass 2: the Shelfwater's SE flat and the Fogwall's wreck bar
+  'script.shelf_salvager': [
+    { op: 'say', speaker: 'DUNSTAN', text: 'Mind the ribs, they\'re sharp. That\'s the GANNET, a Driftholm cutter. She came apart on this hook the night the deep came up.' },
+    { op: 'say', speaker: 'DUNSTAN', text: 'Eleven winters I\'ve been taking her home a plank at a time. Half the doors in Driftholm are her. Now, a salvager tests what he finds. Let\'s see yours.' },
+    { op: 'battle', trainer: 'shelf_salvager' },
+    { op: 'say', speaker: 'DUNSTAN', text: 'Sound timber, that lot. Row the channel between the two long bars if you\'re heading for the Foot. The old tenders buoyed it so they wouldn\'t lose their keels.' },
+    { op: 'setFlag', flag: 'flag:shelf_salvager_beaten' },
+  ],
+  'script.fog_pilot': [
+    { op: 'say', speaker: 'WILLA', text: 'The lamp-boat! I came out in your wake. A lit boat leaves a lit wake, did you know? The deep let my little coracle through behind you, all the way to this bar.' },
+    { op: 'say', speaker: 'WILLA', text: 'This is the GREYLAG, my dad\'s old cutter. She ran aground in the fog the night the deep came up, and he waded home across the shallows before they drowned. He\'s never stopped talking about her.' },
+    { op: 'say', speaker: 'WILLA', text: 'Pilot\'s custom: nobody shares a wreck without a battle first.' },
+    { op: 'battle', trainer: 'fog_pilot' },
+    { op: 'say', speaker: 'WILLA', text: 'Fair. Watch the fog south of here, it turns a boat round like a hand on your shoulder. Dad says the keepers read the buoys through a glass. Find the glass and you\'ll find the lane.' },
+    { op: 'setFlag', flag: 'flag:fog_pilot_beaten' },
+  ],
+  // the blink the player has watched from the mainland since the first visit: not
+  // the Farlamp (that lies drowned), but Driftholm's own watch-light on the Teeth
+  'script.fogwall_watch_light': [
+    { op: 'narrate', text: 'A little white lamp-tower on a black skerry, hardly twice your height. Its lamp is small and very well kept: the glass wiped, the wick trimmed square.' },
+    { op: 'say', text: 'A tin plate is riveted to the door: WATCH-LIGHT OF DRIFTHOLM. TRIMMED NIGHTLY. L. SALLOW.' },
+    { op: 'narrate', unless_flag: IDAWN, text: 'So this is the blink you watched from the Point. Not the Farlamp at all. Somebody poles out along the reef every dusk to keep it lit, so that anything lost in the fog has one light to steer by.' },
+    { op: 'narrate', if_flag: IDAWN, text: 'The watch-light still burns, out of habit. And under the clear green water beside the rock there\'s a much bigger glow, gold and steady, where the Farlamp lies burning on the sea-bed.' },
+  ],
   'script.pickup_sound_stack': pickup('flag:picked_sound_stack',
-    [{ op: 'giveItem', item: 'bright_balm', count: 2 }],
-    'Tucked under a gannet\'s nest, a keeper\'s oilskin bundle. Found 2 BRIGHT BALMS!'),
+    [{ op: 'giveItem', item: 'lumen_drop', count: 1 }],
+    'At the foot of the stack, under the gannets, a keeper\'s oilskin bundle with a sweet in it. Found a LUMEN DROP!'),
   'script.pickup_sound_cove': pickup('flag:picked_sound_cove',
     [{ op: 'giveItem', item: 'hearth_coal', count: 1 }],
     'At the foot of the sea-cliff, a lamp-tender\'s tin, still dry inside. Found a HEARTH COAL!'),
@@ -236,8 +260,8 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     [{ op: 'giveItem', item: 'bright_balm', count: 3 }],
     'Wedged in the rocks, a fog-bound keeper\'s satchel. Found 3 BRIGHT BALMS!'),
   'script.pickup_gull_spur': pickup('flag:picked_gull_spur',
-    [{ op: 'giveItem', item: 'beacon_charge', count: 3 }],
-    'Under the bent pine, a fisher\'s cache of lamp-cells. Found 3 BEACON CHARGES!'),
+    [{ op: 'giveItem', item: 'starglass_shard', count: 1 }],
+    'At the end of the gull walk, where the keepers stood to watch the arch, a shard of old starglass in a nest. Found a STARGLASS SHARD!'),
   'script.pickup_gull_meadow': pickup('flag:picked_gull_meadow',
     [{ op: 'giveItem', item: 'bright_balm', count: 2 }],
     'In the long sea-grass, a keeper\'s forgotten kit-bag. Found 2 BRIGHT BALMS!'),
@@ -327,7 +351,7 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     'Oh, no. Is that the one I wrote to the Point? I was ELEVEN. I spelled "lighthouse" with two H\'s. Don\'t look at it.',
     '...You found it on Gullcry Rock. Then somebody on the mainland might have seen our lamps after all. Here, have the good lamp-cells. I\'ve kept them for best.',
   ], [{ op: 'giveItem', item: 'beacon_charge', count: 3 }], 'You got 3 BEACON CHARGES!', [
-    { unless: IDAWN, text: 'Twelve lamps on the quay, and I trim every one, every night. Somebody has to, until the big one\'s lit.' },
+    { unless: IDAWN, text: 'Twelve lamps on the quay, and the watch-light out on the skerry, and I trim every one, every night. I pole out along the Teeth at dusk. Somebody has to, until the big one\'s lit.' },
     { if: IDAWN, text: 'I trimmed the lamps this morning out of habit and then just stood there. They\'re not needed. Nan says that\'s the best kind of lamp.' },
   ], [
     { text: 'Your Old Light on the Point, the one we could see? Tell whoever keeps it that a lamp-boy said thank you.' },
@@ -553,6 +577,12 @@ export const FARLAMP_DIALOGUE: DialogueRegistry = {
   ],
   'npc.sound_oarsman_after': [
     { speaker: 'CALDER', text: 'I\'m going to build a boat like yours. With a lamp on it. Twice the size.' },
+  ],
+  'npc.shelf_salvager_after': [
+    { speaker: 'DUNSTAN', text: 'Her stern-post is going to be a lintel over the schoolhouse door. Maudie wants something with a story in it.' },
+  ],
+  'npc.fog_pilot_after': [
+    { speaker: 'WILLA', text: 'I\'m drawing her lines for Dad. He\'ll want to know she\'s still sitting up proud.' },
   ],
   'npc.shelf_kelper_after': [
     { speaker: 'ROWAN', text: 'The kelp on these reefs is the best in the isles. I come out at low water and nobody bothers me. Except you.' },

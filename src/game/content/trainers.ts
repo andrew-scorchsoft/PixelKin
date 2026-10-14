@@ -1576,21 +1576,44 @@ export const TRAINERS: TrainerRegistry = {
     name: 'CALDER',
     title: 'Oarsman',
     party: [
-      { species_id: 172, level: 60 }, // Fathomote — Tide/Light
-      { species_id: 28, level: 61 }, // Brinewrath — Tide (ace)
+      { species_id: 173, level: 64 }, // Fathomere — Tide/Light
+      { species_id: 28, level: 65 }, // Brinewrath — Tide (ace)
     ],
-    payout: 976, // route 16 × ace 61
+    payout: 1040, // route 16 × ace 65
   },
   shelf_kelper: {
     id: 'shelf_kelper',
     name: 'ROWAN',
     title: 'Kelp-farmer',
     party: [
-      { species_id: 174, level: 60 }, // Hermiwick — Stone/Tide
-      { species_id: 61, level: 61 }, // Tidalarch — Verdant/Tide
-      { species_id: 32, level: 62 }, // Lumplass — Tide/Light (ace)
+      { species_id: 175, level: 64 }, // Beaconclaw — Stone/Light
+      { species_id: 61, level: 65 }, // Tidalarch — Verdant/Tide
+      { species_id: 32, level: 66 }, // Lumplass — Tide/Light (ace)
     ],
-    payout: 992, // route 16 × ace 62
+    payout: 1056, // route 16 × ace 66
+  },
+  // pass 2: a boat-trainer on each of the two emptiest waters
+  shelf_salvager: {
+    id: 'shelf_salvager',
+    name: 'DUNSTAN',
+    title: 'Salvager',
+    party: [
+      { species_id: 175, level: 65 }, // Beaconclaw — Stone/Light
+      { species_id: 30, level: 66 }, // Glostrael — Tide/Light
+      { species_id: 28, level: 67 }, // Brinewrath — Tide (ace)
+    ],
+    payout: 1072, // route 16 × ace 67
+  },
+  fog_pilot: {
+    id: 'fog_pilot',
+    name: 'WILLA',
+    title: 'Fog-pilot',
+    party: [
+      { species_id: 176, level: 66 }, // Fogwisp
+      { species_id: 85, level: 67 }, // Stillwarden — Frost/Dark
+      { species_id: 173, level: 68 }, // Fathomere — Tide/Light (ace)
+    ],
+    payout: 1088, // route 16 × ace 68
   },
   bram_fathom: {
     id: 'bram_fathom',

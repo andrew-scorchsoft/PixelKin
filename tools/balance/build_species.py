@@ -1211,34 +1211,42 @@ for _floor, _rows_ in OLDLIGHT_TABLES.items():
 # area -> [(slug, weight, lo, hi, terrain)]. The deep (rowed) and the shallows
 # both read as "water" in the dex; the isles' tall sea-grass is "tall_grass".
 FARLAMP_TABLES = {
+    # pass 2: +4 levels (the player crosses at L69+); the isles' family is met
+    # KINDLED (fathomere/beaconclaw common), the base forms are the rare finds
     "farlamp_sound": [
-        ("fathomote", 35, 58, 61, "water"), ("hermiwick", 20, 58, 60, "water"),
-        ("brinewrath", 15, 59, 61, "water"), ("tidwraith", 12, 58, 61, "water"),
-        ("glostrael", 10, 59, 61, "water"), ("lumplass", 8, 58, 60, "water"),
-        ("lumplass", 30, 58, 60, "water"), ("tidalarch", 30, 58, 60, "water"),
-        ("hermiwick", 45, 58, 60, "tall_grass"), ("glacewing", 30, 58, 61, "tall_grass"),
-        ("voltcrag", 25, 58, 60, "tall_grass")],
+        ("fathomere", 35, 62, 65, "water"), ("beaconclaw", 15, 62, 64, "water"),
+        ("brinewrath", 15, 63, 65, "water"), ("tidwraith", 12, 62, 65, "water"),
+        ("glostrael", 8, 63, 65, "water"), ("fathomote", 5, 62, 63, "water"),
+        ("hermiwick", 5, 62, 63, "water"),
+        ("lumplass", 30, 62, 64, "water"), ("tidalarch", 30, 62, 64, "water"),
+        ("beaconclaw", 40, 62, 64, "tall_grass"), ("frigalance", 25, 62, 65, "tall_grass"),
+        ("voltcrag", 25, 62, 64, "tall_grass"), ("glacewing", 5, 62, 63, "tall_grass"),
+        ("hermiwick", 5, 62, 63, "tall_grass")],
     "farlamp_shelfwater": [
-        ("fathomote", 35, 59, 62, "water"), ("hermiwick", 20, 59, 61, "water"),
-        ("tidalarch", 15, 60, 62, "water"), ("lumplass", 15, 59, 62, "water"),
-        ("brinewrath", 10, 60, 62, "water"), ("fathomere", 5, 61, 62, "water")],
+        ("fathomere", 35, 63, 66, "water"), ("beaconclaw", 15, 63, 65, "water"),
+        ("tidalarch", 15, 64, 66, "water"), ("lumplass", 15, 63, 66, "water"),
+        ("brinewrath", 10, 64, 66, "water"), ("fathomote", 5, 63, 64, "water"),
+        ("hermiwick", 5, 63, 64, "water")],
     "farlamp_fogwall": [
-        ("fogwisp", 35, 60, 63, "water"), ("fathomote", 25, 60, 62, "water"),
-        ("stillwarden", 15, 61, 63, "water"), ("glacitern", 10, 60, 63, "water"),
-        ("tidwraith", 10, 60, 62, "water"), ("fathomere", 5, 62, 63, "water")],
+        ("fogwisp", 35, 64, 67, "water"), ("fathomere", 25, 64, 66, "water"),
+        ("stillwarden", 15, 65, 67, "water"), ("glacitern", 10, 64, 67, "water"),
+        ("tidwraith", 10, 64, 66, "water"), ("fathomote", 5, 64, 65, "water")],
     "farlamp_gullwrack": [
-        ("hermiwick", 30, 60, 62, "tall_grass"), ("glacewing", 20, 60, 62, "tall_grass"),
-        ("vaultclaw", 15, 60, 62, "tall_grass"), ("lithonyx", 15, 60, 62, "tall_grass"),
-        ("voltcrag", 15, 61, 62, "tall_grass"), ("beaconclaw", 5, 62, 62, "tall_grass"),
-        ("fathomote", 45, 60, 62, "water"), ("brinewrath", 30, 60, 62, "water"),
-        ("glostrael", 30, 60, 62, "water")],
+        ("beaconclaw", 30, 64, 66, "tall_grass"), ("frigalance", 20, 64, 66, "tall_grass"),
+        ("vaultclaw", 15, 64, 66, "tall_grass"), ("lithonyx", 15, 64, 66, "tall_grass"),
+        ("voltcrag", 15, 65, 66, "tall_grass"), ("hermiwick", 5, 64, 65, "tall_grass"),
+        ("fathomere", 40, 64, 66, "water"), ("brinewrath", 30, 64, 66, "water"),
+        ("tidalarch", 22, 64, 66, "water"), ("glostrael", 8, 65, 66, "water"),
+        ("fathomote", 5, 64, 65, "water")],
     "farlamp_kelpcrown": [
-        ("hermiwick", 25, 60, 63, "tall_grass"), ("tidalarch", 20, 60, 62, "tall_grass"),
-        ("rootwarden", 15, 61, 63, "tall_grass"), ("ferrolith", 15, 60, 62, "tall_grass"),
-        ("lumecite", 15, 60, 62, "tall_grass"), ("beaconclaw", 10, 62, 63, "tall_grass"),
-        ("fathomote", 45, 60, 63, "water"), ("lumplass", 35, 60, 62, "water"),
-        ("fathomere", 15, 61, 63, "water"), ("tidalarch", 15, 60, 62, "water")],
+        ("beaconclaw", 25, 64, 67, "tall_grass"), ("tidalarch", 20, 64, 66, "tall_grass"),
+        ("rootwarden", 15, 65, 67, "tall_grass"), ("ferrolith", 15, 64, 66, "tall_grass"),
+        ("prismara", 15, 64, 66, "tall_grass"), ("hermiwick", 10, 64, 65, "tall_grass"),
+        ("fathomere", 35, 64, 66, "water"), ("lumplass", 35, 64, 66, "water"),
+        ("tidalarch", 25, 64, 66, "water"), ("fathomote", 5, 64, 65, "water")],
 }
+
+
 for _area, _rows_ in FARLAMP_TABLES.items():
     _seen = set()
     for _slug, _w, _lo, _hi, _terr in _rows_:

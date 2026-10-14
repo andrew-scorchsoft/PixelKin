@@ -105,8 +105,8 @@
       "area": "farlamp_gullwrack",
       "terrain": "tall_grass",
       "rarity": "uncommon",
-      "min": 60,
-      "max": 62
+      "min": 64,
+      "max": 66
     }
   ],
   "scripted": false,

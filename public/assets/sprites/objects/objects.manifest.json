@@ -245,6 +245,13 @@
       "tw": 7,
       "th": 5
     },
+    "farlamp_broken_arch": {
+      "path": "assets/sprites/objects/farlamp_broken_arch.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
     "farlamp_buoy_dark": {
       "path": "assets/sprites/objects/farlamp_buoy_dark.webp",
       "width": 16,
@@ -343,6 +350,13 @@
       "tw": 1,
       "th": 2
     },
+    "farlamp_nest_rock": {
+      "path": "assets/sprites/objects/farlamp_nest_rock.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "farlamp_ruin_pillar": {
       "path": "assets/sprites/objects/farlamp_ruin_pillar.webp",
       "width": 16,
@@ -357,6 +371,13 @@
       "tw": 3,
       "th": 2
     },
+    "farlamp_sea_arch": {
+      "path": "assets/sprites/objects/farlamp_sea_arch.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
     "farlamp_skerry_light": {
       "path": "assets/sprites/objects/farlamp_skerry_light.webp",
       "width": 48,
@@ -370,6 +391,27 @@
       "height": 48,
       "tw": 2,
       "th": 3
+    },
+    "farlamp_strand_shells": {
+      "path": "assets/sprites/objects/farlamp_strand_shells.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "farlamp_strand_shingle": {
+      "path": "assets/sprites/objects/farlamp_strand_shingle.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "farlamp_strand_wrack": {
+      "path": "assets/sprites/objects/farlamp_strand_wrack.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
     },
     "farlamp_waystone": {
       "path": "assets/sprites/objects/farlamp_waystone.webp",

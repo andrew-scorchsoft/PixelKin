@@ -331,6 +331,25 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
       { text: '"...ff." It tries to land on your lamp-flame, thinks better of it, and sits on your hat instead.', react: 'hop' },
     ],
   },
+  // Lane C1 (pass 2) — the isles' other ambient kin
+  61: { // Tidalarch — the pool-spanning kelp entity (Kelpcrown's drowned courtyard)
+    lines: [
+      { text: '"Shhhhaa." A frond lifts out of the pool and arches over your head, dripping, then lays itself back down.', react: 'twirl' },
+      { text: '"Hhuu." Its blossom crown glows a little brighter while you stand there, as if the pool approves of you.' },
+    ],
+  },
+  76: { // Vaultclaw — the glacier-hermit (Gullwrack's gull walk)
+    lines: [
+      { text: '"KRRNK." It shifts its great ice-shell. Something small inside chirps and goes quiet again.', react: 'shake' },
+      { text: '"Grrmm." It holds very still and lets a gull land on its shell. It seems to like the company.' },
+    ],
+  },
+  96: { // Frigalance — the blizzard-wasp (Gullwrack's high meadow)
+    lines: [
+      { text: '"Zzzt!" It hovers at your eye level. The air round its wings goes cold and smells of thunder.', react: 'hop' },
+      { text: '"Zzz-zip." It darts once round your lamp, fast as a spark, and is back where it started.', react: 'twirl' },
+    ],
+  },
   // ---- Lane A — the Ashfall Shelf (walkthrough/10 Part II) ----
   49: { // Gravelo — the slag-heap boulder (the Ashfall Shelf)
     lines: [
