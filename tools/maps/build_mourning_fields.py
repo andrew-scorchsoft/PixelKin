@@ -34,8 +34,8 @@ Shape (rows top-down):
   * rows 11-21 west: the Coldfog gate meadow (rows 11-14 at x=0), walled in by
                the bank (north), the barley-drift crossing (x 9-10, east) and
                the south crossing; middle: the sleepers' field; east: the shelf;
-  * rows 22-23 the south crossing (full width, blight-tuft): the Rimeway road
-               must pass it;
+  * rows 19-25 the south crossing (full width, blight-tuft, a lobed drift — both
+               edges wave): the Rimeway road must pass it;
   * rows 24-31 the col: drifts blowing in from the Rimeway, the last plot, the acolyte Corran on
                the road, the south mouth (cols 10-13) down to the Rimeway.
 The FOLD: from the Coldfog gate the way up to Stillwater runs EAST across the
@@ -58,6 +58,9 @@ Tables mirrored in build_species.py (MOURNING_TABLES).
 `mournfields_set` accent family (build_mournfields_set.py) with pinned drill/swathe
 layouts, a jogged bank, blobbed crossings, soft-wool sleepers, a stile/plough/stair,
 and Fields-only finds (Lumen Drop, Lullwool Charms, a Harvest Knot).
+Second pass (the independent r2): the lobed crossing, one-tile plot steps + rounded
+stubble corners, the Brook Piece nook (Tussock, a marker stone, a Hearth Coal), the
+shrine's dawn twin (all five candles), and the Harvest Knot as a toggle key item.
 
 Run:  python3 tools/maps/build_mourning_fields.py
 """
@@ -144,11 +147,16 @@ deco[18 * W + 23] = gid("fence_post")
 # Row spans {y: (x0, x1)}, drawn by hand so every plot has a lobe, a bite and a
 # lean of its own (the family's rounded corners do the rest).
 PLOTS = {
-    "hay": {3: (8, 11), 4: (7, 13), 5: (7, 14), 6: (8, 14), 7: (9, 12)},
-    "sleepers": {14: (13, 16), 15: (12, 17), 16: (11, 17), 17: (12, 18), 18: (12, 18),
+    # 2026-10-14 second pass: every step is ONE tile (a staircase reads as a curve once
+    # the family's convex corners are rounded), no one-tile tongues, no flat run > 3.
+    "hay": {3: (9, 12), 4: (8, 13), 5: (7, 14), 6: (7, 14), 7: (8, 13)},
+    "sleepers": {14: (14, 16), 15: (13, 17), 16: (12, 18), 17: (12, 18), 18: (12, 18),
                  19: (13, 18), 20: (14, 17)},
     "west": {17: (3, 6), 18: (2, 7), 19: (2, 7), 20: (3, 6)},
-    "col": {25: (17, 20), 26: (16, 22), 27: (17, 23), 28: (18, 21)},
+    "col": {25: (17, 21), 26: (16, 22), 27: (16, 22), 28: (18, 21)},
+    # THE BROOK PIECE (the fifth name on the shrine board): the bramble-walled nook in
+    # the col's west corner, seen from the Rimeway road, reached only under the pine.
+    "brook": {26: (4, 7), 27: (4, 7), 28: (4, 7)},
 }
 plot_of: dict[int, str] = {}
 for name, spans in PLOTS.items():
@@ -171,16 +179,21 @@ for k, y in enumerate(range(12, 22)):
     off = DRIFT_OFF[k]
     x0, x1 = 9 + off, 10 + off + (1 if y % 3 == 0 else 0)
     mk.rect(tuft, W, H, max(8, x0), y, min(11, x1), y)
-# the south crossing: 2-4 rows deep, rising toward the fields and sagging into the
-# col's west bed — never thinner than two rows
-CROSS_TOP = [22, 22, 22, 22, 22, 21, 21, 22, 22, 21, 21, 20, 21, 22, 22, 22, 21, 20, 20,
-             21, 22, 22]                               # x = 2..23
-CROSS_BOT = [23, 24, 24, 24, 25, 25, 24, 23, 23, 23, 24, 24, 23, 23, 23, 23, 23, 23, 23,
-             24, 24, 23]
+# the south crossing (2026-10-14 second pass): not a ruled bar with rounded ends but
+# a drift with LOBES on both edges — its top swells up toward the drift and the far
+# east, its bottom sags into the col in three bellies — every run at least two
+# columns long (no one-column spikes), never thinner than two rows, and every column
+# a contiguous run wall to wall, so it can't be walked round.
+CROSS_TOP = [21, 21, 22, 22, 22, 21, 21, 20, 20, 21, 21, 22, 22, 22, 21, 21, 20, 19,
+             19, 21, 22, 22]                           # x = 2..23
+CROSS_BOT = [23, 24, 24, 24, 23, 23, 24, 24, 25, 25, 24, 23, 23, 23, 23, 22, 22, 23,
+             23, 23, 24, 24]
+cross = mk.make_grid(W, H)
 for k, x in enumerate(range(2, 24)):
+    assert CROSS_BOT[k] - CROSS_TOP[k] >= 1, x
     mk.rect(tuft, W, H, x, CROSS_TOP[k], x, CROSS_BOT[k])
+    mk.rect(cross, W, H, x, CROSS_TOP[k], x, CROSS_BOT[k])
 mk.blob(tuft, W, H, 20.5, 4.8, 2.2, 1.6)               # upper terrace grind bed (optional)
-mk.blob(tuft, W, H, 6.5, 26.0, 2.6, 1.4)               # the col's west bed (optional)
 mk.blob(tuft, W, H, 4.2, 6.2, 2.3, 1.5)                # the north mouth's verge: the low Dousecap bed
 mk.blob(tuft, W, H, 2.8, 7.4, 1.2, 1.0)
 
@@ -275,7 +288,11 @@ for n, (x, y) in enumerate(SCARECROWS):
             (x, y - 2), 1, 3, overhang=2, walk_under=True, **{flag: "flag:dawn"})
 
 # ---- THE FIELD SHRINE (touch #2): seen from below, reached from above ---------------------
-obj("field_shrine", "mournfields_field_shrine", (21, 13), 3, 3)
+# the second dawn change (2026-10-14 second pass): all five field-candles burn again
+# after flag:dawn — a flag-swapped twin on the same footprint + solidity
+obj("field_shrine", "mournfields_field_shrine", (21, 13), 3, 3, hidden_when_flag="flag:dawn")
+obj("field_shrine_lit", "mournfields_field_shrine_lit", (21, 13), 3, 3,
+    requires_flag="flag:dawn")
 for tx in (21, 22, 23):
     m["triggers"].append({"id": f"shrine_read_{tx}", "kind": "cutscene",
                           "at": {"tx": tx, "ty": 16}, "activation": "interact",
@@ -301,8 +318,29 @@ obj("dead_willow", "coldfog_dead_willow", (21, 2), 3, 4, overhang=3, walk_under=
 obj("col_pine", "hushfrost_snow_pine", (2, 26), 2, 3, overhang=2, walk_under=True)
 obj("col_drift", "hushfrost_snowdrift", (19, 29 - 1), 3, 2)
 obj("col_drift_b", "hushfrost_drift_a", (14, 29), 3, 1, solid=False)
-obj("col_drift_c", "hushfrost_drift_c", (3, 28), 2, 1, solid=False)
+obj("col_drift_c", "hushfrost_drift_c", (4, 29), 2, 1, solid=False)   # blown into the nook
 obj("doused_lamp_a", "coldfog_doused_lamp", (8, 27), 1, 3, overhang=2, walk_under=True)
+
+# ---- THE BROOK PIECE (2026-10-14 second pass, Exploration): the fifth field on the
+# shrine board, and the only one with no road to it. A bramble-walled nook in the col's
+# west corner: seen from the whole Rimeway road over its hedge, reached only through
+# the long grass and under the snow pine's skirts (the trunk + the scarecrow seal the
+# rest). Inside: the field-tender's own old kin, asleep alone under the best blanket,
+# her marker stone, and what she left there.
+BROOK_HEDGE = [(5, 25), (6, 25), (7, 25), (8, 25), (8, 26), (8, 27), (8, 28)]
+for n, (x, y) in enumerate(BROOK_HEDGE):
+    obj(f"brook_hedge_{n}", "mournfields_bramble", (x, y), 1, 1)
+obj("brook_sleeper", "mournfields_sleeper_hushvole", (6, 26), 2, 2,
+    hidden_when_flag="flag:dawn", bob=True)
+obj("brook_sleeper_awake", "mournfields_sleeper_hushvole_awake", (6, 26), 2, 2,
+    requires_flag="flag:dawn")
+for (tx, ty) in ((6, 27), (7, 27)):
+    m["triggers"].append({"id": f"brook_sleeper_{tx}", "kind": "cutscene",
+                          "at": {"tx": tx, "ty": ty}, "activation": "interact",
+                          "ref": "script.mournfields_brook_sleeper"})
+owed.append("script.mournfields_brook_sleeper")
+owed += pt.sign(m, deco, W, sid="mournfields_brook", at=(5, 26))
+owed += pt.cache(m, cid="mournfields_brook", at=(7, 28))
 # the plot furniture (review fix 1): a stile in the hay plot's fence, a plough left in
 # the west plot's last drill; the bank's lip (fix 2): a bramble at each jog
 obj("hay_stile", "mournfields_stile", (10, 7), 1, 2, solid=False)
@@ -376,7 +414,7 @@ verge = mk.make_grid(W, H)
 for i in range(W * H):
     if tuft[i]:
         x, y = i % W, i // W
-        if (8 <= x <= 11 and 12 <= y <= 21) or 20 <= y <= 24 or (y == 25 and x in (6, 7)):
+        if (8 <= x <= 11 and 12 <= y <= 21) or cross[i]:
             band[i] = 1
         elif x <= 6 and y <= 8:
             verge[i] = 1
@@ -398,6 +436,8 @@ avoid |= {(x, 0) for x in range(2, 6)} | {(x, 1) for x in range(2, 6)}
 avoid |= {(x, y) for x in range(10, 14) for y in range(24, 32)}       # the Rimeway road
 avoid |= {(WALKUP, y) for y in range(8, 14)} | {(16, 13), (16, 12)}
 avoid |= set(BANK) | {(x, 9) for x in range(2, 16)}                  # the bank's lip
+# the Brook Piece's one way in (grass -> under the pine -> the nook): never a boulder
+avoid |= {(x, y) for x in range(2, 8) for y in range(24, 30)}
 # the plots' fringe: a tuft on every other cell of blight that rings a plot
 for y in range(H):
     for x in range(W):

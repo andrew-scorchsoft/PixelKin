@@ -96,6 +96,7 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 | Star-charts | teach a move | 800–4,000w by tier (§6) | everywhere |
 | Hooded Lamp | key item; toggle — wild encounter rate ×0.5 while hooded | 600w | Pearlmoor chandlery, once `gleam:tide` is held (flag-gated stock) |
 | Tin Rower | key item; toggle — wild encounter rate ×0.5 while wound (the lowest active toggle factor applies; they never stack) | 12,000w **or a story** | Aldous Wink, Dimglass Coast I (R9, once `flag:has_starter`) — a one-time optional via the `pay` cutscene op, outside every solvency leg |
+| Harvest Knot | key item; toggle — wild encounter rate ×0.25 while hung (the strongest damper) | not sold, not sellable | the Mourning Fields' terrace cache (optional, late, lv 48–52 ground) — moves no wicks |
 | Deep Charm | one throw, catch ×3.0 on kin met over the open DEEP (a conditional charge; plain elsewhere) | 900w | the Driftholm chandlery (the Farlamp Isles), once `flag:isles_dawn` is held — post-game optional, outside every solvency leg; Nan Creel gives three for "Letters Home" |
 | A plate at Marisol's | restores the whole party (a courtesy heal, not a rest point) + her food talk; the first plate adds a Salsa Roja (heal 60, once) | 60w | Marisol's kitchen, Lowleaf Hollow — the `pay` op (`content/regions/kitchens.ts`), optional colour outside every solvency leg |
 

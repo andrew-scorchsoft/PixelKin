@@ -537,12 +537,26 @@ export const ITEMS: ItemRegistry = {
     sell: 1200,
   },
   // The Mourning Fields' east terrace (seen from the lower field, reached up the one stair).
+  // A toggle key item like the Hooded Lamp / Tin Rower (2026-10-14 second review: it was
+  // sell-fodder). Hung on the vesperlamp, wild kin take you for the harvest coming home
+  // and let you by: ×0.25, the strongest damper — a late, optional, Fields-only find,
+  // never sold and never sellable (key), so it moves no wicks.
   harvest_knot: {
     id: 'harvest_knot',
     name: 'Harvest Knot',
-    desc: 'The last sheaf of the top field, plaited into a knot and tied with ribbon, the way the valleys keep one through the winter for luck. Collectors pay well; the field-tender would rather you kept it.',
-    category: 'valuable',
-    sell: 900,
+    // ≤ ~110 chars — one page of the pack's detail pane.
+    desc: 'The top field\'s last sheaf, plaited and ribboned. Hung on your lamp, wild kin take you for the harvest home.',
+    category: 'key',
+    toggle_flag: 'flag:harvest_knot_hung',
+    encounter_factor: 0.25,
+    toggle_text: {
+      on: 'HUNG',
+      off: 'PACKED',
+      on_note: '(Hung — wild kin let the harvest by.)',
+      off_note: '(Packed — wild kin stir as usual.)',
+      turn_on: 'You tie the knot to the lamp\'s hook. It smells of straw and old summers, and the wilds settle as you pass.',
+      turn_off: 'You untie the knot and tuck it in your pack. The wild kin look up again.',
+    },
   },
   murk_pearl: {
     id: 'murk_pearl',

@@ -69,6 +69,7 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   solarium_brazier_lit: { hx: 16, hy: 12, radius: 18, color: 0xffd76b },
   pale_vault_brazier: { hx: 16, hy: 10, radius: 18, color: 0x9fe7ff },
   saltreach_reed_lantern_lit: { hx: 8, hy: 6, radius: 12, color: 0xffd089 },
+  mournfields_field_shrine_lit: { hx: 24, hy: 26, radius: 18, color: 0xffc46b }, // the five field-candles, relit at dawn
   nightreach_watch_lamp_lit: { hx: 16, hy: 8, radius: 17, color: 0xdfe6ff },
   nightreach_vigil_lamp: { hx: 8, hy: 6, radius: 12, color: 0xdfe6ff },
   tideglass_wrecklamp_lit: { hx: 8, hy: 8, radius: 12, color: 0x9fe7ff },
