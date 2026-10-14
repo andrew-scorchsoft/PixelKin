@@ -147,7 +147,11 @@ def prove_off_lane(mid: str, m: dict, objects: list[dict]) -> list[str]:
         i = y * W + x
         if meta.get(base[i], {}).get("terrain") in LANE_TERRAINS:
             errs.append(f"{mid}: prop tile {(x, y)} sits on a lane (path/trail)")
-        if before.encounter[i]:
+        # Open DEEP sea rolls rowed encounters everywhere (10 §2): a buoy on it
+        # hides no bed the way a prop on a grass patch would.
+        deep_only = all(meta.get(l["data"][i], {}).get("encounter_terrain") in (None, "deep")
+                        for l in m["layers"] if l.get("data"))
+        if before.encounter[i] and not deep_only:
             errs.append(f"{mid}: prop tile {(x, y)} covers an encounter tile")
         if (x, y) in near:
             errs.append(f"{mid}: prop tile {(x, y)} on/next to a warp, trigger or NPC post")
