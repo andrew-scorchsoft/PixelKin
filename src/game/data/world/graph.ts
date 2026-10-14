@@ -260,7 +260,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'stillwater_quiet_hall', region: 'outer', optional: true }, // interior: the meeting-house + the shutter-wall
     { map_id: 'stillwater_shutter', region: 'outer', optional: true }, // interior: the inn (rest point)
     { map_id: 'stillwater_lampmaker', region: 'outer', optional: true }, // interior: the dark-lamp maker (shop)
-    { map_id: 'stillwater_home_a', region: 'outer', optional: true }, // interior: Ines and Tam's cottage
+    { map_id: 'stillwater_home_a', region: 'outer', optional: true }, // interior: Margery and Edwy's cottage
     { map_id: 'stillwater_home_b', region: 'outer', optional: true }, // interior: Maren's house
     // ---- Lane N2 (walkthrough/11 Part B): the Drownlight, above drownlight_beacon
     { map_id: 'drownlight_f1', region: 'outer', optional: true, reward: 'the shutter-crank lesson; a Starglass Shard in the nook' }, // interior

@@ -808,16 +808,16 @@ export const ITEMS: ItemRegistry = {
     price: 4000,
   },
   // ---- Lane N1 (walkthrough/11 Part A): Stillwater's two quest items -------------
-  // "A Light Left On": Pip's forbidden candle, carried to the willow or to her mother.
+  // "A Light Left On": Linnet's forbidden candle, carried to the willow or to her mother.
   still_candle: {
     id: 'still_candle',
-    name: 'Pip\'s Candle',
+    name: 'Linnet\'s Candle',
     desc: 'A stub of candle burning in a stoppered jar. The only thing in Stillwater that moves when you breathe on it.',
     category: 'key',
   },
-  // "The Way Home": Tessaly's own old lamp — a one-per-game conditional charge, ×3.0
-  // on a DOZING kin (the lamp that once sang kin to sleep now calls them home).
-  // Never sold.
+  // "The Way Home": Tessaly's own old shop-lamps — three given once (a four-map
+  // escort pays), each a conditional charge, ×3.0 on a DOZING kin (the lamps that
+  // once sang kin to sleep now call them home). Never sold.
   tessalys_lamp: {
     id: 'tessalys_lamp',
     name: 'Tessaly\'s Lamp',

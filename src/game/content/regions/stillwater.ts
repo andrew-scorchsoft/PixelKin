@@ -155,7 +155,7 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
     {
       op: 'choice',
       unless_flag: SHOWN,
-      prompt: 'Hide Pip\'s candle in the hollow?',
+      prompt: 'Hide Linnet\'s candle in the hollow?',
       options: [
         {
           label: 'HIDE IT HERE',
@@ -170,7 +170,7 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
     },
   ],
 
-  // ---- "A Light Left On" — Pip and the forbidden candle -----------------------
+  // ---- "A Light Left On" — Linnet and the forbidden candle -----------------------
   // a nested if/else ladder (each level exactly one branch), latest stage first
   'script.still_candle_child': [
     { op: 'run', ref: 'script.still_candle_thanks', if_flag: HIDDEN },
@@ -185,32 +185,32 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.still_candle_ask', unless_flag: CANDLE },
   ],
   'script.still_candle_ask': [
-    { op: 'say', speaker: 'PIP', text: 'Shh! Are you the lamp person? You are. You\'ve got a lamp. Can you keep a secret if it\'s a lamp sort of secret?' },
+    { op: 'say', speaker: 'LINNET', text: 'Shh! Are you the lamp person? You are. You\'ve got a lamp. Can you keep a secret if it\'s a lamp sort of secret?' },
     { op: 'narrate', text: 'She opens her coat. Inside, in a stoppered jar, a stub of candle is burning: a small, steady, entirely forbidden flame.' },
-    { op: 'say', speaker: 'PIP', text: 'I found it in Gran\'s things. I lit it with the hall\'s tinder when nobody was looking. I know we\'re not meant to. But I like looking at it. It\'s the only thing in Stillwater that moves when you breathe on it.' },
-    { op: 'say', speaker: 'PIP', text: 'If Mam finds it she\'ll be sad, not cross. That\'s worse. Will you keep it for me? You could hide it somewhere only I know. The old willow by the water has a hole in it.' },
-    { op: 'say', speaker: 'PIP', text: 'Or... you could show it to Mam. She used to have a candle in every window. Maybe she\'d remember she liked them. I don\'t know. You choose. You\'re the lamp person.' },
+    { op: 'say', speaker: 'LINNET', text: 'I found it in Gran\'s things. I lit it with the hall\'s tinder when nobody was looking. I know we\'re not meant to. But I like looking at it. It\'s the only thing in Stillwater that moves when you breathe on it.' },
+    { op: 'say', speaker: 'LINNET', text: 'If Mam finds it she\'ll be sad, not cross. That\'s worse. Will you keep it for me? You could hide it somewhere only I know. The old willow by the water has a hole in it.' },
+    { op: 'say', speaker: 'LINNET', text: 'Or... you could show it to Mam. She used to have a candle in every window. Maybe she\'d remember she liked them. I don\'t know. You choose. You\'re the lamp person.' },
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'still_candle', count: 1 },
-    { op: 'say', text: 'You got PIP\'S CANDLE! Hide it in the willow\'s hollow, or show it to her mother, Maren.' },
+    { op: 'say', text: 'You got LINNET\'S CANDLE! Hide it in the willow\'s hollow, or show it to her mother, Maren.' },
     { op: 'setFlag', flag: CANDLE },
   ],
   'script.still_candle_waiting': [
-    { op: 'say', speaker: 'PIP', text: 'Is it still lit? Don\'t let it go out! The willow by the water, or Mam\'s house, the one with the dormer. You choose.' },
+    { op: 'say', speaker: 'LINNET', text: 'Is it still lit? Don\'t let it go out! The willow by the water, or Mam\'s house, the one with the dormer. You choose.' },
   ],
   'script.still_candle_thanks': [
-    { op: 'say', speaker: 'PIP', if_flag: HIDDEN, text: 'You hid it? In the willow? I went and looked and I could see it, only from right up close. It\'s like having a window nobody else knows about.' },
-    { op: 'say', speaker: 'PIP', if_flag: SHOWN, unless_flag: HIDDEN, text: 'Mam came and found me. She didn\'t say anything. She just held my hand and looked at the candle for ages. Then she said we could keep it in my nook, if I promise to be careful.' },
-    { op: 'say', speaker: 'PIP', text: 'This was Gran\'s too. She said it fell out of the sky before I was born, warm as toast. I want you to have it. Lamp people should have the shiny things.' },
+    { op: 'say', speaker: 'LINNET', if_flag: HIDDEN, text: 'You hid it? In the willow? I went and looked and I could see it, only from right up close. It\'s like having a window nobody else knows about.' },
+    { op: 'say', speaker: 'LINNET', if_flag: SHOWN, unless_flag: HIDDEN, text: 'Mam came and found me. She didn\'t say anything. She just held my hand and looked at the candle for ages. Then she said we could keep it in my nook, if I promise to be careful.' },
+    { op: 'say', speaker: 'LINNET', text: 'This was Gran\'s too. She said it fell out of the sky before I was born, warm as toast. I want you to have it. Lamp people should have the shiny things.' },
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'starglass_shard', count: 1 },
     { op: 'say', text: 'You got a STARGLASS SHARD!' },
     { op: 'setFlag', flag: CANDLE_DONE },
   ],
   'script.still_candle_child_after': [
-    { op: 'say', speaker: 'PIP', if_flag: DAWN, text: 'Look up! Mam opened the shutter upstairs. There\'s a lamp in the window now, and my little brother won\'t stop pressing his nose on the glass.' },
-    { op: 'say', speaker: 'PIP', if_flag: HIDDEN, text: 'I visit the willow every evening. I tell the candle about my day. It doesn\'t say anything back, but it flickers in the good places.' },
-    { op: 'say', speaker: 'PIP', unless_flag: HIDDEN, text: 'Mam trims the wick for me now. She does it very slowly, like she\'s remembering how.' },
+    { op: 'say', speaker: 'LINNET', if_flag: DAWN, text: 'Look up! Mam opened the shutter upstairs. There\'s a lamp in the window now, and my little brother won\'t stop pressing his nose on the glass.' },
+    { op: 'say', speaker: 'LINNET', if_flag: HIDDEN, text: 'I visit the willow every evening. I tell the candle about my day. It doesn\'t say anything back, but it flickers in the good places.' },
+    { op: 'say', speaker: 'LINNET', unless_flag: HIDDEN, text: 'Mam trims the wick for me now. She does it very slowly, like she\'s remembering how.' },
   ],
   'script.still_maren': [
     { op: 'run', ref: 'script.still_maren_offer', if_flag: CANDLE, unless_flag: HIDDEN },
@@ -218,9 +218,9 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.still_maren_talk', if_flag: HIDDEN },
   ],
   'script.still_maren_talk': [
-    { op: 'say', speaker: 'MAREN', unless_flag: DAWN, text: 'Pip\'s father kept the ferry-lamp at Saltreach. The winter it went dark, so did he. I brought Pip here so she\'d never have to watch a light go out.' },
+    { op: 'say', speaker: 'MAREN', unless_flag: DAWN, text: 'Linnet\'s father kept the ferry-lamp at Saltreach. The winter it went dark, so did he. I brought Linnet here so she\'d never have to watch a light go out.' },
     { op: 'say', speaker: 'MAREN', unless_flag: DAWN, text: 'She\'s never seen a candle in a window. I used to put one in every window we had. ...Mind the step on your way out.' },
-    { op: 'say', speaker: 'MAREN', if_flag: DAWN, text: 'I opened the shutter upstairs this morning. Pip asked if she could put a candle there. I said yes before I\'d even thought about it. It was the easiest yes of my life.' },
+    { op: 'say', speaker: 'MAREN', if_flag: DAWN, text: 'I opened the shutter upstairs this morning. Linnet asked if she could put a candle there. I said yes before I\'d even thought about it. It was the easiest yes of my life.' },
   ],
   'script.still_maren_offer': [
     { op: 'run', ref: 'script.still_maren_talk', if_flag: SHOWN },
@@ -234,7 +234,7 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
           label: 'SHOW HER THE CANDLE',
           ops: [
             { op: 'narrate', text: 'You set the jar on the table. The flame stands up straight, the way small flames do in a quiet room.' },
-            { op: 'say', speaker: 'MAREN', text: '...That\'s my mother\'s jar. Pip found it, didn\'t she. Of course she did.' },
+            { op: 'say', speaker: 'MAREN', text: '...That\'s my mother\'s jar. Linnet found it, didn\'t she. Of course she did.' },
             { op: 'musicFade', ms: 700 },
             { op: 'say', speaker: 'MAREN', text: 'I came here so she\'d never lose anything. I didn\'t think about what she\'d never have.' },
             { op: 'say', speaker: 'MAREN', text: 'Leave it with me. I won\'t put it out. I\'ll go and find her. I think I\'d like to watch it with her.' },
@@ -247,8 +247,8 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
     },
   ],
   'script.still_child_bed': [
-    { op: 'say', unless_flag: SHOWN, text: 'A small bed in a small nook. A kin is curled at the foot of it under a grey blanket, keeping the child\'s feet warm.' },
-    { op: 'say', if_flag: SHOWN, text: 'A small bed in a small nook. On the sill above it, a candle in a jar, burning with great care.' },
+    { op: 'say', unless_flag: SHOWN, text: 'A small bed in a small room of its own. The shelf beside it is bare, swept, and very carefully kept empty.' },
+    { op: 'say', if_flag: SHOWN, text: 'A small bed in a small room of its own. On the shelf beside it, a candle in a jar, burning with great care.' },
   ],
 
   // ---- "The Way Home" — Tessaly, walked through the fog to Pale Vault ---------
@@ -283,10 +283,10 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
   ],
   'script.still_tessaly_home': [
     { op: 'say', speaker: 'TESSALY', text: 'You came. I\'m home. The shop\'s still there, shutters and all. Somebody\'s been sweeping the step. Three winters, and somebody swept my step.' },
-    { op: 'say', speaker: 'TESSALY', text: 'This was my own lamp, the one I used to sing the sleeping kin quiet with. I want you to carry it now. Hold it up to a kin that\'s dozing and it won\'t lull it any deeper. It\'ll call it home.' },
+    { op: 'say', speaker: 'TESSALY', text: 'These were my own lamps, the three I used to sing the sleeping kin quiet with. I want you to carry them now. Hold one up to a kin that\'s dozing and it won\'t lull it any deeper. It\'ll call it home.' },
     { op: 'sfx', key: 'world-keyitem' },
-    { op: 'giveItem', item: 'tessalys_lamp', count: 1 },
-    { op: 'say', text: 'You got TESSALY\'S LAMP! A charge that burns threefold on a dozing kin.' },
+    { op: 'giveItem', item: 'tessalys_lamp', count: 3 },
+    { op: 'say', text: 'You got three TESSALY\'S LAMPS! Each one burns threefold on a dozing kin.' },
     { op: 'setFlag', flag: TESS_DONE },
   ],
   'script.still_tessaly_after': [
@@ -311,17 +311,11 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'KEEPER WENNA', text: 'I\'d like you to understand that, before you go relighting everything. Three of those lamps still stand where they were. The Wayfare Lamp in the near fog, the Market Lamp in the deep fog, and the First Lamp of Stillwater, across our own water. Each has a note left at its foot. Read them. Then come and tell me what you think.' },
     { op: 'setFlag', flag: WALL },
   ],
+  // the turn-in: a three-level if/else ladder on the three found flags (one
+  // branch per level), so Wenna always names exactly the lamps still MISSING
   'script.still_hall_keeper_turnin': [
-    { op: 'say', speaker: 'KEEPER WENNA', unless_flag: lamp(3), text: 'Have you found all three? The Wayfare Lamp, the Market Lamp, and the First Lamp across the water. Read what they left. It\'s the only way I know to explain us.' },
-    { op: 'run', ref: 'script.still_hall_keeper_partial', if_flag: lamp(3) },
-  ],
-  'script.still_hall_keeper_partial': [
-    { op: 'say', speaker: 'KEEPER WENNA', unless_flag: lamp(2), text: 'The First Lamp, yes. But there are three. The near fog and the deep fog, south of here.' },
-    { op: 'run', ref: 'script.still_hall_keeper_partial2', if_flag: lamp(2) },
-  ],
-  'script.still_hall_keeper_partial2': [
-    { op: 'say', speaker: 'KEEPER WENNA', unless_flag: lamp(1), text: 'Two of three. The Wayfare Lamp is the nearest of all, in the near fog. Everyone walks past it.' },
-    { op: 'run', ref: 'script.still_hall_keeper_reward', if_flag: lamp(1) },
+    { op: 'run', ref: 'script.still_wall_1', if_flag: lamp(1) },
+    { op: 'run', ref: 'script.still_wall_0', unless_flag: lamp(1) },
   ],
   'script.still_hall_keeper_reward': [
     { op: 'say', speaker: 'KEEPER WENNA', text: 'All three. So now you know. We weren\'t cruel. We were tired, and we were frightened of hoping, and the dark asked nothing of us.' },
@@ -364,15 +358,15 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
   ],
 
   // ---- the three who'd rather talk first ---------------------------------------
-  'script.still_acolyte_hale': talkFirst('still_acolyte_hale', 'HALE',
+  'script.still_acolyte_gethin': talkFirst('still_acolyte_gethin', 'GETHIN',
     ['I trained kin for battle, once, in the south. I was good at it. Then I couldn\'t bear watching them get hurt, so I brought mine here, where nothing is asked of them.',
       'They\'re awake, mine. I never put them to sleep. I just let them rest. ...You\'d like to see how they\'ve kept, wouldn\'t you. I can tell.'],
     'One gentle bout? For old times\' sake.',
     'They remembered. Every move. They looked... glad. I hadn\'t thought about whether they missed it.',
     'Of course. Some days talking is the braver thing.'),
-  'script.still_acolyte_hale_after': [
-    { op: 'say', speaker: 'HALE', unless_flag: DAWN, text: 'I keep thinking about how they looked, after. Like they\'d been waiting for someone to ask.' },
-    { op: 'say', speaker: 'HALE', if_flag: DAWN, text: 'I\'m going to start a little practice ring again. Gentle bouts only. Children welcome.' },
+  'script.still_acolyte_gethin_after': [
+    { op: 'say', speaker: 'GETHIN', unless_flag: DAWN, text: 'I keep thinking about how they looked, after. Like they\'d been waiting for someone to ask.' },
+    { op: 'say', speaker: 'GETHIN', if_flag: DAWN, text: 'I\'m going to start a little practice ring again. Gentle bouts only. Children welcome.' },
   ],
   'script.still_acolyte_vesna': talkFirst('still_acolyte_vesna', 'VESNA',
     ['I was a star-watcher at Nightreach. I counted the falls, one column, eleven winters. After a while I couldn\'t look up any more without counting.',
@@ -420,12 +414,16 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
     { op: 'say', text: 'A bench of lamp parts: hoods, caps, a half-made shutter. Every hinge has been oiled. Every hood fits its lamp exactly.' },
   ],
   'script.still_home_a_elder': [
-    { op: 'say', speaker: 'TAM', unless_flag: DAWN, text: 'Ines and I came up from the coast when our kin got old. We couldn\'t watch them fade a little more every season. Here they just sleep, and we sit with them.' },
-    { op: 'say', speaker: 'TAM', if_flag: DAWN, text: 'Old Bracken woke up. Our kin, the grey one by the bed. He\'s eleven winters older and he walked straight to the door and asked to go out. So we went out.' },
+    { op: 'say', speaker: 'EDWY', unless_flag: DAWN, text: 'Margery and I came up from the coast when our kin got old. We couldn\'t watch them fade a little more every season. Here they just sleep, and we sit with them.' },
+    { op: 'say', speaker: 'EDWY', if_flag: DAWN, text: 'Old Bracken woke up. Our kin, the grey one by the bed. He\'s eleven winters older and he walked straight to the door and asked to go out. So we went out.' },
   ],
   'script.still_home_a_wife': [
-    { op: 'say', speaker: 'INES', unless_flag: DAWN, text: 'Would you like some tea? It\'s mostly hot water. We stopped growing the leaves. They wanted too much sun.' },
-    { op: 'say', speaker: 'INES', if_flag: DAWN, text: 'I\'ve put seeds in. Tea leaves, by the window. Come back in a year and I\'ll have a proper cup for you.' },
+    { op: 'say', speaker: 'MARGERY', unless_flag: DAWN, text: 'Would you like some tea? It\'s mostly hot water. We stopped growing the leaves. They wanted too much sun.' },
+    { op: 'say', speaker: 'MARGERY', if_flag: DAWN, text: 'I\'ve put seeds in. Tea leaves, by the window. Come back in a year and I\'ll have a proper cup for you.' },
+  ],
+  'script.still_home_a_basket': [
+    { op: 'say', unless_flag: DAWN, text: 'A wide wicker basket by the bed. Old Bracken is asleep in it, grey to the muzzle, a blanket over his haunch. A tag on the handle, in two hands: OURS.' },
+    { op: 'say', if_flag: DAWN, text: 'Old Bracken\'s basket, empty and still warm. A trail of grey hairs leads to the door. He\'s out walking.' },
   ],
 
   // ===========================================================================
@@ -514,6 +512,35 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
 // the cold lamps' read-backs (written by coldLamp() above)
 Object.assign(STILLWATER_SCRIPTS, READS);
 
+// Keeper Wenna's turn-in ladder: `script.still_wall_<bits>`, one bit per lamp in
+// order (1 = found). Each inner node branches on the next lamp's flag; each leaf
+// names what's still missing, or (all three) runs the reward.
+const WALL_LAMPS = [
+  'the Wayfare Lamp in the near fog, just south of the gap',
+  'the Market Lamp, deeper in, in the deep fog',
+  'the First Lamp of Stillwater, across our own water',
+];
+const wallLeaf = (bits: string): CutsceneStep[] => {
+  if (bits === '111') return [{ op: 'run', ref: 'script.still_hall_keeper_reward' }];
+  if (bits === '000') {
+    return [{ op: 'say', speaker: 'KEEPER WENNA', text: 'Have you found them yet? The Wayfare Lamp in the near fog, the Market Lamp in the deep fog, and the First Lamp across the water. Read what they left. It\'s the only way I know to explain us.' }];
+  }
+  const missing = WALL_LAMPS.filter((_, i) => bits[i] === '0');
+  const found = 3 - missing.length;
+  const head = found === 2 ? 'Two of three. Only one left:' : 'One of three, then. Still to find:';
+  return [{ op: 'say', speaker: 'KEEPER WENNA', text: `${head} ${missing.join(', and ')}. Read what was left at its foot, then come back to me.` }];
+};
+for (const bits of ['0', '1', '00', '01', '10', '11']) {
+  const n = bits.length + 1;
+  STILLWATER_SCRIPTS[`script.still_wall_${bits}`] = [
+    { op: 'run', ref: `script.still_wall_${bits}1`, if_flag: lamp(n) },
+    { op: 'run', ref: `script.still_wall_${bits}0`, unless_flag: lamp(n) },
+  ];
+}
+for (const bits of ['000', '001', '010', '011', '100', '101', '110', '111']) {
+  STILLWATER_SCRIPTS[`script.still_wall_${bits}`] = wallLeaf(bits);
+}
+
 export const STILLWATER_DIALOGUE: DialogueRegistry = {
   'sign.stillwater': [
     { text: 'STILLWATER. The weary are welcome. Please speak softly; the kin are sleeping.' },
@@ -523,6 +550,9 @@ export const STILLWATER_DIALOGUE: DialogueRegistry = {
   ],
   'sign.stillwater_mourning': [
     { text: 'SOUTH-EAST: THE FALLOW FIELDS, quieted first. Walk gently; the kin there are dreaming. SOUTH-WEST: the fog road to the marshes.' },
+  ],
+  'sign.stillwater_waystone': [
+    { text: 'A lamp-stone, its little lantern shuttered like every lamp in Stillwater. The Lanternway still knows it: from here the lit road can carry you anywhere you\'ve been.' },
   ],
   'sign.stillwater_inn': [
     { text: 'THE SHUTTER. Beds, soup, quiet. No lamps lit after dusk (it is always after dusk).' },

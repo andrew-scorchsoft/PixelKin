@@ -83,9 +83,13 @@ mk.rect(crag, W, H, 28, 0, 29, H - 1)
 mk.rect(crag, W, H, 0, 28, W - 1, H - 1)
 mk.organic_border(crag, W, H, depth=0,
                   bumps=[(1, 7, 2), (1, 18, 2), (1, 25, 2), (28, 9, 2), (28, 19, 2),
-                         (10, 1, 2), (20, 1, 2), (3, 1, 1), (26, 1, 1),
-                         (12, 28, 2), (17, 28, 2), (27, 27, 1)],
+                         (8, 1, 1), (22, 1, 1), (3, 1, 1), (26, 1, 1),
+                         (12, 28, 2), (17, 28, 2), (27, 27, 1),
+                         # 2026-10: deeper, broken crag so its S faces show (r8)
+                         (6, 1, 2), (24, 0, 2), (0, 22, 2), (29, 14, 2), (15, 29, 2)],
                   rng=rng)
+# the crag headland that breaks the mere's north shore (its face drops to the water)
+mk.blob(crag, W, H, 17.0, 2.2, 1.3, 1.1)
 for x in list(CF_COLS) + list(MF_COLS):
     for y in range(25, H):
         crag[y * W + x] = 0
@@ -93,21 +97,27 @@ for (x, y) in [(3, 27), (8, 27), (21, 27), (26, 27)]:   # soften the gap shoulde
     crag[y * W + x] = 0
 
 # ---- THE STILL WATER (touch #1) ------------------------------------------------------
-mk.blob(murk, W, H, 15.2, 4.8, 4.6, 1.9)
-mk.blob(murk, W, H, 11.2, 4.9, 1.8, 1.2)
-mk.blob(murk, W, H, 19.6, 3.6, 1.9, 1.1)
-mk.blob(murk, W, H, 15.8, 6.2, 1.5, 0.8)
-mk.blob(murk, W, H, 12.8, 3.0, 1.2, 0.7)
-for (x, y) in [(10, 3), (20, 5), (11, 6), (19, 2)]:      # ragged, never a ruled box
-    murk[y * W + x] = 0
+# its own drawn family (`mere`, stillwater_set): a deep-bitten rounded shore with a
+# laid-stone lip and the lip's reflection, never the stepped box the plain murk made.
+mk.blob(murk, W, H, 15.4, 4.9, 7.0, 2.3)
+mk.blob(murk, W, H, 11.0, 3.9, 2.2, 1.3)
+JETTY = [(15, 7, "mere_jetty_root"), (15, 6, "mere_jetty"), (15, 5, "mere_jetty_end")]
+for (x, y) in [(14, 4), (15, 4), (16, 4), (14, 5), (16, 5), (14, 6), (16, 6), (17, 5),
+               (14, 7), (16, 7), (15, 7), (15, 6), (15, 5)]:
+    murk[y * W + x] = 1                                    # open water round the jetty
+for x in range(9, 23):
+    murk[8 * W + x] = 0                                    # the shore walk stays dry
 
 # ---- lanes -------------------------------------------------------------------------
 P: set[tuple[int, int]] = set()
 P |= {(x, y) for x in range(3, 27) for y in (15, 16)}                # the main lane
 P |= {(x, y) for y in range(16, 20) for x in range(11, 20)
       if ((x - 15) / 3.4) ** 2 + ((y - 17.0) / 1.7) ** 2 <= 1}       # the square
-P |= {(x, y) for x in (5, 6) for y in range(15, H)}                  # to Coldfog I
-P |= {(x, y) for x in (23, 24) for y in range(15, H)}                # to the Mourning Fields
+# the two south arms jog as they go (2026-10: no ruled template cross)
+P |= {(x, y) for x in (5, 6) for y in range(15, 20)}                 # to Coldfog I...
+P |= {(x, y) for x in (4, 5) for y in range(19, H)}                  # ...stepping west
+P |= {(x, y) for x in (23, 24) for y in range(15, 20)}               # to the Mourning Fields...
+P |= {(24, y) for y in range(19, H)} | {(25, y) for y in range(19, 25)}  # ...stepping east
 P |= {(x, y) for x in range(6, 11) for y in (26, 27)} | {(10, 25)}   # home A's door
 P |= {(x, y) for x in range(19, 24) for y in (26, 27)} | {(19, 25)}  # home B's door
 P |= {(x, 9) for x in range(8, 23)}                                  # the shore walk
@@ -215,8 +225,8 @@ def building(oid, sprite, at, w, h, cols, to_map, landing):
 building("quiet_hall", "stillwater_quiet_hall", HALL, 7, 5, (3,), "stillwater_quiet_hall", (9, 12))
 building("inn", "stillwater_inn", INN, 6, 6, (2, 3), "stillwater_shutter", (8, 10))
 building("lampmaker", "stillwater_lampmaker", LAMPMAKER, 6, 5, (2, 3), "stillwater_lampmaker", (7, 8))
-building("home_a", "stillwater_home_a", HOME_A, 5, 5, (2,), "stillwater_home_a", (6, 7))
-building("home_b", "stillwater_home_b", HOME_B, 5, 5, (2,), "stillwater_home_b", (6, 7))
+building("home_a", "stillwater_home_a", HOME_A, 5, 5, (2,), "stillwater_home_a", (7, 7))
+building("home_b", "stillwater_home_b", HOME_B, 5, 5, (2,), "stillwater_home_b", (6, 9))
 # after the dawn: home B's upstairs window stands open, lit, a child at it (touch #3)
 obj("home_b_window", "stillwater_window_lit", (HOME_B[0], HOME_B[1] + 2), 2, 2,
     solid=False, requires_flag=DAWN)
@@ -259,6 +269,47 @@ obj("well", "tinderwick_well", (25, 25), 2, 3, overhang=1)
 for n, (x, y) in enumerate([(26, 20), (3, 25), (10, 4), (21, 4)]):
     obj(f"pine_{n}", "windward_bent_pine", (x, y - 2), 2, 3, overhang=2, walk_under=True)
 
+# ---- 2026-10 fix pass: the mere as a PLACE, the crag dressed, the margins lived-in ---
+# the jetty (pinned boards over the water, walk-on) + the last fishing punt moored by it
+obj("mere_punt", "stillwater_punt", (16, 5), 2, 1)
+# the village lamp-stone (TRAVEL waystone, content/waystones.ts) on the square
+obj("waystone", "stillwater_waystone", (18, 16), 1, 2, overhang=1, walk_under=True)
+trig("waystone_read", (18, 17), "sign.stillwater_waystone", kind="sign")
+# the lived-in yards: wash-lines of sleepers' blankets, woodpiles, wool, a sleeper more
+YARD_PROPS = [
+    ("wash_west", "stillwater_wash_line", (6, 17), 3, 2, {"overhang": 1}),
+    ("wood_inn", "stillwater_woodpile", (2, 8), 2, 1, {}),
+    ("wash_south", "stillwater_wash_line", (13, 25), 3, 2, {"overhang": 1}),
+    ("wood_home_b", "stillwater_woodpile", (22, 24), 2, 1, {}),
+    ("wood_lamp", "stillwater_woodpile", (21, 15 - 1), 2, 1, {}),
+    ("wool_square", "stillwater_wool_basket", (10, 18), 1, 1, {}),
+    ("wool_east", "stillwater_wool_basket", (27, 21), 1, 1, {}),
+    ("boulders_w", "stillwater_crag_boulders", (2, 23), 2, 2, {"overhang": 1}),
+    ("boulders_se", "stillwater_crag_boulders", (26, 26), 2, 2, {"overhang": 1}),
+]
+for oid, sprite, at, w, h, kw in YARD_PROPS:
+    obj(oid, sprite, at, w, h, **kw)
+obj("sleeper_5", "stillwater_blanket_kin_b", (2, 20), 2, 1)
+trig("sleeper_5_read", (2, 21), "script.still_sleeper")
+
+
+def is_crag(x, y):
+    return 0 <= x < W and 0 <= y < H and crag[y * W + x]
+
+
+# the crag rim, dressed: slate boulders, dead trees and shuttered lamps on the TOP
+# (every footprint cell is crag — nothing here touches walkable ground)
+for n, (x, y) in enumerate([(0, 3), (27, 4), (0, 11), (28, 22), (11, 28), (19, 28), (27, 12),
+                            (0, 26)]):
+    if all(is_crag(x + dx, y + dy) for dx in (0, 1) for dy in (0, 1)):
+        obj(f"crag_boulders_{n}", "stillwater_crag_boulders", (x, y), 2, 2)
+for n, (x, y) in enumerate([(13, 0), (21, 0), (28, 27)]):
+    if all(is_crag(x + dx, y + dy) for dx in (0, 1) for dy in (0, 1, 2)):
+        obj(f"crag_tree_{n}", "hushfrost_dead_tree", (x, y), 2, 3)
+for n, (x, y) in enumerate([(0, 8), (29, 7), (29, 25), (1, 27), (8, 0), (26, 0)]):
+    if all(is_crag(x, y + dy) for dy in (0, 1, 2)):
+        obj(f"crag_lamp_{n}", "stillwater_shut_lamp", (x, y), 1, 3)
+
 # ---- people ------------------------------------------------------------------------
 # the arrival: a greeter at the south gate (a talk, not a band — you're tolerated)
 npc("gate_greeter", (8, 25), "hollowing_acolyte", "script.still_greeter", facing="left")
@@ -270,16 +321,16 @@ npc("candle_child_after", (13, 21), "npc_girl", "script.still_candle_child_after
 npc("blanket_folder", (7, 19), "npc_old_woman", "script.still_blanket_folder", facing="left")
 npc("lane_sweeper", (20, 15), "npc_man", "script.still_sweeper", facing="left",
     movement="wander", wander_radius=2)
-npc("shore_watcher", (15, 8), "npc_woman", "script.still_shore_watcher", facing="up")
+npc("shore_watcher", (15, 5), "npc_woman", "script.still_shore_watcher", facing="up")
 npc("doubter", (26, 15), "pass_walker", "script.still_doubter", facing="left",
     movement="look_around")
 npc("water_carrier", (27, 24), "npc_parent", "script.still_water_carrier", facing="left")
-npc("meadow_keeper", (21, 6), "frost_herder", "script.still_meadow_keeper", facing="left")
+npc("meadow_keeper", (23, 8), "frost_herder", "script.still_meadow_keeper", facing="left")
 npc("tessaly", (9, 16), "fen_folk", "script.still_tessaly", facing="down",
     hidden_when_flag="flag:q_still_tessaly")
 
 # the three trainers who'd rather talk first (no sight line — you ask)
-for tid, at, sprite, facing in [("still_acolyte_hale", (12, 18), "hollowing_acolyte", "right"),
+for tid, at, sprite, facing in [("still_acolyte_gethin", (12, 18), "hollowing_acolyte", "right"),
                                 ("still_acolyte_vesna", (22, 18), "star_watcher", "left"),
                                 ("still_lamplighter_grisel", (7, 8), "lamplighter", "right")]:
     flag = f"flag:{tid}_beaten"
@@ -304,12 +355,11 @@ owed += pt.cache(m, cid="stillwater_far_shore", at=(26, 3))    # round the mere,
 # ---- encounters (night 48-52; the dawn wakes the beds into their day forms) ----------
 NIGHT = [
     {"kin_id": 180, "weight": 28, "min_level": 48, "max_level": 51},  # the dream-moth
-    {"kin_id": 179, "weight": 18, "min_level": 49, "max_level": 52},  # the lantern-keeper
-    {"kin_id": 136, "weight": 18, "min_level": 48, "max_level": 50},  # Mothdim
-    {"kin_id": 137, "weight": 14, "min_level": 49, "max_level": 51},  # Nullmoth
-    {"kin_id": 113, "weight": 10, "min_level": 50, "max_level": 52},  # Omenire (Lunar/Dark)
-    {"kin_id": 112, "weight": 12, "min_level": 49, "max_level": 51},  # Nightwraith (Lunar)
-]
+    {"kin_id": 179, "weight": 20, "min_level": 49, "max_level": 52},  # the lantern-keeper
+    {"kin_id": 138, "weight": 20, "min_level": 48, "max_level": 50},  # Voidmantle
+    {"kin_id": 113, "weight": 18, "min_level": 50, "max_level": 52},  # Omenire (Lunar/Dark)
+    {"kin_id": 135, "weight": 14, "min_level": 50, "max_level": 52},  # Liminalux
+]  # (kindled forms only at 48+: the review's base-forms-over-kindle fix)
 YARD = [
     {"kin_id": 178, "weight": 70, "min_level": 42, "max_level": 44},  # snuffer-caps (pre-kindle)
     {"kin_id": 180, "weight": 30, "min_level": 46, "max_level": 48},
@@ -317,13 +367,15 @@ YARD = [
 DAY = [
     {"kin_id": 179, "weight": 24, "min_level": 56, "max_level": 60},
     {"kin_id": 180, "weight": 22, "min_level": 55, "max_level": 59},
-    {"kin_id": 140, "weight": 18, "min_level": 58, "max_level": 62},  # Wisprestored: the light back
-    {"kin_id": 133, "weight": 18, "min_level": 55, "max_level": 60},  # Flutterwane
-    {"kin_id": 134, "weight": 18, "min_level": 56, "max_level": 61},  # Wispwane
+    {"kin_id": 140, "weight": 22, "min_level": 58, "max_level": 62},  # Wisprestored: the light back
+    {"kin_id": 135, "weight": 18, "min_level": 55, "max_level": 60},  # Liminalux
+    {"kin_id": 142, "weight": 14, "min_level": 56, "max_level": 61},  # Embergone
 ]
 DAY_YARD = [
-    {"kin_id": 178, "weight": 60, "min_level": 42, "max_level": 44},
-    {"kin_id": 140, "weight": 40, "min_level": 55, "max_level": 58},
+    # after the dawn the young caps are still here; some have kindled into keepers
+    {"kin_id": 178, "weight": 50, "min_level": 42, "max_level": 44},
+    {"kin_id": 179, "weight": 30, "min_level": 55, "max_level": 58},
+    {"kin_id": 140, "weight": 20, "min_level": 55, "max_level": 58},
 ]
 meadow = [tuft[i] and not yard[i] for i in range(W * H)]
 zones = pt.zones_from_grid([1 if v else 0 for v in meadow], W, H, terrain="tall_grass",
@@ -344,6 +396,17 @@ busy |= {(x, y) for o in m["objects"]
          for y in range(o["at"]["ty"], o["at"]["ty"] + o["h"])
          for x in range(o["at"]["tx"], o["at"]["tx"] + o["w"])}
 busy |= {(p["at"]["tx"], p["at"]["ty"]) for p in m["npcs"] + m["triggers"] + m["warps"]}
+# the mere's reed-fringe: grey reeds on the shore cells (with the stone lip, the
+# shore reads as a bank, not a cut-out)
+reeds = [gid("mere_reeds_a", set="stillwater_set"), gid("mere_reeds_b", set="stillwater_set")]
+for y in range(1, H - 1):
+    for x in range(1, W - 1):
+        if (x, y) in busy or deco[y * W + x] or y == 8:
+            continue
+        if any(murk[(y + dy) * W + x + dx] for dx, dy in ((0, 1), (0, -1), (1, 0), (-1, 0))):
+            if rng.random() < 0.7:
+                deco[y * W + x] = rng.choice(reeds)
+                busy.add((x, y))
 for (x, y) in [(9, 19), (2, 12), (27, 22), (20, 2)]:
     if (x, y) not in busy and deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
@@ -377,8 +440,8 @@ m["layers"] = [
      "set": "stillwater_set", "depth": 0, "data": path},
     {"name": "t_blighttuft", "role": "terrain", "terrain": "blighttuft",
      "set": "vesper_overworld_set", "depth": 0, "data": tuft},
-    {"name": "t_murk", "role": "terrain", "terrain": "murk",
-     "set": "vesper_overworld_set", "depth": 0, "data": murk},
+    {"name": "t_mere", "role": "terrain", "terrain": "mere",
+     "set": "stillwater_set", "depth": 0, "data": murk},
     {"name": "t_fogcrag", "role": "terrain", "terrain": "fogcrag",
      "set": "coldfog_set", "depth": 0, "data": crag},
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
@@ -386,7 +449,7 @@ m["layers"] = [
 ]
 
 if __name__ == "__main__":
-    ok = mk.finalize(m, scale=3)
+    ok = mk.finalize(m, scale=3, pin_base={(x, y): n for (x, y, n) in JETTY})
     pt.report(sorted(set(owed)))
     print("PASS" if ok else "FAIL")
     raise SystemExit(0 if ok else 1)

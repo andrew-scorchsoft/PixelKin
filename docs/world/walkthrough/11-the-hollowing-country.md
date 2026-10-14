@@ -67,23 +67,35 @@ north edge (x 48–68). Interiors (roomkit, a muted shutter-grey kit):
 the shutter-grey kit `build_stillwater_interior_set.py`, the `flagway` lane family
 `build_stillwater_set.py`, drawn props `stillwaterforge.py`, five image-gen buildings in
 `assets/tilesets/stillwater/objects/`). Content: `content/regions/stillwater.ts`.
-- **Layout:** the Still Water (murk mere) under the north crags, its shore walk lined with
-  shuttered lamp-posts; the Quiet Hall on the square, the Shutter (inn) west, the dark-lamp
-  maker east, two homes south; grey meadows NW/NE/S + the lampmaker's yard (#178's bed).
+- **Layout:** the Still Water (its own drawn `mere` family: a stone-lipped, reed-fringed shore,
+  water still enough to hold stars, a walk-on jetty with the last fishing punt) under the north
+  crags, its shore walk lined with shuttered lamp-posts; the Quiet Hall on the square, the Shutter (inn) west, the dark-lamp
+  maker east, two homes south; grey meadows NW/NE/S + the lampmaker's yard (#178's bed); wash-lines, woodpiles and
+  crag boulders dress the yards and the rim. The village lamp-stone on the square is a TRAVEL
+  waystone (`content/waystones.ts`, gated `chart:stillwater`).
   Seams: south cols 4-7 ⇄ Coldfog I; south cols 22-25 → `mourning_fields` (2-5, 1).
 - **People (~20 incl. rooms):** Elder Ashe, Keeper Wenna (the hall), Osric the lamp-maker
-  (shop `stillwater_lampmaker`, incl. the Hooded Lamp), Maren + Pip, Tessaly, Grete, Odo,
-  Lisbet, Corwen (the doubter), Hallam, Nell, Ines + Tam, the innkeeper. Three trainers who
-  talk first (choice → battle): Hale (ace 50), Vesna (51), Grisel (52), keeper class.
-- **Quests:** *A Light Left On* (`flag:q_still_candle*` — Pip's candle to the willow hollow or
+  (shop `stillwater_lampmaker`, incl. the Hooded Lamp), Maren + Linnet, Tessaly, Grete, Odo,
+  Lisbet, Corwen (the doubter), Hallam, Nell, Margery + Edwy, the innkeeper. Three trainers who
+  talk first (choice → battle): Gethin (ace 50), Vesna (51), Grisel (52), keeper class.
+- **Quests:** *A Light Left On* (`flag:q_still_candle*` — Linnet's candle to the willow hollow or
   to Maren; a Starglass Shard either way); *The Way Home* (`flag:q_still_tessaly*` — she waits
   in Coldfog I, then Coldfog II, then home at Pale Vault `pale_vault_glacier` (6,22) via
-  `hand_placed_data.py`; reward: **Tessaly's Lamp**, a conditional charge ×3.0 on a dozing
-  kin); *The Shutter-wall* (`flag:q_still_wall`, three cold lamps: Coldfog I `named_lamp_1`,
-  Coldfog II `named_lamp_2`, Stillwater's far shore; a Lumen Drop + 1,500w).
+  `hand_placed_data.py`; reward: **three Tessaly's Lamps**, conditional charges ×3.0 on a
+  dozing kin); *The Shutter-wall* (`flag:q_still_wall`, three cold lamps: Coldfog I `named_lamp_1`,
+  Coldfog II `named_lamp_2`, Stillwater's far shore; a Lumen Drop + 1,500w; Wenna names
+  whichever lamps are still missing).
+- **Hearths:** every Stillwater hearth (the inn, both homes) is BANKED behind a louvred
+  fire-screen (`stillwater_hearth_banked`), its "face to the wall"; the open hearth swaps back
+  in at `flag:dawn` (a same-footprint flag pair). Home A (Margery + Edwy) is a wide hearth-room
+  with two chairs backed to the hearth and Old Bracken's basket by the bed; home B (Maren +
+  Linnet) is tall, with Linnet's own walled room and the candle shelf (once Maren has seen it).
 - **After the dawn:** two shore lamps open and lit (flag-pair objects), home B's upstairs
   window opens with a lamp and a child at it (`stillwater_window_lit`), the mist thins
-  (ambience `when`), the meadows' day-forms rise, every resident gets a dawn line.
+  (ambience `when`), the meadows' day-forms rise, every resident gets a dawn line, the hearths open.
+- **Wild levels:** every line at 46+ wears its kindled form (Voidmantle, Liminalux, Embergone,
+  Omenire) in Stillwater and both Coldfog marshes; the base Flutterwane/Mothdim live only in
+  Coldfog I's gold pocket (lv 17-21, below their kindling).
 - **Music:** `stillwater` (classic chip, snes register, 72 BPM 3/4 D minor) + remaster.
   Backdrop `stillwater-a.webp`; chart `stillwater` (unlocks the LORE entry).
 

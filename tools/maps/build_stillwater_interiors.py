@@ -16,7 +16,7 @@ sleeping kin, wool baskets). The one warm note in every room is its hearth.
                                  in WorldScene.HEAL_ENTRANCE_MAPS (engine; coordinator)
   stillwater_lampmaker    14x10  the dark-lamp maker's shop + storeroom (a counter)
   stillwater_home_a       12x9   the old couple's cottage: hearth room + bed nook
-  stillwater_home_b       12x9   Maren's house (the candle child's mother)
+  stillwater_home_b       12x9   Maren's house (Linnet, the candle child, and her mother)
 
 Door landings pair with build_stillwater.py (each room's doormat is at
 (W//2, H-1); the town lands one tile above it).
@@ -27,7 +27,7 @@ from __future__ import annotations
 
 import sys
 
-from roomkit import (WARM_SET, faced_room, windows, partition_v, place, wall_mount,
+from roomkit import (WARM_SET, faced_room, windows, partition_v, partition_h, place, wall_mount,
                      aisle_runner, mapdef, finish, _MANIFEST)
 
 SHUTTER_SET = dict(WARM_SET, name="interior_shutter_set",
@@ -59,6 +59,17 @@ def hung(objects: list, stem: str, tx: int, *, oid: str | None = None) -> dict:
          "w": sp["tw"], "h": sp["th"], "overhang": 1, "walk_under": True, "solid": False}
     objects.append(o)
     return o
+
+
+def hearth(objects: list, tx: int) -> None:
+    """Stillwater's hearth, a flag-pair on ONE footprint (same w/h/overhang/
+    solidity): the BANKED hearth — its face to the wall, a louvred screen latched
+    across the fire — until the dawn, then the open warm hearth."""
+    wall_mount(objects, "hearth", tx, oid="hearth_open")["requires_flag"] = "flag:dawn"
+    sp = _MANIFEST["stillwater_hearth_banked"]
+    objects.append({"id": "hearth_banked", "sprite": "stillwater_hearth_banked",
+                    "at": {"tx": tx, "ty": 1}, "w": sp["tw"], "h": sp["th"],
+                    "overhang": 1, "walk_under": True, "hidden_when_flag": "flag:dawn"})
 
 
 def out_warp(door_x, H, tx, ty):
@@ -118,7 +129,7 @@ def build_inn():
     place(objects, "bed_inn", 1, 2, oid="bed1")
     place(objects, "bed_inn", 3, 2, oid="bed2")
     still(objects, "wool_basket", 1, 5, oid="bay_wool")
-    wall_mount(objects, "hearth", 8)
+    hearth(objects, 8)
     hung(objects, "hood_rack", 12)
     place(objects, "counter", 10, 4, oid="counter")
     place(objects, "desk", 11, 8)
@@ -163,44 +174,56 @@ def build_lampmaker():
 
 
 def build_home_a():
-    W, H = 12, 9
+    """The old couple's cottage — WIDE and low: one long hearth-room where two old
+    chairs sit with their backs to the screened hearth, a tea table by the stove,
+    and a bed nook behind a partition where Old Bracken sleeps in his basket."""
+    W, H = 14, 9
     door_x = W // 2
     base, over = faced_room(W, H, door_x)
-    windows(over, W, [6])
-    partition_v(over, W, 8, 1, 4, lip="w")                   # the bed nook
+    windows(over, W, [6, 12])
+    partition_v(over, W, 9, 1, 4, lip="w")                   # the bed nook (east)
     objects: list = []
-    wall_mount(objects, "hearth", 1)
-    wall_mount(objects, "dresser", 4)
-    place(objects, "bed", 9, 2)
-    place(objects, "desk", 2, 5)
-    place(objects, "stool", 4, 5)
-    place(objects, "armchair", 5, 4)
-    still(objects, "blanket_kin", 9, 6, oid="nook_sleeper")
-    still(objects, "wool_basket", 1, 7)
-    npcs = [npc("old_tam", (7, 5), "npc_old_man", "script.still_home_a_elder", facing="left"),
-            npc("old_ines", (2, 4), "npc_old_woman", "script.still_home_a_wife")]
-    triggers = [{"id": "sleeper_read", "kind": "script", "at": {"tx": 9, "ty": 5},
-                 "activation": "interact", "ref": "script.still_sleeper"}]
-    return mapdef("stillwater_home_a", "Ines and Tam's Cottage", W, H, SHUTTER_SET, base, over,
+    hearth(objects, 1)                                        # screened; open at dawn
+    still(objects, "old_chairs", 1, 5, oid="old_chairs")      # backs to the hearth
+    wall_mount(objects, "stove", 4)
+    place(objects, "table", 6, 2, oid="tea_table")
+    place(objects, "stool", 8, 3, oid="tea_stool")
+    place(objects, "rug", 4, 5, solid=False)
+    place(objects, "bed", 10, 2)
+    still(objects, "kin_basket", 10, 6, oid="bracken_basket")  # Old Bracken, by the bed
+    still(objects, "wool_basket", 12, 2)
+    still(objects, "wool_basket", 1, 7, oid="wool_b")
+    npcs = [npc("old_edwy", (8, 6), "npc_old_man", "script.still_home_a_elder", facing="right"),
+            npc("old_margery", (5, 3), "npc_old_woman", "script.still_home_a_wife", facing="right")]
+    triggers = [{"id": "bracken_read", "kind": "script", "at": {"tx": 10, "ty": 6},
+                 "activation": "interact", "ref": "script.still_home_a_basket"}]
+    return mapdef("stillwater_home_a", "Margery and Edwy's Cottage", W, H, SHUTTER_SET, base, over,
                   objects, out_warp(door_x, H, 10, 25), triggers, npcs, HUSH_MUSIC)
 
 
 def build_home_b():
-    W, H = 12, 9
+    """Maren's house — TALL and divided the other way: a work-room with her
+    spinning wheel and the screened hearth, and the child's own little room in
+    the north-east corner behind a real wall and door (the candle sill there)."""
+    W, H = 12, 11
     door_x = W // 2
     base, over = faced_room(W, H, door_x)
-    windows(over, W, [6])
-    partition_v(over, W, 3, 1, 4, lip="e")                   # the child's nook
+    windows(over, W, [9])
+    partition_v(over, W, 7, 1, 5, lip="e")                   # the child's room, west wall
+    partition_h(base, over, W, 6, 9, 10)                      # ...its south wall (door at x 8)
     objects: list = []
-    place(objects, "bed", 1, 2, oid="child_bed")
-    wall_mount(objects, "hearth", 7)
-    wall_mount(objects, "shelf", 4)
-    place(objects, "desk", 7, 5)
-    place(objects, "stool", 9, 5)
-    still(objects, "wool_basket", 10, 7)
-    still(objects, "blanket_kin_b", 1, 6, oid="child_sleeper")
-    npcs = [npc("maren", (5, 5), "npc_parent", "script.still_maren", facing="down")]
-    triggers = [{"id": "child_bed_read", "kind": "script", "at": {"tx": 1, "ty": 5},
+    place(objects, "bed", 9, 2, oid="child_bed")
+    still(objects, "candle_sill", 8, 2, oid="candle_sill", solid=False).update(
+        requires_flag="flag:q_still_candle_shown")
+    hearth(objects, 2)                                        # screened; open at dawn
+    wall_mount(objects, "shelf", 5)
+    still(objects, "spinning_wheel", 1, 6)
+    place(objects, "table", 4, 7, oid="table")
+    place(objects, "stool", 6, 8)
+    still(objects, "wool_basket", 1, 8)
+    still(objects, "wool_basket", 10, 9, oid="wool_b")
+    npcs = [npc("maren", (3, 5), "npc_parent", "script.still_maren", facing="down")]
+    triggers = [{"id": "child_bed_read", "kind": "script", "at": {"tx": 8, "ty": 3},
                  "activation": "interact", "ref": "script.still_child_bed"}]
     return mapdef("stillwater_home_b", "Maren's House", W, H, SHUTTER_SET, base, over,
                   objects, out_warp(door_x, H, 19, 25), triggers, npcs, UNEASE_MUSIC)

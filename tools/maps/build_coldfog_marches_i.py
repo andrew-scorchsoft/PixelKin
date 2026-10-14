@@ -415,16 +415,20 @@ owed += pt.cache(m, cid="coldfog_murk_pearl", at=(15, 17))    # valuable, the de
                                                               # (Tidecall-priced, §3a r4)
 
 # ---- encounters (band 46-48; murk carries NOTHING — the water is dead) --------------
+# 2026-10 (Part A review): at 46+ every line wears its KINDLED form (Mothdim/
+# Nullmoth -> Voidmantle, Flutterwane/Wispwane -> Liminalux, Cindersob -> Embergone);
+# the base forms survive only in the gold pocket, below their kindling levels.
 TABLE_I = [
-    {"kin_id": 136, "weight": 30, "min_level": 46, "max_level": 48},  # Mothdim
-    {"kin_id": 133, "weight": 26, "min_level": 46, "max_level": 48},  # Flutterwane
-    {"kin_id": 137, "weight": 20, "min_level": 47, "max_level": 48},  # Nullmoth
-    {"kin_id": 134, "weight": 12, "min_level": 47, "max_level": 48},  # Wispwane
-    {"kin_id": 141, "weight": 12, "min_level": 46, "max_level": 48},  # Cindersob
+    {"kin_id": 138, "weight": 30, "min_level": 46, "max_level": 48},  # Voidmantle
+    {"kin_id": 135, "weight": 26, "min_level": 46, "max_level": 48},  # Liminalux
+    {"kin_id": 113, "weight": 16, "min_level": 47, "max_level": 48},  # Omenire
+    {"kin_id": 142, "weight": 14, "min_level": 46, "max_level": 48},  # Embergone
+    {"kin_id": 180, "weight": 14, "min_level": 46, "max_level": 48},  # Lullwing, down from the village
 ]
 TABLE_GOLD = [
-    {"kin_id": 136, "weight": 38, "min_level": 46, "max_level": 47},  # Mothdim
-    {"kin_id": 133, "weight": 37, "min_level": 46, "max_level": 48},  # Flutterwane
+    # the one patch the fog never drained: the YOUNG still hatch here, kept small
+    {"kin_id": 133, "weight": 38, "min_level": 19, "max_level": 21},  # Flutterwane (kindles 22)
+    {"kin_id": 136, "weight": 37, "min_level": 17, "max_level": 19},  # Mothdim (kindles 20)
     {"kin_id": 140, "weight": 5, "min_level": 47, "max_level": 48},   # Wisprestored —
     # the LONE Light exception (w<=5): the Solarium's dying echo, only here
 ]

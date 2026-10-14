@@ -1,7 +1,7 @@
 {
   "id": "stillwater_home_a",
-  "display_name": "Ines and Tam's Cottage",
-  "width": 12,
+  "display_name": "Margery and Edwy's Cottage",
+  "width": 14,
   "height": 9,
   "tile_width": 16,
   "tile_height": 16,
@@ -49,26 +49,6 @@
         1,
         1,
         1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
-        1,
-        2,
         1,
         1,
         1,
@@ -83,6 +63,10 @@
         1,
         2,
         1,
+        2,
+        1,
+        1,
+        2,
         1,
         2,
         1,
@@ -107,6 +91,8 @@
         1,
         2,
         1,
+        2,
+        1,
         1,
         2,
         1,
@@ -117,6 +103,37 @@
         2,
         1,
         2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
         1,
         1,
         1,
@@ -126,6 +143,7 @@
         1,
         1,
         3,
+        1,
         1,
         1,
         1,
@@ -146,7 +164,9 @@
         6,
         6,
         6,
+        6,
         26,
+        6,
         6,
         6,
         22,
@@ -158,9 +178,11 @@
         4,
         5,
         4,
+        4,
         49,
         4,
         4,
+        5,
         9,
         8,
         0,
@@ -170,11 +192,14 @@
         0,
         0,
         0,
+        0,
         49,
+        0,
         0,
         0,
         9,
         8,
+        0,
         0,
         0,
         0,
@@ -185,8 +210,10 @@
         51,
         0,
         0,
+        0,
         9,
         8,
+        0,
         0,
         0,
         0,
@@ -197,17 +224,6 @@
         55,
         0,
         0,
-        9,
-        8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         9,
         8,
@@ -221,8 +237,26 @@
         0,
         0,
         0,
+        0,
+        0,
         9,
         8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
         0,
         0,
         0,
@@ -239,9 +273,11 @@
         7,
         7,
         7,
+        7,
         12,
         0,
         13,
+        7,
         7,
         7,
         7,
@@ -251,7 +287,7 @@
   ],
   "objects": [
     {
-      "id": "hearth",
+      "id": "hearth_open",
       "sprite": "interior_hearth",
       "at": {
         "tx": 1,
@@ -260,11 +296,35 @@
       "w": 3,
       "h": 3,
       "overhang": 1,
-      "walk_under": true
+      "walk_under": true,
+      "requires_flag": "flag:dawn"
     },
     {
-      "id": "dresser",
-      "sprite": "interior_dresser",
+      "id": "hearth_banked",
+      "sprite": "stillwater_hearth_banked",
+      "at": {
+        "tx": 1,
+        "ty": 1
+      },
+      "w": 3,
+      "h": 3,
+      "overhang": 1,
+      "walk_under": true,
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "old_chairs",
+      "sprite": "stillwater_old_chairs",
+      "at": {
+        "tx": 1,
+        "ty": 5
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "stove",
+      "sprite": "interior_stove",
       "at": {
         "tx": 4,
         "ty": 1
@@ -275,50 +335,51 @@
       "walk_under": true
     },
     {
+      "id": "tea_table",
+      "sprite": "interior_table",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "tea_stool",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 8,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "rug",
+      "sprite": "interior_rug",
+      "at": {
+        "tx": 4,
+        "ty": 5
+      },
+      "w": 3,
+      "h": 2,
+      "solid": false
+    },
+    {
       "id": "bed",
       "sprite": "interior_bed",
       "at": {
-        "tx": 9,
+        "tx": 10,
         "ty": 2
       },
       "w": 2,
       "h": 3
     },
     {
-      "id": "desk",
-      "sprite": "interior_desk",
+      "id": "bracken_basket",
+      "sprite": "stillwater_kin_basket",
       "at": {
-        "tx": 2,
-        "ty": 5
-      },
-      "w": 2,
-      "h": 1
-    },
-    {
-      "id": "stool",
-      "sprite": "interior_stool",
-      "at": {
-        "tx": 4,
-        "ty": 5
-      },
-      "w": 1,
-      "h": 1
-    },
-    {
-      "id": "armchair",
-      "sprite": "interior_armchair",
-      "at": {
-        "tx": 5,
-        "ty": 4
-      },
-      "w": 1,
-      "h": 2
-    },
-    {
-      "id": "nook_sleeper",
-      "sprite": "stillwater_blanket_kin",
-      "at": {
-        "tx": 9,
+        "tx": 10,
         "ty": 6
       },
       "w": 2,
@@ -326,6 +387,16 @@
     },
     {
       "id": "wool_basket",
+      "sprite": "stillwater_wool_basket",
+      "at": {
+        "tx": 12,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "wool_b",
       "sprite": "stillwater_wool_basket",
       "at": {
         "tx": 1,
@@ -339,7 +410,7 @@
     {
       "id": "to_town",
       "at": {
-        "tx": 6,
+        "tx": 7,
         "ty": 8
       },
       "trigger": "step_on",
@@ -354,36 +425,36 @@
   ],
   "triggers": [
     {
-      "id": "sleeper_read",
+      "id": "bracken_read",
       "kind": "script",
       "at": {
-        "tx": 9,
-        "ty": 5
+        "tx": 10,
+        "ty": 6
       },
       "activation": "interact",
-      "ref": "script.still_sleeper"
+      "ref": "script.still_home_a_basket"
     }
   ],
   "encounters": [],
   "npcs": [
     {
-      "id": "old_tam",
+      "id": "old_edwy",
       "at": {
-        "tx": 7,
-        "ty": 5
+        "tx": 8,
+        "ty": 6
       },
-      "facing": "left",
+      "facing": "right",
       "sprite": "npc_old_man",
       "movement": "static",
       "dialogue_ref": "script.still_home_a_elder"
     },
     {
-      "id": "old_ines",
+      "id": "old_margery",
       "at": {
-        "tx": 2,
-        "ty": 4
+        "tx": 5,
+        "ty": 3
       },
-      "facing": "down",
+      "facing": "right",
       "sprite": "npc_old_woman",
       "movement": "static",
       "dialogue_ref": "script.still_home_a_wife"

@@ -175,6 +175,19 @@ export const WAYSTONES: readonly Waystone[] = [
     visited_flag: 'chart:driftholm',
     flavour: 'The island town beyond the Fogwall, lamps in every window.',
   },
+  // ---- The Hollowing's Country (walkthrough/11 Part A) — Stillwater's square, by the
+  // Quiet Hall: a long fog road away, and its post-dawn return is the payoff.
+  {
+    id: 'stillwater',
+    name: 'Stillwater',
+    region: 'outer',
+    map: 'stillwater',
+    tx: 14,
+    ty: 16,
+    facing: 'down',
+    visited_flag: 'chart:stillwater',
+    flavour: 'The Hollowing’s village by the still mere, its lamps shuttered, not out.',
+  },
 ];
 
 /** The flag that opens the TRAVEL option at all (the four-way hub connected). */

@@ -1914,9 +1914,9 @@ export const TRAINERS: TrainerRegistry = {
     payout: 1000, // keeper 20 × ace 50
     music: 'battle-nightfall',
   },
-  still_acolyte_hale: {
-    id: 'still_acolyte_hale',
-    name: 'HALE',
+  still_acolyte_gethin: {
+    id: 'still_acolyte_gethin',
+    name: 'GETHIN',
     title: 'Hollowing Acolyte',
     party: [
       { species_id: 180, level: 49 }, // the dream-moth — Dark/Lunar

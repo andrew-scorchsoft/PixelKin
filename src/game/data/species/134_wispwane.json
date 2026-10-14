@@ -72,39 +72,11 @@
   },
   "encounters": [
     {
-      "area": "coldfog_marches_i",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 47,
-      "max": 48
-    },
-    {
-      "area": "coldfog_marches_ii",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 49,
-      "max": 50
-    },
-    {
       "area": "drownlight_beacon",
       "terrain": "tall_grass",
       "rarity": "common",
       "min": 48,
       "max": 50
-    },
-    {
-      "area": "coldfog_marches_i",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 56,
-      "max": 63
-    },
-    {
-      "area": "coldfog_marches_ii",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 57,
-      "max": 64
     },
     {
       "area": "rimeway_descent",
@@ -126,13 +98,6 @@
       "rarity": "uncommon",
       "min": 50,
       "max": 52
-    },
-    {
-      "area": "stillwater",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 56,
-      "max": 61
     }
   ],
   "scripted": false,

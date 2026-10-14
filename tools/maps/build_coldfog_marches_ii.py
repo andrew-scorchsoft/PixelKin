@@ -331,13 +331,14 @@ owed += pt.cache(m, cid="coldfog_camp_tonic", at=(3, 9))        # consumable, by
 owed += pt.cache(m, cid="coldfog_bank_charm", at=(24, 13))      # valuable, the shelf top
 
 # ---- encounters (band 48-50; Light-kin ABSENT; murk carries nothing) -----------------
+# 2026-10 (Part A review): every line in its KINDLED form at 48-50 (the bases
+# kindle at 20-36); the Light-only Wisprestored stays absent until the dawn.
 TABLE_II = [
-    {"kin_id": 137, "weight": 26, "min_level": 48, "max_level": 50},  # Nullmoth
-    {"kin_id": 139, "weight": 22, "min_level": 48, "max_level": 50},  # WispwaneNull
-    {"kin_id": 141, "weight": 18, "min_level": 48, "max_level": 50},  # Cindersob
-    {"kin_id": 142, "weight": 14, "min_level": 49, "max_level": 50},  # Embergone
-    {"kin_id": 134, "weight": 12, "min_level": 49, "max_level": 50},  # Wispwane
-    {"kin_id": 138, "weight": 8, "min_level": 49, "max_level": 50},   # Voidmantle
+    {"kin_id": 138, "weight": 26, "min_level": 48, "max_level": 50},  # Voidmantle
+    {"kin_id": 135, "weight": 22, "min_level": 48, "max_level": 50},  # Liminalux
+    {"kin_id": 142, "weight": 22, "min_level": 48, "max_level": 50},  # Embergone
+    {"kin_id": 113, "weight": 14, "min_level": 49, "max_level": 50},  # Omenire
+    {"kin_id": 180, "weight": 16, "min_level": 48, "max_level": 50},  # Lullwing
 ]
 band_grid = mk.make_grid(W, H)
 patch_grid = mk.make_grid(W, H)

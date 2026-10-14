@@ -401,29 +401,15 @@ EXTRA_ENCOUNTERS = {
     "heliovast":   [{"area": "helia_vault", "terrain": "cave", "rarity": "rare", "min": 49, "max": 50}],
     # nightreach verge w3 Lunar-Light apex teaser (scripted kin)
     "dawnwatcher": [{"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "very_rare", "min": 51, "max": 52}],
-    # Coldfog — the maps split the designed coldfog_marches rows into I/II
-    "mothdim":     [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48}],
-    "flutterwane": [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48}],
-    "nullmoth":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50},
-                    {"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 49},
+    # Coldfog I/II: mirrored by COLDFOG_TABLES (dex-id keyed, below the Stillwater mirror)
+    "nullmoth":    [{"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 49},
                     {"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
-    "wispwane":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 49, "max": 50},
-                    {"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
+    "wispwane":    [{"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
     "cindersob":   [# hushfrost II's "numbed" pockets only (w30 there) — rare cap
-                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 42},
-                    {"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50}],
-    # the gold bed (coldfog I's 1-tile gold_a pocket, w5) — the lone Light
-    # exception in the Dark marches
-    "wisprestored": [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48}],
-    "wispwanenull": [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50},
-                     {"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
-    "embergone":   [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 49, "max": 50},
-                    {"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 49, "max": 50}],
-    "voidmantle":  [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 50},
-                    {"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 49, "max": 50}],
+                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 42}],
+    "wispwanenull": [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
+    "embergone":   [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 49, "max": 50}],
+    "voidmantle":  [{"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 49, "max": 50}],
     "liminalux":   [{"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 50}],
     # the husk-cradle (w55 pocket) + the works bed (w12)
     "whorlix":     [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "uncommon", "min": 50, "max": 51}],
@@ -603,8 +589,7 @@ R4_DAYFORM_ENCOUNTERS = {
     "frigalance": [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64}],
     "glacitern":  [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64}],
     # day numbed-pocket cap: pocket-only species stay rare (the W6 rule)
-    "cindersob":  [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 63},
-                   {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 63}],
+    "cindersob":  [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 63}],
     "frostholm":  [{"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "very_rare", "min": 62, "max": 65}],
     "sunsprout":  [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
     "helibud":    [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62},
@@ -624,19 +609,7 @@ R4_DAYFORM_ENCOUNTERS = {
                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 65}],
     "lunveil":    [{"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64}],
     "lunvane":    [{"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65}],
-    # ---- the Coldfog Light RE-BLOOM (the day tables change character) ----
-    "wisprestored":[{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 58, "max": 65},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 60, "max": 65}],
-    "flutterwane": [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 62},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63}],
-    "wispwane":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64}],
-    "wispwanenull":[{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64}],
-    "mothdim":     [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 55, "max": 61}],
-    "nullmoth":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "rare", "min": 56, "max": 62},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63}],
-    "embergone":   [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64}],
+    # (the Coldfog day RE-BLOOM rows: COLDFOG_TABLES, below the Stillwater mirror)
 }
 for _slug, _rows in R4_DAYFORM_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
@@ -1367,12 +1340,25 @@ CURATED_AREAS |= {"mourning_fields", "penumbra_underways", "penumbra_underways_b
 # #178-#180 are Lane N4's: the slug resolves from selected.json, and an id not yet in
 # the roster is skipped (no row lost once it lands — re-run this builder then).
 STILLWATER_TABLES = [
-    ("stillwater", [(180, 28, 48, 51), (179, 20, 49, 52), (113, 18, 49, 51), (137, 14, 48, 50),
-                    (138, 12, 50, 52), (135, 8, 50, 52)]),
-    ("stillwater", [(179, 24, 56, 60), (180, 22, 55, 59), (140, 18, 58, 62), (133, 18, 55, 60),
-                    (134, 18, 56, 61)]),                                   # day (flag:dawn)
+    ("stillwater", [(180, 28, 48, 51), (179, 20, 49, 52), (138, 20, 48, 50), (113, 18, 50, 52),
+                    (135, 14, 50, 52)]),
+    ("stillwater", [(179, 24, 56, 60), (180, 22, 55, 59), (140, 22, 58, 62), (135, 18, 55, 60),
+                    (142, 14, 56, 61)]),                                   # day (flag:dawn)
     ("stillwater", [(178, 70, 42, 44), (180, 30, 46, 48)]),                # the yard, night
-    ("stillwater", [(178, 60, 42, 44), (140, 40, 55, 58)]),                # the yard, day
+    ("stillwater", [(178, 50, 42, 44), (179, 30, 55, 58), (140, 20, 55, 58)]),  # the yard, day
+    # Coldfog I/II (2026-10 Part A review: kindled forms at 46+; the base forms only
+    # in Coldfog I's gold pocket, below their kindling levels). MIRROR of the
+    # builders' TABLE_I/TABLE_GOLD/TABLE_II + hand_placed_data's day tables.
+    ("coldfog_marches_i", [(138, 30, 46, 48), (135, 26, 46, 48), (113, 16, 47, 48),
+                           (142, 14, 46, 48), (180, 14, 46, 48)]),
+    ("coldfog_marches_i", [(133, 38, 19, 21), (136, 37, 17, 19), (140, 5, 47, 48)]),   # gold
+    ("coldfog_marches_i", [(140, 26, 58, 65), (135, 26, 55, 62), (138, 16, 56, 62),
+                           (142, 12, 56, 62), (180, 12, 55, 60), (113, 8, 56, 62)]),     # day
+    ("coldfog_marches_i", [(140, 50, 59, 65), (133, 30, 19, 21), (136, 20, 17, 19)]),  # gold, day
+    ("coldfog_marches_ii", [(138, 26, 48, 50), (135, 22, 48, 50), (142, 22, 48, 50),
+                            (113, 14, 49, 50), (180, 16, 48, 50)]),
+    ("coldfog_marches_ii", [(140, 24, 60, 65), (135, 24, 57, 64), (138, 18, 57, 63),
+                            (142, 16, 58, 64), (113, 10, 57, 63), (180, 8, 57, 62)]),    # day
 ]
 _SW_SLUG = {c["dex_id"]: re.sub(r"[^a-z0-9]+", "_", c["name"].lower()).strip("_")
             for c in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..",
@@ -1382,8 +1368,11 @@ for _area, _tab in STILLWATER_TABLES:
     for (_k, _w, _lo, _hi) in _tab:
         if _k not in _SW_SLUG:
             continue
-        EXTRA_ENCOUNTERS.setdefault(_SW_SLUG[_k], []).append({
-            "area": _area, "terrain": "tall_grass", "rarity": _mire_rarity(_w), "min": _lo, "max": _hi})
+        _row = {"area": _area, "terrain": "tall_grass", "rarity": _mire_rarity(_w),
+                "min": _lo, "max": _hi}
+        _have = EXTRA_ENCOUNTERS.setdefault(_SW_SLUG[_k], [])
+        if _row not in _have:          # a bed that keeps its night table by day
+            _have.append(_row)
 CURATED_AREAS |= {"stillwater", "stillwater_quiet_hall", "stillwater_shutter",
                   "stillwater_lampmaker", "stillwater_home_a", "stillwater_home_b"}
 
