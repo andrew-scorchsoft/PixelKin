@@ -67,13 +67,6 @@
   },
   "encounters": [
     {
-      "area": "drownlight_beacon",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 48,
-      "max": 49
-    },
-    {
       "area": "hollowfen_stillworks",
       "terrain": "tall_grass",
       "rarity": "common",
@@ -93,13 +86,6 @@
       "rarity": "uncommon",
       "min": 57,
       "max": 63
-    },
-    {
-      "area": "drownlight_f1",
-      "terrain": "cave",
-      "rarity": "common",
-      "min": 50,
-      "max": 51
     }
   ],
   "scripted": false,

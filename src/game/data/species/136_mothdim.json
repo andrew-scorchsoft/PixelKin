@@ -77,13 +77,6 @@
       "max": 62
     },
     {
-      "area": "drownlight_f1",
-      "terrain": "cave",
-      "rarity": "uncommon",
-      "min": 50,
-      "max": 51
-    },
-    {
       "area": "coldfog_marches_i",
       "terrain": "tall_grass",
       "rarity": "common",

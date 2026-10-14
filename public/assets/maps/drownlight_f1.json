@@ -951,6 +951,66 @@
       "h": 2
     },
     {
+      "id": "hall_barrels",
+      "sprite": "interior_barrels",
+      "at": {
+        "tx": 13,
+        "ty": 14
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "hall_oil_cans",
+      "sprite": "drownlight_oil_cans",
+      "at": {
+        "tx": 15,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "hall_sacks",
+      "sprite": "interior_sacks",
+      "at": {
+        "tx": 6,
+        "ty": 14
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "hall_crates",
+      "sprite": "interior_crates",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "hall_rope",
+      "sprite": "drownlight_rope_coil",
+      "at": {
+        "tx": 19,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "hall_rope_b",
+      "sprite": "drownlight_rope_coil",
+      "at": {
+        "tx": 14,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
       "id": "nook_rope",
       "sprite": "drownlight_rope_coil",
       "at": {
@@ -1360,6 +1420,76 @@
       "ref": "script.drownlight_log"
     },
     {
+      "id": "hall_barrels_read_13",
+      "kind": "sign",
+      "at": {
+        "tx": 13,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_oil_barrels"
+    },
+    {
+      "id": "hall_barrels_read_14",
+      "kind": "sign",
+      "at": {
+        "tx": 14,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_oil_barrels"
+    },
+    {
+      "id": "hall_oil_cans_read",
+      "kind": "sign",
+      "at": {
+        "tx": 15,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_wick_shelf"
+    },
+    {
+      "id": "hall_sacks_read_6",
+      "kind": "sign",
+      "at": {
+        "tx": 6,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_sand_sacks"
+    },
+    {
+      "id": "hall_sacks_read_7",
+      "kind": "sign",
+      "at": {
+        "tx": 7,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_sand_sacks"
+    },
+    {
+      "id": "hall_crates_read_13",
+      "kind": "sign",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_glass_crates"
+    },
+    {
+      "id": "hall_crates_read_14",
+      "kind": "sign",
+      "at": {
+        "tx": 18,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_glass_crates"
+    },
+    {
       "id": "first_steps",
       "kind": "cutscene",
       "at": {
@@ -1494,39 +1624,33 @@
       "encounter_rate": 0.06,
       "table": [
         {
-          "kin_id": 137,
+          "kin_id": 179,
+          "weight": 28,
+          "min_level": 50,
+          "max_level": 52
+        },
+        {
+          "kin_id": 138,
           "weight": 24,
           "min_level": 50,
           "max_level": 51
         },
         {
-          "kin_id": 136,
-          "weight": 14,
-          "min_level": 50,
-          "max_level": 51
-        },
-        {
-          "kin_id": 134,
+          "kin_id": 180,
           "weight": 18,
-          "min_level": 50,
+          "min_level": 51,
           "max_level": 52
         },
         {
           "kin_id": 85,
+          "weight": 16,
+          "min_level": 51,
+          "max_level": 52
+        },
+        {
+          "kin_id": 135,
           "weight": 14,
-          "min_level": 51,
-          "max_level": 52
-        },
-        {
-          "kin_id": 179,
-          "weight": 22,
           "min_level": 50,
-          "max_level": 52
-        },
-        {
-          "kin_id": 180,
-          "weight": 8,
-          "min_level": 51,
           "max_level": 52
         }
       ]
@@ -1543,39 +1667,33 @@
       "encounter_rate": 0.06,
       "table": [
         {
-          "kin_id": 137,
+          "kin_id": 179,
+          "weight": 28,
+          "min_level": 50,
+          "max_level": 52
+        },
+        {
+          "kin_id": 138,
           "weight": 24,
           "min_level": 50,
           "max_level": 51
         },
         {
-          "kin_id": 136,
-          "weight": 14,
-          "min_level": 50,
-          "max_level": 51
-        },
-        {
-          "kin_id": 134,
+          "kin_id": 180,
           "weight": 18,
-          "min_level": 50,
+          "min_level": 51,
           "max_level": 52
         },
         {
           "kin_id": 85,
+          "weight": 16,
+          "min_level": 51,
+          "max_level": 52
+        },
+        {
+          "kin_id": 135,
           "weight": 14,
-          "min_level": 51,
-          "max_level": 52
-        },
-        {
-          "kin_id": 179,
-          "weight": 22,
           "min_level": 50,
-          "max_level": 52
-        },
-        {
-          "kin_id": 180,
-          "weight": 8,
-          "min_level": 51,
           "max_level": 52
         }
       ]
@@ -1592,39 +1710,33 @@
       "encounter_rate": 0.05,
       "table": [
         {
-          "kin_id": 137,
+          "kin_id": 179,
+          "weight": 28,
+          "min_level": 50,
+          "max_level": 52
+        },
+        {
+          "kin_id": 138,
           "weight": 24,
           "min_level": 50,
           "max_level": 51
         },
         {
-          "kin_id": 136,
-          "weight": 14,
-          "min_level": 50,
-          "max_level": 51
-        },
-        {
-          "kin_id": 134,
+          "kin_id": 180,
           "weight": 18,
-          "min_level": 50,
+          "min_level": 51,
           "max_level": 52
         },
         {
           "kin_id": 85,
+          "weight": 16,
+          "min_level": 51,
+          "max_level": 52
+        },
+        {
+          "kin_id": 135,
           "weight": 14,
-          "min_level": 51,
-          "max_level": 52
-        },
-        {
-          "kin_id": 179,
-          "weight": 22,
           "min_level": 50,
-          "max_level": 52
-        },
-        {
-          "kin_id": 180,
-          "weight": 8,
-          "min_level": 51,
           "max_level": 52
         }
       ]

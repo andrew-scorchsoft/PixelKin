@@ -72,13 +72,6 @@
   },
   "encounters": [
     {
-      "area": "drownlight_beacon",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 48,
-      "max": 50
-    },
-    {
       "area": "rimeway_descent",
       "terrain": "tall_grass",
       "rarity": "common",
@@ -91,13 +84,6 @@
       "rarity": "uncommon",
       "min": 56,
       "max": 62
-    },
-    {
-      "area": "drownlight_f1",
-      "terrain": "cave",
-      "rarity": "uncommon",
-      "min": 50,
-      "max": 52
     }
   ],
   "scripted": false,

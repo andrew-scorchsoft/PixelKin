@@ -80,7 +80,7 @@
     {
       "area": "drownlight_f1",
       "terrain": "cave",
-      "rarity": "rare",
+      "rarity": "uncommon",
       "min": 51,
       "max": 52
     },
@@ -90,6 +90,13 @@
       "rarity": "uncommon",
       "min": 51,
       "max": 53
+    },
+    {
+      "area": "drownlight_beacon",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 48,
+      "max": 49
     },
     {
       "area": "mourning_fields",

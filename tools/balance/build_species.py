@@ -402,15 +402,11 @@ EXTRA_ENCOUNTERS = {
     # nightreach verge w3 Lunar-Light apex teaser (scripted kin)
     "dawnwatcher": [{"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "very_rare", "min": 51, "max": 52}],
     # Coldfog I/II: mirrored by COLDFOG_TABLES (dex-id keyed, below the Stillwater mirror)
-    "nullmoth":    [{"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 49},
-                    {"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
-    "wispwane":    [{"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
+    "nullmoth":    [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
     "cindersob":   [# hushfrost II's "numbed" pockets only (w30 there) — rare cap
                     {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 42}],
     "wispwanenull": [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
     "embergone":   [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 49, "max": 50}],
-    "voidmantle":  [{"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 49, "max": 50}],
-    "liminalux":   [{"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 50}],
     # the husk-cradle (w55 pocket) + the works bed (w12)
     "whorlix":     [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "uncommon", "min": 50, "max": 51}],
 }
@@ -1106,8 +1102,8 @@ for _area, _by_terrain in UNDERTIDE_TABLES.items():
 # so this block never hard-codes another lane's names; an id not yet in the
 # roster is skipped. Weights -> rarity as the Undertide's (_ut_rarity).
 DROWNLIGHT_TABLES = {
-    "drownlight_f1": [(137, 24, 50, 51), (136, 14, 50, 51), (134, 18, 50, 52),
-                      (85, 14, 51, 52), (179, 22, 50, 52), (180, 8, 51, 52)],
+    "drownlight_f1": [(179, 28, 50, 52), (138, 24, 50, 51), (180, 18, 51, 52),
+                      (85, 16, 51, 52), (135, 14, 50, 52)],
     "drownlight_f2": [(138, 20, 51, 53), (135, 8, 52, 53), (87, 14, 51, 53),
                       (85, 12, 51, 53), (179, 28, 51, 53), (180, 18, 51, 53)],
 }
@@ -1119,6 +1115,13 @@ for _area, _tab in DROWNLIGHT_TABLES.items():
         if _k in _DL_SLUG:
             EXTRA_ENCOUNTERS.setdefault(_DL_SLUG[_k], []).append(
                 {"area": _area, "terrain": "cave", "rarity": _ut_rarity(_w), "min": _lo, "max": _hi})
+# The tower's FOOT (drownlight_beacon's blight-tuft beds) — MIRROR of
+# tools/maps/build_drownlight_beacon.py TABLE_BEACON. Final forms only at band.
+DROWNLIGHT_BEACON_TABLE = [(138, 34, 49, 50), (179, 28, 48, 50), (180, 24, 48, 49), (135, 9, 49, 50)]
+for (_k, _w, _lo, _hi) in DROWNLIGHT_BEACON_TABLE:
+    if _k in _DL_SLUG:
+        EXTRA_ENCOUNTERS.setdefault(_DL_SLUG[_k], []).append(
+            {"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": _ut_rarity(_w), "min": _lo, "max": _hi})
 
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows

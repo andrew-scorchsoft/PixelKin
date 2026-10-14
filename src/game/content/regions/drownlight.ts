@@ -102,10 +102,10 @@ const RELIGHT: CutsceneStep[] = [
   { op: 'tint', color: '#ffd890', alpha: 0, ms: 1200 },
   { op: 'say', speaker: KEEPER, text: '...I\'d forgotten it was warm. All those winters keeping it, and I\'d forgotten it was warm.' },
   { op: 'say', speaker: KEEPER, text: 'It isn\'t a promise this time, is it. Not one lamp alone, lying to the sea. It\'s one of a great many. That I can keep.' },
-  { op: 'say', speaker: KEEPER, text: 'Here. I cut these from the first shutter\'s latches, the night I bolted it. Three latches, three leaves. I meant to throw them in the sea. I\'m glad I didn\'t.' },
+  { op: 'say', speaker: KEEPER, text: 'Here. The first shutter\'s own latch. I worked it off the night I bolted her, and I\'ve carried it every winter since. I meant to throw it in the sea. I\'m glad I didn\'t.' },
   { op: 'sfx', key: 'world-keyitem' },
-  { op: 'giveItem', item: 'shutter_charm', count: 3 },
-  { op: 'narrate', text: 'She presses three SHUTTER CHARMS into your hand: little iron latches, warm from the lamp.' },
+  { op: 'giveItem', item: 'shutter_charm', count: 1 },
+  { op: 'narrate', text: 'She presses the SHUTTER CHARM into your hand: a little iron latch, warm from the lamp. It is not the kind of thing you use up.' },
   { op: 'say', speaker: KEEPER, text: 'For the kin who love the dark. Not every kin wants waking, apprentice. A light that\'s gentle with them, that comes to them where they are, they\'ll follow it home. That\'s the kind of light I mean to keep now.' },
   { op: 'letterbox', on: false },
 ];
@@ -334,6 +334,15 @@ export const DROWNLIGHT_DIALOGUE: DialogueRegistry = {
   ],
   'sign.drownlight_stove': [
     { text: 'A stove, banked low and tended, a kettle kept warm on top of it. Whoever lives up this tower comes down here for their tea.' },
+  ],
+  'sign.drownlight_oil_barrels': [
+    { text: 'Oil barrels, bunged and stencilled DROWNLIGHT. Somebody has chalked a tally of winters on the nearest one. The tally stops, and then, in a different hand, it starts again.' },
+  ],
+  'sign.drownlight_sand_sacks': [
+    { text: 'Sandbags, stacked by the door for the spring tides. The sea has not come in here for years. The bags are still kept dry.' },
+  ],
+  'sign.drownlight_glass_crates': [
+    { text: 'Crates packed in straw: spare chimney-glasses, a box of wicks, a lamp-maker\'s mark on every lid. Enough to keep the tower lit a dozen winters. None of them opened.' },
   ],
   'sign.drownlight_mess_table': [
     { text: 'The keepers\' mess table, scrubbed pale. A single candle stands on it in a saucer, lit. The Hollowing don\'t snuff candles. Only lamps that make promises.' },

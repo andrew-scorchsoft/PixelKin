@@ -65,10 +65,13 @@ F = "flag:drownlight_shutter_{}"
 # keep both in step). Dark/Light/Frost of the north + the Hollowing's own family
 # (#179 the shuttered lantern-keeper, #180 the dream-moth — lane N4's kin; #178 the
 # snuffer-cap kindles into #179 at 44, so at these levels it wears its kindled form).
+# Every kin here is a FINAL form at band (lv 50-53): the old F1 rows carried Mothdim
+# (kindles at 20), Nullmoth (36) and Wispwane (38) — 14-30 levels past their
+# kindling — so F1 wears Voidmantle/Liminalux, and the Hollowing's own two lead it.
 # (kin, weight, lo, hi)
 TABLES = {
-    "drownlight_f1": [(137, 24, 50, 51), (136, 14, 50, 51), (134, 18, 50, 52),
-                      (85, 14, 51, 52), (179, 22, 50, 52), (180, 8, 51, 52)],
+    "drownlight_f1": [(179, 28, 50, 52), (138, 24, 50, 51), (180, 18, 51, 52),
+                      (85, 16, 51, 52), (135, 14, 50, 52)],
     "drownlight_f2": [(138, 20, 51, 53), (135, 8, 52, 53), (87, 14, 51, 53),
                       (85, 12, 51, 53), (179, 28, 51, 53), (180, 18, 51, 53)],
 }
@@ -393,6 +396,22 @@ def floor_1():
     fl.obj("log_lectern", "drownlight_lectern", (16, 12), 1, 2, overhang=1)
     fl.read("log_16", (16, 13), "script.drownlight_log", kind="cutscene")
     fl.obj("hall_cistern", "drownlight_cistern", (18, 11), 2, 2)
+    # the hall's lower half (review r2: "a board floor with one table") — the oil
+    # store's overflow along the walls, every piece off the walked lines (the door
+    # row x10-12, the K-door push (6,12), the crank's foot (10,10), the stove's (17,10))
+    fl.piece("barrels", (13, 14), oid="hall_barrels")
+    for x in (13, 14):
+        fl.read(f"hall_barrels_read_{x}", (x, 14), "sign.drownlight_oil_barrels")
+    fl.obj("hall_oil_cans", "drownlight_oil_cans", (15, 14), 1, 1)
+    fl.read("hall_oil_cans_read", (15, 14), "sign.drownlight_wick_shelf")
+    fl.piece("sacks", (6, 14), oid="hall_sacks")
+    for x in (6, 7):
+        fl.read(f"hall_sacks_read_{x}", (x, 14), "sign.drownlight_sand_sacks")
+    fl.piece("crates", (18, 13), oid="hall_crates")
+    for y in (13, 14):
+        fl.read(f"hall_crates_read_{y}", (18, y), "sign.drownlight_glass_crates")
+    fl.obj("hall_rope", "drownlight_rope_coil", (19, 10), 1, 1)
+    fl.obj("hall_rope_b", "drownlight_rope_coil", (14, 11), 1, 1)
     # THE NOOK — dark only before the hall crank is thrown
     fl.cache("drownlight_shard", (2, 13))
     fl.obj("nook_rope", "drownlight_rope_coil", (1, 11), 1, 1)

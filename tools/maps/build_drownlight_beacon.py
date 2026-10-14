@@ -205,11 +205,14 @@ m["triggers"] += [
 ]
 
 # ---- encounters (the rare Dark bed; band 48-50; murk dead) ---------------------------
+# (final forms only at band: Nullmoth kindles at 36 and Wispwane at 38, so the old
+# lv-48 rows wore their kindled forms; the Hollowing's #179/#180 share the bed.
+# MIRRORED in build_species.py DROWNLIGHT_BEACON_TABLE.)
 TABLE_BEACON = [
-    {"kin_id": 138, "weight": 30, "min_level": 49, "max_level": 50},  # Voidmantle
-    {"kin_id": 137, "weight": 35, "min_level": 48, "max_level": 49},  # Nullmoth
-    {"kin_id": 134, "weight": 22, "min_level": 48, "max_level": 50},  # Wispwane
-    {"kin_id": 135, "weight": 8, "min_level": 49, "max_level": 50},   # Liminalux
+    {"kin_id": 138, "weight": 34, "min_level": 49, "max_level": 50},  # Voidmantle
+    {"kin_id": 179, "weight": 28, "min_level": 48, "max_level": 50},  # Shutterwick
+    {"kin_id": 180, "weight": 24, "min_level": 48, "max_level": 49},  # Lullwing
+    {"kin_id": 135, "weight": 9, "min_level": 49, "max_level": 50},   # Liminalux
 ]
 m["encounters"] += pt.zones_from_grid(blighttuft, W, H, terrain="tall_grass",
                                       rate=0.14, table=TABLE_BEACON, id_prefix="bed")

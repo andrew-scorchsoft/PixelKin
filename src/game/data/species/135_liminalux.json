@@ -70,13 +70,6 @@
   },
   "encounters": [
     {
-      "area": "drownlight_beacon",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 49,
-      "max": 50
-    },
-    {
       "area": "umbral_approach",
       "terrain": "tall_grass",
       "rarity": "uncommon",
@@ -84,11 +77,25 @@
       "max": 53
     },
     {
+      "area": "drownlight_f1",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 50,
+      "max": 52
+    },
+    {
       "area": "drownlight_f2",
       "terrain": "cave",
       "rarity": "rare",
       "min": 52,
       "max": 53
+    },
+    {
+      "area": "drownlight_beacon",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 49,
+      "max": 50
     },
     {
       "area": "mourning_fields",

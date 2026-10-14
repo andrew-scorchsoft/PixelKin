@@ -42,6 +42,7 @@ you carry; using a charge consumes it.
 | **Drift Charm** | ×3.0 on kin met in **water** terrain (else ×1.0) — the netmender's thanks for "The Last Buoy Out" (**BUILT**, Pearlmoor S1; `condition: { kind: 'terrain', terrain: 'water' }`) |
 | **Wrecklight Charm** | ×2.5 — the Tide Charm re-blessed at the wreck-lamp; S3's reward (**BUILT** as an item; the quest completes post-Glimmerstep) |
 | **Tessaly's Lamp** | ×3.0 on a **dozing** kin (else ×1.0) — THREE given once, for walking Tessaly home through the Coldfog ("The Way Home", **BUILT**, Stillwater; `condition: { kind: 'status', status: 'doze' }`) |
+| **Shutter Charm** | ×2.5 on **Dark**-type kin (else ×1.0) — ONE, and **reusable** (`reusable: true`: the throw never spends it), the Shutterkeeper's latch for relighting the Drownlight after the dawn (**BUILT**, walkthrough/11 Part B; `condition: { kind: 'defender_type', types: ['Dark'] }`) |
 | **Dusk Charge** | ×3.0 at night, or vs **Lunar**/**Dark** kin (else ×1.0) |
 | **Hearth Charge** | ×3.5 if the target is **Dozing** or below 25% HP (else ×1.0) — rewards the proper "weaken then catch" loop |
 | **Moss / Cinder / Tideglass Charges** | ×3.0 on kin met in tall-grass / cave / water terrain (else ×1.0) |

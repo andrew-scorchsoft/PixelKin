@@ -858,14 +858,16 @@ export const ITEMS: ItemRegistry = {
   // ---- Lane N2 (walkthrough/11 Part B): the Drownlight's relight reward — the
   // Shutterkeeper's latch. A conditional charge (the Aurora Charm pattern, the
   // Hollowing's edition): blazes toward Dark-hearted kin, plain toward the rest.
-  // Never sold (no price): three per game (the first shutter's three latches),
-  // from the post-dawn relight — one throw didn't repay a tower's capstone.
+  // Never sold (no price): ONE per game, from the post-dawn relight, and REUSABLE
+  // (a keepsake, never spent) — the tower's capstone keeps paying for the
+  // Dark-hearted kin of the whole north rather than three throws and gone.
   shutter_charm: {
     id: 'shutter_charm',
     name: 'Shutter Charm',
-    desc: 'A latch of the Drownlight\'s first shutter, warm from the relit lamp. Raised toward a Dark-hearted kin its throw burns gentle and sure; toward any other it is only a lamp.',
+    desc: 'The first shutter\'s own latch, warm from the relit lamp. Raised toward a Dark-hearted kin its throw burns gentle and sure; toward any other it is only a lamp. A keepsake: never spent.',
     category: 'charge',
     catch_bonus: 2.5,
+    reusable: true,
     condition: { kind: 'defender_type', types: ['Dark'] },
   },
 };

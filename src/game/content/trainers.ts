@@ -1961,7 +1961,7 @@ export const TRAINERS: TrainerRegistry = {
     name: 'ODELL',
     title: 'Hollowing Acolyte',
     party: [
-      { species_id: 137, level: 50 }, // Nullmoth — Dark
+      { species_id: 138, level: 50 }, // Voidmantle — Dark (Nullmoth kindles at 36: a lv-50 one wears its final form)
       { species_id: 85, level: 51 }, // Stillwarden — Frost/Dark (ace)
     ],
     payout: 1020, // keeper 20 × ace 51
@@ -1972,7 +1972,7 @@ export const TRAINERS: TrainerRegistry = {
     name: 'PRUE',
     title: 'Hollowing Acolyte',
     party: [
-      { species_id: 134, level: 51 }, // Wispwane — Dark/Light
+      { species_id: 135, level: 51 }, // Liminalux — Dark/Light (Wispwane kindles at 38)
       { species_id: 179, level: 51 }, // Shutterwick (#179, lane N4) — Dark/Light; the snuffer-cap kindles at 44, so a lv-51 one wears its kindled form
       { species_id: 87, level: 52 }, // Prismantus — Light/Frost (ace)
     ],
@@ -1984,8 +1984,8 @@ export const TRAINERS: TrainerRegistry = {
     name: 'HASK',
     title: 'Hollowing Acolyte',
     party: [
-      { species_id: 136, level: 52 }, // Mothdim — Dark
-      { species_id: 141, level: 52 }, // Cindersob — Dark/Ember
+      { species_id: 180, level: 52 }, // Lullwing (#180, lane N4) — Dark/Lunar
+      { species_id: 142, level: 52 }, // Embergone — Dark/Ember (Cindersob kindles at 30)
       { species_id: 138, level: 53 }, // Voidmantle — Dark (ace)
     ],
     payout: 1060, // keeper 20 × ace 53

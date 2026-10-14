@@ -107,7 +107,10 @@ ago). It is a solemn mirror of the Old Light: a tower climbed in the dark.
 
 **Maps.** The existing `drownlight_beacon` (18×16) becomes the tower's foot: a ruined quay and the
 door. Inside:
-- `drownlight_f1` and `drownlight_f2` (lv 50–53): the climb.
+- `drownlight_f1` and `drownlight_f2` (lv 50–53): the climb. **Final forms only** at this band,
+  in the wild AND on the acolytes' teams: F1 is Shutterwick (#179) / Voidmantle / Lullwing (#180) /
+  Stillwarden / Liminalux; F2 adds Prismantus; the foot's blight-tuft beds are Voidmantle /
+  Shutterwick / Lullwing / Liminalux (no Mothdim, Nullmoth or Wispwane past their kindling).
 - `drownlight_lantern`: the lantern room, with the Shutterkeeper.
 
 The floors use **shutter puzzles** built on the existing data mechanics. A shutter is a
@@ -120,8 +123,8 @@ herself. Win, and she does NOT relight it. She tells you why she put it out, and
 for after the dawn. **After the dawn** you can relight it (a lamp beat, minor → major) — only
 once she has told her tale (the lamp waits on `flag:drownlight_keeper_beaten`); the coast's buoys
 wake and the beam sweeps the shallows from the foot (Ambience `when` + `beams`). Rewards: a Lumen
-Drop, a Starglass Shard, three **Shutter Charms** (a new conditional charge, ×2.5 on Dark-type
-kin; no price).
+Drop, a Starglass Shard, and the **Shutter Charm**: the first shutter's own latch, ONE per game
+and REUSABLE (`reusable: true`, never spent), a conditional charge ×2.5 on Dark-type kin; no price.
 
 ## C · The Mourning Fields — the loop
 
