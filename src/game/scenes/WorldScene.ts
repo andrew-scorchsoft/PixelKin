@@ -2210,9 +2210,16 @@ export class WorldScene extends Phaser.Scene {
     this.player.setRiding(this.isRiding());
     const wasSwimming = this.player.isSwimming;
     // Deep water is rowed in the Farlamp skiff (10 §2); the shallows are swum.
+    // ORDER MATTERS: each setter swaps the walk-sheet, so drop the old state
+    // before taking the new one (shallow->deep must not end on the walk sheet).
     const deep = this.map.hasTerrainAt(this.player.tx, this.player.ty, 'deep');
-    this.player.setBoating(deep);
-    this.player.setSwimming(!deep && this.map.hasTerrainAt(this.player.tx, this.player.ty, 'water'));
+    if (deep) {
+      this.player.setSwimming(false);
+      this.player.setBoating(true);
+    } else {
+      this.player.setBoating(false);
+      this.player.setSwimming(this.map.hasTerrainAt(this.player.tx, this.player.ty, 'water'));
+    }
     // A small splash as the lamp carries you onto (or off) open water — only on
     // a free step, so a warp/cutscene landing in the water stays quiet.
     if (this.player.isSwimming !== wasSwimming && !this.modal) void this.sfx.play('world-splash');

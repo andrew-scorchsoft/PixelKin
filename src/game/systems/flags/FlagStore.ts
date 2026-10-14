@@ -120,7 +120,11 @@ export class FlagStore {
       if (any.some((f) => this.flags[f] === true)) this.flags[gate] = true;
     }
     for (const { flag, prefix, min } of COUNT_AT_LEAST) {
-      if (this.countHeld(prefix) >= min) this.flags[flag] = true;
+      // numbered flags only (`<prefix><n>`), so a later `<prefix>something` can't inflate it
+      const n = Object.keys(this.flags).filter(
+        (k) => this.flags[k] === true && k.startsWith(prefix) && /^\d+$/.test(k.slice(prefix.length)),
+      ).length;
+      if (n >= min) this.flags[flag] = true;
     }
     if (POST_LETTER_FLAGS.every((f) => this.flags[f] === true)) {
       this.flags[POST_LETTERS_ALL] = true;

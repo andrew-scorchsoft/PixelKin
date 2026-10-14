@@ -540,7 +540,7 @@ class Replay:
                 out.append((gate, "engine:derive"))
                 held.add(gate)
         for gate, prefix, need in DERIVED_COUNT:
-            if sum(1 for f in held if f.startswith(prefix)) >= need:
+            if sum(1 for f in held if f.startswith(prefix) and f[len(prefix):].isdigit()) >= need:
                 out.append((gate, "engine:derive"))
                 held.add(gate)
         if all(c in held for c, _, _ in DERIVED_CROWNS):
