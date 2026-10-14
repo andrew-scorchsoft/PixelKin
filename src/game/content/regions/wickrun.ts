@@ -202,7 +202,9 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
     // is paid, every repeat run at that pace still earns a little from the kitty —
     // a skill farm, ~2 minutes a lap with the lift home. Best tier only.
     { op: 'run', ref: 'script.wickrun_purse_gold', if_flag: 'flag:wickrun_gold_now' },
-    { op: 'run', ref: 'script.wickrun_purse_silver', if_flag: 'flag:wickrun_silver_now', unless_flag: 'flag:wickrun_gold_now' },
+    // Silver's day purse waits for the ribbon (free rentals) — before it, a 300w
+    // rental would make a repeat silver run lose money (review 2026-10).
+    { op: 'run', ref: 'script.wickrun_purse_silver_ribboned', if_flag: 'flag:wickrun_silver_now', unless_flag: 'flag:wickrun_gold_now' },
     { op: 'run', ref: 'script.wickrun_hand_in', if_flag: RIDING },
     { op: 'run', ref: 'script.rook_ribbon_check', if_flag: GOLD, unless_flag: RIBBON },
   ],
@@ -215,6 +217,9 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
   'script.wickrun_purse_gold_pay': [
     { op: 'giveMoney', amount: WICKRUN_DAY_PURSE.gold },
     { op: 'narrate', text: `Another GOLD run. The Runners' kitty coughs up its day purse: ${WICKRUN_DAY_PURSE.gold} WICKS.` },
+  ],
+  'script.wickrun_purse_silver_ribboned': [
+    { op: 'run', ref: 'script.wickrun_purse_silver', if_flag: RIBBON },
   ],
   'script.wickrun_purse_silver': [
     { op: 'run', ref: 'script.wickrun_purse_silver_pay', if_flag: 'flag:wickrun_silver_paid_before' },

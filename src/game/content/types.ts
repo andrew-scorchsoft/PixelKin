@@ -216,8 +216,8 @@ type CutsceneStepBase =
   // `deepdive`, 10 §2). The six Lantern Gifts still come from wardens only.
   | { op: 'giveAbility'; ability: AbilityId }
   // A REPEATABLE sparring bout (the fair money farm, 10-economy §2): fights
-  // `trainer` (pays its payout every win), then rests for `cooldown` WON battles
-  // elsewhere. While resting, plays `restingRef` ({remaining} = wins to go) and
+  // `trainer` (pays its payout every win), then ALL hall sparrers rest for
+  // `cooldown` WON battles elsewhere (one shared rest — no hall-to-hall rotation). While resting, plays `restingRef` ({remaining} = wins to go) and
   // ends the scene. A lost bout is an ordinary blackout.
   | { op: 'spar'; trainer: string; cooldown: number; restingRef: string }
   // Take `amount` wicks IF the purse holds that many, and set `flag` to mark the

@@ -4,8 +4,8 @@
  * Wild battles pay nothing and almost every trainer fights once, so a player who
  * kept losing had no honest way to earn their wicks back. Each Lumenary now keeps
  * a hall apprentice who spars, once that hall's Gleam is relit: a team just under
- * the warden's, a KEEPER-class purse (20w × ace) every win, then a rest of
- * SPAR_COOLDOWN won battles elsewhere (the `spar` op; the battle-counted cooldown
+ * the warden's, a KEEPER-class purse (20w × ace) every win, then EVERY hall's
+ * sparrer rests (one shared rest) for SPAR_COOLDOWN won battles elsewhere (the `spar` op; the battle-counted cooldown
  * clock the legendaries already use). Fair, never broken: one bout per four wins,
  * paying a little under a warden's tier. Mirrored in progression.mjs BUILT_PAYOUTS.
  *

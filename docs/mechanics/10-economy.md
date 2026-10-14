@@ -44,8 +44,8 @@ their wicks back. Two fair farms now exist, both outside every solvency leg:
 
 | Farm | Pays | Limit | Where |
 |---|---|---|---|
-| **Lumenary sparring** | keeper 20w × ace, every win: Tinderwick 180 · Pearlmoor 300 · Lowleaf 420 · Cinderhead 540 · Galehigh 660 · Pale Vault 780 · Solarium 900 · Nightreach 1,020 | the sparrer rests for **3 won battles** elsewhere (`SPAR_COOLDOWN`, the `spar` op on the battle-counted cooldown clock) | each Lumenary's hall apprentice, once that hall's Gleam is relit (`content/sparring.ts`, posts in `hand_placed_data.py`) |
-| **The Wick-Run day purse** | 250w a repeat GOLD run, 100w a repeat SILVER | skill + ~2 minutes a lap with the lift home; only once that tier's one-time prize is paid | `regions/wickrun.ts` (`WICKRUN_DAY_PURSE`; the timer op sets `<tier>_now` per run) |
+| **Lumenary sparring** | keeper 20w × ace, every win: Tinderwick 180 · Pearlmoor 300 · Lowleaf 420 · Cinderhead 540 · Galehigh 660 · Pale Vault 780 · Solarium 900 · Nightreach 1,020 | every hall's sparrer rests (one shared rest, so halls can't be rotated) for **3 won battles** elsewhere (`SPAR_COOLDOWN`, the `spar` op on the battle-counted cooldown clock) | each Lumenary's hall apprentice, once that hall's Gleam is relit (`content/sparring.ts`, posts in `hand_placed_data.py`) |
+| **The Wick-Run day purse** | 250w a repeat GOLD run, 100w a repeat SILVER (silver only once the ribbon makes rentals free) | skill + ~2 minutes a lap with the lift home; only once that tier's one-time prize is paid | `regions/wickrun.ts` (`WICKRUN_DAY_PURSE`; the timer op sets `<tier>_now` per run) |
 
 That's roughly one bout's purse per four battles: a struggling player can always earn
 back a couple of balms near the next warden, but it never beats playing forward.

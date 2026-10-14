@@ -499,7 +499,9 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
     }
     case 'spar': {
       if (!ctx.startTrainerBattle) return true;
-      const key = `spar:${step.trainer}`;
+      // ONE rest shared by every hall (review 2026-10: per-hall keys let a
+      // four-hall rotation farm forever with no other battles).
+      const key = 'spar';
       const remaining = ctx.cooldownRemaining?.(key) ?? 0;
       if (remaining > 0) {
         const lines = getDialogue(step.restingRef).map((l) => ({
