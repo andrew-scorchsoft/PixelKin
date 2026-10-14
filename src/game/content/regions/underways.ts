@@ -88,6 +88,8 @@ export const UNDERWAYS_SCRIPTS: ScriptRegistry = {
   'script.underways_clemency_kept': [
     { op: 'emote', actor: 'clemency', emote: 'heart' },
     { op: 'say', speaker: 'CLEMENCY', text: 'Odalie, Bran and Hesk, all three. You\'ve met the whole of the last watch now, dear. There aren\'t any more of us. There never were very many.' },
+    { op: 'say', speaker: 'CLEMENCY', text: 'Take this. The watch drew it the first winter, of the dark as we meant it: not a void, a held breath. Nobody here has the heart to use it now.' },
+    { op: 'giveItem', item: 'chart_voidburst', count: 1 },
     { op: 'setFlag', flag: 'flag:underways_watch_kept' },
   ],
   'script.underways_clemency_dusk': [

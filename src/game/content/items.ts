@@ -826,6 +826,16 @@ export const ITEMS: ItemRegistry = {
     teach_move: 'maelstrom',
     price: 4000,
   },
+  // The Last Watch's keepsake (11 Part D): Clemency's reward once all three watchers
+  // are met — the Dark end-tier chart, found-first like Maelstrom (chart_end tier).
+  chart_voidburst: {
+    id: 'chart_voidburst',
+    name: 'Star-chart: Voidburst',
+    desc: 'The last watch\'s own chart, the dark drawn as a held breath rather than an empty one. Teaches a willing kin VOIDBURST (Dark). One study burns it out.',
+    category: 'chart',
+    teach_move: 'voidburst',
+    price: 4000,
+  },
   // ---- Lane N1 (walkthrough/11 Part A): Stillwater's two quest items -------------
   // "A Light Left On": Pip's forbidden candle, carried to the willow or to her mother.
   still_candle: {
