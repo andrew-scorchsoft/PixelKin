@@ -137,11 +137,14 @@ f.obj("glass_c", "undertide_glassheap", (14, 11), 2, 1)
 
 f.scatter(["barnacle_a", "barnacle_b", "shell_a", "wrack_a", "glass_a", "glass_b"], 30)
 
+# the shallows rounded off (no box pools): corners off, a bulge per long side
+f.organic_pools()
+
 # ---- beds (mirrored in build_species.py UNDERTIDE_TABLES — keep in step) ------
-CAVE = [(174, 26, 62, 65), (176, 24, 62, 65), (85, 16, 63, 64), (138, 14, 63, 65),
-        (175, 10, 64, 65), (55, 10, 63, 65)]
-WATER = [(172, 30, 62, 64), (28, 20, 63, 65), (61, 18, 63, 64), (30, 12, 64, 65),
-         (173, 12, 64, 65), (25, 8, 64, 65)]
+CAVE = [(175, 22, 63, 65), (176, 24, 62, 65), (174, 14, 62, 64), (85, 14, 63, 64),
+        (138, 14, 63, 65), (55, 10, 63, 65)]
+WATER = [(173, 24, 63, 65), (172, 14, 62, 64), (28, 20, 63, 65), (61, 16, 63, 64),
+         (30, 14, 64, 65), (25, 10, 64, 65)]
 
 
 def T(rows):
@@ -197,7 +200,7 @@ assert P["L"] in f.reach(home, st(s=True, d=True, dawn=True)), "the dawn islet n
 assert P["S"] not in f.links(st(s=True, d=True))[P["L"]]
 
 # ---- pass 2: the surge dressed; the tide-lamps that light at the isles' dawn ----
-f.dress_surge(per_screen=4)
+f.dress_surge(per_screen=4, palette="galleries")
 f.tide_lamps(spacing=6)
 
 f.finish()

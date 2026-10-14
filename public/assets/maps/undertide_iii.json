@@ -322,8 +322,8 @@
       "h": 1
     },
     {
-      "id": "surge_wreck_1",
-      "sprite": "undertide_wreck",
+      "id": "surge_bellframe_1",
+      "sprite": "undertide_bellframe",
       "at": {
         "tx": 5,
         "ty": 8
@@ -333,8 +333,8 @@
       "overhang": 1
     },
     {
-      "id": "surge_stack_2",
-      "sprite": "undertide_stack",
+      "id": "surge_chain_2",
+      "sprite": "undertide_chain",
       "at": {
         "tx": 10,
         "ty": 8
@@ -344,30 +344,30 @@
       "overhang": 1
     },
     {
-      "id": "surge_kelpcrown_3",
-      "sprite": "undertide_kelpcrown",
+      "id": "surge_mast_3",
+      "sprite": "undertide_mast",
       "at": {
         "tx": 14,
         "ty": 6
-      },
-      "w": 2,
-      "h": 1,
-      "overhang": 0
-    },
-    {
-      "id": "surge_mast_4",
-      "sprite": "undertide_mast",
-      "at": {
-        "tx": 8,
-        "ty": 4
       },
       "w": 1,
       "h": 3,
       "overhang": 2
     },
     {
-      "id": "surge_stack_5",
-      "sprite": "undertide_stack",
+      "id": "surge_chain_4",
+      "sprite": "undertide_chain",
+      "at": {
+        "tx": 8,
+        "ty": 4
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_chain_5",
+      "sprite": "undertide_chain",
       "at": {
         "tx": 18,
         "ty": 8
@@ -377,18 +377,29 @@
       "overhang": 1
     },
     {
-      "id": "surge_kelpcrown_6",
-      "sprite": "undertide_kelpcrown",
+      "id": "surge_bellframe_6",
+      "sprite": "undertide_bellframe",
       "at": {
         "tx": 25,
         "ty": 8
       },
       "w": 2,
-      "h": 1,
-      "overhang": 0
+      "h": 2,
+      "overhang": 1
     },
     {
-      "id": "surge_mast_7",
+      "id": "surge_chain_7",
+      "sprite": "undertide_chain",
+      "at": {
+        "tx": 17,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_mast_8",
       "sprite": "undertide_mast",
       "at": {
         "tx": 28,
@@ -399,30 +410,19 @@
       "overhang": 2
     },
     {
-      "id": "surge_stack_8",
-      "sprite": "undertide_stack",
-      "at": {
-        "tx": 18,
-        "ty": 4
-      },
-      "w": 1,
-      "h": 2,
-      "overhang": 1
-    },
-    {
-      "id": "surge_wreck_9",
-      "sprite": "undertide_wreck",
+      "id": "surge_mast_9",
+      "sprite": "undertide_mast",
       "at": {
         "tx": 7,
         "ty": 13
       },
-      "w": 2,
-      "h": 2,
-      "overhang": 1
+      "w": 1,
+      "h": 3,
+      "overhang": 2
     },
     {
-      "id": "surge_stack_10",
-      "sprite": "undertide_stack",
+      "id": "surge_chain_10",
+      "sprite": "undertide_chain",
       "at": {
         "tx": 12,
         "ty": 19
@@ -432,19 +432,19 @@
       "overhang": 1
     },
     {
-      "id": "surge_kelpcrown_11",
-      "sprite": "undertide_kelpcrown",
+      "id": "surge_bellframe_11",
+      "sprite": "undertide_bellframe",
       "at": {
         "tx": 8,
         "ty": 19
       },
       "w": 2,
-      "h": 1,
-      "overhang": 0
+      "h": 2,
+      "overhang": 1
     },
     {
-      "id": "surge_wreck_12",
-      "sprite": "undertide_wreck",
+      "id": "surge_bellframe_12",
+      "sprite": "undertide_bellframe",
       "at": {
         "tx": 17,
         "ty": 15
@@ -454,8 +454,8 @@
       "overhang": 1
     },
     {
-      "id": "surge_stack_13",
-      "sprite": "undertide_stack",
+      "id": "surge_chain_13",
+      "sprite": "undertide_chain",
       "at": {
         "tx": 17,
         "ty": 19
@@ -465,19 +465,30 @@
       "overhang": 1
     },
     {
-      "id": "surge_kelpcrown_14",
-      "sprite": "undertide_kelpcrown",
+      "id": "surge_mast_14",
+      "sprite": "undertide_mast",
       "at": {
-        "tx": 26,
-        "ty": 19
+        "tx": 27,
+        "ty": 16
       },
-      "w": 2,
-      "h": 1,
-      "overhang": 0
+      "w": 1,
+      "h": 3,
+      "overhang": 2
     },
     {
-      "id": "surge_stack_15",
-      "sprite": "undertide_stack",
+      "id": "surge_chain_15",
+      "sprite": "undertide_chain",
+      "at": {
+        "tx": 21,
+        "ty": 19
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_chain_16",
+      "sprite": "undertide_chain",
       "at": {
         "tx": 6,
         "ty": 24
@@ -487,19 +498,8 @@
       "overhang": 1
     },
     {
-      "id": "surge_kelpcrown_16",
-      "sprite": "undertide_kelpcrown",
-      "at": {
-        "tx": 12,
-        "ty": 23
-      },
-      "w": 2,
-      "h": 1,
-      "overhang": 0
-    },
-    {
-      "id": "surge_wreck_17",
-      "sprite": "undertide_wreck",
+      "id": "surge_bellframe_17",
+      "sprite": "undertide_bellframe",
       "at": {
         "tx": 1,
         "ty": 25
@@ -509,30 +509,8 @@
       "overhang": 1
     },
     {
-      "id": "surge_stack_18",
-      "sprite": "undertide_stack",
-      "at": {
-        "tx": 22,
-        "ty": 22
-      },
-      "w": 1,
-      "h": 2,
-      "overhang": 1
-    },
-    {
-      "id": "surge_kelpcrown_19",
-      "sprite": "undertide_kelpcrown",
-      "at": {
-        "tx": 17,
-        "ty": 23
-      },
-      "w": 2,
-      "h": 1,
-      "overhang": 0
-    },
-    {
-      "id": "surge_wreck_20",
-      "sprite": "undertide_wreck",
+      "id": "surge_bellframe_18",
+      "sprite": "undertide_bellframe",
       "at": {
         "tx": 26,
         "ty": 25
@@ -540,6 +518,28 @@
       "w": 2,
       "h": 2,
       "overhang": 1
+    },
+    {
+      "id": "surge_chain_19",
+      "sprite": "undertide_chain",
+      "at": {
+        "tx": 22,
+        "ty": 24
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_mast_20",
+      "sprite": "undertide_mast",
+      "at": {
+        "tx": 27,
+        "ty": 20
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2
     },
     {
       "id": "tidelamp_1",
@@ -689,8 +689,8 @@
       "id": "tidelamp_7",
       "sprite": "undertide_tidelamp",
       "at": {
-        "tx": 27,
-        "ty": 15
+        "tx": 13,
+        "ty": 16
       },
       "w": 1,
       "h": 2,
@@ -701,8 +701,8 @@
       "id": "tidelamp_7_lit",
       "sprite": "undertide_tidelamp_lit",
       "at": {
-        "tx": 27,
-        "ty": 15
+        "tx": 13,
+        "ty": 16
       },
       "w": 1,
       "h": 2,
@@ -713,8 +713,8 @@
       "id": "tidelamp_8",
       "sprite": "undertide_tidelamp",
       "at": {
-        "tx": 13,
-        "ty": 16
+        "tx": 19,
+        "ty": 19
       },
       "w": 1,
       "h": 2,
@@ -725,8 +725,8 @@
       "id": "tidelamp_8_lit",
       "sprite": "undertide_tidelamp_lit",
       "at": {
-        "tx": 13,
-        "ty": 16
+        "tx": 19,
+        "ty": 19
       },
       "w": 1,
       "h": 2,
@@ -737,8 +737,8 @@
       "id": "tidelamp_9",
       "sprite": "undertide_tidelamp",
       "at": {
-        "tx": 19,
-        "ty": 19
+        "tx": 24,
+        "ty": 20
       },
       "w": 1,
       "h": 2,
@@ -749,8 +749,8 @@
       "id": "tidelamp_9_lit",
       "sprite": "undertide_tidelamp_lit",
       "at": {
-        "tx": 19,
-        "ty": 19
+        "tx": 24,
+        "ty": 20
       },
       "w": 1,
       "h": 2,
@@ -761,8 +761,8 @@
       "id": "tidelamp_10",
       "sprite": "undertide_tidelamp",
       "at": {
-        "tx": 24,
-        "ty": 20
+        "tx": 15,
+        "ty": 21
       },
       "w": 1,
       "h": 2,
@@ -773,8 +773,8 @@
       "id": "tidelamp_10_lit",
       "sprite": "undertide_tidelamp_lit",
       "at": {
-        "tx": 24,
-        "ty": 20
+        "tx": 15,
+        "ty": 21
       },
       "w": 1,
       "h": 2,
@@ -785,8 +785,8 @@
       "id": "tidelamp_11",
       "sprite": "undertide_tidelamp",
       "at": {
-        "tx": 15,
-        "ty": 21
+        "tx": 2,
+        "ty": 22
       },
       "w": 1,
       "h": 2,
@@ -797,8 +797,8 @@
       "id": "tidelamp_11_lit",
       "sprite": "undertide_tidelamp_lit",
       "at": {
-        "tx": 15,
-        "ty": 21
+        "tx": 2,
+        "ty": 22
       },
       "w": 1,
       "h": 2,
@@ -809,8 +809,8 @@
       "id": "tidelamp_12",
       "sprite": "undertide_tidelamp",
       "at": {
-        "tx": 2,
-        "ty": 22
+        "tx": 21,
+        "ty": 23
       },
       "w": 1,
       "h": 2,
@@ -821,8 +821,8 @@
       "id": "tidelamp_12_lit",
       "sprite": "undertide_tidelamp_lit",
       "at": {
-        "tx": 2,
-        "ty": 22
+        "tx": 21,
+        "ty": 23
       },
       "w": 1,
       "h": 2,
@@ -831,30 +831,6 @@
     },
     {
       "id": "tidelamp_13",
-      "sprite": "undertide_tidelamp",
-      "at": {
-        "tx": 21,
-        "ty": 23
-      },
-      "w": 1,
-      "h": 2,
-      "overhang": 1,
-      "hidden_when_flag": "flag:isles_dawn"
-    },
-    {
-      "id": "tidelamp_13_lit",
-      "sprite": "undertide_tidelamp_lit",
-      "at": {
-        "tx": 21,
-        "ty": 23
-      },
-      "w": 1,
-      "h": 2,
-      "overhang": 1,
-      "requires_flag": "flag:isles_dawn"
-    },
-    {
-      "id": "tidelamp_14",
       "sprite": "undertide_tidelamp",
       "at": {
         "tx": 27,
@@ -866,7 +842,7 @@
       "hidden_when_flag": "flag:isles_dawn"
     },
     {
-      "id": "tidelamp_14_lit",
+      "id": "tidelamp_13_lit",
       "sprite": "undertide_tidelamp_lit",
       "at": {
         "tx": 27,
@@ -985,9 +961,9 @@
       "encounter_rate": 0.06,
       "table": [
         {
-          "kin_id": 174,
-          "weight": 26,
-          "min_level": 62,
+          "kin_id": 175,
+          "weight": 22,
+          "min_level": 63,
           "max_level": 65
         },
         {
@@ -997,8 +973,14 @@
           "max_level": 65
         },
         {
+          "kin_id": 174,
+          "weight": 14,
+          "min_level": 62,
+          "max_level": 64
+        },
+        {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 63,
           "max_level": 64
         },
@@ -1006,12 +988,6 @@
           "kin_id": 138,
           "weight": 14,
           "min_level": 63,
-          "max_level": 65
-        },
-        {
-          "kin_id": 175,
-          "weight": 10,
-          "min_level": 64,
           "max_level": 65
         },
         {
@@ -1048,7 +1024,7 @@
         },
         {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 64,
           "max_level": 65
         },
@@ -1079,9 +1055,9 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 174,
-          "weight": 26,
-          "min_level": 62,
+          "kin_id": 175,
+          "weight": 22,
+          "min_level": 63,
           "max_level": 65
         },
         {
@@ -1091,8 +1067,14 @@
           "max_level": 65
         },
         {
+          "kin_id": 174,
+          "weight": 14,
+          "min_level": 62,
+          "max_level": 64
+        },
+        {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 63,
           "max_level": 64
         },
@@ -1100,12 +1082,6 @@
           "kin_id": 138,
           "weight": 14,
           "min_level": 63,
-          "max_level": 65
-        },
-        {
-          "kin_id": 175,
-          "weight": 10,
-          "min_level": 64,
           "max_level": 65
         },
         {
@@ -1142,7 +1118,7 @@
         },
         {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 64,
           "max_level": 65
         },
@@ -1173,9 +1149,9 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 174,
-          "weight": 26,
-          "min_level": 62,
+          "kin_id": 175,
+          "weight": 22,
+          "min_level": 63,
           "max_level": 65
         },
         {
@@ -1185,8 +1161,14 @@
           "max_level": 65
         },
         {
+          "kin_id": 174,
+          "weight": 14,
+          "min_level": 62,
+          "max_level": 64
+        },
+        {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 63,
           "max_level": 64
         },
@@ -1194,12 +1176,6 @@
           "kin_id": 138,
           "weight": 14,
           "min_level": 63,
-          "max_level": 65
-        },
-        {
-          "kin_id": 175,
-          "weight": 10,
-          "min_level": 64,
           "max_level": 65
         },
         {
@@ -1236,7 +1212,7 @@
         },
         {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 64,
           "max_level": 65
         },
@@ -1267,9 +1243,9 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 174,
-          "weight": 26,
-          "min_level": 62,
+          "kin_id": 175,
+          "weight": 22,
+          "min_level": 63,
           "max_level": 65
         },
         {
@@ -1279,8 +1255,14 @@
           "max_level": 65
         },
         {
+          "kin_id": 174,
+          "weight": 14,
+          "min_level": 62,
+          "max_level": 64
+        },
+        {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 63,
           "max_level": 64
         },
@@ -1288,12 +1270,6 @@
           "kin_id": 138,
           "weight": 14,
           "min_level": 63,
-          "max_level": 65
-        },
-        {
-          "kin_id": 175,
-          "weight": 10,
-          "min_level": 64,
           "max_level": 65
         },
         {
@@ -1330,7 +1306,7 @@
         },
         {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 64,
           "max_level": 65
         },
@@ -1361,9 +1337,9 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 174,
-          "weight": 26,
-          "min_level": 62,
+          "kin_id": 175,
+          "weight": 22,
+          "min_level": 63,
           "max_level": 65
         },
         {
@@ -1373,8 +1349,14 @@
           "max_level": 65
         },
         {
+          "kin_id": 174,
+          "weight": 14,
+          "min_level": 62,
+          "max_level": 64
+        },
+        {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 63,
           "max_level": 64
         },
@@ -1382,12 +1364,6 @@
           "kin_id": 138,
           "weight": 14,
           "min_level": 63,
-          "max_level": 65
-        },
-        {
-          "kin_id": 175,
-          "weight": 10,
-          "min_level": 64,
           "max_level": 65
         },
         {
@@ -1424,7 +1400,7 @@
         },
         {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 64,
           "max_level": 65
         },
@@ -1455,9 +1431,9 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 174,
-          "weight": 26,
-          "min_level": 62,
+          "kin_id": 175,
+          "weight": 22,
+          "min_level": 63,
           "max_level": 65
         },
         {
@@ -1467,8 +1443,14 @@
           "max_level": 65
         },
         {
+          "kin_id": 174,
+          "weight": 14,
+          "min_level": 62,
+          "max_level": 64
+        },
+        {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 63,
           "max_level": 64
         },
@@ -1476,12 +1458,6 @@
           "kin_id": 138,
           "weight": 14,
           "min_level": 63,
-          "max_level": 65
-        },
-        {
-          "kin_id": 175,
-          "weight": 10,
-          "min_level": 64,
           "max_level": 65
         },
         {
@@ -1518,7 +1494,7 @@
         },
         {
           "kin_id": 85,
-          "weight": 16,
+          "weight": 14,
           "min_level": 64,
           "max_level": 65
         },
@@ -1549,8 +1525,14 @@
       "encounter_rate": 0.12,
       "table": [
         {
+          "kin_id": 173,
+          "weight": 24,
+          "min_level": 63,
+          "max_level": 65
+        },
+        {
           "kin_id": 172,
-          "weight": 30,
+          "weight": 14,
           "min_level": 62,
           "max_level": 64
         },
@@ -1562,25 +1544,19 @@
         },
         {
           "kin_id": 61,
-          "weight": 18,
+          "weight": 16,
           "min_level": 63,
           "max_level": 64
         },
         {
           "kin_id": 30,
-          "weight": 12,
-          "min_level": 64,
-          "max_level": 65
-        },
-        {
-          "kin_id": 173,
-          "weight": 12,
+          "weight": 14,
           "min_level": 64,
           "max_level": 65
         },
         {
           "kin_id": 25,
-          "weight": 8,
+          "weight": 10,
           "min_level": 64,
           "max_level": 65
         }
@@ -1600,7 +1576,7 @@
       "table": [
         {
           "kin_id": 173,
-          "weight": 42,
+          "weight": 38,
           "min_level": 63,
           "max_level": 66
         },
@@ -1612,19 +1588,19 @@
         },
         {
           "kin_id": 61,
-          "weight": 18,
+          "weight": 16,
           "min_level": 64,
           "max_level": 65
         },
         {
           "kin_id": 30,
-          "weight": 12,
+          "weight": 14,
           "min_level": 65,
           "max_level": 66
         },
         {
           "kin_id": 25,
-          "weight": 8,
+          "weight": 10,
           "min_level": 65,
           "max_level": 66
         }
@@ -1643,8 +1619,14 @@
       "encounter_rate": 0.12,
       "table": [
         {
+          "kin_id": 173,
+          "weight": 24,
+          "min_level": 63,
+          "max_level": 65
+        },
+        {
           "kin_id": 172,
-          "weight": 30,
+          "weight": 14,
           "min_level": 62,
           "max_level": 64
         },
@@ -1656,25 +1638,19 @@
         },
         {
           "kin_id": 61,
-          "weight": 18,
+          "weight": 16,
           "min_level": 63,
           "max_level": 64
         },
         {
           "kin_id": 30,
-          "weight": 12,
-          "min_level": 64,
-          "max_level": 65
-        },
-        {
-          "kin_id": 173,
-          "weight": 12,
+          "weight": 14,
           "min_level": 64,
           "max_level": 65
         },
         {
           "kin_id": 25,
-          "weight": 8,
+          "weight": 10,
           "min_level": 64,
           "max_level": 65
         }
@@ -1694,7 +1670,7 @@
       "table": [
         {
           "kin_id": 173,
-          "weight": 42,
+          "weight": 38,
           "min_level": 63,
           "max_level": 66
         },
@@ -1706,19 +1682,19 @@
         },
         {
           "kin_id": 61,
-          "weight": 18,
+          "weight": 16,
           "min_level": 64,
           "max_level": 65
         },
         {
           "kin_id": 30,
-          "weight": 12,
+          "weight": 14,
           "min_level": 65,
           "max_level": 66
         },
         {
           "kin_id": 25,
-          "weight": 8,
+          "weight": 10,
           "min_level": 65,
           "max_level": 66
         }
@@ -1737,8 +1713,14 @@
       "encounter_rate": 0.12,
       "table": [
         {
+          "kin_id": 173,
+          "weight": 24,
+          "min_level": 63,
+          "max_level": 65
+        },
+        {
           "kin_id": 172,
-          "weight": 30,
+          "weight": 14,
           "min_level": 62,
           "max_level": 64
         },
@@ -1750,25 +1732,19 @@
         },
         {
           "kin_id": 61,
-          "weight": 18,
+          "weight": 16,
           "min_level": 63,
           "max_level": 64
         },
         {
           "kin_id": 30,
-          "weight": 12,
-          "min_level": 64,
-          "max_level": 65
-        },
-        {
-          "kin_id": 173,
-          "weight": 12,
+          "weight": 14,
           "min_level": 64,
           "max_level": 65
         },
         {
           "kin_id": 25,
-          "weight": 8,
+          "weight": 10,
           "min_level": 64,
           "max_level": 65
         }
@@ -1788,7 +1764,7 @@
       "table": [
         {
           "kin_id": 173,
-          "weight": 42,
+          "weight": 38,
           "min_level": 63,
           "max_level": 66
         },
@@ -1800,19 +1776,19 @@
         },
         {
           "kin_id": 61,
-          "weight": 18,
+          "weight": 16,
           "min_level": 64,
           "max_level": 65
         },
         {
           "kin_id": 30,
-          "weight": 12,
+          "weight": 14,
           "min_level": 65,
           "max_level": 66
         },
         {
           "kin_id": 25,
-          "weight": 8,
+          "weight": 10,
           "min_level": 65,
           "max_level": 66
         }
@@ -2700,8 +2676,8 @@
         410,
         412,
         522,
-        523,
         387,
+        388,
         388,
         389,
         524,
@@ -2730,9 +2706,9 @@
         410,
         546,
         522,
-        404,
-        394,
-        394,
+        393,
+        398,
+        399,
         395,
         524,
         522,
@@ -2761,8 +2737,8 @@
         412,
         522,
         523,
-        524,
-        522,
+        393,
+        395,
         523,
         524,
         522,
@@ -3083,8 +3059,8 @@
         165,
         523,
         387,
-        388,
         389,
+        523,
         524,
         522,
         543,
@@ -3111,10 +3087,10 @@
         510,
         163,
         165,
-        404,
-        396,
-        399,
-        395,
+        523,
+        390,
+        392,
+        523,
         524,
         522,
         410,
@@ -3134,16 +3110,16 @@
         522,
         523,
         387,
-        388,
         389,
+        523,
         524,
         543,
         510,
         163,
         165,
         523,
-        393,
-        395,
+        390,
+        392,
         523,
         524,
         522,
@@ -3162,18 +3138,18 @@
         411,
         510,
         522,
-        404,
-        396,
-        399,
-        395,
+        523,
+        390,
+        392,
+        523,
         524,
         410,
         510,
         163,
         165,
         523,
-        524,
-        522,
+        393,
+        395,
         523,
         524,
         522,

@@ -2836,14 +2836,14 @@
     {
      "area": "undertide_iii",
      "terrain": "water",
-     "rarity": "rare",
+     "rarity": "uncommon",
      "min": 64,
      "max": 65
     },
     {
      "area": "undertide_iii",
      "terrain": "water",
-     "rarity": "rare",
+     "rarity": "uncommon",
      "min": 65,
      "max": 66
     },
@@ -3306,14 +3306,14 @@
     {
      "area": "undertide_ii",
      "terrain": "water",
-     "rarity": "common",
+     "rarity": "uncommon",
      "min": 62,
      "max": 64
     },
     {
      "area": "undertide_ii",
      "terrain": "water",
-     "rarity": "common",
+     "rarity": "uncommon",
      "min": 63,
      "max": 65
     },
@@ -3610,7 +3610,7 @@
     {
      "area": "undertide_ii",
      "terrain": "water",
-     "rarity": "very_rare",
+     "rarity": "rare",
      "min": 64,
      "max": 64
     },
@@ -4220,20 +4220,6 @@
      "rarity": "very_rare",
      "min": 60,
      "max": 60
-    },
-    {
-     "area": "undertide_iv",
-     "terrain": "water",
-     "rarity": "very_rare",
-     "min": 66,
-     "max": 66
-    },
-    {
-     "area": "undertide_iv",
-     "terrain": "water",
-     "rarity": "very_rare",
-     "min": 67,
-     "max": 67
     }
    ],
    "scripted": true,
@@ -17964,7 +17950,22 @@
     "weight_kg": 210,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "very_rare",
+     "min": 66,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "very_rare",
+     "min": 67,
+     "max": 67
+    }
+   ],
    "scripted": true,
    "art": {
     "silhouette": "Immense translucent bell-jelly like a cathedral lantern; stained-glass panes of gold light in an aqua-blue dome, a blazing warm beacon-core at the crown that sweeps slow beams; eight long tendrils each ending in a bright pearl-orb like a hung star; drifting, weightless, regal at 64px.",
@@ -19250,16 +19251,16 @@
     {
      "area": "undertide_iii",
      "terrain": "water",
-     "rarity": "common",
+     "rarity": "uncommon",
      "min": 62,
      "max": 64
     },
     {
      "area": "undertide_iv",
      "terrain": "water",
-     "rarity": "common",
+     "rarity": "rare",
      "min": 63,
-     "max": 65
+     "max": 64
     },
     {
      "area": "farlamp_sound",
@@ -19409,7 +19410,7 @@
     {
      "area": "undertide_ii",
      "terrain": "water",
-     "rarity": "rare",
+     "rarity": "uncommon",
      "min": 63,
      "max": 64
     },
@@ -19423,8 +19424,8 @@
     {
      "area": "undertide_iii",
      "terrain": "water",
-     "rarity": "uncommon",
-     "min": 64,
+     "rarity": "common",
+     "min": 63,
      "max": 65
     },
     {
@@ -19437,7 +19438,7 @@
     {
      "area": "undertide_iv",
      "terrain": "water",
-     "rarity": "uncommon",
+     "rarity": "common",
      "min": 64,
      "max": 66
     },
@@ -19580,16 +19581,16 @@
     {
      "area": "undertide_iii",
      "terrain": "cave",
-     "rarity": "common",
+     "rarity": "uncommon",
      "min": 62,
-     "max": 65
+     "max": 64
     },
     {
      "area": "undertide_iv",
      "terrain": "cave",
-     "rarity": "common",
+     "rarity": "rare",
      "min": 63,
-     "max": 65
+     "max": 64
     },
     {
      "area": "farlamp_sound",
@@ -19747,7 +19748,7 @@
     {
      "area": "undertide_ii",
      "terrain": "cave",
-     "rarity": "rare",
+     "rarity": "uncommon",
      "min": 63,
      "max": 64
     },
@@ -19761,8 +19762,8 @@
     {
      "area": "undertide_iii",
      "terrain": "cave",
-     "rarity": "uncommon",
-     "min": 64,
+     "rarity": "common",
+     "min": 63,
      "max": 65
     },
     {
@@ -19775,7 +19776,7 @@
     {
      "area": "undertide_iv",
      "terrain": "cave",
-     "rarity": "uncommon",
+     "rarity": "common",
      "min": 64,
      "max": 66
     },
