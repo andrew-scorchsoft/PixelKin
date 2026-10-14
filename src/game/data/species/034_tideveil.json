@@ -90,6 +90,13 @@
       "rarity": "very_rare",
       "min": 66,
       "max": 66
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "water",
+      "rarity": "very_rare",
+      "min": 67,
+      "max": 67
     }
   ],
   "scripted": true,

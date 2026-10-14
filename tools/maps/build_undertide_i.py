@@ -111,15 +111,19 @@ def T(rows):
     return [{"kin_id": k, "weight": w, "min_level": lo, "max_level": hi} for (k, w, lo, hi) in rows]
 
 
-f.zone("mouth_landing", "cave", (9, 20, 21, 26), T(CAVE), 0.08)
-f.zone("mouth_west", "cave", (1, 2, 8, 11), T(CAVE), 0.1)
-f.zone("mouth_ne", "cave", (19, 1, 28, 7), T(CAVE), 0.1)
-f.zone("mouth_pools_w", "water", (2, 5, 6, 8), T(WATER), 0.12)
-f.zone("mouth_pools_ne", "water", (21, 3, 23, 4), T(WATER), 0.12)
-f.zone("mouth_pools_s", "water", (18, 23, 20, 25), T(WATER), 0.12)
+f.zone("mouth_landing", "cave", (9, 20, 21, 26), T(CAVE), 0.08,
+       day=T(uk.day_table(CAVE)))
+f.zone("mouth_west", "cave", (1, 2, 8, 11), T(CAVE), 0.1,
+       day=T(uk.day_table(CAVE)))
+f.zone("mouth_ne", "cave", (19, 1, 28, 7), T(CAVE), 0.1,
+       day=T(uk.day_table(CAVE)))
+f.zone("mouth_pools_w", "water", (2, 5, 6, 8), T(WATER), 0.12,
+       day=T(uk.day_table(WATER)))
+f.zone("mouth_pools_ne", "water", (21, 3, 23, 4), T(WATER), 0.12,
+       day=T(uk.day_table(WATER)))
+f.zone("mouth_pools_s", "water", (18, 23, 20, 25), T(WATER), 0.12,
+       day=T(uk.day_table(WATER)))
 
-f.m["ambience"] = {"particles": [{"kind": "spray", "density": 0.6}, {"kind": "glowmotes", "density": 0.3}],
-                   "tint": {"color": "#0a2a3a", "alpha": 0.12}, "sound_bed": "amb-surf"}
 
 # ---- the proof --------------------------------------------------------------------
 f.prove()
@@ -132,6 +136,10 @@ TUNED = "flag:q_isles_bells_tuned"
 islet = f.pocket_of((9, 15))
 assert islet not in f.reach((15, 26), {BELL: False, TUNED: False})
 assert islet in f.reach((15, 26), {BELL: False, TUNED: True})
+
+# ---- pass 2: the surge dressed; the tide-lamps that light at the isles' dawn ----
+f.dress_surge(per_screen=4)
+f.tide_lamps(spacing=6)
 
 f.finish()
 

@@ -48,7 +48,7 @@ from worldcraft._kit import AMBIENCE_KEYS, PARTICLE_KINDS, PRE_CHICKENPIG, gid  
 
 REPO = HERE.parents[1]
 MAPS = REPO / "public" / "assets" / "maps"
-REGIONS = ("south", "east", "north", "west", "central")
+REGIONS = ("south", "east", "north", "west", "central", "outer")  # outer: the Farlamp Isles' Undertide (lane C2)
 SIGN_GID = gid("sign")
 
 
@@ -199,12 +199,14 @@ def lint(mid: str, m: dict, spec: dict) -> list[str]:
     errs: list[str] = []
     amb = spec.get("ambience")
     if amb is not None:
-        for k in amb:
-            if k not in AMBIENCE_KEYS:
-                errs.append(f"{mid}: unknown ambience key '{k}'")
-        for p in amb.get("particles", []):
-            if p.get("kind") not in PARTICLE_KINDS:
-                errs.append(f"{mid}: unknown particle kind '{p.get('kind')}'")
+        # a story-state override (`when`: [{flag, ambience}]) is linted like the block itself
+        for blk in [amb] + [r.get("ambience", {}) for r in amb.get("when", [])]:
+            for k in blk:
+                if k not in AMBIENCE_KEYS:
+                    errs.append(f"{mid}: unknown ambience key '{k}'")
+            for p in blk.get("particles", []):
+                if p.get("kind") not in PARTICLE_KINDS:
+                    errs.append(f"{mid}: unknown particle kind '{p.get('kind')}'")
     extra = set(spec) - {"ambience", "npcs", "objects", "triggers", "signs", "sprites", "after", "talk"}
     if extra:
         errs.append(f"{mid}: unknown spec keys {sorted(extra)}")

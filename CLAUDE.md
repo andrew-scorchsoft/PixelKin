@@ -1481,3 +1481,5 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   flow on swum water, `J` junction); `Floor.prove()` asserts every race lands and every pocket races
   home in EVERY bell state — add a bell, re-run the builder. Tiles/props: `undertideforge.py`
   (`undertide_set`, `undertide_*` objects). Never let an encounter zone cover a race (`zone()` asserts).
+  Their ambience + ambient kin live in `worldcraft/outer.py`; `flag:isles_dawn` lights the tide-lamps and
+  swaps in the day-form zone pairs (`undertidekit.day_table` ⇄ `build_species.py UNDERTIDE_DAY_SWAP`).

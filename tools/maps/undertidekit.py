@@ -44,6 +44,25 @@ MUSIC = "assets/audio/music/undertide.mp3"
 BACKDROPS = ["assets/backgrounds/battle/undertide-a.webp"]
 
 DIRS = {">": "right", "<": "left", "^": "up", "v": "down"}
+DAWN = "flag:isles_dawn"
+
+# The DAY-FORM swap (the R4 pattern, the isles' own dawn): the woken forms of the
+# same water — mirrored in build_species.py UNDERTIDE_DAY_SWAP (keep in step).
+DAY_SWAP = {174: 175, 172: 173, 29: 30}
+
+
+def day_table(rows: list) -> list:
+    """The day-form twin of a (kin, weight, lo, hi) table: kindled forms, +1 level."""
+    out: dict = {}
+    for (k, w, lo, hi) in rows:
+        d = DAY_SWAP.get(k, k)
+        lo, hi = min(lo + 1, 67), min(hi + 1, 67)
+        if d in out:                      # a kindled form already in the table: merge
+            pw, plo, phi = out[d]
+            out[d] = (pw + w, min(plo, lo), max(phi, hi))
+        else:
+            out[d] = (w, lo, hi)
+    return [(k, w, lo, hi) for k, (w, lo, hi) in out.items()]
 STEP = {"right": (1, 0), "left": (-1, 0), "down": (0, 1), "up": (0, -1)}
 OPP = {"right": "left", "left": "right", "up": "down", "down": "up"}
 
@@ -225,15 +244,106 @@ class Floor:
         for i, (x, y) in enumerate(cand[:n]):
             self.put(x, y, names[i % len(names)])
 
+
+    # ---- pass 2: the surge dressed, the dawn's tide-lamps --------------------------
+    def _footprint_ok(self, at, w, h, taken: set) -> bool:
+        cells = [(at[0] + dx, at[1] + dy) for dy in range(h) for dx in range(w)]
+        for (x, y) in cells:
+            if not (0 <= x < self.W and 0 <= y < self.H):
+                return False
+            if self.plan[y][x] != "~" or (x, y) in taken:
+                return False
+        return True
+
+    def _taken(self) -> set:
+        t = set()
+        for o in self.m["objects"]:
+            for dy in range(o["h"]):
+                for dx in range(o["w"]):
+                    t.add((o["at"]["tx"] + dx, o["at"]["ty"] + dy))
+        return t
+
+    def tide_lamps(self, spacing: int = 6, flag: str = "flag:isles_dawn") -> int:
+        """The keepers' tide-lamps along the races (1x2, on the surge right beside a
+        lane): cold sea-glass until `flag`, then lit — a same-footprint flag swap."""
+        taken = self._taken()
+        lamps: list = []
+        n = 0
+        cells = sorted(self.rails, key=lambda c: (c[1], c[0]))
+        for (x, y) in cells:
+            for (bx, by) in ((x - 1, y), (x + 1, y), (x, y + 1)):
+                top = (bx, by - 1)
+                if not self._footprint_ok(top, 1, 2, taken):
+                    continue
+                if any(abs(bx - lx) + abs(by - ly) < spacing for (lx, ly) in lamps):
+                    continue
+                lamps.append((bx, by))
+                for dy in (0, 1):
+                    taken.add((bx, by - 1 + dy))
+                n += 1
+                self.m["objects"].append({"id": f"tidelamp_{n}", "sprite": "undertide_tidelamp",
+                                          "at": {"tx": bx, "ty": by - 1}, "w": 1, "h": 2,
+                                          "overhang": 1, "hidden_when_flag": flag})
+                self.m["objects"].append({"id": f"tidelamp_{n}_lit", "sprite": "undertide_tidelamp_lit",
+                                          "at": {"tx": bx, "ty": by - 1}, "w": 1, "h": 2,
+                                          "overhang": 1, "requires_flag": flag})
+                break
+        return n
+
+    PROPS = [("undertide_wreck", 2, 2, 1), ("undertide_stack", 1, 2, 1),
+             ("undertide_kelpcrown", 2, 1, 0), ("undertide_mast", 1, 3, 2),
+             ("undertide_stack", 1, 2, 1), ("undertide_kelpcrown", 2, 1, 0)]
+
+    def dress_surge(self, per_screen: int = 3, gap: int = 2) -> int:
+        """Break up the white water: wrecks, sea-stacks, kelp crowns and drowned masts,
+        `per_screen` per 15x10 screen of surge, never on a lane or a pocket, `gap`
+        tiles clear of each other."""
+        taken = self._taken()
+        placed: list = []
+        n = 0
+        for sy in range(0, self.H, 10):
+            for sx in range(0, self.W, 15):
+                cand = [(x, y) for y in range(sy, min(self.H, sy + 10))
+                        for x in range(sx, min(self.W, sx + 15)) if self.plan[y][x] == "~"]
+                self.rng.shuffle(cand)
+                k = 0
+                for (x, y) in cand:
+                    if k >= per_screen:
+                        break
+                    sprite, w, h, ov = self.PROPS[(n + k + sx + sy) % len(self.PROPS)]
+                    if not self._footprint_ok((x, y), w, h, taken):
+                        continue
+                    if any(abs(x - px) <= gap + 1 and abs(y - py) <= gap + 1 for (px, py) in placed):
+                        continue
+                    placed.append((x, y))
+                    for dy in range(h):
+                        for dx in range(w):
+                            taken.add((x + dx, y + dy))
+                    k += 1
+                    self.m["objects"].append({"id": f"surge_{sprite[10:]}_{n + k}", "sprite": sprite,
+                                              "at": {"tx": x, "ty": y}, "w": w, "h": h,
+                                              "overhang": ov})
+                n += k
+        return n
+
     # ---- zones -------------------------------------------------------------------------
-    def zone(self, zid: str, terrain: str, rect, table: list, rate: float = 0.1) -> None:
+    def zone(self, zid: str, terrain: str, rect, table: list, rate: float = 0.1,
+             day: list | None = None) -> None:
+        """An encounter zone. With `day`, a NIGHT/DAY pair (the R4 day-form pattern):
+        the night table hides at `flag:isles_dawn` and its `_day` twin rises with it."""
         x0, y0, x1, y1 = rect
         cells = [(x, y) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1)]
         bad = [c for c in cells if self.is_race(c)]
         assert not bad, (zid, "a zone must never cover a tide-race lane", bad[:4])
-        self.m["encounters"].append({"id": zid, "terrain": terrain,
-                                     "rect": {"tx": x0, "ty": y0, "w": x1 - x0 + 1, "h": y1 - y0 + 1},
-                                     "encounter_rate": rate, "table": table})
+        r = {"tx": x0, "ty": y0, "w": x1 - x0 + 1, "h": y1 - y0 + 1}
+        z = {"id": zid, "terrain": terrain, "rect": r, "encounter_rate": rate, "table": table}
+        if day is not None:
+            z["hidden_when_flag"] = DAWN
+        self.m["encounters"].append(z)
+        if day is not None:
+            self.m["encounters"].append({"id": zid + "_day", "terrain": terrain, "rect": dict(r),
+                                         "encounter_rate": rate, "table": day,
+                                         "requires_flag": DAWN})
 
     # ---- the proof ---------------------------------------------------------------------
     def flags(self) -> list[str]:
