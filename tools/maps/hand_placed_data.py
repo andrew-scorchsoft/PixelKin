@@ -522,3 +522,23 @@ PLACEMENTS["cinderwind_ashfall"] = {"day": {z: _ASH_DAY for z in (
     "ashfall_green_a", "ashfall_green_b", "ashfall_green_c", "ashfall_ash_a", "ashfall_ash_b")}}
 _KILN_DAY = T((37, 25, 57, 63), (69, 25, 56, 62), (55, 20, 57, 63), (43, 20, 56, 62), (52, 10, 58, 63))
 PLACEMENTS["cinderwind_kiln"] = {"day": {z: _KILN_DAY for z in ("kiln_hall", "kiln_rooms")}}
+
+# ---- The Lumenary sparring partners (2026-10 economy review, content/sparring.ts):
+# a hall apprentice who spars for a keeper-class purse once that hall's Gleam is
+# relit (repeatable: the `spar` op rests them for 3 won battles). Off the aisle,
+# beside the door side; tiles proven 4-way open and clear of warps/triggers/NPCs.
+_SPAR_POSTS = {
+    "tinderwick_lumenary": ("tinderwick", "gleam:ember", 3, 8),
+    "pearlmoor_lumenary": ("pearlmoor", "gleam:tide", 3, 8),
+    "lowleaf_lumenary": ("lowleaf", "gleam:verdant", 13, 7),
+    "cinderhead_lumenary": ("cinderhead", "gleam:stone", 4, 9),
+    "galehigh_lumenary": ("galehigh", "gleam:storm", 3, 8),
+    "pale_vault_lumenary": ("pale_vault", "gleam:frost", 3, 8),
+    "sunken_solarium_lumenary": ("sunken_solarium", "gleam:solar", 4, 6),
+    "nightreach_lumenary": ("nightreach", "gleam:lunar", 3, 7),
+}
+for _mid, (_hall, _gleam, _x, _y) in _SPAR_POSTS.items():
+    PLACEMENTS.setdefault(_mid, {}).setdefault("npcs", []).append(
+        {"id": "hall_sparrer", "at": {"tx": _x, "ty": _y}, "facing": "right" if _x < 8 else "left",
+         "sprite": "npc_man" if _hall in ("pearlmoor", "cinderhead", "sunken_solarium") else "npc_woman",
+         "movement": "static", "requires_flag": _gleam, "dialogue_ref": f"script.spar_{_hall}"})

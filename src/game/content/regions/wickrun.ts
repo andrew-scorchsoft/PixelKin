@@ -40,6 +40,8 @@ export const WICKRUN_TIERS = [
 ];
 /** Each tier pays once (mirrored in tools/balance/progression.mjs). */
 export const WICKRUN_PRIZES = { gold: 600, silver: 400, bronze: 200 } as const;
+/** Repeat runs at a tier already prized pay this day purse (mirrored in progression.mjs). */
+export const WICKRUN_DAY_PURSE = { gold: 250, silver: 100 } as const;
 
 /** Where the lift sets you down at each end (the cars' platforms). */
 export const LIFT_TOP = { map: 'wickrun_crest', to: { tx: 23, ty: 15 }, facing: 'down' as const };
@@ -196,8 +198,31 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.wickrun_prize_gold', if_flag: GOLD, unless_flag: 'flag:wickrun_gold_paid' },
     { op: 'run', ref: 'script.wickrun_prize_silver', if_flag: SILVER, unless_flag: 'flag:wickrun_silver_paid' },
     { op: 'run', ref: 'script.wickrun_prize_bronze', if_flag: BRONZE, unless_flag: 'flag:wickrun_bronze_paid' },
+    // The Runners' DAY PURSE (2026-10 economy review): once a tier's one-time prize
+    // is paid, every repeat run at that pace still earns a little from the kitty —
+    // a skill farm, ~2 minutes a lap with the lift home. Best tier only.
+    { op: 'run', ref: 'script.wickrun_purse_gold', if_flag: 'flag:wickrun_gold_now' },
+    { op: 'run', ref: 'script.wickrun_purse_silver', if_flag: 'flag:wickrun_silver_now', unless_flag: 'flag:wickrun_gold_now' },
     { op: 'run', ref: 'script.wickrun_hand_in', if_flag: RIDING },
     { op: 'run', ref: 'script.rook_ribbon_check', if_flag: GOLD, unless_flag: RIBBON },
+  ],
+  // Repeat purses pay only once that tier's one-time prize is already in hand
+  // (the prize script above sets its _paid flag first, in this same finish).
+  'script.wickrun_purse_gold': [
+    { op: 'run', ref: 'script.wickrun_purse_gold_pay', if_flag: 'flag:wickrun_gold_paid_before' },
+    { op: 'setFlag', flag: 'flag:wickrun_gold_paid_before' },
+  ],
+  'script.wickrun_purse_gold_pay': [
+    { op: 'giveMoney', amount: WICKRUN_DAY_PURSE.gold },
+    { op: 'narrate', text: `Another GOLD run. The Runners' kitty coughs up its day purse: ${WICKRUN_DAY_PURSE.gold} WICKS.` },
+  ],
+  'script.wickrun_purse_silver': [
+    { op: 'run', ref: 'script.wickrun_purse_silver_pay', if_flag: 'flag:wickrun_silver_paid_before' },
+    { op: 'setFlag', flag: 'flag:wickrun_silver_paid_before' },
+  ],
+  'script.wickrun_purse_silver_pay': [
+    { op: 'giveMoney', amount: WICKRUN_DAY_PURSE.silver },
+    { op: 'narrate', text: `A tidy SILVER run. The kitty spares ${WICKRUN_DAY_PURSE.silver} WICKS.` },
   ],
   'script.wickrun_prize_gold': [
     { op: 'sfx', key: 'world-wicks' },

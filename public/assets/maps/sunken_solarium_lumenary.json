@@ -684,6 +684,18 @@
       "movement": "look_around",
       "dialogue_ref": "npc.solarium_hall_festival",
       "requires_flag": "gleam:solar"
+    },
+    {
+      "id": "hall_sparrer",
+      "at": {
+        "tx": 4,
+        "ty": 6
+      },
+      "facing": "right",
+      "sprite": "npc_man",
+      "movement": "static",
+      "requires_flag": "gleam:solar",
+      "dialogue_ref": "script.spar_sunken_solarium"
     }
   ],
   "gates": [],

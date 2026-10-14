@@ -576,6 +576,18 @@ const BUILT_PAYOUTS = {
   undertide_keeper_isolde: ['keeper', 65, 1300],
   undertide_diver_marlo: ['route', 66, 1056],
   undertide_rematch_ondine: ['route', 67, 1072], // post-isles-dawn, re-runnable
+  // The Lumenary sparring partners (2026-10 economy review, content/sparring.ts):
+  // repeatable keeper-class bouts, one per SPAR_COOLDOWN (3) won battles — optional
+  // income OUTSIDE every solvency leg (like wren_rematch), so a broke player can
+  // always earn back. Farm rate: ~ payout per 4 battles (see the FARM line).
+  spar_tinderwick: ['keeper', 9, 180],
+  spar_pearlmoor: ['keeper', 15, 300],
+  spar_lowleaf: ['keeper', 21, 420],
+  spar_cinderhead: ['keeper', 27, 540],
+  spar_galehigh: ['keeper', 33, 660],
+  spar_pale_vault: ['keeper', 39, 780],
+  spar_sunken_solarium: ['keeper', 45, 900],
+  spar_nightreach: ['keeper', 51, 1020],
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

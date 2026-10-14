@@ -33,6 +33,8 @@ import { INNFOLK_DIALOGUE, INNFOLK_SCRIPTS } from './innfolk';
 import { ASHFALL_DIALOGUE, ASHFALL_SCRIPTS } from './ashfall';
 // The Farlamp Isles, lane C2 (2026-10): the Undertide + the Drowned Lamp.
 import { UNDERTIDE_DIALOGUE, UNDERTIDE_SCRIPTS } from './undertide';
+// The Lumenary sparring partners (2026-10 economy review).
+import { SPARRING_DIALOGUE, SPARRING_SCRIPTS } from '../sparring';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -54,6 +56,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...INNFOLK_SCRIPTS,
   ...ASHFALL_SCRIPTS,
   ...UNDERTIDE_SCRIPTS,
+  ...SPARRING_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -76,4 +79,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...INNFOLK_DIALOGUE,
   ...ASHFALL_DIALOGUE,
   ...UNDERTIDE_DIALOGUE,
+  ...SPARRING_DIALOGUE,
 };

@@ -81,6 +81,8 @@ export interface CutsceneContext {
   resumeMapMusic?(): void;
   /** Hand the player wicks (quest rewards, found purses). */
   onGiveMoney?(amount: number): void;
+  /** Wins still owed before a named battle-counted cooldown expires (0 = ready). */
+  cooldownRemaining?(name: string): number;
   /** Add a traversal ability to the live set (the `giveAbility` op). */
   onGiveAbility?(ability: AbilityId): void;
   /** Take `amount` wicks if the purse holds them; true when paid (the `pay` op). */
@@ -495,6 +497,23 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       void ctx.sfx.playVariant('world-heal', ['a', 'b']);
       return true;
     }
+    case 'spar': {
+      if (!ctx.startTrainerBattle) return true;
+      const key = `spar:${step.trainer}`;
+      const remaining = ctx.cooldownRemaining?.(key) ?? 0;
+      if (remaining > 0) {
+        const lines = getDialogue(step.restingRef).map((l) => ({
+          ...l,
+          text: fillTokens(ctx, l.text.replace(/\{remaining\}/g, String(remaining))),
+        }));
+        await new DialogueBox(scene, ctx.sfx).run(lines);
+        return false;
+      }
+      const won = await ctx.startTrainerBattle(step.trainer);
+      if (!won) return false;
+      ctx.setLegendaryCooldown?.(key, step.cooldown);
+      return true;
+    }
     case 'giveAbility':
       ctx.onGiveAbility?.(step.ability);
       return true;
@@ -529,6 +548,9 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       const secs = (ms / 1000).toFixed(1);
       const beat = (step.tiers ?? []).filter((t) => ms <= t.ms);
       for (const t of beat) ctx.flags.set(t.flag, true);
+      // `<flag>_now` = beaten on THIS run (cleared otherwise), so a script can pay
+      // a repeat purse for a repeat gold run — the tier flags themselves stick.
+      for (const t of step.tiers ?? []) ctx.flags.set(`${t.flag}_now`, ms <= t.ms);
       if (beat.length) ctx.onFlagSet?.();
       // The best tier beaten names the run (tiers are authored fastest first).
       const best = beat[0];

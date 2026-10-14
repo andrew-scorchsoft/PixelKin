@@ -230,6 +230,11 @@ async function analyse(root, tag) {
           if (!t) add('E-REF', `${ref}: trainer '${s.trainer}' not found`);
           break;
         }
+        case 'spar': {
+          if (!K.TRAINERS[s.trainer]) add('E-REF', `${ref}: spar trainer '${s.trainer}' not found`);
+          if (!DIALOGUE[s.restingRef]) add('E-REF', `${ref}: spar restingRef '${s.restingRef}' not found`);
+          break;
+        }
         case 'legendaryBattle':
           if (!DIALOGUE[s.cooldownRef]) add('E-REF', `${ref}: cooldownRef '${s.cooldownRef}' not found`);
           S(s.caughtFlag, ref);
@@ -255,7 +260,7 @@ async function analyse(root, tag) {
           S(s.flag, ref);
           break;
         case 'timer': // a run clock's `stop` sets each beaten tier's flag (the Wick-Run)
-          for (const t of s.tiers ?? []) S(t.flag, ref);
+          for (const t of s.tiers ?? []) (S(t.flag, ref), S(t.flag + '_now', ref));
           break;
         case 'askName':
           for (const m of s.matches ?? []) S(m.flag, ref);
@@ -287,7 +292,7 @@ async function analyse(root, tag) {
           if (missing.length) add('E-ACTOR', `${ref}: actor '${s.actor}' absent on ${missing.join(', ')} (op ${s.op} silently no-ops)`);
         }
       }
-      const progOps = ['battle', 'giveItem', 'giveKin', 'giveStarter', 'legendaryBattle', 'bossBattle', 'cinematic', 'giveMoney', 'giveAbility', 'heal', 'ensureItem'];
+      const progOps = ['battle', 'spar', 'giveItem', 'giveKin', 'giveStarter', 'legendaryBattle', 'bossBattle', 'cinematic', 'giveMoney', 'giveAbility', 'heal', 'ensureItem'];
       if (guards.length && (progOps.includes(s.op) || s.op === 'setFlag'))
         progGuarded.push({ ref, op: s.op, flag: s.flag ?? s.trainer ?? s.item ?? s.kin ?? '', guards: guards.map((g) => (g.if ? 'if ' + g.if : 'unless ' + g.unless)).join(' & '), onStep: !!(s.if_flag || s.unless_flag) });
     }

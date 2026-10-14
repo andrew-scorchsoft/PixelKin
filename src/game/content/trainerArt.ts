@@ -123,6 +123,7 @@ const TITLE_CLASS: Record<string, string> = {
   'Sun-keeper': 'sun_keeper',
   'Hollowing Acolyte': 'acolyte',
   Runner: 'runner', "Runners' Captain": 'runner',
+  'Hall Sparrer': 'wick_tender', // the Lumenary sparring partners (content/sparring.ts)
 };
 
 /** Unique battle sprites, by trainer id (bosses, set-pieces, the Old Light's cast). */

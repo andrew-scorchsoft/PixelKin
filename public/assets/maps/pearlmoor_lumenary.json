@@ -669,6 +669,18 @@
       "movement": "static",
       "dialogue_ref": "script.reyl_after",
       "requires_flag": "gleam:tide"
+    },
+    {
+      "id": "hall_sparrer",
+      "at": {
+        "tx": 3,
+        "ty": 8
+      },
+      "facing": "right",
+      "sprite": "npc_man",
+      "movement": "static",
+      "requires_flag": "gleam:tide",
+      "dialogue_ref": "script.spar_pearlmoor"
     }
   ],
   "gates": [],

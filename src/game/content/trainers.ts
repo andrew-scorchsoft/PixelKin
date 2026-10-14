@@ -10,6 +10,7 @@
  * 'crown_south' progression flag.
  */
 import type { DialogueLine, TrainerDef, TrainerRegistry } from './types';
+import { SPAR_TRAINERS } from './sparring';
 
 export const TRAINERS: TrainerRegistry = {
   lampwarden_tinderwick: {
@@ -1639,6 +1640,8 @@ export const TRAINERS: TrainerRegistry = {
     ],
     payout: 1072, // route 16 × ace 67
   },
+  // The Lumenary sparring partners (2026-10 economy review): content/sparring.ts.
+  ...SPAR_TRAINERS,
 };
 
 /** Intro/defeat dialogue for trainers, kept beside the roster they belong to. */

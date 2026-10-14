@@ -227,6 +227,7 @@ class Scripts:
             elif op == "timer":   # a run clock's stop: every tier is earnable (the Wick-Run)
                 for t in s.get("tiers", []) or []:
                     add(t["flag"])
+                    add(t["flag"] + "_now")   # this-run tier (the repeat day purse)
             elif op == "askName":
                 for mt in s.get("matches", []):
                     add(mt["flag"])

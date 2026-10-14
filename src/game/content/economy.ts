@@ -38,9 +38,23 @@ export function trainerPayout(def: TrainerDef | undefined): number {
  * wicks (10%, rounded down — gentle, but losing is never free).
  */
 export const FAINT_TITHE_RATE = 0.1;
+/** The tithe never takes the purse below this (two Tallow Balms and change) —
+ *  a player who keeps losing is never rinsed to nothing (2026-10 review). */
+export const HEARTH_FLOOR = 300;
+/** Losing to the SAME foe again halves the tithe each time; from this many
+ *  losses in a row the kind light asks nothing at all. */
+export const TITHE_FREE_AFTER = 4;
 
-export function faintTithe(wicks: number): number {
-  return Math.max(0, Math.floor(wicks * FAINT_TITHE_RATE));
+/**
+ * The tithe for a blackout. `streak` = how many times in a row this same foe
+ * (a trainer, a set-piece kin, or one map's wild grass) has beaten you,
+ * counting this one: 10% → 5% → 2.5% → nothing. Never below HEARTH_FLOOR.
+ */
+export function faintTithe(wicks: number, streak = 1): number {
+  if (streak >= TITHE_FREE_AFTER) return 0;
+  const rate = FAINT_TITHE_RATE / 2 ** Math.max(0, streak - 1);
+  const tithe = Math.floor(wicks * rate);
+  return Math.max(0, Math.min(tithe, wicks - HEARTH_FLOOR));
 }
 
 /** Display helper: "1,240w" reads cleanly in the 240px-wide UI. */

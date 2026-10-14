@@ -1469,12 +1469,15 @@ export class WorldScene extends Phaser.Scene {
           inventory: this.inventory,
           dex_caught: [...this.dexCaught],
         });
+        const foe = `trainer:${trainer}`;
         if (result.outcome !== 'win') {
-          await this.blackout();
+          await this.blackout(foe);
           return false;
         }
+        this.clearLossStreak(foe);
         return true;
       },
+      cooldownRemaining: (name) => Math.max(0, (this.cooldowns[name] ?? 0) - this.battlesWon),
       legendaryState: (name, caughtFlag) => this.legendaryState(name, caughtFlag),
       startSetPieceBattle: async (
         kin: number,
@@ -1499,13 +1502,15 @@ export class WorldScene extends Phaser.Scene {
         // never flees on its own, so 'fled' is always the PLAYER bailing.
         switch (result.outcome) {
           case 'caught':
+            this.clearLossStreak(`kin:${kin}`);
             return 'caught';
           case 'win':
+            this.clearLossStreak(`kin:${kin}`);
             return 'koed';
           case 'fled':
             return 'fled';
           default:
-            await this.blackout(); // party wiped — recover, same as any lost wild fight
+            await this.blackout(`kin:${kin}`); // party wiped — recover, same as any lost wild fight
             return 'lost';
         }
       },
@@ -1765,7 +1770,9 @@ export class WorldScene extends Phaser.Scene {
       inventory: this.inventory,
       dex_caught: [...this.dexCaught],
     }).then((result) => {
-      if (result.outcome === 'lose') void this.blackout();
+      const foe = `wild:${this.map.def.id}`;
+      if (result.outcome === 'lose') void this.blackout(foe);
+      else if (result.outcome === 'win' || result.outcome === 'caught') this.clearLossStreak(foe);
     });
   }
 
@@ -1932,9 +1939,32 @@ export class WorldScene extends Phaser.Scene {
     this.modal = false;
   }
 
+  /**
+   * The repeat-loss streak (2026-10 economy review): how many times in a row
+   * the SAME foe — `trainer:<id>`, `kin:<species>` (a set-piece) or
+   * `wild:<map>` — has beaten you. Kept in the persisted `cooldowns` record
+   * under a `loss:` key (no new save field to thread); only one foe is tracked.
+   */
+  private lossStreakFor(foe: string): number {
+    return this.cooldowns[`loss:${foe}`] ?? 0;
+  }
+
+  private bumpLossStreak(foe: string): number {
+    const n = this.lossStreakFor(foe) + 1;
+    for (const k of Object.keys(this.cooldowns)) if (k.startsWith('loss:')) delete this.cooldowns[k];
+    this.cooldowns[`loss:${foe}`] = n;
+    return n;
+  }
+
+  /** Beating the foe that kept beating you ends the streak. */
+  private clearLossStreak(foe: string): void {
+    delete this.cooldowns[`loss:${foe}`];
+  }
+
   /** Defeat recovery: revive the party and wake at the last hearth you rested
-   *  by — the nearest inn / home / camp — or the start town if you never have. */
-  private async blackout(): Promise<void> {
+   *  by — the nearest inn / home / camp — or the start town if you never have.
+   *  `foe` names what won, for the forgiving repeat-loss tithe. */
+  private async blackout(foe = 'unknown'): Promise<void> {
     this.modal = true;
     this.healParty();
     // Cannot-die mode (Settings): the lamp flares back right here — no tithe,
@@ -1957,13 +1987,26 @@ export class WorldScene extends Phaser.Scene {
       this.modal = false;
       return;
     }
-    // The kind light keeps a small tithe of wicks (10%) — losing costs, gently.
-    const tithe = faintTithe(this.money);
+    // The kind light keeps a small tithe of wicks — 10%, halving each time the
+    // SAME foe beats you again, nothing from the fourth, and never below the
+    // hearth floor (content/economy.ts). Losing costs, gently; it never rinses.
+    const streak = this.bumpLossStreak(foe);
+    const tithe = faintTithe(this.money, streak);
     this.money -= tithe;
     void this.sfx.playVariant('world-heal', ['a', 'b']);
+    const titheLine =
+      tithe > 0
+        ? streak > 1
+          ? `The kind light knows a hard fight when it sees one. It asked only ${tithe} wicks this time.`
+          : `You left ${tithe} wicks in thanks, as the custom asks.`
+        : streak > 1
+          ? 'The kind light asked for nothing this time. Try again — it believes you can.'
+          : this.money > 0
+            ? 'The kind light left your purse alone. You will need those wicks.'
+            : '';
     await new DialogueBox(this, this.sfx).run([
       { text: 'Your lamp guttered low... but a kind light carried you to the last hearth you rested by.' },
-      ...(tithe > 0 ? [{ text: `You left ${tithe} wicks in thanks, as the custom asks.` }] : []),
+      ...(titheLine ? [{ text: titheLine }] : []),
     ]);
     const home = this.respawn ?? {
       map: VESPERHOLM_GRAPH.start_map,
