@@ -420,6 +420,17 @@ export const QUESTS: QuestRegistry = [
     ],
     done_flag: 'flag:q_works_done',
   },
+  // Lane A — the Ashfall Shelf (walkthrough/10 Part II): the Kilnwright kiln's last pane
+  {
+    id: 'north_last_pane',
+    name: 'The Last Pane',
+    region: 'north',
+    giver: 'Oda Kilnwright',
+    blurb: 'The Kilnwright kiln went cold with one pane still on its drying rack. Ride the old stack\'s thermal up to Kiln Gully, and carry the glass to the blind lamp by Galehigh\'s kite-stall.',
+    start_flag: 'flag:q_north_pane_hook',
+    stage_flags: ['flag:q_north_pane'],
+    done_flag: 'flag:q_north_pane_done',
+  },
 ];
 
 /** Lookup by id. */

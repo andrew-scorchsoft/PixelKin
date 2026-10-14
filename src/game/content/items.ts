@@ -749,6 +749,23 @@ export const ITEMS: ItemRegistry = {
     desc: 'A field-journal page in Fenn\'s careful hand: three day-forms, inked in morning light, and a note — "brighter lamps will show us more."',
     category: 'key',
   },
+  // ---- Lane A — the Ashfall Shelf + Kiln Gully (walkthrough/10 Part II, 2026-10) ----
+  // "The Last Pane": the last lamp-glass ever drawn at the Kilnwright kiln.
+  kiln_pane: {
+    id: 'kiln_pane',
+    name: 'The Last Pane',
+    desc: 'A pane of old amber lamp-glass, the last the Kilnwright kiln ever drew. Light goes into it plain and comes out warm. Galehigh\'s kite-stall lamp has a hole this exact size.',
+    category: 'key',
+  },
+  // Kiln Gully's find-first chart (never stocked: no counter ever pressed it).
+  chart_shardstorm: {
+    id: 'chart_shardstorm',
+    name: 'Star-chart: Shardstorm',
+    desc: 'A chart the glass-blowers pressed for luck, of the Stone\'s figure breaking into a hundred bright shards. Teaches a willing kin SHARDSTORM (Stone). One study burns it out.',
+    category: 'chart',
+    teach_move: 'shardstorm',
+    price: 2400,
+  },
 };
 
 export function getItem(id: string): ItemDef | undefined {

@@ -23,7 +23,7 @@ export const NEXT_GOALS: GoalStage[] = [
   { flag: 'gleam:solar', text: 'Lunar Gleam: Nessa Cole at Nightreach Observatory, top of the Sunvault Climb.' },
   { flag: 'gleam:frost', text: 'Solar Gleam: Lucan Pyre in the Sunken Solarium, west through Hushfrost Pass.' },
   { flag: 'gleam:storm', text: 'Frost Gleam: Ysolde Frost at the Pale Vault Glacier, up the Windward Stair.' },
-  { flag: 'gleam:stone', text: 'Storm Gleam: Mira Vael on the Galehigh Terraces, up Cinderwind Scarp.' },
+  { flag: 'gleam:stone', text: 'Storm Gleam: Mira Vael on the Galehigh Terraces, up Cinderwind Scarp and over the Ashfall Shelf.' },
   { flag: 'gleam:verdant', text: 'Stone Gleam: Otho Grist at Cinderhead Mine, through the deep wood behind Lowleaf.' },
   { flag: 'gleam:tide', text: 'Verdant Gleam: Sable Quill at Lowleaf Hollow, east of Pearlmoor on the fen road.' },
   { flag: 'flag:q_south_bell_rung', text: 'Tide Gleam: face Reyl Wash at the Lumenary atop Pearlmoor Quay.' },

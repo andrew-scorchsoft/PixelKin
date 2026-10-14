@@ -219,13 +219,15 @@ Engine formulas (`KinInstance.ts`, `BattleScene.ts`):
 | Tide Gleam (Reyl) | 14 | 16 | L18 | L17 | L20 |
 | Verdant Gleam (Sable) | 18 | 22 | L23 | L22 | L25 |
 | Stone Gleam (Otho) — *the wall* | 26* | 28 | L28 | L28 | L31 |
-| Storm Gleam (Mira) | 28 | 34 | L32 | L32 | L36 |
+| Storm Gleam (Mira) | 30† | 34 | L34 | L33 | L36 |
 | Frost Gleam (Ysolde) | 36 | 40 | L38 | L37 | L41 |
 | Solar Gleam (Lucan) | 42 | 46 | L43 | L42 | L46 |
 | Lunar Gleam (Nessa) | 48 | 52 | L48 | L47 | L52 |
 | Warden Còr (climax) | 54 | 56 | L53 | L53 | L58 |
 
 \* post-Descent-Vigil expectation; §4 entry rec is 22 (the wall by design).
+† rec 28 → 30 with the Ashfall Shelf (2026-10, walkthrough/10 Part II): the Scarp (28–30) and the
+shelf (30–33, two route trainers) now carry the climb that one map used to.
 
 **The difficulty shape this buys** — early Gleams land at/above ace (gentle
 on-ramp); from Mira onward the mainline player fights wardens **2–4 levels

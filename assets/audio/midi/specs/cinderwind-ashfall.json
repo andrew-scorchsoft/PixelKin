@@ -1,0 +1,63 @@
+{
+  "title": "PixelKin - The Ashfall Shelf",
+  "_note": "The Ashfall Shelf (walkthrough/10 Part II): daylight after three caves - a high grey shelf where Cinderhead's slag was tipped for a century, ash-grass, the haulers' brazier, the wind off Galehigh. snes register (CLAUDE.md area-music rule): pulse25 lead + tri_bass tread kept chip-true, then the band opens - strings dyads, pluck harp arp, sparse bell glints at phrase ends, a flute counter answering in B. D dorian (the B natural is the open sky). Vesper motif: A3->D4->E4 lift, F4->E4->D4 settle, restated an octave up in A'. Stone signature = dry tom taps on beat 3; Storm = a crash 'gust' opening each 8-bar phrase. 24 bars at 104 BPM = ~55 s; bar 24's A major leads back into bar 1. Original (VISION.md).",
+  "era": "snes",
+  "tempo": 104,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D dorian",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.9,
+      "notes": "A3q D4q E4h | F4q E4q D4h | E4q G4q C5q B4q | A4q G4q D4h | A3q D4q E4q F4q | G4q F4q D4h | E4q. F4e G4q E4q | C#4h E4h | A4q D5q E5h | F5q E5q C5h | E5q D5q C5q G4q | B4h. D5q | D5q C5q Bb4q F4q | G4q A4q C5q E5q | D5q. C5e A4h | E4h C#4h | rq F4q Bb4q A4q | F4h. rq | rq E4q G4q A4q | F4h. rq | D4q F4q Bb4q D5q | C5h A4h | B4q A4q G4q B4q | A4w"
+    },
+    {
+      "name": "flute",
+      "voice": "flute",
+      "octave": 5,
+      "gain": 0.5,
+      "notes": "rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rw | rh rq D5q@70 | C6q A5q F5h | rh rq C5q@70 | A5q F5q D5h | rw | rw | D5q E5q G5q E5q | C#5w"
+    },
+    {
+      "name": "harp",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.42,
+      "notes": "D4e F4e A4e D5e A4e F4e A4e F4e | D4e A4e F4e D5e F4e A4e D5e A4e | C4e E4e G4e C5e G4e E4e G4e E4e | G3e D4e B3e G4e B3e D4e G4e D4e | D4e F4e A4e D5e A4e F4e A4e F4e | Bb3e F4e D4e Bb4e D4e F4e Bb4e F4e | C4e E4e G4e C5e G4e E4e G4e E4e | A3e E4e C#4e A4e C#4e E4e A4e E4e | D4e F4e A4e D5e A4e F4e A4e F4e | F3e C4e A3e F4e A3e C4e F4e C4e | C4e E4e G4e C5e G4e E4e G4e E4e | G3e D4e B3e G4e B3e D4e G4e D4e | Bb3e D4e F4e Bb4e F4e D4e F4e D4e | C4e G4e E4e C5e E4e G4e C5e G4e | D4e F4e A4e D5e A4e F4e A4e F4e | A3e E4e C#4e A4e C#4e E4e A4e E4e | Bb3e D4e F4e Bb4e F4e D4e F4e D4e | F3e C4e A3e F4e A3e C4e F4e C4e | C4e E4e G4e C5e G4e E4e G4e E4e | D4e A4e F4e D5e F4e A4e D5e A4e | Bb3e D4e F4e Bb4e F4e D4e F4e D4e | F3e C4e A3e F4e A3e C4e F4e C4e | G3e B3e D4e G4e D4e B3e D4e B3e | A3e E4e C#4e A4e C#4e E4e A4e E4e"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.28,
+      "notes": "F3+A3w | F3+A3w | E3+G3w | B3+D4w | F3+A3w | D3+F3w | E3+G3w | C#3+E3w | F3+A3w | A3+C4w | E3+G3w | B3+D4w | D3+F3w | E3+G3w | F3+A3w | C#3+E3w | D3+F3w | A3+C4w | E3+G3w | F3+A3w | D3+F3w | A3+C4w | B3+D4w | C#3+E3w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 1.0,
+      "notes": "D2q. D2e A2q D2q | D2q. D2e A2q D2q | C2q. C2e G2q C2q | G2q. G2e D3q G2q | D2q. D2e A2q D2q | Bb2q. Bb2e F2q Bb2q | C2q. C2e G2q C2q | A2q A2e E2e A2q C#3q | D2q. D2e A2q D2q | F2q. F2e C3q F2q | C2q. C2e G2q C2q | G2q. G2e D3q G2q | Bb2q. Bb2e F2q Bb2q | C2q. C2e G2q C2q | D2q. D2e A2q D2q | A2q A2e E2e A2q C#3q | Bb2q. Bb2e F2q Bb2q | F2q. F2e C3q F2q | C2q. C2e G2q C2q | D2q. D2e A2q D2q | Bb2q. Bb2e F2q Bb2q | F2q. F2e C3q F2q | G2q. G2e D3q G2q | A2q A2e E2e A2q C#3q"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.35,
+      "notes": "rw | rw | rw | rh rq D6q@54 | rw | rw | rw | rh rq E6q@54 | rw | rw | rw | rh rq D6q@54 | rw | rw | rw | rh rq E6q@50 | rw | rw | rw | rw | rw | rw | rw | rh A5q@50 E6q@54"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.5,
+      "notes": "e crash+kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 tom@44 tom@38 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 tom@44 tom@38 | e crash+kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 tom@44 tom@38 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 tom@44 tom@38 | e crash+kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 tom@44 tom@38 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 hat@32 hat@40 | e kick hat@40 hat@32 hat@40 tom@50 hat@40 tom@44 tom@38"
+    }
+  ]
+}

@@ -301,6 +301,22 @@
       "name": "Pale Vault Glacier"
     },
     {
+      "id": "cinderwind_ashfall",
+      "x": 168,
+      "y": 267,
+      "kind": "route",
+      "region": "north",
+      "name": "The Ashfall Shelf"
+    },
+    {
+      "id": "cinderwind_kiln",
+      "x": 175,
+      "y": 255,
+      "kind": "landmark",
+      "region": "north",
+      "name": "Kiln Gully"
+    },
+    {
       "id": "hushfrost_pass_i",
       "x": 165,
       "y": 191,
@@ -664,7 +680,27 @@
     {
       "a": "cinderwind_scarp",
       "b": "galehigh_terraces",
+      "kind": "gate"
+    },
+    {
+      "a": "cinderwind_scarp",
+      "b": "cinderwind_ashfall",
       "kind": "road"
+    },
+    {
+      "a": "cinderwind_ashfall",
+      "b": "galehigh_terraces",
+      "kind": "road"
+    },
+    {
+      "a": "cinderwind_ashfall",
+      "b": "cinderwind_kiln",
+      "kind": "gate"
+    },
+    {
+      "a": "cinderwind_ashfall",
+      "b": "windward_stair_i",
+      "kind": "gate"
     },
     {
       "a": "galehigh_terraces",
@@ -904,6 +940,8 @@
     "cinderhead_deep_b2f": "cinderhead_deep",
     "cinderhead_lumenary": "cinderhead_mine",
     "cinderhead_mine": "cinderhead_mine",
+    "cinderwind_ashfall": "cinderwind_ashfall",
+    "cinderwind_kiln": "cinderwind_kiln",
     "cinderwind_scarp": "cinderwind_scarp",
     "coldfog_marches_i": "coldfog_marches_i",
     "coldfog_marches_ii": "coldfog_marches_ii",

@@ -222,8 +222,9 @@ keep this continuous across boundaries (no cliffs, no dead zones).
 | Saltreach Fen I→II | 16 → 18 | — | — |
 | Lowleaf Hollow | 18 | **Sable Quill** (Verdant) — ~22 | **Glimmerstep** |
 | Cinderhead Mine/Deep | 22 | **Otho Grist** (Stone) — ~28 | — |
-| Cinderwind Scarp (2026-10) | 28 → 30 | — (two route trainers, lv 28–31 beds) | — |
-| Galehigh Terraces | 28 | **Mira Vael** (Storm) — ~34 | **Updraft Kite** |
+| Cinderwind Scarp (2026-10) | 28 → 30 | — (two route trainers, lv 28–30 beds) | — |
+| The Ashfall Shelf (2026-10) | 30 → 32 | — (two route trainers, lv 30–33 beds, the camp rest point) | — |
+| Galehigh Terraces | 30 | **Mira Vael** (Storm) — ~34 | **Updraft Kite** |
 | Windward Stair I→II | 34 → 36 | — | — |
 | Pale Vault Glacier | 36 | **Ysolde Frost** (Frost) — ~40 | **Emberward** |
 | Hushfrost Pass I→II | 40 → 42 | — | — |

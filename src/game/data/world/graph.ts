@@ -219,6 +219,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // Sunvault Climb rebuild (S)
     { map_id: 'sunvault_climb_iii', region: 'west' }, // route: the Gilt Face (ladder pitches, the trestle over the gully)
     { map_id: 'sunvault_climb_iv', region: 'west' }, // route: the Sun Ledges (planks + ledges to the observatory hill)
+
+    // Lane A — the Ashfall Shelf (walkthrough/10 Part II): the main-path leg Scarp -> Ashfall -> Galehigh
+    { map_id: 'cinderwind_ashfall', region: 'north' }, // route: the slag-tip shelf, the haulers' camp (rest point)
+    { map_id: 'cinderwind_kiln', region: 'north', optional: true, reward: 'Kiln Gully: the Last Pane, a Beacon charge, the Star-chart: Shardstorm; Lumecite/Pyrolith/rare Prismara' },
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -296,7 +300,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_deep', via_warp: 'to_deep', requires_ability: 'glimmerstep', bidirectional: true },
     // 2026-10: the Deep opens onto Cinderwind Scarp, the climb to the terraces
     { from_map: 'cinderhead_deep', to_map: 'cinderwind_scarp', via_warp: 'to_terraces', bidirectional: true },
-    { from_map: 'cinderwind_scarp', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
+    // Lane A (walkthrough/10 Part II): the Scarp's east cut is a ROCKFALL until the Galehigh
+    // haulers clear it (flag:scarp_short_open = scarp_rockfall_clear OR gleam:storm, FlagStore ANY_OF)
+    { from_map: 'cinderwind_scarp', to_map: 'galehigh_terraces', via_warp: 'to_terraces', requires_flag: 'flag:scarp_short_open', bidirectional: true },
     // Galehigh interiors (door warps, both ways) + the Kite-Rising Winch: the
     // skyloft is gated by the FESTIVAL flag (the earned loop, spine §5 shape #5)
     // — never by Updraft Kite (§0 rule 1; Updraft is Mira's reward).
@@ -442,6 +448,12 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunvault_climb_ii', to_map: 'sunvault_climb_iii', via_warp: 'to_climb_iii', bidirectional: true },
     { from_map: 'sunvault_climb_iii', to_map: 'sunvault_climb_iv', via_warp: 'to_climb_iv', bidirectional: true },
     { from_map: 'sunvault_climb_iv', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
+
+    // Lane A — the Ashfall Shelf (walkthrough/10 Part II)
+    { from_map: 'cinderwind_scarp', to_map: 'cinderwind_ashfall', via_warp: 'to_ashfall', bidirectional: true },
+    { from_map: 'cinderwind_ashfall', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
+    { from_map: 'cinderwind_ashfall', to_map: 'windward_stair_i', via_warp: 'to_windward', requires_ability: 'updraft_kite', bidirectional: true },
+    { from_map: 'cinderwind_ashfall', to_map: 'cinderwind_kiln', via_warp: 'to_kiln', requires_ability: 'updraft_kite', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

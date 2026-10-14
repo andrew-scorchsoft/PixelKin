@@ -1488,6 +1488,24 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     music: 'assets/audio/music/sunvault-climb-b.mp3',
     battle_backdrops: ['assets/backgrounds/battle/sunvault-climb-a.webp', 'assets/backgrounds/battle/sunvault-climb-b.webp'],
   },
+  // ---- Lane A — the Ashfall Shelf (walkthrough/10 Part II, 2026-10) ----
+  // The main-path leg between Cinderwind Scarp and Galehigh: daylight after three caves.
+  cinderwind_ashfall: {
+    json: 'assets/maps/cinderwind_ashfall.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/cinderwind-ashfall.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/ashfall-a.webp'],
+  },
+  // Kiln Gully: the cold lamp-glass kiln up the old stack's thermal (Updraft Kite).
+  cinderwind_kiln: {
+    json: 'assets/maps/cinderwind_kiln.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/cinderhead-mine-b.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/kiln-a.webp'],
+  },
 };
 
 /**

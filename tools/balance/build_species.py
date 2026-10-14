@@ -753,11 +753,12 @@ def _rows(area, lo_hi_rarity):
 GEOMETRY_ENCOUNTERS = {
     # Cinderwind Scarp (lv 28-31): the climb from Cinderhead Deep to Galehigh
     "rubbol":   _rows("cinderwind_scarp", [(28, 30, "common")]),
-    "galefox":  _rows("cinderwind_scarp", [(28, 31, "common")]),
-    "thrumble": _rows("cinderwind_scarp", [(29, 31, "common")]),
-    "lumecite": _rows("cinderwind_scarp", [(29, 31, "uncommon")]),
-    "nimbruff": _rows("cinderwind_scarp", [(30, 31, "rare")]),
-    "voltcrag": _rows("cinderwind_scarp", [(31, 31, "very_rare")]),
+    # (Lane A, 2026-10: retuned to 28-30 — the Ashfall Shelf above carries 30-33)
+    "galefox":  _rows("cinderwind_scarp", [(28, 30, "common")]),
+    "thrumble": _rows("cinderwind_scarp", [(29, 30, "common")]),
+    "lumecite": _rows("cinderwind_scarp", [(29, 30, "uncommon")]),
+    "nimbruff": _rows("cinderwind_scarp", [(30, 30, "rare")]),
+    "voltcrag": _rows("cinderwind_scarp", [(30, 30, "very_rare")]),
     # The Umbral Approach (lv 50-53): the mountain road to the Penumbra
     "voidmantle":  _rows("umbral_approach", [(50, 53, "common")]),
     "omenire":     _rows("umbral_approach", [(50, 53, "common")]),
@@ -767,6 +768,31 @@ GEOMETRY_ENCOUNTERS = {
     "liminalux":   _rows("umbral_approach", [(51, 53, "uncommon")]),
 }
 for _slug, _rows_ in GEOMETRY_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
+# Lane A (walkthrough/10 Part II, 2026-10): the Ashfall Shelf (lv 30-33, the main
+# path between the Scarp and Galehigh) + Kiln Gully (lv 33-35, optional, the cold
+# lamp-glass kiln behind the Updraft vent) — mirrors of the BUILT in-map tables
+# (tools/maps/build_cinderwind_ashfall.py, build_cinderwind_kiln.py). Stonebark is
+# the shelf's own rare: never wild before, it grows in the grey ash-grass.
+def _cave(area, lo_hi_rarity):
+    return [{"area": area, "terrain": "cave", "rarity": r, "min": lo, "max": hi}
+            for (lo, hi, r) in lo_hi_rarity]
+ASHFALL_ENCOUNTERS = {
+    "gravelo":     _rows("cinderwind_ashfall", [(31, 33, "common")]),
+    "sparkrat":    _rows("cinderwind_ashfall", [(30, 31, "common")]),
+    "flintbeak":   _rows("cinderwind_ashfall", [(30, 32, "common")]),
+    "galefox":     _rows("cinderwind_ashfall", [(30, 32, "uncommon")]),
+    "pyrolith":    _rows("cinderwind_ashfall", [(32, 33, "uncommon")])
+                   + _cave("cinderwind_kiln", [(34, 35, "uncommon")]),
+    "stonebark":   _rows("cinderwind_ashfall", [(30, 31, "rare")]),
+    "lumecite":    _cave("cinderwind_kiln", [(33, 35, "common")]),
+    "riddlestone": _cave("cinderwind_kiln", [(33, 35, "common")]),
+    "orebound":    _cave("cinderwind_kiln", [(33, 33, "uncommon")]),
+    "pyriven":     _cave("cinderwind_kiln", [(34, 35, "uncommon")]),
+    "prismara":    _cave("cinderwind_kiln", [(35, 35, "rare")]),
+}
+for _slug, _rows_ in ASHFALL_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
 # The Wild Ways — Sunvault Climb rebuild (S, 09-the-wild-ways §2 S, 2026-10): the
@@ -1055,6 +1081,8 @@ CURATED_AREAS = {
     "duskapple_orchard",
     # the 2026-10 geometry fix's new routes (mirrored above, GEOMETRY_ENCOUNTERS)
     "cinderwind_scarp", "umbral_approach",
+    # Lane A (walkthrough/10 Part II): the Ashfall Shelf + Kiln Gully (mirrored above)
+    "cinderwind_ashfall", "cinderwind_kiln",
     # The Wild Ways — Sunvault Climb rebuild (S): the two new face maps
     "sunvault_climb_iii", "sunvault_climb_iv",
     # The Wild Ways — the Rimeway (C)
