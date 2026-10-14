@@ -17,6 +17,13 @@ interface GoalStage {
 }
 
 export const NEXT_GOALS: GoalStage[] = [
+  // the Farlamp Isles (optional post-game; walkthrough/10 Part I) — once begun
+  { flag: 'flag:isles_dawn', text: 'The Farlamp burns. Battle Bram Fathom on Driftholm\'s quay.' },
+  { flag: 'flag:q_isles_driftholm', text: 'Take Elder Creel\'s well-stair under the sea to the drowned Farlamp, and light it.' },
+  { flag: 'flag:q_isles_fogglass', text: 'Follow the lit buoys south through the Fogwall to Driftholm.' },
+  { flag: 'flag:q_isles_afloat', text: 'Row south across the Sound; find the old keepers\' fog-glass in the sea-caves under the isles.' },
+  { flag: 'flag:q_isles_prow_lit', text: 'Take the lit prow-lamp back to Ione on Lightkeeper\'s Point.' },
+  { flag: 'flag:q_isles', text: 'Have Fenn light Ione\'s prow-lamp, at Dawnstead on the front.' },
   { flag: 'flag:dawn', text: 'Look up. Then walk down to Dawnstead and see the valley in the morning.' },
   { flag: 'flag:keystar_relit', text: 'The Keystar is lit. Stand still and let what comes, come.' },
   { flag: 'gleam:lunar', text: 'The Crown is whole: climb the Umbral Spire, up the mountain road north of the Vesper Crossroads.' },

@@ -1544,10 +1544,76 @@ export const TRAINERS: TrainerRegistry = {
     payout: 784, // route 16 × ace 49
     music: 'battle-emberfall',
   },
+
+  // ---- THE FARLAMP ISLES (walkthrough/10 Part I) — Lane C1: the two boat-trainers
+  // on the sea + Bram Fathom, the isles' keeper (post-isles-dawn super-trainer) ----
+  sound_oarsman: {
+    id: 'sound_oarsman',
+    name: 'CALDER',
+    title: 'Oarsman',
+    party: [
+      { species_id: 172, level: 60 }, // Fathomote — Tide/Light
+      { species_id: 28, level: 61 }, // Brinewrath — Tide (ace)
+    ],
+    payout: 976, // route 16 × ace 61
+  },
+  shelf_kelper: {
+    id: 'shelf_kelper',
+    name: 'ROWAN',
+    title: 'Kelp-farmer',
+    party: [
+      { species_id: 174, level: 60 }, // Hermiwick — Stone/Tide
+      { species_id: 61, level: 61 }, // Tidalarch — Verdant/Tide
+      { species_id: 32, level: 62 }, // Lumplass — Tide/Light (ace)
+    ],
+    payout: 992, // route 16 × ace 62
+  },
+  bram_fathom: {
+    id: 'bram_fathom',
+    name: 'BRAM FATHOM',
+    title: 'Isle Keeper',
+    party: [
+      { species_id: 28, level: 68 }, // Brinewrath — Tide
+      { species_id: 85, level: 68 }, // Stillwarden — Frost/Dark
+      { species_id: 61, level: 69 }, // Tidalarch — Verdant/Tide
+      { species_id: 30, level: 69 }, // Glostrael — Tide/Light
+      { species_id: 173, level: 69 }, // Fathomere — Tide/Light
+      { species_id: 175, level: 70 }, // Beaconclaw — Stone/Light (ace)
+    ],
+    intro_ref: 'trainer.bram_fathom.intro',
+    defeat_ref: 'trainer.bram_fathom.defeat',
+    payout: 5600, // vigilant 80 × ace 70
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  // the rematch: re-runnable forever (optional income outside the solvency legs)
+  bram_fathom_rematch: {
+    id: 'bram_fathom_rematch',
+    name: 'BRAM FATHOM',
+    title: 'Isle Keeper',
+    party: [
+      { species_id: 28, level: 70 },
+      { species_id: 85, level: 70 },
+      { species_id: 61, level: 71 },
+      { species_id: 30, level: 71 },
+      { species_id: 173, level: 71 },
+      { species_id: 175, level: 72 }, // Beaconclaw (ace)
+    ],
+    intro_ref: 'trainer.bram_fathom_rematch.intro',
+    defeat_ref: 'trainer.bram_fathom_rematch.defeat',
+    payout: 5760, // vigilant 80 × ace 72
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
 };
 
 /** Intro/defeat dialogue for trainers, kept beside the roster they belong to. */
 export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
+  // THE FARLAMP ISLES (Lane C1): Bram Fathom, the isles' keeper
+  'trainer.bram_fathom.intro': [{ speaker: 'BRAM', text: 'By the lit lamp, then. Show me what the mainland\'s made of.' }],
+  'trainer.bram_fathom.defeat': [{ speaker: 'BRAM', text: 'Well rowed. Well fought. The isles are yours to come and go.' }],
+  'trainer.bram_fathom_rematch.intro': [{ speaker: 'BRAM', text: 'I\'ve been practising. On the gulls, mostly.' }],
+  'trainer.bram_fathom_rematch.defeat': [{ speaker: 'BRAM', text: 'Again! You\'ll make an old keeper humble yet.' }],
   'trainer.lampwarden_tinderwick.intro': [
     { speaker: 'BRISA TALLOW', text: 'So the lamp-tender sends an apprentice. Good. The dark needs fewer cowards.' },
     { speaker: 'BRISA TALLOW', text: 'Show me your spark, Wayfarer. If it holds, the Ember Gleam is yours.' },

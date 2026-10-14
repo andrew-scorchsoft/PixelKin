@@ -110,6 +110,20 @@
       "rarity": "rare",
       "min": 58,
       "max": 64
+    },
+    {
+      "area": "farlamp_sound",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 58,
+      "max": 61
+    },
+    {
+      "area": "farlamp_fogwall",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 60,
+      "max": 62
     }
   ],
   "scripted": false,

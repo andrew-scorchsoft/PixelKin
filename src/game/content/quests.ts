@@ -420,6 +420,31 @@ export const QUESTS: QuestRegistry = [
     ],
     done_flag: 'flag:q_works_done',
   },
+  // ---- THE FARLAMP ISLES (walkthrough/10 Part I) — Lane C1 ----
+  // The main chain, from the first look south: the journal counts the five
+  // driftletters (the panel's clarity fix) and its blurb names their shores.
+  {
+    id: 'the_farlamp',
+    name: 'The Farlamp',
+    region: 'south',
+    giver: 'Ione Fathom, boatwright',
+    blurb: 'A lamp blinks inside the fog south of Lightkeeper\'s Point, where the Farlamp drowned eleven winters ago. Letters wash up on five shores: the Dimglass strand, Gullcry Rock, the Wick-Run\'s beach, the Glassmere shallows and the Drownlight shingle. Bring Ione three, after the dawn.',
+    start_flag: 'flag:isles_rumour',
+    count_prefix: 'flag:driftletter_',
+    count_total: 5,
+    done_flag: 'flag:q_isles_done',
+  },
+  {
+    id: 'letters_home',
+    name: 'Letters Home',
+    region: 'south',
+    giver: 'the folk of Driftholm',
+    blurb: 'Driftholm threw its letters into the sea for eleven winters. Bring each driftletter back to the one who wrote it: Marra by the kelp-racks, Lorne at the lamp-stone, Edda the schoolteacher, Hesk the net-mender, and Elder Creel.',
+    start_flag: 'flag:q_isles_driftholm',
+    count_prefix: 'flag:isles_letter_home_',
+    count_total: 5,
+    done_flag: 'flag:q_isles_letters_done',
+  },
 ];
 
 /** Lookup by id. */

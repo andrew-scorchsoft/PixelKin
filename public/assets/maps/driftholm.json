@@ -334,7 +334,7 @@
     },
     {
       "id": "tree_a",
-      "sprite": "tinderwick_tree_b",
+      "sprite": "tinderwick_tree_c",
       "at": {
         "tx": 26,
         "ty": 17
@@ -1003,17 +1003,6 @@
       "hidden_when_flag": "flag:q_isles_driftholm"
     },
     {
-      "id": "arrival_14",
-      "kind": "cutscene",
-      "at": {
-        "tx": 14,
-        "ty": 8
-      },
-      "activation": "step_on",
-      "ref": "script.driftholm_arrival",
-      "hidden_when_flag": "flag:q_isles_driftholm"
-    },
-    {
       "id": "arrival_15",
       "kind": "cutscene",
       "at": {
@@ -1102,17 +1091,6 @@
       "hidden_when_flag": "flag:q_isles_driftholm"
     },
     {
-      "id": "arrival_23",
-      "kind": "cutscene",
-      "at": {
-        "tx": 23,
-        "ty": 8
-      },
-      "activation": "step_on",
-      "ref": "script.driftholm_arrival",
-      "hidden_when_flag": "flag:q_isles_driftholm"
-    },
-    {
       "id": "arrival_24",
       "kind": "cutscene",
       "at": {
@@ -1144,17 +1122,6 @@
       "activation": "step_on",
       "ref": "script.driftholm_arrival",
       "hidden_when_flag": "flag:q_isles_driftholm"
-    },
-    {
-      "id": "arrival_27",
-      "kind": "cutscene",
-      "at": {
-        "tx": 27,
-        "ty": 8
-      },
-      "activation": "step_on",
-      "ref": "script.driftholm_arrival",
-      "hidden_when_flag": "flag:q_isles_driftholm"
     }
   ],
   "encounters": [],
@@ -1162,7 +1129,7 @@
     {
       "id": "bram",
       "at": {
-        "tx": 26,
+        "tx": 27,
         "ty": 9
       },
       "facing": "left",

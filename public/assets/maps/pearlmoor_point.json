@@ -1663,5 +1663,24 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spray",
+        "density": 0.6
+      }
+    ],
+    "birds": {
+      "kind": "gull",
+      "flocks": [
+        {
+          "tx": 3,
+          "ty": 9
+        }
+      ],
+      "flyover": true
+    },
+    "sound_bed": "amb-surf"
+  }
 }

@@ -3659,6 +3659,18 @@
       "sprite": "fisher_woman",
       "movement": "look_around",
       "dialogue_ref": "npc.wickrun_yard_hand"
+    },
+    {
+      "id": "driftletter_3",
+      "at": {
+        "tx": 23,
+        "ty": 24
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_driftletter_3",
+      "hidden_when_flag": "flag:driftletter_3"
     }
   ],
   "gates": [],

@@ -589,7 +589,7 @@
     {
       "id": "innkeeper",
       "at": {
-        "tx": 10,
+        "tx": 12,
         "ty": 3
       },
       "facing": "down",
@@ -612,7 +612,7 @@
     {
       "id": "inn_fisher_day",
       "at": {
-        "tx": 3,
+        "tx": 4,
         "ty": 9
       },
       "facing": "up",

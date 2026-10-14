@@ -131,6 +131,15 @@ GRANTS["pale_vault_undercroft"].append("flag:lamplight_starlight")
 # (flag:has_frostglass_lens — Isel, credited to pale_vault_glacier by the Rimeway lane)
 GRANTS.setdefault("saltreach_fen_i", []).append("flag:mirelight_ferry")
 GRANTS["mirelight_chapel"] = ["flag:mirelight_tobin_found"]                  # Tobin found
+# THE FARLAMP ISLES (walkthrough/10 Part I, Lane C1): Ione launches you from the
+# Point (the skiff + `deepdive`) only after Fenn lights her prow-lamp AT DAWNSTEAD,
+# post-dawn — so the launch is credited to Dawnstead (the Point itself is reachable
+# from the first hour, which would hand the deep out before Tidecall). The
+# fog-glass waits in Undertide II under Kelpcrown (credited to its surface mouth —
+# the cave lane may move it onto undertide_ii); Elder Creel opens the well-stair.
+GRANTS["dawnstead"] = ["flag:q_isles_afloat", "deepdive"]
+GRANTS["farlamp_kelpcrown"] = ["flag:q_isles_fogglass"]
+GRANTS["driftholm_elder"] = ["flag:q_isles_wellstair"]
 POSTGAME_FLAGS = {"flag:dawn"}
 
 

@@ -92,7 +92,22 @@
     "weight_kg": 210,
     "habitat": "isles"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "farlamp_gullwrack",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 62,
+      "max": 62
+    },
+    {
+      "area": "farlamp_kelpcrown",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 62,
+      "max": 63
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "A big armoured crab built like a small lighthouse, three-quarter view: a broad stone-plated body on thick jointed legs, one huge rounded claw raised like a shield, stalked eyes. On its back stands a tall, whole lantern tower: a brass lantern room with clean glass panes and a bright lamp shining inside, under a little conical roof, with soft beams of light fanning out. At 64px it reads as a crab wearing a lit lighthouse.",

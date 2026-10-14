@@ -330,7 +330,11 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // unhinged per floor); the halls carry wild encounters (the climb's grind bed).
   pearlmoor_point: {
     json: 'assets/maps/pearlmoor_point.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      // the Farlamp's blink on the horizon (walkthrough/10 Part I)
+      farlamp_set: 'assets/tilesets/farlamp_set.webp',
+    },
     kind: 'route',
     music: 'assets/audio/music/pearlmoor-quay-b.mp3',
     battle_backdrops: [
@@ -1487,6 +1491,102 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'route',
     music: 'assets/audio/music/sunvault-climb-b.mp3',
     battle_backdrops: ['assets/backgrounds/battle/sunvault-climb-a.webp', 'assets/backgrounds/battle/sunvault-climb-b.webp'],
+  },
+  // ---- THE FARLAMP ISLES (walkthrough/10 Part I, post-game) — Lane C1: the sea,
+  // the two wild isles, Driftholm + its interiors (builders: build_farlamp_isles.py,
+  // build_driftholm.py, build_farlamp_interiors.py). Sea maps are rowed (deepwater_set).
+  farlamp_sound: {
+    json: 'assets/maps/farlamp_sound.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/farlamp-sound.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-sea-a.webp'],
+  },
+  farlamp_shelfwater: {
+    json: 'assets/maps/farlamp_shelfwater.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/farlamp-sound.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-sea-a.webp'],
+  },
+  farlamp_fogwall: {
+    json: 'assets/maps/farlamp_fogwall.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      farlamp_set: 'assets/tilesets/farlamp_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/farlamp-sound.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-sea-a.webp'],
+  },
+  farlamp_gullwrack: {
+    json: 'assets/maps/farlamp_gullwrack.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/farlamp-sound.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-isle-a.webp'],
+  },
+  farlamp_kelpcrown: {
+    json: 'assets/maps/farlamp_kelpcrown.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/farlamp-sound.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-isle-a.webp'],
+  },
+  driftholm: {
+    json: 'assets/maps/driftholm.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'town',
+    music: 'assets/audio/music/driftholm.mp3',
+    // the isles' dawn turns the minor-mode hymn major (Lane D's cue)
+    music_when: [{ flag: 'flag:isles_dawn', music: 'assets/audio/music/driftholm-dawn.mp3' }],
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-isle-a.webp'],
+  },
+  driftholm_inn: {
+    json: 'assets/maps/driftholm_inn.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/inn-rest.mp3',
+  },
+  driftholm_chandlery: {
+    json: 'assets/maps/driftholm_chandlery.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/shop-counter.mp3',
+  },
+  driftholm_elder: {
+    json: 'assets/maps/driftholm_elder.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-lamplit.mp3',
+  },
+  driftholm_boathouse: {
+    json: 'assets/maps/driftholm_boathouse.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-hush.mp3',
+  },
+  gullwrack_hut: {
+    json: 'assets/maps/gullwrack_hut.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-hush.mp3',
   },
 };
 

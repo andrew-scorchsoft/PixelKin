@@ -5213,8 +5213,34 @@ export const SCRIPTS: ScriptRegistry = {
       text: 'The Keystar\'s lit. Whatever\'s coming next is coming on its own — stand still and let it.',
     },
     {
-      op: 'say', if_flag: 'flag:dawn', speaker: 'ANDREW',
+      op: 'say', if_flag: 'flag:dawn', unless_flag: 'flag:q_isles', speaker: 'ANDREW',
       text: 'Next? Nothing. Nothing at all, {name}. Look UP. Then, if you\'re not there already, walk down to Dawnstead and see the valley with the morning on it — and the great glass at Nightreach still has a few fallen stars to read, they say.',
+    },
+    // --- The Farlamp Isles (walkthrough/10 Part I, optional post-game): once Ione
+    // has asked for the prow-lamp, the chain answers "where next?" for the isles.
+    {
+      op: 'say', if_flag: 'flag:q_isles', unless_flag: 'flag:q_isles_prow_lit', speaker: 'ANDREW',
+      text: 'Ione\'s prow-lamp wants lighting from the Star-tender\'s own lamp. Fenn\'s down at Dawnstead, on the front. Off you go.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_isles_prow_lit', unless_flag: 'flag:q_isles_afloat', speaker: 'ANDREW',
+      text: 'Lamp lit? Then back to Ione on Lightkeeper\'s Point, west of Pearlmoor. That boat of hers has been waiting eleven winters for you.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_isles_afloat', unless_flag: 'flag:q_isles_fogglass', speaker: 'ANDREW',
+      text: 'Out in the skiff, are you? South across the Sound, west to the Fogwall. Nobody gets through that fog without the old keepers\' glass, and the old keepers kept their things in the sea-caves under Gullwrack and Kelpcrown.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_isles_fogglass', unless_flag: 'flag:q_isles_driftholm', speaker: 'ANDREW',
+      text: 'The glass reads the buoys through the fog. Follow the lit ones south out of the Fogwall, and you\'ll come to a town that hasn\'t seen a boat in eleven winters.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_isles_driftholm', unless_flag: 'flag:isles_dawn', speaker: 'ANDREW',
+      text: 'Driftholm\'s elder, Nan Creel, keeps the key to the well-stair in the square. It goes down under the sea, all the way out to where the Farlamp drowned. Light it, {name}.',
+    },
+    {
+      op: 'say', if_flag: 'flag:isles_dawn', speaker: 'ANDREW',
+      text: 'The Farlamp\'s burning and the isles have their morning. Next? Nothing. Go and give Bram Fathom a battle on Driftholm\'s quay. He\'s been waiting longer than any of us.',
     },
   ],
 

@@ -3181,7 +3181,7 @@
       "facing": "down",
       "sprite": "npc_mentor",
       "movement": "static",
-      "dialogue_ref": "script.fenn_dawnstead",
+      "dialogue_ref": "script.fenn_isles_meet",
       "hidden_when_flag": "flag:q_post_survey"
     },
     {
@@ -3193,7 +3193,7 @@
       "facing": "down",
       "sprite": "npc_mentor",
       "movement": "static",
-      "dialogue_ref": "script.fenn_survey_wait",
+      "dialogue_ref": "script.fenn_isles_survey",
       "requires_flag": "flag:q_post_survey",
       "hidden_when_flag": "flag:q_post_survey_3"
     },
@@ -3206,7 +3206,7 @@
       "facing": "down",
       "sprite": "npc_mentor",
       "movement": "static",
-      "dialogue_ref": "script.fenn_survey_done",
+      "dialogue_ref": "script.fenn_isles_done",
       "requires_flag": "flag:q_post_survey_3",
       "hidden_when_flag": "flag:q_post_survey_done"
     },
@@ -3219,7 +3219,7 @@
       "facing": "down",
       "sprite": "npc_mentor",
       "movement": "static",
-      "dialogue_ref": "npc.fenn_dawnstead_after",
+      "dialogue_ref": "script.fenn_isles_after",
       "requires_flag": "flag:q_post_survey_done"
     },
     {

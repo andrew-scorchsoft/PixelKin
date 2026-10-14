@@ -36,6 +36,7 @@ import warp_markers as wm
 from mapkit import gid
 from farlamp_kit import (Sea, link, warp, sea_ambience, SEA_BACKDROPS, ISLE_BACKDROPS,
                          MUSIC_SEA)
+import patterns as pt
 from patterns import zones_from_grid
 
 AFLOAT = "flag:q_isles_afloat"
@@ -91,8 +92,9 @@ def sea_zones(s: Sea, *, deep_rate=0.06, water_rate=0.08, grass_rate=0.10):
         zs.append({"id": f"{s.id}_shallows", "terrain": "water",
                    "rect": {"tx": 0, "ty": 0, "w": s.W, "h": s.H},
                    "encounter_rate": water_rate, "requires_ability": "tidecall", "table": t["water"]})
-    if "grass" in t and any(s.tallgrass):
-        zs += zones_from_grid(s.tallgrass, s.W, s.H, terrain="tall_grass", rate=grass_rate,
+    grass = [1 if (a or b) else 0 for a, b in zip(s.tallgrass, s.dunegrass)]
+    if "grass" in t and any(grass):
+        zs += zones_from_grid(grass, s.W, s.H, terrain="tall_grass", rate=grass_rate,
                               table=t["grass"], id_prefix=f"{s.id}_grass")
     s.m["encounters"] = zs
 
@@ -123,6 +125,56 @@ def tufts(s: Sea, grid, blobs):
             mk.blob(grid, s.W, s.H, cx + s.rng.uniform(-r * 0.6, r * 0.6),
                     cy + s.rng.uniform(-r * 0.4, r * 0.4),
                     r * s.rng.uniform(0.5, 0.8), r * s.rng.uniform(0.35, 0.6))
+
+
+def lane(s: Sea, pts):
+    """A walked lane through waypoints: each leg runs along x then y, so many
+    waypoints read as a meandering path, never one ruled L."""
+    cells = []
+    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+        sx = 1 if x1 >= x0 else -1
+        for x in range(x0, x1 + sx, sx):
+            cells.append((x, y0))
+        sy = 1 if y1 >= y0 else -1
+        for y in range(y0, y1 + sy, sy):
+            cells.append((x1, y))
+    for (x, y) in cells:
+        i = s.cell(x, y)
+        if not s.water[i] and not s.cliff[i] and not s.pond[i]:
+            s.path[i] = 1
+            s.sand[i] = 0
+            s.tallgrass[i] = 0
+            s.dunegrass[i] = 0
+
+
+def outcrop(s: Sea, x, y, shape="L"):
+    """A boulder outcrop (a cluster, never a lone stone): 3-4 boulders."""
+    cells = {"L": [(0, 0), (1, 0), (0, 1)], "J": [(0, 0), (1, 0), (1, 1)],
+             "T": [(0, 0), (1, 0), (2, 0), (1, 1)], "S": [(0, 0), (1, 0), (1, 1), (2, 1)],
+             "O": [(0, 0), (1, 0), (0, 1), (1, 1)]}[shape]
+    for (dx, dy) in cells:
+        i = s.cell(x + dx, y + dy)
+        if not s.path[i]:
+            s.deco[i] = gid("boulder")
+            s.tallgrass[i] = 0
+
+
+def dunes(s: Sea, blobs):
+    """Blown-sand patches inland with tufted dune-grass in them (the sand-
+    context encounter grass): a sea-isle's own texture, not a mainland meadow."""
+    for (cx, cy, rx, ry, grassy) in blobs:
+        g = mk.make_grid(s.W, s.H)
+        mk.blob(g, s.W, s.H, cx, cy, rx, ry)
+        for i, v in enumerate(g):
+            if v and not s.water[i] and not s.cliff[i] and not s.path[i] and not s.pond[i]:
+                s.sand[i] = 1
+                s.tallgrass[i] = 0
+        if grassy:
+            g2 = mk.make_grid(s.W, s.H)
+            mk.blob(g2, s.W, s.H, cx, cy, rx * 0.6, ry * 0.6)
+            for i, v in enumerate(g2):
+                if v and s.sand[i] and not s.water[i]:
+                    s.dunegrass[i] = 1
 
 
 def blooms(s: Sea, cells):
@@ -359,16 +411,25 @@ GULL_MOUTH = (13, 9)          # contract: to_undertide @ (13,9), landing (13,10)
 
 
 def build_gullwrack() -> Sea:
+    """Gullwrack Isle — gull-cliffs, ledges, tall sea-grass (walkthrough/10 §4).
+    Three signature touches: the GULL-CLIFFS over the Undertide I mouth (north),
+    the HIGH MEADOW (a cliff-rimmed sea-grass shelf you climb into from the north
+    and hop out of by its south ledge — the isle's loop), and the KEEPER'S BOTHY
+    by the west cove (rest point). You land on the east beach under the
+    mainland's sea-cliffs."""
     s = Sea("farlamp_gullwrack", "Gullwrack Isle", 27, 34, seed=1775,
             backdrops=ISLE_BACKDROPS)
     W, H = s.W, s.H
 
     def body(g):
         mk.blob(g, W, H, 13, 17.5, 10.2, 11.6)
-        mk.blob(g, W, H, 6, 24, 4.0, 4.4)
-        mk.blob(g, W, H, 19, 25, 4.4, 3.6)
+        mk.blob(g, W, H, 6, 24.5, 4.4, 4.6)
+        mk.blob(g, W, H, 19, 25.5, 4.6, 3.8)
+        mk.blob(g, W, H, 9, 9.5, 4.0, 3.0)
     s.land(body)
-    # beaches: a sand rim all round, wider coves east (the landing) and south-west
+    mk.blob(s.water, W, H, 1.8, 17.5, 2.4, 2.0)            # the west cove bites in
+    mk.blob(s.water, W, H, 12.5, 31.5, 2.2, 1.4)           # a south inlet
+    # beaches: a sand rim all round, wider at the east landing and the west cove
     rim = mk.make_grid(W, H)
     for y in range(H):
         for x in range(W):
@@ -378,13 +439,15 @@ def build_gullwrack() -> Sea:
             if any(0 <= x + dx < W and 0 <= y + dy < H and s.water[s.cell(x + dx, y + dy)]
                    for dx in (-1, 0, 1) for dy in (-1, 0, 1)):
                 rim[i] = 1
-    mk.blob(rim, W, H, 21.5, 15, 2.2, 3.4)
-    mk.blob(rim, W, H, 4.5, 15, 1.8, 2.6)
+    mk.blob(rim, W, H, 21.8, 15, 2.2, 3.2)
+    mk.blob(rim, W, H, 4.5, 17.5, 1.8, 2.8)
     for i, v in enumerate(rim):
         if v and not s.water[i]:
             s.sand[i] = 1
     # the gull-cliffs: the island's high north end (plateau tops, the lit FACE south)
     mk.blob(s.cliff, W, H, 13, 6.2, 7.6, 2.9)
+    mk.blob(s.cliff, W, H, 7.5, 7.4, 2.2, 1.6)
+    mk.blob(s.cliff, W, H, 18.4, 5.0, 2.0, 1.4)
     for i in range(W * H):
         if s.cliff[i]:
             s.sand[i] = 0
@@ -392,7 +455,7 @@ def build_gullwrack() -> Sea:
     for x in (12, 13, 14):                # keep the cave's floor clear below the face
         s.cliff[s.cell(x, 9)] = 0
         s.cliff[s.cell(x, 10)] = 0
-    # the mainland's sea-cliffs, east edge
+    # the mainland's sea-cliffs, east edge (Dimglass Coast's west wall)
     for y in range(3, H):
         x0 = 24 if (y // 4) % 3 == 1 else 25
         for x in range(x0, W):
@@ -401,62 +464,62 @@ def build_gullwrack() -> Sea:
             s.sand[s.cell(x, y)] = 0
         s.sand[s.cell(x0 - 1, y)] = 1
         s.water[s.cell(x0 - 1, y)] = 0
-    # the path: the east landing up to the cave, down to the hut
-    for (x, y) in ([(x, 11) for x in range(12, 21)] + [(13, 10)] +
-                   [(17, y) for y in range(11, 21)] + [(x, 20) for x in range(8, 18)] +
-                   [(8, 21), (8, 22), (8, 23), (8, 24), (7, 24)]):
-        i = s.cell(x, y)
-        if not s.water[i] and not s.cliff[i]:
-            s.path[i] = 1
-            s.sand[i] = 0
-    # sea-grass: the tall meadow west of the lane + a band on the south spur
-    tufts(s, s.tallgrass, [(9.5, 14.5, 3.4), (19.5, 25.5, 2.8), (12.5, 25.5, 2.0),
-                           (20.5, 14, 1.6)])
+    # THE HIGH MEADOW: a cliff-rimmed shelf (climb in by the north gap, hop the
+    # south ledge back down to the bothy fields — the loop)
+    pt.terrace(s.cliff, s.deco, W, H, pt.Area(13, 16, 23, 25), gap=(17, 18), gap_side="up",
+               rim=2, rng=s.rng)
+    for y in range(16, 26):
+        for x in range(13, 24):
+            s.sand[s.cell(x, y)] = 0
+    # sea-grass: the meadow's heart + blown-sand dunes with dune-grass
+    tufts(s, s.tallgrass, [(18, 20.5, 2.6), (8.5, 14.5, 2.4), (11.5, 26.5, 2.0)])
+    dunes(s, [(20, 28.3, 3.0, 1.6, True), (7.5, 21.5, 1.8, 1.2, False), (17.5, 12.5, 1.6, 1.0, False)])
+    # the lanes: the east landing west to the cave; a fork south to the bothy
+    lane(s, [(23, 15), (20, 15), (20, 13), (16, 13), (16, 11), (13, 11), (13, 10)])
+    lane(s, [(16, 13), (16, 15), (17, 15), (17, 16)])                 # into the meadow's gap
+    lane(s, [(16, 15), (12, 15), (12, 18), (9, 18), (9, 21), (8, 21), (8, 24), (7, 24)])
     for i in range(W * H):
         if s.water[i] or s.sand[i] or s.path[i] or s.cliff[i]:
             s.tallgrass[i] = 0
-    # a one-way ledge: the high meadow (rows 12-16) hops down to the hut fields
-    for x in range(4, 12):
-        if not s.water[s.cell(x, 17)] and not s.sand[s.cell(x, 17)]:
-            s.deco[s.cell(x, 17)] = gid("grass_ledge_s")
-            s.tallgrass[s.cell(x, 17)] = 0
-    s.deco[s.cell(5, 17)] = gid("grass_ledge_s_v1")
 
     # the cave mouth (contract) + marker; gulls on the cliffs
     wm.add(s.m, wm.marker("undertide_mouth", "cave_mouth", GULL_MOUTH[0], GULL_MOUTH[1] - 1))
     warp(s.m, "to_undertide", GULL_MOUTH, "undertide_i", (15, 26), "up")
-    s.m["warps"][-1]["transition"] = "fade"
     s.obj("cliff_nest_a", "pearlmoor_gull_nest", (8, 7), 1, 1, solid=False)
-    s.obj("cliff_nest_b", "pearlmoor_gull_nest", (18, 6), 1, 1, solid=False)
+    s.obj("cliff_nest_b", "pearlmoor_gull_nest", (18, 5), 1, 1, solid=False)
     s.obj("cliff_nest_c", "pearlmoor_gull_nest", (11, 4), 1, 1, solid=False)
-    # the keeper's hut (rest point) + its lamp, nets, a bench
+    s.obj("cliff_nest_d", "pearlmoor_gull_nest", (15, 5), 1, 1, solid=False)
+    # the keeper's bothy (rest point) + its lamp, nets, woodpile
     s.obj("keeper_hut", "farlamp_keeper_hut", GULL_HUT, 4, 4, overhang=2)
     warp(s.m, "to_hut", GULL_HUT_DOOR, "gullwrack_hut", (5, 7), "up", transition="door")
-    s.obj("hut_lamp", "tinderwick_lamp_post", (10, 21), 1, 3, overhang=2, walk_under=True)
-    s.obj("hut_nets", "pearlmoor_net_rack", (2, 23), 2, 1)
-    s.obj("hut_pots", "pearlmoor_crab_pots", (10, 24), 1, 1)
-    s.sign("gullwrack_hut", (9, 23))
-    # landing + south shore dressing
+    s.obj("hut_lamp", "tinderwick_lamp_post", (10, 22), 1, 3, overhang=2, walk_under=True)
+    s.obj("hut_nets", "pearlmoor_net_rack", (2, 24), 2, 1)
+    s.obj("hut_pots", "pearlmoor_crab_pots", (10, 25), 1, 1)
+    s.obj("hut_wood", "tinderwick_woodpile", (10, 20), 2, 1)
+    s.sign("gullwrack_hut", (9, 24))
+    # the high meadow: a bent pine, the meadow cache, a nest on its rim
+    s.obj("meadow_pine", "windward_bent_pine", (20, 18), 2, 3, overhang=2, walk_under=True)
+    s.cache("gull_meadow", (15, 22))
+    # the east landing + the south shore
     s.obj("landing_boat", "pearlmoor_rowboat", (22, 17), 2, 2)
     s.obj("landing_drift", "pearlmoor_driftwood", (21, 11), 2, 1, solid=False)
-    s.obj("spur_pine", "windward_bent_pine", (19, 22), 2, 3, overhang=2, walk_under=True)
-    s.obj("spur_ribs", "pearlmoor_wreck_ribs", (13, 29), 3, 2)
-    s.cache("gull_spur", (22, 26))
-    s.cache("gull_meadow", (5, 13))
-    boulders(s, [(7, 11), (19, 13), (15, 22), (4, 27), (23, 21), (2, 3), (22, 2), (8, 31)])
-    s.kin("amb_hermiwick", (16, 27), 174, radius=1)
-    s.kin("amb_fathomote", (3, 19), 172, radius=1)
-    s.obj("meadow_tree", "tinderwick_tree_b", (13, 13), 3, 4, overhang=3, walk_under=True)
-    s.obj("cliff_pine", "windward_bent_pine", (4, 9), 2, 3, overhang=2, walk_under=True)
-    s.obj("hut_tree", "tinderwick_tree_b", (1, 19), 3, 4, overhang=3, walk_under=True)
-    s.obj("hut_wood", "tinderwick_woodpile", (11, 22), 2, 1)
-    blooms(s, [(6, 11), (8, 10), (15, 17), (19, 18), (11, 19), (3, 25), (14, 23), (16, 24),
-               (22, 23), (7, 18), (18, 12)])
-    for (cx, cy, n) in ((3, 6, 3), (23, 4, 2), (1, 13, 2), (11, 32, 3), (19, 31, 2)):
+    s.obj("spur_ribs", "pearlmoor_wreck_ribs", (16, 29), 3, 2)
+    s.cache("gull_spur", (22, 27))
+    s.obj("cove_pine", "windward_bent_pine", (4, 12), 2, 3, overhang=2, walk_under=True)
+    s.obj("hut_tree", "tinderwick_tree_b", (1, 20), 3, 4, overhang=3, walk_under=True)
+    s.obj("south_tree", "tinderwick_tree_b", (12, 27), 3, 4, overhang=3, walk_under=True)
+    for (x, y, sh) in ((6, 11, "L"), (20, 11, "J"), (10, 16, "L"), (4, 27, "O"), (22, 22, "L"),
+                       (15, 25, "J"), (9, 30, "T")):
+        outcrop(s, x, y, sh)
+    s.kin("amb_hermiwick", (18, 28), 174, radius=1)
+    s.kin("amb_fathomote", (3, 16), 172, radius=1)
+    s.kin("amb_glacewing", (18, 21), 95, radius=1)
+    blooms(s, [(6, 13), (10, 12), (15, 17), (11, 19), (3, 25), (14, 24), (16, 24),
+               (7, 18), (19, 12), (10, 28)])
+    for (cx, cy, n) in ((3, 6, 3), (23, 4, 2), (1, 13, 2), (11, 33, 3), (19, 32, 2)):
         sea_rocks(s, cx, cy, n)
     sea_buoys(s, [(4, 2), (17, 1), (1, 9), (22, 31), (1, 30)])
-    s.m["ambience"] = sea_ambience(flocks=[(10, 6), (17, 5), (21, 16)],
-                                   lights=[])
+    s.m["ambience"] = sea_ambience(flocks=[(10, 6), (17, 5), (21, 16), (18, 20)])
     return s
 
 
@@ -525,13 +588,13 @@ def build_kelpcrown() -> Sea:
                              (12.2, 14.2, 1.5, 1.1), (11.2, 15, 1.1, 0.9)):
         mk.blob(s.pond, W, H, cx, cy, rx, ry)
     # the lane: east landing -> the ruins -> the ridge mouth; a branch south
-    for (x, y) in ([(x, 18) for x in range(15, 26)] + [(15, y) for y in range(11, 18)] +
-                   [(x, 11) for x in range(10, 15)] + [(10, 10)] +
-                   [(15, y) for y in range(19, 28)] + [(x, 28) for x in range(12, 16)]):
-        i = s.cell(x, y)
-        if not s.water[i] and not s.cliff[i] and not s.pond[i]:
-            s.path[i] = 1
-            s.sand[i] = 0
+    # the pool's islet (two tiles of turf in the big pool — swim out for the cache)
+    for (x, y) in ((21, 21), (22, 21)):
+        s.pond[s.cell(x, y)] = 0
+    lane(s, [(26, 19), (23, 19), (23, 17), (18, 17), (18, 15), (15, 15), (15, 12), (12, 12),
+             (12, 11), (10, 11), (10, 10)])
+    lane(s, [(15, 15), (14, 15), (14, 20), (16, 20), (16, 24), (14, 24), (14, 28), (12, 28)])
+    dunes(s, [(24.5, 25.5, 2.0, 1.4, True), (6.5, 31, 2.2, 1.2, True)])
     for i in range(W * H):
         if s.water[i] or s.sand[i] or s.path[i] or s.cliff[i] or s.pond[i] or s.ruin[i]:
             s.tallgrass[i] = 0
@@ -561,7 +624,9 @@ def build_kelpcrown() -> Sea:
     s.obj("landing_pots", "pearlmoor_crab_pots", (24, 20), 1, 1)
     s.obj("south_ribs", "pearlmoor_wreck_ribs", (18, 29), 3, 2)
     s.obj("crown_pine", "windward_bent_pine", (24, 26), 2, 3, overhang=2, walk_under=True)
-    boulders(s, [(14, 7), (5, 11), (25, 7), (7, 30), (13, 31)])
+    boulders(s, [(14, 7), (25, 7)])
+    for (x, y, sh) in ((5, 11, "L"), (8, 30, "J"), (19, 26, "T"), (26, 13, "J"), (8, 18, "S")):
+        outcrop(s, x, y, sh)
     s.obj("ridge_pine", "windward_bent_pine", (4, 9), 2, 3, overhang=2, walk_under=True)
     s.obj("pool_tree", "tinderwick_tree_b", (16, 22), 3, 4, overhang=3, walk_under=True)
     s.obj("ruin_tree", "tinderwick_tree_b", (24, 14), 3, 4, overhang=3, walk_under=True)
@@ -623,11 +688,20 @@ if __name__ == "__main__":
     for x in DRIFTHOLM_SEAM:
         if fog.passable(x, fog.H - 1) and fog.passable(x, fog.H - 2):
             warp(fog.m, f"to_driftholm_{x}", (x, fog.H - 1), "driftholm", (x, 1), "down")
-    ok = True
     for s in maps:
         s.assemble()
         sea_zones(s)
         s.scatter(0.10)
+    # The five maps warp into each other, and each finalize() audits its warps
+    # against the OTHERS' shipped JSON — so write them all once first (silently),
+    # then finalize for real against a consistent set.
+    import copy
+    import json as _json
+    for s in maps:
+        (mk.REPO / "public/assets/maps" / f"{s.id}.json").write_text(
+            _json.dumps(copy.deepcopy(s.m), indent=2) + "\n")
+    ok = True
+    for s in maps:
         print(f"== {s.id}")
         ok = s.finalize() and ok
     print("PASS" if ok else "FAIL")

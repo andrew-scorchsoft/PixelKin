@@ -328,21 +328,23 @@ m = {
     ],
     "npcs": [
         # FENN ON THE FRONT — the mentor at peace; P2/P3 giver. Four
-        # flag-disjoint placements (the waystone pattern).
+        # flag-disjoint placements (the waystone pattern). Each runs its stage via a
+        # Farlamp wrapper (content/regions/farlamp.ts fennWrap): while the isles' I2
+        # beat is live he offers to light the prow-lamp first (walkthrough/10 §3).
         {"id": "fenn_meet", "at": {"tx": 9, "ty": 9}, "facing": "down",
          "sprite": "npc_mentor", "movement": "static",
-         "dialogue_ref": "script.fenn_dawnstead", "hidden_when_flag": "flag:q_post_survey"},
+         "dialogue_ref": "script.fenn_isles_meet", "hidden_when_flag": "flag:q_post_survey"},
         {"id": "fenn_survey", "at": {"tx": 9, "ty": 9}, "facing": "down",
          "sprite": "npc_mentor", "movement": "static",
-         "dialogue_ref": "script.fenn_survey_wait",
+         "dialogue_ref": "script.fenn_isles_survey",
          "requires_flag": "flag:q_post_survey", "hidden_when_flag": "flag:q_post_survey_3"},
         {"id": "fenn_done", "at": {"tx": 9, "ty": 9}, "facing": "down",
          "sprite": "npc_mentor", "movement": "static",
-         "dialogue_ref": "script.fenn_survey_done",
+         "dialogue_ref": "script.fenn_isles_done",
          "requires_flag": "flag:q_post_survey_3", "hidden_when_flag": "flag:q_post_survey_done"},
         {"id": "fenn_after", "at": {"tx": 9, "ty": 9}, "facing": "down",
          "sprite": "npc_mentor", "movement": "static",
-         "dialogue_ref": "npc.fenn_dawnstead_after", "requires_flag": "flag:q_post_survey_done"},
+         "dialogue_ref": "script.fenn_isles_after", "requires_flag": "flag:q_post_survey_done"},
         # WREN BY THE WATER (A6) — talk first; the rematch is offered, never
         # forced: it lives on the second placement, re-runnable forever.
         {"id": "wren_a6", "at": {"tx": 16, "ty": 22}, "facing": "down",

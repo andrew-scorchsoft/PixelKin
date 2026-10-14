@@ -66,12 +66,12 @@ def build_inn():
     triggers = [{"id": "sign_welcome", "kind": "sign", "at": {"tx": 14, "ty": 4},
                  "activation": "interact", "ref": "sign.driftholm_inn"}]
     npcs = [
-        {"id": "innkeeper", "at": {"tx": 10, "ty": 3}, "facing": "down", "sprite": "innkeeper",
+        {"id": "innkeeper", "at": {"tx": 12, "ty": 3}, "facing": "down", "sprite": "innkeeper",
          "movement": "static", "dialogue_ref": "script.driftholm_inn_rest"},
         {"id": "inn_fisher_night", "at": {"tx": 12, "ty": 9}, "facing": "up",
          "sprite": "fisher_man", "movement": "static", "dialogue_ref": "npc.driftholm_inn_fisher",
          "hidden_when_flag": "flag:isles_dawn"},
-        {"id": "inn_fisher_day", "at": {"tx": 3, "ty": 9}, "facing": "up",
+        {"id": "inn_fisher_day", "at": {"tx": 4, "ty": 9}, "facing": "up",
          "sprite": "fisher_man", "movement": "static",
          "dialogue_ref": "npc.driftholm_inn_fisher_day", "requires_flag": "flag:isles_dawn"},
     ]

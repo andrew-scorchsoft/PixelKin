@@ -208,13 +208,15 @@ def build() -> Sea:
     # the arrival (I5): the first step off the quay steps — the whole town turns out.
     # A band across every walkable tile of the quay's landing row, once.
     for x in range(9, 28):
+        if not s.passable(x, 8):          # lamp bases, the mooring bell: no dead band tiles
+            continue
         s.m["triggers"].append({"id": f"arrival_{x}", "kind": "cutscene",
                                 "at": {"tx": x, "ty": 8}, "activation": "step_on",
                                 "ref": "script.driftholm_arrival",
                                 "hidden_when_flag": "flag:q_isles_driftholm"})
     s.owed.append("script.driftholm_arrival")
     # Bram Fathom, keeper, on the quay's end by the mooring bell
-    N("bram", (26, 9), "old_salt", "script.bram_fathom", facing="left")
+    N("bram", (27, 9), "old_salt", "script.bram_fathom", facing="left")
     # the Letters Home writers (each reads her/his own letter back)
     N("marra_night", (4, 19), "fisher_woman", "script.letter_home_1", facing="right",
       movement="look_around", hidden_when_flag=DAWN)

@@ -123,6 +123,8 @@ const TITLE_CLASS: Record<string, string> = {
   'Sun-keeper': 'sun_keeper',
   'Hollowing Acolyte': 'acolyte',
   Runner: 'runner', "Runners' Captain": 'runner',
+  // the Farlamp Isles (Lane C1)
+  Oarsman: 'net_hand', 'Kelp-farmer': 'net_hand', 'Isle Keeper': 'wick_tender',
 };
 
 /** Unique battle sprites, by trainer id (bosses, set-pieces, the Old Light's cast). */

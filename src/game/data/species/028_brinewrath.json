@@ -63,7 +63,29 @@
     "weight_kg": 52,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "farlamp_sound",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 59,
+      "max": 61
+    },
+    {
+      "area": "farlamp_shelfwater",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 60,
+      "max": 62
+    },
+    {
+      "area": "farlamp_gullwrack",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 60,
+      "max": 62
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Streamlined low-slung body, swept-back shell ridges like breaking waves, twin luminous teal eye-stalks, long trailing fin-limbs. Seafoam-blue and deep indigo palette, white crest markings.",

@@ -162,6 +162,19 @@ export const WAYSTONES: readonly Waystone[] = [
     visited_flag: 'chart:vesper-crossroads',
     flavour: 'Where every lantern-road meets, and the Lanternway begins.',
   },
+  // ---- The Farlamp Isles (walkthrough/10 Part I) — Lane C1: Driftholm's lamp-stone
+  // by the quay steps, so the way home (and back) is one menu away.
+  {
+    id: 'driftholm',
+    name: 'Driftholm',
+    region: 'south',
+    map: 'driftholm',
+    tx: 14,
+    ty: 10,
+    facing: 'down',
+    visited_flag: 'chart:driftholm',
+    flavour: 'The island town beyond the Fogwall, lamps in every window.',
+  },
 ];
 
 /** The flag that opens the TRAVEL option at all (the four-way hub connected). */

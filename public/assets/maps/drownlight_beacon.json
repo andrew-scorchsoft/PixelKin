@@ -273,6 +273,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_coldfog_keepers_cache",
       "hidden_when_flag": "flag:picked_coldfog_keepers_cache"
+    },
+    {
+      "id": "driftletter_5",
+      "at": {
+        "tx": 4,
+        "ty": 11
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_driftletter_5",
+      "hidden_when_flag": "flag:driftletter_5"
     }
   ],
   "gates": [],
