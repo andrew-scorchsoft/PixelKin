@@ -23,7 +23,9 @@ Three signature touches (§8):
      stored daylight: a fading goldgrass pocket whose bed carries the lone
      Light-kin exception (Wisprestored, weight 5 — atlas §4: Light-kin
      thinned/absent in drained areas; the row's habitat demands a coldfog
-     placement, so it survives ONLY here, barely).
+     placement, so it survives ONLY here, barely). Its curio (2026-10 r3):
+     a rare #116 Auravane, the Solarium's sun-vine, rooted in the spill — its
+     only bed north of the Sunvault — and a survey-peg sign saying why.
   3. THE BRAVEST VIEWPOINT (NE bluff) — X3 "Charting the Dark"'s optional
      third star-reading: a survey cairn on a scree-lipped bluff over the deep
      fog. The §11 elevation accent, the §3a r1 loop (climb the long way west,
@@ -209,6 +211,13 @@ gold = mk.make_grid(W, H)
 mk.blob(gold, W, H, 16.5, 19.0, 2.4, 1.9)
 mk.blob(gold, W, H, 17.5, 21.0, 1.5, 1.2)
 mk.blob(goldtuft, W, H, 16.5, 19.0, 1.4, 1.0)
+# 2026-10 (r3 review: "make the gold pocket a curio worth the detour") — the bed
+# was one cell; it now runs down the patch's dry south lobe (five cells, off the
+# named lamp's foot), and it keeps its OWN rare: see TABLE_GOLD + the sign below.
+for (x, y) in [(17, 20), (15, 21), (16, 21), (17, 21)]:
+    goldtuft[y * W + x] = 1
+    gold[y * W + x] = 1
+blighttuft[21 * W + 14] = 0     # the curio sign's cell (placed below) stays clear
 
 # ---- the blight mask: everything north of the living fringe -------------------------
 blight = mk.make_grid(W, H)
@@ -422,6 +431,7 @@ owed += ["script.still_trader", "script.coldfog_fen_walker", "script.still_tessa
 # ---- signs --------------------------------------------------------------------------
 owed += pt.sign(m, deco, W, sid="coldfog_marches", at=(10, 24))   # the blight line
 owed += pt.sign(m, deco, W, sid="coldfog_boundary", at=(10, 25))
+owed += pt.sign(m, deco, W, sid="coldfog_gold", at=(14, 21))     # the gold pocket's curio
 owed += pt.sign(m, deco, W, sid="coldfog_beacon", at=(2, 3))      # the beacon spur's why (west gap)  # the sincere gate (down to the deep marsh)
 # (sign.coldfog_boundary doubles as the to_marsh_ii warps' blocked_ref)
 
@@ -446,10 +456,14 @@ TABLE_I = [
 ]
 TABLE_GOLD = [
     # the one patch the fog never drained: the half-lit gather at its edge
-    {"kin_id": 135, "weight": 60, "min_level": 46, "max_level": 48},  # Liminalux (Dark/Light)
-    {"kin_id": 138, "weight": 32, "min_level": 46, "max_level": 48},  # Voidmantle
+    {"kin_id": 135, "weight": 56, "min_level": 46, "max_level": 48},  # Liminalux (Dark/Light)
+    {"kin_id": 138, "weight": 28, "min_level": 46, "max_level": 48},  # Voidmantle
     {"kin_id": 140, "weight": 8, "min_level": 47, "max_level": 48},   # Wisprestored —
     # the LONE Light exception (w<=5): the Solarium's dying echo, only here
+    # 2026-10 (r3): the patch's CURIO — #116 Auravane, the Solarium's own solar-vine
+    # sovereign, rooted where the spill of stored daylight soaked in. Its only bed
+    # north of the Sunvault (the sign by the patch says why it's here at all).
+    {"kin_id": 116, "weight": 8, "min_level": 46, "max_level": 48},   # Auravane (rare)
 ]
 band_grid = mk.make_grid(W, H)
 patch_grid = mk.make_grid(W, H)

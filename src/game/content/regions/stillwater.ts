@@ -546,6 +546,11 @@ export const STILLWATER_DIALOGUE: DialogueRegistry = {
   'sign.stillwater': [
     { text: 'STILLWATER. The weary are welcome. Please speak softly; the kin are sleeping.' },
   ],
+  // Coldfog I's gold pocket (build_coldfog_marches_i.py): the curio and why it's here.
+  'sign.coldfog_gold': [
+    { text: 'A survey peg, its paint long gone grey. Scratched under it, newer: "Gold grass, in all this. The Solarium\'s light came this far once, down the old water, and some of it soaked in."' },
+    { text: '"Something big and slow and golden roots here some nights, petals shut tight against the fog. Sun-vine, I\'d swear. Walk the gold quietly."' },
+  ],
   'sign.stillwater_hall': [
     { text: 'THE QUIET HALL. Remembrance on any night. Supper on the darkest. All are welcome to sit with the names.' },
   ],

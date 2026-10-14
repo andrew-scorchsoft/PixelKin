@@ -91,11 +91,13 @@ the shutter-grey kit `build_stillwater_interior_set.py`, the `flagway` lane fami
   with two chairs backed to the hearth and Old Bracken's basket by the bed; home B (Maren +
   Linnet) is tall, with Linnet's own walled room and the candle shelf (once Maren has seen it).
 - **After the dawn:** two shore lamps open and lit (flag-pair objects), home B's upstairs
-  window opens with a lamp and a child at it (`stillwater_window_lit`), the mist thins
+  window opens with a lamp and a child at it (`stillwater_window_lit`), the punt's prow-lamp is lit and
+  lamplight and pale sky lie on the mere (`stillwater_punt_lit`/`_mere_glint`/`_mere_sheen`), the mist thins
   (ambience `when`), the meadows' day-forms rise, every resident gets a dawn line, the hearths open.
 - **Wild levels:** every line at 46+ wears its kindled form (Voidmantle, Liminalux, Embergone,
   Omenire) in Stillwater and both Coldfog marshes, wild AND in the acolytes' parties; Coldfog I's
-  gold pocket is the half-lit bed (Liminalux, Voidmantle, the lone Wisprestored). The base
+  gold pocket is the half-lit bed (Liminalux, Voidmantle, the lone Wisprestored) and its curio: a rare
+  #116 Auravane (46-48, dawn 58-63), the Solarium's sun-vine, with a survey-peg sign. The base
   Mothdim/Flutterwane now live only in Glowmoss Deep's drained chamber (lv 18-21, after the
   null-lantern is relit), below their kindling.
 - **Music:** `stillwater` (classic chip, snes register, 72 BPM 3/4 D minor) + remaster.

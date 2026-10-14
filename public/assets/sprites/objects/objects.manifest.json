@@ -3584,6 +3584,20 @@
       "tw": 1,
       "th": 2
     },
+    "stillwater_mere_glint": {
+      "path": "assets/sprites/objects/stillwater_mere_glint.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "stillwater_mere_sheen": {
+      "path": "assets/sprites/objects/stillwater_mere_sheen.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "stillwater_old_chairs": {
       "path": "assets/sprites/objects/stillwater_old_chairs.webp",
       "width": 32,
@@ -3600,6 +3614,13 @@
     },
     "stillwater_punt": {
       "path": "assets/sprites/objects/stillwater_punt.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "stillwater_punt_lit": {
+      "path": "assets/sprites/objects/stillwater_punt_lit.webp",
       "width": 32,
       "height": 16,
       "tw": 2,

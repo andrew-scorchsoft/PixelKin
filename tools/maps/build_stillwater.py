@@ -90,15 +90,20 @@ NORTH_DEPTH = {x: (3 if 9 <= x <= 20 else 4) for x in range(W)}
 for x, d in NORTH_DEPTH.items():
     for y in range(d):
         crag[y * W + x] = 1
-for (cx, cy, rx, ry) in [(1.0, 7.4, 2.5, 1.9),     # west shoulders
-                         (1.0, 18.2, 2.2, 1.9),
-                         (0.8, 23.0, 2.4, 1.8),
-                         (28.6, 9.4, 2.3, 1.9),    # east shoulders
-                         (29.0, 14.0, 1.6, 1.7),
-                         (28.6, 19.4, 2.2, 1.8),
-                         (14.9, 28.6, 3.8, 1.8),   # the south crag between the arms
+# 2026-10 (r3 review): the six W/E shoulder bulges are gone. Each one ended in a
+# south-facing cell only one tile wide — a one-tile face stub hanging off a flat
+# slate flank. The flanks are now clean W/E RIMS (a side wall seen from above shows
+# its rim, not its face, level-design §11 r8), dressed with boulders, dead trees
+# and shuttered lamps on top. Where a flank steps out it does so as a BUTTRESS two
+# tiles wide and four deep, so its foot carries the real two-tile `fogface` (a run
+# plus its turn-back end, pinned below) — the north cliff's face run down the sides.
+for (cx, cy, rx, ry) in [(14.9, 28.6, 3.8, 1.8),   # the south crag between the arms
                          (27.6, 27.6, 1.7, 1.7)]:
     mk.blob(crag, W, H, cx, cy, rx, ry)
+BUTTRESSES = [(2, 3, 21, 24),     # west: behind the west strip, by the sleeper
+              (26, 27, 21, 23)]   # east: under the bent pine, over the water-carrier
+for (x0, x1, y0, y1) in BUTTRESSES:
+    mk.rect(crag, W, H, x0, y0, x1, y1)
 for x in list(CF_COLS) + list(MF_COLS):
     for y in range(25, H):
         crag[y * W + x] = 0
@@ -148,6 +153,17 @@ P |= {(x, y) for x in range(19, 24) for y in (26, 27)} | {(19, 25)}  # home B's 
 P |= {(x, 9) for x in range(8, 23)}                                  # the shore walk
 P |= {(x, y) for x in (8, 9) for y in range(9, 15)}                  # round the hall, west
 P |= {(x, y) for x in (19, 20) for y in range(9, 15)}                # round the hall, east
+# 2026-10 (r3 review: "a cross-and-ring template") — two OFF-AXIS lanes, the ones
+# feet wore in rather than the ones a surveyor ruled:
+#  * the WILLOW PATH: a worn diagonal from the shore walk's west end up to the old
+#    willow by the mere (quest 1's hollow), stepping NW past the lamplighter;
+P |= {(7, 8), (8, 8), (6, 7), (7, 7), (5, 6), (6, 6)}
+#  * the BACK WALK: a lane bowing up between the two homes, joining their door
+#    lanes — the villagers' own way between the two south gates that skirts the
+#    main lane and keeps off the grey meadow (an encounter-free shortcut).
+BACK_WALK = {11: (26, 27), 12: (25, 26), 13: (24, 25), 14: (24, 25), 15: (24, 25),
+             16: (24, 25), 17: (25, 26), 18: (26, 27)}
+P |= {(x, y) for x, rows in BACK_WALK.items() for y in rows}
 for (x, y) in P:
     path[y * W + x] = 1
 # the four gap columns walk on lane all the way to the edge
@@ -286,7 +302,7 @@ trig("hall_notice_read", (10, 13), "script.still_notice")
 
 # ---- the sleeping yards (touch #3): kin under grey blankets ---------------------------
 for n, (x, y, s, ry) in enumerate([(2, 17, "blanket_kin", -1), (12, 22, "blanket_kin_b", 1),
-                                   (25, 23, "blanket_kin", 1), (19, 18, "blanket_kin_b", 1),
+                                   (26, 8, "blanket_kin", 1), (19, 18, "blanket_kin_b", 1),
                                    (26, 13, "blanket_kin_b", 1)]):
     obj(f"sleeper_{n}", f"stillwater_{s}", (x, y), 2, 1)
     trig(f"sleeper_{n}_read", (x, y + ry), "script.still_sleeper")
@@ -296,7 +312,18 @@ for n, (x, y) in enumerate([(26, 20), (3, 25), (10, 4), (21, 4)]):
 
 # ---- 2026-10 fix pass: the mere as a PLACE, the crag dressed, the margins lived-in ---
 # the jetty (pinned boards over the water, walk-on) + the last fishing punt moored by it
-obj("mere_punt", "stillwater_punt", (16, 5), 2, 1)
+obj("mere_punt", "stillwater_punt", (16, 5), 2, 1, hidden_when_flag=DAWN)
+# 2026-10 (r3 review: "the mere at dawn reads almost the same as at dusk") — at the
+# dawn the punt's prow-lamp is unhooded and lit (same footprint, a swap pair), the two
+# opened shore lamps lay their light on the still water, and the first pale sky shows
+# in the mere. Overlays only: never solid, on water cells, under the open lamps.
+obj("mere_punt_lit", "stillwater_punt_lit", (16, 5), 2, 1, requires_flag=DAWN)
+for n, (x, y) in enumerate([(13, 5), (13, 4), (18, 4), (18, 3)]):
+    obj(f"mere_glint_{n}", "stillwater_mere_glint", (x, y), 1, 1, solid=False,
+        requires_flag=DAWN)
+for n, (x, y) in enumerate([(10, 3), (19, 5), (11, 6)]):
+    obj(f"mere_sheen_{n}", "stillwater_mere_sheen", (x, y), 2, 1, solid=False,
+        requires_flag=DAWN)
 # the village lamp-stone (TRAVEL waystone, content/waystones.ts) on the square
 obj("waystone", "stillwater_waystone", (18, 16), 1, 2, overhang=1, walk_under=True)
 trig("waystone_read", (18, 17), "sign.stillwater_waystone", kind="sign")
@@ -304,18 +331,17 @@ trig("waystone_read", (18, 17), "sign.stillwater_waystone", kind="sign")
 YARD_PROPS = [
     ("wash_west", "stillwater_wash_line", (6, 17), 3, 2, {"overhang": 1}),
     ("wood_inn", "stillwater_woodpile", (2, 8), 2, 1, {}),
-    ("wash_south", "stillwater_wash_line", (13, 25), 3, 2, {"overhang": 1}),
+    ("wash_south", "stillwater_wash_line", (14, 21), 3, 2, {"overhang": 1}),
     ("wood_home_b", "stillwater_woodpile", (22, 24), 2, 1, {}),
     ("wood_lamp", "stillwater_woodpile", (21, 15 - 1), 2, 1, {}),
     ("wool_square", "stillwater_wool_basket", (10, 18), 1, 1, {}),
-    ("wool_east", "stillwater_wool_basket", (27, 21), 1, 1, {}),
-    ("boulders_w", "stillwater_crag_boulders", (2, 23), 2, 2, {"overhang": 1}),
+    ("wool_east", "stillwater_wool_basket", (21, 19), 1, 1, {}),
     ("boulders_se", "stillwater_crag_boulders", (26, 26), 2, 2, {"overhang": 1}),
 ]
 for oid, sprite, at, w, h, kw in YARD_PROPS:
     obj(oid, sprite, at, w, h, **kw)
 obj("sleeper_5", "stillwater_blanket_kin_b", (2, 20), 2, 1)
-trig("sleeper_5_read", (2, 21), "script.still_sleeper")
+trig("sleeper_5_read", (2, 19), "script.still_sleeper")
 
 
 def is_crag(x, y):
@@ -373,7 +399,7 @@ npc("tessaly", (9, 16), "fen_folk", "script.still_tessaly", facing="down",
 # the three trainers who'd rather talk first (no sight line — you ask)
 for tid, at, sprite, facing in [("still_acolyte_gethin", (12, 18), "hollowing_acolyte", "right"),
                                 ("still_acolyte_vesna", (22, 18), "star_watcher", "left"),
-                                ("still_lamplighter_grisel", (7, 8), "lamplighter", "right")]:
+                                ("still_lamplighter_grisel", (9, 7), "lamplighter", "left")]:
     flag = f"flag:{tid}_beaten"
     npc(tid, at, sprite, f"script.{tid}", facing=facing, hidden_when_flag=flag)
     npc(f"{tid}_after", at, sprite, f"script.{tid}_after", facing=facing, requires_flag=flag,
@@ -480,11 +506,13 @@ m["ambience"] = {
     "when": [{"flag": DAWN, "ambience": {
         "particles": [{"kind": "motes", "density": 0.5}],
         "mist": {"color": "#e8eef6", "alpha": 0.08, "speed": 8},
+        "tint": {"color": "#ffd9b0", "alpha": 0.05},      # the first warm light
         "starfall": {"min_s": 40, "max_s": 90},
         "light_sources_extra": [
-            {"at": {"tx": 12, "ty": 7}, "radius": 14, "color": "#ffd089"},
-            {"at": {"tx": 18, "ty": 7}, "radius": 14, "color": "#ffd089"},
+            {"at": {"tx": 13, "ty": 7}, "radius": 14, "color": "#ffd089"},   # the two opened
+            {"at": {"tx": 17, "ty": 7}, "radius": 14, "color": "#ffd089"},   # shore lamps
             {"at": {"tx": 18, "ty": 22}, "radius": 12, "color": "#ffcf7a"},
+            {"at": {"tx": 17, "ty": 5}, "radius": 10, "color": "#ffc070"},   # the punt
         ]}}],
 }
 

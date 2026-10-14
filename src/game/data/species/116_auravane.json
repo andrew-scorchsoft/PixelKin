@@ -124,6 +124,20 @@
       "rarity": "rare",
       "min": 58,
       "max": 64
+    },
+    {
+      "area": "coldfog_marches_i",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 46,
+      "max": 48
+    },
+    {
+      "area": "coldfog_marches_i",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 58,
+      "max": 63
     }
   ],
   "scripted": false,
