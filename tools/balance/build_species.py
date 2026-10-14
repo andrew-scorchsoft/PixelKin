@@ -1312,7 +1312,8 @@ MOURNING_TABLES = [
                                        (107, 14, 57, 62), (140, 14, 56, 61), (9, 10, 57, 62),
                                        (129, 6, 60, 62)]),
     # the Underways (build_penumbra_underways.py): night tables, then the post-dawn
-    # `_day` twins; B1's warm-stones pocket is the only pre-dawn Embralux (#33) ground
+    # `_day` twins; B1's warm-stones pocket is the only pre-dawn Embralux (#33) ground,
+    # and (FD2, 2026-10-14) the ONLY wild JesterFull (#168, Light/Dark) anywhere
     ("penumbra_underways", "cave", [(138, 24, 52, 54), (113, 18, 52, 54), (143, 16, 52, 54),
                                     (15, 14, 53, 55), (85, 14, 53, 55), (135, 14, 53, 55)]),
     ("penumbra_underways", "tall_grass", [(127, 30, 52, 54), (135, 25, 53, 55), (107, 20, 53, 55),
@@ -1326,13 +1327,13 @@ MOURNING_TABLES = [
     ("penumbra_underways_b1", "tall_grass", [(40, 26, 54, 56), (107, 22, 54, 56), (127, 20, 54, 56),
                                              (37, 14, 55, 56), (135, 12, 54, 56), (129, 6, 56, 56)]),
     ("penumbra_underways_b1", "tall_grass", [(179, 34, 54, 56), (180, 24, 54, 56), (40, 20, 54, 56),
-                                             (135, 14, 54, 56), (33, 8, 55, 56)]),
+                                             (135, 14, 54, 56), (33, 8, 55, 56), (168, 6, 55, 56)]),
     ("penumbra_underways_b1", "cave", [(135, 28, 57, 60), (140, 24, 57, 60), (37, 22, 57, 60),
                                        (107, 20, 57, 60), (33, 6, 59, 60)]),
     ("penumbra_underways_b1", "tall_grass", [(40, 34, 57, 60), (37, 26, 57, 60), (127, 24, 57, 60),
                                              (129, 16, 58, 60)]),
     ("penumbra_underways_b1", "tall_grass", [(33, 30, 57, 60), (179, 30, 57, 60), (37, 22, 57, 60),
-                                             (40, 18, 57, 60)]),
+                                             (40, 18, 57, 60), (168, 6, 58, 60)]),
 ]
 
 

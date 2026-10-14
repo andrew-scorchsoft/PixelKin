@@ -4172,6 +4172,41 @@
       "tw": 2,
       "th": 1
     },
+    "underways_brazier_lit": {
+      "path": "assets/sprites/objects/underways_brazier_lit.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "underways_cold_brazier": {
+      "path": "assets/sprites/objects/underways_cold_brazier.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "underways_firewood": {
+      "path": "assets/sprites/objects/underways_firewood.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "underways_hammock": {
+      "path": "assets/sprites/objects/underways_hammock.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "underways_hood_line": {
+      "path": "assets/sprites/objects/underways_hood_line.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "underways_kettle_shelf": {
       "path": "assets/sprites/objects/underways_kettle_shelf.webp",
       "width": 32,
@@ -4191,6 +4226,13 @@
       "width": 32,
       "height": 32,
       "tw": 2,
+      "th": 2
+    },
+    "underways_name_slate": {
+      "path": "assets/sprites/objects/underways_name_slate.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
       "th": 2
     },
     "underways_ration_crates": {
@@ -4248,6 +4290,13 @@
       "height": 32,
       "tw": 1,
       "th": 2
+    },
+    "underways_water_butt": {
+      "path": "assets/sprites/objects/underways_water_butt.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
     },
     "unrisen_basin_dry": {
       "path": "assets/sprites/objects/unrisen_basin_dry.webp",
