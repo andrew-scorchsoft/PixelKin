@@ -66,22 +66,36 @@ export const theme = {
     Dark: '#6b6480',
   } as Record<KinType, string>,
 
-  /** The world-map screen's swatches (pause menu -> MAP). Node fills by kind,
-   *  road strokes by link kind, plus the blinking you-are-here marker. */
+  /** The world-map screen (pause menu -> MAP): the classic town map. One
+   *  square per place on a sea-and-land grid; land tinted by region; roads as
+   *  runs of path; the blinking you-are-here pin. */
   worldmap: {
     node: {
       town: '#f4d06e',
-      route: '#7bdc6b',
+      route: '#f0e6c8',
       dungeon: '#b4a0e6',
       hub: '#ff8a3d',
       landmark: '#9fe7ff',
     } as Record<string, string>,
-    road: '#c8c3d7',
+    nodeEdge: '#0b1026',
+    sea: '#1d3270',
+    shore: '#6fa8dc',
+    land: {
+      south: '#3f7f46',
+      east: '#2f7062',
+      north: '#7b8fa8',
+      west: '#9a8442',
+      central: '#5d566e',
+      outer: '#a88d5c',
+    } as Record<string, string>,
+    road: '#f0e6c8',
+    roadEdge: '#24203a',
     lane: '#ffc378', // the Lanternway spokes (abstracted country lanes)
-    gate: '#6e788f', // Gift/flag-gated passages
-    pass: '#aa96dc', // through-cave passages
-    car: '#78d2ff', // the Lantern-car lines + the ore-hoist (rides, not roads)
-    marker: '#ff8a3d',
+    gate: '#c8c3d7', // Gift/flag-gated passages (dashed)
+    pass: '#c9b6ff', // through-cave passages (dashed)
+    car: '#78d2ff', // the Lantern-car lines + the ore-hoist (shown when you pick a station)
+    cursor: '#f5f0e1',
+    marker: '#ff5a5a',
   },
 
   /** Spacing scale in source pixels — keep layouts on this grid. */

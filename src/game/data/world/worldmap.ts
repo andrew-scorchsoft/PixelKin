@@ -15,6 +15,9 @@ export interface WorldMapNode {
   /** Centre position in the layout's virtual box (x right, y down; see WORLD_MAP_BOX). */
   x: number;
   y: number;
+  /** Cell on the MAP screen's classic grid (one square per place). */
+  gx: number;
+  gy: number;
   kind: WorldMapNodeKind;
   region: string;
   name: string;
@@ -24,11 +27,15 @@ export interface WorldMapRoad {
   a: string;
   b: string;
   kind: WorldMapRoadKind;
+  /** Grid cells the road bends through, a -> b (right-angle runs; a car line is just its two ends). */
+  path: number[][];
 }
 
 export interface WorldMapLayout {
   /** The virtual box the coordinates live in (220 wide; height = the world's aspect). */
   box?: { width: number; height: number };
+  /** The classic grid's size in cells (the MAP screen draws one square per place). */
+  grid: { cols: number; rows: number };
   nodes: WorldMapNode[];
   roads: WorldMapRoad[];
   /** EVERY map id -> the node it belongs to (interiors -> their town,

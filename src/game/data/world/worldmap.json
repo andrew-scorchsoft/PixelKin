@@ -3,11 +3,17 @@
     "width": 220,
     "height": 509
   },
+  "grid": {
+    "cols": 23,
+    "rows": 51
+  },
   "nodes": [
     {
       "id": "tinderwick",
       "x": 86,
       "y": 476,
+      "gx": 9,
+      "gy": 47,
       "kind": "town",
       "region": "south",
       "name": "Tinderwick"
@@ -16,6 +22,8 @@
       "id": "wickstead_green",
       "x": 40,
       "y": 474,
+      "gx": 4,
+      "gy": 46,
       "kind": "landmark",
       "region": "south",
       "name": "Wickstead Green"
@@ -24,6 +32,8 @@
       "id": "dimglass_coast",
       "x": 87,
       "y": 449,
+      "gx": 9,
+      "gy": 44,
       "kind": "route",
       "region": "south",
       "name": "Dimglass Coast"
@@ -32,6 +42,8 @@
       "id": "dimglass_coast_ii",
       "x": 87,
       "y": 417,
+      "gx": 9,
+      "gy": 41,
       "kind": "route",
       "region": "south",
       "name": "Dimglass Coast"
@@ -40,6 +52,8 @@
       "id": "tideglass_cavern",
       "x": 80,
       "y": 443,
+      "gx": 8,
+      "gy": 43,
       "kind": "landmark",
       "region": "south",
       "name": "Tideglass Cavern"
@@ -48,6 +62,8 @@
       "id": "gullcry_rock",
       "x": 93,
       "y": 414,
+      "gx": 9,
+      "gy": 40,
       "kind": "landmark",
       "region": "south",
       "name": "Gullcry Rock"
@@ -56,6 +72,8 @@
       "id": "pearlmoor_quay",
       "x": 85,
       "y": 390,
+      "gx": 8,
+      "gy": 38,
       "kind": "town",
       "region": "south",
       "name": "Pearlmoor Quay"
@@ -64,6 +82,8 @@
       "id": "pearlmoor_breakwater",
       "x": 95,
       "y": 415,
+      "gx": 10,
+      "gy": 41,
       "kind": "landmark",
       "region": "south",
       "name": "Pearlmoor Breakwater"
@@ -72,6 +92,8 @@
       "id": "pearlmoor_wanderwood",
       "x": 89,
       "y": 352,
+      "gx": 9,
+      "gy": 34,
       "kind": "landmark",
       "region": "south",
       "name": "The Wanderwood"
@@ -80,6 +102,8 @@
       "id": "wayward_rise",
       "x": 87,
       "y": 330,
+      "gx": 9,
+      "gy": 32,
       "kind": "landmark",
       "region": "south",
       "name": "Wayward Rise"
@@ -88,6 +112,8 @@
       "id": "tinderwick_bay",
       "x": 86,
       "y": 501,
+      "gx": 9,
+      "gy": 49,
       "kind": "route",
       "region": "south",
       "name": "Tinderwick Bay"
@@ -96,6 +122,8 @@
       "id": "lowtinder",
       "x": 112,
       "y": 501,
+      "gx": 11,
+      "gy": 49,
       "kind": "town",
       "region": "south",
       "name": "Lowtinder"
@@ -104,6 +132,8 @@
       "id": "dawnstead",
       "x": 144,
       "y": 384,
+      "gx": 14,
+      "gy": 37,
       "kind": "town",
       "region": "south",
       "name": "Dawnstead"
@@ -112,6 +142,8 @@
       "id": "vesper_crossroads",
       "x": 132,
       "y": 474,
+      "gx": 13,
+      "gy": 46,
       "kind": "hub",
       "region": "outer",
       "name": "Vesper Crossroads"
@@ -120,6 +152,8 @@
       "id": "lanternway_tinderwick",
       "x": 111,
       "y": 476,
+      "gx": 11,
+      "gy": 47,
       "kind": "route",
       "region": "outer",
       "name": "Lanternway \u00b7 Tinderwick Spoke"
@@ -128,6 +162,8 @@
       "id": "wrackline_path",
       "x": 117,
       "y": 408,
+      "gx": 12,
+      "gy": 40,
       "kind": "route",
       "region": "south",
       "name": "Wrackline Path"
@@ -136,6 +172,8 @@
       "id": "sounding_cave",
       "x": 117,
       "y": 430,
+      "gx": 12,
+      "gy": 42,
       "kind": "route",
       "region": "south",
       "name": "The Sounding Cave"
@@ -144,6 +182,8 @@
       "id": "lanternfall_road",
       "x": 121,
       "y": 452,
+      "gx": 12,
+      "gy": 44,
       "kind": "route",
       "region": "south",
       "name": "Lanternfall Road"
@@ -152,6 +192,8 @@
       "id": "umbral_approach",
       "x": 140,
       "y": 449,
+      "gx": 14,
+      "gy": 44,
       "kind": "route",
       "region": "central",
       "name": "The Umbral Approach"
@@ -160,6 +202,8 @@
       "id": "penumbra_ring",
       "x": 144,
       "y": 416,
+      "gx": 14,
+      "gy": 41,
       "kind": "route",
       "region": "central",
       "name": "Penumbra Ring"
@@ -168,6 +212,8 @@
       "id": "starwell",
       "x": 167,
       "y": 413,
+      "gx": 17,
+      "gy": 40,
       "kind": "landmark",
       "region": "central",
       "name": "Starwell"
@@ -176,6 +222,8 @@
       "id": "umbral_spire",
       "x": 144,
       "y": 405,
+      "gx": 14,
+      "gy": 39,
       "kind": "dungeon",
       "region": "central",
       "name": "Umbral Spire"
@@ -184,6 +232,8 @@
       "id": "saltreach_fen_i",
       "x": 114,
       "y": 375,
+      "gx": 11,
+      "gy": 37,
       "kind": "route",
       "region": "east",
       "name": "Saltreach Fen"
@@ -192,6 +242,8 @@
       "id": "saltreach_fen_ii",
       "x": 114,
       "y": 332,
+      "gx": 11,
+      "gy": 32,
       "kind": "route",
       "region": "east",
       "name": "Saltreach Deeps"
@@ -200,6 +252,8 @@
       "id": "sunkbell_shallows",
       "x": 139,
       "y": 326,
+      "gx": 14,
+      "gy": 32,
       "kind": "landmark",
       "region": "east",
       "name": "Sunkbell Shallows"
@@ -208,6 +262,8 @@
       "id": "lowleaf_hollow",
       "x": 114,
       "y": 296,
+      "gx": 11,
+      "gy": 29,
       "kind": "town",
       "region": "east",
       "name": "Lowleaf Hollow"
@@ -216,6 +272,8 @@
       "id": "lanternway_lowleaf",
       "x": 87,
       "y": 305,
+      "gx": 9,
+      "gy": 29,
       "kind": "route",
       "region": "outer",
       "name": "Lanternway \u00b7 Lowleaf Spoke"
@@ -224,6 +282,8 @@
       "id": "glowmoss_deep",
       "x": 120,
       "y": 267,
+      "gx": 12,
+      "gy": 26,
       "kind": "dungeon",
       "region": "east",
       "name": "Glowmoss Deep"
@@ -232,6 +292,8 @@
       "id": "spore_grotto",
       "x": 118,
       "y": 290,
+      "gx": 12,
+      "gy": 28,
       "kind": "landmark",
       "region": "east",
       "name": "Spore Grotto"
@@ -240,6 +302,8 @@
       "id": "cinderhead_mine",
       "x": 148,
       "y": 266,
+      "gx": 15,
+      "gy": 26,
       "kind": "town",
       "region": "east",
       "name": "Cinderhead Mine"
@@ -248,6 +312,8 @@
       "id": "cinderhead_deep",
       "x": 148,
       "y": 288,
+      "gx": 15,
+      "gy": 28,
       "kind": "dungeon",
       "region": "east",
       "name": "Cinderhead Deep"
@@ -256,6 +322,8 @@
       "id": "cinderwind_scarp",
       "x": 173,
       "y": 284,
+      "gx": 17,
+      "gy": 27,
       "kind": "route",
       "region": "north",
       "name": "Cinderwind Scarp"
@@ -264,6 +332,8 @@
       "id": "galehigh_terraces",
       "x": 200,
       "y": 276,
+      "gx": 20,
+      "gy": 27,
       "kind": "town",
       "region": "north",
       "name": "Galehigh Terraces"
@@ -272,6 +342,8 @@
       "id": "lanternway_galehigh",
       "x": 200,
       "y": 303,
+      "gx": 20,
+      "gy": 29,
       "kind": "route",
       "region": "outer",
       "name": "Lanternway \u00b7 Galehigh Spoke"
@@ -280,6 +352,8 @@
       "id": "wind_eye",
       "x": 212,
       "y": 263,
+      "gx": 21,
+      "gy": 25,
       "kind": "landmark",
       "region": "north",
       "name": "The Wind-Eye"
@@ -288,6 +362,8 @@
       "id": "windward_stair_i",
       "x": 196,
       "y": 241,
+      "gx": 20,
+      "gy": 23,
       "kind": "route",
       "region": "north",
       "name": "Windward Stair"
@@ -296,6 +372,8 @@
       "id": "windward_stair_ii",
       "x": 193,
       "y": 216,
+      "gx": 19,
+      "gy": 21,
       "kind": "route",
       "region": "north",
       "name": "Windward Stair"
@@ -304,6 +382,8 @@
       "id": "thunderroost",
       "x": 204,
       "y": 214,
+      "gx": 20,
+      "gy": 20,
       "kind": "landmark",
       "region": "north",
       "name": "Thunderroost"
@@ -312,6 +392,8 @@
       "id": "pale_vault_glacier",
       "x": 201,
       "y": 190,
+      "gx": 20,
+      "gy": 18,
       "kind": "town",
       "region": "north",
       "name": "Pale Vault Glacier"
@@ -320,6 +402,8 @@
       "id": "cinderwind_ashfall",
       "x": 173,
       "y": 257,
+      "gx": 17,
+      "gy": 25,
       "kind": "route",
       "region": "north",
       "name": "The Ashfall Shelf"
@@ -328,6 +412,8 @@
       "id": "cinderwind_kiln",
       "x": 179,
       "y": 247,
+      "gx": 18,
+      "gy": 24,
       "kind": "landmark",
       "region": "north",
       "name": "Kiln Gully"
@@ -336,6 +422,8 @@
       "id": "hushfrost_pass_i",
       "x": 170,
       "y": 189,
+      "gx": 17,
+      "gy": 18,
       "kind": "route",
       "region": "west",
       "name": "Hushfrost Pass"
@@ -344,6 +432,8 @@
       "id": "hushfrost_pass_ii",
       "x": 140,
       "y": 185,
+      "gx": 14,
+      "gy": 17,
       "kind": "route",
       "region": "west",
       "name": "Hushfrost Pass"
@@ -352,6 +442,8 @@
       "id": "aurora_hollow",
       "x": 140,
       "y": 174,
+      "gx": 14,
+      "gy": 16,
       "kind": "landmark",
       "region": "west",
       "name": "Aurora Hollow"
@@ -360,6 +452,8 @@
       "id": "sunken_solarium",
       "x": 111,
       "y": 188,
+      "gx": 11,
+      "gy": 18,
       "kind": "town",
       "region": "west",
       "name": "Sunken Solarium"
@@ -368,6 +462,8 @@
       "id": "unrisen_stair",
       "x": 114,
       "y": 200,
+      "gx": 11,
+      "gy": 19,
       "kind": "landmark",
       "region": "west",
       "name": "The Unrisen Stair"
@@ -376,6 +472,8 @@
       "id": "sunvault_climb_i",
       "x": 82,
       "y": 197,
+      "gx": 8,
+      "gy": 19,
       "kind": "route",
       "region": "west",
       "name": "Sunvault Climb"
@@ -384,6 +482,8 @@
       "id": "sunvault_climb_ii",
       "x": 82,
       "y": 165,
+      "gx": 8,
+      "gy": 15,
       "kind": "route",
       "region": "west",
       "name": "Sunvault Climb"
@@ -392,6 +492,8 @@
       "id": "sunvault_climb_iii",
       "x": 82,
       "y": 125,
+      "gx": 8,
+      "gy": 12,
       "kind": "route",
       "region": "west",
       "name": "The Gilt Face"
@@ -400,6 +502,8 @@
       "id": "sunvault_climb_iv",
       "x": 82,
       "y": 87,
+      "gx": 8,
+      "gy": 9,
       "kind": "route",
       "region": "west",
       "name": "The Sun Ledges"
@@ -408,6 +512,8 @@
       "id": "rimeway_ascent",
       "x": 200,
       "y": 149,
+      "gx": 20,
+      "gy": 14,
       "kind": "route",
       "region": "north",
       "name": "The Rimeway"
@@ -416,6 +522,8 @@
       "id": "rimeway_fold",
       "x": 178,
       "y": 101,
+      "gx": 18,
+      "gy": 10,
       "kind": "route",
       "region": "north",
       "name": "The Rimeway Fold"
@@ -424,6 +532,8 @@
       "id": "rimeway_descent",
       "x": 152,
       "y": 67,
+      "gx": 15,
+      "gy": 7,
       "kind": "route",
       "region": "outer",
       "name": "The Rimeway"
@@ -432,6 +542,8 @@
       "id": "helia_vault",
       "x": 56,
       "y": 154,
+      "gx": 6,
+      "gy": 14,
       "kind": "landmark",
       "region": "west",
       "name": "Helia Vault"
@@ -440,6 +552,8 @@
       "id": "nightreach_observatory",
       "x": 89,
       "y": 55,
+      "gx": 9,
+      "gy": 6,
       "kind": "town",
       "region": "west",
       "name": "Nightreach Observatory"
@@ -448,6 +562,8 @@
       "id": "lanternway_nightreach",
       "x": 63,
       "y": 57,
+      "gx": 6,
+      "gy": 6,
       "kind": "route",
       "region": "outer",
       "name": "Lanternway \u00b7 Nightreach Spoke"
@@ -456,6 +572,8 @@
       "id": "coldfog_marches_ii",
       "x": 117,
       "y": 64,
+      "gx": 12,
+      "gy": 6,
       "kind": "route",
       "region": "outer",
       "name": "Coldfog Marches"
@@ -464,6 +582,8 @@
       "id": "coldfog_marches_i",
       "x": 128,
       "y": 37,
+      "gx": 13,
+      "gy": 4,
       "kind": "route",
       "region": "outer",
       "name": "Coldfog Marches"
@@ -472,6 +592,8 @@
       "id": "drownlight_beacon",
       "x": 110,
       "y": 27,
+      "gx": 11,
+      "gy": 3,
       "kind": "landmark",
       "region": "outer",
       "name": "Drownlight Beacon"
@@ -480,6 +602,8 @@
       "id": "hollowfen_stillworks",
       "x": 117,
       "y": 57,
+      "gx": 12,
+      "gy": 7,
       "kind": "landmark",
       "region": "outer",
       "name": "Hollowfen Stillworks"
@@ -488,6 +612,8 @@
       "id": "mourning_fields",
       "x": 150,
       "y": 38,
+      "gx": 15,
+      "gy": 4,
       "kind": "route",
       "region": "outer",
       "name": "The Mourning Fields"
@@ -496,6 +622,8 @@
       "id": "stillwater",
       "x": 133,
       "y": 8,
+      "gx": 13,
+      "gy": 1,
       "kind": "town",
       "region": "outer",
       "name": "Stillwater"
@@ -504,6 +632,8 @@
       "id": "wickrun_crest",
       "x": 82,
       "y": 223,
+      "gx": 8,
+      "gy": 21,
       "kind": "route",
       "region": "west",
       "name": "Wick-Run Crest"
@@ -512,6 +642,8 @@
       "id": "wickrun_chute",
       "x": 78,
       "y": 258,
+      "gx": 8,
+      "gy": 25,
       "kind": "route",
       "region": "west",
       "name": "The Wick-Run"
@@ -520,6 +652,8 @@
       "id": "wickrun_trestles",
       "x": 60,
       "y": 300,
+      "gx": 6,
+      "gy": 29,
       "kind": "route",
       "region": "west",
       "name": "The Wick-Run"
@@ -528,6 +662,8 @@
       "id": "wickrun_traverse",
       "x": 32,
       "y": 316,
+      "gx": 3,
+      "gy": 31,
       "kind": "route",
       "region": "west",
       "name": "The Wick-Run"
@@ -536,6 +672,8 @@
       "id": "wickrun_lower",
       "x": 31,
       "y": 352,
+      "gx": 3,
+      "gy": 34,
       "kind": "route",
       "region": "west",
       "name": "The Wick-Run"
@@ -544,6 +682,8 @@
       "id": "wickrun_foot",
       "x": 38,
       "y": 387,
+      "gx": 4,
+      "gy": 38,
       "kind": "route",
       "region": "south",
       "name": "Wick-Run Foot"
@@ -552,6 +692,8 @@
       "id": "mirelight_landing",
       "x": 143,
       "y": 375,
+      "gx": 14,
+      "gy": 36,
       "kind": "route",
       "region": "east",
       "name": "The Mirelights"
@@ -560,6 +702,8 @@
       "id": "mirelight_glassmere",
       "x": 172,
       "y": 375,
+      "gx": 17,
+      "gy": 37,
       "kind": "route",
       "region": "east",
       "name": "The Glassmere"
@@ -568,6 +712,8 @@
       "id": "mirelight_chapel",
       "x": 201,
       "y": 375,
+      "gx": 20,
+      "gy": 37,
       "kind": "landmark",
       "region": "east",
       "name": "The Drowned Chapel"
@@ -576,6 +722,8 @@
       "id": "farlamp_sound",
       "x": 65,
       "y": 415,
+      "gx": 6,
+      "gy": 41,
       "kind": "route",
       "region": "south",
       "name": "Farlamp Sound"
@@ -584,6 +732,8 @@
       "id": "farlamp_shelfwater",
       "x": 38,
       "y": 416,
+      "gx": 4,
+      "gy": 41,
       "kind": "route",
       "region": "south",
       "name": "The Shelfwater"
@@ -592,6 +742,8 @@
       "id": "farlamp_fogwall",
       "x": 8,
       "y": 419,
+      "gx": 1,
+      "gy": 41,
       "kind": "route",
       "region": "south",
       "name": "The Fogwall"
@@ -600,6 +752,8 @@
       "id": "farlamp_gullwrack",
       "x": 65,
       "y": 447,
+      "gx": 6,
+      "gy": 44,
       "kind": "route",
       "region": "south",
       "name": "Gullwrack Isle"
@@ -608,6 +762,8 @@
       "id": "farlamp_kelpcrown",
       "x": 38,
       "y": 447,
+      "gx": 4,
+      "gy": 44,
       "kind": "route",
       "region": "south",
       "name": "Kelpcrown Isle"
@@ -616,6 +772,8 @@
       "id": "driftholm",
       "x": 8,
       "y": 451,
+      "gx": 1,
+      "gy": 44,
       "kind": "town",
       "region": "south",
       "name": "Driftholm"
@@ -625,462 +783,1546 @@
     {
       "a": "tinderwick",
       "b": "dimglass_coast",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          9,
+          47
+        ],
+        [
+          9,
+          44
+        ]
+      ]
     },
     {
       "a": "tinderwick",
       "b": "wickstead_green",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          9,
+          47
+        ],
+        [
+          4,
+          47
+        ],
+        [
+          4,
+          46
+        ]
+      ]
     },
     {
       "a": "dimglass_coast",
       "b": "dimglass_coast_ii",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          9,
+          44
+        ],
+        [
+          9,
+          41
+        ]
+      ]
     },
     {
       "a": "dimglass_coast_ii",
       "b": "pearlmoor_quay",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          9,
+          41
+        ],
+        [
+          8,
+          41
+        ],
+        [
+          8,
+          38
+        ]
+      ]
     },
     {
       "a": "dimglass_coast",
       "b": "tideglass_cavern",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          9,
+          44
+        ],
+        [
+          8,
+          44
+        ],
+        [
+          8,
+          43
+        ]
+      ]
     },
     {
       "a": "dimglass_coast_ii",
       "b": "tideglass_cavern",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          9,
+          41
+        ],
+        [
+          8,
+          41
+        ],
+        [
+          8,
+          43
+        ]
+      ]
     },
     {
       "a": "dimglass_coast_ii",
       "b": "gullcry_rock",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          9,
+          41
+        ],
+        [
+          9,
+          40
+        ]
+      ]
     },
     {
       "a": "tinderwick",
       "b": "tinderwick_bay",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          9,
+          47
+        ],
+        [
+          9,
+          49
+        ]
+      ]
     },
     {
       "a": "tinderwick_bay",
       "b": "lowtinder",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          9,
+          49
+        ],
+        [
+          11,
+          49
+        ]
+      ]
     },
     {
       "a": "pearlmoor_quay",
       "b": "pearlmoor_breakwater",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          8,
+          38
+        ],
+        [
+          8,
+          39
+        ],
+        [
+          10,
+          39
+        ],
+        [
+          10,
+          41
+        ]
+      ]
     },
     {
       "a": "pearlmoor_quay",
       "b": "pearlmoor_wanderwood",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          8,
+          38
+        ],
+        [
+          9,
+          38
+        ],
+        [
+          9,
+          34
+        ]
+      ]
     },
     {
       "a": "pearlmoor_wanderwood",
       "b": "wayward_rise",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          9,
+          34
+        ],
+        [
+          9,
+          32
+        ]
+      ]
     },
     {
       "a": "umbral_spire",
       "b": "dawnstead",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          14,
+          39
+        ],
+        [
+          14,
+          37
+        ]
+      ]
     },
     {
       "a": "saltreach_fen_i",
       "b": "wrackline_path",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          11,
+          37
+        ],
+        [
+          12,
+          37
+        ],
+        [
+          12,
+          40
+        ]
+      ]
     },
     {
       "a": "wrackline_path",
       "b": "sounding_cave",
-      "kind": "pass"
+      "kind": "pass",
+      "path": [
+        [
+          12,
+          40
+        ],
+        [
+          12,
+          42
+        ]
+      ]
     },
     {
       "a": "sounding_cave",
       "b": "lanternfall_road",
-      "kind": "pass"
+      "kind": "pass",
+      "path": [
+        [
+          12,
+          42
+        ],
+        [
+          12,
+          44
+        ]
+      ]
     },
     {
       "a": "lanternfall_road",
       "b": "vesper_crossroads",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          12,
+          44
+        ],
+        [
+          13,
+          44
+        ],
+        [
+          13,
+          46
+        ]
+      ]
     },
     {
       "a": "tinderwick",
       "b": "lanternway_tinderwick",
-      "kind": "lane"
+      "kind": "lane",
+      "path": [
+        [
+          9,
+          47
+        ],
+        [
+          11,
+          47
+        ]
+      ]
     },
     {
       "a": "lanternway_tinderwick",
       "b": "vesper_crossroads",
-      "kind": "lane"
+      "kind": "lane",
+      "path": [
+        [
+          11,
+          47
+        ],
+        [
+          13,
+          47
+        ],
+        [
+          13,
+          46
+        ]
+      ]
     },
     {
       "a": "pearlmoor_quay",
       "b": "saltreach_fen_i",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          8,
+          38
+        ],
+        [
+          11,
+          38
+        ],
+        [
+          11,
+          37
+        ]
+      ]
     },
     {
       "a": "saltreach_fen_i",
       "b": "saltreach_fen_ii",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          11,
+          37
+        ],
+        [
+          11,
+          32
+        ]
+      ]
     },
     {
       "a": "saltreach_fen_ii",
       "b": "sunkbell_shallows",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          11,
+          32
+        ],
+        [
+          14,
+          32
+        ]
+      ]
     },
     {
       "a": "saltreach_fen_ii",
       "b": "lowleaf_hollow",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          11,
+          32
+        ],
+        [
+          11,
+          29
+        ]
+      ]
     },
     {
       "a": "lowleaf_hollow",
       "b": "lanternway_lowleaf",
-      "kind": "lane"
+      "kind": "lane",
+      "path": [
+        [
+          11,
+          29
+        ],
+        [
+          9,
+          29
+        ]
+      ]
     },
     {
       "a": "lowleaf_hollow",
       "b": "glowmoss_deep",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          11,
+          29
+        ],
+        [
+          11,
+          26
+        ],
+        [
+          12,
+          26
+        ]
+      ]
     },
     {
       "a": "glowmoss_deep",
       "b": "spore_grotto",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          12,
+          26
+        ],
+        [
+          12,
+          28
+        ]
+      ]
     },
     {
       "a": "glowmoss_deep",
       "b": "cinderhead_mine",
-      "kind": "pass"
+      "kind": "pass",
+      "path": [
+        [
+          12,
+          26
+        ],
+        [
+          15,
+          26
+        ]
+      ]
     },
     {
       "a": "cinderhead_mine",
       "b": "cinderhead_deep",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          15,
+          26
+        ],
+        [
+          15,
+          28
+        ]
+      ]
     },
     {
       "a": "cinderhead_deep",
       "b": "cinderwind_scarp",
-      "kind": "pass"
+      "kind": "pass",
+      "path": [
+        [
+          15,
+          28
+        ],
+        [
+          17,
+          28
+        ],
+        [
+          17,
+          27
+        ]
+      ]
     },
     {
       "a": "cinderwind_scarp",
       "b": "galehigh_terraces",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          17,
+          27
+        ],
+        [
+          20,
+          27
+        ]
+      ]
     },
     {
       "a": "cinderwind_scarp",
       "b": "cinderwind_ashfall",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          17,
+          27
+        ],
+        [
+          17,
+          25
+        ]
+      ]
     },
     {
       "a": "cinderwind_ashfall",
       "b": "galehigh_terraces",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          17,
+          25
+        ],
+        [
+          20,
+          25
+        ],
+        [
+          20,
+          27
+        ]
+      ]
     },
     {
       "a": "cinderwind_ashfall",
       "b": "cinderwind_kiln",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          17,
+          25
+        ],
+        [
+          17,
+          24
+        ],
+        [
+          18,
+          24
+        ]
+      ]
     },
     {
       "a": "cinderwind_ashfall",
       "b": "windward_stair_i",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          17,
+          25
+        ],
+        [
+          17,
+          23
+        ],
+        [
+          20,
+          23
+        ]
+      ]
     },
     {
       "a": "galehigh_terraces",
       "b": "lanternway_galehigh",
-      "kind": "lane"
+      "kind": "lane",
+      "path": [
+        [
+          20,
+          27
+        ],
+        [
+          20,
+          29
+        ]
+      ]
     },
     {
       "a": "galehigh_terraces",
       "b": "wind_eye",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          20,
+          27
+        ],
+        [
+          21,
+          27
+        ],
+        [
+          21,
+          25
+        ]
+      ]
     },
     {
       "a": "galehigh_terraces",
       "b": "windward_stair_i",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          20,
+          27
+        ],
+        [
+          20,
+          23
+        ]
+      ]
     },
     {
       "a": "windward_stair_i",
       "b": "windward_stair_ii",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          20,
+          23
+        ],
+        [
+          20,
+          21
+        ],
+        [
+          19,
+          21
+        ]
+      ]
     },
     {
       "a": "windward_stair_ii",
       "b": "thunderroost",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          19,
+          21
+        ],
+        [
+          20,
+          21
+        ],
+        [
+          20,
+          20
+        ]
+      ]
     },
     {
       "a": "windward_stair_ii",
       "b": "pale_vault_glacier",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          19,
+          21
+        ],
+        [
+          19,
+          18
+        ],
+        [
+          20,
+          18
+        ]
+      ]
     },
     {
       "a": "windward_stair_ii",
       "b": "galehigh_terraces",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          19,
+          21
+        ],
+        [
+          19,
+          27
+        ],
+        [
+          20,
+          27
+        ]
+      ]
     },
     {
       "a": "pale_vault_glacier",
       "b": "hushfrost_pass_i",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          20,
+          18
+        ],
+        [
+          17,
+          18
+        ]
+      ]
     },
     {
       "a": "hushfrost_pass_i",
       "b": "hushfrost_pass_ii",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          17,
+          18
+        ],
+        [
+          14,
+          18
+        ],
+        [
+          14,
+          17
+        ]
+      ]
     },
     {
       "a": "hushfrost_pass_ii",
       "b": "aurora_hollow",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          14,
+          17
+        ],
+        [
+          14,
+          16
+        ]
+      ]
     },
     {
       "a": "hushfrost_pass_ii",
       "b": "sunken_solarium",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          14,
+          17
+        ],
+        [
+          11,
+          17
+        ],
+        [
+          11,
+          18
+        ]
+      ]
     },
     {
       "a": "sunken_solarium",
       "b": "unrisen_stair",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          11,
+          18
+        ],
+        [
+          11,
+          19
+        ]
+      ]
     },
     {
       "a": "sunken_solarium",
       "b": "sunvault_climb_i",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          11,
+          18
+        ],
+        [
+          8,
+          18
+        ],
+        [
+          8,
+          19
+        ]
+      ]
     },
     {
       "a": "sunvault_climb_i",
       "b": "sunvault_climb_ii",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          8,
+          19
+        ],
+        [
+          8,
+          15
+        ]
+      ]
     },
     {
       "a": "sunvault_climb_ii",
       "b": "helia_vault",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          8,
+          15
+        ],
+        [
+          6,
+          15
+        ],
+        [
+          6,
+          14
+        ]
+      ]
     },
     {
       "a": "sunvault_climb_ii",
       "b": "sunvault_climb_iii",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          8,
+          15
+        ],
+        [
+          8,
+          12
+        ]
+      ]
     },
     {
       "a": "sunvault_climb_iii",
       "b": "sunvault_climb_iv",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          8,
+          12
+        ],
+        [
+          8,
+          9
+        ]
+      ]
     },
     {
       "a": "sunvault_climb_iv",
       "b": "nightreach_observatory",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          8,
+          9
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          9,
+          6
+        ]
+      ]
     },
     {
       "a": "nightreach_observatory",
       "b": "lanternway_nightreach",
-      "kind": "lane"
+      "kind": "lane",
+      "path": [
+        [
+          9,
+          6
+        ],
+        [
+          6,
+          6
+        ]
+      ]
     },
     {
       "a": "nightreach_observatory",
       "b": "coldfog_marches_ii",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          9,
+          6
+        ],
+        [
+          12,
+          6
+        ]
+      ]
     },
     {
       "a": "coldfog_marches_ii",
       "b": "coldfog_marches_i",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          12,
+          6
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          13,
+          4
+        ]
+      ]
     },
     {
       "a": "coldfog_marches_i",
       "b": "drownlight_beacon",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          13,
+          4
+        ],
+        [
+          11,
+          4
+        ],
+        [
+          11,
+          3
+        ]
+      ]
     },
     {
       "a": "coldfog_marches_ii",
       "b": "hollowfen_stillworks",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          12,
+          6
+        ],
+        [
+          12,
+          7
+        ]
+      ]
     },
     {
       "a": "coldfog_marches_i",
       "b": "stillwater",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          13,
+          4
+        ],
+        [
+          13,
+          1
+        ]
+      ]
     },
     {
       "a": "pale_vault_glacier",
       "b": "rimeway_ascent",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          20,
+          18
+        ],
+        [
+          20,
+          14
+        ]
+      ]
     },
     {
       "a": "rimeway_ascent",
       "b": "rimeway_fold",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          20,
+          14
+        ],
+        [
+          18,
+          14
+        ],
+        [
+          18,
+          10
+        ]
+      ]
     },
     {
       "a": "rimeway_fold",
       "b": "rimeway_descent",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          18,
+          10
+        ],
+        [
+          15,
+          10
+        ],
+        [
+          15,
+          7
+        ]
+      ]
     },
     {
       "a": "coldfog_marches_ii",
       "b": "rimeway_descent",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          12,
+          6
+        ],
+        [
+          15,
+          6
+        ],
+        [
+          15,
+          7
+        ]
+      ]
     },
     {
       "a": "coldfog_marches_i",
       "b": "mourning_fields",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          13,
+          4
+        ],
+        [
+          15,
+          4
+        ]
+      ]
     },
     {
       "a": "mourning_fields",
       "b": "rimeway_descent",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          15,
+          4
+        ],
+        [
+          15,
+          7
+        ]
+      ]
     },
     {
       "a": "stillwater",
       "b": "mourning_fields",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          13,
+          1
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          15,
+          4
+        ]
+      ]
     },
     {
       "a": "sunvault_climb_i",
       "b": "wickrun_crest",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          8,
+          19
+        ],
+        [
+          8,
+          21
+        ]
+      ]
     },
     {
       "a": "wickrun_crest",
       "b": "wickrun_chute",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          8,
+          21
+        ],
+        [
+          8,
+          25
+        ]
+      ]
     },
     {
       "a": "wickrun_chute",
       "b": "wickrun_trestles",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          8,
+          25
+        ],
+        [
+          6,
+          25
+        ],
+        [
+          6,
+          29
+        ]
+      ]
     },
     {
       "a": "wickrun_trestles",
       "b": "wickrun_traverse",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          6,
+          29
+        ],
+        [
+          3,
+          29
+        ],
+        [
+          3,
+          31
+        ]
+      ]
     },
     {
       "a": "wickrun_traverse",
       "b": "wickrun_lower",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          3,
+          31
+        ],
+        [
+          3,
+          34
+        ]
+      ]
     },
     {
       "a": "wickrun_lower",
       "b": "wickrun_foot",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          3,
+          34
+        ],
+        [
+          4,
+          34
+        ],
+        [
+          4,
+          38
+        ]
+      ]
     },
     {
       "a": "wickrun_foot",
       "b": "pearlmoor_quay",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          4,
+          38
+        ],
+        [
+          8,
+          38
+        ]
+      ]
     },
     {
       "a": "saltreach_fen_i",
       "b": "mirelight_landing",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          11,
+          37
+        ],
+        [
+          11,
+          36
+        ],
+        [
+          14,
+          36
+        ]
+      ]
     },
     {
       "a": "mirelight_landing",
       "b": "mirelight_glassmere",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          14,
+          36
+        ],
+        [
+          17,
+          36
+        ],
+        [
+          17,
+          37
+        ]
+      ]
     },
     {
       "a": "mirelight_glassmere",
       "b": "mirelight_chapel",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          17,
+          37
+        ],
+        [
+          20,
+          37
+        ]
+      ]
     },
     {
       "a": "pearlmoor_quay",
       "b": "farlamp_sound",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          8,
+          38
+        ],
+        [
+          7,
+          38
+        ],
+        [
+          7,
+          41
+        ],
+        [
+          6,
+          41
+        ]
+      ]
     },
     {
       "a": "wickrun_foot",
       "b": "farlamp_shelfwater",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          4,
+          38
+        ],
+        [
+          4,
+          41
+        ]
+      ]
     },
     {
       "a": "farlamp_sound",
       "b": "farlamp_shelfwater",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          6,
+          41
+        ],
+        [
+          4,
+          41
+        ]
+      ]
     },
     {
       "a": "farlamp_shelfwater",
       "b": "farlamp_fogwall",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          4,
+          41
+        ],
+        [
+          1,
+          41
+        ]
+      ]
     },
     {
       "a": "farlamp_sound",
       "b": "farlamp_gullwrack",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          6,
+          41
+        ],
+        [
+          6,
+          44
+        ]
+      ]
     },
     {
       "a": "farlamp_shelfwater",
       "b": "farlamp_kelpcrown",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          4,
+          41
+        ],
+        [
+          4,
+          44
+        ]
+      ]
     },
     {
       "a": "farlamp_gullwrack",
       "b": "farlamp_kelpcrown",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          6,
+          44
+        ],
+        [
+          4,
+          44
+        ]
+      ]
     },
     {
       "a": "farlamp_fogwall",
       "b": "driftholm",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          1,
+          41
+        ],
+        [
+          1,
+          44
+        ]
+      ]
     },
     {
       "a": "lanternway_lowleaf",
       "b": "vesper_crossroads",
-      "kind": "car"
+      "kind": "car",
+      "path": [
+        [
+          9,
+          29
+        ],
+        [
+          13,
+          46
+        ]
+      ]
     },
     {
       "a": "lanternway_galehigh",
       "b": "vesper_crossroads",
-      "kind": "car"
+      "kind": "car",
+      "path": [
+        [
+          20,
+          29
+        ],
+        [
+          13,
+          46
+        ]
+      ]
     },
     {
       "a": "lanternway_nightreach",
       "b": "vesper_crossroads",
-      "kind": "car"
+      "kind": "car",
+      "path": [
+        [
+          6,
+          6
+        ],
+        [
+          13,
+          46
+        ]
+      ]
     },
     {
       "a": "cinderhead_deep",
       "b": "vesper_crossroads",
-      "kind": "car"
+      "kind": "car",
+      "path": [
+        [
+          15,
+          28
+        ],
+        [
+          13,
+          46
+        ]
+      ]
     },
     {
       "a": "wickrun_foot",
       "b": "wickrun_crest",
-      "kind": "car"
+      "kind": "car",
+      "path": [
+        [
+          4,
+          38
+        ],
+        [
+          8,
+          21
+        ]
+      ]
     },
     {
       "a": "vesper_crossroads",
       "b": "umbral_approach",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          13,
+          46
+        ],
+        [
+          14,
+          46
+        ],
+        [
+          14,
+          44
+        ]
+      ]
     },
     {
       "a": "umbral_approach",
       "b": "penumbra_ring",
-      "kind": "road"
+      "kind": "road",
+      "path": [
+        [
+          14,
+          44
+        ],
+        [
+          14,
+          41
+        ]
+      ]
     },
     {
       "a": "penumbra_ring",
       "b": "starwell",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          14,
+          41
+        ],
+        [
+          17,
+          41
+        ],
+        [
+          17,
+          40
+        ]
+      ]
     },
     {
       "a": "penumbra_ring",
       "b": "umbral_spire",
-      "kind": "gate"
+      "kind": "gate",
+      "path": [
+        [
+          14,
+          41
+        ],
+        [
+          14,
+          39
+        ]
+      ]
     }
   ],
   "members": {

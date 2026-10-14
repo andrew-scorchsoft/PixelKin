@@ -9,7 +9,7 @@
  * Keep package.json's "version" in step if you want them to match, but THIS
  * constant is what the game itself shows the player.
  */
-export const GAME_VERSION = '1.32';
+export const GAME_VERSION = '1.33';
 
 /** Pre-formatted label for display, e.g. "v1.1". */
 export const GAME_VERSION_LABEL = `v${GAME_VERSION}`;

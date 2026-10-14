@@ -2,6 +2,13 @@
   "_note": "The player-facing changelog: the in-game \"the world has changed\" notice (content/whatsnew.ts) AND the website changelog page (web/site.mjs) both read this. Newest first. NO SPOILERS for the hidden real-people content - see whatsnew.ts.",
   "entries": [
     {
+      "version": "1.33",
+      "date": "2026-10-14",
+      "notes": [
+        "The MAP has been redrawn as a proper old-style town map: every place is one neat square, roads run in straight lines with clean corners, and each valley has its own coloured land set in the sea. Rest the cursor on a Lantern-car station to see where its line runs."
+      ]
+    },
+    {
       "version": "1.32",
       "date": "2026-10-14",
       "notes": [
