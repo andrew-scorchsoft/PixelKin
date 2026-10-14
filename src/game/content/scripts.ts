@@ -4889,7 +4889,7 @@ export const SCRIPTS: ScriptRegistry = {
 
   // --- Vigil IV — Sunfall ---------------------------------------------------
   'script.vigil_sunfall': [
-    { op: 'say', speaker: 'DAME SOLENNE', text: 'I kept the last warm day for forty years, and now the mornings come free. Indulge an old keeper — one encore, full light.' },
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'I taught a whole valley to bow to a sun that never came. Now it takes its own bow every morning, and I find I am jealous of its timing. Indulge an old keeper — one encore, full light.' },
     { op: 'battle', trainer: 'vigilant_solenne' },
     { op: 'say', speaker: 'DAME SOLENNE', text: 'Curtain. ...Do you know, I don\'t mourn the last warm day any more. There will be others. Take the figure — it\'s the sun\'s whole bow.' },
     { op: 'giveItem', item: 'starfall_shard' },

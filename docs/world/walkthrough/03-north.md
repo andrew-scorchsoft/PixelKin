@@ -17,7 +17,7 @@
 | | |
 |---|---|
 | **Areas** | Galehigh Terraces (cliff town, Lumenary 5) · Windward Stair I → II (mountain route) · Pale Vault Glacier (ice town, Lumenary 6) · spurs **Wind-Eye**, **Thunderroost** |
-| **Reading order** | `cinderhead_deep` → **Galehigh Terraces** → **Windward Stair I → II** → **Pale Vault Glacier** → `hushfrost_pass_i` (handed to West) |
+| **Reading order** | `cinderhead_deep` → `cinderwind_scarp` → `cinderwind_ashfall` (the Ashfall Shelf, built 2026-10) → **Galehigh Terraces** → **Windward Stair I → II** → **Pale Vault Glacier** → `hushfrost_pass_i` (handed to West) |
 | **Entry state** (from East) | ~lv28 · holds **Tidecall + Glimmerstep** · `gleam:verdant` + `gleam:stone` · `flag:crown_east` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` |
 | **Exit state** (to West) | ~lv40 · holds **Tidecall + Glimmerstep + Updraft Kite + Emberward** · `gleam:storm` + `gleam:frost` · `flag:crown_north` · `flag:shortcut_windward` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` (all persistent, carried forward) |
 | **Gleams earned** | **Storm** (Mira Vael, Galehigh, ace ~34) · **Frost** (Ysolde Frost, Pale Vault, ace ~40) — both relit → `flag:crown_north` |
@@ -63,13 +63,20 @@ the map walked in from (spine §0 rule 2).
 ## Galehigh Terraces — *the last fire before the climb*
 
 **At a glance** — `galehigh_terraces` · kind route/town · region north · **enter** from
-`cinderhead_deep` (ungated) **→ exit** to `windward_stair_i` (ungated) · **gate ability:**
+the **Ashfall Shelf** (`cinderwind_ashfall`, built 2026-10 — the main path from Cinderhead Deep
+runs Deep → Cinderwind Scarp (chained until `gleam:stone`/`gleam:storm`, `flag:scarp_climb_open`)
+→ Ashfall → here; the Scarp's direct cut `to_cinderhead` is a rockfall until
+`flag:scarp_short_open`; see "The Ashfall Shelf" below) **→ exit** to `windward_stair_i`
+(ungated) + the Galehigh lane (`to_crossroads` → `lanternway_galehigh`, a Lantern-car station
+running on `gleam:storm`) · **gate ability:**
 Updraft Kite (its own high ledges + the Wind-Eye landmark only) · **Gleam:** Storm (Mira Vael,
 ace ~34) · **rec. level ~28.**
 
 ### 1. Main path
 
-1. **Out of the dark, into the wind.** You step from Cinderhead's pitch-black gallery onto a
+1. **Out of the dark, into the wind.** *(Built 2026-10: you now arrive over the Ashfall Shelf's
+   slag-tips after the Scarp, not straight out of the mine; the beat holds.)* You step from the
+   mine country's dark onto a
    stepped cliff-farm catching the **last of the sunset** — the first colour in screens. One
    screen: a banner of climbing terraces, kites snapping overhead, `diamond` updraft motes
    rising off the ledges. The lit, paved switchback is the way up and in.
@@ -176,9 +183,11 @@ ace ~34) · **rec. level ~28.**
 ### 6. Validation hooks
 
 - **Map id / kind:** `galehigh_terraces`, kind `route`/`town`, region `north`.
-- **Entry/exit warps (graph.ts):** in from `cinderhead_deep` via `to_terraces` (ungated, bidir);
-  out to `windward_stair_i` via `to_stair` (ungated, bidir); Lanternway spoke
-  `galehigh_terraces ↔ vesper_crossroads` via `to_crossroads` (bidir).
+- **Entry/exit warps (built 2026-10):** in from `cinderwind_ashfall` via `to_ashfall`
+  (ungated, bidir — the main path); `to_cinderhead` ↔ `cinderwind_scarp` gated
+  `flag:scarp_short_open` (the rockfall cut); out to `windward_stair_i` via `to_stair`
+  (ungated, bidir); `to_crossroads` → `lanternway_galehigh` (the lane ends at a Lantern-car
+  station — no walked road to the hub).
 - **Gated warp:** `to_windeye` → `wind_eye`, `requires_ability: updraft_kite`, bidir.
   Late shortcut **back** lives on Windward II: `windward_stair_ii → galehigh_terraces` via
   `shortcut_galehigh`, `requires_flag: flag:shortcut_windward`.
@@ -291,7 +300,9 @@ kind route · region north · **enter** from `galehigh_terraces` **→ exit** to
 ## Pale Vault Glacier — *the lonely aurora, where the cold man speaks*
 
 **At a glance** — `pale_vault_glacier` · kind route/town · region north · **enter** from
-`windward_stair_ii` (ungated) **→ exit** to `hushfrost_pass_i` (ungated, handed to West) ·
+`windward_stair_ii` (ungated) **→ exit** to `hushfrost_pass_i` (ungated, handed to West) + the
+Rimeway (`to_rimeway` → `rimeway_ascent`, optional Wild Way to Coldfog II —
+[09](./09-the-wild-ways.md)) + the Hourfold (Emberward + `flag:three_mid_snuffer`, [07](./07-the-three.md)) ·
 **gate ability:** Emberward — but it gates only **onward** content (Hushfrost II + Pale Vault's
 deep-ice spurs), **NOT** the town or Lumenary · **Gleam:** Frost (Ysolde Frost, ace ~40) ·
 **rec. level ~36 → 40.**

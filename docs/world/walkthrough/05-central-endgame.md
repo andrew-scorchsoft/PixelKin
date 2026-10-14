@@ -1,7 +1,8 @@
 # PixelKin — Walkthrough: Central & Endgame Region
 
 > The centre of the crescent and the climb that ends the long night. The slow outer loop
-> collapses into a fast four-way wheel, the Penumbra parts, and the ascent of the **Ninth
+> becomes a wheel round the hub (built 2026-10: one mountain road north — the Umbral Approach —
+> not four cardinal roads; see [`../geometry.md`](../geometry.md)), the Penumbra parts, and the ascent of the **Ninth
 > Lantern** confronts the **Great Null** and relights the **Keystar**. Written to the spine in
 > [`README.md`](./README.md) — read its §0 rules, §2 flags (esp. beats 9–11), §3 arcs (B5,
 > A5→A6, C4, Arc D), §4 curve (Spire ~52→56), §5 cadence, §7 template, §10 voice before editing
@@ -77,10 +78,14 @@ not to which tile they walked in from (spine §0 rule 2).
 
 ## Vesper Crossroads — *the cosy nexus, the loop become a wheel*
 
-**At a glance** — `vesper_crossroads` · kind hub · region outer · **enter** via the **Lanternway
-spokes** from Tinderwick / Pearlmoor / Lowleaf / Galehigh / Nightreach (all ungated) and the
-late mine shortcut · **→ exit** inward to `penumbra_ring` (**`requires flag:hub_unlocked`** — now
-held) · **gate ability:** none on the rim; the inward roads ride the crown/hub flags · **Gleam:**
+**At a glance** — `vesper_crossroads` · kind hub · region outer · **enter** (built 2026-10) on
+foot from Tinderwick's lane (`lanternway_tinderwick`) and the bay road from Pearlmoor's side
+(Saltreach Fen I → Wrackline Path → Sounding Cave → `lanternfall_road`; the hub end held until
+`gleam:tide`); the Lowleaf/Galehigh/Nightreach lanes end at **Lantern-car** stations (each line
+runs on that valley's Gleam — `script.lantern_car`); plus the late mine shortcut · **→ exit**
+north up the one mountain road, `umbral_approach` → `penumbra_ring` (**`requires
+flag:hub_unlocked`** — now held) · **gate ability:** none on the rim; the inward road rides the
+hub flag · **Gleam:**
 none · **rec. level ~52** (transit; no battles in the hub itself).
 
 ### 1. Main path
@@ -88,19 +93,23 @@ none · **rec. level ~52** (transit; no battles in the hub itself).
 1. **The loop has become a wheel.** You arrive at the lantern-lit inn at the many-way fork — a
    great signpost readable from spawn, warm windows, the "between" place travellers always return
    to. Overhead the **Skyweave Crown is complete** (all eight Gleams), and around the
-   waystation **the Penumbra has fully parted**: the four cardinal roads inward stand open at once.
-   The slow outer rim has collapsed into the fast four-way hub exactly as earned (atlas §1).
-2. **The Lanternway spokes (fast-travel pays off).** Five ungated grass-lane spokes connect the
-   Crossroads to the rim towns — **Tinderwick, Pearlmoor, Lowleaf, Galehigh, Nightreach** — so the
-   hub is the late-game fast-travel anchor. *(If the player discovered the Crossroads in the
+   waystation **the Penumbra has fully parted**: the mountain road north stands open.
+   *(Built 2026-10: one road, the Umbral Approach — not the four cardinal roads of the first
+   design.)*
+2. **The Lanternway (fast-travel pays off).** *(Built 2026-10, see `../geometry.md`.)* Only
+   Tinderwick's lane walks to the hub; Pearlmoor's side comes round the bay (Tide-gated); the
+   Lowleaf, Galehigh and Nightreach lanes end at **Lantern-car** stations whose lines run on
+   that valley's Gleam (the ride down always runs). With `hub_unlocked`, waystone **TRAVEL**
+   joins them — so the hub is the late-game fast-travel anchor. *(If the player discovered the Crossroads in the
    south/mid-game via a spoke, this is the moment it earns its keep — they can now resupply, heal,
    and reach any quadrant in one hop before the climb.)* The **Cinderhead Deep shortcut**
    (`flag:shortcut_mine`, set in the East) re-links the eastern cave straight here too.
-3. **The four crown approaches, recapped.** Each cardinal road inward burned back its wedge of the
-   Penumbra as that quadrant's two Gleams relit: **`flag:crown_south`** (Ember+Tide),
+3. **The four crowns, recapped.** Each crown burned back its wedge of the Penumbra as that
+   quadrant's two Gleams relit: **`flag:crown_south`** (Ember+Tide),
    **`flag:crown_east`** (Verdant+Stone), **`flag:crown_north`** (Storm+Frost),
    **`flag:crown_west`** (Solar+Lunar). All four set **`flag:hub_unlocked`** — the engine's
-   summary flag that parts the fog entirely and opens the Crossroads → Penumbra Ring roads. By
+   summary flag that parts the fog entirely and opens the Crossroads → Umbral Approach → Penumbra
+   Ring road. By
    the time you stand here, all four are lit. Place a **"now accessible"** callout: the inward
    road to the Penumbra Ring is open for the first time.
 4. **C4 — Fenn's counsel before the Spire.** Star-tender **Fenn** waits at the inn (or sends you
@@ -114,7 +123,9 @@ none · **rec. level ~52** (transit; no battles in the hub itself).
    found **only here**. A cosy, fixed/rare catch tucked into the safe hub (§4). **[MUST-DO]** for
    collectors: it exists nowhere else in Vesperholm.
 7. **Rest, resupply, then take the inward road.** Heal, top up Lamps and items at the inn, then
-   step onto the road to `penumbra_ring` (`requires flag:hub_unlocked` — held).
+   step onto the mountain road: `umbral_approach` (built 2026-10 — three **Hollowing acolyte**
+   sight trainers, Orla / Brenn / Wynne, lv 50–53, plus wild beds) climbs to `penumbra_ring`
+   (`requires flag:hub_unlocked` — held).
 
 ### 2. Story beats
 
@@ -151,10 +162,11 @@ none · **rec. level ~52** (transit; no battles in the hub itself).
 - **No new Gift or mechanic taught** — this region is *convergence*: every Gift and Gleam already
   earned now pays off. The hub itself teaches the **fast-travel wheel** (spokes) and is the
   staging ground (heal/resupply) before the climax.
-- **"Now accessible" callouts:** the inward **Crossroads → Penumbra Ring** road (just opened on
+- **"Now accessible" callouts:** the inward **Crossroads → Umbral Approach → Penumbra Ring** road (just opened on
   `flag:hub_unlocked`); the **Cinderhead Deep → Crossroads** shortcut (`flag:shortcut_mine`, set
   in East, re-links here); and — held since Nightreach — **Starreach** content now reachable
-  (Starwell off the Penumbra Ring, and the **Crystoll Vault** backtrack in the East — see §4).
+  (Starwell off the Penumbra Ring, the Penumbra Underways, and the **Crystoll Vault** backtrack in
+  the East — still an unbuilt tease, see §4).
 - **The Lampling catch** teaches nothing new mechanically; it's the cosy collectible reward for
   reaching the hub fully open.
 
@@ -167,7 +179,8 @@ none · **rec. level ~52** (transit; no battles in the hub itself).
   **near-legendary kin** (post-Crown). Covered in full under the Penumbra Ring section below;
   flagged here only as a **[MUST-DO]** Starreach payoff now reachable. *(Held since Nightreach.)*
 - **Crystoll Vault** — spur off `cinderhead_deep` (East), `requires_ability: starreach`; reward:
-  rare Stone/Light kin. **This is the EAST writer's map — do NOT cover it here.** Listed only so
+  rare Stone/Light kin. **Unbuilt as of 2026-10** — a graph edge with no map JSON and no
+  `maps.ts` entry (the engine no-ops the warp); keep it a tease. **This is the EAST writer's map — do NOT cover it here.** Listed only so
   the cross-reference closes: it's the *other* Starreach reopening the West writer handed you,
   reachable now from the hub via the mine shortcut. **[LATER]** (different region) → effectively
   **[MISSABLE]** at this point (you hold Starreach; go back for it before or after the Spire).
@@ -175,9 +188,11 @@ none · **rec. level ~52** (transit; no battles in the hub itself).
 **Named quests** (spine §5 kit). The Crossroads is also **the Waykeeper's Round's home
 base** — the cross-region delivery line (spine §5): the **Waykeeper** hands one parcel per
 spoke, each leg waking with its spoke's flag and detailed in its region file —
-**R1** Wicks for the Lamplighter + **R2** Salt-glass for the Chandler (south, live first),
+**R1** Wicks for the Lamplighter + **R2** Salt-glass for the Chandler (south),
 **R3** Moss for the Quay (east), **R4** A Kite for the Waystone Kid (north), **R5** A Chart
 for the Waykeeper (west; the Round comes home). Tag every leg `[wakes with spoke]`.
+*(Built 2026-10: only **R4**, **R5** and **C3 The Long Round** are wired; R1–R3 are design
+only — their flags are set nowhere. See the `quests.ts` header.)*
 - **C1 "Lampling's Trail"** — giver: the **Waystone kid** · steps: follow the plaza
   lamp-flickers she's spotted (three interacts around the plaza at dusk-lamps that gutter
   as you approach) → the trail ends at **Lampling**, surfaced as the static catch · flags:
@@ -199,7 +214,7 @@ for the Waykeeper (west; the Round comes home). Tag every leg `[wakes with spoke
   no early-appearance edge in unvisited towns.)*
 - **C3 "The Long Round"** — giver: the **Waykeeper**, once R1–R5 are all done (boolean
   chain: each leg's giver only appears when the previous leg's flag is set, so R5 done ⇒
-  all done — no counter needed) · steps: one last walk of the plaza lamps with him ·
+  all done — no counter needed; *built: keyed off R4 → R5 only, since R1–R3 are unwired*) · steps: one last walk of the plaza lamps with him ·
   flags: `flag:q_central_round_done` · reward: the **Way-lamp** keepsake + his Lamplight
   tease line ("a lamp that's walked every road burns a little farther") · maps:
   `vesper_crossroads` · `[MISSABLE]`, post-`hub_unlocked`.
@@ -210,21 +225,23 @@ for the Waykeeper (west; the Round comes home). Tag every leg `[wakes with spoke
 - **Hear Fenn (C4) and let Wren join (A5)** before taking the inward road — the climb means more
   with both beats landed.
 - **Use the wheel:** heal, resupply, and consider the two **Starreach** payoffs (Starwell here,
-  Crystoll Vault back east) *before* committing to the Spire — there's no shop on the mountain.
+  the Crystoll Vault tease back east) *before* committing to the Spire — there's no shop on the mountain.
 
 ### 6. Validation hooks
 
 - **Map id / kind:** `vesper_crossroads`, kind `hub`, region `outer`. **No encounter terrain**
   (safe hub) — central signpost readable from spawn (level-design §2 hub pattern).
-- **Lanternway spoke warps (graph.ts, all ungated, bidir):** `tinderwick`, `pearlmoor_quay`,
-  `lowleaf_hollow`, `galehigh_terraces`, `nightreach_observatory` ↔ `vesper_crossroads` via
-  `to_crossroads`. *(2026-10 geometry pass: only Tinderwick's and the bay road still WALK in; the
+- **Hub warps (built):** `to_tinderwick` ↔ `lanternway_tinderwick` (ungated); `to_pearlmoor` ↔
+  `lanternfall_road` (`requires_flag: gleam:tide`); `to_penumbra` ↔ `umbral_approach`
+  (`flag:hub_unlocked`); `shortcut_cinderhead` ↔ `cinderhead_deep` (`flag:shortcut_mine`);
+  `enter_inn` → `crossroads_inn`. The rim towns' `to_crossroads` warps lead into their own lanes
+  (`lanternway_lowleaf`/`_galehigh`/`_nightreach`), which end at Lantern-car stations. *(2026-10 geometry pass: only Tinderwick's and the bay road still WALK in; the
   far valleys ride the Lantern-car, the marsh road is retired, and the north road climbs the Umbral
   Approach — `docs/world/geometry.md`.)*
 - **Late shortcut in:** `cinderhead_deep → vesper_crossroads` via `shortcut_crossroads`,
   **`requires_flag: flag:shortcut_mine`**, bidir (set in East; re-links the mine to the hub).
-- **Inward warp:** `vesper_crossroads → penumbra_ring` via `to_penumbra`, **`requires_flag:
-  flag:hub_unlocked`** (held on entry), bidir. *(The four `crown_*` flags are engine-set when each
+- **Inward warp:** `vesper_crossroads → umbral_approach` via `to_penumbra`, **`requires_flag:
+  flag:hub_unlocked`** (held on entry), bidir; then `umbral_approach → penumbra_ring` (ungated). *(The four `crown_*` flags are engine-set when each
   quadrant's two Gleams are held and together set `hub_unlocked` — do not hand-set any of them
   here; this region only depends on `hub_unlocked` already being true.)*
 - **Lampling catch:** one-off static `EventTrigger` (`kind: 'script'`) or a very-low-weight fixed
@@ -248,8 +265,9 @@ for the Waykeeper (west; the Round comes home). Tag every leg `[wakes with spoke
 ## Penumbra Ring — *the last dark, crossed on starlight*
 
 **At a glance** — `penumbra_ring` · kind route (barrier) · region central · **enter** from
-`vesper_crossroads` (**`requires flag:hub_unlocked`**) **→ exit** to `umbral_spire`
-(**`requires_ability: starreach`**) · **gate:** recedes wedge-by-wedge with the `crown_*` flags
+`umbral_approach` (the mountain road up from `vesper_crossroads`, whose warp **`requires
+flag:hub_unlocked`**) **→ exit** to `umbral_spire` (**`requires_ability: starreach`**) + the
+optional `starwell` and `penumbra_underways` (Starreach) · **gate:** recedes wedge-by-wedge with the `crown_*` flags
 (all held), final crossings need **Starreach** (held) · **Gleam:** none · **rec. level ~52**
 (traversal; **no kin reside here**).
 
@@ -323,8 +341,8 @@ for the Waykeeper (west; the Round comes home). Tag every leg `[wakes with spoke
 
 - **Map id / kind:** `penumbra_ring`, kind `route` (barrier), region `central`. **No encounter
   zones** (kin refuse the dark — atlas card 12); no `tall_grass`/`water`/`cave` terrain.
-- **Entry warp (graph.ts):** `vesper_crossroads → penumbra_ring` via `to_penumbra`,
-  **`requires_flag: flag:hub_unlocked`** (held), bidir.
+- **Entry warp (graph.ts):** `umbral_approach → penumbra_ring` via `to_penumbra`, bidir (the
+  `flag:hub_unlocked` gate sits on the hub's `vesper_crossroads → umbral_approach` warp).
 - **Exit warp:** `penumbra_ring → umbral_spire` via `to_spire`, **`requires_ability: starreach`**
   (held), bidir. *(Note: `umbral_spire` node also carries `unlocked_by_flag: flag:hub_unlocked` —
   the node shows once the hub is unlocked; the void crossing into it needs Starreach.)*

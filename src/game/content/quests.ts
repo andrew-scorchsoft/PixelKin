@@ -312,7 +312,7 @@ export const QUESTS: QuestRegistry = [
     name: 'The Day-form Survey',
     region: 'central',
     giver: 'Fenn',
-    blurb: 'Show Fenn three day-forms — the early kin of the valleys, woken sun-changed by the relit sky — for his field-journal.',
+    blurb: 'Walk Dawnstead\'s sunlit verge and find Fenn three signs of the day-forms the relit sky has woken — a wing-scale, a moult, a warm burrow — for his field-journal.',
     start_flag: 'flag:q_post_survey',
     stage_flags: ['flag:q_post_survey_1', 'flag:q_post_survey_2', 'flag:q_post_survey_3'],
     done_flag: 'flag:q_post_survey_done',

@@ -22,6 +22,9 @@ This file is the **spine**. The region files carry the beat-by-beat walkthrough:
 - [`06-postgame.md`](./06-postgame.md) — Dawnstead · day-forms · Còr's resolution
 - [`07-the-three.md`](./07-the-three.md) — the Three Hours · legendary triad offshoots (Tideglass Cavern · the Hourfold · the Unrisen Stair)
 - [`08-the-peril-thread.md`](./08-the-peril-thread.md) — the peril thread: the Dusk made visible (fallen stars), escalating per region, healed by each Gleam
+- [`09-the-wild-ways.md`](./09-the-wild-ways.md) — the Wild Ways: the Wick-Run, the Mirelights, the Rimeway, the Old Seams (optional traversal set-pieces)
+- [`10-the-farlamp-isles.md`](./10-the-farlamp-isles.md) — the expansion round: Ashfall Shelf + Kiln Gully, Lowtinder / Tinderwick Bay, the post-dawn Farlamp Isles
+- [`11-the-hollowing-country.md`](./11-the-hollowing-country.md) — Stillwater + the Mourning Fields off Coldfog I (in progress)
 
 ---
 
@@ -38,7 +41,8 @@ region file:
    errand or trial* — never the region's own Gift. A loop MAY lean on a Gift earned in an
    EARLIER region that the main path already requires (e.g. Tidecall at the Solarium).
 2. **Geography ≠ progress; the eight Gleams are the clock.** A few back-door edges exist (e.g.
-   the Coldfog detour can reach Nightreach with only Emberward — `graph.ts:141`). The **main
+   the Coldfog detour can reach Nightreach with only Emberward — `coldfog_marches_ii ⇄
+   nightreach_observatory` in `graph.ts`). The **main
    path is the rim** (always reach Nightreach via Sunvault Climb / the Solar Gleam first);
    **Coldfog Marches is an optional outer detour** taken late. So **never assume an area's
    neighbour-state from its map position** — tie lighting (Arc D), curve, and dialogue to the
@@ -93,7 +97,7 @@ quadrant of the **Skyweave Crown**; the completed Crown parts the **Penumbra** a
 
 | # | Beat | Where | Earns | Sets flags (canon) |
 |---|------|-------|-------|--------------------|
-| 0 | Wayfaring begins — the **satchel errand**: Fenn waits at the Crossroads waystone; fetch his satchel from town and he gifts the vesperlamp + starter at the waystone | Tinderwick → Vesper Crossroads | starter, vesperlamp | `flag:fenn_errand`, `flag:has_satchel`, `flag:has_vesperlamp`, `flag:has_starter` |
+| 0 | Wayfaring begins — the **satchel errand**: Fenn waits at the Crossroads waystone; fetch his satchel from the courier's cart in Duskapple Orchard (R8) and he gifts the vesperlamp + starter at the waystone | Tinderwick → Vesper Crossroads | starter, vesperlamp | `flag:fenn_errand`, `flag:has_satchel`, `flag:has_vesperlamp`, `flag:has_starter` |
 | 1 | **Ember Gleam** — Brisa Tallow vouches your bond (gentle first Lumenary) | Tinderwick | Gleam: Ember | `gleam:ember` |
 | — | **Inciting incident** — a constellation winks out on your first night | Dimglass Coast | — | `flag:dusk_begins` |
 | 2 | **Tide Gleam** + **Tidecall** | Pearlmoor Quay | Gleam: Tide, Tidecall | `gleam:tide`, ability `tidecall`, → `flag:crown_south` |
@@ -106,7 +110,7 @@ quadrant of the **Skyweave Crown**; the completed Crown parts the **Penumbra** a
 | 7 | **Solar Gleam** + **Sunsketch** | Sunken Solarium | Gleam: Solar, Sunsketch | `gleam:solar`, ability `sunsketch` |
 | — | **The Great Null named** — Coldfog/Stillworks reveal the stakes | west region | — | `flag:great_null_known` |
 | 8 | **Lunar Gleam** + **Starreach** | Nightreach Observatory | Gleam: Lunar, Starreach | `gleam:lunar`, ability `starreach`, → `flag:crown_west`, → `flag:hub_unlocked` |
-| 9 | **The Spire opens** — Crown complete, Penumbra parts, four roads | Vesper Crossroads → Penumbra Ring | — | (hub roads live on `hub_unlocked`) |
+| 9 | **The Spire opens** — Crown complete, Penumbra parts, the mountain road north opens | Vesper Crossroads → Umbral Approach → Penumbra Ring | — | (the road lives on `hub_unlocked`) |
 | 10 | **Climax** — confront Còr's Great Null; relight the **Keystar** (Keylumen) | Umbral Spire | — | `flag:keystar_relit` |
 | 11 | **Dawn** — the long night breaks; Vesperholm wakes | → Dawnstead | — | `flag:dawn` |
 
@@ -127,14 +131,15 @@ region files stay consistent — **a region file may not move or duplicate anoth
 arc beat.**
 
 ### Arc A — Wren, the Rival-Friend
-A warm, competitive fellow Wayfarer from Tinderwick. **Name: Wren** (gender-neutral). Wren
-picks the starter that beats yours (the Ember→Verdant→Tide→Ember triangle), and keeps
-crossing your path. Wren externalises the game's moral question: *do the Hollowing have a
+A warm, competitive fellow Wayfarer from Tinderwick. **Name: Wren** (gender-neutral). Wren's
+partner is a **Glimflit** (Light) — not one of the starter trio; every Wren team is built on
+that line plus a Tide ace (built 2026-10: the old "Wren takes the starter that beats yours"
+design was never wired, and the line claiming it was reworded) — and keeps crossing your path. Wren externalises the game's moral question: *do the Hollowing have a
 point?*
 
 | Beat | Area | Note |
 |------|------|------|
-| A1 Meet & choose | Tinderwick | Friendly; "race you to complete the map" |
+| A1 Meet | Tinderwick → Duskapple Orchard (R8: Wren minds the courier's cart) | Friendly; "race you to fill the whole map with light" |
 | A2 First friendly battle | Dimglass Coast | Teaches trainer battles; Wren ~2 levels under you |
 | A3 Shaken | Lowleaf/Cinderhead (east) | After the first drained site, Wren voices sympathy for the Hollowing |
 | A4 The wobble | Pale Vault (north) | At a low point Wren *nearly* joins the Hollowing; a hard battle (Wren is deliberately **at/above** the player's level here — the one beat that breaks the usual "Wren ~2 under you" pattern; don't "correct" it), then they walk off unsure |
@@ -204,9 +209,14 @@ small, missable-but-don't-miss set-piece the region file stages around the Lumen
 
 > **2026-10 geometry fix (supersedes route details below where they differ):** the world is
 > honest north-up — the Pearlmoor road home leaves Saltreach Fen I's south edge (the drowned road)
-> round the bay; Cinderwind Scarp joins Cinderhead Deep to Galehigh; the Umbral Approach is the
-> mountain road from the Crossroads to the Penumbra; the far valleys ride the Lantern-car; the
-> Coldfog Marches hang off Nightreach; open sea is deep water. See [`../geometry.md`](../geometry.md).
+> round the bay; Cinderhead Deep opens onto **Cinderwind Scarp** (chained until `gleam:stone` or
+> `gleam:storm` — `flag:scarp_climb_open`), whose main path runs over the **Ashfall Shelf** to
+> Galehigh (the Scarp's direct east cut is a rockfall until cleared — `flag:scarp_short_open`);
+> the Umbral Approach is the one mountain road from the Crossroads to the Penumbra; the far
+> valleys ride the Lantern-car; the Coldfog Marches hang off Nightreach (and the Rimeway); open
+> sea is deep water. See [`../geometry.md`](../geometry.md). The expansion areas (Ashfall Shelf +
+> Kiln Gully, Lowtinder / Tinderwick Bay, the post-dawn Farlamp Isles) are specced in
+> [`10-the-farlamp-isles.md`](./10-the-farlamp-isles.md).
 
 ## 4. Global pacing & level curve
 
@@ -232,7 +242,7 @@ keep this continuous across boundaries (no cliffs, no dead zones).
 | Sunvault Climb I→II | 46 → 48 | — | — |
 | Nightreach Observatory | 48 | **Nessa Cole** (Lunar) — ~52 | **Starreach** |
 | Umbral Spire | 52 → 56 | **Warden Còr** — ~56; **Keylumen** (Keystar) ~55 | — |
-| Dawnstead / post-game | 55 – 65 | (rematches, day-forms) | — |
+| Dawnstead / post-game | 55 – 65 | (Wren's rematch, day-forms, the Starfall Vigils; no Lampwarden rematches — each Lumenary's sparring apprentice, `content/sparring.ts`, spars from that hall's Gleam onward) | — |
 
 **Soft-gate the first Lumenary:** Brisa won't hold the bond-test until the player has caught
 at least one wild kin (sets a small flag in the region file) — so a lone level-5 starter
@@ -296,12 +306,12 @@ From `graph.ts` edges + atlas §3. Each Gift, once earned, opens these — regio
 | **Tidecall** (Pearlmoor) | Pearlmoor shoals; Saltreach Fen II | **Gullcry Rock** (Dimglass spur); **Sunkbell Shallows** (Saltreach spur); flooded halls in Sunken Solarium |
 | **Glimmerstep** (Lowleaf) | Glowmoss Deep; Cinderhead Mine/Deep | **Tideglass Cavern** (Dimglass landmark); **Spore Grotto** (Glowmoss spur) — (Hollowfen Stillworks' *inner door* is Glimmerstep too, but it's a late outer landmark — see the dedicated row below) |
 | **Updraft Kite** (Galehigh) | Windward Stair II; high terraces | **Wind-Eye** (Galehigh landmark); **Thunderroost** (Windward spur); the *Windward→Galehigh* drop **shortcut** |
-| **Emberward** (Pale Vault) | Hushfrost Pass II; Pale Vault *deep ice & spurs* (**not** the Lumenary — §0 rule 1) | **Aurora Hollow** (Hushfrost spur); **Coldfog Marches II** (the deep coldfog past the hub-side segment I); **Drownlight Beacon** (Coldfog II spur) |
+| **Emberward** (Pale Vault) | Hushfrost Pass II; Pale Vault *deep ice & spurs* (**not** the Lumenary — §0 rule 1) | **Aurora Hollow** (Hushfrost spur); **Coldfog Marches** (built 2026-10: entered through Nightreach's east fog gate into II, then I — no hub road); **Drownlight Beacon** (Coldfog I spur) |
 | **Sunsketch** (Sunken Solarium) | Sunvault Climb II; sun-vine routes | **Helia Vault** (Sunvault spur) |
 | **Glimmerstep** (also, late) | — | **Hollowfen Stillworks** (its inner door opens with Glimmerstep, but the works sit off **Coldfog Marches II**, so you need **Emberward** to be there at all — a late outer landmark, not an east-game one) |
-| **Starreach** (Nightreach) | Penumbra Ring final crossings; Umbral Spire ascent | **Crystoll Vault** (Cinderhead late spur, `[LATER]`); **Starwell** (Penumbra Ring landmark, `[LATER]`) |
+| **Starreach** (Nightreach) | Penumbra Ring final crossings; Umbral Spire ascent | **Crystoll Vault** (Cinderhead late spur — **unbuilt tease**: a graph edge with no map, the engine no-ops the warp); **Starwell** (Penumbra Ring landmark); the **Penumbra Underways** |
 | **`shortcut_mine`** flag | — | *Cinderhead Deep → Vesper Crossroads* permanent re-link |
-| **`hub_unlocked`** flag | four cardinal roads Crossroads → Spire | the slow outer loop becomes a fast four-way wheel |
+| **`hub_unlocked`** flag | the one mountain road north: Crossroads → Umbral Approach → Penumbra Ring | the Crossroads becomes the door to the centre (fast travel = waystones `TRAVEL` + the Lantern-car) |
 
 ### Engine mechanics the journey assumes (dependencies, not new design)
 The battle beats from ~Pearlmoor on assume **status conditions** (`scorch · drench · numb ·
@@ -378,8 +388,9 @@ pure data (see `tools/maps/build_*.py` + `src/game/content/` for the worked patt
   that region's leg of **the Waykeeper's Round** — the cross-region delivery line anchored
   at the Waykeeper (`vesper_crossroads`): a parcel per spoke, each leg waking with its
   spoke's flag (tag `[wakes with spoke]`), closing post-`hub_unlocked` with "The Long
-  Round". Side quests are pure data: flag chains + NPC swaps + script dialogue_refs +
-  item caches.
+  Round". *(Built 2026-10: only R4 `q_round_kite`, R5 `q_round_chart` and the Long Round are
+  wired; R1–R3 remain design — see the `quests.ts` header.)* Side quests are pure data: flag
+  chains + NPC swaps + script dialogue_refs + item caches.
 
 ### The vesperlamp's growing light — the *continuous* exploration axis ("Lamplight")
 
@@ -471,7 +482,7 @@ the daylight is **directional and fading**:
 - **Continuous Lamplight** back-loads it: the brighter your lamp, the more the *already-visited*
   dark gives up — so the late game keeps the discovery thrill spread across the whole world,
   not crammed behind the finale.
-- **Starreach** stays the **finale key** (Gleams 8): its two payoffs (Crystoll Vault, Starwell)
+- **Starreach** stays the **finale key** (Gleams 8): its two payoffs (Crystoll Vault — still an unbuilt tease — and Starwell)
   are intentionally endgame, and that's now *fine* — it isn't carrying the late-game exploration
   load alone, Lamplight is.
 
@@ -483,9 +494,12 @@ Play (and read) clockwise around the rim, then inward:
 
 **South** (Gleams 1–2 → `crown_south`) → **East** (3–4 → `crown_east`) → **North**
 (5–6 → `crown_north`) → **West** (7–8 → `crown_west`, → `hub_unlocked`) → **Central/Endgame**
-→ **Post-game**. The **Vesper Crossroads** hub (Lanternway spokes to Tinderwick, Pearlmoor,
-Lowleaf, Galehigh, Nightreach) becomes the fast-travel anchor once discovered in the south;
-its four roads to the Spire open only on `hub_unlocked`.
+→ **Post-game**. The **Vesper Crossroads** hub becomes the fast-travel anchor once discovered
+in the south (built 2026-10, see [`../geometry.md`](../geometry.md)): only Tinderwick's lane
+WALKS to it; Pearlmoor's side runs round the bay (Saltreach Fen I → Wrackline Path → Sounding
+Cave → Lanternfall Road, Tide-gated); the Lowleaf/Galehigh/Nightreach lanes end at
+**Lantern-car** stations, each line running on that valley's Gleam. Its one mountain road to
+the Spire (the Umbral Approach) opens only on `hub_unlocked`.
 
 Every region follows the same shape (atlas §3): a **segmented main route** (I→II, gift-gated
 on the boundary) → a **town/Lumenary** → an **optional spur** (gated by a *later* Gift —
@@ -540,7 +554,7 @@ data) freely; ⚠️ ones are written as flavour until the system exists.
 | **Còr foreshadow encounters** | So the climax isn't a cold open (B3) | ✅ **Now** — cutscene/dialogue only |
 | **Wren rival battles** | Arc A | ✅ **Now (data)** — trainer-battle cutscene step + `reward_flags`; add trainer entries |
 | **Earned Gleam loops** (§5 kit — all eight) | Gleams feel walked-for, not handed over; fixes ace-gap cliffs | ✅ **Now** — flag chains + NPC swaps + `requires_flag`/`blocked_ref` triggers + sight trainers + item caches (the built Beacon proves the whole stack) |
-| **Side-quest chains / the Waykeeper's Round** | Towns feel alive; the hub accumulates purpose; dense optional content | ✅ **Now** — same data stack as above; parcels are key items via `giveItem` |
+| **Side-quest chains / the Waykeeper's Round** | Towns feel alive; the hub accumulates purpose; dense optional content | ✅ **Now** — same data stack as above; parcels are key items via `giveItem` (Round: R4, R5 + the Long Round built; R1–R3 not yet wired) |
 | **Fenn–Còr shared past** | Climax weight (Arc C) | ✅ **Now** — pure narrative; no mechanic |
 | **Celestial calendar / day-forms** | Arc D payoff; post-game collecting | ⚠️ **Partial** — permanent "constellation relit" table swaps work via flag-gated `EncounterZone`s; true day/night *cycling* needs a small system → propose for post-MVP |
 | **Lamplight** (vesperlamp brightness tiers — the continuous exploration axis, §5) | Makes Arc D legible *and* is the late-game backtrack engine (early dark areas give up more as the lamp brightens) | ⚠️ **Designed** (§5), one contained render feature: a radial light/dark mask on "dark" maps, radius from Gleam count, + optional `reveal_at_tier` markers. **Additive/non-blocking by rule** — safe to author optional reveals toward it now |

@@ -32,8 +32,8 @@
 
 | | |
 |---|---|
-| **Areas** | Hushfrost Pass I → II (frozen route) · **Sunken Solarium** (ruin, Lumenary 7) · Sunvault Climb I → II (sun-garden route) · **Nightreach Observatory** (star-temple town, Lumenary 8) · outer detour **Coldfog Marches I → II** · spurs/landmarks **Aurora Hollow**, **Helia Vault**, **Drownlight Beacon**, **Hollowfen Stillworks** · optional **the Wick-Run** (off Sunvault Climb I's south edge: crest → chute → trestles → traverse → lower run → the foot at the sea, lv 46–50, one-way downhill on a rented runner, the Tallow Lift home — [09 §2 A](./09-the-wild-ways.md)) |
-| **Reading order (MAIN PATH)** | `pale_vault_glacier` → **Hushfrost Pass I → II** → **Sunken Solarium** → **Sunvault Climb I → II** → **Nightreach Observatory** → `vesper_crossroads` (handed to Central). The **Coldfog Marches** detour is OPTIONAL and taken LATE, from the hub — not the road to Nightreach. |
+| **Areas** | Hushfrost Pass I → II (frozen route) · **Sunken Solarium** (ruin, Lumenary 7) · Sunvault Climb I → IV (sun-garden route, four maps since 2026-10) · **Nightreach Observatory** (star-temple town, Lumenary 8) · outer detour **Coldfog Marches I → II** · spurs/landmarks **Aurora Hollow**, **Helia Vault**, **Drownlight Beacon**, **Hollowfen Stillworks** · optional **the Wick-Run** (off Sunvault Climb I's south edge: crest → chute → trestles → traverse → lower run → the foot at the sea, lv 46–50, one-way downhill on a rented runner, the Tallow Lift home — [09 §2 A](./09-the-wild-ways.md)) |
+| **Reading order (MAIN PATH)** | `pale_vault_glacier` → **Hushfrost Pass I → II** → **Sunken Solarium** → **Sunvault Climb I → IV** → **Nightreach Observatory** → the Nightreach lane's **Lantern-car** (runs on `gleam:lunar`) → `vesper_crossroads` (handed to Central). The **Coldfog Marches** detour is OPTIONAL and taken LATE — built 2026-10 it hangs off Nightreach's east fog gate (Emberward) and the Rimeway descent, not the hub; Stillwater + the Mourning Fields hang off Coldfog I ([`11-the-hollowing-country.md`](./11-the-hollowing-country.md)). |
 | **Entry state** (from North) | ~lv40 · holds **Tidecall + Glimmerstep + Updraft Kite + Emberward** · `gleam:storm` + `gleam:frost` · `flag:crown_north` · `flag:shortcut_windward` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` |
 | **Exit state** (to Central) | ~lv52 · holds **ALL SIX Lantern Gifts** (adds Sunsketch + Starreach) · **all eight Gleams** · `flag:crown_west` · `flag:hub_unlocked` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` + `flag:great_null_known`; the Spire is now openable |
 | **Gleams earned** | **Solar** (Lucan Pyre, Sunken Solarium, ace ~46) · **Lunar** (Nessa Cole, Nightreach, ace ~52) — both relit → `flag:crown_west` → `flag:hub_unlocked` |
@@ -73,7 +73,7 @@ Hollowing, and stays desaturated regardless of where you walked in from.
 >    the **Helia Vault** spur — **never** the ruin's Lumenary itself. The
 >    `hushfrost_pass_ii → sunken_solarium` and `sunvault_climb_i → ...` *entry* edges are not
 >    Sunsketch-gated. (The Solarium's *flooded halls* use **Tidecall**, which you already hold.)
-> 2. **Nightreach's MAIN-PATH approach is the rim** — `sunvault_climb_ii → nightreach_observatory`
+> 2. **Nightreach's MAIN-PATH approach is the rim** — `sunvault_climb_iv → nightreach_observatory` (was `_ii` before the 2026-10 four-map rebuild)
 >    (ungated), reached after the Solar Gleam. The Coldfog back-door
 >    (`coldfog_marches_ii → nightreach_observatory`, Emberward) exists but is an **optional late
 >    detour**; do not write Nightreach as if the player normally arrives via the fog.
@@ -340,8 +340,10 @@ Pyre, ace ~46) · **rec. level ~42 → 46.**
 > Nightreach" now happens from IV.
 
 **At a glance** — `sunvault_climb_i` (overgrown terraces) → `sunvault_climb_ii` (sun-vine
-bridges) · kind route · region west · **enter** from `sunken_solarium` (ungated) **→ exit** to
-`nightreach_observatory` (ungated) · **boundary gate:** Sunsketch (I→II) · **Gleam:** none ·
+bridges) → `sunvault_climb_iii` (the Gilt Face) → `sunvault_climb_iv` (the Sun Ledges) — a
+four-map climb (built 2026-10) · kind route · region west · **enter** from `sunken_solarium`
+(ungated) **→ exit** from IV to `nightreach_observatory` (ungated) · optional: the Wick-Run off
+I's south edge ([09](./09-the-wild-ways.md)) · **boundary gate:** Sunsketch (I→II) · **Gleam:** none ·
 **rec. level 46 → 48.**
 
 ### 1. Main path
@@ -431,9 +433,10 @@ bridges) · kind route · region west · **enter** from `sunken_solarium` (ungat
 ## Nightreach Observatory — *the densest starfield, where the Crown completes*
 
 **At a glance** — `nightreach_observatory` · kind town (star-temple) · region west · **enter**
-on the **MAIN PATH** from `sunvault_climb_ii` (ungated); also a **late optional back-door** from
-`coldfog_marches_ii` (Emberward) **→ exit** via Lanternway to `vesper_crossroads` (handed to
-Central) · **gate ability:** Emberward (the Coldfog back-door only — **not** the rim approach,
+on the **MAIN PATH** from `sunvault_climb_iv` (ungated); also a **late optional back-door** from
+`coldfog_marches_ii` (Emberward) **→ exit** via the Nightreach lane (`to_crossroads` →
+`lanternway_nightreach`), which ends at a **Lantern-car** station running on `gleam:lunar` — the
+car carries you to `vesper_crossroads` (handed to Central; built 2026-10, no walked road) · **gate ability:** Emberward (the Coldfog back-door only — **not** the rim approach,
 **not** the Lumenary) · **Gleam:** Lunar (Nessa Cole, ace ~52) · **rec. level ~48 → 52.**
 
 ### 1. Main path
@@ -476,14 +479,14 @@ Central) · **gate ability:** Emberward (the Coldfog back-door only — **not** 
    **Starreach** + `gleam:lunar`, ability `starreach` — the eighth watch-lamp lights
    itself as the eighth constellation answers. With Solar + Lunar both held, the engine
    sets **`flag:crown_west`** and — this being the **last quadrant** —
-   **`flag:hub_unlocked`**: the Crown completes, the Penumbra fully parts, and the four
-   cardinal roads open inward at the Crossroads.
+   **`flag:hub_unlocked`**: the Crown completes, the Penumbra fully parts, and the mountain
+   road north (the Umbral Approach) opens at the Crossroads.
 5. **The map reopens (Starreach) + hand-off.** Starreach — **step across short voids of pure
    dark** — is the **endgame traversal**. Place **"now accessible"** callouts at: the
    `penumbra_ring → starwell` landmark and `penumbra_ring → umbral_spire` ascent (Central's, via
-   the now-open hub); and **[LATER]/cross-region** the **Crystoll Vault** (Cinderhead Deep, East)
+   the now-open hub); and **[LATER]/cross-region** the **Crystoll Vault** (Cinderhead Deep, East — an unbuilt tease)
    and **Starwell** (Penumbra Ring) — name them as Starreach reopenings but **hand them to the
-   Central writer**. With `hub_unlocked` set, **exit via the Lanternway** to `vesper_crossroads`
+   Central writer**. With `hub_unlocked` set, **ride the Lantern-car** to `vesper_crossroads`
    and hand off to [`05-central-endgame.md`](./05-central-endgame.md).
 
 ### 2. Story beats
@@ -526,14 +529,14 @@ Central) · **gate ability:** Emberward (the Coldfog back-door only — **not** 
   ascent (Central, now reachable via `hub_unlocked`); and **[LATER]/cross-region** Crystoll Vault
   (Cinderhead Deep, East) and Starwell (Penumbra Ring) — named here, **owned by Central** — so the
   backtrack web closes.
-- **`hub_unlocked` fires** — the slow outer rim collapses into a fast four-way wheel; the
-  Crossroads → Spire roads open. This is the structural hand-off to the endgame.
+- **`hub_unlocked` fires** — waystone TRAVEL opens and the one mountain road north
+  (Crossroads → Umbral Approach → Penumbra Ring) opens. This is the structural hand-off to the endgame.
 - Lunar pressure peaks for this Lumenary — write Nessa around `doze` (spine §5 dependency).
 
 ### 4. Optional content
 
 - **The Coldfog Marches detour** (Coldfog I → II + Drownlight Beacon + Hollowfen Stillworks) is
-  the West's big optional block — **[MISSABLE]/[LATER]**, reached from the **hub**, covered in its
+  the West's big optional block — **[MISSABLE]/[LATER]**, reached through Nightreach's east fog gate (Emberward) or the Rimeway — not the hub (built 2026-10) — covered in its
   own section below. It is **not** the path to Nightreach.
 - **Star-vigil hidden item / telescope sight-quest** in town — **[MISSABLE]** flavour reward.
 - **Crystoll Vault** (Cinderhead Deep, East) + **Starwell** (Penumbra Ring) — Starreach reopenings
@@ -559,16 +562,17 @@ Central) · **gate ability:** Emberward (the Coldfog back-door only — **not** 
   the eighth Gleam reads as the answer to Còr's question.
 - **Keep the Star-vigil** as your eighth constellation lights — the festival and the Lunar Gleam
   are meant to crest together.
-- Once `hub_unlocked` fires, **the four-way hub and fast travel are live** — note it for the player
+- Once `hub_unlocked` fires, **the mountain road north from the hub is open** and waystone TRAVEL appears in the pause menu — note it for the player
   before they head to the Crossroads.
 
 ### 6. Validation hooks
 
 - **Map id / kind:** `nightreach_observatory`, kind `town` (star-temple), region `west`.
-- **Entry/exit warps (graph.ts):** **MAIN PATH** in from `sunvault_climb_ii` via `to_observatory`
-  (**ungated**, bidir); **optional back-door** in from `coldfog_marches_ii` via `to_observatory_fog`
-  (**`requires_ability: emberward`**, bidir); Lanternway spoke `nightreach_observatory ↔
-  vesper_crossroads` via `to_crossroads` (bidir).
+- **Entry/exit warps (built):** **MAIN PATH** in from `sunvault_climb_iv` via `to_observatory`
+  (Nightreach's pair `to_sunvault`, **ungated**, bidir); **optional back-door** `to_coldfog` ↔
+  `coldfog_marches_ii` `to_observatory_fog` (**`requires_ability: emberward`**, bidir);
+  `to_crossroads` → `lanternway_nightreach` (the lane ends at a Lantern-car station; the car
+  runs on `gleam:lunar` via `script.lantern_car`).
 - **Lumenary is NOT ability-gated** (spine §0 rule 1) — door requires no Gift (at most
   `flag:has_starter`); Nessa reachable on the rim approach. **No Emberward/Starreach gate on the
   town or Lumenary.**
@@ -599,21 +603,27 @@ Central) · **gate ability:** Emberward (the Coldfog back-door only — **not** 
 
 ## OUTER DETOUR — Coldfog Marches I → II *(optional, late)* — *the drained land, the cost made plain*
 
-> **[MISSABLE] / [LATER] — OPTIONAL DETOUR, NOT THE MAIN PATH.** Coldfog is reached from the
-> **hub** (`vesper_crossroads → coldfog_marches_i`, ungated), and is normally taken **late** —
+> **[MISSABLE] / [LATER] — OPTIONAL DETOUR, NOT THE MAIN PATH.** *(Built 2026-10: there is NO
+> hub road.)* Coldfog is reached through **Nightreach's back door** (`to_coldfog`, Emberward →
+> Marches II) or down the **Rimeway** (Pale Vault → Rimeway → `rimeway_descent` → Marches II —
+> [09](./09-the-wild-ways.md)); Marches I lies beyond Marches II (Emberward), or round the north
+> loop via the Mourning Fields. **Stillwater** and the **Mourning Fields** now hang off Coldfog I
+> — see [`11-the-hollowing-country.md`](./11-the-hollowing-country.md). It is normally taken **late** —
 > after the Solar Gleam, when you can see it for the drained place it is. It carries a back-door
 > to Nightreach (`coldfog_marches_ii → nightreach_observatory`, Emberward), but **the proper
 > arrival is the rim** (spine §0 rule 2). Everything in this section is optional collection +
 > the **B4 set-piece**; nothing here is required to complete the West.
 
 **At a glance** — `coldfog_marches_i` (blighted marsh) → `coldfog_marches_ii` (deep coldfog) ·
-kind route · region outer · **enter** from `vesper_crossroads` (ungated, to I) **→** optional
-back-door exit to `nightreach_observatory` (Emberward) · **boundary gate:** Emberward (I→II,
+kind route · region outer · **enter** (built 2026-10) from `nightreach_observatory` (Emberward,
+to II) or the Rimeway descent (to II) — Marches I only via II (or the Mourning Fields loop) ·
+Coldfog I also opens onto `stillwater` + `mourning_fields` ([11](./11-the-hollowing-country.md)) · **boundary gate:** Emberward (I→II,
 held) · **Gleam:** none · **rec. level ~46–50.**
 
 ### 1. Main path (of the detour)
 
-1. **Coldfog Marches I — the blighted marsh.** From the hub, the one **drained** area in
+1. **Coldfog Marches I — the blighted marsh.** *(Built 2026-10: walked to from Marches II, not
+   from the hub.)* The one **drained** area in
    Vesperholm: sickly desaturated blues, snuffed lanterns, `ink` mist swallowing colour (atlas §2
    card 10) — **stays dark regardless of Gleam-count**, the visual cost of the Hollowing made
    plain. Blighted `tall_grass` carries the Dark roster (Nullmoth, Wispwane Dark/Light).
@@ -697,8 +707,8 @@ held) · **Gleam:** none · **rec. level ~46–50.**
   **`requires_ability: emberward`** (held), bidir.
 - **Back-door warp:** `coldfog_marches_ii → nightreach_observatory` via `to_observatory_fog`,
   **`requires_ability: emberward`**, bidir — **optional**, NOT the main path (spine §0 rule 2).
-- **Spur/landmark warps:** `coldfog_marches_ii → drownlight_beacon` via `to_beacon`,
-  `requires_ability: emberward`, bidir; `coldfog_marches_ii → hollowfen_stillworks` via
+- **Spur/landmark warps:** `coldfog_marches_i → drownlight_beacon` via `to_beacon`
+  (built: off Marches I's west flank), `requires_ability: emberward`, bidir; `coldfog_marches_ii → hollowfen_stillworks` via
   `to_stillworks`, **`requires_ability: glimmerstep`** (inner door; Emberward needed to be in
   Coldfog II at all), bidir.
 - **Story trigger `sets_flags`:** the Stillworks set-piece is the *shown* half of B4; the
@@ -717,16 +727,16 @@ held) · **Gleam:** none · **rec. level ~46–50.**
 
 ## Hand-off to Central
 
-The Central writer picks up at **`nightreach_observatory → vesper_crossroads`** (Lanternway,
-`to_crossroads`) with the player at **~lv52**, holding **ALL SIX Lantern Gifts** (Tidecall +
+The Central writer picks up at **`nightreach_observatory → vesper_crossroads`** (the Nightreach
+lane's Lantern-car, `script.lantern_car` on `gleam:lunar` — a ride, not a graph edge) with the player at **~lv52**, holding **ALL SIX Lantern Gifts** (Tidecall +
 Glimmerstep + Updraft Kite + Emberward + **Sunsketch** + **Starreach**), **all eight Gleams**,
 **`flag:crown_west`**, **`flag:hub_unlocked`**, **`flag:shortcut_windward`**, and the persistent
 narrative ledger **`flag:dusk_begins`** + **`flag:met_hollowing`** + **`flag:met_cor`** +
 **`flag:great_null_known`**. The Crown is complete, the Penumbra has parted,
-and the four cardinal roads `vesper_crossroads → penumbra_ring` (`requires_flag:
-flag:hub_unlocked`) are open; `penumbra_ring → umbral_spire` (`requires_ability: starreach` — now
+and the one mountain road `vesper_crossroads → umbral_approach → penumbra_ring` (`requires_flag:
+flag:hub_unlocked` on the hub warp) is open; `penumbra_ring → umbral_spire` (`requires_ability: starreach` — now
 held) is the final ascent. **Starreach** reopenings handed to Central/East: **Crystoll Vault**
-(Cinderhead Deep, East) and **Starwell** (Penumbra Ring). Arc beats still owed downstream: **B5**
+(Cinderhead Deep, East — still an unbuilt tease) and **Starwell** (Penumbra Ring). Arc beats still owed downstream: **B5**
 (confront the Great Null; relight the Keystar/Keylumen by *out-remembering*), and the **Dawn**
 (`flag:dawn`) → [`06-postgame.md`](./06-postgame.md).
 

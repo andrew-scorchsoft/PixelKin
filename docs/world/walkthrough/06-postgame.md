@@ -14,14 +14,16 @@ gone, and Vesperholm has woken into its first dawn in years. Post-game delivers 
 the epilogue town of **Dawnstead** (Tinderwick reborn in open sky, with the lullaby returned
 in triumphant major); a fresh collecting hook in the **day-forms** of early kin that the
 relit sky now wakes; the **late-backtrack landmarks** that only Starreach + dawn make worth a
-return (**Crystoll Vault**, **Starwell**); the **Radiant-Lamplight backtracks** — the early
+return (**Starwell**; **Crystoll Vault** is still an unbuilt tease as of 2026-10); the **Radiant-Lamplight backtracks** — the early
 dark areas, re-walked with the vesperlamp at its brightest, finally giving up the optional
 content that sat beyond your old reach (spine §5); the **gentle arc resolutions** — Wren at
 peace in daylight (A6), and Warden Còr's quiet aftermath; and **the Starfall Vigils** — the
 endgame challenge chain (the major section near the end of this file): five riddle-led trial
 sites across the relit world, the game's first full-six-kin fights, and one ultimate trial at
 the summit. No new Lantern Gifts: all six are already earned, so post-game is *collecting,
-rematches, trials, and resolution*, not traversal.
+rematches, trials, and resolution*, not traversal. *(Built 2026-10: the post-dawn **Farlamp
+Isles** — rowed in the Farlamp Skiff from Lightkeeper's Point, `deepdive` deep water, Driftholm,
+the Undertide, Farlume — extend the post-game; see [`10-the-farlamp-isles.md`](./10-the-farlamp-isles.md).)*
 
 - **Entry state:** the climax is done. Player at **~lv55+**, party of bonded kin, holding
   **all six Lantern Gifts** (Tidecall, Glimmerstep, Updraft Kite, Emberward, Sunsketch,
@@ -31,7 +33,7 @@ rematches, trials, and resolution*, not traversal.
 - **What post-game gates open:** `flag:dawn` shows the `dawnstead` node and the
   `umbral_spire → dawnstead` road; it also keys the **day-form encounter swaps** mapwide.
   **Starreach** (held since Nightreach) is what makes the two `[LATER]`-tagged Crown
-  landmarks — **Crystoll Vault** and **Starwell** — finally reachable.
+  landmarks — **Crystoll Vault** (unbuilt tease) and **Starwell** — finally reachable.
 - **Arc beats delivered:** **A6** (Wren resolved — Dawnstead; optional rematch) ·
   **Còr's resolution payoff** (the gentle aftermath — never a punished villain) ·
   **Arc D full payoff** (the dusk→dawn key arc resolves; true daylight; the vesperlamp at
@@ -100,8 +102,12 @@ gate: **post-game (`flag:dawn`)** · Gleam: none (all eight held) · rec. level:
      > all." *(quiet)* "You did well, apprentice. Go and look at your sky."
 
 3. **Mechanic introductions** — none new (no Gift, no Gleam). What's new is **day-form
-   collecting** (the relit-sky encounter swap; below) and **rematches** at the lv55–65 band
-   (Wren here; Lampwardens across the eight towns — spine §4).
+   collecting** (the relit-sky encounter swap; below) and **Wren's rematch** at the lv55–65
+   band. *(Built 2026-10: there are **no Lampwarden rematches**. Instead each Lumenary keeps a
+   **sparring apprentice** (`content/sparring.ts`, the `spar` op) from that hall's Gleam onward —
+   a team just under the warden's, a keeper-class purse each win, and ONE shared rest across all
+   eight halls of 3 won battles elsewhere. Not a post-game band: it's the honest wick-earner
+   all game long.)*
 
 4. **Optional content**
    - **Wren rematch** — `[MUST-DO]` the warm A6 coda; a lv55–65 friendly battle. Re-runnable
@@ -125,11 +131,15 @@ gate: **post-game (`flag:dawn`)** · Gleam: none (all eight held) · rec. level:
      → `flag:q_post_wick_given` · reward: Còr's last line — and his lamp burning a shade
      warmer thereafter (deco swap) · maps: `tinderwick_beacon_top`, `dawnstead` ·
      `[MISSABLE]` — the game's first earned landmark closes its last arc.
-   - **P3 "The Day-form Survey"** — giver: **Fenn** · steps: show him three caught
-     day-forms (party checks via dialogue branches) · flags: `flag:q_post_survey(_done)` ·
-     reward: a **Radiant-tier Lamplight tease** + his field-journal page · maps:
-     `dawnstead` + the relit valleys · `[MISSABLE]`. *Counter note (spine §8): wants
-     "3 of 3" — boolean fallback: Fenn asks for one named day-form at a time.*
+   - **P3 "The Day-form Survey"** — giver: **Fenn** · steps *(as built)*: find **three
+     signs** of the day-forms around **Dawnstead's sunlit verge**, one at a time, Fenn naming
+     the next — a gold **wing-scale** under the fed-on dawn-blooms (north corner), a shed
+     **moult** on the shore skirt (south), a warm **burrow** under the blooms by the garden
+     mouth (`script.survey_find_1..3`, interact triggers in `dawnstead`) · flags:
+     `flag:q_post_survey` → `_1`/`_2`/`_3` → `flag:q_post_survey_done` · reward: a
+     **Radiant-tier Lamplight tease** + **Fenn's journal page** · maps: `dawnstead` ·
+     `[MISSABLE]`. *(The first design — show Fenn three caught day-forms via party checks —
+     was replaced by the find-the-signs chain; no party check exists.)*
    - *(Also cross-ref: **X1 "The Caretaker's Lamp"** (04-west) pays off here — with
      `flag:dawn` set, the caretaker's numbed kin is AWAKE at her side in Hushfrost II
      (NPC swap), the quietest echo of the whole B arc.)*
@@ -247,7 +257,8 @@ validation hooks here; cross-check them where they live:
   **Starreach** void in. Reward: a rare **Stone/Light** kin. `[MUST-DO]` for completionists —
   the `[LATER]` teased back in East closes here. **Node + hooks owned by
   [`02-east.md`](./02-east.md)** (Cinderhead Deep; `cinderhead_deep → crystoll_vault`,
-  `requires_ability: starreach`, `graph.ts:148`).
+  `requires_ability: starreach`). **Unbuilt as of 2026-10:** the graph edge exists but there is no
+  `crystoll_vault` map and no `maps.ts` entry, so the warp is an inert tease.
 - **Starwell** — a near-legendary kin in the heart of the parted Penumbra. Through the open hub
   to `penumbra_ring`, then cross the final **Starreach** voids in; the game's standout optional
   catch. `[MUST-DO]` — the `[LATER]` teased from the West/endgame closes here. **Node + hooks
@@ -410,7 +421,7 @@ night made. The readings and Vigilant lines are the one place post-game humour m
 |---|---|---|---|---|---|---|---|
 | 1 | Hearthfall (`vigil_hearthfall`) | `tinderwick` — the bluff above the Beacon | Ember & Tide (southern crown) | 58–60 | **Wick-Mother Esra** (Embralux 60) | **Embralux** · **Tideveil** (water) | **Radiant Charm** (×3.0 vs any-status kin) |
 | 2 | Grovefall (`vigil_grovefall`) | `spore_grotto` — the far cell | Verdant & Stone (eastern crown) | 60–62 | **Old Foreman Bramm** (Mycovast 62) | **Mycovast** | **Star-chart: Tremor Quake** (the Stone nuke never minted) |
-| 3 | Stormfall (`vigil_stormfall`) | `thunderroost` — the upper ledge | Storm & Frost (northern crown) | 62–64 | **Ondra Vael** (Nullhusk 64) | **Nullhusk** | **the storm-tithe** (5,000w + Starglass ×2) |
+| 3 | Stormfall (`vigil_stormfall`) | `thunderroost` — the upper ledge | Storm & Frost (northern crown) | 62–64 | **Ondra Vael** (Nullhusk 64) | **Nullhusk** | **the storm-tithe** (5,000w on the win; the Starglass ×2 is a separate cache on the ledge) |
 | 4 | Sunfall (`vigil_sunfall`) | `sunvault_climb_ii` — behind the viewpoint | Solar & Lunar (western crown) | 64–66 | **Dame Solenne** (Helithorn 66) | **Helithorn** · **Dawnwatcher** | **Star-chart: Sunburst Nova** |
 | 5 | Murkfall (`vigil_murkfall`) | `coldfog_marches_ii` — the drowned jetty | Light & Dark (the mirror axis) | 66–68 | **Warden Mer** (Bogvast 68) | **Bogvast** · **Cindervast** · **Solarmourn** | **Morrow Charm** (×3.0 first-turn) |
 | ★ | The Last Lesson | `umbral_spire` summit (re-dress, no new map) | the whole sky | 67–70 | Ondra → Solenne → Mer → **Fenn** (Dawnwatcher 70) | **Dawnbrael** (lv 70, set-piece) | **Fenn's Field-Glass** + the **Star-tender** title beat |
@@ -625,8 +636,9 @@ western crown) · band **64–66** · keeper: **Dame Solenne**, ace 66.
   *two* lights — daylight above, dreamlight pooling where the shard's glow meets the basin.
 - **The keeper:** **Dame Solenne** — keeper of the last warm day before Lucan Pyre; taught him
   everything, including (she notes) the bowing.
-  > Solenne, intro: *"I kept the last warm day for forty years, and now the mornings come free.
-  > Indulge an old keeper — one encore, full light."*
+  > Solenne, intro: *"I taught a whole valley to bow to a sun that never came. Now it takes its
+  > own bow every morning, and I find I am jealous of its timing. Indulge an old keeper — one
+  > encore, full light."*
   > Solenne, beaten: *"Curtain. ...Do you know, I don't mourn the last warm day any more. There
   > will be others. Take the figure — it's the sun's whole bow."*
 - **Rewards:** **Starfall Shard** ×1 · **Star-chart: Sunburst Nova** (find-first nuke) · reading
@@ -828,8 +840,10 @@ trigger `requires_flag: flag:vigil_5_kept` · band **67–70** · the hardest fi
 Post-game is the only region in true daylight: **Arc D resolves**, the vesperlamp at its
 brightest, the lullaby returned in major. There is no hand-off — this is the last region file.
 What it leaves open for the player is deliberate and endless-by-design: the **day-form re-walk**
-of the relit valleys, the two Starreach landmarks (**Crystoll Vault**, **Starwell**), the
-Lampwarden/Wren **rematches** at lv55–65, and above them **the Starfall Vigils** — the
+of the relit valleys, the Starreach landmarks (**Starwell**, the Penumbra Underways; **Crystoll Vault** is still an
+unbuilt tease), the
+Wren **rematch** at lv55–65 (plus the Lumenaries' sparring apprentices — no Lampwarden
+rematches as built), and above them **the Starfall Vigils** — the
 riddle-led trial chain that climbs to the Last Lesson, the Star-tender naming, and the standing
 re-runnable circuit it leaves behind. The closing note is the whole game's thesis, and the
 binding tone for any post-game copy: **the cycle has resumed, dusk will come again, and that is

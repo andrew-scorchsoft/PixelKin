@@ -83,13 +83,15 @@ lane included); X-2 acting ops in the South's key scenes (no added pages); Gullc
 | Glowmoss Deep (B2 first Hollowing contact) + B1F | `glowmoss_deep`, `glowmoss_deep_b1f` | ✅ | `build_glowmoss_deep*.py` |
 | Spore Grotto (Glimmerstep spur) | `spore_grotto` | ✅ | `build_spore_grotto.py` |
 | **Cinderhead Mine (Stone · Otho · Lamp-down vigil)** | `cinderhead_mine` + lumenary | ✅ 2026-06 | `build_cinderhead_mine*.py` |
-| **Cinderhead Deep — a 3-floor ladder maze** (fork → descent → vigil-lamp; `shortcut_mine`, → Galehigh) | `cinderhead_deep` + `_b1f` + `_b2f` | ✅ 2026-06 | `build_cinderhead_deep{,_b1f,_b2f}.py` |
+| **Cinderhead Deep — a 3-floor ladder maze** (fork → descent → vigil-lamp; `shortcut_mine`; → Cinderwind Scarp, chained until `scarp_climb_open`, → Ashfall Shelf → Galehigh) | `cinderhead_deep` + `_b1f` + `_b2f` | ✅ 2026-06 | `build_cinderhead_deep{,_b1f,_b2f}.py` |
 | **The Old Seams** (Wild Ways D, [09 §2 D](./09-the-wild-ways.md); Otho opens the mine's seam-door post-Stone → planked shaft benches 27–29 → the lever-switched RAIL YARD puzzle 29–31 → cinder-scree galleries + the foremen's camp rest 31–33 → **Emberroot #166** lv 46 behind a Starlight-gated ladder; 5 seam-miners, 8 caches, the Ledger's last page) | `old_seams_i/ii/iii`, `emberroot_heart` | ✅ 2026-10 | `build_old_seams_{i,ii,iii}.py`, `build_emberroot_heart.py` (kit: `seamskit.py`; tiles: `build_seams_set.py` → `seams_set` + the `old_seams_first_star` object) |
 
 Festivals: Glowmoss Bloom, **Lamp-down vigil**. Arcs delivered: A3 (Wren shaken), B2
 (`met_hollowing` + Còr foreshadow), E. Earned loops: The Tended Bed (#3), **The Descent
 Vigil (#4)**. Quests: E1 Quiet Reeds, E2 Spores for the Stall, **E3 The Foreman's Ledger**,
-R3 Moss for the Quay. Crystoll Vault left as a `[LATER]` Starreach tease (void-gap signed).
+R3 Moss for the Quay (designed only — `q_round_moss` is still unwired; of the Round, only R4,
+R5 and the Long Round are built). Crystoll Vault left as a `[LATER]` Starreach tease (void-gap
+signed; still no map — the warp is inert).
 **World-craft pass (2026-10):** ambience/cast/props on every East map (`worldcraft/east.py`), story
 panel E-1/E-2/E-3 + the East X-2 acting pass; see `02-east.md` § World-craft pass.
 
@@ -199,7 +201,7 @@ Spire → out-remembering → Keystar → dawn → credits → Continue) is buil
 
 ## The Three Hours — legendary trio (07) ✅ (sites + wiring, 2026-06)
 
-Species #160 Gloamber / #161 Tollhart / #162 Erstmorn are in the roster with full art
+Species #160 Gloamber / #161 Noctilune / #162 Erstmorn are in the roster with full art
 (162/162 packed). The `legendaryBattle` engine (battles-won cooldowns, `{remaining}`
 hint token) is live. All four site maps are built + committed (2026-06): `tideglass_cavern`
 + `tideglass_gallery` (the Lampwright's Relay lens puzzle), `pale_vault_hourfold` (the
@@ -251,7 +253,8 @@ all audits 0 failures), A6 Wren talk + re-runnable rematch (`wren_rematch`, ace 
 first-dawn festival, the sunlit-verge day-form table (55–65, Ember/Light), P1 First-Dawn
 Letters (giver + all ten recipients incl. one NPC per warden town; quadrant stamps at the
 four seats), P2 A Wick for Còr (beacon-top cache → lamp deco swap), P3 Day-form Survey
-(boolean-chain fallback — no party-check op). **Owed:** the Waykeeper's "all ten delivered"
+(as built: three day-form SIGNS found round Dawnstead's verge — wing-scale, moult, burrow — no
+party-check op). **Owed:** the Waykeeper's "all ten delivered"
 thanks (needs the quest-counter extension); `wren_rematch`/dawnstead mirrors into
 `progression.mjs` + `EXTRA_ENCOUNTERS` (lands with R3's economy/species pass).
 **2026-10 (Central package):** regional cast (market_trader / village_child / star_watcher / innkeeper; Maudie a road_courier), warm-mote + gold-tint ambience; P-1 — Còr's woken cinder and Senna's name in `cor_resolution`.

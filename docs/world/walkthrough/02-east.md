@@ -17,11 +17,16 @@ deliberate **Stone wall**, Otho Grist, the first Lampwarden who can genuinely st
 under-prepared player.
 
 - **Entry state (from South):** ~lv16, holds **Tidecall**; `gleam:ember` + `gleam:tide`;
-  `flag:crown_south`. The Vesper Crossroads hub is known (Lanternway spoke from Pearlmoor /
-  later Lowleaf), but its Spire roads are still sealed.
+  `flag:crown_south`. The Vesper Crossroads hub is known (the Tinderwick lane; from Pearlmoor
+  the bay road round from Saltreach Fen I; later the Lowleaf Lantern-car), but its Spire road
+  is still sealed.
 - **Exit state (handed to North):** ~lv28, holds **Tidecall + Glimmerstep**;
   `gleam:verdant` + `gleam:stone` → `flag:crown_east`; `flag:met_hollowing`;
-  `flag:shortcut_mine`. Reaches Galehigh via `cinderhead_deep → galehigh_terraces` (ungated).
+  `flag:shortcut_mine`. Reaches Galehigh via `cinderhead_deep → cinderwind_scarp` (built
+  2026-10: chained until `gleam:stone` or `gleam:storm` — `flag:scarp_climb_open`) → the
+  **Ashfall Shelf** (`cinderwind_ashfall`) → `galehigh_terraces`; the Scarp's direct east cut is
+  a rockfall until cleared (`flag:scarp_short_open`). See
+  [`10-the-farlamp-isles.md`](./10-the-farlamp-isles.md) Part II.
 - **Gleams delivered:** **3 · Verdant** (Sable Quill, Lowleaf Hollow) and **4 · Stone**
   (Otho Grist, Cinderhead Mine).
 - **Lantern Gift delivered:** **Glimmerstep** (earned at Lowleaf — enter dark caves/woods).
@@ -58,15 +63,18 @@ from (spine §0 rule 2).
 **The shape of the region** (atlas §3: segmented chain → town/Lumenary → spur → landmark →
 hub spoke): Saltreach Fen I → II (Tidecall on the boundary) → **Lowleaf Hollow** (Verdant
 Lumenary) ↔ Glowmoss Deep (Glimmerstep) → **Cinderhead Mine** (Stone Lumenary) ↔ Cinderhead
-Deep (Glimmerstep) → onward to Galehigh. Spurs: **Sunkbell Shallows** (Tidecall, now),
-**Spore Grotto** (Glimmerstep, once earned), **Crystoll Vault** (Starreach — `[LATER]`).
+Deep (Glimmerstep) → Cinderwind Scarp → onward to Galehigh. Spurs: **Sunkbell Shallows**
+(Tidecall, now), **Spore Grotto** (Glimmerstep, once earned), **Crystoll Vault** (Starreach —
+`[LATER]`, **unbuilt tease**: a graph edge with no map yet; the engine no-ops the warp).
 
 ---
 
 ### Saltreach Fen I — *brackish reed marsh under glinting mist*
 
 **At a glance** — `saltreach_fen_i` · route (open marsh) · east · enter from Pearlmoor
-(`to_fen`) / exit north to Saltreach Fen II · **no entry gate** (Tidecall gates the *boundary*
+(`to_fen`) / exit north to Saltreach Fen II, plus the bay road home to the hub off its south
+edge (`to_wrackline` → Wrackline Path → Sounding Cave → Lanternfall Road, built 2026-10) and
+the Mirelight ferry east (`flag:mirelight_ferry`, [09](./09-the-wild-ways.md)) · **no entry gate** (Tidecall gates the *boundary*
 to II, not this segment) · Gleam: none · rec. level ~16.
 
 1. **Main path** — A wide, low marsh travelled **south→north**, reed islands strung together
@@ -176,7 +184,8 @@ Gleam: none · rec. level ~18.
 
 **At a glance** — `lowleaf_hollow` · route/town (forest) · east · enter from Fen II
 (`to_hollow`) / exits to Glowmoss Deep (`to_deepwood`, **Glimmerstep**) and the Vesper
-Crossroads (`to_crossroads`, Lanternway) · **Lumenary 3: Sable Quill (Verdant)**, ace ~22 ·
+Crossroads (`to_crossroads` → the Lowleaf lane, ending at a Lantern-car station that runs on
+`gleam:verdant`) · Georgina's dell (`to_gloamwood`, `flag:q_east_georgina`) · **Lumenary 3: Sable Quill (Verdant)**, ace ~22 ·
 **Gleam: Verdant** + **Glimmerstep** · rec. level ~18.
 
 > **§0 rule 1 (binding):** the Lumenary is **not** behind Glimmerstep — Glimmerstep is *earned
@@ -206,7 +215,8 @@ Crossroads (`to_crossroads`, Lanternway) · **Lumenary 3: Sable Quill (Verdant)*
    the festival crowns around it;
    (5) the **Verdant Gleam** bond-test at the blooming bed; (6) Sable grants **Glimmerstep**
    and points you at the dark hollow-mouth she "can never get into"; (7) the now-lit
-   `to_deepwood` mouth on the town's north edge, plus the Lanternway spoke west to the hub.
+   `to_deepwood` mouth on the town's north edge, plus the Lowleaf lane west to the Lantern-car (the ride to the hub, running now the Verdant
+   Gleam is held).
 2. **Story beats** — **Arc E (Glowmoss Bloom):** the festival frames the Gleam as *belonging*,
    not conquest — Sable, a shy botanist, is more comfortable letting her glowmoss vouch for you
    than making a speech. **Arc A (A2→A3 setup):** Wren is here, but **A3 (Wren shaken) properly
@@ -252,7 +262,9 @@ Crossroads (`to_crossroads`, Lanternway) · **Lumenary 3: Sable Quill (Verdant)*
      plug) from the **Waykeeper** → the **Pearlmoor shrine-keep** · flags:
      `flag:q_round_moss` · reward: balm kit + a Lanternway line · maps:
      `vesper_crossroads`, `lowleaf_hollow`, `pearlmoor_quay` · `[wakes with spoke]`
-     (the Lowleaf spoke wakes with `gleam:verdant`).
+     (the Lowleaf spoke wakes with `gleam:verdant`). **NOT YET BUILT** —
+     `q_round_moss` is set nowhere (see the `quests.ts` header; only R4/R5 + the Long Round
+     are wired).
 5. **Don't-miss callouts** — Catch a **Fennlight** (Verdant/Light) during the Bloom — the
    signature town kin and a strong early Light-typed answer for the road ahead. And read the
    pinned letter: it is the only Còr foreshadow a careful player gets before the Deep.
@@ -263,9 +275,9 @@ Crossroads (`to_crossroads`, Lanternway) · **Lumenary 3: Sable Quill (Verdant)*
      `script.lowleaf_rest`).
    - warps (BUILT): `to_fen_ii` land-in paired with Fen II; **`to_deepwood` →
      `glowmoss_deep`, `requires_ability:'glimmerstep'`** (blocked in the deepwood sign's
-     voice); `to_crossroads` Lanternway spoke west — the crossroads side **wakes with
-     `gleam:verdant`** (warp-level gate + `npc.waykeeper_lowleaf_gate`, the South pattern
-     of gating stricter than the graph); Lumenary door soft-gated `flag:has_starter`.
+     voice); `to_crossroads` → `lanternway_lowleaf` (built 2026-10: the lane ends at a
+     **Lantern-car** station — `script.lantern_car` runs the Lowleaf line on
+     `gleam:verdant`; there is no walked road to the hub — see `../geometry.md`); Lumenary door soft-gated `flag:has_starter`.
    - triggers / flags (BUILT): the **Verdant Gleam rides Sable's trainer entry**
      (`lampwarden_lowleaf`: `reward_flags:['gleam:verdant']`,
      `reward_abilities:['glimmerstep']` — `crown_east` is **not** set here; it lands on
@@ -361,7 +373,8 @@ Gleam: none · rec. level ~20.
 ### Cinderhead Mine — *abandoned gem mine, deep-earth gleam; the Stone wall*
 
 **At a glance** — `cinderhead_mine` · cave town / mine mouth · east · enter from Glowmoss Deep
-(`to_mine`) / exits to Cinderhead Deep (`to_deep`, **Glimmerstep**) and Galehigh via the Deep ·
+(`to_mine`) / exits to Cinderhead Deep (`to_deep`, **Glimmerstep**) and on via the Deep →
+Cinderwind Scarp → Ashfall Shelf → Galehigh ·
 **Lumenary 4: Otho Grist (Stone)**, ace ~28 — the deliberate **difficulty wall** · **Gleam:
 Stone** (→ `flag:crown_east`) · rec. level ~22.
 
@@ -391,8 +404,8 @@ Stone** (→ `flag:crown_east`) · rec. level ~22.
    (5) **carry the lamp up still lit** (`script.take_vigil_lamp` →
    `flag:q_east_vigil_lamp`) — the vigil relights around it, lamps rising one by one;
    (6) the **Stone Gleam** wall battle against Otho (ace ~28, now met at ~26–27);
-   (7) onward: the Deep again, this time crossing to its far side for Galehigh and the
-   shortcut. *(Note: `to_deep` is **Glimmerstep-gated, full stop** — `graph.ts:128`. An
+   (7) onward: the Deep again, this time crossing to its far side for the Cinderwind Scarp
+   (unchained by the Stone Gleam) and the shortcut. *(Note: `to_deep` is **Glimmerstep-gated, full stop** — `graph.ts:128`. An
    earlier draft said it "opens on the win"; the graph is canon.)*
 2. **Story beats** — **Arc E (Lamp-down vigil):** the most *melancholy* festival — miners dim
    their lamps together to honour the dark they work in, a quiet counterpoint to the Hollowing's
@@ -409,9 +422,11 @@ Stone** (→ `flag:crown_east`) · rec. level ~22.
    is assumed live by now). Reinforces **deep-cave navigation** (the Deep). The mine teaches the
    player to *prepare* before a Lumenary: catch, kindle, grind the deep galleries to close the gap.
 4. **Optional content** —
-   - **Cinderhead Deep** (`cinderhead_deep`) — **[MUST-DO]** for progress (the route on to
-     Galehigh and the shortcut), gated by **Glimmerstep**.
-   - **Crystoll Vault** (`crystoll_vault`) — spur off Cinderhead Deep, **[LATER]** — needs
+   - **Cinderhead Deep** (`cinderhead_deep` + `_b1f`/`_b2f`, the 3-floor ladder descent to the
+     vigil-lamp) — **[MUST-DO]** for progress (the route on to the Scarp and Galehigh, and the
+     shortcut), gated by **Glimmerstep**.
+   - **Crystoll Vault** (`crystoll_vault`) — spur off Cinderhead Deep, **[LATER]**, **still an
+     unbuilt tease** (graph edge only; no map JSON, not in `maps.ts`) — needs
      **Starreach**, the *endgame* Gift (earned at Nightreach, West). A very-late backtrack for a
      rare **Stone/Light** kin (atlas §3). Tease it (a void-gap you can't cross, signed) so the
      come-back is explicit.
@@ -438,8 +453,8 @@ Stone** (→ `flag:crown_east`) · rec. level ~22.
    - **E1 "The Quiet Reeds"** — see Saltreach Fen II's Named-quests entry (giver lives
      there); listed here for the regional slate count (E1 · E2 · E3 · R3).
 5. **Don't-miss callouts** — **Grind the deep galleries before Otho.** The wall is intentional;
-   the deep encounters (24–27) are how you beat it. Also: a **Glowpan** (Light) caught in the
-   mine is a clean answer to the Stone/Dark threats of the deeper game. And on the Deep's far
+   the deep encounters (24–27) are how you beat it. Also: a **Crystink** (Stone/Light) caught in
+   the mine is a clean answer to the Dark threats of the deeper game. And on the Deep's far
    side, **open the mine shortcut** (below) — it makes every future hub trip from the east trivial.
 6. **Validation hooks — [BUILT 2026-06, `tools/maps/build_cinderhead_mine.py` +
    `build_cinderhead_interiors.py`]**
@@ -455,16 +470,18 @@ Stone** (→ `flag:crown_east`) · rec. level ~22.
      `requires_flag:flag:q_east_vigil_lamp` with `blocked_ref:npc.otho_not_ready` consume
      it. Two **gallery-miner sight trainers** (lv 24–26) in the Deep on the chamber leg.
    - Lumenary battle: **Otho Grist**, Stone, ace ~28 (the wall); trainer entry + `dialogue_ref`.
-   - encounter zones: `cave` — **Gravelo** (Stone), **Sparkrat** (Stone/Storm), **Glowpan**
-     (Light) (atlas card 5); mine-mouth band **22–24**; rate ~0.12.
+   - encounter zones (built): `cave` — **Gravelo** (Stone), **Sparkrat** (Stone/Storm),
+     **Scorchite** (Ember), **Crystink** (Stone/Light), **Flickore** (Stone/Storm);
+     mine-mouth band **22–24**; rate ~0.12.
 
 ---
 
 ### Cinderhead Deep — *the deep galleries; the road on, and the shortcut home*
 
 **At a glance** — `cinderhead_deep` · deep cave · east · enter from Cinderhead Mine
-(`to_deep`, **Glimmerstep**) / exit to Galehigh Terraces (`to_terraces`, ungated → North) ·
-spur: Crystoll Vault (`[LATER]`, Starreach) · sets **`flag:shortcut_mine`** · Gleam: none ·
+(`to_deep`, **Glimmerstep**) / exit `to_terraces` → **Cinderwind Scarp** (built 2026-10:
+chained until `gleam:stone` or `gleam:storm`, `flag:scarp_climb_open`; then over the Ashfall
+Shelf to Galehigh → North) · spur: Crystoll Vault (`[LATER]`, Starreach — unbuilt tease) · sets **`flag:shortcut_mine`** · Gleam: none ·
 rec. level ~24–27 (top of band).
 
 1. **Main path** — The deepest, darkest galleries — Glimmerstep mandatory, encounters at the
@@ -476,8 +493,11 @@ rec. level ~24–27 (top of band).
    (2) cross a deep cavern with
    the Crystoll void-gap tease; (3) reach the **far side** — a sealed mine door; (4) **open it
    from the inside**, setting **`flag:shortcut_mine`** (the Cinderhead Deep → Vesper Crossroads
-   re-link, spine §0 rule 3); (5) the gallery out to the **Galehigh Terraces** (the East→North
-   boundary, **ungated** — the player simply walks on with Tidecall + Glimmerstep in hand).
+   re-link, spine §0 rule 3); (5) the gallery out to **Cinderwind Scarp** (the East→North
+   boundary — built 2026-10 it is **chained until the Stone Gleam** (`flag:scarp_climb_open` =
+   `gleam:stone` OR `gleam:storm`); the main path climbs the Scarp and crosses the Ashfall Shelf
+   to Galehigh, while the Scarp's direct east cut stays a rockfall until the haulers clear it
+   (`flag:scarp_short_open`)).
 2. **Story beats** — No new arc beat; this is the *traversal* payoff. The far-side door opening is
    a small, satisfying "I've connected the world" moment (the mine now feeds straight to the hub).
    Optional flavour: a lone miner near the sealed door who's "been meaning to clear it for years."
@@ -486,7 +506,8 @@ rec. level ~24–27 (top of band).
    Gift. This is also where the spine §5 *exploration widens* note bites: with the shortcut set,
    the east hub trip collapses.
 4. **Optional content** —
-   - **Crystoll Vault** (`crystoll_vault`) — spur, **[LATER]** (needs **Starreach**, endgame).
+   - **Crystoll Vault** (`crystoll_vault`) — spur, **[LATER]** (needs **Starreach**, endgame) —
+     **unbuilt tease** as of 2026-10 (graph edge only).
      Rare **Stone/Light** kin (atlas §3). Frame the void-gap and sign it; the player will return
      after Nightreach.
    - The mine shortcut itself is **[MUST-DO]** to set on first reaching the far side (it's a
@@ -496,31 +517,35 @@ rec. level ~24–27 (top of band).
    `[LATER]` tease — note it on your mental backtrack list for the Starreach run.
 6. **Validation hooks — [BUILT 2026-06, `tools/maps/build_cinderhead_deep.py`]**
    - map id `cinderhead_deep`, kind `cave`; entry paired with Cinderhead Mine `to_deep`
-     (**`requires_ability: 'glimmerstep'`**, graph.ts:128); exit **`to_terraces` →
-     `galehigh_terraces`** (graph.ts:129, **ungated** — the East→North handoff).
+     (**`requires_ability: 'glimmerstep'`**); exit **`to_terraces` → `cinderwind_scarp`**
+     (`requires_flag:'flag:scarp_climb_open'` — built 2026-10; the East→North handoff now runs
+     Scarp → `cinderwind_ashfall` → `galehigh_terraces`); ladders `ladder_down` →
+     `cinderhead_deep_b1f` → `cinderhead_deep_b2f` (the vigil-lamp).
    - **far-side trigger:** `kind:'script'`, `once:true`, **`sets_flags:['flag:shortcut_mine']`**
      — this realises the shortcut edge **`cinderhead_deep → vesper_crossroads via shortcut_crossroads
-     requires_flag:'flag:shortcut_mine'`** (graph.ts:167).
+     requires_flag:'flag:shortcut_mine'`**.
    - spur edge **`cinderhead_deep → crystoll_vault requires_ability: 'starreach'`**
-     (graph.ts:148) — warp `to_crystoll`; tag **[LATER]** (Starreach earned at Nightreach, West —
+     — warp `to_crystoll`; **unbuilt** (no `crystoll_vault` map — the engine no-ops it); tag **[LATER]** (Starreach earned at Nightreach, West —
      closes the spine §5 Starreach back-reference for Crystoll Vault).
-   - encounter zones: `cave` — **Gravelo** (Stone), **Sparkrat** (Stone/Storm), **Glowpan**
-     (Light) (atlas card 5); deep band **24–27** (top of band, §4 — the grind that beats Otho);
-     rate ~0.13. `crystoll_vault` (post-Starreach): low-weight rare **Stone/Light**.
+   - encounter zones (built): `cave` — **Gravelo** (Stone), **Sparkrat** (Stone/Storm),
+     **Crystink** (Stone/Light), **Oreling** (Stone), **Scorchite** (Ember); B1F adds
+     **Flickore** + **Riddlestone**, B2F **Riddlestone** + **Coalump** (Ember); deep band
+     **24–27** (top of band, §4 — the grind that beats Otho); rate ~0.13. `crystoll_vault` (post-Starreach): low-weight rare **Stone/Light**.
 
 ---
 
 ## Region exit checklist (handoff to North)
 
-A player leaving East via `cinderhead_deep → galehigh_terraces` should hold:
+A player leaving East via `cinderhead_deep → cinderwind_scarp` (→ Ashfall Shelf → Galehigh)
+should hold:
 
 - **Levels** ~lv28 (deep galleries grind ~24–27; party ~28 entering Galehigh — matches §4).
 - **Lantern Gifts:** **Tidecall** (from South) **+ Glimmerstep** (Lowleaf).
 - **Gleams:** `gleam:ember`, `gleam:tide` (South) **+ `gleam:verdant`** (Sable Quill) **+
   `gleam:stone`** (Otho Grist) → engine-derived **`flag:crown_east`** is now set.
 - **Flags:** `flag:met_hollowing` (Glowmoss Deep), **`flag:shortcut_mine`** (Cinderhead Deep
-  far side); `flag:crown_south` + `flag:crown_east` both held (the hub's south + east Spire
-  approaches now armed — but the Spire stays sealed until all four `crown_*`).
+  far side); `flag:crown_south` + `flag:crown_east` both held (two of the four crowns the hub's
+  one mountain road waits on — but the Spire stays sealed until all four `crown_*`).
 - **Arc state delivered:** B2 done (Hollowing + Còr foreshadow seen); A3 done (Wren shaken);
   E festivals (Glowmoss Bloom, Lamp-down vigil) staged. **Not yet:** `flag:met_cor` (North,
   B3) and `flag:met_cor`'s in-person Còr scene are the North writer's; do not pre-empt them.
@@ -530,8 +555,9 @@ A player leaving East via `cinderhead_deep → galehigh_terraces` should hold:
 
 **Cross-region courtesies:** East does **not** introduce Fenn (Arc C), Còr in person (B3), or any
 North/West content. The only edges East owns and gates are listed in the per-area Validation
-hooks; the East→North boundary (`to_terraces`) is intentionally **ungated** so the curve crosses
-cleanly with no level or Gift cliff.
+hooks; the East→North boundary (`to_terraces`) needs no Gift — built 2026-10 it is chained only
+until the Stone Gleam (`flag:scarp_climb_open`), so Otho must be beaten before the climb; the
+Scarp (28–30) and Ashfall Shelf (30–32) carry the curve on to Galehigh with no cliff.
 
 ---
 

@@ -77,7 +77,8 @@ regions copy its scripts. What's wired (`src/game/content/scripts.ts` + `cinemat
 **At a glance** — `tinderwick` (+ interiors `tinderwick_house` · `tinderwick_lumenary` hall ·
 the **BEACON** `tinderwick_beacon_i/_ii/_top` · the west side area `duskapple_orchard`) · town ·
 south · entry: spawn outside the house door `{tx:5,ty:8}`, exit: north edge to `dimglass_coast`,
-east Lanternway to `vesper_crossroads`, west hedge gap to `duskapple_orchard` ·
+east Lanternway to `vesper_crossroads`, west hedge gap to `duskapple_orchard`, the beach to
+`tinderwick_bay` → `lowtinder` (Tidecall, mid-game — [`10-the-farlamp-isles.md`](./10-the-farlamp-isles.md)) ·
 gate: the beacon's foot door needs **`flag:has_beacon_wick`** · **Gleam: Ember** (Brisa
 Tallow, ace ~10, at the **beacon top**) · rec. level: start 5, bond-test ~8–9.
 
@@ -136,10 +137,12 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
      > Fenn: "Every Wayfarer leaves with two things, and they have been riding in this old
      > bag all along... And fitting, is it not — every Wayfaring in Vesperholm begins at a
      > crossroads."
-   - **A1 — Meet & choose (Wren).** Wren is warm and competitive and picks the starter that
-     *beats* yours along the Ember→Verdant→Tide→Ember triangle.
-     > Wren: "Whatever you pick, I'm taking the one that'll give you trouble. Race you to
-     > complete the map!"
+   - **A1 — Meet (Wren).** Wren is warm and competitive — minding the courier's cart in
+     Duskapple Orchard (R8). Wren's partner is a **Glimflit** (Light), not a starter (built
+     2026-10: the "takes the starter that beats yours" design was never wired; the line was
+     reworded to match).
+     > Wren: "Whatever partner you pick, mine's already picked me — a little Glimflit.
+     > Trouble enough for anyone." … "Race you to fill the whole map with light, then."
    - **E — the Lantern-fair.** Brisa's Gleam is given inside the town's lantern festival —
      belonging, not conquest.
      > Brisa: "A small flame's no lesser thing, dear. You've kept yours steady — let it
@@ -166,7 +169,11 @@ player up the coast road and back, which also fixes the old lv-5-vs-ace-10 cliff
      The Pearlmoor spoke sleeps until `gleam:tide` (the standing per-town rule —
      `npc.waykeeper_pearlmoor_gate`; first trip to the quay is always the coast road, the
      lane home is the Gleam's reward); the inward Spire road needs `flag:hub_unlocked`
-     (West/endgame) and the north marsh road is an inert tease. The Lowleaf spoke (East's
+     (West/endgame; built 2026-10 as the one mountain road through the Umbral Approach). The
+     old north marsh road is RETIRED (the marshes hang off Nightreach; [`../geometry.md`](../geometry.md)).
+     *(Built 2026-10: the Pearlmoor side is no lane — it is the bay road round from Saltreach
+     Fen I: Wrackline Path → Sounding Cave → Lanternfall Road, its hub end held until
+     `gleam:tide`; the Lowleaf/Galehigh/Nightreach lanes end at Lantern-car stations.)* The Lowleaf spoke (East's
      return-compressor) is the interleaved leg: lower lane, the **Under-Lane** cave beneath
      its own bank, the upper shelf to the Bloom, a one-way ledge home.
 
@@ -470,7 +477,9 @@ boundary is ungated; the *spurs* off it are gift-gated) · Gleam: — · rec. le
 
 **At a glance** — `pearlmoor_quay` (+ the breakwater `pearlmoor_breakwater` **[BUILT]**) ·
 town · south · entry: south from `dimglass_coast_ii`, exit: onward to `saltreach_fen_i`
-(via `to_fen`, East) + Lanternway `to_crossroads` · gate: **Tidecall** (its own islets &
+(via `to_fen`, East; the bay road home to the hub leaves Fen I — Wrackline Path → Sounding
+Cave → Lanternfall Road, built 2026-10) + `pearlmoor_point` (Lightkeeper's Point: the Old
+Light, later the Farlamp Skiff — [`10-the-farlamp-isles.md`](./10-the-farlamp-isles.md)) · gate: **Tidecall** (its own islets &
 sea-shrine — but the Lumenary itself is **not** gated, per spine §0 rule 1; the breakwater
 is walked **on foot**) · **Gleam: Tide** (Reyl Wash, ace ~16, at his **sea-altar** — the
 bond-test waits on the **Moor-bell**) + **Tidecall** · rec. level: 12, bond-test ~13–14.
@@ -490,8 +499,9 @@ netmender's keeping.
       (`script.reyl_quest` → `flag:q_south_bell`; until the bell rings his bond-test
       trigger answers with a `blocked_ref` in the same voice.)
    3. **The netmender's errand (collinear).** The quay netmender keeps the bell-rope, but
-      her **net-floats** drifted south in the last storm — a single item cache one screen
-      back on **Dimglass Coast II** (band 8–10, ground just walked). Return them →
+      her **net-floats** are gone — *(built R9, 2026-10: no longer a Dimglass II cache)* they
+      come down from the **top of the Old Light** on Lightkeeper's Point (Mr. Punchwheel's
+      card → `flag:picked_net_floats` + `flag:q_south_jest_done`). Return them →
       `flag:q_south_has_rope` (NPC swap hands the rope).
    4. **Walk the breakwater** (`pearlmoor_breakwater` — the foot gate needs the rope;
       blocked line in the netmender's voice). Two **net-hand sight trainers** (lv 12–14)
@@ -537,9 +547,10 @@ netmender's keeping.
    - **Gullcry Rock backtrack** (Dimglass II spur) — `[MUST-DO]` **[BUILT]** the rare
      harbour-light kin (Glostern) + the Tide Charm, now reachable; the region's signature
      "the map reopened" payoff.
-   - **Lanternway → Vesper Crossroads** — already known: the hub is where the Wayfaring
-     BEGAN (the satchel errand); from Pearlmoor it now reads as South's fast-travel anchor.
-     Its inward Spire roads remain `[LATER]` (`flag:hub_unlocked`, West/endgame).
+   - **The bay road → Vesper Crossroads** — already known: the hub is where the Wayfaring
+     BEGAN (the satchel errand); from Pearlmoor it is reached round the bay (Saltreach Fen I →
+     Wrackline Path → Sounding Cave → Lanternfall Road; the hub end opens on `gleam:tide`).
+     Its inward Spire road remains `[LATER]` (`flag:hub_unlocked`, West/endgame).
 
    **Named quests** (spine §5 kit; South's slate, with S2 over in Tinderwick):
    - **S1 "The Last Buoy Out"** — **[BUILT]** giver: the **netmender** (her post-Gleam
@@ -557,8 +568,9 @@ netmender's keeping.
      burns (`script.fisher_thanks`) · flags: `flag:q_south_wrecklamp` →
      `flag:q_south_wrecklamp_lit` (→ `flag:q_south_wrecklamp_done`) · reward: the
      **Wrecklight Charm** (the Tide Charm re-blessed, ×2.5) · maps: `pearlmoor_quay`,
-     `tideglass_cavern` · `[LATER: Glimmerstep]` — **the wreck-lamp trigger itself ships
-     with `tideglass_cavern`** (it must set `flag:q_south_wrecklamp_lit`); a deeper page
+     `tideglass_cavern` · `[LATER: Glimmerstep]` — **the wreck-lamp trigger is BUILT in
+     `tideglass_cavern`** (`script.tideglass_wrecklamp`, gated `flag:q_south_wrecklamp`, sets
+     `flag:q_south_wrecklamp_lit` + the lit/dark lamp object swap); a deeper page
      beyond the lamp's reach `[LATER: Lamplight ≥ Starlight]`.
    - **S4 "The Booji-Wooji Man"** — **[BUILT]** giver: **Andy** at the **Lifting House**
      (`pearlmoor_lifting_house`, the quayside gym tucked behind the inn — door on the
@@ -703,11 +715,12 @@ netmender's keeping.
      Warm Balm), **Nettie Fret** (Lightkeeper's Point, `worry_nettie`; Warm Balm; her tip follows
      the Old Light → bell → Reyl loop), **Constance Dither** (Vesper Crossroads (16,6), spyglass
      the wrong way round; Tallow Balm).
-   - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (live now): parcel
+   - **R1 "Wicks for the Lamplighter"** — the Waykeeper's Round, leg 1 (**NOT YET BUILT** —
+     `q_round_lamplighter` is set nowhere; see the `quests.ts` header): parcel
      from the **Waykeeper** (`vesper_crossroads`) → the **old lamplighter** (Dimglass I) ·
      flags: `flag:q_round_lamplighter` · reward: bright-lamp kit · `[wakes with spoke]`
      (south spokes are live).
-   - **R2 "Salt-glass for the Chandler"** — Round leg 2 (live now): Waykeeper parcel → the
+   - **R2 "Salt-glass for the Chandler"** — Round leg 2 (**NOT YET BUILT**): Waykeeper parcel → the
      **Pearlmoor chandler** · flags: `flag:q_round_chandler` · reward: balm kit ·
      `[wakes with spoke]`.
 
@@ -725,10 +738,10 @@ netmender's keeping.
      causeway is carved SAND under the boards, never gated water; no encounters — its
      battles are the two posted net-hands).
    - **Entry/exit:** south land-in from `dimglass_coast_ii` (paired with its `to_quay`); onward
-     **`to_fen`** → `saltreach_fen_i` (graph edge, ungated); **`to_crossroads`** → `vesper_crossroads`
-     (Lanternway spoke, bidirectional); the breakwater root (cols 24–25, rows 18–23) ends in
+     **`to_fen`** → `saltreach_fen_i` (graph edge, ungated); `to_point_15–17` → `pearlmoor_point`
+     (no direct hub warp — built 2026-10, the hub is round the bay from Fen I); the breakwater root (cols 24–25, rows 18–23) ends in
      the moor-gate pair **`to_breakwater`/`to_breakwater_e`** `{24–25,23}`
-     **`requires_flag:flag:q_south_has_rope`** with **`blocked_ref:npc.netmender_gate`**
+     **`requires_flag:flag:q_south_rope_or_later`** (derived: `q_south_has_rope` OR `gleam:tide`) with **`blocked_ref:npc.netmender_gate`**
      (Warp.blocked_ref is engine-supported, step_on included) → `pearlmoor_breakwater {5–6,0}`,
      landing ON its return pair.
    - **The bell quest chain (all data, BUILT; R9 2026-10):** `script.reyl_quest` (hall,
@@ -825,8 +838,8 @@ netmender's keeping.
    - **Quest-chain hooks (rule 3):** opened `flag:q_south_bell` / `q_south_has_rope` /
      `q_south_bell_rung` are consumed by the breakwater gate, the netmender stage chain and
      the bond-test trigger; S1/S3 flags as listed in their Named-quests entries (S3's
-     `flag:q_south_wrecklamp_lit` is the one ref owed by a future map — the wreck-lamp
-     trigger in `tideglass_cavern`); R1/R2 (the Waykeeper's Round legs) remain to wire at
+     `flag:q_south_wrecklamp_lit` is set by the built wreck-lamp trigger in
+     `tideglass_cavern`); R1/R2 (the Waykeeper's Round legs) remain to wire at
      `vesper_crossroads`.
    - **Tidecall-gated town content:** islet/sea-shrine warps + `water` `EncounterZone`s with
      **`requires_ability:tidecall`**; an `AbilityGate` (`tidecall`,`make_passable`) over the

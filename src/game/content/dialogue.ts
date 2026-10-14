@@ -55,12 +55,13 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'GATE-WARDEN', text: "One more kindness for the road: your whole journey is kept in your lamp's memory — and a memory can be lost. In SETTINGS you can press a copy of it to keep somewhere safe. Do that now and then, and a cleared shelf can never take the road behind you." },
   ],
   // The rival Wren — a fellow young Wayfarer in the plaza (A1). Warm and competitive;
-  // by canon Wren takes the starter that beats yours along Ember->Verdant->Tide->Ember.
+  // Wren's partner is a Glimflit (Light), not one of the starter trio (every Wren team
+  // leads with the Glimflit line).
   // R8: Wren mills about Duskapple Orchard now (not the town garden).
   'npc.wren_intro': [
     { speaker: 'WREN', text: "Shh — I'm minding the courier's cart for her. Mostly by eating the windfalls." },
     { speaker: 'WREN', text: 'You as well? Ha — Fenn sends us all out the same week. Good.' },
-    { speaker: 'WREN', text: "Whatever partner you pick, I'm taking the one that gives you trouble. Only fair." },
+    { speaker: 'WREN', text: "Whatever partner you pick, mine's already picked me — a little Glimflit. Trouble enough for anyone." },
     { speaker: 'WREN', text: "Race you to fill the whole map with light, then. Loser carries the lamp oil." },
   ],
 
