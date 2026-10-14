@@ -127,6 +127,8 @@ const TITLE_CLASS: Record<string, string> = {
   // the Farlamp Isles (Lane C1)
   Oarsman: 'net_hand', 'Kelp-farmer': 'net_hand', 'Isle Keeper': 'wick_tender',
   Salvager: 'net_hand', 'Fog-pilot': 'net_hand', // C1 pass 2: the Shelfwater + Fogwall boats
+  // Lane N1 (11 Parts A + E): the Hollowing's elders and their old lamplighter
+  'Hollowing Elder': 'acolyte', 'Hollowing Lamplighter': 'wick_tender',
 };
 
 /** Unique battle sprites, by trainer id (bosses, set-pieces, the Old Light's cast). */

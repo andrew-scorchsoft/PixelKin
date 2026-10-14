@@ -46,7 +46,7 @@ and sets flag:q_west_chart_3 (the OPTIONAL "bravest" leg — W4's done-stage
 must not hard-require _3, or must call it out; hooks list this leg as
 optional). Mirrors sunvault_climb_ii's chart_sunvault trigger verbatim.
 
-NO TRAINERS (deliberate §11 r7 deviation, documented): the walkthrough's
+(SUPERSEDED 2026-10 by walkthrough/11 Part E: two Hollowing acolytes now keep this road — see the density block below.) NO TRAINERS (deliberate §11 r7 deviation, documented): the walkthrough's
 Coldfog hooks name zero trainers — nobody keeps a road through a drained
 land; the dread register would not survive a cheery route battle. The
 mandatory blight-bed crossing (rows 12-13, full corridor) keeps the route
@@ -136,6 +136,17 @@ for (x, y) in [(8, 27), (9, 27), (8, 28), (9, 28), (8, 29), (9, 29)]:
 # spur opens off the WEST flank instead (rows 4-5)
 for y in (4, 5):
     for x in (0, 1, 2, 3):
+        cliff[y * W + x] = 0
+# THE HOLLOWING'S COUNTRY (walkthrough/11 Part E, 2026-10): the old road north
+# was never lost — it was LED. The north gap opens at cols 4-7 (world x 52-55) up
+# to Stillwater, the Hollowing's village; the east flank opens at rows 11-14
+# (world y -450..-447) onto the Mourning Fields (Lane N3's map: the engine no-ops
+# those warps until it lands). Both seams are this lane's (N1) per the contract.
+for y in range(0, 4):
+    for x in (4, 5, 6, 7):
+        cliff[y * W + x] = 0
+for y in range(11, 15):
+    for x in (16, 17, 18, 19):
         cliff[y * W + x] = 0
 
 # THE BLUFF (NE) — X3's bravest viewpoint: cliff rim, scree ledge lip, west climb
@@ -270,6 +281,16 @@ m["warps"] += [
      "blocked_ref": "sign.coldfog_beacon", "transition": "fade"},
 ]
 
+# ---- the Hollowing's Country seams (walkthrough/11 build contract) ------------------
+for x in (4, 5, 6, 7):
+    m["warps"].append({"id": f"to_stillwater_{x}", "at": {"tx": x, "ty": 0},
+                       "trigger": "step_on", "to_map": "stillwater",
+                       "to": {"tx": x, "ty": 28}, "facing": "up", "transition": "fade"})
+for y in (11, 12, 13, 14):
+    m["warps"].append({"id": f"to_mourning_{y}", "at": {"tx": W - 1, "ty": y},
+                       "trigger": "step_on", "to_map": "mourning_fields",
+                       "to": {"tx": 1, "ty": y}, "facing": "right", "transition": "fade"})
+
 # ---- the road that forgets: dark reed-lanterns remember the lane --------------------
 for n, (x, y) in enumerate([(7, 20), (10, 16), (7, 10), (10, 5)]):
     m["objects"].append(
@@ -341,11 +362,46 @@ owed += ["script.chart_coldfog (X3 leg 3, OPTIONAL/bravest — a star-reading "
 # Posted at the deep-fog boundary — the last living voice before the works'
 # drained country; his line is the B4 entry-tone (grief dressed as mercy).
 m["npcs"].append(
-    {"id": "marsh_hermit", "at": {"tx": 6, "ty": 3}, "facing": "right",
+    {"id": "marsh_hermit", "at": {"tx": 9, "ty": 3}, "facing": "left",
      "sprite": "npc_old_man", "movement": "static",
      "dialogue_ref": "npc.coldfog_marsh_hermit"})
 owed += ["npc.coldfog_marsh_hermit (hooks ref VERBATIM — the 'kindest thing' "
          "line; zero humour)"]
+
+# ---- the Hollowing's Country density (walkthrough/11 Part E) ------------------------
+# Two acolytes keep the road north (sight trainers, keeper class — they ask first,
+# in their scripts); a Stillwater trader at the north gap (the marsh has no rest,
+# so she sells what the road needs); an elegiac fen-walker on the living fringe;
+# the first of the Shutter-wall's three cold lamps; Tessaly's first escort stop;
+# and a Lamplight-STARLIGHT secret: the one nook bright enough lamplight can find.
+owed += pt.trainer_beat(m, tid="coldfog_acolyte_north", at=(10, 8), facing="down",
+                        sight=4, sprite="hollowing_acolyte")
+owed += pt.trainer_beat(m, tid="coldfog_acolyte_east", at=(16, 14), facing="left",
+                        sight=4, sprite="hollowing_elder")
+m["npcs"] += [
+    {"id": "still_trader", "at": {"tx": 10, "ty": 3}, "facing": "left",
+     "sprite": "market_trader", "movement": "static",
+     "dialogue_ref": "script.still_trader"},
+    {"id": "fen_walker", "at": {"tx": 8, "ty": 24}, "facing": "down",
+     "sprite": "pass_walker", "movement": "wander", "wander_radius": 2,
+     "dialogue_ref": "script.coldfog_fen_walker"},
+    {"id": "tessaly_fog1", "at": {"tx": 7, "ty": 22}, "facing": "down",
+     "sprite": "fen_folk", "movement": "static", "dialogue_ref": "script.still_tessaly_fog1",
+     "requires_flag": "flag:q_still_tessaly", "hidden_when_flag": "flag:q_still_tessaly_fog1"},
+    {"id": "cache_coldfog_starlight", "at": {"tx": 2, "ty": 19}, "facing": "down",
+     "sprite": "item_cache", "movement": "static",
+     "dialogue_ref": "script.pickup_coldfog_starlight",
+     "requires_flag": "flag:lamplight_starlight",
+     "hidden_when_flag": "flag:picked_coldfog_starlight"},
+]
+m["objects"].append(
+    {"id": "named_lamp_1", "sprite": "coldfog_doused_lamp", "at": {"tx": 16, "ty": 18},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True})
+m["triggers"].append(
+    {"id": "named_lamp_1_read", "kind": "script", "at": {"tx": 15, "ty": 20},
+     "activation": "interact", "ref": "script.still_coldlamp_1"})
+owed += ["script.still_trader", "script.coldfog_fen_walker", "script.still_tessaly_fog1",
+         "script.pickup_coldfog_starlight", "script.still_coldlamp_1"]
 
 # ---- signs --------------------------------------------------------------------------
 owed += pt.sign(m, deco, W, sid="coldfog_marches", at=(10, 24))   # the blight line

@@ -63,6 +63,30 @@ north edge (x 48–68). Interiors (roomkit, a muted shutter-grey kit):
 
 **After the dawn:** a few shutters open. A lamp in a window, a child at it. Quiet, not triumphant.
 
+**BUILT (Lane N1, 2026-10).** `tools/maps/build_stillwater.py` (+ `build_stillwater_interiors.py`,
+the shutter-grey kit `build_stillwater_interior_set.py`, the `flagway` lane family
+`build_stillwater_set.py`, drawn props `stillwaterforge.py`, five image-gen buildings in
+`assets/tilesets/stillwater/objects/`). Content: `content/regions/stillwater.ts`.
+- **Layout:** the Still Water (murk mere) under the north crags, its shore walk lined with
+  shuttered lamp-posts; the Quiet Hall on the square, the Shutter (inn) west, the dark-lamp
+  maker east, two homes south; grey meadows NW/NE/S + the lampmaker's yard (#178's bed).
+  Seams: south cols 4-7 ⇄ Coldfog I; south cols 22-25 → `mourning_fields` (2-5, 1).
+- **People (~20 incl. rooms):** Elder Ashe, Keeper Wenna (the hall), Osric the lamp-maker
+  (shop `stillwater_lampmaker`, incl. the Hooded Lamp), Maren + Pip, Tessaly, Grete, Odo,
+  Lisbet, Corwen (the doubter), Hallam, Nell, Ines + Tam, the innkeeper. Three trainers who
+  talk first (choice → battle): Hale (ace 50), Vesna (51), Grisel (52), keeper class.
+- **Quests:** *A Light Left On* (`flag:q_still_candle*` — Pip's candle to the willow hollow or
+  to Maren; a Starglass Shard either way); *The Way Home* (`flag:q_still_tessaly*` — she waits
+  in Coldfog I, then Coldfog II, then home at Pale Vault `pale_vault_glacier` (6,22) via
+  `hand_placed_data.py`; reward: **Tessaly's Lamp**, a conditional charge ×3.0 on a dozing
+  kin); *The Shutter-wall* (`flag:q_still_wall`, three cold lamps: Coldfog I `named_lamp_1`,
+  Coldfog II `named_lamp_2`, Stillwater's far shore; a Lumen Drop + 1,500w).
+- **After the dawn:** two shore lamps open and lit (flag-pair objects), home B's upstairs
+  window opens with a lamp and a child at it (`stillwater_window_lit`), the mist thins
+  (ambience `when`), the meadows' day-forms rise, every resident gets a dawn line.
+- **Music:** `stillwater` (classic chip, snes register, 72 BPM 3/4 D minor) + remaster.
+  Backdrop `stillwater-a.webp`; chart `stillwater` (unlocks the LORE entry).
+
 ## B · The Drownlight — the first lamp the Hollowing put out
 
 **Lore.** The Drownlight Beacon was the north coast's light. It was the Hollowing's first:
@@ -112,6 +136,15 @@ Coldfog I/II gain Hollowing acolyte sight trainers (2 each), people (an elegiac 
 Stillwater trader), and a Lamplight-starlight secret each. The Nightreach lane gets its
 lamplighters. Sunvault Climb II–IV get a talkable climber each. All of this goes through the owning
 builder or runner, and any pre-Chickenpig restrictions apply. `audit_visual` stays at 0 FAIL.
+
+**BUILT (Lane N1, 2026-10).** Coldfog I (`build_coldfog_marches_i.py`): the north gap to
+Stillwater, the east edge rows 11-14 → `mourning_fields` (1, y), sight acolytes Brin (10,8)
+and Fenwick (16,14), Sefton the Stillwater trader (shop `stillwater_trader`) at the gap, a
+fen-walker, the Wayfare Lamp, Tessaly's first stop, a `flag:lamplight_starlight` cache.
+Coldfog II (`build_coldfog_marches_ii.py`): sight acolytes Odran (25,12) and Marrow (7,12),
+a mourner at the quieted camp, the Market Lamp, Tessaly's second stop, a Starlight cache.
+The Nightreach lane's two lamplighters and a talkable climber on Sunvault Climb II-IV ride
+`hand_placed_data.py` (`_N1_NPCS`). Coldfog trainers ace 48-50, keeper class.
 
 ## F · Kin (#178–#180, region `north_hollow`, table-only like `isles`)
 

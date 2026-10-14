@@ -1,0 +1,200 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a single muted music-box phrase in D minor over a soft held string chord, like a lid opened very gently}",
+   "duration_ms": 6000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments with the soft echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 time, a slow rocking hymn pulse",
+    "D minor, turning to B-flat major for a hymn",
+    "a soft muted music box with a felt damper carrying the melody",
+    "a quiet pulse-wave lead doubling the music box",
+    "a hushed sampled string pad holding hymn chords",
+    "a low soft bass note on each bar",
+    "very quiet and tender, a whispering village where kin sleep",
+    "melancholy, gentle and kind",
+    "strong singable melody",
+    "instrumental",
+    "a lone instrument breathing in",
+    "hushed"
+   ],
+   "negative_styles": [
+    "vocals",
+    "choir",
+    "drums",
+    "percussion",
+    "EDM",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "dissonant drone",
+    "cheerful",
+    "dense arrangement",
+    "loud"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "low"
+  },
+  {
+   "text": "[Main Theme]\n{a muted music box and soft pulse lead: a lift from the fifth to the tonic and up a step, then a falling settle, each phrase hanging on the second degree over a suspended chord}",
+   "duration_ms": 24000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments with the soft echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 time, a slow rocking hymn pulse",
+    "D minor, turning to B-flat major for a hymn",
+    "a soft muted music box with a felt damper carrying the melody",
+    "a quiet pulse-wave lead doubling the music box",
+    "a hushed sampled string pad holding hymn chords",
+    "a low soft bass note on each bar",
+    "very quiet and tender, a whispering village where kin sleep",
+    "melancholy, gentle and kind",
+    "strong singable melody",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "lullaby",
+    "unresolved, holding its breath"
+   ],
+   "negative_styles": [
+    "vocals",
+    "choir",
+    "drums",
+    "percussion",
+    "EDM",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "dissonant drone",
+    "cheerful",
+    "dense arrangement",
+    "loud"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the hymn again, a step higher and then falling back, the strings a little warmer, the music box still felt-damped and quiet}",
+   "duration_ms": 24000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments with the soft echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 time, a slow rocking hymn pulse",
+    "D minor, turning to B-flat major for a hymn",
+    "a soft muted music box with a felt damper carrying the melody",
+    "a quiet pulse-wave lead doubling the music box",
+    "a hushed sampled string pad holding hymn chords",
+    "a low soft bass note on each bar",
+    "very quiet and tender, a whispering village where kin sleep",
+    "melancholy, gentle and kind",
+    "strong singable melody",
+    "instrumental",
+    "slightly fuller",
+    "tender"
+   ],
+   "negative_styles": [
+    "vocals",
+    "choir",
+    "drums",
+    "percussion",
+    "EDM",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "dissonant drone",
+    "cheerful",
+    "dense arrangement",
+    "loud"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{the hall's hymn: the tune turns to B-flat major, a gentle sung rest, soft harp arpeggios breathing beneath for the first time, sincere and consoling, then turning back to a suspended A chord}",
+   "duration_ms": 16000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments with the soft echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 time, a slow rocking hymn pulse",
+    "D minor, turning to B-flat major for a hymn",
+    "a soft muted music box with a felt damper carrying the melody",
+    "a quiet pulse-wave lead doubling the music box",
+    "a hushed sampled string pad holding hymn chords",
+    "a low soft bass note on each bar",
+    "very quiet and tender, a whispering village where kin sleep",
+    "melancholy, gentle and kind",
+    "strong singable melody",
+    "instrumental",
+    "contrasting section",
+    "hymn",
+    "consoling"
+   ],
+   "negative_styles": [
+    "vocals",
+    "choir",
+    "drums",
+    "percussion",
+    "EDM",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "dissonant drone",
+    "cheerful",
+    "dense arrangement",
+    "loud"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the hush-hymn returns in D minor, quiet and steady; the last bar hangs on the second degree and lifts straight back into the theme}",
+   "duration_ms": 24000,
+   "positive_styles": [
+    "16-bit SNES-era RPG soundtrack",
+    "retro sampled-chip instruments with the soft echo of a 16-bit sound chip",
+    "90 BPM",
+    "3/4 time, a slow rocking hymn pulse",
+    "D minor, turning to B-flat major for a hymn",
+    "a soft muted music box with a felt damper carrying the melody",
+    "a quiet pulse-wave lead doubling the music box",
+    "a hushed sampled string pad holding hymn chords",
+    "a low soft bass note on each bar",
+    "very quiet and tender, a whispering village where kin sleep",
+    "melancholy, gentle and kind",
+    "strong singable melody",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "choir",
+    "drums",
+    "percussion",
+    "EDM",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "dissonant drone",
+    "cheerful",
+    "dense arrangement",
+    "loud"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

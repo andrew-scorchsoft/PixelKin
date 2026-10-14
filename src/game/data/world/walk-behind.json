@@ -1,6 +1,11 @@
 {
   "_doc": "Building sprites whose top N footprint rows (the roof peak) are WALK-BEHIND: passable, yet still drawn over the player (they sit inside the object's overhang). Read by CollisionGrid.ts AND tools/maps/worldmodel.py (+ audit_warps) - keep it the one source. N must stay <= the object's overhang.",
   "rows": {
+    "stillwater_home_a": 1,
+    "stillwater_home_b": 1,
+    "stillwater_inn": 1,
+    "stillwater_lampmaker": 1,
+    "stillwater_quiet_hall": 1,
     "cinderhead_lumenary": 1,
     "cinderhead_miner_cottage": 1,
     "coldfog_lighthouse": 1,

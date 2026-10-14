@@ -1455,6 +1455,31 @@
       "hidden_when_flag": "flag:works_found_hollis"
     },
     {
+      "id": "tessaly_home",
+      "at": {
+        "tx": 6,
+        "ty": 22
+      },
+      "facing": "down",
+      "sprite": "fen_folk",
+      "movement": "static",
+      "dialogue_ref": "script.still_tessaly_home",
+      "requires_flag": "flag:q_still_tessaly_fog2",
+      "hidden_when_flag": "flag:q_still_tessaly_done"
+    },
+    {
+      "id": "tessaly_after",
+      "at": {
+        "tx": 6,
+        "ty": 22
+      },
+      "facing": "down",
+      "sprite": "fen_folk",
+      "movement": "look_around",
+      "dialogue_ref": "script.still_tessaly_after",
+      "requires_flag": "flag:q_still_tessaly_done"
+    },
+    {
       "id": "amb_snowcune",
       "at": {
         "tx": 20,

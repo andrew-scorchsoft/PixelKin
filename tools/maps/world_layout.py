@@ -86,6 +86,8 @@ NODE_KINDS: dict[str, str] = {
     # the marshes (off Nightreach)
     "coldfog_marches_ii": "route", "coldfog_marches_i": "route", "drownlight_beacon": "landmark",
     "hollowfen_stillworks": "landmark",
+    # Lane N1 (11 Part A): the Hollowing's village, north of Coldfog I
+    "stillwater": "town",
     # THE WILD WAYS — the Wick-Run (09 §2 A): Sunvault Climb I down the west flank to the sea
     "wickrun_crest": "route", "wickrun_chute": "route", "wickrun_trestles": "route",
     "wickrun_traverse": "route", "wickrun_lower": "route", "wickrun_foot": "route",
@@ -217,6 +219,7 @@ ROADS: list[tuple[str, str, str]] = [
     ("coldfog_marches_ii", "coldfog_marches_i", "gate"),
     ("coldfog_marches_i", "drownlight_beacon", "gate"),
     ("coldfog_marches_ii", "hollowfen_stillworks", "gate"),
+    ("coldfog_marches_i", "stillwater", "road"),  # Lane N1 (11 Part A)
     # the Rimeway (09-the-wild-ways §2 C): Pale Vault -> the Fold -> the Rime Gate -> the marsh
     ("pale_vault_glacier", "rimeway_ascent", "road"),
     ("rimeway_ascent", "rimeway_fold", "road"),

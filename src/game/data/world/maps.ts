@@ -1721,6 +1721,52 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     music: 'assets/audio/music/bell-cellar.mp3',
     battle_backdrops: ['assets/backgrounds/battle/bell-cellar-a.webp'],
   },
+  // ---- Lane N1 (walkthrough/11 Part A): Stillwater, the Hollowing's village ----
+  // North of Coldfog Marches I. Its lanes are `flagway` (stillwater_set: flagstones
+  // drawn over blight), its crags the Coldfog `fogcrag`. The hush-hymn `stillwater`
+  // plays town-wide; indoors the stock set (inn-rest / shop-counter / interior-hush /
+  // interior-unease). Rooms use the shutter-grey kit (build_stillwater_interior_set.py).
+  stillwater: {
+    json: 'assets/maps/stillwater.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+      stillwater_set: 'assets/tilesets/stillwater_set.webp',
+    },
+    kind: 'town',
+    music: 'assets/audio/music/stillwater.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/stillwater-a.webp'],
+  },
+  stillwater_quiet_hall: {
+    json: 'assets/maps/stillwater_quiet_hall.json',
+    tilesets: { interior_shutter_set: 'assets/tilesets/interior_shutter_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-hush.mp3',
+  },
+  stillwater_shutter: {
+    json: 'assets/maps/stillwater_shutter.json',
+    tilesets: { interior_shutter_set: 'assets/tilesets/interior_shutter_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/inn-rest.mp3',
+  },
+  stillwater_lampmaker: {
+    json: 'assets/maps/stillwater_lampmaker.json',
+    tilesets: { interior_shutter_set: 'assets/tilesets/interior_shutter_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/shop-counter.mp3',
+  },
+  stillwater_home_a: {
+    json: 'assets/maps/stillwater_home_a.json',
+    tilesets: { interior_shutter_set: 'assets/tilesets/interior_shutter_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-hush.mp3',
+  },
+  stillwater_home_b: {
+    json: 'assets/maps/stillwater_home_b.json',
+    tilesets: { interior_shutter_set: 'assets/tilesets/interior_shutter_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-unease.mp3',
+  },
 };
 
 /**

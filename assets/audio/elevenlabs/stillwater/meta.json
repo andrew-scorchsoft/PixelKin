@@ -1,0 +1,13 @@
+{
+ "id": "stillwater",
+ "kind": "loop",
+ "where": "Stillwater, the Hollowing's village north of the Coldfog marshes: shuttered lamps, soft voices, kin asleep under grey blankets",
+ "mood": "A hush-hymn: a music-box with a felt damper, sung softly by tired, kind people who believe the dark is mercy.",
+ "duration": 95.556,
+ "loop_start": 8.615,
+ "seam": 0.271,
+ "bpm_est": 89.1,
+ "song_id": "VHTHiLXPUjO6v8gvFOqy",
+ "raw_ms": 89000,
+ "motif": "low"
+}

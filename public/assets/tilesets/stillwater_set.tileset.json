@@ -1,0 +1,112 @@
+{
+  "name": "stillwater_set",
+  "image": "assets/tilesets/stillwater_set.webp",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 6,
+  "tile_count": 17,
+  "tiles": [
+    {
+      "index": 0,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "corner_nw"
+    },
+    {
+      "index": 1,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "edge_n"
+    },
+    {
+      "index": 2,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "corner_ne"
+    },
+    {
+      "index": 3,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "edge_w"
+    },
+    {
+      "index": 4,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "fill"
+    },
+    {
+      "index": 5,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "edge_e"
+    },
+    {
+      "index": 6,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "corner_sw"
+    },
+    {
+      "index": 7,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "edge_s"
+    },
+    {
+      "index": 8,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "corner_se"
+    },
+    {
+      "index": 9,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "strip_h"
+    },
+    {
+      "index": 10,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "strip_v"
+    },
+    {
+      "index": 11,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "inner_nw"
+    },
+    {
+      "index": 12,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "inner_ne"
+    },
+    {
+      "index": 13,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "inner_sw"
+    },
+    {
+      "index": 14,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "inner_se"
+    },
+    {
+      "index": 15,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "fill"
+    },
+    {
+      "index": 16,
+      "role": "path",
+      "terrain": "flagway",
+      "autotile": "fill"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "flagway_corner_nw": 0,
+  "flagway_edge_n": 1,
+  "flagway_corner_ne": 2,
+  "flagway_edge_w": 3,
+  "flagway_fill": 4,
+  "flagway_edge_e": 5,
+  "flagway_corner_sw": 6,
+  "flagway_edge_s": 7,
+  "flagway_corner_se": 8,
+  "flagway_strip_h": 9,
+  "flagway_strip_v": 10,
+  "flagway_inner_nw": 11,
+  "flagway_inner_ne": 12,
+  "flagway_inner_sw": 13,
+  "flagway_inner_se": 14,
+  "flagway_fill_v1": 15,
+  "flagway_fill_v2": 16
+}

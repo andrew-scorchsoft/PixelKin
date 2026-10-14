@@ -249,6 +249,18 @@
       "requires_flag": "flag:dawn"
     },
     {
+      "id": "named_lamp_2",
+      "sprite": "coldfog_doused_lamp",
+      "at": {
+        "tx": 12,
+        "ty": 17
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2,
+      "walk_under": true
+    },
+    {
       "id": "vigil_scar_murkfall",
       "sprite": "vigil_star_scar",
       "at": {
@@ -587,6 +599,16 @@
       },
       "activation": "interact",
       "ref": "sign.coldfog_backdoor"
+    },
+    {
+      "id": "named_lamp_2_read",
+      "kind": "script",
+      "at": {
+        "tx": 12,
+        "ty": 20
+      },
+      "activation": "interact",
+      "ref": "script.still_coldlamp_2"
     }
   ],
   "encounters": [
@@ -1169,6 +1191,95 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_coldfog_bank_charm",
       "hidden_when_flag": "flag:picked_coldfog_bank_charm"
+    },
+    {
+      "id": "coldfog_acolyte_deep",
+      "at": {
+        "tx": 25,
+        "ty": 12
+      },
+      "facing": "up",
+      "sprite": "hollowing_acolyte",
+      "movement": "static",
+      "dialogue_ref": "script.coldfog_acolyte_deep",
+      "sight_range": 4,
+      "defeated_flag": "flag:coldfog_acolyte_deep_beaten",
+      "hidden_when_flag": "flag:coldfog_acolyte_deep_beaten"
+    },
+    {
+      "id": "coldfog_acolyte_deep_after",
+      "at": {
+        "tx": 25,
+        "ty": 12
+      },
+      "facing": "up",
+      "sprite": "hollowing_acolyte",
+      "movement": "look_around",
+      "dialogue_ref": "npc.coldfog_acolyte_deep_after",
+      "requires_flag": "flag:coldfog_acolyte_deep_beaten"
+    },
+    {
+      "id": "coldfog_acolyte_west",
+      "at": {
+        "tx": 7,
+        "ty": 12
+      },
+      "facing": "right",
+      "sprite": "hollowing_elder",
+      "movement": "static",
+      "dialogue_ref": "script.coldfog_acolyte_west",
+      "sight_range": 5,
+      "defeated_flag": "flag:coldfog_acolyte_west_beaten",
+      "hidden_when_flag": "flag:coldfog_acolyte_west_beaten"
+    },
+    {
+      "id": "coldfog_acolyte_west_after",
+      "at": {
+        "tx": 7,
+        "ty": 12
+      },
+      "facing": "right",
+      "sprite": "hollowing_elder",
+      "movement": "look_around",
+      "dialogue_ref": "npc.coldfog_acolyte_west_after",
+      "requires_flag": "flag:coldfog_acolyte_west_beaten"
+    },
+    {
+      "id": "camp_mourner",
+      "at": {
+        "tx": 7,
+        "ty": 9
+      },
+      "facing": "down",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "script.coldfog_camp_mourner"
+    },
+    {
+      "id": "tessaly_fog2",
+      "at": {
+        "tx": 20,
+        "ty": 15
+      },
+      "facing": "right",
+      "sprite": "fen_folk",
+      "movement": "static",
+      "dialogue_ref": "script.still_tessaly_fog2",
+      "requires_flag": "flag:q_still_tessaly_fog1",
+      "hidden_when_flag": "flag:q_still_tessaly_fog2"
+    },
+    {
+      "id": "cache_coldfog_deep_starlight",
+      "at": {
+        "tx": 2,
+        "ty": 14
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_coldfog_deep_starlight",
+      "requires_flag": "flag:lamplight_starlight",
+      "hidden_when_flag": "flag:picked_coldfog_deep_starlight"
     }
   ],
   "gates": [],

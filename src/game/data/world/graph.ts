@@ -250,6 +250,14 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'undertide_iii', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the three-bell maze, the keeper\'s ledge (rest), Tide-bell Tuning (a Lumen Drop + the shortcut race)' },
     { map_id: 'undertide_iv', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the Drowned Stair: a Lumen Drop, a Hearth Coal, the keeper\'s 2,000w purse, the last page' },
     { map_id: 'farlamp_drowned', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the relight (the isles\' dawn) + FARLUME #177 (lv 68) + the store\'s Star-chart' },
+    // ---- Lane N1 (11-the-hollowing-country.md Part A): Stillwater, the Hollowing's village
+    // (north of Coldfog Marches I; optional + late — Coldfog is reached at gleam:solar)
+    { map_id: 'stillwater', region: 'outer', optional: true, reward: 'the Hollowing as people: three side quests (A Light Left On, The Way Home, The Shutter-wall), the Shutter inn (rest), the dark-lamp maker\'s counter, the Hollowing family (#178-#180) wild' },
+    { map_id: 'stillwater_quiet_hall', region: 'outer', optional: true }, // interior: the meeting-house + the shutter-wall
+    { map_id: 'stillwater_shutter', region: 'outer', optional: true }, // interior: the inn (rest point)
+    { map_id: 'stillwater_lampmaker', region: 'outer', optional: true }, // interior: the dark-lamp maker (shop)
+    { map_id: 'stillwater_home_a', region: 'outer', optional: true }, // interior: Ines and Tam's cottage
+    { map_id: 'stillwater_home_b', region: 'outer', optional: true }, // interior: Maren's house
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -515,6 +523,17 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'undertide_i', to_map: 'undertide_ii', via_warp: 'ladder_down', bidirectional: true },
     { from_map: 'undertide_iii', to_map: 'undertide_iv', via_warp: 'ladder_down', bidirectional: true },
     { from_map: 'undertide_iv', to_map: 'farlamp_drowned', via_warp: 'ladder_down', bidirectional: true },
+    // ---- Lane N1 (11 Part A/E): Stillwater + its seams. The Mourning Fields edges are
+    // declared HERE from this lane's side (Coldfog I east rows 11-14, Stillwater south
+    // cols 22-25) — Lane N3 owns mourning_fields' node and must not add reverse twins.
+    { from_map: 'coldfog_marches_i', to_map: 'stillwater', via_warp: 'to_stillwater_4', bidirectional: true },
+    { from_map: 'coldfog_marches_i', to_map: 'mourning_fields', via_warp: 'to_mourning_11', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'mourning_fields', via_warp: 'to_mourning_22', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'stillwater_quiet_hall', via_warp: 'enter_quiet_hall', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'stillwater_shutter', via_warp: 'enter_inn_2', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'stillwater_lampmaker', via_warp: 'enter_lampmaker_2', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'stillwater_home_a', via_warp: 'enter_home_a', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'stillwater_home_b', via_warp: 'enter_home_b', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

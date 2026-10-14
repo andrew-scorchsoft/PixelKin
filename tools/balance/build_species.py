@@ -1292,6 +1292,33 @@ for _area, _terrain, _rows_ in LOWTINDER_TABLES:
 CURATED_AREAS |= {"tinderwick_bay", "lowtinder", "lowtinder_cellar", "lowtinder_cellar_b2",
                   "lowtinder_school_garden", "lowtinder_lamphouse", "lowtinder_school"}
 
+# ---- Lane N1 (walkthrough/11 Part A): Stillwater, the Hollowing's village -----------
+# MIRROR of build_stillwater.py's in-map tables (the map is the truth): the grey-meadow
+# beds (night 48-52 -> their day twins at flag:dawn) and the lampmaker's yard (the
+# young snuffer-caps, #178 kept at/below its lv-44 kindling). Keyed by DEX ID because
+# #178-#180 are Lane N4's: the slug resolves from selected.json, and an id not yet in
+# the roster is skipped (no row lost once it lands — re-run this builder then).
+STILLWATER_TABLES = [
+    ("stillwater", [(180, 28, 48, 51), (179, 20, 49, 52), (113, 18, 49, 51), (137, 14, 48, 50),
+                    (138, 12, 50, 52), (135, 8, 50, 52)]),
+    ("stillwater", [(179, 24, 56, 60), (180, 22, 55, 59), (140, 18, 58, 62), (133, 18, 55, 60),
+                    (134, 18, 56, 61)]),                                   # day (flag:dawn)
+    ("stillwater", [(178, 70, 42, 44), (180, 30, 46, 48)]),                # the yard, night
+    ("stillwater", [(178, 60, 42, 44), (140, 40, 55, 58)]),                # the yard, day
+]
+_SW_SLUG = {c["dex_id"]: re.sub(r"[^a-z0-9]+", "_", c["name"].lower()).strip("_")
+            for c in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..",
+                                                 "docs", "mechanics", "concepts", "selected.json")))
+            if c.get("dex_id")}
+for _area, _tab in STILLWATER_TABLES:
+    for (_k, _w, _lo, _hi) in _tab:
+        if _k not in _SW_SLUG:
+            continue
+        EXTRA_ENCOUNTERS.setdefault(_SW_SLUG[_k], []).append({
+            "area": _area, "terrain": "tall_grass", "rarity": _mire_rarity(_w), "min": _lo, "max": _hi})
+CURATED_AREAS |= {"stillwater", "stillwater_quiet_hall", "stillwater_shutter",
+                  "stillwater_lampmaker", "stillwater_home_a", "stillwater_home_b"}
+
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though
 # tier/rarity alone wouldn't mark them scripted. #148 Lampling is C1
 # "Lampling's Trail" at the Vesper Crossroads — its old umbral_spire row was a

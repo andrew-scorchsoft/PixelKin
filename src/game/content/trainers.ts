@@ -1807,6 +1807,93 @@ export const TRAINERS: TrainerRegistry = {
     ],
     payout: 1072, // route 16 × ace 67
   },
+  // ---- Lane N1 (walkthrough/11 Parts A + E): the Hollowing's Country. Keeper class
+  // like their Approach/Spire siblings, plain AI (they'd rather talk). Coldfog 46-50,
+  // Stillwater 48-52. The Hollowing family #178-#180 is Lane N4's (ids fixed by the
+  // build contract).
+  coldfog_acolyte_north: {
+    id: 'coldfog_acolyte_north',
+    name: 'BRIN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 136, level: 47 }, // Mothdim — Dark
+      { species_id: 141, level: 48 }, // Cindersob — Dark/Ember (ace)
+    ],
+    payout: 960, // keeper 20 × ace 48
+    music: 'battle-nightfall',
+  },
+  coldfog_acolyte_east: {
+    id: 'coldfog_acolyte_east',
+    name: 'FENWICK',
+    title: 'Hollowing Elder',
+    party: [
+      { species_id: 133, level: 48 }, // Flutterwane — Dark/Light
+      { species_id: 180, level: 48 }, // the dream-moth — Dark/Lunar
+      { species_id: 137, level: 49 }, // Nullmoth — Dark (ace)
+    ],
+    payout: 980, // keeper 20 × ace 49
+    music: 'battle-nightfall',
+  },
+  coldfog_acolyte_deep: {
+    id: 'coldfog_acolyte_deep',
+    name: 'ODRAN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 139, level: 49 }, // WispwaneNull — Dark/Light
+      { species_id: 142, level: 50 }, // Embergone — Dark/Ember (ace)
+    ],
+    payout: 1000, // keeper 20 × ace 50
+    music: 'battle-nightfall',
+  },
+  coldfog_acolyte_west: {
+    id: 'coldfog_acolyte_west',
+    name: 'MARROW',
+    title: 'Hollowing Elder',
+    party: [
+      { species_id: 179, level: 49 }, // the lantern-keeper — Dark/Light
+      { species_id: 137, level: 49 }, // Nullmoth — Dark
+      { species_id: 138, level: 50 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1000, // keeper 20 × ace 50
+    music: 'battle-nightfall',
+  },
+  still_acolyte_hale: {
+    id: 'still_acolyte_hale',
+    name: 'HALE',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 180, level: 49 }, // the dream-moth — Dark/Lunar
+      { species_id: 136, level: 49 }, // Mothdim — Dark
+      { species_id: 113, level: 50 }, // Omenire — Lunar/Dark (ace)
+    ],
+    payout: 1000, // keeper 20 × ace 50
+    music: 'battle-nightfall',
+  },
+  still_acolyte_vesna: {
+    id: 'still_acolyte_vesna',
+    name: 'VESNA',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 112, level: 50 }, // Nightwraith — Lunar
+      { species_id: 179, level: 50 }, // the lantern-keeper — Dark/Light
+      { species_id: 135, level: 51 }, // Liminalux — Dark/Light (ace)
+    ],
+    payout: 1020, // keeper 20 × ace 51
+    music: 'battle-nightfall',
+  },
+  still_lamplighter_grisel: {
+    id: 'still_lamplighter_grisel',
+    name: 'GRISEL',
+    title: 'Hollowing Lamplighter',
+    party: [
+      { species_id: 141, level: 50 }, // Cindersob — Dark/Ember
+      { species_id: 179, level: 51 }, // the lantern-keeper — Dark/Light
+      { species_id: 142, level: 51 }, // Embergone — Dark/Ember
+      { species_id: 138, level: 52 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1040, // keeper 20 × ace 52
+    music: 'battle-nightfall',
+  },
   // The Lumenary sparring partners (2026-10 economy review): content/sparring.ts.
   ...SPAR_TRAINERS,
 };

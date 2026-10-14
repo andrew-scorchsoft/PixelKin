@@ -39,6 +39,8 @@ import { ASHFALL_DIALOGUE, ASHFALL_SCRIPTS } from './ashfall';
 import { UNDERTIDE_DIALOGUE, UNDERTIDE_SCRIPTS } from './undertide';
 // The Lumenary sparring partners (2026-10 economy review).
 import { SPARRING_DIALOGUE, SPARRING_SCRIPTS } from '../sparring';
+// Lane N1 (11-the-hollowing-country.md Parts A + E): Stillwater + the late-north density.
+import { STILLWATER_DIALOGUE, STILLWATER_SCRIPTS } from './stillwater';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -63,6 +65,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...ASHFALL_SCRIPTS,
   ...UNDERTIDE_SCRIPTS,
   ...SPARRING_SCRIPTS,
+  ...STILLWATER_SCRIPTS, // Lane N1
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -88,4 +91,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...ASHFALL_DIALOGUE,
   ...UNDERTIDE_DIALOGUE,
   ...SPARRING_DIALOGUE,
+  ...STILLWATER_DIALOGUE, // Lane N1
 };

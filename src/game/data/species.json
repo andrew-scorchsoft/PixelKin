@@ -13190,6 +13190,13 @@
      "rarity": "common",
      "min": 50,
      "max": 53
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 49,
+     "max": 51
     }
    ],
    "scripted": false,
@@ -15611,6 +15618,13 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 63
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 55,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -15742,6 +15756,13 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 62
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -15836,6 +15857,13 @@
      "rarity": "uncommon",
      "min": 51,
      "max": 53
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 50,
+     "max": 52
     }
    ],
    "scripted": false,
@@ -16070,6 +16098,13 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 63
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 50
     }
    ],
    "scripted": false,
@@ -16215,6 +16250,13 @@
      "rarity": "uncommon",
      "min": 65,
      "max": 67
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 50,
+     "max": 52
     }
    ],
    "scripted": false,
@@ -16442,6 +16484,20 @@
      "rarity": "common",
      "min": 60,
      "max": 65
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 62
+    },
+    {
+     "area": "stillwater",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 55,
+     "max": 58
     }
    ],
    "scripted": false,

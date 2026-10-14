@@ -1,0 +1,49 @@
+{
+  "title": "PixelKin - Stillwater (SNES register)",
+  "_note": "Stillwater, the Hollowing's village (11-the-hollowing-country.md Part A): shuttered lamps, soft voices, sleeping kin. A HUSH-HYMN, a music-box with a felt damper. 72 BPM, 3/4, D minor. Quotes the VESPER MOTIF (lift A3-D4-E4, settle F4-E4-D4) the Hollowing way: in A the settle never lands (bars 4 and 8 hang on E over a suspended A, the 'guttering' rule for the Hollowing's zones); A' climbs a step higher and falls back to C#; B turns to Bb major, the hall's hymn (what they believe: a gentle, sung rest) and only there does the line touch D before hanging on E again to lead home. SNES register kept muted: a quiet pulse25 lead, a BELL music-box doubling the downbeats at low gain (the felt damper), a strings hymn pad, a pluck that only breathes in B, tri_bass roots. No drums. 24 bars, 60 s. Original (VISION.md).",
+  "era": "snes",
+  "tempo": 72,
+  "time_signature": [3, 4],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.62,
+      "notes": "A3q D4h | E4h. | F4q E4q D4q | E4h. | A3q D4h | E4q F4q G4q | F4h E4q | E4h. | A3q D4h | E4h. | F4q G4q A4q | Bb4h A4q | G4q F4q E4q | F4h E4q | D4h E4q | C#4h. | D4q F4h | Bb4h A4q | G4q F4q D4q | F4h. | G4q A4q Bb4q | A4h G4q | F4q E4q D4q | E4h."
+    },
+    {
+      "name": "musicbox",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.16,
+      "_note": "the felt-damped music box: only the downbeat of each bar, an octave up",
+      "notes": "A4q@50 rh | E5q@44 rh | F5q@50 rh | E5q@40 rh | A4q@50 rh | E5q@44 rh | F5q@48 rh | E5q@38 rh | A4q@50 rh | E5q@44 rh | F5q@50 rh | Bb5q@52 rh | G5q@48 rh | F5q@46 rh | D5q@46 rh | C#5q@40 rh | D5q@54 rh | Bb5q@56 rh | G5q@52 rh | F5q@50 rh | G5q@54 rh | A5q@56 rh | F5q@50 rh | E5q@40 rh"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.22,
+      "notes": "D3+F3+A3h.@50 | A2+C3+E3h.@50 | D3+F3+A3h.@50 | A2+D3+E3h.@48 | D3+F3+A3h.@50 | C3+E3+G3h.@50 | Bb2+D3+F3h.@50 | A2+D3+E3h.@46 | D3+F3+A3h.@54 | A2+C3+E3h.@54 | F3+A3+C4h.@56 | G3+Bb3+D4h.@58 | C3+E3+G3h.@56 | D3+F3+A3h.@54 | Bb2+D3+F3h.@52 | A2+C#3+E3h.@50 | Bb2+D3+F3h.@60 | Bb2+D3+F3h.@60 | G2+Bb2+D3h.@58 | F3+A3+C4h.@58 | G2+Bb2+D3h.@60 | F3+A3+C4h.@58 | D3+F3+A3h.@54 | A2+D3+E3h.@48"
+    },
+    {
+      "name": "harp",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.2,
+      "_note": "silent through A/A' - the village holds its breath; it breathes only in the hall's hymn (B)",
+      "notes": "rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | Bb3q F4q D4q | Bb3q F4q D4q | G3q D4q Bb3q | F3q C4q A3q | G3q D4q Bb3q | F3q C4q A3q | D3q A3q F3q | rh."
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.7,
+      "notes": "D2h. | A1h. | D2h. | A1h. | D2h. | C2h. | Bb1h. | A1h. | D2h. | A1h. | F2h. | G2h. | C2h. | D2h. | Bb1h. | A1h. | Bb1h. | Bb1h. | G1h. | F2h. | G1h. | F2h. | D2h. | A1h."
+    }
+  ]
+}

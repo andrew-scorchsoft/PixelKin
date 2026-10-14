@@ -3178,6 +3178,111 @@
       "tw": 2,
       "th": 2
     },
+    "stillwater_blanket_kin": {
+      "path": "assets/sprites/objects/stillwater_blanket_kin.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "stillwater_blanket_kin_b": {
+      "path": "assets/sprites/objects/stillwater_blanket_kin_b.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "stillwater_candle_jar": {
+      "path": "assets/sprites/objects/stillwater_candle_jar.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "stillwater_home_a": {
+      "path": "assets/sprites/objects/stillwater_home_a.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "stillwater_home_b": {
+      "path": "assets/sprites/objects/stillwater_home_b.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "stillwater_hood_rack": {
+      "path": "assets/sprites/objects/stillwater_hood_rack.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "stillwater_inn": {
+      "path": "assets/sprites/objects/stillwater_inn.webp",
+      "width": 96,
+      "height": 96,
+      "tw": 6,
+      "th": 6
+    },
+    "stillwater_lamp_bench": {
+      "path": "assets/sprites/objects/stillwater_lamp_bench.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "stillwater_lampmaker": {
+      "path": "assets/sprites/objects/stillwater_lampmaker.webp",
+      "width": 96,
+      "height": 80,
+      "tw": 6,
+      "th": 5
+    },
+    "stillwater_open_lamp": {
+      "path": "assets/sprites/objects/stillwater_open_lamp.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "stillwater_quiet_hall": {
+      "path": "assets/sprites/objects/stillwater_quiet_hall.webp",
+      "width": 112,
+      "height": 80,
+      "tw": 7,
+      "th": 5
+    },
+    "stillwater_shut_lamp": {
+      "path": "assets/sprites/objects/stillwater_shut_lamp.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "stillwater_shutter_wall": {
+      "path": "assets/sprites/objects/stillwater_shutter_wall.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "stillwater_window_lit": {
+      "path": "assets/sprites/objects/stillwater_window_lit.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "stillwater_wool_basket": {
+      "path": "assets/sprites/objects/stillwater_wool_basket.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "sunkbell_shrine": {
       "path": "assets/sprites/objects/sunkbell_shrine.webp",
       "width": 48,
