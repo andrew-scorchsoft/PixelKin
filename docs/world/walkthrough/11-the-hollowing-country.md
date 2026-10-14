@@ -168,13 +168,19 @@ dressed in the watch's own drawn kit (`tools/maps/underwaysforge.py`: bedrolls, 
 watch-bell, ration crates, a kettle shelf, a watch-rota, fallen Spire masonry, root curtains). F1's
 side bay ends in a rubble lip that drops one-way into the cistern hall, so the walk back is by
 Odalie's cut. B1's south-east pocket is **the Warm Stones**: its own bed (Shutterwick #179,
-Lullwing, Lumenmoss, Liminalux and a rare **Embralux #33**, the only pre-dawn Embralux ground),
-signed and mentioned by Clemency. Every zone has a post-dawn `_day` twin (56–60). Signposts: Andrew's
+Lullwing, Lumenmoss, Liminalux, a rare **Embralux #33**, the only pre-dawn Embralux ground, and a
+rare **JesterFull #168**, its ONLY wild home anywhere: a whole jest-house kin come down to do its
+turn for the watch), signed and mentioned by Clemency. Every zone has a post-dawn `_day` twin (56–60). Signposts: Andrew's
 Crown-stage hint adds a P.S. once `flag:hub_unlocked`; the mouths' "not yet" is a script; and the
 Ring's south strip has an iron **light-well** (9–10,30–31) looking down on the shaft's pale column and
 the watch's fire, seen before reached. Any of these opens the JOURNAL's **The Last Watch**
 (`flag:q_underways`, kept at `flag:underways_watch_kept` once Clemency hears you met all three
-watchers) and the LORE entry "the Last Watch".
+watchers) and the LORE entry "the Last Watch". **Fix FD2 (2026-10-14):** keeping the watch changes
+the world: Clemency rings the watch-bell and Odalie, Bran and Hesk leave their posts (empty from
+then on) to sit at her fire, with dusk and dawn lines (`script.underways_watch_*_fire`). The lower
+halls and B1's west bay and south gallery gained the watch's hammocks, a slate of names, cold
+braziers (lit at dawn), hoods drying, water-butts and firewood; B1's south gallery now joins the
+watch on foot (the spur stopped a tile short), so the Warm Stones are a loop, not a drop.
 
 ## E · Density on the existing late maps
 

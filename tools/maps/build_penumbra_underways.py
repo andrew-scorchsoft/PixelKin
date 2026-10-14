@@ -33,6 +33,12 @@ table, watch-bell, ration crates, kettle shelf, watch-rota, fallen Spire masonry
 curtains) instead of the Coldfog camp; every zone has a post-dawn `_day` twin; and the
 Ring's light-well (build_penumbra_ring.py) shows the shaft and the fire from above.
 
+Review fix FD2 (2026-10-14, Plan 4 r2 Part D): density in F1's lower halls and B1's west bay
++ south gallery (new drawn props: hammock, name_slate, cold_brazier/brazier_lit, hood_line,
+water_butt, firewood); the south gallery now meets the watch's spur (a true loop); the Warm
+Stones are the only wild JesterFull (#168); and once the watch is kept the three watchers
+leave their posts for Clemency's fire (`gathered()`).
+
 The strongest wild beds before Còr: the galleries roll Dark (cave, rect-wide),
 the glow-moss beds roll Light — the two halves of the dark, side by side.
 Never connected to the Umbral Spire: you always come back out into the Ring.
@@ -196,6 +202,27 @@ def prop(m, oid, stem, at, w, h, **kw):
     obj(m, oid, f"underways_{stem}", at, w, h, **kw)
 
 
+def brazier(m, oid, at):
+    """FD2: the watch's cold brazier (ash, a coal unburned); lit after the dawn (same footprint)."""
+    prop(m, oid, "cold_brazier", at, 1, 2, hidden_when_flag="flag:dawn")
+    prop(m, f"{oid}_lit", "brazier_lit", at, 1, 2, requires_flag="flag:dawn")
+
+
+def gathered(m, posts, at_fire):
+    """FD2: once the whole watch is kept (flag:underways_watch_kept) the watchers leave their
+    posts and gather at Clemency's fire: each post's `_after` NPC hides, and a fire twin
+    appears (`<tid>_fire`, script.<tid>_fire, dusk/dawn branches)."""
+    for n in m["npcs"]:
+        if n["id"] in {f"{t}_after" for t in posts}:
+            n["hidden_when_flag"] = "flag:underways_watch_kept"
+    for tid, (x, y), facing in at_fire:
+        m["npcs"].append({"id": f"{tid}_fire", "at": {"tx": x, "ty": y}, "facing": facing,
+                          "sprite": "hollowing_acolyte", "movement": "static",
+                          "dialogue_ref": f"script.{tid}_fire",
+                          "requires_flag": "flag:underways_watch_kept"})
+    return [f"script.{tid}_fire" for tid, _, _ in at_fire]
+
+
 def T(kin, w, lo, hi):
     return {"kin_id": kin, "weight": w, "min_level": lo, "max_level": hi}
 
@@ -213,8 +240,10 @@ B1_MOSS = [T(40, 26, 54, 56), T(107, 22, 54, 56), T(127, 20, 54, 56),    # Lumen
 # THE WARM STONES (B1's south-east pocket, past the slump): the only ground where the
 # EMBRALUX (#33, Ember/Light) comes down before the dawn, drawn to the watch's warmth,
 # and the deep Shutterwick bed (#179). Unique to the Underways (review FD: creature value).
+# FD2 (2026-10-14): and the ONLY wild JesterFull (#168, Light/Dark) in the world — a whole
+# jest-house kin that wandered down to do its turn for the watch by the fire (rare).
 B1_POCKET = [T(179, 34, 54, 56), T(180, 24, 54, 56), T(40, 20, 54, 56),  # Shutterwick, Lullwing, Lumenmoss
-             T(135, 14, 54, 56), T(33, 8, 55, 56)]                       # Liminalux, EMBRALUX
+             T(135, 14, 54, 56), T(33, 8, 55, 56), T(168, 6, 55, 56)]    # Liminalux, EMBRALUX, JESTERFULL
 # Day (flag:dawn): the dark lifts out of the galleries; the light kin stay, a band up.
 F1_CAVE_DAY = [T(135, 26, 56, 59), T(107, 22, 56, 59), T(140, 20, 56, 59),
                T(85, 18, 56, 59), T(37, 14, 57, 59)]
@@ -222,7 +251,8 @@ F1_MOSS_DAY = [T(40, 32, 56, 59), T(127, 28, 56, 59), T(37, 24, 57, 59), T(129, 
 B1_CAVE_DAY = [T(135, 28, 57, 60), T(140, 24, 57, 60), T(37, 22, 57, 60),
                T(107, 20, 57, 60), T(33, 6, 59, 60)]
 B1_MOSS_DAY = [T(40, 34, 57, 60), T(37, 26, 57, 60), T(127, 24, 57, 60), T(129, 16, 58, 60)]
-B1_POCKET_DAY = [T(33, 30, 57, 60), T(179, 30, 57, 60), T(37, 22, 57, 60), T(40, 18, 57, 60)]
+B1_POCKET_DAY = [T(33, 30, 57, 60), T(179, 30, 57, 60), T(37, 22, 57, 60), T(40, 18, 57, 60),
+                 T(168, 6, 58, 60)]
 
 
 # =============================================================================== F1
@@ -316,6 +346,8 @@ def build_f1() -> tuple[dict, list[str]]:
                             sprite="hollowing_acolyte")
     owed += pt.trainer_beat(m, tid="underways_watch_c", at=(23, 8), facing="left", sight=2,
                             sprite="hollowing_acolyte")
+    # FD2: once the watch is kept, Odalie and Hesk leave these posts for the fire (B1)
+    gathered(m, ("underways_watch_a", "underways_watch_c"), ())
     owed += pt.cache(m, cid="underways_starglass", at=(12, 3))
     owed += pt.sign(m, deco, W, sid="underways_mouth", at=(6, 2))
     # ---- the watch's dressing (underwaysforge.py): lived-in, tended, never a guard-post
@@ -339,6 +371,17 @@ def build_f1() -> tuple[dict, list[str]]:
     prop(m, "e_bedroll", "bedroll", (27, 13), 2, 1)
     prop(m, "e_rota", "watch_rota", (22, 16), 1, 2)
     obj(m, "glowshrooms", "glowmoss_deep_glowshrooms_teal", (17, 18), 2, 2, solid=False)
+    # FD2 (review r2: "F1's two lower halls are still thin"): the watch lives down here too
+    brazier(m, "w_brazier", (7, 11))                       # the cistern hall's memorial corner
+    prop(m, "w_names", "name_slate", (8, 11), 1, 2)
+    prop(m, "w_hammock", "hammock", (8, 18), 2, 2)         # the ladder vault: a hammock, wood
+    prop(m, "w_firewood", "firewood", (2, 18), 2, 1)       # stacked in the bed-nook's foot
+    prop(m, "e_hoods", "hood_line", (20, 11), 2, 2)        # the long hall: hoods drying
+    prop(m, "e_butt", "water_butt", (26, 12), 1, 1)
+    prop(m, "e_firewood", "firewood", (22, 14), 2, 1)
+    prop(m, "e_names", "name_slate", (25, 16), 1, 2)       # the east ladder vault
+    prop(m, "e_hammock", "hammock", (25, 18), 2, 2)
+    prop(m, "e_butt_b", "water_butt", (27, 19), 1, 1)
     for (x, y) in [(5, 3), (2, 13), (11, 4), (18, 12), (21, 19), (26, 19)]:
         if not wall[y * W + x] and not deco[y * W + x]:
             deco[y * W + x] = gid("boulder")
@@ -381,7 +424,8 @@ def build_b1() -> tuple[dict, list[str]]:
         ("r", 25, 6, 25, 7),                   # the east foot -> the east cut
         ("r", 25, 12, 25, 13),                 # the east cut's foot, onto the slump
         ("r", 14, 1, 17, 4),                   # the shaft's own footprint
-        ("v", 14, 16, 18),                     # the watch -> the south gallery
+        ("v", 14, 16, 19),                     # the watch -> the south gallery (FD2: it
+                                               # stopped a tile short; now a true loop)
         ("r", 24, 15, 26, 16),                 # the pocket's landing under the slump
     ]
     wall, floor = carve(W, H, chambers, lines, rng)
@@ -453,6 +497,11 @@ def build_b1() -> tuple[dict, list[str]]:
     # Bran holds the choke from the west gallery into the watch
     owed += pt.trainer_beat(m, tid="underways_watch_b", at=(12, 12), facing="down", sight=2,
                             sprite="hollowing_acolyte")
+    # FD2: the watch KEPT changes the world — all three leave their posts for the fire
+    owed += gathered(m, ("underways_watch_b",),
+                     [("underways_watch_a", (14, 12), "right"),
+                      ("underways_watch_b", (14, 13), "right"),
+                      ("underways_watch_c", (16, 14), "up")])
     # the last Lumen Drop before the summit (the warm stones, round by the slump)
     owed += pt.cache(m, cid="underways_lumen", at=(29, 16))
     owed += pt.sign(m, deco, W, sid="underways_watch", at=(11, 10))
@@ -462,6 +511,17 @@ def build_b1() -> tuple[dict, list[str]]:
     prop(m, "s_roots", "root_curtain", (22, 17), 2, 2, solid=False)
     obj(m, "glowshrooms", "glowmoss_deep_glowshrooms_teal", (8, 2), 2, 2, solid=False)
     obj(m, "warm_shrooms", "glowmoss_deep_glowshrooms_ember", (28, 20), 2, 2, solid=False)
+    # FD2 (review r2: "B1's west bay and south gallery are still thin")
+    prop(m, "wf_hoods", "hood_line", (6, 4), 2, 2)         # the west ladder foot
+    prop(m, "wf_firewood", "firewood", (6, 2), 2, 1)
+    prop(m, "wg_names", "name_slate", (4, 7), 1, 2)        # the west gallery's mouth
+    prop(m, "al_butt", "water_butt", (3, 11), 1, 1)        # the sleepers' alcove
+    brazier(m, "al_brazier", (8, 13))
+    prop(m, "s_butt", "water_butt", (16, 18), 1, 1)        # the south gallery
+    prop(m, "s_hoods", "hood_line", (20, 20), 2, 2)
+    prop(m, "s_names", "name_slate", (22, 20), 1, 2)
+    brazier(m, "s_brazier", (24, 19))                      # where it opens on the warm stones
+    prop(m, "ef_butt", "water_butt", (28, 8), 1, 1)        # the east foot's nook
     for (x, y) in [(3, 4), (29, 8), (13, 18), (24, 21), (26, 9)]:
         if not wall[y * W + x] and not deco[y * W + x]:
             deco[y * W + x] = gid("boulder")

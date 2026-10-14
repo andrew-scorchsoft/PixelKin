@@ -21,7 +21,10 @@
  *   flag:underways_clemency_met       Old Clemency's first meeting
  *   flag:q_underways                  "The Last Watch" opens (journal): heard of / seen
  *   flag:underways_lightwell_seen     the first look down the Ring's light-well
- *   flag:underways_watch_kept         the whole watch met (all three tried, Clemency told)
+ *   flag:underways_watch_kept         the whole watch met (all three tried, Clemency told).
+ *                                     FD2: it CHANGES THE WORLD — Odalie, Bran and Hesk leave
+ *                                     their posts (the `_after` NPCs hide) and gather at
+ *                                     Clemency's fire (`<tid>_fire` twins, script.*_fire)
  * Reads flag:dawn (the post-dawn branches).
  */
 import type { DialogueRegistry, ScriptRegistry } from '../types';
@@ -90,14 +93,30 @@ export const UNDERWAYS_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'CLEMENCY', text: 'Odalie, Bran and Hesk, all three. You\'ve met the whole of the last watch now, dear. There aren\'t any more of us. There never were very many.' },
     { op: 'say', speaker: 'CLEMENCY', text: 'Take this. The watch drew it the first winter, of the dark as we meant it: not a void, a held breath. Nobody here has the heart to use it now.' },
     { op: 'giveItem', item: 'chart_voidburst', count: 1 },
+    { op: 'say', speaker: 'CLEMENCY', text: 'And there\'s no sense the three of them standing out in the cold for nobody. I\'ll call them in.' },
+    { op: 'sfx', key: 'world-moorbell-a' },
+    { op: 'narrate', text: 'She reaches up and rings the little watch-bell, twice, soft. Somewhere up the galleries, someone laughs. Then footsteps, coming in.' },
     { op: 'setFlag', flag: 'flag:underways_watch_kept' },
+  ],
+  // ---- FD2: the watch, kept — the three watchers at Clemency's fire ---------------------
+  'script.underways_watch_a_fire': [
+    { op: 'say', speaker: 'ODALIE', text: 'Two rings of the bell. In eleven winters it only ever meant "keep watch". Tonight it meant "come in". I nearly didn\'t know what to do with my hands.', unless_flag: DAWN },
+    { op: 'say', speaker: 'ODALIE', text: 'I took my scissors up the Coldfog road this morning. Not to trim anything. Just to stand under the lamps while they burned. Then I came back down. The kettle\'s here.', if_flag: DAWN },
+  ],
+  'script.underways_watch_b_fire': [
+    { op: 'say', speaker: 'BRAN', text: 'No gap to hold now. I sat in that choke so long it\'s worn to my shape. Look at it on your way past: empty. Strange thing to be proud of.', unless_flag: DAWN },
+    { op: 'say', speaker: 'BRAN', text: 'He came down, after. The Warden. Sat right where you\'re standing and lost to me at cards. Laughed about it, same as the first time.', if_flag: DAWN },
+  ],
+  'script.underways_watch_c_fire': [
+    { op: 'say', speaker: 'HESK', text: 'Last post of the last watch, and I walked off it. Felt like stepping off a cliff. Turns out it\'s just floor, and a fire at the end of it.', unless_flag: DAWN },
+    { op: 'say', speaker: 'HESK', text: 'I swept the east stair once more, for habit. Then I went up it and stood in the morning till my eyes ran. Don\'t tell Clemency. She\'ll only say she knew.', if_flag: DAWN },
   ],
   'script.underways_clemency_dusk': [
     { op: 'face', actor: 'clemency', facing: 'down' },
     { op: 'say', speaker: 'CLEMENCY', text: 'So you\'re the one. They said you\'d come down here sooner or later. People always want to see the bottom of things before the top.', unless_flag: 'flag:underways_clemency_met' },
     { op: 'say', speaker: 'CLEMENCY', text: 'This is the last watch. Not a guard. We\'re not here to stop anybody. We\'re here so that when it\'s over, up there, somebody who loves him is close by.', unless_flag: 'flag:underways_clemency_met' },
     { op: 'say', speaker: 'CLEMENCY', text: 'I taught him his letters, you know. The Warden. Long before he was anybody\'s Warden. He was a careful boy. Too careful with his sorrows. He kept every one.', unless_flag: 'flag:underways_clemency_met' },
-    { op: 'say', speaker: 'CLEMENCY', text: 'If you go round by the east cut and down the slump, there are warm stones in the far pocket. A light-kin comes to them, ember and light both, for the fire. I\'ve never seen one up top.', unless_flag: 'flag:underways_clemency_met' },
+    { op: 'say', speaker: 'CLEMENCY', text: 'If you go round by the east cut and down the slump, there are warm stones in the far pocket. A light-kin comes to them, ember and light both, for the fire. I\'ve never seen one up top. And now and then a jester-kin, bright one side and dark the other, comes down to do its turn for us and bow. Nobody knows where it learned.', unless_flag: 'flag:underways_clemency_met' },
     { op: 'setFlag', flag: 'flag:underways_clemency_met' },
     { op: 'setFlag', flag: OPEN },
     { op: 'say', speaker: 'CLEMENCY', text: 'The fire\'s yours whenever you want it. Rest, and then go up and do what you have to. Be kind to him, if you can manage it.' },
@@ -161,7 +180,7 @@ export const UNDERWAYS_DIALOGUE: DialogueRegistry = {
     { text: 'THE LAST WATCH\n"We keep no gate. We keep a fire. Whoever comes down is welcome to it."' },
   ],
   'sign.underways_warmstones': [
-    { text: 'Chalked on a flat stone, in a careful hand:\n"THE WARM STONES. Let the light-kin be. They only come for the fire."' },
+    { text: 'Chalked on a flat stone, in a careful hand:\n"THE WARM STONES. Let the light-kin be. They only come for the fire.\nIf the jester comes, CLAP. It waits for it."' },
   ],
   'npc.underways_watch_a_after': [
     { speaker: 'ODALIE', text: 'I trimmed the lamps along the Coldfog road, before. When they asked, I trimmed the last ones too. Same scissors. I still have them.' },

@@ -288,12 +288,172 @@ def ring_lightwell():
     return img(a)
 
 
+# ---- review fix FD2 (2026-10-14, expansion-panel Plan 4 r2 Part D: "B1's west bay and
+# south gallery and F1's lower halls are still thin") — more of the watch's own life.
+
+def hammock():
+    """2x2 a grey-wool hammock slung between two root-wood posts, a spare blanket
+    folded over its belly (walk-under top row)."""
+    a = canvas(2, 2)
+    for x in (2, 28):                                  # the posts
+        fill(a, x, 6, x + 1, 30, POST[1])
+        a[6:31, x] = POST[2]
+        a[5, x - 1:x + 3] = POST[3]
+        outline(a, x - 1, 5, x + 2, 6, INK)
+    for x in range(4, 28):                             # the sag (a shallow catenary)
+        t = (x - 16) / 12.0
+        y = int(round(12 + 8 * (1 - t * t)))
+        a[y - 2:y + 1, x] = WOOL[2]
+        a[y - 3, x] = WOOL[3]
+        a[y + 1, x] = WOOL[0]
+        a[y + 2, x] = INK
+        if x % 4 == 0:
+            a[y - 1, x] = WOOL[1]                      # the weave
+    for x in range(3, 6):                              # the ropes up to the posts
+        a[9 + (x - 3), x] = WOOLHEM
+        a[9 + (x - 3), 31 - x] = WOOLHEM
+    fill(a, 12, 15, 20, 19, WOOL[1])                   # the folded spare
+    a[15, 12:21] = WOOLHEM
+    outline(a, 11, 14, 21, 20, INK)
+    contact_shadow(a, 1, 30, 31)
+    return img(a)
+
+
+def name_slate():
+    """1x2 a tall slate propped on a stone, chalked top to bottom with small names —
+    everyone the watch remembers. The chalk is fresh: someone re-writes it."""
+    a = canvas(1, 2)
+    fill(a, 2, 2, 13, 26, SLATE[1])
+    a[2, 2:14] = SLATE[2]
+    a[3:26, 13] = SLATE[0]
+    outline(a, 1, 1, 14, 27, INK)
+    rng = np.random.default_rng(91)
+    for y in range(4, 25, 2):                          # a column of names
+        n = int(rng.integers(3, 8))
+        x0 = int(rng.integers(3, 12 - n + 1))
+        a[y, x0:x0 + n] = CHALK
+        if rng.random() < 0.3:
+            a[y, x0 + n - 1] = SLATE[2]                # a rubbed letter
+    fill(a, 3, 27, 12, 30, STONE[1])                   # the propping stone
+    a[27, 3:13] = STONE[2]
+    outline(a, 2, 27, 13, 30, INK)
+    a[29, 6:9] = (*FLAME[1][:3], 255)                  # a candle-stub at its foot
+    a[28, 7] = FLAME[3]
+    contact_shadow(a, 1, 14, 31)
+    return img(a)
+
+
+def _brazier(lit: bool):
+    a = canvas(1, 2)
+    for (x0, x1) in ((3, 1), (12, 14), (7, 7)):        # the tripod legs
+        for y in range(16, 31):
+            x = int(round(x0 + (x1 - x0) * (y - 16) / 14))
+            a[y, x] = IRON[1]
+    for i, y in enumerate(range(10, 17)):              # the iron bowl
+        half = 7 - i // 2
+        a[y, 8 - half:8 + half] = IRON[2] if i < 2 else IRON[1]
+        a[y, 8 - half] = INK
+        a[y, 8 + half - 1] = INK
+    a[10, 1:15] = IRON[3]
+    a[9, 1:15] = INK
+    if lit:
+        for (x, y, c) in ((7, 4, FLAME[3]), (8, 5, FLAME[2]), (6, 6, FLAME[2]), (9, 6, FLAME[1]),
+                          (7, 7, FLAME[2]), (5, 8, FLAME[1]), (10, 8, FLAME[1]), (8, 8, FLAME[3]),
+                          (6, 8, FLAME[2]), (9, 7, FLAME[2]), (8, 3, FLAME[1]), (4, 9, FLAME[0]),
+                          (11, 9, FLAME[0])):
+            a[y, x] = c
+        a[9, 2:14] = FLAME[1]
+    else:
+        a[8, 3:13] = WOOL[1]                           # a heap of cold grey ash
+        a[7, 5:11] = WOOL[2]
+        a[6, 7:9] = WOOL[3]
+        a[8, 6] = STONE[0]                             # one black coal, unburned
+        a[7, 9] = STONE[0]
+    contact_shadow(a, 0, 15, 31)
+    return img(a)
+
+
+def cold_brazier():
+    """1x2 an iron brazier on a tripod, full of grey ash: lit after the dawn (twin)."""
+    return _brazier(False)
+
+
+def brazier_lit():
+    return _brazier(True)
+
+
+def hood_line():
+    """2x2 a drying line between two staves, three spare grey-wool lamp-hoods hung on
+    it to dry (the watch turns its lamps low with them), a drip on the floor."""
+    a = canvas(2, 2)
+    for x in (2, 28):
+        fill(a, x, 4, x + 1, 30, POST[1])
+        a[4:31, x] = POST[2]
+        outline(a, x - 1, 3, x + 2, 4, INK)
+    for x in range(3, 29):                             # the line, a slight sag
+        t = (x - 16) / 13.0
+        a[int(round(6 + 2 * (1 - t * t))), x] = WOOLHEM
+    for i, cx in enumerate((8, 16, 24)):               # three hoods, each a little different
+        top = 8 if i != 1 else 9
+        for k, y in enumerate(range(top, top + 11)):
+            half = 2 + k // 3
+            a[y, cx - half:cx + half] = WOOL[1 + (i % 2)]
+            a[y, cx - half] = INK
+            a[y, cx + half - 1] = INK
+        a[top + 10, cx - 5:cx + 5] = INK
+        a[top + 9, cx - 4:cx + 4] = WOOLHEM            # the hem
+        a[top + 1:top + 8, cx - 1] = WOOL[3]           # a crease of light
+        a[top + 12 + i % 2, cx] = (*STARDIM, 255) if i != 2 else WOOL[2]   # a drip
+    a[29, 14:19] = DARKGLASS[2]                        # the small wet patch
+    a[30, 13:20] = DARKGLASS[1]
+    contact_shadow(a, 1, 30, 31)
+    return img(a)
+
+
+def water_butt():
+    """1x1 a hooped water-butt, a tin ladle hooked on its rim."""
+    a = canvas(1, 1)
+    fill(a, 2, 3, 13, 14, CRATE[2])
+    a[3, 2:14] = DARKGLASS[2]                          # the water, dark
+    a[4, 3:13] = DARKGLASS[1]
+    for x in (5, 9):
+        a[5:15, x] = CRATE[1]                          # staves
+    for y in (6, 11):
+        a[y, 2:14] = IRON[2]                           # the hoops
+    outline(a, 1, 2, 14, 15, INK)
+    a[1:6, 12] = IRON[3]                               # the ladle
+    a[1, 10:13] = IRON[3]
+    return img(a)
+
+
+def firewood():
+    """2x1 split root-wood and cut peat stacked against the cold, under a wool tarp."""
+    a = canvas(2, 1)
+    for row, y in enumerate((10, 6)):
+        for i in range(6 - row):
+            x0 = 2 + row * 3 + i * 5
+            fill(a, x0, y, x0 + 4, y + 4, ROOT[2])
+            a[y + 1:y + 4, x0 + 1:x0 + 4] = ROOT[3]   # the cut end
+            a[y + 2, x0 + 2] = ROOT[1]                 # a ring
+            outline(a, x0, y, x0 + 4, y + 4, INK)
+    fill(a, 22, 3, 29, 9, WOOL[1])                     # the tarp, thrown back
+    a[3, 22:30] = WOOL[2]
+    outline(a, 21, 2, 30, 10, INK)
+    contact_shadow(a, 1, 30, 15)
+    return img(a)
+
+
+FD2_PROPS = (("hammock", hammock), ("name_slate", name_slate), ("cold_brazier", cold_brazier),
+             ("brazier_lit", brazier_lit), ("hood_line", hood_line), ("water_butt", water_butt),
+             ("firewood", firewood))
+
+
 def main() -> None:
     UNDER.mkdir(parents=True, exist_ok=True)
     for stem, fn in (("bedroll", bedroll), ("map_table", map_table), ("watch_bell", watch_bell),
                      ("ration_crates", ration_crates), ("kettle_shelf", kettle_shelf),
                      ("watch_rota", watch_rota), ("masonry", masonry),
-                     ("root_curtain", root_curtain), ("ring_lightwell", ring_lightwell)):
+                     ("root_curtain", root_curtain), ("ring_lightwell", ring_lightwell)) + FD2_PROPS:
         im = fn()
         path = UNDER / f"{stem}.png"
         im.save(path)
