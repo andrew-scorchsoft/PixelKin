@@ -68,7 +68,7 @@ GRANTS: dict[str, list[str]] = {
     # +flag:q_east_georgina: the hollow neighbour points the way to Georgina's
     # dell (the optional E4 spur), post-Verdant — gates lowleaf_hollow->gloamwood_dell.
     "lowleaf_hollow": ["glimmerstep", "gleam:verdant", "flag:q_east_georgina"],
-    "cinderhead_mine": ["gleam:stone", "flag:crown_east"],
+    "cinderhead_mine": ["gleam:stone", "flag:crown_east", "flag:scarp_climb_open"],  # the climb DERIVES from gleam:stone
     "cinderhead_deep": ["flag:shortcut_mine"],
     # The Kite-Rising Winch loop: the kite chain + festival blessing happen in
     # town; Mira's bond-test at the skyloft then grants the Gleam + the Gift.
