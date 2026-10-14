@@ -9,9 +9,9 @@ down into this map (Tidecall, gift 2 — the first reason to walk back to the st
 What's out here (three signature touches):
   1. THE DROWNED STREET. A line of roof-ridges and chimney rubble standing out of
      the shallows, continuing the ones the beach can see — old Tinderwick, forty
-     years under. You swim its lanes east to Lowtinder (east edge, rows 6-13).
+     years under. You swim its lanes east to Lowtinder (east edge, rows 15-16, past the net-hand).
   2. TWO SKERRIES worth stopping on: Gull Shoal (west — sea-grass, a lamp-diver,
-     a balm tin) and Tidepool Skerry (centre — rock-pools, a net-hand, and a
+     a balm tin) and Tidepool Skerry (centre — boulders, a net-hand guarding the channel east, and a
      Star-chart wedged behind the boulders, off the lane).
   3. THE OUTER REEF, seen from the first swim and earned at the end: past a lip
      of reef rocks (row 19) the water goes DEEP (rows 20+, the `deepwater_set`
@@ -44,7 +44,13 @@ REEF_ROW = 20                 # rows >= this are the outer deep (skiff only)
 # SEA_SOLID_COLS): no swim warp there — the rubble continues into our row 0.
 TW_SOLID = {5, 6, 7, 8, 11, 12, 13, 14, 16, 17, 18, 19, 20}
 SWIM_COLS = range(21, 28)     # build_tinderwick.SWIM_COLS — the swim-off columns
-EAST_ROWS = range(6, 14)      # the swim east into Lowtinder (its west edge)
+EAST_ROWS = range(15, 17)     # the swim east into Lowtinder (its west edge)
+# THE NET-HAND'S CHANNEL (review 2026-10: the old rows 6-13 seam was a 6-step corner
+# hop from the swim-off). The seam now sits in a walled pocket east of Tidepool
+# Skerry (x 23-27, rows 15-16): drowned roofs + rubble close it north (rows 13-14)
+# and south (row 17), so the only way in is off the skerry's east tip (22,15-16) —
+# where the net-hand stands at (22,14) watching both tiles. Every way to the seam
+# crosses the skerry AND her eye.
 
 # ---- terrain ---------------------------------------------------------------------
 water = mk.make_grid(W, H)
@@ -63,7 +69,8 @@ for i in range(W * H):
 # (sand only on the skerries: the shared sand family edges onto grass — the
 # Gullcry skerry look, a weedy lip where the islet meets the sea)
 pool = mk.make_grid(W, H)                          # the skerry's rock-pools
-mk.blob(pool, W, H, 16.5, 13.5, 1.2, 0.8)
+# (review 2026-10: the skerry's rock-pool read as a square cut-out at this size —
+#  the shared water family can't round a 2-4 tile hole — so it's gone.)
 seagrass = mk.make_grid(W, H)                      # Gull Shoal's sea-grass bed
 mk.blob(seagrass, W, H, 3.6, 7.4, 1.8, 1.1)
 for i in range(W * H):
@@ -91,7 +98,11 @@ objects = [
     {"id": "ridge_c", "sprite": "lowtinder_roof_ridge", "at": {"tx": 9, "ty": 9}, "w": 3, "h": 2},
     {"id": "ridge_d", "sprite": "lowtinder_roof_ridge", "at": {"tx": 21, "ty": 7}, "w": 3, "h": 2},
     {"id": "ridge_e", "sprite": "lowtinder_roof_ridge_b", "at": {"tx": 4, "ty": 14}, "w": 4, "h": 2},
-    {"id": "ridge_f", "sprite": "lowtinder_roof_ridge", "at": {"tx": 24, "ty": 16}, "w": 3, "h": 2},
+    {"id": "ridge_f", "sprite": "lowtinder_roof_ridge", "at": {"tx": 9, "ty": 13}, "w": 3, "h": 2},
+    # the channel's north wall: a drowned row of roofs (rows 13-14, x 24-27)
+    {"id": "ridge_g", "sprite": "lowtinder_roof_ridge_b", "at": {"tx": 24, "ty": 13}, "w": 4, "h": 2},
+    # ...and its south wall: another drowned house
+    {"id": "ridge_h", "sprite": "lowtinder_roof_ridge", "at": {"tx": 24, "ty": 17}, "w": 3, "h": 2},
     {"id": "wreck", "sprite": "pearlmoor_wreck_ribs", "at": {"tx": 10, "ty": 16}, "w": 3, "h": 2},
     # the drowned street's lamp-posts, standing in the water along the old high
     # street (the swim east follows them), and the old town's clutter on the skerries
@@ -99,7 +110,7 @@ objects = [
      "overhang": 2},
     {"id": "street_lamp_b", "sprite": "saltreach_sunken_lamp", "at": {"tx": 17, "ty": 6}, "w": 1, "h": 3,
      "overhang": 2},
-    {"id": "street_lamp_c", "sprite": "saltreach_sunken_lamp", "at": {"tx": 22, "ty": 11}, "w": 1, "h": 3,
+    {"id": "street_lamp_c", "sprite": "saltreach_sunken_lamp", "at": {"tx": 20, "ty": 8}, "w": 1, "h": 3,
      "overhang": 2},
     {"id": "street_lamp_d", "sprite": "saltreach_sunken_lamp", "at": {"tx": 7, "ty": 11}, "w": 1, "h": 3,
      "overhang": 2},
@@ -121,19 +132,22 @@ deco = mk.make_grid(W, H)
 for x in (19, 20):                                    # the bell-tower's footing rubble
     deco[0 * W + x] = gid("boulder")
 # the buoy lane: from the beach, down the drowned street, east to Lowtinder
-for (x, y) in [(14, 1), (17, 3), (19, 5), (23, 10), (26, 6), (26, 13)]:
+for (x, y) in [(14, 1), (17, 3), (19, 5), (23, 9), (26, 6), (25, 11)]:
     deco[y * W + x] = gid("buoy")
 # the reef lip: rocks along row 19 with swim gaps (the deep beyond is SEEN early)
 for x in (0, 1, 3, 6, 7, 12, 13, 15, 26, 27):
     deco[19 * W + x] = gid("boulder")
 # skerry rocks (the chart cache hides behind the east cluster)
-for (x, y) in [(19, 12), (20, 12), (15, 15), (22, 14), (21, 13),
+# the channel's rubble: north (23, rows 13-14), south (row 17, x 22-27)
+for (x, y) in [(23, 13), (23, 14), (22, 17), (23, 17), (27, 17)]:
+    deco[y * W + x] = gid("boulder")
+for (x, y) in [(19, 12), (20, 12), (15, 15), (13, 15),
                (6, 6), (2, 6), (7, 8),
                (17, 25), (24, 23), (23, 26), (4, 23)]:
     if not water[y * W + x]:
         deco[y * W + x] = gid("boulder")
 # a couple of scattered rocks in open water break up the shallows
-for (x, y) in [(2, 3), (25, 1), (15, 9), (1, 12), (24, 11), (8, 18)]:
+for (x, y) in [(2, 3), (25, 1), (15, 9), (1, 12), (8, 18)]:
     deco[y * W + x] = gid("boulder")
 sign_xy = (14, 13)
 deco[sign_xy[1] * W + sign_xy[0]] = gid("sign")
@@ -169,17 +183,16 @@ m = {
     "encounters": [
         {"id": "bay_shallows", "terrain": "water", "rect": {"tx": 0, "ty": 0, "w": W, "h": REEF_ROW},
          "encounter_rate": 0.08, "requires_ability": "tidecall",
-         "table": [{"kin_id": 26, "weight": 30, "min_level": 17, "max_level": 19},
-                   {"kin_id": 23, "weight": 25, "min_level": 17, "max_level": 19},
-                   {"kin_id": 27, "weight": 20, "min_level": 18, "max_level": 20},
-                   {"kin_id": 24, "weight": 15, "min_level": 18, "max_level": 20},
+         "table": [{"kin_id": 27, "weight": 35, "min_level": 17, "max_level": 19},
+                   {"kin_id": 24, "weight": 30, "min_level": 17, "max_level": 19},
+                   {"kin_id": 31, "weight": 25, "min_level": 18, "max_level": 20},
                    {"kin_id": 21, "weight": 6, "min_level": 19, "max_level": 20}]},
         {"id": "shoal_seagrass", "terrain": "tall_grass", "rect": {"tx": 1, "ty": 6, "w": 6, "h": 3},
          "encounter_rate": 0.10,
-         "table": [{"kin_id": 20, "weight": 40, "min_level": 17, "max_level": 19},
-                   {"kin_id": 26, "weight": 30, "min_level": 17, "max_level": 18},
-                   {"kin_id": 31, "weight": 20, "min_level": 18, "max_level": 19},
-                   {"kin_id": 13, "weight": 10, "min_level": 18, "max_level": 19}]},
+         "table": [{"kin_id": 31, "weight": 40, "min_level": 17, "max_level": 19},
+                   {"kin_id": 27, "weight": 30, "min_level": 17, "max_level": 18},
+                   {"kin_id": 24, "weight": 20, "min_level": 18, "max_level": 19},
+                   {"kin_id": 11, "weight": 10, "min_level": 18, "max_level": 19}]},
         # the outer reef: rowed water, post-game (deep terrain rolls only on the
         # deepwater tiles — the engine's 'deep' tile-bound terrain)
         {"id": "reef_deep", "terrain": "deep", "rect": {"tx": 0, "ty": REEF_ROW, "w": W, "h": H - REEF_ROW},
@@ -187,9 +200,9 @@ m = {
          "table": [{"kin_id": 28, "weight": 28, "min_level": 58, "max_level": 61},
                    {"kin_id": 25, "weight": 20, "min_level": 58, "max_level": 61},
                    {"kin_id": 22, "weight": 20, "min_level": 58, "max_level": 61},
-                   {"kin_id": 172, "weight": 15, "min_level": 58, "max_level": 60},
-                   {"kin_id": 174, "weight": 12, "min_level": 58, "max_level": 60},
-                   {"kin_id": 30, "weight": 5, "min_level": 60, "max_level": 62}]},
+                   {"kin_id": 173, "weight": 15, "min_level": 58, "max_level": 60},
+                   {"kin_id": 175, "weight": 12, "min_level": 58, "max_level": 60},
+                   {"kin_id": 34, "weight": 5, "min_level": 60, "max_level": 62}]},
     ],
     "npcs": [],
     "gates": [],
@@ -207,11 +220,11 @@ m = {
 owed: list[str] = []
 # two swimmer-route trainers, each on a skerry facing the water lane it watches
 owed += pt.trainer_beat(m, tid="bay_diver", at=(6, 7), facing="right", sight=4, sprite="fen_folk")
-owed += pt.trainer_beat(m, tid="bay_nethand", at=(16, 12), facing="up", sight=4, sprite="fisher_woman")
+owed += pt.trainer_beat(m, tid="bay_nethand", at=(22, 14), facing="down", sight=3, sprite="fisher_woman")
 # caches (variety: a consumable on the shoal, the valuable off the lane, and a
 # skiff-only find on the west reef skerry — Deep backtrack #5)
 owed += pt.cache(m, cid="bay_shoal", at=(2, 8))
-owed += pt.cache(m, cid="bay_skerry_chart", at=(21, 14))
+owed += pt.cache(m, cid="bay_skerry_chart", at=(14, 14))
 owed += pt.cache(m, cid="bay_reef", at=(5, 24))
 # Grandmother Tallow on her reef, only while she's been rowed out (the scene's
 # `travel` re-enters the map so this placement spawns — Lottie's trick).

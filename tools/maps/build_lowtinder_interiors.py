@@ -102,7 +102,7 @@ def build_school():
          "to_map": "lowtinder", "to": {"tx": 19, "ty": 21}, "facing": "down", "transition": "door"},
         # the moss-garden: only to Brightlight (the Lamplight tier at 4 Gleams)
         {"id": "to_garden", "at": {"tx": door_x, "ty": 1}, "trigger": "step_on",
-         "to_map": "lowtinder_school_garden", "to": {"tx": 6, "ty": 8}, "facing": "up",
+         "to_map": "lowtinder_school_garden", "to": {"tx": 8, "ty": 8}, "facing": "up",
          "transition": "door", "requires_flag": "flag:lamplight_brightlight",
          "blocked_ref": "door.lowtinder_garden_dark"},
     ]
@@ -125,30 +125,34 @@ def build_school():
 
 def build_garden() -> dict:
     """The moss-garden: a cave-kind floor on the shared set (glowmoss is the
-    encounter tile), so it can glow. 12x10."""
-    W, H = 12, 10
+    encounter tile), so it can glow. 16x10 — a full screen wide (review 2026-10:
+    the old 12x10 left a black void beside it). The glass roof fell in long ago;
+    the moss took the room, the children's desks and all."""
+    W, H = 16, 10
+    DOOR = 8
     rng = random.Random(3939)
     wall = mk.make_grid(W, H)
     mk.rect(wall, W, H, 0, 0, W - 1, H - 1)
     floor = mk.make_grid(W, H)
-    mk.rect(floor, W, H, 2, 2, 9, 8)
-    mk.blob(floor, W, H, 5.5, 4.5, 4.4, 3.0)
-    mk.vline(floor, W, H, 6, 8, 9)                 # the doorway, south
+    mk.rect(floor, W, H, 2, 2, 13, 8)
+    mk.blob(floor, W, H, 7.5, 4.5, 6.2, 3.0)
+    mk.vline(floor, W, H, DOOR, 8, 9)               # the doorway, south
     for i in range(W * H):
         if floor[i]:
             wall[i] = 0
     moss = mk.make_grid(W, H)
-    mk.blob(moss, W, H, 5.5, 4.0, 3.6, 2.2)
+    mk.blob(moss, W, H, 7.5, 4.2, 5.0, 2.3)
+    mk.blob(moss, W, H, 11.5, 6.6, 1.6, 1.0)
     for i in range(W * H):
         if not floor[i]:
             moss[i] = 0
-    moss[8 * W + 6] = 0
-    moss[7 * W + 6] = 0
+    for y in (6, 7, 8):                              # a clear path in from the door
+        moss[y * W + DOOR] = 0
     cf = [gid("cavefloor0"), gid("cavefloor1"), gid("cavefloor2"), gid("cavefloor3")]
     base = [rng.choice(cf) if rng.random() < 0.55 else cf[0] for _ in range(W * H)]
     deco = mk.make_grid(W, H)
-    for (x, y, n) in [(2, 2, "glowshroom_a"), (9, 3, "glowshroom_b"), (3, 7, "glowshroom_b"),
-                      (9, 7, "glowshroom_a")]:
+    for (x, y, n) in [(2, 2, "glowshroom_a"), (13, 3, "glowshroom_b"), (3, 7, "glowshroom_b"),
+                      (13, 7, "glowshroom_a"), (6, 8, "glowshroom_a")]:
         if floor[y * W + x] and not moss[y * W + x]:
             deco[y * W + x] = gid(n)
     m = {
@@ -165,13 +169,20 @@ def build_garden() -> dict:
         "objects": [
             {"id": "old_lamp_w", "sprite": "saltreach_sunken_lamp", "at": {"tx": 2, "ty": 3},
              "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-            {"id": "old_lamp_e", "sprite": "tinderwick_lamp_post", "at": {"tx": 9, "ty": 4},
+            {"id": "old_lamp_e", "sprite": "tinderwick_lamp_post", "at": {"tx": 13, "ty": 4},
              "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-            {"id": "shrooms", "sprite": "glowmoss_deep_glowshrooms_teal", "at": {"tx": 8, "ty": 1},
+            {"id": "shrooms", "sprite": "glowmoss_deep_glowshrooms_teal", "at": {"tx": 11, "ty": 1},
              "w": 2, "h": 2, "overhang": 1, "walk_under": True},
+            {"id": "shrooms_w", "sprite": "glowmoss_deep_glowshrooms_teal", "at": {"tx": 4, "ty": 1},
+             "w": 2, "h": 2, "overhang": 1, "walk_under": True},
+            # the children's desks, mossed over where they stood
+            {"id": "desk_a", "sprite": "interior_desk", "at": {"tx": 10, "ty": 7}, "w": 2, "h": 1},
+            {"id": "stool_a", "sprite": "interior_stool", "at": {"tx": 12, "ty": 8}, "w": 1, "h": 1},
+            {"id": "puddle_g", "sprite": "lowtinder_puddle_a", "at": {"tx": 4, "ty": 7}, "w": 2, "h": 1,
+             "solid": False},
         ],
         "warps": [
-            {"id": "to_school", "at": {"tx": 6, "ty": 9}, "trigger": "step_on",
+            {"id": "to_school", "at": {"tx": DOOR, "ty": 9}, "trigger": "step_on",
              "to_map": "lowtinder_school", "to": {"tx": 8, "ty": 2}, "facing": "down",
              "transition": "door"},
         ],
@@ -180,23 +191,23 @@ def build_garden() -> dict:
              "ref": "sign.lowtinder_garden"},
         ],
         "encounters": [
-            {"id": "moss_garden", "terrain": "tall_grass", "rect": {"tx": 1, "ty": 1, "w": 10, "h": 7},
+            {"id": "moss_garden", "terrain": "tall_grass", "rect": {"tx": 1, "ty": 1, "w": 14, "h": 8},
              "encounter_rate": 0.14,
              "table": [{"kin_id": 39, "weight": 40, "min_level": 24, "max_level": 27},
-                       {"kin_id": 5, "weight": 35, "min_level": 24, "max_level": 26},
-                       {"kin_id": 20, "weight": 25, "min_level": 24, "max_level": 26}]},
+                       {"kin_id": 6, "weight": 35, "min_level": 24, "max_level": 26},
+                       {"kin_id": 21, "weight": 25, "min_level": 24, "max_level": 26}]},
         ],
         "npcs": [
-            {"id": "cache_garden_drop", "at": {"tx": 8, "ty": 7}, "facing": "down", "sprite": "item_cache",
+            {"id": "cache_garden_drop", "at": {"tx": 9, "ty": 7}, "facing": "down", "sprite": "item_cache",
              "movement": "static", "dialogue_ref": "script.pickup_lowtinder_garden",
              "hidden_when_flag": "flag:picked_lowtinder_garden"},
-            {"id": "amb_mossmantle", "at": {"tx": 4, "ty": 3}, "facing": "down", "sprite": "kin_39_overworld",
+            {"id": "amb_mossmantle", "at": {"tx": 5, "ty": 3}, "facing": "down", "sprite": "kin_39_overworld",
              "movement": "wander", "ambient": True, "wander_radius": 1},
         ],
         "gates": [],
         "music": "assets/audio/music/lowtinder.mp3",
         "ambience": {"particles": [{"kind": "spores", "density": 0.6}, {"kind": "glowmotes", "density": 0.5}],
-                     "light_sources_extra": [{"at": {"tx": 6, "ty": 4}, "radius": 30, "color": "#9fe0a8"}]},
+                     "light_sources_extra": [{"at": {"tx": 8, "ty": 4}, "radius": 34, "color": "#9fe0a8"}]},
     }
     return m
 

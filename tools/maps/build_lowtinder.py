@@ -26,7 +26,7 @@ Three signature touches:
 Levels 18-21 (sea-grass beds + the canal); EMBRIFT (#14, never wild before) is the
 Lowtinder rare — the Ember town's drowned hearths. Mirrored in build_species.py.
 
-Wiring: west edge rows 6-13 <-> tinderwick_bay (27, y). Doors: the lamp-house
+Wiring: west edge rows 15-16 <-> tinderwick_bay (27, y). Doors: the lamp-house
 (lowtinder_lamphouse), the lamp-school (lowtinder_school). Steps -> lowtinder_cellar.
 
 Run:  python3 tools/maps/build_lowtinder.py
@@ -42,7 +42,7 @@ from mapkit import gid
 
 W, H = 26, 28
 rng = random.Random(1986)
-WEST_ROWS = range(6, 14)
+WEST_ROWS = range(15, 17)   # the swim in from Tinderwick Bay's net-hand channel
 
 # ---- terrain ---------------------------------------------------------------------
 water = mk.make_grid(W, H)
@@ -148,7 +148,7 @@ objects = [
     o("tree_b", "tinderwick_tree", 8, 0, 3, 4, overhang=3, walk_under=True),
     o("tree_c", "tinderwick_tree_c", 23, 3, 3, 4, overhang=3, walk_under=True),
     o("wreck", "pearlmoor_wreck_ribs", 7, 24, 3, 2),
-    o("punt", "saltreach_punt", 0, 15, 2, 3),
+    o("punt", "saltreach_punt", 0, 21, 2, 3),
     o("beached", "coldfog_beached_boat", 20, 9, 3, 2),
     o("anchor", "pearlmoor_anchor", 16, 9, 2, 2),
     o("pots_a", "pearlmoor_crab_pots", 3, 9, 1, 1),
@@ -160,6 +160,16 @@ objects = [
     o("eeltrap", "saltreach_eel_trap", 22, 15, 2, 2),
     o("driftwood", "pearlmoor_driftwood", 15, 23, 2, 1),
     o("notice", "tinderwick_notice_board", 9, 3, 2, 2, overhang=1),
+    # the tide's leavings on the cobbles (review 2026-10: the streets read dry) —
+    # non-solid puddle decals drawn in lowtinderforge.py
+    o("puddle_1", "lowtinder_puddle_a", 6, 12, 2, 1, solid=False),
+    o("puddle_2", "lowtinder_puddle_c", 13, 13, 2, 1, solid=False),
+    o("puddle_3", "lowtinder_puddle_b", 20, 12, 1, 1, solid=False),
+    o("puddle_4", "lowtinder_puddle_a", 16, 8, 2, 1, solid=False),
+    o("puddle_5", "lowtinder_puddle_b", 10, 7, 1, 1, solid=False),
+    o("puddle_6", "lowtinder_puddle_c", 18, 22, 2, 1, solid=False),
+    o("puddle_7", "lowtinder_puddle_b", 4, 9, 1, 1, solid=False),
+    o("puddle_8", "lowtinder_puddle_a", 4, 6, 2, 1, solid=False),
 ]
 
 # ---- deco ------------------------------------------------------------------------
@@ -230,20 +240,20 @@ m = {
     },
 }
 
-TABLE = [{"kin_id": 13, "weight": 30, "min_level": 18, "max_level": 20},
-         {"kin_id": 16, "weight": 25, "min_level": 18, "max_level": 20},
-         {"kin_id": 20, "weight": 20, "min_level": 18, "max_level": 20},
-         {"kin_id": 26, "weight": 15, "min_level": 18, "max_level": 19},
+TABLE = [{"kin_id": 11, "weight": 30, "min_level": 18, "max_level": 20},
+         {"kin_id": 42, "weight": 25, "min_level": 18, "max_level": 20},
+         {"kin_id": 21, "weight": 20, "min_level": 18, "max_level": 20},
+         {"kin_id": 16, "weight": 15, "min_level": 17, "max_level": 18},
          {"kin_id": 14, "weight": 7, "min_level": 20, "max_level": 21}]
 m["encounters"] += pt.zones_from_grid(seagrass, W, H, terrain="tall_grass", rate=0.10,
                                       table=TABLE, id_prefix="lt_grass")
 m["encounters"].append(
     {"id": "lt_canal", "terrain": "water", "rect": {"tx": 0, "ty": 0, "w": W, "h": H},
      "encounter_rate": 0.07, "requires_ability": "tidecall",
-     "table": [{"kin_id": 26, "weight": 35, "min_level": 18, "max_level": 20},
-               {"kin_id": 20, "weight": 30, "min_level": 18, "max_level": 20},
-               {"kin_id": 23, "weight": 25, "min_level": 18, "max_level": 20},
-               {"kin_id": 14, "weight": 5, "min_level": 20, "max_level": 21}]})
+     "table": [{"kin_id": 27, "weight": 35, "min_level": 18, "max_level": 20},
+                   {"kin_id": 21, "weight": 30, "min_level": 18, "max_level": 20},
+                   {"kin_id": 24, "weight": 25, "min_level": 18, "max_level": 20},
+                   {"kin_id": 14, "weight": 5, "min_level": 20, "max_level": 21}]})
 
 owed: list[str] = []
 # a mudlark on the lower street (route), watching west along the cobbles
@@ -260,9 +270,9 @@ m["npcs"] += [
     {"id": "lt_tidewife", "at": {"tx": 8, "ty": 13}, "facing": "down", "sprite": "fisher_woman",
      "movement": "look_around", "dialogue_ref": "script.lowtinder_tidewife"},
     # ambient kin from the map's own table, off the lanes
-    {"id": "amb_ashlette", "at": {"tx": 21, "ty": 15}, "facing": "down", "sprite": "kin_13_overworld",
+    {"id": "amb_tallowcrest", "at": {"tx": 21, "ty": 15}, "facing": "down", "sprite": "kin_11_overworld",
      "movement": "wander", "ambient": True, "wander_radius": 1},
-    {"id": "amb_tidmote", "at": {"tx": 5, "ty": 22}, "facing": "down", "sprite": "kin_20_overworld",
+    {"id": "amb_tidmaren", "at": {"tx": 5, "ty": 22}, "facing": "down", "sprite": "kin_21_overworld",
      "movement": "wander", "ambient": True, "wander_radius": 1},
 ]
 wm.add(m, wm.marker("cellar_steps", "steps_s", CELLAR[0], CELLAR[1]))

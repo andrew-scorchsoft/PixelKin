@@ -449,13 +449,6 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 60
-    },
-    {
-     "area": "lowtinder_school_garden",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 24,
-     "max": 26
     }
    ],
    "scripted": false,
@@ -590,6 +583,13 @@
      "rarity": "common",
      "min": 57,
      "max": 64
+    },
+    {
+     "area": "lowtinder_school_garden",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 24,
+     "max": 26
     }
    ],
    "scripted": false,
@@ -1165,6 +1165,34 @@
      "rarity": "common",
      "min": 57,
      "max": 64
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 18,
+     "max": 19
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowtinder_cellar",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 20,
+     "max": 22
+    },
+    {
+     "area": "lowtinder_cellar_b2",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 20,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -1402,34 +1430,6 @@
      "rarity": "uncommon",
      "min": 56,
      "max": 62
-    },
-    {
-     "area": "tinderwick_bay",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 18,
-     "max": 19
-    },
-    {
-     "area": "lowtinder",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 18,
-     "max": 20
-    },
-    {
-     "area": "lowtinder_cellar",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 19,
-     "max": 22
-    },
-    {
-     "area": "lowtinder_cellar_b2",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 20,
-     "max": 23
     }
    ],
    "scripted": false,
@@ -1752,9 +1752,9 @@
     {
      "area": "lowtinder",
      "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 18,
-     "max": 20
+     "rarity": "uncommon",
+     "min": 17,
+     "max": 18
     }
    ],
    "scripted": false,
@@ -2171,41 +2171,6 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 64
-    },
-    {
-     "area": "tinderwick_bay",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 17,
-     "max": 19
-    },
-    {
-     "area": "lowtinder",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 18,
-     "max": 20
-    },
-    {
-     "area": "lowtinder",
-     "terrain": "water",
-     "rarity": "common",
-     "min": 18,
-     "max": 20
-    },
-    {
-     "area": "lowtinder_cellar",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 19,
-     "max": 21
-    },
-    {
-     "area": "lowtinder_school_garden",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 24,
-     "max": 26
     }
    ],
    "scripted": false,
@@ -2330,6 +2295,34 @@
      "rarity": "rare",
      "min": 19,
      "max": 20
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowtinder_cellar",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 19,
+     "max": 21
+    },
+    {
+     "area": "lowtinder_school_garden",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 24,
+     "max": 26
     }
    ],
    "scripted": false,
@@ -2579,20 +2572,6 @@
      "rarity": "uncommon",
      "min": 58,
      "max": 64
-    },
-    {
-     "area": "tinderwick_bay",
-     "terrain": "water",
-     "rarity": "common",
-     "min": 17,
-     "max": 19
-    },
-    {
-     "area": "lowtinder",
-     "terrain": "water",
-     "rarity": "common",
-     "min": 18,
-     "max": 20
     }
    ],
    "scripted": false,
@@ -2735,7 +2714,21 @@
     {
      "area": "tinderwick_bay",
      "terrain": "water",
-     "rarity": "uncommon",
+     "rarity": "common",
+     "min": 17,
+     "max": 19
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 18,
+     "max": 19
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "water",
+     "rarity": "common",
      "min": 18,
      "max": 20
     }
@@ -2982,34 +2975,6 @@
      "rarity": "common",
      "min": 56,
      "max": 62
-    },
-    {
-     "area": "tinderwick_bay",
-     "terrain": "water",
-     "rarity": "common",
-     "min": 17,
-     "max": 19
-    },
-    {
-     "area": "tinderwick_bay",
-     "terrain": "tall_grass",
-     "rarity": "common",
-     "min": 17,
-     "max": 18
-    },
-    {
-     "area": "lowtinder",
-     "terrain": "tall_grass",
-     "rarity": "uncommon",
-     "min": 18,
-     "max": 19
-    },
-    {
-     "area": "lowtinder",
-     "terrain": "water",
-     "rarity": "common",
-     "min": 18,
-     "max": 20
     }
    ],
    "scripted": false,
@@ -3195,6 +3160,20 @@
     },
     {
      "area": "tinderwick_bay",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 17,
+     "max": 19
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 17,
+     "max": 18
+    },
+    {
+     "area": "lowtinder",
      "terrain": "water",
      "rarity": "common",
      "min": 18,
@@ -3655,13 +3634,6 @@
      "rarity": "common",
      "min": 60,
      "max": 62
-    },
-    {
-     "area": "tinderwick_bay",
-     "terrain": "deep",
-     "rarity": "rare",
-     "min": 60,
-     "max": 62
     }
    ],
    "scripted": false,
@@ -3876,9 +3848,16 @@
     },
     {
      "area": "tinderwick_bay",
-     "terrain": "tall_grass",
+     "terrain": "water",
      "rarity": "common",
      "min": 18,
+     "max": 20
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 17,
      "max": 19
     },
     {
@@ -3893,7 +3872,7 @@
      "terrain": "cave",
      "rarity": "common",
      "min": 21,
-     "max": 23
+     "max": 22
     }
    ],
    "scripted": false,
@@ -4227,6 +4206,13 @@
      "rarity": "very_rare",
      "min": 67,
      "max": 67
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "deep",
+     "rarity": "rare",
+     "min": 60,
+     "max": 62
     }
    ],
    "scripted": true,
@@ -4931,20 +4917,6 @@
      "rarity": "uncommon",
      "min": 24,
      "max": 26
-    },
-    {
-     "area": "lowtinder_cellar",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 20,
-     "max": 22
-    },
-    {
-     "area": "lowtinder_cellar_b2",
-     "terrain": "cave",
-     "rarity": "common",
-     "min": 20,
-     "max": 23
     }
    ],
    "scripted": false,
@@ -5057,6 +5029,27 @@
      "rarity": "common",
      "min": 56,
      "max": 61
+    },
+    {
+     "area": "lowtinder",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 18,
+     "max": 20
+    },
+    {
+     "area": "lowtinder_cellar",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 19,
+     "max": 22
+    },
+    {
+     "area": "lowtinder_cellar_b2",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 20,
+     "max": 23
     }
    ],
    "scripted": false,
@@ -19274,13 +19267,6 @@
      "rarity": "common",
      "min": 60,
      "max": 63
-    },
-    {
-     "area": "tinderwick_bay",
-     "terrain": "deep",
-     "rarity": "uncommon",
-     "min": 58,
-     "max": 60
     }
    ],
    "scripted": false,
@@ -19447,6 +19433,13 @@
      "rarity": "uncommon",
      "min": 61,
      "max": 63
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "deep",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -19604,13 +19597,6 @@
      "rarity": "uncommon",
      "min": 60,
      "max": 63
-    },
-    {
-     "area": "tinderwick_bay",
-     "terrain": "deep",
-     "rarity": "uncommon",
-     "min": 58,
-     "max": 60
     }
    ],
    "scripted": false,
@@ -19778,6 +19764,13 @@
      "rarity": "rare",
      "min": 62,
      "max": 63
+    },
+    {
+     "area": "tinderwick_bay",
+     "terrain": "deep",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 60
     }
    ],
    "scripted": false,

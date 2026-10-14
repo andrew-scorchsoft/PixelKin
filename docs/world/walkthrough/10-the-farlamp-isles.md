@@ -581,3 +581,21 @@ What shipped, and where it differs from the plan above:
 - **Audio**: `lowtinder` (tinderwick-a's melody note-for-note at 72 BPM in A minor, triangle lead
   then a music-box pass) and `bell-cellar` (the lullaby's first notes as a slow bell toll), classic
   + remaster. Backdrops `lowtinder-a.webp`, `bell-cellar-a.webp`.
+- **Review pass (2026-10, after an independent 81.5 score):**
+  - *The bay's shape.* The bay ↔ Lowtinder seam moved from rows 6–13 (a 6-step corner hop from
+    the swim-off) to rows **15–16**, inside the **net-hand's channel**: drowned roofs and rubble
+    close it north (rows 13–14) and south (row 17), so the only way in is off Tidepool Skerry's
+    east tip, where net-hand Corra stands at (22,14) watching both tiles. The bay now takes about
+    24 steps door-to-door. The skerry's square rock-pool is gone.
+  - *Bell Cellar B1* is a one-way loop: a rubble slump at (5–6,10) drops into the winter store.
+    A sea-moss band across both halves means neither way round dodges the kin. It also gets
+    drowned stores: a shelf, a sunk ore-cart, drowned barrels and puddles.
+  - *The moss-garden* is 16×10, so it fills the screen.
+  - *Drowned, not dry.* Every derived building wears a loud high-water mark: a salt rim, a
+    weed band and weed curtains, drip-streaks and barnacle clusters. The roof-ridges are now
+    drawn as hipped slate roofs with chimneys and dormers, with water lapping at them (a wet
+    band, a foam collar past the eaves, ripple rings). Puddle decals sit on the cobbles.
+  - *Kindle levels.* No wild row or trainer kin sits past its kindle level. Brinelet,
+    Glintfin, Tidmote, Ashlette, Scorchite and Wicklit gave way to Brineroll, Shimmral,
+    Tidmaren, Tallowcrest, Coalump and Wickmere. On the reef, Fathomote and Hermiwick became
+    Fathomere and Beaconclaw, and the rare Glostrael became Tideveil.

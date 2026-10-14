@@ -412,8 +412,8 @@
         70,
         26,
         104,
-        59,
-        63,
+        35,
+        34,
         34,
         35,
         105,
@@ -440,8 +440,8 @@
         70,
         38,
         106,
-        71,
-        75,
+        34,
+        35,
         35,
         34,
         33,
@@ -1098,34 +1098,6 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         120,
         0,
         0,
@@ -1155,8 +1127,36 @@
         0,
         0,
         0,
-        124,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        120,
         0,
         0,
         0,
@@ -1208,36 +1208,16 @@
         0,
         0,
         0,
-        124,
-        0,
-        0,
-        0,
-        0,
-        120,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         124,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -1278,6 +1258,7 @@
         0,
         0,
         0,
+        124,
         0,
         0,
         0,
@@ -1327,6 +1308,25 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        124,
+        124,
+        0,
+        0,
+        0,
+        124,
         0,
         0,
         0,
@@ -2456,8 +2456,28 @@
       "id": "ridge_f",
       "sprite": "lowtinder_roof_ridge",
       "at": {
+        "tx": 9,
+        "ty": 13
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "ridge_g",
+      "sprite": "lowtinder_roof_ridge_b",
+      "at": {
         "tx": 24,
-        "ty": 16
+        "ty": 13
+      },
+      "w": 4,
+      "h": 2
+    },
+    {
+      "id": "ridge_h",
+      "sprite": "lowtinder_roof_ridge",
+      "at": {
+        "tx": 24,
+        "ty": 17
       },
       "w": 3,
       "h": 2
@@ -2498,8 +2518,8 @@
       "id": "street_lamp_c",
       "sprite": "saltreach_sunken_lamp",
       "at": {
-        "tx": 22,
-        "ty": 11
+        "tx": 20,
+        "ty": 8
       },
       "w": 1,
       "h": 3,
@@ -2715,121 +2735,31 @@
       "transition": "fade"
     },
     {
-      "id": "to_lowtinder_6",
+      "id": "to_lowtinder_15",
       "at": {
         "tx": 27,
-        "ty": 6
+        "ty": 15
       },
       "trigger": "step_on",
       "to_map": "lowtinder",
       "to": {
         "tx": 0,
-        "ty": 6
+        "ty": 15
       },
       "facing": "right",
       "transition": "fade"
     },
     {
-      "id": "to_lowtinder_7",
+      "id": "to_lowtinder_16",
       "at": {
         "tx": 27,
-        "ty": 7
+        "ty": 16
       },
       "trigger": "step_on",
       "to_map": "lowtinder",
       "to": {
         "tx": 0,
-        "ty": 7
-      },
-      "facing": "right",
-      "transition": "fade"
-    },
-    {
-      "id": "to_lowtinder_8",
-      "at": {
-        "tx": 27,
-        "ty": 8
-      },
-      "trigger": "step_on",
-      "to_map": "lowtinder",
-      "to": {
-        "tx": 0,
-        "ty": 8
-      },
-      "facing": "right",
-      "transition": "fade"
-    },
-    {
-      "id": "to_lowtinder_9",
-      "at": {
-        "tx": 27,
-        "ty": 9
-      },
-      "trigger": "step_on",
-      "to_map": "lowtinder",
-      "to": {
-        "tx": 0,
-        "ty": 9
-      },
-      "facing": "right",
-      "transition": "fade"
-    },
-    {
-      "id": "to_lowtinder_10",
-      "at": {
-        "tx": 27,
-        "ty": 10
-      },
-      "trigger": "step_on",
-      "to_map": "lowtinder",
-      "to": {
-        "tx": 0,
-        "ty": 10
-      },
-      "facing": "right",
-      "transition": "fade"
-    },
-    {
-      "id": "to_lowtinder_11",
-      "at": {
-        "tx": 27,
-        "ty": 11
-      },
-      "trigger": "step_on",
-      "to_map": "lowtinder",
-      "to": {
-        "tx": 0,
-        "ty": 11
-      },
-      "facing": "right",
-      "transition": "fade"
-    },
-    {
-      "id": "to_lowtinder_12",
-      "at": {
-        "tx": 27,
-        "ty": 12
-      },
-      "trigger": "step_on",
-      "to_map": "lowtinder",
-      "to": {
-        "tx": 0,
-        "ty": 12
-      },
-      "facing": "right",
-      "transition": "fade"
-    },
-    {
-      "id": "to_lowtinder_13",
-      "at": {
-        "tx": 27,
-        "ty": 13
-      },
-      "trigger": "step_on",
-      "to_map": "lowtinder",
-      "to": {
-        "tx": 0,
-        "ty": 13
+        "ty": 16
       },
       "facing": "right",
       "transition": "fade"
@@ -2871,26 +2801,20 @@
       "requires_ability": "tidecall",
       "table": [
         {
-          "kin_id": 26,
+          "kin_id": 27,
+          "weight": 35,
+          "min_level": 17,
+          "max_level": 19
+        },
+        {
+          "kin_id": 24,
           "weight": 30,
           "min_level": 17,
           "max_level": 19
         },
         {
-          "kin_id": 23,
+          "kin_id": 31,
           "weight": 25,
-          "min_level": 17,
-          "max_level": 19
-        },
-        {
-          "kin_id": 27,
-          "weight": 20,
-          "min_level": 18,
-          "max_level": 20
-        },
-        {
-          "kin_id": 24,
-          "weight": 15,
           "min_level": 18,
           "max_level": 20
         },
@@ -2914,25 +2838,25 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 20,
+          "kin_id": 31,
           "weight": 40,
           "min_level": 17,
           "max_level": 19
         },
         {
-          "kin_id": 26,
+          "kin_id": 27,
           "weight": 30,
           "min_level": 17,
           "max_level": 18
         },
         {
-          "kin_id": 31,
+          "kin_id": 24,
           "weight": 20,
           "min_level": 18,
           "max_level": 19
         },
         {
-          "kin_id": 13,
+          "kin_id": 11,
           "weight": 10,
           "min_level": 18,
           "max_level": 19
@@ -2969,19 +2893,19 @@
           "max_level": 61
         },
         {
-          "kin_id": 172,
+          "kin_id": 173,
           "weight": 15,
           "min_level": 58,
           "max_level": 60
         },
         {
-          "kin_id": 174,
+          "kin_id": 175,
           "weight": 12,
           "min_level": 58,
           "max_level": 60
         },
         {
-          "kin_id": 30,
+          "kin_id": 34,
           "weight": 5,
           "min_level": 60,
           "max_level": 62
@@ -3019,24 +2943,24 @@
     {
       "id": "bay_nethand",
       "at": {
-        "tx": 16,
-        "ty": 12
+        "tx": 22,
+        "ty": 14
       },
-      "facing": "up",
+      "facing": "down",
       "sprite": "fisher_woman",
       "movement": "static",
       "dialogue_ref": "script.bay_nethand",
-      "sight_range": 4,
+      "sight_range": 3,
       "defeated_flag": "flag:bay_nethand_beaten",
       "hidden_when_flag": "flag:bay_nethand_beaten"
     },
     {
       "id": "bay_nethand_after",
       "at": {
-        "tx": 16,
-        "ty": 12
+        "tx": 22,
+        "ty": 14
       },
-      "facing": "up",
+      "facing": "down",
       "sprite": "fisher_woman",
       "movement": "look_around",
       "dialogue_ref": "npc.bay_nethand_after",
@@ -3057,7 +2981,7 @@
     {
       "id": "cache_bay_skerry_chart",
       "at": {
-        "tx": 21,
+        "tx": 14,
         "ty": 14
       },
       "facing": "down",

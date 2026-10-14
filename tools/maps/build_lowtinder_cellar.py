@@ -21,9 +21,8 @@ belfry pit), joined by a mutual ladder pair.
 
 Levels: B1 19-22, B2 20-23 (cave rolls rect-wide). Mirrored in build_species.py.
 
-audit_flow WARNs on B1 (justified): `free-pass` / `loop` — the cellars roll CAVE encounters
-rect-wide (the audit counts painted tiles only), and B1's loop is the region-scale one:
-down the ladder, up Tinderwick's well, home along the beach.
+B1 is a one-way LOOP (the slump at (5-6,10) drops you to the winter store) with a sea-moss
+band across both halves, so neither way round dodges the cellar's kin (review 2026-10).
 
 Run:  python3 tools/maps/build_lowtinder_cellar.py
 """
@@ -107,19 +106,36 @@ def build_b1() -> dict:
     murk = mk.make_grid(W, H)
     mk.blob(murk, W, H, 6.5, 14.4, 3.4, 1.7)       # the winter store's flood
     mk.blob(murk, W, H, 3.0, 5.2, 1.7, 1.3)        # the first pool (lamp-house cellar)
-    mk.blob(murk, W, H, 20.5, 4.8, 1.3, 1.7)
     for i in range(W * H):
         if not floor[i]:
             murk[i] = 0
+    # SEA-MOSS (review 2026-10: B1 was free-pass): a full-width band across BOTH
+    # ways round the loop — the vault passage (x 10-12) and the low passage
+    # (x 13-15) — so either way to the ladder crosses the cellar's kin.
+    moss = mk.make_grid(W, H)
+    mk.rect(moss, W, H, 10, 5, 12, 6)
+    mk.rect(moss, W, H, 13, 14, 15, 15)
+    mk.blob(moss, W, H, 9.0, 13.0, 1.6, 1.0)
+    for i in range(W * H):
+        if not floor[i] or murk[i]:
+            moss[i] = 0
     base = floor_base(W, H, rng)
     layers = [
         {"name": "t_murk", "role": "terrain", "terrain": "murk",
          "set": "vesper_overworld_set", "depth": 0, "data": murk},
+        {"name": "t_moss", "role": "terrain", "terrain": "glowmoss",
+         "set": "vesper_overworld_set", "depth": 0, "data": moss},
         {"name": "t_cavewall", "role": "terrain", "terrain": "cavewall",
          "set": "vesper_overworld_set", "depth": 0, "data": wall},
     ]
     deco = mk.make_grid(W, H)
     deco[LADDER_DOWN[1] * W + LADDER_DOWN[0]] = gid("cave_ladder_down")
+    # THE SLUMP (review 2026-10: B1 had no loop): the drop out of the first cellar
+    # is a slumped rubble step — down only. So the cellar is a LOOP: down the slump
+    # to the winter store, east under the low passage, up through the rope store
+    # and back along the vault passage — never the same way twice.
+    deco[10 * W + 5] = gid("scree_ledge_s")
+    deco[10 * W + 6] = gid("scree_ledge_s_v1")
     for (x, y) in [(7, 4), (1, 7), (15, 2), (21, 7), (12, 16), (22, 11), (2, 16), (10, 9)]:
         if floor[y * W + x] and not murk[y * W + x]:
             deco[y * W + x] = gid("boulder")
@@ -142,6 +158,19 @@ def build_b1() -> dict:
         {"id": "netrack", "sprite": "pearlmoor_net_rack", "at": {"tx": 18, "ty": 2}, "w": 2, "h": 1},
         {"id": "store_sacks", "sprite": "interior_sacks", "at": {"tx": 9, "ty": 15}, "w": 2, "h": 1},
         {"id": "posts", "sprite": "saltreach_mooring_posts", "at": {"tx": 21, "ty": 11}, "w": 1, "h": 2},
+        # the flood's leavings: a shelf of drowned stores, a sunk ore-cart in the
+        # winter store's black water, drowned barrels, and the floor's puddles
+        {"id": "shelf", "sprite": "interior_shelf", "at": {"tx": 5, "ty": 3}, "w": 2, "h": 3},
+        {"id": "sunk_cart", "sprite": "cinderhead_ore_cart", "at": {"tx": 5, "ty": 14}, "w": 2, "h": 2},
+        {"id": "drowned_barrels", "sprite": "interior_barrels", "at": {"tx": 3, "ty": 16}, "w": 2, "h": 1},
+        {"id": "vault_barrels", "sprite": "interior_barrels", "at": {"tx": 21, "ty": 16}, "w": 2, "h": 1},
+        {"id": "puddle_1", "sprite": "lowtinder_puddle_b", "at": {"tx": 15, "ty": 6}, "w": 1, "h": 1, "solid": False},
+        {"id": "puddle_2", "sprite": "lowtinder_puddle_a", "at": {"tx": 17, "ty": 15}, "w": 2, "h": 1, "solid": False},
+        {"id": "puddle_3", "sprite": "lowtinder_puddle_c", "at": {"tx": 2, "ty": 4}, "w": 2, "h": 1, "solid": False},
+        {"id": "puddle_4", "sprite": "lowtinder_puddle_b", "at": {"tx": 19, "ty": 8}, "w": 1, "h": 1, "solid": False},
+        {"id": "puddle_5", "sprite": "lowtinder_puddle_a", "at": {"tx": 19, "ty": 4}, "w": 2, "h": 1, "solid": False},
+        {"id": "puddle_6", "sprite": "lowtinder_puddle_c", "at": {"tx": 19, "ty": 12}, "w": 2, "h": 1, "solid": False},
+        {"id": "puddle_7", "sprite": "lowtinder_puddle_b", "at": {"tx": 16, "ty": 4}, "w": 1, "h": 1, "solid": False},
     ]
     warps = [
         {"id": "to_lowtinder", "at": {"tx": ENTRY[0], "ty": ENTRY[1]}, "trigger": "step_on",
@@ -154,11 +183,18 @@ def build_b1() -> dict:
          "activation": "interact", "ref": "sign.lowtinder_cellar"},
     ]
     encounters = [
+        {"id": "cellar_b1_moss", "terrain": "tall_grass", "rect": {"tx": 7, "ty": 4, "w": 10, "h": 13},
+         "encounter_rate": 0.12,
+         "table": [{"kin_id": 21, "weight": 30, "min_level": 19, "max_level": 21},
+                   {"kin_id": 42, "weight": 25, "min_level": 19, "max_level": 22},
+                   {"kin_id": 11, "weight": 20, "min_level": 20, "max_level": 22},
+                   {"kin_id": 31, "weight": 18, "min_level": 20, "max_level": 22},
+                   {"kin_id": 14, "weight": 5, "min_level": 21, "max_level": 22}]},
         {"id": "cellar_b1", "terrain": "cave", "rect": {"tx": 0, "ty": 0, "w": W, "h": H},
          "encounter_rate": 0.07,
-         "table": [{"kin_id": 20, "weight": 30, "min_level": 19, "max_level": 21},
-                   {"kin_id": 13, "weight": 25, "min_level": 19, "max_level": 22},
-                   {"kin_id": 41, "weight": 20, "min_level": 20, "max_level": 22},
+         "table": [{"kin_id": 21, "weight": 30, "min_level": 19, "max_level": 21},
+                   {"kin_id": 42, "weight": 25, "min_level": 19, "max_level": 22},
+                   {"kin_id": 11, "weight": 20, "min_level": 20, "max_level": 22},
                    {"kin_id": 31, "weight": 18, "min_level": 20, "max_level": 22},
                    {"kin_id": 14, "weight": 5, "min_level": 21, "max_level": 22}]},
     ]
@@ -266,9 +302,9 @@ def build_b2() -> dict:
     encounters = [
         {"id": "cellar_b2", "terrain": "cave", "rect": {"tx": 0, "ty": 0, "w": W, "h": H},
          "encounter_rate": 0.07,
-         "table": [{"kin_id": 13, "weight": 25, "min_level": 20, "max_level": 23},
-                   {"kin_id": 41, "weight": 25, "min_level": 20, "max_level": 23},
-                   {"kin_id": 31, "weight": 20, "min_level": 21, "max_level": 23},
+         "table": [{"kin_id": 42, "weight": 25, "min_level": 20, "max_level": 23},
+                   {"kin_id": 11, "weight": 25, "min_level": 20, "max_level": 23},
+                   {"kin_id": 31, "weight": 20, "min_level": 21, "max_level": 22},
                    {"kin_id": 27, "weight": 20, "min_level": 21, "max_level": 23},
                    {"kin_id": 14, "weight": 8, "min_level": 22, "max_level": 23}]},
     ]

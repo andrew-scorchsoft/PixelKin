@@ -1255,23 +1255,17 @@ for _area, _rows_ in FARLAMP_TABLES.items():
 # build_lowtinder_cellar.py, build_lowtinder_interiors.py — the maps are the truth):
 # (area, terrain, [(slug, weight, lo, hi)]). Embrift (#14) and Mossmantle (#39) are
 # wild here and nowhere else; the reef is the post-game deep (rowed, `deep`).
+# Every row sits at or under its kin's kindle level (review 2026-10: the base
+# forms that kindle at 13-15 were swapped for their kindled forms).
 LOWTINDER_TABLES = [
-    ("tinderwick_bay", "water", [("brinelet", 30, 17, 19), ("glintfin", 25, 17, 19), ("brineroll", 20, 18, 20),
-                                 ("shimmral", 15, 18, 20), ("tidmaren", 6, 19, 20)]),
-    ("tinderwick_bay", "tall_grass", [("tidmote", 40, 17, 19), ("brinelet", 30, 17, 18), ("lumpin", 20, 18, 19),
-                                      ("ashlette", 10, 18, 19)]),
-    ("tinderwick_bay", "deep", [("brinewrath", 28, 58, 61), ("prismare", 20, 58, 61), ("tidwraith", 20, 58, 61),
-                                ("fathomote", 15, 58, 60), ("hermiwick", 12, 58, 60), ("glostrael", 5, 60, 62)]),
-    ("lowtinder", "tall_grass", [("ashlette", 30, 18, 20), ("wickmoth", 25, 18, 20), ("tidmote", 20, 18, 20),
-                                 ("brinelet", 15, 18, 19), ("embrift", 7, 20, 21)]),
-    ("lowtinder", "water", [("brinelet", 35, 18, 20), ("tidmote", 30, 18, 20), ("glintfin", 25, 18, 20),
-                            ("embrift", 5, 20, 21)]),
-    ("lowtinder_cellar", "cave", [("tidmote", 30, 19, 21), ("ashlette", 25, 19, 22), ("scorchite", 20, 20, 22),
-                                  ("lumpin", 18, 20, 22), ("embrift", 5, 21, 22)]),
-    ("lowtinder_cellar_b2", "cave", [("ashlette", 25, 20, 23), ("scorchite", 25, 20, 23), ("lumpin", 20, 21, 23),
-                                     ("brineroll", 20, 21, 23), ("embrift", 8, 22, 23)]),
-    ("lowtinder_school_garden", "tall_grass", [("mossmantle", 40, 24, 27), ("wicklit", 35, 24, 26),
-                                               ("tidmote", 25, 24, 26)]),
+    ("tinderwick_bay", "water", [("brineroll", 35, 17, 19), ("shimmral", 30, 17, 19), ("lumpin", 25, 18, 20), ("tidmaren", 6, 19, 20)]),
+    ("tinderwick_bay", "tall_grass", [("lumpin", 40, 17, 19), ("brineroll", 30, 17, 18), ("shimmral", 20, 18, 19), ("tallowcrest", 10, 18, 19)]),
+    ("tinderwick_bay", "deep", [("brinewrath", 28, 58, 61), ("prismare", 20, 58, 61), ("tidwraith", 20, 58, 61), ("fathomere", 15, 58, 60), ("beaconclaw", 12, 58, 60), ("tideveil", 5, 60, 62)]),
+    ("lowtinder", "tall_grass", [("tallowcrest", 30, 18, 20), ("coalump", 25, 18, 20), ("tidmaren", 20, 18, 20), ("wickmoth", 15, 17, 18), ("embrift", 7, 20, 21)]),
+    ("lowtinder", "water", [("brineroll", 35, 18, 20), ("tidmaren", 30, 18, 20), ("shimmral", 25, 18, 20), ("embrift", 5, 20, 21)]),
+    ("lowtinder_cellar", "cave", [("tidmaren", 30, 19, 21), ("coalump", 25, 19, 22), ("tallowcrest", 20, 20, 22), ("lumpin", 18, 20, 22), ("embrift", 5, 21, 22)]),
+    ("lowtinder_cellar_b2", "cave", [("coalump", 25, 20, 23), ("tallowcrest", 25, 20, 23), ("lumpin", 20, 21, 22), ("brineroll", 20, 21, 23), ("embrift", 8, 22, 23)]),
+    ("lowtinder_school_garden", "tall_grass", [("mossmantle", 40, 24, 27), ("wickmere", 35, 24, 26), ("tidmaren", 25, 24, 26)]),
 ]
 for _area, _terrain, _rows_ in LOWTINDER_TABLES:
     for _slug, _w, _lo, _hi in _rows_:

@@ -110,34 +110,6 @@
       "rarity": "common",
       "min": 56,
       "max": 62
-    },
-    {
-      "area": "tinderwick_bay",
-      "terrain": "water",
-      "rarity": "common",
-      "min": 17,
-      "max": 19
-    },
-    {
-      "area": "tinderwick_bay",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 17,
-      "max": 18
-    },
-    {
-      "area": "lowtinder",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 18,
-      "max": 19
-    },
-    {
-      "area": "lowtinder",
-      "terrain": "water",
-      "rarity": "common",
-      "min": 18,
-      "max": 20
     }
   ],
   "scripted": false,
