@@ -27,6 +27,7 @@ Run:  python3 tools/maps/build_undertide_ii.py
 """
 from __future__ import annotations
 
+import undertidekit as uk
 from undertidekit import Floor
 
 PLAN = [
@@ -116,18 +117,25 @@ def T(rows):
     return [{"kin_id": k, "weight": w, "min_level": lo, "max_level": hi} for (k, w, lo, hi) in rows]
 
 
-f.zone("vaults_a", "cave", (1, 1, 8, 7), T(CAVE), 0.1)
-f.zone("vaults_walk", "cave", (1, 8, 5, 22), T(CAVE), 0.08)
-f.zone("vaults_k", "cave", (1, 23, 24, 28), T(CAVE), 0.08)
-f.zone("vaults_e", "cave", (22, 1, 28, 9), T(CAVE), 0.1)
-f.zone("vaults_h", "cave", (10, 10, 14, 16), T(CAVE), 0.1)
-f.zone("vaults_pool_n", "water", (1, 11, 4, 13), T(WATER), 0.12)
-f.zone("vaults_pool_s", "water", (1, 18, 4, 21), T(WATER), 0.12)
-f.zone("vaults_pool_k", "water", (16, 25, 21, 27), T(WATER), 0.12)
-f.zone("vaults_pool_e", "water", (23, 4, 26, 5), T(WATER), 0.12)
+f.zone("vaults_a", "cave", (1, 1, 8, 7), T(CAVE), 0.1,
+       day=T(uk.day_table(CAVE)))
+f.zone("vaults_walk", "cave", (1, 8, 5, 22), T(CAVE), 0.08,
+       day=T(uk.day_table(CAVE)))
+f.zone("vaults_k", "cave", (1, 23, 24, 28), T(CAVE), 0.08,
+       day=T(uk.day_table(CAVE)))
+f.zone("vaults_e", "cave", (22, 1, 28, 9), T(CAVE), 0.1,
+       day=T(uk.day_table(CAVE)))
+f.zone("vaults_h", "cave", (10, 10, 14, 16), T(CAVE), 0.1,
+       day=T(uk.day_table(CAVE)))
+f.zone("vaults_pool_n", "water", (1, 11, 4, 13), T(WATER), 0.12,
+       day=T(uk.day_table(WATER)))
+f.zone("vaults_pool_s", "water", (1, 18, 4, 21), T(WATER), 0.12,
+       day=T(uk.day_table(WATER)))
+f.zone("vaults_pool_k", "water", (16, 25, 21, 27), T(WATER), 0.12,
+       day=T(uk.day_table(WATER)))
+f.zone("vaults_pool_e", "water", (23, 4, 26, 5), T(WATER), 0.12,
+       day=T(uk.day_table(WATER)))
 
-f.m["ambience"] = {"particles": [{"kind": "spray", "density": 0.4}, {"kind": "glowmotes", "density": 0.4}],
-                   "tint": {"color": "#0a3030", "alpha": 0.12}, "sound_bed": "amb-surf"}
 
 # ---- the proof --------------------------------------------------------------------
 f.prove()
@@ -136,6 +144,10 @@ heart, east = f.pocket_of((12, 12)), f.pocket_of((25, 3))
 assert heart not in f.reach((14, 28), still) and east in f.reach((14, 28), still)
 assert heart in f.reach((14, 28), rung)
 assert f.pocket_of((5, 3)) == f.pocket_of((14, 28)), "the kelp walk must join ladder and stair"
+
+# ---- pass 2: the surge dressed; the tide-lamps that light at the isles' dawn ----
+f.dress_surge(per_screen=4)
+f.tide_lamps(spacing=6)
 
 f.finish()
 

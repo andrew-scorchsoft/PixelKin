@@ -34,6 +34,9 @@ Objects (`undertide_*`, 16px multiples):
   kelp                    a tall kelp frond (1x2, walk-under)
   pillar                  a fallen length of lighthouse masonry (2x3)
   glassheap               a heap of drowned lamp-glass (2x1)
+  wreck / stack / kelpcrown / mast   things breaking the surge (2x2, 1x2, 2x1, 1x3)
+  tidelamp / tidelamp_lit the race-marking lamps; lit once `flag:isles_dawn` (1x2)
+  niche                   a keeper's dry niche in the rock — IV's rest point (2x2)
 
 Run:  python3 tools/maps/undertideforge.py      (then pack_objects.py)
 """
@@ -672,6 +675,165 @@ def obj_glassheap() -> Image.Image:
     return to_im(a)
 
 
+
+# ---- PASS 2: things breaking the white water --------------------------------------
+def foam_base(a, x0, x1, y):
+    """A ring of broken white water where a thing stands in the surge."""
+    for x in range(x0, x1 + 1):
+        if (x * 3 + y) % 4:
+            px(a, x, y, FOAM)
+        px(a, x, y + 1, SURGE_LT if x % 3 else FOAM)
+
+
+def obj_wreck() -> Image.Image:
+    """A wreck's bones (32x32): the curved ribs of a little lamp-boat and a
+    stove-in strake of planking, standing out of the surge."""
+    a = clear(32, 32)
+    for i, x0 in enumerate((5, 11, 17, 23)):          # ribs, leaning
+        h = 25 - abs(i - 1.5) * 4
+        for k in range(int(h)):
+            y = 27 - k
+            x = x0 + int(round((k / h) ** 2 * (5 if i < 2 else -5)))
+            px(a, x, y, WOOD)
+            px(a, x + 1, y, WOOD_DK)
+            if k == int(h) - 1:
+                px(a, x, y - 1, WOOD_LT)
+    for x in range(3, 29):                            # the strake, broken
+        y = 22 + (x - 3) // 9
+        if 13 <= x <= 15:
+            continue
+        rect(a, x, y, x, y + 2, WOOD_LT if x % 5 else WOOD_DK)
+        px(a, x, y + 3, WOOD_DK)
+    for (x, y) in ((6, 24), (19, 25), (24, 25), (9, 26), (27, 23)):
+        px(a, x, y, BARN)
+    for k in range(6):
+        px(a, 20 + (k % 2), 14 + k, KELP)
+    outline(a)
+    foam_base(a, 1, 30, 29)
+    return to_im(a)
+
+
+def obj_stack() -> Image.Image:
+    """A sea-stack (16x32): a knuckle of black rock with a barnacled waist and a
+    white collar where the churn hits it."""
+    a = clear(16, 32)
+    for y in range(4, 29):
+        half = 3 + (y - 4) * 3 // 25
+        if y < 8:
+            half = 2 + (y - 4) // 2
+        for x in range(8 - half, 8 + half):
+            c = sh(CAVE, 0.95)
+            if x <= 8 - half + 1:
+                c = sh(CAVE, 1.35, 10)
+            elif x >= 8 + half - 2:
+                c = sh(CAVE, 0.6)
+            if (x * 5 + y * 3) % 11 == 0:
+                c = sh(CAVE, 0.5)
+            px(a, x, y, c)
+    for (x, y) in ((6, 20), (9, 22), (7, 24), (10, 25), (5, 26), (8, 26)):
+        px(a, x, y, BARN)
+        px(a, x, y + 1, BARN_DK)
+    for (x, y) in ((7, 9), (9, 13)):
+        px(a, x, y, sh(KELP, 0.8))
+    outline(a)
+    foam_base(a, 2, 13, 29)
+    return to_im(a)
+
+
+def obj_kelpcrown() -> Image.Image:
+    """A kelp crown (32x16): a raft of floating kelp riding the churn, bladders
+    glinting."""
+    a = clear(32, 16)
+    for k in range(5):
+        cy = 6 + (k % 3) * 2
+        for t in range(26):
+            x = 3 + t
+            y = cy + int(round(1.5 * math.sin(t * 0.5 + k)))
+            if 2 < x < 29:
+                px(a, x, y, KELP if k % 2 else KELP_LT)
+                px(a, x, y + 1, KELP_DK)
+    for (x, y) in ((8, 5), (14, 9), (21, 6), (25, 10), (11, 11)):
+        px(a, x, y, (176, 164, 84))
+        px(a, x + 1, y, (120, 110, 56))
+    outline(a, (12, 28, 26))
+    foam_base(a, 2, 29, 13)
+    return to_im(a)
+
+
+def obj_mast() -> Image.Image:
+    """A drowned mast (16x48): a broken barnacled spar standing out of the sea,
+    its yard askew, a rag of pennant still on it."""
+    a = clear(16, 48)
+    rect(a, 7, 6, 8, 44, WOOD)
+    rect(a, 7, 6, 7, 44, WOOD_LT)
+    rect(a, 8, 6, 8, 44, WOOD_DK)
+    for x in range(2, 15):                             # the yard, askew
+        y = 12 + (x - 2) // 5
+        px(a, x, y, WOOD_DK)
+        px(a, x, y - 1, WOOD)
+    for k in range(10):                                # a hanging stay
+        px(a, 3 + k // 4, 13 + k, (150, 132, 100))
+    for i in range(4):                                 # the rag of pennant
+        rect(a, 9, 4 + i // 2, 9 + 4 - i, 4 + i // 2, RED)
+    for y in (30, 33, 36, 38, 40, 42):
+        px(a, 7 + (y % 2), y, BARN)
+    for k in range(8):
+        px(a, 8 + (k % 2), 34 + k, KELP)
+    rect(a, 6, 2, 9, 3, WOOD_DK)                        # the snapped top
+    px(a, 7, 1, WOOD)
+    outline(a)
+    foam_base(a, 3, 12, 45)
+    return to_im(a)
+
+
+def obj_tidelamp(lit: bool) -> Image.Image:
+    """A tide-lamp (16x32): the keepers' small iron lamps on barnacled posts
+    that marked the races. Dark: cold sea-glass. Lit (after the isles' dawn):
+    a warm flame and a halo."""
+    a = clear(16, 32)
+    rect(a, 7, 12, 8, 29, IRON)
+    rect(a, 7, 12, 7, 29, IRON_LT)
+    for (x, y) in ((7, 24), (8, 26), (7, 27)):
+        px(a, x, y, BARN)
+    rect(a, 4, 4, 11, 11, IRON_DK)                     # the lantern cage
+    rect(a, 5, 5, 10, 10, (255, 214, 120) if lit else sh(GLASS, 0.7))
+    if lit:
+        rect(a, 6, 6, 9, 9, GLOW)
+        rect(a, 7, 7, 8, 8, GLOW_HOT)
+    else:
+        px(a, 6, 6, GLASS_LT)
+    rect(a, 5, 2, 10, 3, IRON)                         # the cap
+    px(a, 7, 1, IRON_DK)
+    px(a, 8, 1, IRON_DK)
+    outline(a)
+    if lit:
+        for (x, y) in ((2, 7), (13, 7), (7, 0), (3, 3), (12, 3), (3, 12), (12, 12)):
+            px(a, x, y, GLOW, 170)
+    foam_base(a, 3, 12, 30)
+    return to_im(a)
+
+
+def obj_niche() -> Image.Image:
+    """A keeper's dry niche (32x32): a bunk cut into the rock, a blanket, a
+    hook with a little lamp, a water-cask."""
+    a = clear(32, 32)
+    rect(a, 2, 6, 29, 22, sh(CAVE, 0.55))              # the cut niche
+    rect(a, 2, 6, 29, 7, sh(CAVE, 0.4))
+    rect(a, 4, 14, 22, 20, WOOD)                        # the bunk
+    rect(a, 4, 14, 22, 14, WOOD_LT)
+    rect(a, 5, 12, 21, 16, (92, 120, 150))              # a blue blanket
+    rect(a, 5, 12, 9, 15, (214, 204, 184))              # pillow
+    rect(a, 4, 21, 22, 22, WOOD_DK)
+    rect(a, 24, 9, 24, 13, IRON_DK)                     # lamp hook
+    rect(a, 23, 13, 26, 16, IRON_DK)
+    rect(a, 24, 14, 25, 15, GLOW)
+    ellipse(a, 26.5, 24.5, 3.2, 4.2, WOOD)              # the cask
+    rect(a, 23, 22, 29, 22, IRON)
+    rect(a, 23, 26, 29, 26, IRON)
+    outline(a)
+    return to_im(a)
+
+
 # ---- build ------------------------------------------------------------------------
 NAMES = ["corner_nw", "edge_n", "corner_ne", "edge_w", "fill", "edge_e",
          "corner_sw", "edge_s", "corner_se", "inner_nw", "inner_ne", "inner_sw",
@@ -762,6 +924,10 @@ def main() -> None:
         "lamp_dark": obj_lamp(False), "lamp_lit": obj_lamp(True),
         "camp": obj_camp(), "kelp": obj_kelp(), "pillar": obj_pillar(),
         "glassheap": obj_glassheap(),
+        # pass 2: things in the surge, the dawn's tide-lamps, the IV rest niche
+        "wreck": obj_wreck(), "stack": obj_stack(), "kelpcrown": obj_kelpcrown(),
+        "mast": obj_mast(), "tidelamp": obj_tidelamp(False), "tidelamp_lit": obj_tidelamp(True),
+        "niche": obj_niche(),
     }
     for stem, im in objs.items():
         im.save(OBJ_DIR / f"{stem}.png")

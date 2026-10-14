@@ -38,6 +38,7 @@ Run:  python3 tools/maps/build_undertide_iii.py
 """
 from __future__ import annotations
 
+import undertidekit as uk
 from undertidekit import Floor
 
 PLAN = [
@@ -58,11 +59,11 @@ PLAN = [
     "#......~~~.......~~~v......~v#",
     "#.ooo..~~~~.....~~~~v......~v#",
     "#oooo..~~~~~~~^~~~~~v..ooo.~v#",
-    "#.oo...~~~~~~~^~~~~~v.oooo.~v#",
-    "#......~~~~~~~^~~~~~v..oo..~v#",
-    "#......~~~~~~~^~~~~~v~....~~v#",
-    "#......~~~~~~,^~~~~~v~~v~~~~v#",
-    "#~.....<<<<<<<J~~~~~v~~v~~~~v#",
+    "#.oo...~~,,~~~^~~~~~v.oooo.~v#",
+    "#......<<,,~~~^~~~~~v..oo..~v#",
+    "#......~~~^~~~^~~~~~v~....~~v#",
+    "#......~~~^~~,^~~~~~v~~v~~~~v#",
+    "#~.....<<<J<<<J~~~~~v~~v~~~~v#",
     "#~~v~~~~~~~~~~^~~~~~v~~v~~~~v#",
     "##~v~~~~~~~~~~^~~~~~v~~v~~~~v#",
     "###v~~~~~...........v~~v~~~~v#",
@@ -82,6 +83,8 @@ f.junction((14, 21), "left", "up", HARBOUR)
 f.junction((3, 7), "up", "right", SHOAL)
 f.junction((16, 3), "down", "right", DEEP)
 f.junction((28, 6), "left", "down", TUNED)
+# the dawn islet: once the Farlamp burns, the west race calls in at an islet first
+f.junction((10, 21), "left", "up", "flag:isles_dawn")
 f.home = (15, 28)
 
 # ---- warps --------------------------------------------------------------------
@@ -113,7 +116,9 @@ f.obj("kelp_s2", "undertide_kelp", (19, 24), 1, 2, overhang=1, walk_under=True, 
 # ---- the galleries ----------------------------------------------------------------
 f.logbook(3, (1, 19))                                   # WG: the hint
 f.obj("kelp_wg", "undertide_kelp", (5, 18), 1, 2, overhang=1, walk_under=True, solid=False)
-f.cache("undertide_iii_nw", (5, 2))                     # NW
+f.cache("undertide_iii_nw", (5, 2))
+f.cache("undertide_iii_dawn", (10, 17))                 # the dawn islet (seen from the landing)
+f.obj("kelp_islet", "undertide_kelp", (9, 16), 1, 2, overhang=1, walk_under=True, solid=False)                     # NW
 f.obj("kelp_nw", "undertide_kelp", (6, 3), 1, 2, overhang=1, walk_under=True, solid=False)
 f.cache("undertide_iii_dg", (14, 2))                    # DG
 f.obj("glass_dg", "undertide_glassheap", (9, 4), 2, 1)
@@ -143,25 +148,32 @@ def T(rows):
     return [{"kin_id": k, "weight": w, "min_level": lo, "max_level": hi} for (k, w, lo, hi) in rows]
 
 
-f.zone("galleries_s", "cave", (10, 24, 19, 28), T(CAVE), 0.06)
-f.zone("galleries_wg", "cave", (1, 13, 6, 20), T(CAVE), 0.1)
-f.zone("galleries_nw", "cave", (1, 1, 6, 5), T(CAVE), 0.1)
-f.zone("galleries_dg", "cave", (9, 1, 15, 5), T(CAVE), 0.1)
-f.zone("galleries_eg", "cave", (21, 12, 26, 19), T(CAVE), 0.1)
-f.zone("galleries_l", "cave", (21, 1, 27, 6), T(CAVE), 0.1)
-f.zone("galleries_pool_wg", "water", (1, 15, 4, 17), T(WATER), 0.12)
-f.zone("galleries_pool_dg", "water", (10, 2, 13, 3), T(WATER), 0.12)
-f.zone("galleries_pool_eg", "water", (22, 16, 25, 18), T(WATER), 0.12)
+f.zone("galleries_s", "cave", (10, 24, 19, 28), T(CAVE), 0.06,
+       day=T(uk.day_table(CAVE)))
+f.zone("galleries_wg", "cave", (1, 13, 6, 20), T(CAVE), 0.1,
+       day=T(uk.day_table(CAVE)))
+f.zone("galleries_nw", "cave", (1, 1, 6, 5), T(CAVE), 0.1,
+       day=T(uk.day_table(CAVE)))
+f.zone("galleries_dg", "cave", (9, 1, 15, 5), T(CAVE), 0.1,
+       day=T(uk.day_table(CAVE)))
+f.zone("galleries_eg", "cave", (21, 12, 26, 19), T(CAVE), 0.1,
+       day=T(uk.day_table(CAVE)))
+f.zone("galleries_l", "cave", (21, 1, 27, 6), T(CAVE), 0.1,
+       day=T(uk.day_table(CAVE)))
+f.zone("galleries_pool_wg", "water", (1, 15, 4, 17), T(WATER), 0.12,
+       day=T(uk.day_table(WATER)))
+f.zone("galleries_pool_dg", "water", (10, 2, 13, 3), T(WATER), 0.12,
+       day=T(uk.day_table(WATER)))
+f.zone("galleries_pool_eg", "water", (22, 16, 25, 18), T(WATER), 0.12,
+       day=T(uk.day_table(WATER)))
 
-f.m["ambience"] = {"particles": [{"kind": "spray", "density": 0.5}, {"kind": "glowmotes", "density": 0.3}],
-                   "tint": {"color": "#0a2238", "alpha": 0.14}, "sound_bed": "amb-surf"}
 
 # ---- the proof --------------------------------------------------------------------
 f.prove()
 
 
-def st(h=False, s=False, d=False, t=False):
-    return {HARBOUR: h, SHOAL: s, DEEP: d, TUNED: t}
+def st(h=False, s=False, d=False, t=False, dawn=False):
+    return {HARBOUR: h, SHOAL: s, DEEP: d, TUNED: t, "flag:isles_dawn": dawn}
 
 
 home = (15, 28)
@@ -179,7 +191,14 @@ assert P["S"] in f.reach((3, 3), st(d=True)) and P["WG"] in f.reach((3, 3), st(d
 assert P["S"] in f.reach((3, 14), st(d=True, s=True))
 # the shortcut: tuned, the stair gallery races straight home in one ride
 assert P["S"] in f.links({**st(s=True, d=True), TUNED: True})[P["L"]]
+islet = f.pocket_of((9, 18))
+assert islet not in f.reach(home, st()) and islet in f.reach(home, st(dawn=True))
+assert P["L"] in f.reach(home, st(s=True, d=True, dawn=True)), "the dawn islet never blocks the goal"
 assert P["S"] not in f.links(st(s=True, d=True))[P["L"]]
+
+# ---- pass 2: the surge dressed; the tide-lamps that light at the isles' dawn ----
+f.dress_surge(per_screen=4)
+f.tide_lamps(spacing=6)
 
 f.finish()
 

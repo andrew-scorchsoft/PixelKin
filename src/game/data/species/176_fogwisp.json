@@ -89,11 +89,25 @@
       "max": 63
     },
     {
+      "area": "undertide_i",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 62,
+      "max": 64
+    },
+    {
       "area": "undertide_ii",
       "terrain": "cave",
       "rarity": "common",
       "min": 62,
       "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 63,
+      "max": 65
     },
     {
       "area": "undertide_iii",
@@ -103,11 +117,25 @@
       "max": 65
     },
     {
+      "area": "undertide_iii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 63,
+      "max": 66
+    },
+    {
       "area": "undertide_iv",
       "terrain": "cave",
       "rarity": "common",
       "min": 63,
       "max": 66
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 64,
+      "max": 67
     }
   ],
   "scripted": false,

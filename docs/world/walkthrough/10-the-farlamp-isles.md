@@ -221,6 +221,31 @@ Lithonyx, Ferrolith, Stillwarden and Voidmantle. The tables are mirrored in `bui
 `UNDERTIDE_TABLES` and `CURATED_AREAS`, and listed in `progression.mjs TREND_SKIP_AREAS`. The
 purse is counted in the post-game leg's `finds`, and the 5 trainers in `BUILT_PAYOUTS`.
 
+**Pass 2 (the surge filled; the Undertide after the isles' dawn).**
+- **The surge is dressed.** Builders call `Floor.dress_surge()`, which places drawn wrecks,
+  sea-stacks, kelp crowns and drowned masts, about four per screen. Each footprint is on surge
+  only, never on a lane or a pocket. Lamp-glass glints sit on the floors. The objects per
+  15×10 screen are 8–12 in I–IV, against the South bar of 2–5. `audit_visual` passes.
+- **Seen-but-unreached caches.** I's bell-ringers' islet opens after Tuning (a Starglass
+  Shard). III and IV each gain a **dawn islet**, a junction gated on `flag:isles_dawn`. It's a
+  waypoint on an existing race, never a dead end: III holds a Starglass Shard, IV 3 Beacon
+  charges.
+- **After `flag:isles_dawn`:**
+  - The **tide-lamps** along every race light up (`undertide_tidelamp` → `_lit`, the same
+    footprint).
+  - Each map's ambience swaps (`MapAmbience.when`).
+  - The **day-form tables** rise (night zones hide at `isles_dawn`; the `_day` twins hold
+    Beaconclaw, Fathomere and Glostrael, +1 level). These are `undertidekit.day_table`,
+    mirrored in `build_species.py` `UNDERTIDE_DAY_SWAP`.
+  - Hermiwick ambients give way to Beaconclaw.
+  - **Ondine** the diver waits at IV's stair-head for a re-runnable bout
+    (`undertide_rematch_ondine`, ace 67).
+  - **Keeper Edda Marrow** stands by the lit lamp with her epilogue (`script.farlamp_edda`).
+- **IV's rest point.** The keeper's dry niche at the stair-foot (`script.undertide_niche_rest`,
+  a sleeping `heal`) sits right before the Drowned Lamp.
+- **Ambience and ambient kin** live in the world-craft module `tools/maps/worldcraft/outer.py`
+  (region `outer`, registered in `add_world_craft.py`).
+
 **Handshake with C1:** exactly the contract table (`to_gullwrack` (15,27), `to_kelpcrown`
 (14,29), `to_driftholm` (15,29) with the contract landings). The cave side owns the three
 surface edges in `graph.ts` (bidirectional), so C1 should not add reverse edges.

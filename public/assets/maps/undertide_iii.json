@@ -243,6 +243,19 @@
       "solid": false
     },
     {
+      "id": "kelp_islet",
+      "sprite": "undertide_kelp",
+      "at": {
+        "tx": 9,
+        "ty": 16
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
       "id": "kelp_nw",
       "sprite": "undertide_kelp",
       "at": {
@@ -307,6 +320,562 @@
       },
       "w": 2,
       "h": 1
+    },
+    {
+      "id": "surge_wreck_1",
+      "sprite": "undertide_wreck",
+      "at": {
+        "tx": 5,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_stack_2",
+      "sprite": "undertide_stack",
+      "at": {
+        "tx": 10,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_kelpcrown_3",
+      "sprite": "undertide_kelpcrown",
+      "at": {
+        "tx": 14,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 1,
+      "overhang": 0
+    },
+    {
+      "id": "surge_mast_4",
+      "sprite": "undertide_mast",
+      "at": {
+        "tx": 8,
+        "ty": 4
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2
+    },
+    {
+      "id": "surge_stack_5",
+      "sprite": "undertide_stack",
+      "at": {
+        "tx": 18,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_kelpcrown_6",
+      "sprite": "undertide_kelpcrown",
+      "at": {
+        "tx": 25,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 1,
+      "overhang": 0
+    },
+    {
+      "id": "surge_mast_7",
+      "sprite": "undertide_mast",
+      "at": {
+        "tx": 28,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2
+    },
+    {
+      "id": "surge_stack_8",
+      "sprite": "undertide_stack",
+      "at": {
+        "tx": 18,
+        "ty": 4
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_wreck_9",
+      "sprite": "undertide_wreck",
+      "at": {
+        "tx": 7,
+        "ty": 13
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_stack_10",
+      "sprite": "undertide_stack",
+      "at": {
+        "tx": 12,
+        "ty": 19
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_kelpcrown_11",
+      "sprite": "undertide_kelpcrown",
+      "at": {
+        "tx": 8,
+        "ty": 19
+      },
+      "w": 2,
+      "h": 1,
+      "overhang": 0
+    },
+    {
+      "id": "surge_wreck_12",
+      "sprite": "undertide_wreck",
+      "at": {
+        "tx": 17,
+        "ty": 15
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_stack_13",
+      "sprite": "undertide_stack",
+      "at": {
+        "tx": 17,
+        "ty": 19
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_kelpcrown_14",
+      "sprite": "undertide_kelpcrown",
+      "at": {
+        "tx": 26,
+        "ty": 19
+      },
+      "w": 2,
+      "h": 1,
+      "overhang": 0
+    },
+    {
+      "id": "surge_stack_15",
+      "sprite": "undertide_stack",
+      "at": {
+        "tx": 6,
+        "ty": 24
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_kelpcrown_16",
+      "sprite": "undertide_kelpcrown",
+      "at": {
+        "tx": 12,
+        "ty": 23
+      },
+      "w": 2,
+      "h": 1,
+      "overhang": 0
+    },
+    {
+      "id": "surge_wreck_17",
+      "sprite": "undertide_wreck",
+      "at": {
+        "tx": 1,
+        "ty": 25
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_stack_18",
+      "sprite": "undertide_stack",
+      "at": {
+        "tx": 22,
+        "ty": 22
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_kelpcrown_19",
+      "sprite": "undertide_kelpcrown",
+      "at": {
+        "tx": 17,
+        "ty": 23
+      },
+      "w": 2,
+      "h": 1,
+      "overhang": 0
+    },
+    {
+      "id": "surge_wreck_20",
+      "sprite": "undertide_wreck",
+      "at": {
+        "tx": 26,
+        "ty": 25
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "tidelamp_1",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 17,
+        "ty": 5
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_1_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 17,
+        "ty": 5
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_2",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 2,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_2_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 2,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_3",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 23,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_3_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 23,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_4",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 27,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_4_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 27,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_5",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 4,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_5_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 4,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_6",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 19,
+        "ty": 13
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_6_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 19,
+        "ty": 13
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_7",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 27,
+        "ty": 15
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_7_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 27,
+        "ty": 15
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_8",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 13,
+        "ty": 16
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_8_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 13,
+        "ty": 16
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_9",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 19,
+        "ty": 19
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_9_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 19,
+        "ty": 19
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_10",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 24,
+        "ty": 20
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_10_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 24,
+        "ty": 20
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_11",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 15,
+        "ty": 21
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_11_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 15,
+        "ty": 21
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_12",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 2,
+        "ty": 22
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_12_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 2,
+        "ty": 22
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_13",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 21,
+        "ty": 23
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_13_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 21,
+        "ty": 23
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_14",
+      "sprite": "undertide_tidelamp",
+      "at": {
+        "tx": 27,
+        "ty": 23
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "tidelamp_14_lit",
+      "sprite": "undertide_tidelamp_lit",
+      "at": {
+        "tx": 27,
+        "ty": 23
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "requires_flag": "flag:isles_dawn"
     }
   ],
   "warps": [
@@ -451,7 +1020,52 @@
           "min_level": 63,
           "max_level": 65
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "galleries_s_day",
+      "terrain": "cave",
+      "rect": {
+        "tx": 10,
+        "ty": 24,
+        "w": 10,
+        "h": 5
+      },
+      "encounter_rate": 0.06,
+      "table": [
+        {
+          "kin_id": 175,
+          "weight": 36,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 176,
+          "weight": 24,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 85,
+          "weight": 16,
+          "min_level": 64,
+          "max_level": 65
+        },
+        {
+          "kin_id": 138,
+          "weight": 14,
+          "min_level": 64,
+          "max_level": 66
+        },
+        {
+          "kin_id": 55,
+          "weight": 10,
+          "min_level": 64,
+          "max_level": 66
+        }
+      ],
+      "requires_flag": "flag:isles_dawn"
     },
     {
       "id": "galleries_wg",
@@ -500,7 +1114,52 @@
           "min_level": 63,
           "max_level": 65
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "galleries_wg_day",
+      "terrain": "cave",
+      "rect": {
+        "tx": 1,
+        "ty": 13,
+        "w": 6,
+        "h": 8
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 175,
+          "weight": 36,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 176,
+          "weight": 24,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 85,
+          "weight": 16,
+          "min_level": 64,
+          "max_level": 65
+        },
+        {
+          "kin_id": 138,
+          "weight": 14,
+          "min_level": 64,
+          "max_level": 66
+        },
+        {
+          "kin_id": 55,
+          "weight": 10,
+          "min_level": 64,
+          "max_level": 66
+        }
+      ],
+      "requires_flag": "flag:isles_dawn"
     },
     {
       "id": "galleries_nw",
@@ -549,7 +1208,52 @@
           "min_level": 63,
           "max_level": 65
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "galleries_nw_day",
+      "terrain": "cave",
+      "rect": {
+        "tx": 1,
+        "ty": 1,
+        "w": 6,
+        "h": 5
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 175,
+          "weight": 36,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 176,
+          "weight": 24,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 85,
+          "weight": 16,
+          "min_level": 64,
+          "max_level": 65
+        },
+        {
+          "kin_id": 138,
+          "weight": 14,
+          "min_level": 64,
+          "max_level": 66
+        },
+        {
+          "kin_id": 55,
+          "weight": 10,
+          "min_level": 64,
+          "max_level": 66
+        }
+      ],
+      "requires_flag": "flag:isles_dawn"
     },
     {
       "id": "galleries_dg",
@@ -598,7 +1302,52 @@
           "min_level": 63,
           "max_level": 65
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "galleries_dg_day",
+      "terrain": "cave",
+      "rect": {
+        "tx": 9,
+        "ty": 1,
+        "w": 7,
+        "h": 5
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 175,
+          "weight": 36,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 176,
+          "weight": 24,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 85,
+          "weight": 16,
+          "min_level": 64,
+          "max_level": 65
+        },
+        {
+          "kin_id": 138,
+          "weight": 14,
+          "min_level": 64,
+          "max_level": 66
+        },
+        {
+          "kin_id": 55,
+          "weight": 10,
+          "min_level": 64,
+          "max_level": 66
+        }
+      ],
+      "requires_flag": "flag:isles_dawn"
     },
     {
       "id": "galleries_eg",
@@ -647,7 +1396,52 @@
           "min_level": 63,
           "max_level": 65
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "galleries_eg_day",
+      "terrain": "cave",
+      "rect": {
+        "tx": 21,
+        "ty": 12,
+        "w": 6,
+        "h": 8
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 175,
+          "weight": 36,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 176,
+          "weight": 24,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 85,
+          "weight": 16,
+          "min_level": 64,
+          "max_level": 65
+        },
+        {
+          "kin_id": 138,
+          "weight": 14,
+          "min_level": 64,
+          "max_level": 66
+        },
+        {
+          "kin_id": 55,
+          "weight": 10,
+          "min_level": 64,
+          "max_level": 66
+        }
+      ],
+      "requires_flag": "flag:isles_dawn"
     },
     {
       "id": "galleries_l",
@@ -696,7 +1490,52 @@
           "min_level": 63,
           "max_level": 65
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "galleries_l_day",
+      "terrain": "cave",
+      "rect": {
+        "tx": 21,
+        "ty": 1,
+        "w": 7,
+        "h": 6
+      },
+      "encounter_rate": 0.1,
+      "table": [
+        {
+          "kin_id": 175,
+          "weight": 36,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 176,
+          "weight": 24,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 85,
+          "weight": 16,
+          "min_level": 64,
+          "max_level": 65
+        },
+        {
+          "kin_id": 138,
+          "weight": 14,
+          "min_level": 64,
+          "max_level": 66
+        },
+        {
+          "kin_id": 55,
+          "weight": 10,
+          "min_level": 64,
+          "max_level": 66
+        }
+      ],
+      "requires_flag": "flag:isles_dawn"
     },
     {
       "id": "galleries_pool_wg",
@@ -745,7 +1584,52 @@
           "min_level": 64,
           "max_level": 65
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "galleries_pool_wg_day",
+      "terrain": "water",
+      "rect": {
+        "tx": 1,
+        "ty": 15,
+        "w": 4,
+        "h": 3
+      },
+      "encounter_rate": 0.12,
+      "table": [
+        {
+          "kin_id": 173,
+          "weight": 42,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 28,
+          "weight": 20,
+          "min_level": 64,
+          "max_level": 66
+        },
+        {
+          "kin_id": 61,
+          "weight": 18,
+          "min_level": 64,
+          "max_level": 65
+        },
+        {
+          "kin_id": 30,
+          "weight": 12,
+          "min_level": 65,
+          "max_level": 66
+        },
+        {
+          "kin_id": 25,
+          "weight": 8,
+          "min_level": 65,
+          "max_level": 66
+        }
+      ],
+      "requires_flag": "flag:isles_dawn"
     },
     {
       "id": "galleries_pool_dg",
@@ -794,7 +1678,52 @@
           "min_level": 64,
           "max_level": 65
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "galleries_pool_dg_day",
+      "terrain": "water",
+      "rect": {
+        "tx": 10,
+        "ty": 2,
+        "w": 4,
+        "h": 2
+      },
+      "encounter_rate": 0.12,
+      "table": [
+        {
+          "kin_id": 173,
+          "weight": 42,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 28,
+          "weight": 20,
+          "min_level": 64,
+          "max_level": 66
+        },
+        {
+          "kin_id": 61,
+          "weight": 18,
+          "min_level": 64,
+          "max_level": 65
+        },
+        {
+          "kin_id": 30,
+          "weight": 12,
+          "min_level": 65,
+          "max_level": 66
+        },
+        {
+          "kin_id": 25,
+          "weight": 8,
+          "min_level": 65,
+          "max_level": 66
+        }
+      ],
+      "requires_flag": "flag:isles_dawn"
     },
     {
       "id": "galleries_pool_eg",
@@ -843,7 +1772,52 @@
           "min_level": 64,
           "max_level": 65
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "galleries_pool_eg_day",
+      "terrain": "water",
+      "rect": {
+        "tx": 22,
+        "ty": 16,
+        "w": 4,
+        "h": 3
+      },
+      "encounter_rate": 0.12,
+      "table": [
+        {
+          "kin_id": 173,
+          "weight": 42,
+          "min_level": 63,
+          "max_level": 66
+        },
+        {
+          "kin_id": 28,
+          "weight": 20,
+          "min_level": 64,
+          "max_level": 66
+        },
+        {
+          "kin_id": 61,
+          "weight": 18,
+          "min_level": 64,
+          "max_level": 65
+        },
+        {
+          "kin_id": 30,
+          "weight": 12,
+          "min_level": 65,
+          "max_level": 66
+        },
+        {
+          "kin_id": 25,
+          "weight": 8,
+          "min_level": 65,
+          "max_level": 66
+        }
+      ],
+      "requires_flag": "flag:isles_dawn"
     }
   ],
   "npcs": [
@@ -871,6 +1845,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_undertide_iii_nw",
       "hidden_when_flag": "flag:picked_undertide_iii_nw"
+    },
+    {
+      "id": "cache_undertide_iii_dawn",
+      "at": {
+        "tx": 10,
+        "ty": 17
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_undertide_iii_dawn",
+      "hidden_when_flag": "flag:picked_undertide_iii_dawn"
     },
     {
       "id": "cache_undertide_iii_dg",
@@ -947,6 +1933,56 @@
       "movement": "static",
       "dialogue_ref": "npc.undertide_keeper_isolde_after",
       "requires_flag": "flag:undertide_keeper_isolde_beaten"
+    },
+    {
+      "id": "amb_ut3_hermit_eg",
+      "at": {
+        "tx": 24,
+        "ty": 13
+      },
+      "facing": "down",
+      "sprite": "kin_174_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2,
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "amb_ut3_hermit_eg_dawn",
+      "at": {
+        "tx": 24,
+        "ty": 13
+      },
+      "facing": "down",
+      "sprite": "kin_175_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2,
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "amb_ut3_fogwisp_nw",
+      "at": {
+        "tx": 4,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "kin_176_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 2
+    },
+    {
+      "id": "amb_ut3_fogwisp_dg",
+      "at": {
+        "tx": 13,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "kin_176_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
     }
   ],
   "gates": [],
@@ -1209,6 +2245,14 @@
       "tiles": [
         {
           "tx": 7,
+          "ty": 18
+        },
+        {
+          "tx": 8,
+          "ty": 18
+        },
+        {
+          "tx": 7,
           "ty": 21
         },
         {
@@ -1217,10 +2261,6 @@
         },
         {
           "tx": 9,
-          "ty": 21
-        },
-        {
-          "tx": 10,
           "ty": 21
         },
         {
@@ -1434,8 +2474,16 @@
           "ty": 18
         },
         {
+          "tx": 10,
+          "ty": 19
+        },
+        {
           "tx": 14,
           "ty": 19
+        },
+        {
+          "tx": 10,
+          "ty": 20
         },
         {
           "tx": 14,
@@ -1524,6 +2572,30 @@
       "requires_flag": "flag:undertide_bell_shoal"
     },
     {
+      "id": "race_10_21_left",
+      "kind": "rail",
+      "dir": "left",
+      "tiles": [
+        {
+          "tx": 10,
+          "ty": 21
+        }
+      ],
+      "hidden_when_flag": "flag:isles_dawn"
+    },
+    {
+      "id": "race_10_21_up",
+      "kind": "rail",
+      "dir": "up",
+      "tiles": [
+        {
+          "tx": 10,
+          "ty": 21
+        }
+      ],
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
       "id": "race_14_21_left",
       "kind": "rail",
       "dir": "left",
@@ -1552,23 +2624,6 @@
   "battle_backdrops": [
     "assets/backgrounds/battle/undertide-a.webp"
   ],
-  "ambience": {
-    "particles": [
-      {
-        "kind": "spray",
-        "density": 0.5
-      },
-      {
-        "kind": "glowmotes",
-        "density": 0.3
-      }
-    ],
-    "tint": {
-      "color": "#0a2238",
-      "alpha": 0.14
-    },
-    "sound_bed": "amb-surf"
-  },
   "layers": [
     {
       "name": "base",
@@ -1712,7 +2767,7 @@
         524,
         522,
         510,
-        158,
+        156,
         543,
         531,
         546,
@@ -2063,9 +3118,9 @@
         524,
         522,
         410,
-        534,
-        534,
-        417,
+        419,
+        414,
+        414,
         537,
         537,
         537,
@@ -2093,10 +3148,10 @@
         524,
         522,
         543,
-        534,
-        531,
-        534,
-        411,
+        412,
+        156,
+        156,
+        543,
         411,
         531,
         507,
@@ -2122,11 +3177,11 @@
         523,
         524,
         522,
-        543,
-        411,
-        531,
-        411,
-        534,
+        513,
+        513,
+        159,
+        157,
+        410,
         534,
         411,
         507,
@@ -2153,10 +3208,10 @@
         524,
         522,
         410,
-        531,
-        531,
-        411,
-        411,
+        417,
+        537,
+        507,
+        416,
         419,
         540,
         507,
@@ -2185,10 +3240,10 @@
         410,
         531,
         411,
-        534,
+        507,
         411,
         412,
-        156,
+        159,
         507,
         411,
         531,
@@ -2215,7 +3270,7 @@
         513,
         513,
         513,
-        513,
+        519,
         513,
         513,
         513,
@@ -4291,5 +5346,44 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "spray",
+        "density": 0.5
+      },
+      {
+        "kind": "glowmotes",
+        "density": 0.3
+      }
+    ],
+    "tint": {
+      "color": "#0a2238",
+      "alpha": 0.14
+    },
+    "sound_bed": "amb-surf",
+    "when": [
+      {
+        "flag": "flag:isles_dawn",
+        "ambience": {
+          "particles": [
+            {
+              "kind": "spray",
+              "density": 0.5
+            },
+            {
+              "kind": "glowmotes",
+              "density": 0.7
+            }
+          ],
+          "tint": {
+            "color": "#3a2a10",
+            "alpha": 0.06
+          },
+          "sound_bed": "amb-surf"
+        }
+      }
+    ]
+  }
 }

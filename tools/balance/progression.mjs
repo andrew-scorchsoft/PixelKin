@@ -575,6 +575,7 @@ const BUILT_PAYOUTS = {
   undertide_nethand_bryn: ['route', 64, 1024],
   undertide_keeper_isolde: ['keeper', 65, 1300],
   undertide_diver_marlo: ['route', 66, 1056],
+  undertide_rematch_ondine: ['route', 67, 1072], // post-isles-dawn, re-runnable
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

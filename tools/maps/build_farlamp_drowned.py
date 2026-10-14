@@ -75,6 +75,12 @@ f.m["npcs"].append({"id": "farlume", "at": {"tx": 10, "ty": 13}, "facing": "down
                     "dialogue_ref": "script.farlume_wake",
                     "requires_flag": DAWN, "hidden_when_flag": "flag:farlume_caught"})
 f.solid_extra.add((10, 13))
+# after the relight the old keeper comes down the long stair to see it (her epilogue)
+f.m["npcs"].append({"id": "keeper_edda", "at": {"tx": 13, "ty": 11}, "facing": "left",
+                    "sprite": "npc_old_woman", "movement": "static",
+                    "dialogue_ref": "script.farlamp_edda", "requires_flag": DAWN})
+f.solid_extra.add((13, 11))
+f.owed.append("script.farlamp_edda")
 f.owed += ["script.farlamp_lamp", "script.farlume_wake"]
 
 # ---- the room's dressing: what the sea left -------------------------------------------
@@ -99,15 +105,6 @@ f.obj("store_camp", "undertide_camp", (10, 19), 2, 2, solid=False)
 
 f.scatter(["glass_a", "glass_b", "barnacle_a", "shell_a", "wrack_a"], 14, chars="=")
 
-f.m["ambience"] = {
-    "particles": [{"kind": "glowmotes", "density": 0.3}],
-    "tint": {"color": "#04101e", "alpha": 0.4}, "sound_bed": "amb-surf",
-    "when": [{"flag": DAWN, "ambience": {
-        "particles": [{"kind": "glowmotes", "density": 0.8}, {"kind": "dust", "density": 0.4}],
-        "tint": {"color": "#ffd890", "alpha": 0.08},
-        "light_sources_extra": [{"at": {"tx": 10, "ty": 8}, "radius": 72, "color": "#ffd890"}],
-        "sound_bed": "amb-surf"}}],
-}
 
 # ---- the proof --------------------------------------------------------------------
 f.prove()

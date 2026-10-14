@@ -1625,6 +1625,20 @@ export const TRAINERS: TrainerRegistry = {
     ],
     payout: 1056, // route 16 × ace 66
   },
+  // After the isles' dawn: Ondine's re-runnable bout at the Drowned Stair's head
+  // (optional income, outside the one-time journey budget).
+  undertide_rematch_ondine: {
+    id: 'undertide_rematch_ondine',
+    name: 'ONDINE',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 30, level: 66 }, // Glostrael — Tide/Light
+      { species_id: 175, level: 66 }, // Beaconclaw — Stone/Light
+      { species_id: 176, level: 67 }, // Fogwisp — Frost/Dark
+      { species_id: 173, level: 67 }, // Fathomere — Tide/Light (ace)
+    ],
+    payout: 1072, // route 16 × ace 67
+  },
 };
 
 /** Intro/defeat dialogue for trainers, kept beside the roster they belong to. */

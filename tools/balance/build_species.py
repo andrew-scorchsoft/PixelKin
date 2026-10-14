@@ -1073,9 +1073,28 @@ def _ut_rarity(w):
     return "common" if w >= 20 else "uncommon" if w >= 10 else "rare" if w >= 5 else "very_rare"
 
 
+# The isles' DAWN (pass 2): each table's day-form twin rises at `flag:isles_dawn` —
+# the kindled forms of the same water, +1 level (MIRROR of undertidekit.DAY_SWAP /
+# day_table; keep both in step).
+UNDERTIDE_DAY_SWAP = {174: 175, 172: 173, 29: 30}
+
+
+def _ut_day(rows):
+    out = {}
+    for (k, w, lo, hi) in rows:
+        d = UNDERTIDE_DAY_SWAP.get(k, k)
+        lo, hi = min(lo + 1, 67), min(hi + 1, 67)
+        if d in out:
+            pw, plo, phi = out[d]
+            out[d] = (pw + w, min(plo, lo), max(phi, hi))
+        else:
+            out[d] = (w, lo, hi)
+    return [(k, w, lo, hi) for k, (w, lo, hi) in out.items()]
+
+
 for _area, _by_terrain in UNDERTIDE_TABLES.items():
     for _terrain, _tab in _by_terrain.items():
-        for (_k, _w, _lo, _hi) in _tab:
+        for (_k, _w, _lo, _hi) in _tab + _ut_day(_tab):
             EXTRA_ENCOUNTERS.setdefault(_UT_SLUG[_k], []).append(
                 {"area": _area, "terrain": _terrain, "rarity": _ut_rarity(_w), "min": _lo, "max": _hi})
 

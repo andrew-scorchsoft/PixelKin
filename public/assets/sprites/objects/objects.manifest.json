@@ -3080,6 +3080,13 @@
       "tw": 1,
       "th": 2
     },
+    "undertide_kelpcrown": {
+      "path": "assets/sprites/objects/undertide_kelpcrown.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "undertide_lamp_dark": {
       "path": "assets/sprites/objects/undertide_lamp_dark.webp",
       "width": 64,
@@ -3101,6 +3108,20 @@
       "tw": 1,
       "th": 1
     },
+    "undertide_mast": {
+      "path": "assets/sprites/objects/undertide_mast.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "undertide_niche": {
+      "path": "assets/sprites/objects/undertide_niche.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "undertide_pillar": {
       "path": "assets/sprites/objects/undertide_pillar.webp",
       "width": 32,
@@ -3121,6 +3142,34 @@
       "height": 16,
       "tw": 1,
       "th": 1
+    },
+    "undertide_stack": {
+      "path": "assets/sprites/objects/undertide_stack.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_tidelamp": {
+      "path": "assets/sprites/objects/undertide_tidelamp.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_tidelamp_lit": {
+      "path": "assets/sprites/objects/undertide_tidelamp_lit.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_wreck": {
+      "path": "assets/sprites/objects/undertide_wreck.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
     },
     "unrisen_basin_dry": {
       "path": "assets/sprites/objects/unrisen_basin_dry.webp",

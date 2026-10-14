@@ -14,7 +14,10 @@ the top (the floor's return compressor).
   T3  the EAST LANDING: a lamp-diver.               -> T4, or -> N2
   N2  the EAST NOOK: the floor's LUMEN DROP.                    -> T5
   T4  the LOWER LANDING: the keeper's fourth page, a pool.      -> T5
-  T5  the STAIR-FOOT: the way down to the Drowned Lamp; the up-race home.
+  T5  the STAIR-FOOT: the keeper's dry NICHE (the floor's REST POINT, a bed before
+      the Drowned Lamp), the way down to it, and the up-race home.
+  After the isles' dawn: the T2 race calls in at the DAWN ISLET (cache) on its way
+  to T3, and Ondine the diver waits at the stair-head for a re-runnable bout.
 
 HANDSHAKE: `ladder_up` (12,2) <-> undertide_iii `ladder_down` (24,2);
 `ladder_down` (16,28) <-> farlamp_drowned `ladder_up` (10,1).
@@ -23,6 +26,7 @@ Run:  python3 tools/maps/build_undertide_iv.py
 """
 from __future__ import annotations
 
+import undertidekit as uk
 from undertidekit import Floor
 
 PLAN = [
@@ -36,13 +40,13 @@ PLAN = [
     "#~~v~~~~~~~~~~~~~~~~~~~~^#",
     "#~.......~~~~~~~~~~~~~~~^#",
     "#........~~~~~~~~~~~~~~~^#",
-    "#..ooo...>>>>>>>v~~~~~~~^#",
-    "#.oooo...~~~~~~~v~~~~~~~^#",
-    "#.......~~~~~~~~v~~~~~~~^#",
-    "#~v~~~~~~~~~~~~.......~~^#",
-    "#~v~~~~~~~~~~~~........~^#",
-    "#~v~~~~~~~~~~~~...ooo..~^#",
-    "#~v~~~~~~~~~~~~..oooo..~^#",
+    "#..ooo...>>J>>>>v~~~~~~~^#",
+    "#.oooo...~~v~~~~v~~~~~~~^#",
+    "#.......~~~v~~~~v~~~~~~~^#",
+    "#~v~~~~~~~~v~~~.......~~^#",
+    "#~v~~~~~~~~v~~~........~^#",
+    "#~v~~~~~~~,,~~~...ooo..~^#",
+    "#~v~~~~~~~,,>>>..oooo..~^#",
     "#.....~~~~~~~~~~.......~^#",
     "#.....~~~~~~~~~~v~~~v~~~^#",
     "#.....~~~~~~~~~~v~~~v~~~^#",
@@ -60,6 +64,8 @@ PLAN = [
 
 f = Floor("undertide_iv", "The Undertide: the Drowned Stair", PLAN, seed=17704)
 f.home = (12, 3)
+# the dawn islet: once the Farlamp burns, the T2 -> T3 race calls in at an islet
+f.junction((11, 10), "right", "down", "flag:isles_dawn")
 
 # ---- warps --------------------------------------------------------------------
 f.ladder("up", (12, 2), "undertide_iii", (24, 2))
@@ -79,6 +85,19 @@ f.obj("glass_t3", "undertide_glassheap", (15, 15), 2, 1)
 f.cache("undertide_iv_drop", (21, 23))                    # N2
 f.obj("pillar_n2", "undertide_pillar", (18, 21), 2, 3, overhang=1)
 f.logbook(4, (13, 20))                                    # T4
+f.cache("undertide_iv_dawn", (10, 15))                    # the dawn islet
+# the keeper's dry niche at the stair-foot: the REST POINT before the Drowned Lamp
+f.obj("niche", "undertide_niche", (18, 26), 2, 2)
+f.m["triggers"].append({"id": "keeper_niche", "kind": "script", "at": {"tx": 18, "ty": 27},
+                        "activation": "interact", "ref": "script.undertide_niche_rest"})
+f.owed.append("script.undertide_niche_rest")
+# after the dawn: a diver who stays to race you (re-runnable bout, never a sight-line)
+f.m["npcs"].append({"id": "undertide_diver_ondine", "at": {"tx": 14, "ty": 4}, "facing": "down",
+                    "sprite": "fisher_woman", "movement": "static",
+                    "dialogue_ref": "script.undertide_diver_ondine",
+                    "requires_flag": "flag:isles_dawn"})
+f.solid_extra.add((14, 4))
+f.owed.append("script.undertide_diver_ondine")
 f.obj("kelp_t4", "undertide_kelp", (7, 21), 1, 2, overhang=1, walk_under=True, solid=False)
 f.obj("pillar_t5", "undertide_pillar", (8, 25), 2, 3, overhang=1)
 f.obj("kelp_t5", "undertide_kelp", (21, 26), 1, 2, overhang=1, walk_under=True, solid=False)
@@ -107,16 +126,22 @@ f.zone("stair_pool_t2", "water", (2, 10, 5, 11), T(WATER), 0.12)
 f.zone("stair_pool_t3", "water", (17, 15, 20, 16), T(WATER), 0.12)
 f.zone("stair_pool_t4", "water", (9, 22, 12, 23), T(WATER), 0.12)
 
-f.m["ambience"] = {"particles": [{"kind": "spray", "density": 0.4}, {"kind": "glowmotes", "density": 0.5}],
-                   "tint": {"color": "#081c30", "alpha": 0.18}, "sound_bed": "amb-surf"}
 
 # ---- the proof --------------------------------------------------------------------
 f.prove()
 P = {k: f.pocket_of(c) for k, c in {"T1": (12, 3), "T2": (3, 9), "N1": (3, 19), "T3": (17, 14),
                                     "N2": (20, 22), "T4": (8, 21), "T5": (12, 27)}.items()}
-reach = f.reach((12, 3), {})
+D0, D1 = {"flag:isles_dawn": False}, {"flag:isles_dawn": True}
+reach = f.reach((12, 3), D0)
 assert all(p in reach for p in P.values()), "every landing and nook is on the way down"
-assert P["T1"] in f.links({})[P["T5"]], "the up-race carries the stair-foot home in one ride"
+assert P["T1"] in f.links(D0)[P["T5"]], "the up-race carries the stair-foot home in one ride"
+islet = f.pocket_of((11, 16))
+assert islet not in reach and islet in f.reach((12, 3), D1)
+assert all(p in f.reach((12, 3), D1) for p in P.values())
+
+# ---- pass 2: the surge dressed; the tide-lamps that light at the isles' dawn ----
+f.dress_surge(per_screen=4)
+f.tide_lamps(spacing=6)
 
 f.finish()
 

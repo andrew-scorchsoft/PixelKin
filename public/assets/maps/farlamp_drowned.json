@@ -260,6 +260,18 @@
       "hidden_when_flag": "flag:farlume_caught"
     },
     {
+      "id": "keeper_edda",
+      "at": {
+        "tx": 13,
+        "ty": 11
+      },
+      "facing": "left",
+      "sprite": "npc_old_woman",
+      "movement": "static",
+      "dialogue_ref": "script.farlamp_edda",
+      "requires_flag": "flag:isles_dawn"
+    },
+    {
       "id": "cache_farlamp_store_chart",
       "at": {
         "tx": 7,
@@ -270,6 +282,19 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_farlamp_store_chart",
       "hidden_when_flag": "flag:picked_farlamp_store_chart"
+    },
+    {
+      "id": "amb_fd_beaconclaw",
+      "at": {
+        "tx": 5,
+        "ty": 12
+      },
+      "facing": "down",
+      "sprite": "kin_175_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1,
+      "requires_flag": "flag:isles_dawn"
     }
   ],
   "gates": [],
@@ -314,51 +339,6 @@
   "battle_backdrops": [
     "assets/backgrounds/battle/farlamp-drowned-a.webp"
   ],
-  "ambience": {
-    "particles": [
-      {
-        "kind": "glowmotes",
-        "density": 0.3
-      }
-    ],
-    "tint": {
-      "color": "#04101e",
-      "alpha": 0.4
-    },
-    "sound_bed": "amb-surf",
-    "when": [
-      {
-        "flag": "flag:isles_dawn",
-        "ambience": {
-          "particles": [
-            {
-              "kind": "glowmotes",
-              "density": 0.8
-            },
-            {
-              "kind": "dust",
-              "density": 0.4
-            }
-          ],
-          "tint": {
-            "color": "#ffd890",
-            "alpha": 0.08
-          },
-          "light_sources_extra": [
-            {
-              "at": {
-                "tx": 10,
-                "ty": 8
-              },
-              "radius": 72,
-              "color": "#ffd890"
-            }
-          ],
-          "sound_bed": "amb-surf"
-        }
-      }
-    ]
-  },
   "layers": [
     {
       "name": "base",
@@ -1046,18 +1026,19 @@
         527,
         527,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         530,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -1066,24 +1047,23 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         529,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        530,
-        0,
-        0,
         0,
         0,
         529,
@@ -1103,7 +1083,7 @@
         0,
         525,
         528,
-        0,
+        530,
         0,
         0,
         0,
@@ -1701,5 +1681,50 @@
         0
       ]
     }
-  ]
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "glowmotes",
+        "density": 0.3
+      }
+    ],
+    "tint": {
+      "color": "#04101e",
+      "alpha": 0.4
+    },
+    "sound_bed": "amb-surf",
+    "when": [
+      {
+        "flag": "flag:isles_dawn",
+        "ambience": {
+          "particles": [
+            {
+              "kind": "glowmotes",
+              "density": 0.8
+            },
+            {
+              "kind": "dust",
+              "density": 0.4
+            }
+          ],
+          "tint": {
+            "color": "#ffd890",
+            "alpha": 0.08
+          },
+          "light_sources_extra": [
+            {
+              "at": {
+                "tx": 10,
+                "ty": 8
+              },
+              "radius": 72,
+              "color": "#ffd890"
+            }
+          ],
+          "sound_bed": "amb-surf"
+        }
+      }
+    ]
+  }
 }

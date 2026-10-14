@@ -26,7 +26,9 @@
  *   flag:q_isles_fogglass                         the fog-glass taken (I4)
  *   flag:isles_dawn, flag:q_isles_done            the relight (I6)
  *   flag:farlume_met, flag:farlume_caught         Farlume (I7)
- *   flag:picked_*                                 caches
+ *   flag:picked_*                                 caches (+ the two dawn islets, III/IV)
+ * After `flag:isles_dawn` (pass 2): the tide-lamps light, the day-form tables
+ * swap in, Ondine dives the stair (a re-runnable bout), Edda waits by the lamp.
  */
 import type { CutsceneStep, DialogueRegistry, ScriptRegistry } from '../types';
 
@@ -275,6 +277,41 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'Farlume comes into your lamp like a boat into harbour: slowly, sure of the way. Your vesperlamp burns a shade warmer, and does not go back.' },
     { op: 'musicCrossfade', key: 'farlamp-relit', ms: 1400 },
     { op: 'narrate', text: 'The Farlamp keeps burning without it. It never needed watching once it was lit. It only needed someone to come all the way down.' },
+  ],
+
+  // ---- pass 2: the rest before the lamp, the dawn's islets, Ondine, Edda ---------
+  // IV's stair-foot niche: the floor's REST POINT, a bed before the Drowned Lamp.
+  'script.undertide_niche_rest': [
+    { op: 'narrate', text: 'A keeper\'s niche cut into the rock above the tide-line: a bunk, a blue blanket gone stiff with salt, a little lamp on a hook. Dry as a cupboard.' },
+    { op: 'heal' },
+    { op: 'narrate', text: 'You sleep to the sound of the up-race, and wake rested. Your kin are warm in the blanket. Somewhere below, the lamp-room waits.' },
+  ],
+  'script.pickup_undertide_iii_dawn': find('flag:picked_undertide_iii_dawn', [{ op: 'giveItem', item: 'starglass_shard', count: 1 }],
+    'The little islet the race never used to reach. Tucked in the rock, where the new light falls on it: a STARGLASS SHARD, warm as a hand.'),
+  'script.pickup_undertide_iv_dawn': find('flag:picked_undertide_iv_dawn', [{ op: 'giveItem', item: 'beacon_charge', count: 3 }],
+    'The dawn race carried you to an islet halfway down the stair. A keeper\'s spare-box, wired to a ring. Found 3 BEACON CHARGES!'),
+  // After the dawn: Ondine dives the Drowned Stair for the joy of it and races
+  // anyone who'll have her. A re-runnable bout (she never stands on a sight-line).
+  'script.undertide_diver_ondine': [
+    { op: 'say', speaker: 'ONDINE', text: 'You lit her! You lit the Farlamp! I came straight down the well-stair to see. Every race in the Undertide is running warm.' },
+    {
+      op: 'choice', speaker: 'ONDINE', prompt: 'Fancy a bout, while the lamps are lit?',
+      options: [
+        { label: 'A bout', ops: [
+          { op: 'battle', trainer: 'undertide_rematch_ondine' },
+          { op: 'say', speaker: 'ONDINE', text: 'Ha! Again tomorrow. I\'ll be here. I\'m always going to be here now.' },
+        ] },
+        { label: 'Not now', ops: [
+          { op: 'say', speaker: 'ONDINE', text: 'Suit yourself. The races\'ll keep.' },
+        ] },
+      ],
+    },
+  ],
+  // The old keeper, come down the long stair once the light was back.
+  'script.farlamp_edda': [
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I felt it from Driftholm. Eleven winters I\'ve slept with my back to the sea, and this morning I woke facing it.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I came down the long stair the way I went up it, with a small lamp. Didn\'t need it. Every tide-lamp on the races was burning.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'You read my log, I expect. All my hurrying. Look at her. Stubborn and lovely, same as ever. Thank you for coming all the way down.' },
   ],
 
   // ---- the keeper's desk + the store's sluice ------------------------------------
