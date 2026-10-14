@@ -1521,6 +1521,29 @@ export const TRAINERS: TrainerRegistry = {
     payout: 784, // route 16 × ace 49
     music: 'battle-emberfall',
   },
+
+  // ---- Lane A — the Ashfall Shelf (walkthrough/10 Part II): two route trainers on
+  // the shelf's chokes (route 16 × ace, 10-economy §4).
+  ashfall_picker: {
+    id: 'ashfall_picker',
+    name: 'SILE',
+    title: 'Ore-hauler',
+    party: [
+      { species_id: 45, level: 30 }, // Sparkrat — Stone/Storm
+      { species_id: 49, level: 32 }, // Gravelo — Stone (ace)
+    ],
+    payout: 512, // route 16 × ace 32
+  },
+  ashfall_galewatch: {
+    id: 'ashfall_galewatch',
+    name: 'PELL',
+    title: 'Gale-watch',
+    party: [
+      { species_id: 89, level: 31 }, // Flintbeak — Storm
+      { species_id: 46, level: 33 }, // Voltcrag — Stone/Storm (ace)
+    ],
+    payout: 528, // route 16 × ace 33
+  },
   sunvault_stargazer: {
     id: 'sunvault_stargazer',
     name: 'ORRIN',

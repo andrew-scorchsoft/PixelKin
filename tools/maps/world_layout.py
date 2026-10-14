@@ -73,6 +73,7 @@ NODE_KINDS: dict[str, str] = {
     "cinderwind_scarp": "route", "galehigh_terraces": "town", "lanternway_galehigh": "route",
     "wind_eye": "landmark", "windward_stair_i": "route", "windward_stair_ii": "route",
     "thunderroost": "landmark", "pale_vault_glacier": "town",
+    "cinderwind_ashfall": "route", "cinderwind_kiln": "landmark",  # Lane A (walkthrough/10 Part II)
     # west
     "hushfrost_pass_i": "route", "hushfrost_pass_ii": "route", "aurora_hollow": "landmark",
     "sunken_solarium": "town", "unrisen_stair": "landmark", "sunvault_climb_i": "route",
@@ -178,7 +179,11 @@ ROADS: list[tuple[str, str, str]] = [
     ("cinderhead_mine", "cinderhead_deep", "gate"),
     ("cinderhead_deep", "cinderwind_scarp", "pass"),
     # north
-    ("cinderwind_scarp", "galehigh_terraces", "road"),
+    ("cinderwind_scarp", "galehigh_terraces", "gate"),   # the rockfall (open once cleared)
+    ("cinderwind_scarp", "cinderwind_ashfall", "road"),  # Lane A: up onto the Ashfall Shelf
+    ("cinderwind_ashfall", "galehigh_terraces", "road"),
+    ("cinderwind_ashfall", "cinderwind_kiln", "gate"),   # the kiln stack's thermal (Kite)
+    ("cinderwind_ashfall", "windward_stair_i", "gate"),  # the Windward gap (Kite)
     ("galehigh_terraces", "lanternway_galehigh", "lane"),
     ("galehigh_terraces", "wind_eye", "gate"),
     ("galehigh_terraces", "windward_stair_i", "road"),

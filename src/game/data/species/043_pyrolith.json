@@ -70,6 +70,20 @@
   },
   "encounters": [
     {
+      "area": "cinderwind_ashfall",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 32,
+      "max": 33
+    },
+    {
+      "area": "cinderwind_kiln",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 34,
+      "max": 35
+    },
+    {
       "area": "old_seams_ii",
       "terrain": "cave",
       "rarity": "uncommon",

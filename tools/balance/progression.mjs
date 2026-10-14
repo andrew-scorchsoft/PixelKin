@@ -90,6 +90,7 @@ const trend = []; // [midLevel, bst, weight]
 // Each Wild Ways lane appends its encounter-bearing maps here.
 const TREND_SKIP_AREAS = new Set([
   'old_seams_i', 'old_seams_ii', 'old_seams_iii', // the Old Seams (D)
+  'cinderwind_kiln', // Lane A: Kiln Gully — optional, behind the Updraft vent (post-Mira)
 ]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
@@ -290,19 +291,24 @@ const JOURNEY = [
     // its two route trainers, its lv 28-31 beds and a Moth-amber (600).
     // (the Scarp's mandatory strips are part of this leg's walking, not extra to it:
     // its two trainers' XP stands in for a couple of the old leg's wild fights)
-    wild: { areas: ['cinderwind_scarp', 'galehigh_terraces'], band: [27, 31], fights: { rusher: 4, mainline: 8, explorer: 14 } },
+    // Lane A (walkthrough/10 Part II, 2026-10): the ASHFALL SHELF now sits between
+    // the Scarp (retuned 28-30) and Galehigh — its 30-33 beds, two route trainers
+    // (Sile, Pell) and the slag nook's Starglass Shard (+1500 valuables).
+    wild: { areas: ['cinderwind_scarp', 'cinderwind_ashfall', 'galehigh_terraces'], band: [27, 31], fights: { rusher: 2, mainline: 4, explorer: 7 } },
     trainers: [
       T('Hobb-Ree (ore-hauler)', 'route', [K(28, 53), K(30, 48)]),
       T('Rue (kite-runner)', 'route', [K(29, 100), K(29, 91), K(31, 101)]),
+      T('Sile (ore-hauler)', 'route', [K(30, 45), K(32, 49)]),
+      T('Pell (gale-watch)', 'route', [K(31, 89), K(33, 46)]),
       T('Perrin (kite-hand)', 'route', [K(28, 88), K(29, 97)]),
       T('Sorrel (terrace-farmer)', 'route', [K(29, 91), K(30, 45)]),
       T('Tamsin (wind-ward)', 'keeper', [K(29, 97), K(30, 98)]),
       T('Bran (wind-ward)', 'keeper', [K(30, 91), K(31, 89)]),
       T('Mira Vael', 'warden', [K(30, 98), K(31, 95), K(32, 89), K(34, 90)]),
     ],
-    income: { quests: 300, valuables: 1200, finds: 200 },
+    income: { quests: 300, valuables: 2700, finds: 200 },
     spend: { warm_balm: 3, beacon_charge: 2, chart_late: 1 },
-    checkpoint: { name: 'Storm Gleam (Mira)', rec: 28, ace: 34 },
+    checkpoint: { name: 'Storm Gleam (Mira)', rec: 30, ace: 34 }, // rec 28 -> 30 (Lane A): the Scarp + Ashfall now carry 28-33
   },
   {
     name: 'Windward II → Pale Vault (+ Wren A4)',
@@ -490,6 +496,8 @@ const BUILT_PAYOUTS = {
   lampwarden_cinderhead: ['warden', 28, 1680],
   scarp_hauler: ['route', 30, 480], // Cinderwind Scarp (2026-10)
   scarp_kiterunner: ['route', 31, 496],
+  ashfall_picker: ['route', 32, 512], // the Ashfall Shelf (Lane A, 2026-10)
+  ashfall_galewatch: ['route', 33, 528],
   galehigh_kitehand: ['route', 29, 464],
   galehigh_terracer: ['route', 30, 480],
   skyloft_ward_a: ['keeper', 30, 600],

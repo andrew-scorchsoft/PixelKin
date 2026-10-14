@@ -331,6 +331,20 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
       { text: '"...ff." It tries to land on your lamp-flame, thinks better of it, and sits on your hat instead.', react: 'hop' },
     ],
   },
+  // ---- Lane A — the Ashfall Shelf (walkthrough/10 Part II) ----
+  49: { // Gravelo — the slag-heap boulder (the Ashfall Shelf)
+    lines: [
+      { text: '"Grrmmm." It settles deeper into the slag with a sound like a cart tipping.', react: 'shake' },
+      { text: '"Hrmp." A little avalanche of cinders runs off its back. It looks pleased.' },
+    ],
+  },
+  63: { // Stonebark — the ash-grass stump (the Ashfall Shelf, rare)
+    lines: [
+      { text: '"...rrrk." Grey grass rustles on its shoulders. It turns, very slowly, to face the wind.', react: 'hop' },
+      { text: '"Hhhm." It roots its toes in the ash. Something green pokes up beside them.' },
+    ],
+    dawn: [{ text: '"Hhhmm!" The ash-grass on its back has gone a little green at the tips.' }],
+  },
 };
 
 /** The event scripts (spread into content/scripts.ts SCRIPTS). Lore, finds and

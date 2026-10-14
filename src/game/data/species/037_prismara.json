@@ -78,6 +78,13 @@
   },
   "encounters": [
     {
+      "area": "cinderwind_kiln",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 35,
+      "max": 35
+    },
+    {
       "area": "old_seams_iii",
       "terrain": "cave",
       "rarity": "very_rare",

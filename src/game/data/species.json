@@ -1558,6 +1558,13 @@
      "rarity": "uncommon",
      "min": 51,
      "max": 53
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 34,
+     "max": 35
     }
    ],
    "scripted": false,
@@ -3950,7 +3957,14 @@
      "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 29,
-     "max": 31
+     "max": 30
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 33,
+     "max": 35
     }
    ],
    "scripted": false,
@@ -4040,6 +4054,13 @@
     "habitat": "east"
    },
    "encounters": [
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 35,
+     "max": 35
+    },
     {
      "area": "old_seams_iii",
      "terrain": "cave",
@@ -4618,6 +4639,20 @@
    },
    "encounters": [
     {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 32,
+     "max": 33
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 34,
+     "max": 35
+    },
+    {
      "area": "old_seams_ii",
      "terrain": "cave",
      "rarity": "uncommon",
@@ -4876,6 +4911,13 @@
      "max": 27
     },
     {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 30,
+     "max": 31
+    },
+    {
      "area": "old_seams_ii",
      "terrain": "cave",
      "rarity": "common",
@@ -4973,8 +5015,8 @@
      "area": "cinderwind_scarp",
      "terrain": "tall_grass",
      "rarity": "very_rare",
-     "min": 31,
-     "max": 31
+     "min": 30,
+     "max": 30
     }
    ],
    "scripted": false,
@@ -5282,6 +5324,13 @@
      "rarity": "common",
      "min": 26,
      "max": 27
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 31,
+     "max": 33
     },
     {
      "area": "old_seams_i",
@@ -5762,6 +5811,13 @@
     "habitat": "east"
    },
    "encounters": [
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 33,
+     "max": 33
+    },
     {
      "area": "old_seams_i",
      "terrain": "cave",
@@ -6758,7 +6814,15 @@
     "weight_kg": 185,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 30,
+     "max": 31
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Stocky upright tortoise-golem, concentric mineral-bark rings clearly visible on shell, mossy patches on flat back, two large stone-knuckled fists, calm half-lidded eyes.",
@@ -7347,6 +7411,13 @@
      "rarity": "rare",
      "min": 26,
      "max": 27
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 33,
+     "max": 35
     },
     {
      "area": "old_seams_i",
@@ -9761,6 +9832,13 @@
      "rarity": "common",
      "min": 57,
      "max": 63
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 30,
+     "max": 32
     }
    ],
    "scripted": false,
@@ -10063,7 +10141,7 @@
      "terrain": "tall_grass",
      "rarity": "rare",
      "min": 30,
-     "max": 31
+     "max": 30
     }
    ],
    "scripted": false,
@@ -10698,7 +10776,7 @@
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 29,
-     "max": 31
+     "max": 30
     }
    ],
    "scripted": false,
@@ -10959,7 +11037,14 @@
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 28,
-     "max": 31
+     "max": 30
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 30,
+     "max": 32
     }
    ],
    "scripted": false,

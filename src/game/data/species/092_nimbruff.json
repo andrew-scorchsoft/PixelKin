@@ -80,7 +80,7 @@
       "terrain": "tall_grass",
       "rarity": "rare",
       "min": 30,
-      "max": 31
+      "max": 30
     }
   ],
   "scripted": false,

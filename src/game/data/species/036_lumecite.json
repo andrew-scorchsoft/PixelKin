@@ -76,7 +76,14 @@
       "terrain": "tall_grass",
       "rarity": "uncommon",
       "min": 29,
-      "max": 31
+      "max": 30
+    },
+    {
+      "area": "cinderwind_kiln",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 33,
+      "max": 35
     }
   ],
   "scripted": false,
