@@ -2473,6 +2473,130 @@
       "h": 2
     },
     {
+      "id": "street_lamp_a",
+      "sprite": "saltreach_sunken_lamp",
+      "at": {
+        "tx": 11,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2
+    },
+    {
+      "id": "street_lamp_b",
+      "sprite": "saltreach_sunken_lamp",
+      "at": {
+        "tx": 17,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2
+    },
+    {
+      "id": "street_lamp_c",
+      "sprite": "saltreach_sunken_lamp",
+      "at": {
+        "tx": 22,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2
+    },
+    {
+      "id": "street_lamp_d",
+      "sprite": "saltreach_sunken_lamp",
+      "at": {
+        "tx": 7,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 2
+    },
+    {
+      "id": "posts_a",
+      "sprite": "saltreach_mooring_posts",
+      "at": {
+        "tx": 25,
+        "ty": 4
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "posts_b",
+      "sprite": "saltreach_mooring_posts",
+      "at": {
+        "tx": 2,
+        "ty": 16
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "shoal_anchor",
+      "sprite": "pearlmoor_anchor",
+      "at": {
+        "tx": 5,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "shoal_driftwood",
+      "sprite": "pearlmoor_driftwood",
+      "at": {
+        "tx": 3,
+        "ty": 5
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "skerry_netrack",
+      "sprite": "pearlmoor_net_rack",
+      "at": {
+        "tx": 18,
+        "ty": 15
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "skerry_pots",
+      "sprite": "pearlmoor_crab_pots",
+      "at": {
+        "tx": 20,
+        "ty": 15
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "reef_boat",
+      "sprite": "coldfog_beached_boat",
+      "at": {
+        "tx": 22,
+        "ty": 25
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "bar_crates",
+      "sprite": "pearlmoor_fish_crates",
+      "at": {
+        "tx": 23,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
       "id": "tinder_light",
       "sprite": "lowtinder_tinder_light",
       "at": {
