@@ -195,6 +195,47 @@ does (Cost 3, padding).
 
 ---
 
+## Plan 4: the late-game north — "The Hollowing's Country" (2026-10, round 2)
+
+The owner: *"the early game feels really well developed, but the late game, when you get to the
+top, doesn't seem so well developed"*. Measured, the late north has:
+- Coldfog I/II: 1–2 people and no trainers each.
+- Drownlight: an empty 18×16 dead end.
+- Helia Vault and the Nightreach lane: empty.
+- The endgame road: Penumbra has no wild kin, and only one Spire floor has encounters.
+
+### v1: a density pass only (more trainers and people on the existing late maps) — **68**
+- *Jun:* "It fixes empty, not thin. There's still nothing up there to discover."
+- *Ossian:* "The Hollowing are the story's other half and we never see where they live. The
+  story-bible says sympathetic; the game shows only their machines."
+
+### v2: + Stillwater (the Hollowing's village) + the Drownlight tower — **83**
+- *Mara:* "The north is still a dead-end fork: Coldfog in, Coldfog out. Give it a loop, the way the
+  bay and the Isles loop."
+- *Priya:* "And the last road to Còr is one map. The genre's last road is a gauntlet."
+- *Teo:* "Keep it all optional and late, and nothing touches the Spire. The thread stays clean."
+
+### v3 (adopted): + the Mourning Fields loop to the Rimeway + the Penumbra Underways + a 3-kin Hollowing family — **88**
+
+| Dim | v1 | v3 | Evidence |
+|---|--:|--:|---|
+| Exploration | 6 | 9 | a village, a tower, a loop, two cave floors; seen-before-reached shrine and shaft |
+| Navigation | 6 | 9 | a loop with a return to the Rimeway; shutter puzzles |
+| Reward | 6 | 8 | Lumen Drops, Starglass, the Shutter Charm, the relight |
+| Story | 6 | 10 | the antagonists as people; the first lamp they put out; the doubting acolyte |
+| Return | 7 | 9 | the post-dawn relight; Stillwater's opened shutters |
+| Pacing | 8 | 8 | lv 46–56 between the West and Còr, with rest points |
+| Creature | 6 | 8 | three new kin |
+| Clarity | 8 | 8 | all optional, signposted from Coldfog and Nightreach |
+| Originality | 7 | 9 | |
+| Cost | 9 | 7 | about 14 maps |
+| **Total** | **68** | **88** | |
+
+**Thread check (done before planning):** `audit_journey` showed one real skip. **The Stone Gleam
+(Otho) could be skipped**: from Cinderhead Deep you could climb the Scarp and beat Mira first.
+**Fixed:** the gallery is chained until `flag:scarp_climb_open` (gleam:stone OR gleam:storm). The
+end can't be reached early: the hub needs all four crowns, and the Spire needs Starreach.
+
 ## Post-build scores
 
 Scored again against the built maps, in-game shots and the gates. See the score history.
