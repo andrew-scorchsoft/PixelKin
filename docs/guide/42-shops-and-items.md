@@ -53,8 +53,8 @@ stall, and the **Warm Flask** (80) from the crag-tender on the Windward Stair.
 | Deep Charm | ×3.0 on kin met over the open deep | 900 |
 
 Quest charges (the Tide Charm, Drift Charm, Marsh Lamp, Wrecklight Charm, Aurora Charm, Sun
-Charm, Bright Lamp, Radiant Lamp, Radiant Charm, Morrow Charm, Tessaly's Lamp, Shutter Charm and
-Starlamp) are listed in
+Charm, Bright Lamp, Radiant Lamp, Radiant Charm, Morrow Charm, Tessaly's Lamp, Lullwool Charm,
+Shutter Charm and Starlamp) are listed in
 [[catching-and-caring|Catching, Kindling & Caring for Kin]].
 
 ## Star-charts
@@ -82,6 +82,7 @@ read by any kin. Each chart is used up when it's read.
 | Sunburst Nova | Solar | — | Found in Helia Vault (and the Sunfall Vigil's reward) |
 | Tremor Quake | Stone | — | The Grovefall Vigil's reward |
 | Maelstrom | Tide | — | The Farlamp keeper's store, after "The Keeper's Log" |
+| Voidburst | Dark | — | Old Clemency in the Penumbra Underways, for "The Last Watch" |
 
 ## Valuables
 
@@ -92,6 +93,7 @@ These do nothing but sell well. Find them in caches and quests.
 | Wax Cake | 250 |
 | Moth-amber | 600 |
 | Embergloss | 600 |
+| Harvest Knot | 900 |
 | Glassmere Pearl | 1,200 |
 | Starglass Shard | 1,500 |
 | Murk Pearl | 1,500 |

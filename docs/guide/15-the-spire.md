@@ -65,7 +65,8 @@ them. A Starglass Shard and a 600-wick purse wait off the path.
 
 **The Underways (optional).** Two old stairs on islets off the south of the Ring lead down to
 the Hollowing's **last watch**: the strongest wild Dark and Light kin before the summit, three
-trainers, a rest by their fire and the last Lumen Drop. It's a loop that brings you back out into
+trainers, a rest by their fire, the last Lumen Drop, and a Star-chart from the fire's keeper once
+all three watchers have tried you. It's a loop that brings you back out into
 the Ring. See [[the-hollowings-country|The Hollowing's Country]].
 
 **Starwell (optional).** A Starreach crossing off the Ring leads to a shrine of fallen starlight

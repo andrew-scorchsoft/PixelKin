@@ -198,7 +198,7 @@ with Emberward. It's the one place in Vesperholm that stays dark however many Gl
 what the whole land would become if the Hollowing had their way.
 
 - Hollowing acolytes keep the roads, and there's no inn in the fog. Wild kin run 46–50 and are
-  mostly Dark: Nullmoth, Mothdim, Wispwane, Cindersob, Embergone and Voidmantle.
+  mostly Dark: Voidmantle, Liminalux, Embergone and the grey dream-moth Lullwing.
 - **North through the fog** lies **Stillwater**, the Hollowing's own village, with a rest, a shop
   and three side quests, and beyond it the Mourning Fields.
 - **Drownlight Beacon**, a snuffed lighthouse off the first marsh, is now a tower you can climb

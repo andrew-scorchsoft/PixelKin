@@ -55,8 +55,9 @@ A failed throw just wastes the turn. Throw again.
 | Radiant Charm | ×3.0 on a kin with any trouble | Starfall Vigil reward |
 | Morrow Charm | ×3.0 on your first turn | Starfall Vigil reward |
 | Deep Charm | ×3.0 on kin met over the open deep | 900 wicks in Driftholm, after the dawn |
-| Tessaly's Lamp | ×3.0 on a dozing kin | Reward for "The Way Home" in Stillwater |
-| Shutter Charm | ×2.5 on Dark kin | The Shutterkeeper, when you relight the Drownlight after the dawn |
+| Tessaly's Lamp | ×3.0 on a dozing kin | 3, the reward for "The Way Home" in Stillwater |
+| Lullwool Charm | ×3.0 on a dozing kin | 2 found in the Mourning Fields' west plot; 3 more from the field-tender after the dawn |
+| Shutter Charm | ×2.5 on Dark kin | 3 from the Shutterkeeper, when you relight the Drownlight after the dawn |
 | Starlamp | Always catches | A gift late in the story |
 
 A charge with a condition (water, grass, a type) works as a plain throw if the condition isn't

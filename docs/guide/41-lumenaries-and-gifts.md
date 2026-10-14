@@ -38,7 +38,7 @@ battle you for wicks once its Gleam is lit (see [[making-wicks|Making Wicks]]).
 | **Updraft Kite** | Mira Vael, Galehigh | Ride thermals up terraces and across short gaps | Windward Stair's high crags; the Wind-Eye; Thunderroost; Kiln Gully; the Ashfall's Windward lookout |
 | **Emberward** | Ysolde Frost, Pale Vault | Burn a path through coldfog | Hushfrost Pass; Aurora Hollow; the Coldfog Marches and Drownlight Beacon; the Hourfold |
 | **Sunsketch** | Lucan Pyre, Sunken Solarium | Bloom shut night-flowers into bridges | The Sunvault Climb; Helia Vault; the Unrisen Stair |
-| **Starreach** | Nessa Cole, Nightreach | Step across short voids of pure dark | The Penumbra Ring's crossings to the Umbral Spire; Starwell |
+| **Starreach** | Nessa Cole, Nightreach | Step across short voids of pure dark | The Penumbra Ring's crossings to the Umbral Spire; Starwell; the Penumbra Underways |
 
 **The deep sea** is the one thing no Gift crosses. That takes the **Farlamp Skiff**, a key item
 you earn after the dawn (see [[farlamp-isles|The Farlamp Isles]]).
