@@ -495,3 +495,141 @@ None is under 6 on any dimension, but none reaches the bar.
 | 2026-10-14 | Hollowing's Country: Drownlight | built, independent r1 | 77.5 | relight-bypass/double-charm bug; stock interior kit |
 | 2026-10-14 | Hollowing's Country: Mourning Fields | built, independent r1 | 73.5 | mustard-rectangle plots, ruled bank, buyable rewards |
 | 2026-10-14 | Hollowing's Country: Underways | built, independent r1 | 71.5 | empty dark floors, no unique kin, unsignposted |
+
+## Plan 4 — second independent review (after the fix pass)
+
+A second reviewer, who hadn't seen the fix lanes' self-scores (~85), checked the fix pass on
+2026-10-14 (commits `012d9d0d` A, `7311b091` B, `83ffc2c4` C, `3d5514ee` + `42982a1d` D).
+Evidence: all 16 region maps rendered (`render_map.py`, scale 2 and 4 crops); 18 in-game shots
+(`shoot.mjs --batch`, pre-dawn and `flag:dawn` pairs: the mere, the square, the west margin,
+home A, the Drownlight foot dark and relit, F1, F2, the Fields' middle at dusk and dawn, the
+bank stair, the B1 watch-fire at dusk and dawn, the Warm Stones, Underways F1 west, the Ring's
+light-well). The four region files were read, plus the relevant `items.ts`, `trainers.ts`,
+`quests.ts`, `waystones.ts`, `charts.ts` and `glossary.ts` entries, and every wild table
+was dumped by name against its kindle level. Gates: `audit_visual --all` 75 maps, 0 FAIL, 0
+warn; `audit_journey` PASS (golden thread intact; the 11 Drownlight "sealed" false alarms are
+gone, and the glare triggers now show only as "never live in the replay"); `check_content` 0
+E-lines (the old OVERLAP on `script.drownlight_lamp` is gone); `progression.mjs` PASS;
+`validate.mjs` 180 species, 0 errors; `audit_flow` on all 16 maps 0 FAIL (the Underways'
+loop warning is gone; `drownlight_beacon` keeps free-pass + loop, `penumbra_ring` keeps
+loop); `audit_warps`, `audit_npc_footing`, `audit_warp_markers`, `audit_region`,
+`world_geometry --check` all PASS; `render_walkable --report-only` 0 real issues on all 8
+outdoor/cave maps; `check_rebuild` 168/168 maps reproduce.
+
+### Did the first review's bugs land?
+
+1. **Drownlight relight bypass and double charm: FIXED.** `script.drownlight_lamp` now nests
+   through `drownlight_lamp_dark`. Unbeaten at dawn, the lamp says "Ask her first". The offer
+   only runs `if_flag: BEATEN`. Both of her offers carry `unless_flag: RELIT`, and `RELIGHT` is
+   the only `giveItem shutter_charm`. One relight, one gift of 3.
+2. **Name clashes: FIXED.** Stillwater's Tam → EDWY, Ines → MARGERY, Pip →
+   LINNET, Hale (acolyte) → GETHIN; Old Maudry → OLD CLEMENCY. Each new name is unique in
+   `content/`. Maudry Kell keeps hers, and doc 11 records the rename. INES is now only the Fields
+   acolyte. The remaining TAM/PIP trainers (Sunvault, Old Seams, Lowtinder) and Hale on the
+   Rimeway predate this round and aren't in this region.
+3. **Hearths: FIXED.** `stillwater_hearth_banked` (louvred screen) sits in the inn and both homes
+   with `hidden_when_flag: flag:dawn`, and an open `interior_hearth` twin `requires_flag:
+   flag:dawn` on the same footprint. Shot pre-dawn and at dawn, the swap reads well. *Nit:* home A
+   still has an open, glowing `interior_stove` beside the banked hearth before dawn.
+4. **Wenna's partial line: FIXED.** It's an 8-leaf if/else ladder, `script.still_wall_<bits>`,
+   and each leaf names only the missing lamps. *Nit:* with two missing she says "Read what was
+   left at **its** foot".
+5. **audit_journey noise: FIXED** (toggle flags are explored per map).
+
+### New problems introduced by, or left behind after, the fix pass
+
+- **Two identical charges.** Tessaly's Lamp (×3, A) and the Lullwool Charm (2 + 3, C) are both
+  `catch_bonus 3.0`, `condition: doze`. The region now hands out eight copies of one mechanic
+  under two names, which reads as padding rather than variety.
+- **Base forms over their kindle level, still, on Drownlight F1.** Every F1 zone has Mothdim at
+  lv 50–51 (it kindles at 20), Nullmoth at 50–51 (36) and Wispwane at 50–52 (38). Gethin's
+  party has a lv 49 Mothdim. The first review's Coldfog finding was fixed on Coldfog and
+  Stillwater, but not here.
+- **Coldfog I's gold pocket is a band cliff the other way.** To get under kindling,
+  Flutterwane is now lv 19–21 and Mothdim lv 17–19, in a lv 46–48 map, and that holds post-dawn
+  too. It's harmless, but a player meeting a lv 17 kin in the endgame fog will read it as a bug.
+- **Coldfog I's murk pools are still filled rectangles** (`audit_visual` doesn't count murk as a
+  box pool). The Still Water outline is still a stepped union of rectangles, though it now has a
+  proper drawn lip, reeds, a jetty and a punt.
+- **The Stillwater crag** is better dressed (slate boulders, dead trees, shuttered lamps), but
+  it's still a flat slate blanket. Its "faces" read as crenellated wall stubs, not a cliff lip.
+- **The Fields' tall-grass crossing** (rows 22–23) is still a ruled full-width two-row bar,
+  blobbed only at its ends.
+
+### Scores
+
+| # | Dimension (wt) | A · Stillwater + Coldfog | B · Drownlight | C · Mourning Fields | D · Underways |
+|---|---|--:|--:|--:|--:|
+| 1 | Exploration (15) | 8: drawn mere, jetty and punt, wash-lines, woodpiles and wool fill the margins; but the crag is still a flat blanket and the Hall and home B still have wide empty floors | 8: a real lighthouse kit (cistern, clockwork, lectern, foghorn, lens bench); oiled deal boards on F1 and brass-starred flags on F2; F1's south hall is still roomy | 7.5: lobed plots with a turned rim, drill rows, plough, stile, bramble, a seen-before-reached terrace cache; the crossing band is still a ruler | 7.5: blob chambers, the watch's own kit, the Warm Stones pocket, a visible shaft; B1's west bay and south gallery are still thin |
+| 2 | Navigation (15) | 7: the south arms jog, and the waystone shortens the return; the square is still a cross-and-ring template | 8.5: six distinctly shaped F2 rooms on the proven shutter graph; a crank notice; WHITE/RED named | 8.5: the bank jogs (10→11→10) and the one stair stands at a landmark (lamp + stair prop) | 8: the F1 rubble lip gives a one-way; no loop warning; in W, down, across, up E |
+| 3 | Reward (15) | 7.5: Tessaly's Lamp ×3 (still consumable, and a twin of the Lullwool Charm); the hall's Drop + 1,500w | 8: the relight beam is now SEEN sweeping the shallows, with lit buoys; 3 Shutter Charms; Drop + Shard | 7: Fields-only now (shelf Drop, Harvest Knot, Lullwool ×5), but the knot is sell-only and the charm duplicates A's | 7.5: the Voidburst chart for keeping the watch, plus the last Drop, a coal, a Shard and the rest |
+| 4 | Story (10) | 9: the clashes are gone and the hearths now match Hallam's line (stove nit) | 9.5: the tale can no longer be skipped; Maudry Kell is unambiguous | 8.5: the chart + LORE entry; the wool-gatherer replaces the shopless trader | 9: Clemency taught him his letters with no contradiction; the kettle line at dawn |
+| 5 | Return (10) | 9: a waystone, dawn lines for everyone, the yard's day table | 9.5: come back at dawn, relight, and see the beam from the foot | 8: sleepers wake, the TOP FIELD candle relights, the tender's dawn gift | 8: day twins on every zone, the shaft full of morning, Clemency at dawn |
+| 6 | Pacing (10) | 7.5: 46–52 with the inn; the Coldfog I gold pocket at 17–21 is an odd cliff | 8: 50–53, cot rest, ace 54 | 8: 48–52 with the Dousecap verge at 42–44 | 9: 52–56 into Còr, with the rest |
+| 7 | Creature (10) | 7: kindled forms at band; the Dousecap yard; otherwise Coldfog's roster | 6.5: Dousecap → Shutterwick, but Mothdim/Nullmoth/Wispwane sit 14–30 levels past kindling on F1 | 7.5: the #178 verge, #179/#180 in the field, Ines has three kin | 7: Embralux on the Warm Stones (its only pre-dawn ground) + a deep #179/#180 bed; no new kin |
+| 8 | Clarity (5) | 9: Wenna is correct; three journal quests | 8.5: the lamp tells you to ask her first; the crank notice | 8.5 | 9: Andrew's P.S., the light-well, the mouth's script, journal + LORE |
+| 9 | Originality (5) | 9 | 9 | 8.5 | 8.5 |
+| 10 | Cost (5) | 8: the homes now differ | 8.5 | 8 | 8 |
+| | **Total** | **79.3** | **83.3** | **79.0** | **80.3** |
+
+(Totals: A 792.5/10 → 79.3; B 832.5/10 → 83.3; C 790/10 → 79.0; D 802.5/10 → 80.3.)
+
+**Verdict: no part clears 85, but every part moved, and the bugs are genuinely fixed.**
+A +3.8, B +5.8, C +5.5, D +8.8. None is under 6 on any dimension. B is closest. The fixers'
+~85 self-scores credit the redraws at full value; the renders show real progress with visible
+template residue (rectangular water and grass bars, flat crag, empty floors). The tables and
+the reward design also still carry the issues listed above.
+
+### What would still lift each part to 85 (prioritised)
+
+**B · Drownlight (83.3, closest; ~+1.8 needed)**
+1. `tools/balance/build_species.py` (the Drownlight F1 rows) + `tools/maps/build_drownlight_tower.py`:
+   replace Mothdim / Nullmoth / Wispwane on F1 with their kindled forms (or #179/#180), and
+   mirror the change. Creature 6.5 → 8 is worth +1.5 on its own.
+2. `content/items.ts` `shutter_charm`: make it a reusable Dark-only key charge (the
+   vesperlamp-tier pattern), or add a dawn restock from the keeper. That's Reward +0.5.
+3. `build_drownlight_tower.py` F1: dress the big south hall (a buoy under repair, oil-can row,
+   rope) so it isn't a board floor with one table.
+
+**D · Underways (80.3)**
+1. `build_penumbra_underways.py`: fill B1's west bay and south gallery and F1's two lower halls
+   to 2–5 props per screen (more bedrolls, hooks with hooded lamps, Spire masonry). Exploration
+   → 8.5.
+2. Creature value: give the Warm Stones something truly unique (a deep-only rare such as a
+   Light/Dark #179 variant, or move Embralux's ONLY wild bed here, pre- and post-dawn). Creature
+   → 8.
+3. `content/regions/underways.ts`: make keeping the watch change the world (Clemency's fire
+   burns brighter, or the three watchers gather at the fire post-dawn), as well as handing over
+   the chart.
+
+**A · Stillwater + Coldfog (79.3)**
+1. `content/items.ts` + `content/regions/stillwater.ts`: differentiate Tessaly's Lamp from the
+   Lullwool Charm. Make it reusable (a key-item lamp, ×2.0 on dozing kin), or give it a
+   different condition (Lunar kin, or kin met in fog/murk).
+2. `tools/maps/build_stillwater.py`: give the crag an S-face lip (the cliff convention,
+   level-design §11 r8) in place of the crenellation stubs, and break the mere's stepped outline
+   with two or three diagonal-feeling notches or reed islands.
+3. `build_coldfog_marches_i.py` + `build_species.py`: blob the four murk pools, and either
+   drop the lv 17–21 gold pocket or re-theme it as a deliberate "time-stopped" curio with a
+   sign.
+4. `build_stillwater_interiors.py`: add a banked-stove variant for home A (lore), and dress the
+   Quiet Hall's empty lower half (memorial benches, sprig baskets).
+
+**C · Mourning Fields (79.0)**
+1. `tools/maps/build_mourning_fields.py`: blob the rows 22–23 crossing band's top and bottom
+   edges (keep it unbroken, but no ruler), and break the plots' remaining right angles with the
+   `stubble_inner_*` corners.
+2. Rewards: replace the Lullwool Charm (a duplicate of Tessaly's Lamp) with something
+   field-only. A blanket key item that halves wild encounters in the Fields would suit, or a
+   Harvest Knot that does something (a bond boost when held) rather than only selling.
+3. `content/regions/mournfields.ts`: a second dawn change at the shrine (all five candles lit,
+   with the field names relit one by one as you visit), so the return gives more than one line.
+
+### Score history (append)
+
+| Date | Plan | Stage | Total | Notes |
+|---|---|---|--:|---|
+| 2026-10-14 | Hollowing's Country: Stillwater + Coldfog | fix pass, independent r2 | 79.3 | bugs fixed; flat crag, box murk, twin doze charges, lv 17 pocket |
+| 2026-10-14 | Hollowing's Country: Drownlight | fix pass, independent r2 | 83.3 | relight fixed, beam seen; F1 base forms 14–30 lv over kindling |
+| 2026-10-14 | Hollowing's Country: Mourning Fields | fix pass, independent r2 | 79.0 | lobed plots; ruled crossing band; Lullwool duplicates Tessaly's Lamp |
+| 2026-10-14 | Hollowing's Country: Underways | fix pass, independent r2 | 80.3 | blob floors, signposted, Voidburst chart; thin bays, no unique kin |

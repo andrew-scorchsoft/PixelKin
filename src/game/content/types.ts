@@ -291,6 +291,12 @@ export interface ItemDef {
    * Unconditional charges simply omit it — they behave exactly as before.
    */
   condition?: ChargeCondition;
+  /**
+   * A REUSABLE charge (a keepsake lamp, not a waxed cell): the throw never spends
+   * it. Only for conditional, quest-earned charges — never sold, never a guaranteed
+   * catch — so it widens one niche without cheapening the shop charges.
+   */
+  reusable?: boolean;
   /** For 'key' Kindlestone-type items: fires a kin's stone-trigger kindling. */
   kindle_stone?: boolean;
   /** HP restored for 'medicine' items. */
