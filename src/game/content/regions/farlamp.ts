@@ -300,11 +300,22 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'The well-head is chained, and the chain sealed with old lamp-wax. Steps are cut into its side, going down into the dark. A tag hangs from the lock: OPEN BY THE ELDER\'S WORD.' },
     { op: 'say', if_flag: ARRIVED, text: 'Nan Creel\'s house is the one with the blue door.' },
   ],
+  // Return visits first (guarded on WELL), then the first visit (which SETS WELL),
+  // so exactly one branch plays — and on a first visit her greeting comes before
+  // any read-back of her own letter (review 2026-10).
   'script.nan_creel': [
+    { op: 'run', ref: 'script.nan_creel_return', if_flag: WELL },
+    { op: 'run', ref: 'script.nan_creel_first', unless_flag: WELL },
+  ],
+  'script.nan_creel_return': [
     { op: 'run', ref: 'script.letter_home_5' },
     { op: 'run', ref: 'script.nan_letters_tally' },
-    { op: 'run', ref: 'script.nan_after', if_flag: WELL },
-    { op: 'run', ref: 'script.nan_wellstair', unless_flag: WELL },
+    { op: 'run', ref: 'script.nan_after' },
+  ],
+  'script.nan_creel_first': [
+    { op: 'run', ref: 'script.nan_wellstair' },
+    { op: 'run', ref: 'script.letter_home_5' },
+    { op: 'run', ref: 'script.nan_letters_tally' },
   ],
   'script.nan_wellstair': [
     { op: 'say', speaker: 'NAN CREEL', text: 'So you\'re the boat. Sit, sit. I\'m too old to be surprised standing up.' },
@@ -440,7 +451,9 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
           label: 'BATTLE',
           ops: [
             { op: 'say', speaker: 'BRAM', text: 'That\'s the spirit. The tide\'s turning, so am I.' },
-            { op: 'battle', trainer: 'bram_fathom_rematch' },
+            // Repeatable bouts share the sparrers' one rest (2026-10 review: a 5,760w
+            // rematch with no rest was a farm that dwarfed the Lumenary sparring).
+            { op: 'spar', trainer: 'bram_fathom_rematch', cooldown: 3, restingRef: 'npc.bram_rematch_resting' },
             { op: 'say', speaker: 'BRAM', text: 'Again! You\'re worse than the gulls. Same quay, any day.' },
           ],
         },
@@ -521,12 +534,28 @@ function plainLines(n: number, plain: Line[], say: (l: Line) => CutsceneStep): C
 }
 
 Object.assign(FARLAMP_SCRIPTS, READS, {
+  // Only once ALL five are home (a step takes one guard, so the AND is a chain).
   'script.letters_home_hint': [
+    { op: 'run', ref: 'script.letters_home_hint_2', if_flag: 'flag:isles_letter_home_1' },
+  ],
+  'script.letters_home_hint_2': [
+    { op: 'run', ref: 'script.letters_home_hint_3', if_flag: 'flag:isles_letter_home_2' },
+  ],
+  'script.letters_home_hint_3': [
+    { op: 'run', ref: 'script.letters_home_hint_4', if_flag: 'flag:isles_letter_home_3' },
+  ],
+  'script.letters_home_hint_4': [
+    { op: 'run', ref: 'script.letters_home_hint_5', if_flag: 'flag:isles_letter_home_4' },
+  ],
+  'script.letters_home_hint_5': [
     { op: 'say', if_flag: 'flag:isles_letter_home_5', unless_flag: LETTERS_DONE, text: 'Nan Creel will want to hear the letters are home.' },
   ],
 } as ScriptRegistry);
 
 export const FARLAMP_DIALOGUE: DialogueRegistry = {
+  'npc.bram_rematch_resting': [
+    { speaker: 'BRAM', text: 'Not yet, mainlander. My lot are still drying their fins. Win a few more out there ({remaining} to go) and I\'m yours.' },
+  ],
   'sign.point_slip_end': [
     { text: 'The slip runs down into black water. Past it the sea goes deep, far too deep to swim. Only a boat could cross here.' },
   ],

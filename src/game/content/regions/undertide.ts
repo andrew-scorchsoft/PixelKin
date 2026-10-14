@@ -299,7 +299,7 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
       op: 'choice', speaker: 'ONDINE', prompt: 'Fancy a bout, while the lamps are lit?',
       options: [
         { label: 'A bout', ops: [
-          { op: 'battle', trainer: 'undertide_rematch_ondine' },
+          { op: 'spar', trainer: 'undertide_rematch_ondine', cooldown: 3, restingRef: 'npc.ondine_resting' },
           { op: 'say', speaker: 'ONDINE', text: 'Ha! Again tomorrow. I\'ll be here. I\'m always going to be here now.' },
         ] },
         { label: 'Not now', ops: [
@@ -329,6 +329,9 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
 };
 
 export const UNDERTIDE_DIALOGUE: DialogueRegistry = {
+  'npc.ondine_resting': [
+    { speaker: 'ONDINE', text: 'Still catching my breath from the last one! Win a few more out there ({remaining} to go) and I\'ll be ready.' },
+  ],
   'sign.undertide_mouth': [
     { text: 'THE UNDERTIDE. Mind the SURGE: white water does not swim. Ride the RACES — they run one way and never back.' },
     { text: 'The mouth bell turns the junction race. White on the race-post: the race runs on. Red: it turns.' },

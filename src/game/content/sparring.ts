@@ -32,7 +32,7 @@ const HALLS: Hall[] = [
     voice: [
       'Brisa says I need the practice. Spar with me? I\'ll pay out of my own wick-tin, fair and square.',
       'Ow. Good bout! That\'s the tin\'s worth. Brisa will say I dropped my guard. I did drop my guard.',
-      'Still getting my breath back. Win {remaining} more fights out there and I\'ll be ready again.',
+      'The halls share one practice bell, and it\'s been rung. Win a few more out there ({remaining} to go) and I\'ll be ready.',
     ],
   },
   {
@@ -41,7 +41,7 @@ const HALLS: Hall[] = [
     voice: [
       'Reyl has me sparring every comer who\'s earned the Tide. One bout? The hall pays the winner.',
       'Washed out! Here, the hall\'s purse is yours. Same again when the tide comes back round?',
-      'The tide\'s out on me for now. {remaining} more wins out there, then come and splash me again.',
+      'The tide\'s out on the practice floor for now. Win a few more out there ({remaining} to go), then come and splash me.',
     ],
   },
   {
@@ -50,7 +50,7 @@ const HALLS: Hall[] = [
     voice: [
       'Sable likes the hall to keep growing. A friendly bout? There are wicks in it for whoever wins.',
       'Well grown. Take the purse. I\'ll go and sit in some moss and think about what I did.',
-      'My kin are still resting in the moss. {remaining} more wins elsewhere and we\'ll be green again.',
+      'The practice bell\'s resting, and so are my kin. Win a few more elsewhere ({remaining} to go).',
     ],
   },
   {
@@ -59,7 +59,7 @@ const HALLS: Hall[] = [
     voice: [
       'Otho says a wall that\'s never hit forgets it\'s a wall. Hit mine? The hall pays a fair rate.',
       'Cracked us. Fair\'s fair: here\'s your rate. Mind the rubble on the way out.',
-      'Still shoring up. {remaining} more wins down the seams, then we\'ll stand for you again.',
+      'The halls\' practice bell is resting. Win a few more down the seams ({remaining} to go), then we\'ll stand for you.',
     ],
   },
   {
@@ -68,7 +68,7 @@ const HALLS: Hall[] = [
     voice: [
       'Mira wants her kites tested in any weather. You\'re weather. Spar? Purse to the winner.',
       'Blown clean off the terrace! The purse is yours. Come back when the wind turns.',
-      'The wind\'s gone out of us. {remaining} more wins out there and we\'ll be flying again.',
+      'The practice bell\'s quiet for now. Win a few more out there ({remaining} to go) and we\'ll fly for you.',
     ],
   },
   {
@@ -77,7 +77,7 @@ const HALLS: Hall[] = [
     voice: [
       'Ysolde says the cold is patient. I am not. Spar with me? The hall pays in wicks.',
       'Thawed. Take the purse, and the hall\'s respect, which is colder but lasts longer.',
-      'We\'re still thawing out. {remaining} more wins in the snow and we\'ll be sharp again.',
+      'The practice bell is resting. Win a few more in the snow ({remaining} to go) and we\'ll be sharp for you.',
     ],
   },
   {
@@ -86,7 +86,7 @@ const HALLS: Hall[] = [
     voice: [
       'Lucan says every understudy needs an audience. Be mine? There\'s a purse for the winner.',
       'Curtain! You take the purse and the bow. I\'ll practise my falling over.',
-      'Still in the wings. {remaining} more wins out there and I\'ll be back under the lights.',
+      'The practice bell\'s resting, so I\'m in the wings. Win a few more out there ({remaining} to go).',
     ],
   },
   {
@@ -95,7 +95,7 @@ const HALLS: Hall[] = [
     voice: [
       'Nessa keeps me sharp on anyone who reaches the dome. Spar under the stars? The purse is good.',
       'Eclipsed! The purse is yours. The stars saw it, so it definitely happened.',
-      'My kin are still star-gazing. {remaining} more wins and they\'ll come down to fight.',
+      'The practice bell is resting; my kin are star-gazing. Win a few more ({remaining} to go).',
     ],
   },
 ];

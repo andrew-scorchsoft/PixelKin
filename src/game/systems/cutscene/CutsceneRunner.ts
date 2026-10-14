@@ -546,13 +546,14 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
         return true;
       }
       const ms = ctx.timerStop?.(step.id);
+      // `<flag>_now` = beaten on THIS run. Clear/set them BEFORE any early return:
+      // a clock lost to a reload (it lives in memory) must not leave the last
+      // run's gold standing to pay a day purse for a slow lap.
+      for (const t of step.tiers ?? []) ctx.flags.set(`${t.flag}_now`, ms !== undefined && step.action !== 'cancel' && ms <= t.ms);
       if (step.action === 'cancel' || ms === undefined) return true;
       const secs = (ms / 1000).toFixed(1);
       const beat = (step.tiers ?? []).filter((t) => ms <= t.ms);
       for (const t of beat) ctx.flags.set(t.flag, true);
-      // `<flag>_now` = beaten on THIS run (cleared otherwise), so a script can pay
-      // a repeat purse for a repeat gold run — the tier flags themselves stick.
-      for (const t of step.tiers ?? []) ctx.flags.set(`${t.flag}_now`, ms <= t.ms);
       if (beat.length) ctx.onFlagSet?.();
       // The best tier beaten names the run (tiers are authored fastest first).
       const best = beat[0];

@@ -1424,9 +1424,10 @@ export class WorldScene extends Phaser.Scene {
       onGiveMoney: (amount) => {
         this.money = Math.max(0, this.money + Math.floor(amount));
       },
+      // No mid-scene persist (like onGiveMoney): the scene's own end persists, so a
+      // crash can't save the ability without the step that follows it.
       onGiveAbility: (ability) => {
         this.abilities.add(ability);
-        void this.persist();
       },
       onPay: (amount) => {
         const cost = Math.max(0, Math.floor(amount));
@@ -1711,7 +1712,9 @@ export class WorldScene extends Phaser.Scene {
     // First time a Lantern Gift carries you onto its gated ground, mark the
     // moment — the lamp raised, a wash of its light. Once per Gift.
     const gift = this.collision.gateAt(tx, ty);
-    if (gift && this.abilities.has(gift) && !this.flags.get(`flag:gift_first_${gift}`)) {
+    // deepdive isn't a Lantern Gift (the Farlamp skiff): no raise-lamp flourish —
+    // it would stand the player up on open sea and swallow this step's checks.
+    if (gift && gift !== 'deepdive' && this.abilities.has(gift) && !this.flags.get(`flag:gift_first_${gift}`)) {
       this.flags.set(`flag:gift_first_${gift}`, true);
       void this.playGiftFlourish(gift);
       return;

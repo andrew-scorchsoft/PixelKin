@@ -469,8 +469,6 @@ const JOURNEY = [
     // Pearlmoor Starglass (1,500) + the Dimglass Moth-amber (600) = +2,100 valuables.
     // Lane C2: + the Undertide keeper's purse (2,000w, undertide_iv's west nook) —
     // the post-game's only modelled leg, so the isles' found money lands here.
-    // Lane E (10 Part III): + the deep backtrack's skiff-only buoy-caches — the
-    // Pearlmoor Starglass (1,500) + the Dimglass Moth-amber (600) = +2,100 valuables.
     // Lane C1 (10 Part I, the isles' surface): + finds 2,800 (Kelpcrown's keepers'
     // strongbox 2,000 + the Heron's stern locker 800), + quests 1,500 (Hesk's
     // letter-home thanks), + valuables 1,500 (the gull walk's Starglass Shard).
@@ -611,11 +609,11 @@ const BUILT_PAYOUTS = {
   undertide_nethand_bryn: ['route', 64, 1024],
   undertide_keeper_isolde: ['keeper', 65, 1300],
   undertide_diver_marlo: ['route', 66, 1056],
-  undertide_rematch_ondine: ['route', 67, 1072], // post-isles-dawn, re-runnable
+  undertide_rematch_ondine: ['route', 67, 1072], // post-isles-dawn, re-runnable on the shared spar rest
   // The Lumenary sparring partners (2026-10 economy review, content/sparring.ts):
   // repeatable keeper-class bouts, one per SPAR_COOLDOWN (3) won battles — optional
   // income OUTSIDE every solvency leg (like wren_rematch), so a broke player can
-  // always earn back. Farm rate: ~ payout per 4 battles (see the FARM line).
+  // always earn back. Farm rate: ~ one payout per 4 battles (the shared rest).
   spar_tinderwick: ['keeper', 9, 180],
   spar_pearlmoor: ['keeper', 15, 300],
   spar_lowleaf: ['keeper', 21, 420],

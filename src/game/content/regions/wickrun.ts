@@ -40,7 +40,8 @@ export const WICKRUN_TIERS = [
 ];
 /** Each tier pays once (mirrored in tools/balance/progression.mjs). */
 export const WICKRUN_PRIZES = { gold: 600, silver: 400, bronze: 200 } as const;
-/** Repeat runs at a tier already prized pay this day purse (mirrored in progression.mjs). */
+/** Repeat runs at a tier already prized pay this day purse. Optional income outside every
+ *  solvency leg, so not modelled in progression.mjs (10-economy §2 lists it). */
 export const WICKRUN_DAY_PURSE = { gold: 250, silver: 100 } as const;
 
 /** Where the lift sets you down at each end (the cars' platforms). */

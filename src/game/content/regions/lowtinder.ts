@@ -196,7 +196,10 @@ export const LOWTINDER_SCRIPTS: ScriptRegistry = {
   ],
   'script.lowtinder_reef_rematch': [
     { op: 'say', speaker: OTTERY, text: 'Mind, I\'ve been practising on the gulls.' },
-    { op: 'battle', trainer: 'lowtinder_ottery' },
+    // the first win (the gift) is an ordinary bout; once she's been beaten the
+    // rematch shares the sparrers' one rest (no wick farm)
+    { op: 'battle', trainer: 'lowtinder_ottery', unless_flag: BEATEN },
+    { op: 'spar', trainer: 'lowtinder_ottery', cooldown: 3, restingRef: 'npc.ottery_rematch_resting', if_flag: BEATEN },
     // (a first win that comes on a rematch — after losing the first bout — still earns the gift)
     { op: 'run', unless_flag: BEATEN, ref: 'script.lowtinder_reef_gift' },
     { op: 'say', speaker: OTTERY, text: 'Oh, that was LOVELY. My heart\'s going like a kettle.' },
@@ -410,6 +413,9 @@ export const LOWTINDER_SCRIPTS: ScriptRegistry = {
 };
 
 export const LOWTINDER_DIALOGUE: DialogueRegistry = {
+  'npc.ottery_rematch_resting': [
+    { speaker: 'GRAN TALLOW', text: 'Give an old woman a breather, duckling. Go and win a few somewhere else first ({remaining} to go), then come and lose to me properly.' },
+  ],
   'sign.tinderwick_bay': [
     { text: 'TIDEPOOL SKERRY. Old Tinderwick lies east, under the water. The roofs are the high street. Swim kindly — people lived here.' },
   ],

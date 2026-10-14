@@ -663,6 +663,8 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'emote', actor: 'hob_waiting', emote: 'alert' },
     { op: 'face', actor: 'hob_waiting', facing: 'up' },
     { op: 'run', ref: 'script.wander_hob_waiting' },
+    // step back off the gap so sidling along it doesn't replay the scene
+    { op: 'move', actor: 'player', to: { tx: 10, ty: 2 } },
   ],
   // The waystone at the wood's mouth (pearlmoor_allotment). Readable any time —
   // before the quest it's a tease; once Paul has sent you, it asks for the word.
