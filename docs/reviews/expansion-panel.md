@@ -199,12 +199,31 @@ does (Cost 3, padding).
 
 Scored again against the built maps, in-game shots and the gates. See the score history.
 
+### Independent review (2026-10-14, round 1)
+
+A reviewer who hadn't seen the lanes' self-scores rendered every new map, took 31 in-game
+shots and ran the audits. Nothing was broken: no softlocks, every gate speaks, and all 26
+CI gates pass. **No area cleared 85.**
+
+| Area | Score | Weakest | Fix pass (sent to the owning lane) |
+|---|--:|---|---|
+| Ashfall Shelf + Kiln Gully | 74.5 | Creature 6; one-tile cliff walls mid-field; flat wall-top; a plain kiln | Boulder/slag clusters instead of walls; kiln hall with a loop; split tables plus a kiln signature rare; better tin |
+| Farlamp Isles surface | 75.5 | Cost 6 (thin sea maps); fog-bank sprite clipped; skerry light silent; wild levels under the post-game player | Feathered fog; a skerry-light beat and a lore fix; wrecks, trainers and a loop shape per sea map; distinct isles; levels +4 |
+| Undertide + Drowned Lamp | 82 | The same props on every floor; box tide-pools | Per-floor prop palettes; blob pools; kindled forms deeper |
+| Lowtinder & Tinderwick Bay | 81.5 | The bay is a corner hop; thin Cellar B1; garden narrower than a screen | Move the bay seam to rows 14–21; a B1 loop; widen the garden; sell "drowned" |
+| Economy (own 10-pt rubric) | 7.5/10 | A four-hall sparring rotation farmed forever; the repeat silver run lost money pre-ribbon | **Fixed:** one shared sparring rest; the silver purse waits for free rentals |
+
+
 ## Score history
 
 The newest score is first.
 
 | Date | Plan | Stage | Total | Notes |
 |---|---|---|--:|---|
+| 2026-10-14 | Lowtinder & Bay | built, independent r1 | 81.5 | the bay a corner hop; B1 thin |
+| 2026-10-14 | Undertide | built, independent r1 | 82 | props repeat per floor |
+| 2026-10-14 | Farlamp Isles surface | built, independent r1 | 75.5 | thin sea; fog-bank bug |
+| 2026-10-14 | Ashfall Shelf | built, independent r1 | 74.5 | cliff-wall maze; Creature 6 |
 | 2026-10-14 | Farlamp Isles | plan v2 | 87 | Letter hints, sea density rule, deep backtrack |
 | 2026-10-14 | Tinderwick South | plan v3 | 87.5 | Lowtinder; the well loop; the bell comes home; three returns |
 | 2026-10-14 | Ashfall Shelf | plan v3 | 85.5 | Stonebark, "The Last Pane", the Windward crossing, the slag nook |
