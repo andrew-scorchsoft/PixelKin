@@ -306,7 +306,7 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
         {
           label: 'IF YOU FALL',
           ops: [
-            { op: 'say', speaker: MALLOW, text: 'If every kin in your lamp faints, a kind light carries you all back to the last place you rested. It keeps a tithe for the trouble — a tenth of your wicks, less each time the same foe beats you again, and never your last few.' },
+            { op: 'say', speaker: MALLOW, text: 'If every kin in your lamp faints, a kind light carries you all back to the last place you rested. It keeps a tithe for the trouble — a tenth of your wicks, never more than a modest sum, less each time the same foe beats you again, and never your last few.' },
             { op: 'say', speaker: MALLOW, text: 'And if you\'d rather never fall at all, SETTINGS has a "Cannot die" switch. No shame in it. The road\'s long enough.' },
           ],
         },

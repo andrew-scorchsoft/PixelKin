@@ -1992,7 +1992,7 @@ export class WorldScene extends Phaser.Scene {
     // SAME foe beats you again, nothing from the fourth, and never below the
     // hearth floor (content/economy.ts). Losing costs, gently; it never rinses.
     const streak = this.bumpLossStreak(foe);
-    const tithe = faintTithe(this.money, streak);
+    const tithe = faintTithe(this.money, streak, this.flags.countHeld('gleam:'));
     this.money -= tithe;
     void this.sfx.playVariant('world-heal', ['a', 'b']);
     const titheLine =

@@ -58,8 +58,20 @@ but gently, and it never rinses you:
   grass) halve it each time: 10% → 5% → 2.5% → **nothing** from the fourth loss in a
   row (`TITHE_FREE_AFTER`). Beating that foe clears the streak. The streak lives in the
   save's `cooldowns` record under a `loss:<foe>` key.
+- **A ceiling that grows with the journey:** one blackout never costs more than
+  **300w + 300w per Gleam held** (`titheCap`): 300w before Brisa, 1,500w at four Gleams,
+  2,700w with all eight. A loss costs about a balm or two of the current tier, never a fortune
+  (a flat 10% of a late purse used to be 3,000–5,000w).
 - **The hearth floor:** the tithe never takes the purse below **300w**
   (`HEARTH_FLOOR`, two Tallow Balms and change).
+
+| Purse | Gleams | 1st loss | 2nd in a row | 3rd | 4th+ |
+|---:|--:|--:|--:|--:|--:|
+| 250w | 0 | 0 | 0 | 0 | 0 |
+| 1,200w | 1 | 120 | 60 | 30 | 0 |
+| 6,000w | 3 | 600 | 300 | 150 | 0 |
+| 20,000w | 5 | 1,800 (cap) | 1,000 | 500 | 0 |
+| 50,000w | 8 | 2,700 (cap) | 2,500 | 1,250 | 0 |
 
 Inn/home rests stay **free** (canon hospitality); pressure lives in consumables and
 charts, not in healing.
