@@ -104,11 +104,14 @@ f.obj("kelp_t5", "undertide_kelp", (21, 26), 1, 2, overhang=1, walk_under=True, 
 
 f.scatter(["barnacle_a", "barnacle_b", "shell_a", "wrack_a", "glass_a", "glass_b"], 26)
 
+# the shallows rounded off (no box pools): corners off, a bulge per long side
+f.organic_pools()
+
 # ---- beds (mirrored in build_species.py UNDERTIDE_TABLES — keep in step) ------
-CAVE = [(176, 26, 63, 66), (174, 22, 63, 65), (175, 14, 64, 66), (138, 14, 64, 66),
-        (85, 14, 63, 65), (55, 10, 64, 66)]
-WATER = [(172, 26, 63, 65), (173, 18, 64, 66), (28, 18, 64, 66), (30, 14, 64, 66),
-         (25, 14, 64, 66), (34, 4, 66, 66)]
+CAVE = [(175, 28, 64, 66), (176, 26, 63, 66), (138, 14, 64, 66), (85, 12, 63, 65),
+        (55, 12, 64, 66), (174, 6, 63, 64)]
+WATER = [(173, 30, 64, 66), (28, 18, 64, 66), (30, 16, 64, 66), (25, 14, 64, 66),
+         (172, 6, 63, 64), (157, 3, 66, 66)]
 
 
 def T(rows):
@@ -140,7 +143,7 @@ assert islet not in reach and islet in f.reach((12, 3), D1)
 assert all(p in f.reach((12, 3), D1) for p in P.values())
 
 # ---- pass 2: the surge dressed; the tide-lamps that light at the isles' dawn ----
-f.dress_surge(per_screen=4)
+f.dress_surge(per_screen=4, palette="stair")
 f.tide_lamps(spacing=6)
 
 f.finish()

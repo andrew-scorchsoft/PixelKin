@@ -224,26 +224,26 @@
       "overhang": 1
     },
     {
-      "id": "surge_kelpcrown_3",
-      "sprite": "undertide_kelpcrown",
+      "id": "surge_stack_3",
+      "sprite": "undertide_stack",
       "at": {
         "tx": 17,
         "ty": 9
       },
-      "w": 2,
-      "h": 1,
-      "overhang": 0
+      "w": 1,
+      "h": 2,
+      "overhang": 1
     },
     {
-      "id": "surge_wreck_4",
-      "sprite": "undertide_wreck",
+      "id": "surge_mast_4",
+      "sprite": "undertide_mast",
       "at": {
         "tx": 22,
         "ty": 9
       },
-      "w": 2,
-      "h": 2,
-      "overhang": 1
+      "w": 1,
+      "h": 3,
+      "overhang": 2
     },
     {
       "id": "surge_stack_5",
@@ -257,70 +257,70 @@
       "overhang": 1
     },
     {
-      "id": "surge_mast_6",
-      "sprite": "undertide_mast",
+      "id": "surge_stack_6",
+      "sprite": "undertide_stack",
       "at": {
         "tx": 7,
         "ty": 17
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_wreck_7",
+      "sprite": "undertide_wreck",
+      "at": {
+        "tx": 13,
+        "ty": 15
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_stack_8",
+      "sprite": "undertide_stack",
+      "at": {
+        "tx": 1,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "surge_mast_9",
+      "sprite": "undertide_mast",
+      "at": {
+        "tx": 3,
+        "ty": 19
       },
       "w": 1,
       "h": 3,
       "overhang": 2
     },
     {
-      "id": "surge_stack_7",
-      "sprite": "undertide_stack",
-      "at": {
-        "tx": 13,
-        "ty": 15
-      },
-      "w": 1,
-      "h": 2,
-      "overhang": 1
-    },
-    {
-      "id": "surge_kelpcrown_8",
-      "sprite": "undertide_kelpcrown",
-      "at": {
-        "tx": 1,
-        "ty": 14
-      },
-      "w": 2,
-      "h": 1,
-      "overhang": 0
-    },
-    {
-      "id": "surge_wreck_9",
-      "sprite": "undertide_wreck",
-      "at": {
-        "tx": 5,
-        "ty": 13
-      },
-      "w": 2,
-      "h": 2,
-      "overhang": 1
-    },
-    {
-      "id": "surge_stack_10",
-      "sprite": "undertide_stack",
+      "id": "surge_mast_10",
+      "sprite": "undertide_mast",
       "at": {
         "tx": 18,
         "ty": 15
       },
       "w": 1,
-      "h": 2,
-      "overhang": 1
+      "h": 3,
+      "overhang": 2
     },
     {
-      "id": "surge_kelpcrown_11",
-      "sprite": "undertide_kelpcrown",
+      "id": "surge_stack_11",
+      "sprite": "undertide_stack",
       "at": {
         "tx": 27,
         "ty": 12
       },
-      "w": 2,
-      "h": 1,
-      "overhang": 0
+      "w": 1,
+      "h": 2,
+      "overhang": 1
     },
     {
       "id": "surge_wreck_12",
@@ -343,17 +343,6 @@
       "w": 1,
       "h": 2,
       "overhang": 1
-    },
-    {
-      "id": "surge_mast_14",
-      "sprite": "undertide_mast",
-      "at": {
-        "tx": 3,
-        "ty": 20
-      },
-      "w": 1,
-      "h": 3,
-      "overhang": 2
     },
     {
       "id": "tidelamp_1",
@@ -1779,7 +1768,7 @@
         163,
         165,
         523,
-        404,
+        387,
         396,
         391,
         397,
@@ -1809,9 +1798,9 @@
         163,
         165,
         523,
-        524,
         393,
         398,
+        549,
         399,
         395,
         523,
@@ -1840,9 +1829,9 @@
         165,
         523,
         524,
-        522,
         393,
-        395,
+        398,
+        392,
         522,
         523,
         524,
@@ -1871,8 +1860,8 @@
         523,
         524,
         522,
-        523,
-        524,
+        393,
+        395,
         522,
         523,
         524,
@@ -2305,9 +2294,9 @@
         522,
         523,
         524,
-        387,
-        388,
-        389,
+        522,
+        523,
+        524,
         522,
         523,
         160,
@@ -2335,9 +2324,9 @@
         522,
         523,
         524,
-        390,
-        391,
-        392,
+        522,
+        523,
+        524,
         522,
         523,
         163,
@@ -2365,9 +2354,9 @@
         522,
         523,
         524,
-        393,
-        394,
-        395,
+        522,
+        523,
+        524,
         522,
         523,
         163,

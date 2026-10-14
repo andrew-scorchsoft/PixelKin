@@ -360,6 +360,21 @@ purse is counted in the post-game leg's `finds`, and the 5 trainers in `BUILT_PA
 - **Ambience and ambient kin** live in the world-craft module `tools/maps/worldcraft/outer.py`
   (region `outer`, registered in `add_world_craft.py`).
 
+**Pass 3 (after the independent review).**
+- **Each floor has its own surge palette** (`Floor.dress_surge(palette=…)`):
+  - I, the mouth: wrecks, sea-stacks and masts.
+  - II, the Kelp Vaults: kelp crowns and drowned keepers' statues.
+  - III, the Bell Galleries: drowned bell-frames, mooring chains and masts.
+  - IV, the Drowned Stair: the keeper's broken stair treads, lamp-glass panes and drowned
+    lantern-posts.
+- **Organic shallows.** `Floor.organic_pools()` re-cuts every pool as the ellipse in its
+  bounding box, adds a two-tile lobe and prunes one-tile tabs. The tidepool tiles now draw a
+  wide corner radius, so the shores curve.
+- **Deeper means kindled.** Kindled forms grow common as you descend (Beaconclaw and Fathomere
+  lead IV's tables) while the fry and the crab grow rare. IV's pools hold the signature
+  very-rare **Pharolux** (#157, the Glostern line's apex, never wild before), mirrored in
+  `build_species.py`.
+
 **Handshake with C1:** exactly the contract table (`to_gullwrack` (15,27), `to_kelpcrown`
 (14,29), `to_driftholm` (15,29) with the contract landings). The cave side owns the three
 surface edges in `graph.ts` (bidirectional), so C1 should not add reverse edges.

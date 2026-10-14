@@ -72,7 +72,22 @@
     "weight_kg": 210,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "undertide_iv",
+      "terrain": "water",
+      "rarity": "very_rare",
+      "min": 66,
+      "max": 66
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "water",
+      "rarity": "very_rare",
+      "min": 67,
+      "max": 67
+    }
+  ],
   "scripted": true,
   "art": {
     "silhouette": "Immense translucent bell-jelly like a cathedral lantern; stained-glass panes of gold light in an aqua-blue dome, a blazing warm beacon-core at the crown that sweeps slow beams; eight long tendrils each ending in a bright pearl-orb like a hung star; drifting, weightless, regal at 64px.",

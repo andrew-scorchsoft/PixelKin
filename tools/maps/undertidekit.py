@@ -290,14 +290,25 @@ class Floor:
                 break
         return n
 
-    PROPS = [("undertide_wreck", 2, 2, 1), ("undertide_stack", 1, 2, 1),
-             ("undertide_kelpcrown", 2, 1, 0), ("undertide_mast", 1, 3, 2),
-             ("undertide_stack", 1, 2, 1), ("undertide_kelpcrown", 2, 1, 0)]
+    # Each floor has its OWN surge palette (sprite, w, h, overhang) — the floors
+    # read as different places, not one kit stamped four times.
+    PALETTES = {
+        "mouth": [("undertide_wreck", 2, 2, 1), ("undertide_stack", 1, 2, 1),
+                  ("undertide_mast", 1, 3, 2), ("undertide_stack", 1, 2, 1)],
+        "vaults": [("undertide_kelpcrown", 2, 1, 0), ("undertide_statue", 1, 2, 1),
+                   ("undertide_kelpcrown", 2, 1, 0), ("undertide_stack", 1, 2, 1)],
+        "galleries": [("undertide_bellframe", 2, 2, 1), ("undertide_chain", 1, 2, 1),
+                      ("undertide_mast", 1, 3, 2), ("undertide_chain", 1, 2, 1)],
+        "stair": [("undertide_stairfrag", 2, 1, 0), ("undertide_glassspire", 1, 2, 1),
+                  ("undertide_lanternpost", 1, 2, 1), ("undertide_glassspire", 1, 2, 1)],
+    }
+    PROPS = PALETTES["mouth"]
 
-    def dress_surge(self, per_screen: int = 3, gap: int = 2) -> int:
-        """Break up the white water: wrecks, sea-stacks, kelp crowns and drowned masts,
+    def dress_surge(self, per_screen: int = 3, gap: int = 2, palette: str = "mouth") -> int:
+        """Break up the white water with this floor's own things (PALETTES),
         `per_screen` per 15x10 screen of surge, never on a lane or a pocket, `gap`
         tiles clear of each other."""
+        self.PROPS = self.PALETTES[palette]
         taken = self._taken()
         placed: list = []
         n = 0
@@ -325,6 +336,90 @@ class Floor:
                                               "overhang": ov})
                 n += k
         return n
+
+
+    def organic_pools(self) -> int:
+        """Round off the shallows (no box pools, no plus-signs): every pool is
+        re-cut as the ellipse inscribed in its bounding box (3-wide pools just lose
+        their corners) and stripped of one-tile tabs; the tidepool tiles' wide
+        corner radius turns the stepped outline into a curve. Water only ever spreads onto plain floor —
+        never onto an object, an NPC, a trigger, a warp or a tile beside a race.
+        Call BEFORE prove() (it reshapes pockets)."""
+        busy = set(self.solid_extra)
+        for w in self.m["warps"]:
+            busy.add((w["at"]["tx"], w["at"]["ty"]))
+        for t in self.m["triggers"]:
+            busy.add((t["at"]["tx"], t["at"]["ty"]))
+        for n in self.m["npcs"]:
+            busy.add((n["at"]["tx"], n["at"]["ty"]))
+        for o in self.m["objects"]:
+            for dy in range(o["h"]):
+                for dx in range(o["w"]):
+                    busy.add((o["at"]["tx"] + dx, o["at"]["ty"] + dy))
+
+        def can_flood(x, y):
+            return (1 <= x < self.W - 1 and 1 <= y < self.H - 1 and self.plan[y][x] == "."
+                    and (x, y) not in busy
+                    and not any(self.is_race((x + dx, y + dy)) for (dx, dy) in STEP.values()))
+
+        comps, seen = [], set()
+        for c in self.cells("o"):
+            if c in seen:
+                continue
+            comp, q = {c}, [c]
+            while q:
+                x, y = q.pop()
+                for (dx, dy) in STEP.values():
+                    n = (x + dx, y + dy)
+                    if n not in comp and 0 <= n[0] < self.W and 0 <= n[1] < self.H \
+                            and self.plan[n[1]][n[0]] == "o":
+                        comp.add(n)
+                        q.append(n)
+            seen |= comp
+            comps.append(comp)
+        changed = 0
+        for comp in comps:
+            xs = [x for x, _ in comp]
+            ys = [y for _, y in comp]
+            x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
+            w, h = x1 - x0 + 1, y1 - y0 + 1
+            if w < 3 or h < 2:
+                continue
+            cx, cy = (x0 + x1 + 1) / 2, (y0 + y1 + 1) / 2
+            target = {(x, y) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1)
+                      if ((x + 0.5 - cx) / (w / 2)) ** 2 + ((y + 0.5 - cy) / (h / 2)) ** 2 <= 1.0}
+            if min(w, h) == 3:
+                target -= {(x0, y0), (x1, y0), (x0, y1), (x1, y1)}
+            for (x, y) in comp - target:
+                self.plan[y][x] = "."
+                changed += 1
+            for (x, y) in target - comp:
+                if can_flood(x, y):
+                    self.plan[y][x] = "o"
+                    changed += 1
+            # a two-tile lobe off the longest side (off-centre): an uneven shore
+            if max(w, h) >= 4:
+                if w >= h:
+                    mx = x0 + (w * 2) // 3 - 1
+                    lobe = [(mx, y1 + 1), (mx + 1, y1 + 1)]
+                else:
+                    my = y0 + (h * 2) // 3 - 1
+                    lobe = [(x1 + 1, my), (x1 + 1, my + 1)]
+                if all(can_flood(x, y) for (x, y) in lobe):
+                    for (x, y) in lobe:
+                        self.plan[y][x] = "o"
+                        changed += 1
+            # prune stubs: a pool tile with one (or no) water neighbour reads as a tab
+            while True:
+                stubs = [(x, y) for (x, y) in self.cells("o")
+                         if x0 - 1 <= x <= x1 + 1 and y0 - 1 <= y <= y1 + 1
+                         and sum(self.plan[y + dy][x + dx] == "o" for (dx, dy) in STEP.values()) <= 1]
+                if not stubs:
+                    break
+                for (x, y) in stubs:
+                    self.plan[y][x] = "."
+                    changed += 1
+        return changed
 
     # ---- zones -------------------------------------------------------------------------
     def zone(self, zid: str, terrain: str, rect, table: list, rate: float = 0.1,

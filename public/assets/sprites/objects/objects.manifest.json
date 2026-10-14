@@ -3304,11 +3304,25 @@
       "tw": 1,
       "th": 2
     },
+    "undertide_bellframe": {
+      "path": "assets/sprites/objects/undertide_bellframe.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "undertide_camp": {
       "path": "assets/sprites/objects/undertide_camp.webp",
       "width": 32,
       "height": 32,
       "tw": 2,
+      "th": 2
+    },
+    "undertide_chain": {
+      "path": "assets/sprites/objects/undertide_chain.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
       "th": 2
     },
     "undertide_fogglass": {
@@ -3331,6 +3345,13 @@
       "height": 16,
       "tw": 2,
       "th": 1
+    },
+    "undertide_glassspire": {
+      "path": "assets/sprites/objects/undertide_glassspire.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
     },
     "undertide_kelp": {
       "path": "assets/sprites/objects/undertide_kelp.webp",
@@ -3359,6 +3380,13 @@
       "height": 80,
       "tw": 4,
       "th": 5
+    },
+    "undertide_lanternpost": {
+      "path": "assets/sprites/objects/undertide_lanternpost.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
     },
     "undertide_logbook": {
       "path": "assets/sprites/objects/undertide_logbook.webp",
@@ -3404,6 +3432,20 @@
     },
     "undertide_stack": {
       "path": "assets/sprites/objects/undertide_stack.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "undertide_stairfrag": {
+      "path": "assets/sprites/objects/undertide_stairfrag.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "undertide_statue": {
+      "path": "assets/sprites/objects/undertide_statue.webp",
       "width": 16,
       "height": 32,
       "tw": 1,

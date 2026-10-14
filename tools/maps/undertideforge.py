@@ -37,6 +37,9 @@ Objects (`undertide_*`, 16px multiples):
   wreck / stack / kelpcrown / mast   things breaking the surge (2x2, 1x2, 2x1, 1x3)
   tidelamp / tidelamp_lit the race-marking lamps; lit once `flag:isles_dawn` (1x2)
   niche                   a keeper's dry niche in the rock — IV's rest point (2x2)
+  statue / bellframe / chain / stairfrag / glassspire / lanternpost
+                          per-floor surge things (II: statues; III: bell-frames, chains;
+                          IV: the stair's broken treads, lamp-glass panes, lantern-posts)
 
 Run:  python3 tools/maps/undertideforge.py      (then pack_objects.py)
 """
@@ -231,7 +234,9 @@ def pool_tile(role: str, frame: int = 0) -> Image.Image:
     """Shallows over wet floor: floor lip, a scalloped foam line, a pale ring."""
     if role == "fill":
         return img(pool_fill(frame))
-    m = mask(role)
+    # a wide corner radius (and a deep inner notch) so a stepped pool outline
+    # reads as a curved shore, not a box (the review's "box pools")
+    m = gbaforge.overlay_mask(role, 6, 3) if role in INNER else mask(role, t=3, r=7)
     a = pool_fill(frame)
     o = np.asarray(wetstone(0).convert("RGBA")).astype(np.int16)
     a[m] = o[m]
@@ -834,6 +839,136 @@ def obj_niche() -> Image.Image:
     return to_im(a)
 
 
+
+# ---- PASS 3: each floor its own things in the surge -------------------------------
+def obj_statue() -> Image.Image:
+    """A drowned keeper's statue (16x32, the Kelp Vaults): a weathered stone figure
+    holding up a stone lamp, waist-deep in the churn, kelp round its shoulders."""
+    a = clear(16, 32)
+    ellipse(a, 7.5, 9, 2.6, 2.8, STONE)                 # the head
+    px(a, 6, 8, STONE_LT)
+    for y in range(12, 28):                             # the robed body
+        half = 3 + (y - 12) // 6
+        for x in range(8 - half, 8 + half):
+            c = STONE if 7 - half < x < 7 + half else STONE_DK
+            if x == 8 - half:
+                c = STONE_LT
+            px(a, x, y, c)
+    rect(a, 10, 4, 11, 13, STONE)                       # the raised arm
+    rect(a, 9, 1, 12, 4, STONE_DK)                      # the stone lamp
+    rect(a, 10, 2, 11, 3, sh(GLASS, 0.6))
+    for (x, y) in ((5, 13), (6, 14), (9, 14), (10, 13), (4, 16), (11, 16)):
+        px(a, x, y, KELP)                               # kelp round the shoulders
+    for (x, y) in ((5, 22), (9, 24), (6, 26), (10, 20)):
+        px(a, x, y, BARN)
+    outline(a)
+    foam_base(a, 2, 13, 29)
+    return to_im(a)
+
+
+def obj_bellframe() -> Image.Image:
+    """A drowned bell-frame (32x32, the Bell Galleries): two barnacled posts and a
+    crossbeam, a green bell still hanging, out in the surge."""
+    a = clear(32, 32)
+    for x0 in (4, 25):
+        rect(a, x0, 6, x0 + 2, 28, WOOD)
+        rect(a, x0, 6, x0, 28, WOOD_LT)
+        for (dx, y) in ((1, 22), (0, 25), (2, 27)):
+            px(a, x0 + dx, y, BARN)
+    rect(a, 2, 4, 29, 6, WOOD_DK)
+    rect(a, 2, 4, 29, 4, WOOD_LT)
+    px(a, 16, 7, IRON_DK)
+    for y in range(8, 18):                              # the bell, gone green
+        half = 2 + (y - 8) * 4 // 10
+        for x in range(16 - half, 16 + half + 1):
+            px(a, x, y, (92, 150, 120) if x > 16 - half else (150, 196, 160))
+    rect(a, 11, 17, 21, 17, (60, 104, 84))
+    px(a, 16, 18, IRON_DK)
+    outline(a)
+    foam_base(a, 1, 30, 29)
+    return to_im(a)
+
+
+def obj_chain() -> Image.Image:
+    """A mooring chain (16x32, the Bell Galleries): rusted links rising out of
+    the churn to a ring set in a stub of rock."""
+    a = clear(16, 32)
+    ellipse(a, 8, 5, 4, 3.4, sh(CAVE, 1.0))             # the rock stub
+    ellipse(a, 8, 4, 2.2, 1.6, sh(CAVE, 1.4, 8))
+    for k in range(7):                                  # the links
+        y = 9 + k * 3
+        if k % 2 == 0:
+            rect(a, 6, y, 9, y + 2, (148, 92, 56))
+            rect(a, 7, y + 1, 8, y + 1, (0, 0, 0), 0)
+        else:
+            rect(a, 7, y, 8, y + 2, (176, 112, 66))
+    for (x, y) in ((6, 22), (9, 25)):
+        px(a, x, y, BARN)
+    outline(a)
+    foam_base(a, 3, 12, 30)
+    return to_im(a)
+
+
+def obj_stairfrag() -> Image.Image:
+    """A broken run of the keeper's stair (32x16, the Drowned Stair): three worn
+    stone treads climbing out of the water and stopping at nothing."""
+    a = clear(32, 16)
+    for i in range(3):
+        x0, y0 = 3 + i * 9, 10 - i * 3
+        rect(a, x0, y0, x0 + 10, y0 + 2, STONE_LT)
+        rect(a, x0, y0 + 3, x0 + 10, 13, STONE)
+        rect(a, x0 + 10, y0, x0 + 10, 13, STONE_DK)
+    for (x, y) in ((5, 12), (14, 9), (22, 7), (26, 11)):
+        px(a, x, y, BARN)
+    for k in range(4):
+        px(a, 12 + k, 13, KELP)
+    outline(a)
+    foam_base(a, 1, 30, 14)
+    return to_im(a)
+
+
+def obj_glassspire() -> Image.Image:
+    """A great pane of drowned lamp-glass (16x32, the Drowned Stair), stood on end
+    in the surge where it fell, catching what light there is."""
+    a = clear(16, 32)
+    for y in range(3, 29):
+        x0 = 4 + (y - 3) // 9
+        x1 = 11 - (3 - (y - 3) // 9)
+        for x in range(x0, x1 + 1):
+            c = GLASS if (x + y) % 6 else GLASS_LT
+            if x == x0:
+                c = GLASS_LT
+            px(a, x, y, c, 220)
+    for (x, y) in ((6, 6), (7, 7), (8, 8), (6, 15), (7, 16)):
+        px(a, x, y, (240, 252, 252))
+    rect(a, 3, 26, 12, 28, IRON_DK)                     # its broken frame
+    for k in range(5):
+        px(a, 9, 20 + k, KELP)
+    outline(a)
+    foam_base(a, 2, 13, 29)
+    return to_im(a)
+
+
+def obj_lanternpost() -> Image.Image:
+    """A drowned lantern-post (16x32, the Drowned Stair): one of the stair's old
+    street-lamps, leaning, its glass gone, weed in the cage."""
+    a = clear(16, 32)
+    for y in range(9, 29):
+        x = 7 + (28 - y) // 7
+        px(a, x, y, IRON)
+        px(a, x + 1, y, IRON_DK)
+    rect(a, 8, 3, 13, 9, IRON_DK)                       # the empty cage
+    rect(a, 9, 4, 12, 8, (0, 0, 0), 0)
+    for (x, y) in ((9, 6), (10, 7), (11, 5)):
+        px(a, x, y, KELP)
+    rect(a, 8, 1, 13, 2, IRON)
+    for (x, y) in ((7, 24), (8, 21)):
+        px(a, x, y, BARN)
+    outline(a)
+    foam_base(a, 3, 12, 30)
+    return to_im(a)
+
+
 # ---- build ------------------------------------------------------------------------
 NAMES = ["corner_nw", "edge_n", "corner_ne", "edge_w", "fill", "edge_e",
          "corner_sw", "edge_s", "corner_se", "inner_nw", "inner_ne", "inner_sw",
@@ -928,6 +1063,10 @@ def main() -> None:
         "wreck": obj_wreck(), "stack": obj_stack(), "kelpcrown": obj_kelpcrown(),
         "mast": obj_mast(), "tidelamp": obj_tidelamp(False), "tidelamp_lit": obj_tidelamp(True),
         "niche": obj_niche(),
+        # pass 3: each floor's own surge things
+        "statue": obj_statue(), "bellframe": obj_bellframe(), "chain": obj_chain(),
+        "stairfrag": obj_stairfrag(), "glassspire": obj_glassspire(),
+        "lanternpost": obj_lanternpost(),
     }
     for stem, im in objs.items():
         im.save(OBJ_DIR / f"{stem}.png")
