@@ -63,6 +63,11 @@ The last of the dark. No wild kin live here, only memorial lamps and a camp wher
 went quiet. The final crossings are voids of pure dark, and **Starreach** lets you step across
 them. A Starglass Shard and a 600-wick purse wait off the path.
 
+**The Underways (optional).** Two old stairs on islets off the south of the Ring lead down to
+the Hollowing's **last watch**: the strongest wild Dark and Light kin before the summit, three
+trainers, a rest by their fire and the last Lumen Drop. It's a loop that brings you back out into
+the Ring. See [[the-hollowings-country|The Hollowing's Country]].
+
 **Starwell (optional).** A Starreach crossing off the Ring leads to a shrine of fallen starlight
 and the near-legendary **Lunaveil** (Lunar, lv 54). It withdraws for 12 won battles if it gets
 away. The junior watcher's chart from Nightreach names the place.

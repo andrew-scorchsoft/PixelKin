@@ -53,7 +53,7 @@ Lamplight never blocks the main road; it only reveals optional extras.
 | Ember-glow | 0–1 | — |
 | Warmlight | 2 | — |
 | Brightlight | 4 | A side cell in Glowmoss Deep (a Bright Balm); the moss-garden behind Lowtinder's old lamp-school (Mossmantle) |
-| Starlight | 6 | An alcove on Cinderhead Deep's third floor (2 Moth-ambers); a deep nook in Tideglass Cavern (a Starglass Shard); the last ladder down to Emberroot in the Old Seams |
+| Starlight | 6 | An alcove on Cinderhead Deep's third floor (2 Moth-ambers); a deep nook in Tideglass Cavern (a Starglass Shard); the last ladder down to Emberroot in the Old Seams; a nook in each Coldfog marsh (a Hearth Coal and 2 Beacon Charges; a Starglass Shard) |
 | Radiant | 8 | A snow-hollow in Hushfrost Pass (2 Bright Balms) |
 
 ## Getting around

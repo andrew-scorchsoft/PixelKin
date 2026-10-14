@@ -18,13 +18,16 @@ its price. Key items and quest charms can't be bought or sold.
 | Cinderhead Pit-provisioner | Cinderhead Mine | Tallow Balm, Warm Balm, Hearth Coal, Glow Charge, Beacon Charge*, Star-charts: Focus Mind, Gust Up |
 | Galehigh Kite-stall | Galehigh Terraces | Tallow Balm, Warm Balm, Hearth Coal, Bright Balm***, Glow Charge, Beacon Charge*, Star-charts: Thunder Kick, Volt Arc, Gale Slam, Swift Step |
 | The Waystation Inn | Vesper Crossroads | Tallow Balm, Warm Balm, Hearth Coal, Bright Balm***, Glow Charge, Beacon Charge*, Star-charts: Focus Mind, Swift Step |
+| Sefton's Pack | Coldfog Marches, the near marsh's north gap | Warm Balm, Bright Balm, Hearth Coal, Glow Charge |
+| Osric, Lamp-maker | Stillwater | Warm Balm, Bright Balm, Hearth Coal, Glow Charge, Beacon Charge, Hooded Lamp |
 | Creel & Daughter | Driftholm (after the dawn) | Warm Balm, Bright Balm, Hearth Coal, Glow Charge, Beacon Charge, Deep Charm**** |
 
 \* once you hold the Ember Gleam &nbsp;·&nbsp; \*\* once you hold the Tide Gleam &nbsp;·&nbsp;
 \*\*\* once you hold the Storm Gleam &nbsp;·&nbsp; \*\*\*\* once the Farlamp is relit
 
 The Pale Vault, the Sunken Solarium and Nightreach have **no shop**, and there's none past the
-Crossroads on the way up the Spire. Stock up at Galehigh or the Crossroads.
+Crossroads on the way up the Spire. Stock up at Galehigh or the Crossroads. In the far north,
+Sefton and Osric keep counters (see [[the-hollowings-country|The Hollowing's Country]]).
 
 ## Medicine
 
@@ -50,7 +53,8 @@ stall, and the **Warm Flask** (80) from the crag-tender on the Windward Stair.
 | Deep Charm | ×3.0 on kin met over the open deep | 900 |
 
 Quest charges (the Tide Charm, Drift Charm, Marsh Lamp, Wrecklight Charm, Aurora Charm, Sun
-Charm, Bright Lamp, Radiant Lamp, Radiant Charm, Morrow Charm and Starlamp) are listed in
+Charm, Bright Lamp, Radiant Lamp, Radiant Charm, Morrow Charm, Tessaly's Lamp, Shutter Charm and
+Starlamp) are listed in
 [[catching-and-caring|Catching, Kindling & Caring for Kin]].
 
 ## Star-charts
@@ -97,7 +101,7 @@ These do nothing but sell well. Find them in caches and quests.
 | Item | What it does | Where |
 |------|--------------|-------|
 | Vesperlamp | Catch wild kin | Fenn, at the start |
-| Hooded Lamp | Toggle in ITEMS: halves wild encounters while it's hooded | Pearlmoor Chandlery, 600 wicks, after the Tide Gleam |
+| Hooded Lamp | Toggle in ITEMS: halves wild encounters while it's hooded | Pearlmoor Chandlery, 600 wicks, after the Tide Gleam (or Osric in Stillwater) |
 | Runner | Ride the Wick-Run at speed | Rented from Pell at Wick-Run Crest, 300 wicks |
 | Runner's Ribbon | Free runner rentals | Rook, for a gold Wick-Run |
 | Frostglass Lens | See false lights for what they are | Isel, Pale Vault (see [[the-wild-ways|The Wild Ways]]) |

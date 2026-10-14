@@ -197,10 +197,13 @@ Behind Nightreach, a back door leads down into the **Coldfog Marches**, through 
 with Emberward. It's the one place in Vesperholm that stays dark however many Gleams you hold:
 what the whole land would become if the Hollowing had their way.
 
-- No trainers and no rests. Wild kin run 46–50 and are mostly Dark: Nullmoth, Mothdim,
-  Wispwane, Cindersob, Embergone and Voidmantle.
-- **Drownlight Beacon**, a snuffed lighthouse off the first marsh: rare Dark kin, a Bright Balm
-  and a Beacon Charge.
+- Hollowing acolytes keep the roads, and there's no inn in the fog. Wild kin run 46–50 and are
+  mostly Dark: Nullmoth, Mothdim, Wispwane, Cindersob, Embergone and Voidmantle.
+- **North through the fog** lies **Stillwater**, the Hollowing's own village, with a rest, a shop
+  and three side quests, and beyond it the Mourning Fields.
+- **Drownlight Beacon**, a snuffed lighthouse off the first marsh, is now a tower you can climb
+  (Emberward), with a shutter puzzle and its keeper at the top.
+- All of this has its own chapter: [[the-hollowings-country|The Hollowing's Country]].
 - **Hollowfen Stillworks**, a derelict null-works off the deep marsh, opened with **Glimmerstep**.
   It's quiet, sad and enormous. The charged-husk kin **Whorlix** lives here.
 - **Valuables:** an Embergloss and a Murk Pearl lie in the marsh, worth 600 and 1,500 wicks.

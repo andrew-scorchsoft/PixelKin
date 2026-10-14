@@ -25,9 +25,10 @@ enter. This chapter is that list.
 | Kiln Gully | The Ashfall Shelf's kiln stack | Updraft Kite | 33–35 | "The Last Pane", **Scorchwing**, Star-chart: Shardstorm |
 | Aurora Hollow | Hushfrost Pass, second half | Emberward | 40–42 | **Frostholm**, aurora-oil, 2 Beacon Charges |
 | Helia Vault | Sunvault Climb, sun-vine bridges | Sunsketch | 47–50 | **Heliovast**, Star-chart: Sunburst Nova |
-| Drownlight Beacon | Coldfog Marches | Emberward | 48–50 | Rare Dark kin |
+| Drownlight Beacon | Coldfog Marches | Emberward | 48–54 | The tower's shutter puzzle and the Shutterkeeper (see [[the-hollowings-country|The Hollowing's Country]]) |
 | Hollowfen Stillworks | Coldfog Marches, deep marsh | Emberward + Glimmerstep | 48–51 | **Whorlix** |
 | Starwell | Penumbra Ring | Starreach | — | **Lunaveil** (lv 54) |
+| The Underways | Penumbra Ring | Starreach + all eight Gleams | 52–56 | The last watch, a rest and the last Lumen Drop before the summit |
 
 There's also a void-gap deep in **Cinderhead Deep** that looks as if Starreach should cross it.
 In the current version, nothing lies beyond it yet.

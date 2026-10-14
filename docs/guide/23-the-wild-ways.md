@@ -93,7 +93,8 @@ the key to the Mirelights.
 At the Fold's north end, the **Rime Gate** is barred from the far side. You can see the fog
 through the grille, but you can't pass yet. Later, with **Emberward**, come up from the other side
 (the deep Coldfog Marches, behind Nightreach) and lift the bar. From then on the Rimeway is a
-quick road between the Coldfog and Pale Vault. Hale, the last rime-tender, keeps one lamp
+quick road between the Coldfog and Pale Vault. The descent's north road also climbs a col into
+the Mourning Fields (see [[the-hollowings-country|The Hollowing's Country]]). Hale, the last rime-tender, keeps one lamp
 burning at the Fold.
 
 **Vaultclaw** (Frost/Stone) lives only on the Fold.
