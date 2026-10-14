@@ -10,9 +10,10 @@ Two outputs, both deterministic (re-run freely):
    so roomkit's FLOOR/FACE/band gids hold. Each floor is colder and darker than the
    one below — the tower gets quieter as you climb.
 
-     drownlight_f1_set       The Oil Stores: slate flagstones, salt-crust specks,
-                             a sea-green damp line on the faces
-     drownlight_f2_set       The Lens Gallery: bluer, dimmer, the flags worn smooth
+     drownlight_f1_set       The Oil Stores: OILED DEAL BOARDS (two joint layouts,
+                             oil rings), a sea-green damp line on the faces
+     drownlight_f2_set       The Lens Gallery: bluer, dimmer walls; PALE POLISHED
+                             FLAGS on a half-tile offset, FLOOR_B with a brass star
      drownlight_lantern_set  The Lantern Room: near-black blue stone, a faint
                              brass lip on the walls (the room was made for light)
 
@@ -104,12 +105,76 @@ def _specks(t, pts, col, k):
         ols.paint(t, x, y, np.array(col, np.float64), k)
 
 
+def boards(t, joints, tones, stains):
+    """F1's floor (fix pass B): OILED TIMBER BOARDS laid east-west — the stores were
+    floored in deal so a dropped can wouldn't crack the flags. Board seams on rows
+    1/5/9/13 (never on the tile's edge, so the fill wraps without a grid), one butt
+    joint per board at `joints[b]`, a tone per board, dark oil rings at `stains`.
+    The source's grain is kept, softened."""
+    L = ols.lum(t)
+    dev = (L - L.mean()) * 0.3
+    o = t.copy()
+    for y in range(T):
+        b = ((y - 2) % T) // 4
+        for x in range(T):
+            col = np.array(tones[b], np.float64)
+            if y % 4 == 1:
+                col = col * 0.55                               # the seam between boards
+            elif x == joints[b]:
+                col = col * 0.74                               # a butt joint
+            elif (y % 4 == 3 and (x * 5 + b * 3) % 11 < 4):
+                col = col * 1.05                               # a run of grain
+            elif y % 4 == 2:
+                col = col * 1.08                               # the board's lit edge
+            o[y, x, :3] = np.clip(col + dev[y, x], 0, 255)
+    for (cx, cy, r) in stains:
+        for y in range(T):
+            for x in range(T):
+                dx = min(abs(x - cx), T - abs(x - cx))
+                dy = min(abs(y - cy), T - abs(y - cy))
+                if dx * dx + dy * dy <= r * r:
+                    o[y, x, :3] *= 0.84
+    return o
+
+
+def flags_inlaid(t, inlay: bool):
+    """F2's floor (fix pass B): PALE POLISHED FLAGS, the lens-room's — 8px slabs on a
+    half-tile offset (the grout crosses mid-tile, so the fill never shows a tile
+    grid), every so often a little brass compass-star let in at the crossing where
+    the keepers set the lens trestles."""
+    L = ols.lum(t)
+    dev = (L - L.mean()) * 0.22
+    o = t.copy()
+    slab = np.array((128, 138, 156), np.float64)
+    for y in range(T):
+        for x in range(T):
+            col = slab * (1.0 + 0.03 * (((x // 8) + (y // 8)) % 2))
+            if x == 7 or y == 7:
+                col = slab * 0.66
+            elif x in (8, 0) or y in (8, 0):
+                col = slab * 1.07                              # the polished arris
+            o[y, x, :3] = np.clip(col + dev[y, x], 0, 255)
+    if inlay:
+        b, bl, bd = np.array(BRASS, np.float64), np.array(BRASS_LT, np.float64), np.array(BRASS_DK, np.float64)
+        for (x, y) in ((7, 4), (7, 5), (7, 9), (7, 10), (4, 7), (5, 7), (9, 7), (10, 7)):
+            o[y, x, :3] = b
+        for (x, y) in ((7, 3), (7, 11), (3, 7), (11, 7)):
+            o[y, x, :3] = bd
+        for (x, y) in ((6, 6), (8, 6), (6, 8), (8, 8)):
+            o[y, x, :3] = bd
+        for (x, y) in ((7, 6), (6, 7), (8, 7), (7, 8)):
+            o[y, x, :3] = bl
+        o[7, 7, :3] = (255, 240, 190)
+    return o
+
+
 def f1(src):
-    """The Oil Stores: slate-cold, a salt crust on the flags, a damp line on the faces."""
+    """The Oil Stores: oiled deal boards underfoot; a damp line on the cold faces."""
     out = [ols.mul(ols.saturate(t, 0.55), 0.9, 0.97, 1.0, add=(0, 4, 4)) for t in src]
-    for i in FLOORS:
-        out[i] = ols.mul(ols.saturate(src[i], 0.35), 0.86, 0.94, 0.94, add=(4, 8, 8))
-        _specks(out[i], ((3, 5), (4, 5), (11, 2), (12, 12), (6, 13), (13, 8)), (226, 232, 226), 0.55)
+    tones = ((112, 96, 80), (100, 86, 72), (118, 102, 84), (106, 92, 78))
+    # long boards: only every other board butts in a given tile (-1 = runs through)
+    out[FLOORS[0]] = boards(src[FLOORS[0]], (3, -1, 11, -1), tones, ((10, 10, 2.2),))
+    out[FLOORS[1]] = boards(src[FLOORS[1]], (-1, 6, -1, 13), tones, ((4, 4, 1.6),))
     for i in FACES + (INSET,):
         t = out[i]
         for x in range(T):  # the sea-green damp line, an uneven tide-mark low on the face
@@ -120,15 +185,11 @@ def f1(src):
 
 
 def f2(src):
-    """The Lens Gallery: bluer, dimmer, the flags worn smooth (half the grain)."""
+    """The Lens Gallery: bluer, dimmer walls; pale polished flags underfoot (FLOOR
+    plain, FLOOR_B with the brass compass-star — the builder sets the stars)."""
     out = [ols.mul(ols.saturate(t, 0.5), 0.74, 0.84, 1.0) for t in src]
-    for i in FLOORS:
-        t = ols.mul(ols.saturate(src[i], 0.3), 0.78, 0.86, 0.98, add=(0, 4, 10))
-        L = ols.lum(t)[..., None]
-        m = L.mean()
-        t[..., :3] = np.clip(t[..., :3] - 0.45 * (L - m), 0, 255)   # worn smooth
-        _specks(t, ((5, 4), (12, 10), (2, 12)), (196, 214, 232), 0.4)
-        out[i] = t
+    out[FLOORS[0]] = flags_inlaid(src[FLOORS[0]], False)
+    out[FLOORS[1]] = flags_inlaid(src[FLOORS[1]], True)
     for i in FACES + (INSET,):
         t = out[i]
         for x in range(T):
@@ -335,12 +396,19 @@ def crank(thrown: bool):
     for y in range(14, 19):
         px(a, 7, y, IRON_LT if y % 2 else IRON_DK)
         px(a, 8, y, IRON_DK if y % 2 else IRON_LT)
-    # the louvre tell: a little pennant on the housing (white at rest, red thrown)
-    rect(a, 12, 18, 12, 27, IRON_DK)
+    # the louvre tell (fix pass B: made BIG enough to read at 1x): a pennant on a
+    # tall staff (white at rest, red thrown) AND the housing's tell-window in the
+    # same colour, so the state reads whichever bit the player looks at
+    rect(a, 12, 15, 12, 28, IRON_DK)
     flag = RED if thrown else WHITE
-    for y in range(18, 22):
-        for x in range(13, 13 + (22 - y)):
+    flag_dk = (130, 36, 32) if thrown else (170, 170, 160)
+    for y in range(15, 22):
+        for x in range(13, 13 + max(1, 4 - abs(y - 18))):
             px(a, x, y, flag)
+    for y in (20, 21):
+        px(a, 13, y, flag_dk)
+    rect(a, 6, 22, 9, 26, IRON_DK)
+    rect(a, 7, 23, 8, 25, flag)
     rect(a, 4, 30, 11, 30, (0, 0, 0), 90)   # contact shadow
     outline(a)
     save(a, "crank_on" if thrown else "crank")
@@ -550,6 +618,355 @@ def lighthouse_lit():
     save(a, "lighthouse_lit")
 
 
+# =====================================================================================
+# 3. THE LIGHTHOUSE KIT (fix pass B, 2026-10): the working gear of a keepers' tower,
+#    so the floors stop reading as a house. Front projection, drawn in code.
+#      cistern       2x2  a riveted oil cistern: domed top, hoop bands, a sight-glass
+#                         with amber oil in it, a brass tap over a drip tray (F1)
+#      oil_cans      1x1  three filler cans with long spouts (F1)
+#      weights       1x3  the clockwork's weight-shaft foot: a timber chute on the wall,
+#                         two chains coming down it, the cast weight at rest (F1)
+#      clockwork     2x2  the turning-gear: a chain drum, a brass gear train, the
+#                         governor's fan on top (F2 — it turned the lens)
+#      lectern       1x2  the keeper's log-lectern: the log open on a slant (F1/F2)
+#      foghorn       2x2  a brass foghorn on its bellows-box, a hand crank (F2)
+#      buoy_repair   2x2  a channel buoy on its side on trestles, its lamp-cage off (F1)
+#      lens_rack     2x2  a rack of prism segments, slotted like plates (F2)
+#      grind_bench   2x2  the lens-grinding bench: wheel, clamp, grit pot (F2)
+#      rope_coil     1x1  a coil of tarred rope (F1)
+# =====================================================================================
+COPPER = (150, 92, 62)
+COPPER_LT = (196, 132, 92)
+COPPER_DK = (96, 56, 40)
+OIL = (214, 150, 54)
+GLASS = (150, 196, 210)
+GLASS_LT = (214, 238, 244)
+ROPE = (158, 128, 84)
+ROPE_DK = (104, 80, 52)
+ROPE_LT = (196, 168, 116)
+BUOY_RED = (178, 58, 50)
+BUOY_RED_DK = (116, 36, 34)
+GRIT = (176, 170, 160)
+
+
+def cylinder(a, x0, y0, x1, y1, base, lt, dk):
+    """A front-on vertical cylinder: a lit stripe a third in, darkening to both edges."""
+    w = x1 - x0 + 1
+    for x in range(x0, x1 + 1):
+        u = (x - x0 + 0.5) / w
+        col = lt if 0.22 < u < 0.38 else (dk if u < 0.1 or u > 0.78 else base)
+        rect(a, x, y0, x, y1, col)
+
+
+def ellipse(a, cx, cy, rx, ry, rgb, alpha=255):
+    for y in range(int(cy - ry - 1), int(cy + ry + 2)):
+        for x in range(int(cx - rx - 1), int(cx + rx + 2)):
+            if ((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2 <= 1:
+                px(a, x, y, rgb, alpha)
+
+
+def shadow(a, x0, x1, y, alpha=90):
+    rect(a, x0, y, x1, y, (0, 0, 0), alpha)
+
+
+def cistern():
+    a = clear(2, 2)
+    cylinder(a, 5, 6, 26, 27, COPPER, COPPER_LT, COPPER_DK)
+    ellipse(a, 15.5, 6, 11, 3.6, COPPER_DK)                    # the dome
+    ellipse(a, 15.5, 5.6, 10, 2.8, COPPER)
+    ellipse(a, 13, 4.6, 4, 1.2, COPPER_LT)
+    rect(a, 14, 0, 17, 3, IRON_DK)                             # filler neck + cap
+    rect(a, 15, 0, 16, 2, IRON_LT)
+    for y in (11, 21):                                         # hoop bands + rivets
+        rect(a, 5, y, 26, y + 1, IRON_DK)
+        rect(a, 5, y, 26, y, IRON)
+        for x in range(7, 26, 4):
+            px(a, x, y, IRON_LT)
+    rect(a, 6, 10, 8, 26, IRON_DK)                             # the sight-glass
+    rect(a, 7, 11, 7, 25, (40, 34, 30))
+    rect(a, 7, 17, 7, 25, OIL)
+    px(a, 7, 17, (250, 214, 120))
+    rect(a, 15, 14, 21, 18, (222, 214, 190))                   # the stencilled label
+    rect(a, 16, 15, 20, 15, INK)
+    rect(a, 16, 17, 18, 17, INK)
+    rect(a, 23, 23, 28, 24, BRASS_DK)                          # the tap
+    rect(a, 23, 23, 27, 23, BRASS_LT)
+    rect(a, 27, 25, 28, 26, BRASS)
+    rect(a, 24, 29, 30, 30, IRON_DK)                           # drip tray
+    rect(a, 25, 29, 29, 29, IRON)
+    px(a, 27, 28, OIL)
+    shadow(a, 5, 26, 28)
+    shadow(a, 4, 30, 31, 70)
+    outline(a)
+    save(a, "cistern")
+
+
+def oil_cans():
+    a = clear()
+    for (x0, h, col) in ((1, 9, BRASS_DK), (6, 11, COPPER), (11, 8, IRON)):
+        lt = BRASS if col == BRASS_DK else (COPPER_LT if col == COPPER else IRON_LT)
+        dk = (80, 56, 30) if col == BRASS_DK else (COPPER_DK if col == COPPER else IRON_DK)
+        y0 = 15 - h
+        cylinder(a, x0, y0, x0 + 3, 14, col, lt, dk)
+        rect(a, x0, y0, x0 + 3, y0, dk)
+        rect(a, x0 + 1, y0 - 2, x0 + 2, y0 - 1, dk)            # the cap
+        for k in range(3):                                     # the long spout
+            px(a, x0 + 4 + k, y0 + 2 - k, dk)
+    shadow(a, 1, 14, 15)
+    outline(a)
+    save(a, "oil_cans")
+
+
+def weights():
+    """1x3: the foot of the weight-shaft — a timber chute set into the wall (the top
+    tile sits over the wall face), two chains, the cast weight at rest on its block."""
+    a = clear(1, 3)
+    rect(a, 2, 0, 13, 37, WOOD_DK)                             # the chute
+    rect(a, 3, 0, 12, 37, (34, 30, 30))
+    rect(a, 2, 0, 2, 37, WOOD)
+    rect(a, 13, 0, 13, 37, WOOD)
+    for y in (4, 16, 28):                                      # iron straps
+        rect(a, 2, y, 13, y, IRON)
+    for cx in (5, 10):                                         # two chains
+        for y in range(0, 34):
+            px(a, cx, y, IRON_LT if y % 3 == 0 else (IRON if y % 3 == 1 else IRON_DK))
+    rect(a, 3, 34, 12, 41, IRON_DK)                            # the cast weight
+    rect(a, 4, 35, 11, 40, IRON)
+    rect(a, 4, 35, 11, 35, IRON_LT)
+    rect(a, 6, 37, 9, 38, BRASS_DK)                            # its stamped plate
+    rect(a, 1, 42, 14, 45, WOOD_DK)                            # the rest-block
+    rect(a, 2, 42, 13, 42, WOOD_LT)
+    rect(a, 2, 43, 13, 44, WOOD)
+    shadow(a, 1, 14, 46)
+    outline(a)
+    save(a, "weights")
+
+
+def gear(a, cx, cy, r, teeth, col, lt, dk):
+    disc(a, cx, cy, r + 1, dk)
+    for k in range(teeth):
+        th = k / teeth * 2 * math.pi
+        tx, ty = cx + (r + 1.2) * math.cos(th), cy + (r + 1.2) * math.sin(th)
+        rect(a, int(tx - 0.5), int(ty - 0.5), int(tx), int(ty), dk)
+    disc(a, cx, cy, r, col)
+    disc(a, cx - 0.6, cy - 0.6, r * 0.55, lt)
+    disc(a, cx, cy, r * 0.3, dk)
+
+
+def clockwork():
+    a = clear(2, 2)
+    rect(a, 3, 8, 28, 28, IRON_DK)                             # the frame
+    rect(a, 4, 9, 27, 27, (52, 56, 70))
+    rect(a, 4, 9, 27, 9, IRON_LT)
+    for x in (4, 27):
+        rect(a, x, 9, x, 29, IRON)
+    cylinder(a, 6, 17, 17, 25, WOOD, WOOD_LT, WOOD_DK)          # the chain drum
+    for y in range(17, 26, 2):
+        rect(a, 6, y, 17, y, IRON)                             # chain wound round it
+    for y in range(26, 31):
+        px(a, 9, y, IRON_LT if y % 2 else IRON_DK)              # chain running down
+    gear(a, 21.5, 20.5, 4.2, 10, BRASS, BRASS_LT, BRASS_DK)     # the gear train
+    gear(a, 14.5, 12.5, 3.0, 8, BRASS, BRASS_LT, BRASS_DK)
+    rect(a, 15, 2, 16, 8, IRON)                                # the governor
+    rect(a, 9, 3, 14, 4, IRON_LT)                              # its fan vanes
+    rect(a, 17, 3, 22, 4, IRON_LT)
+    rect(a, 9, 5, 14, 5, IRON_DK)
+    rect(a, 17, 5, 22, 5, IRON_DK)
+    disc(a, 15.5, 2, 1.4, BRASS)
+    rect(a, 2, 29, 29, 30, IRON_DK)                            # the plinth
+    rect(a, 3, 29, 28, 29, IRON)
+    shadow(a, 2, 29, 31)
+    outline(a)
+    save(a, "clockwork")
+
+
+def lectern():
+    a = clear(1, 2)
+    rect(a, 6, 16, 9, 28, WOOD_DK)                             # post
+    rect(a, 7, 16, 8, 28, WOOD)
+    rect(a, 3, 28, 12, 30, WOOD_DK)                            # foot
+    rect(a, 4, 28, 11, 28, WOOD_LT)
+    for y in range(6, 16):                                     # the slant top
+        rect(a, 1, y, 14, y, WOOD_DK if y in (6, 15) else WOOD)
+    rect(a, 2, 4, 7, 12, (236, 230, 210))                      # the open log
+    rect(a, 8, 4, 13, 12, (224, 218, 196))
+    rect(a, 7, 4, 8, 12, (170, 160, 140))
+    for y in (6, 8, 10):
+        rect(a, 3, y, 6, y, (110, 104, 96))
+        rect(a, 9, y, 12, y, (110, 104, 96))
+    rect(a, 3, 13, 12, 13, (150, 40, 40))                      # the ribbon
+    rect(a, 12, 1, 13, 3, BRASS)                               # a pen in its well
+    px(a, 13, 0, INK)
+    shadow(a, 3, 12, 31)
+    outline(a)
+    save(a, "lectern")
+
+
+def foghorn():
+    a = clear(2, 2)
+    rect(a, 3, 18, 22, 28, IRON_DK)                            # the bellows-box
+    rect(a, 4, 19, 21, 27, IRON)
+    rect(a, 4, 19, 21, 19, IRON_LT)
+    for x in range(6, 21, 4):
+        px(a, x, 23, IRON_LT)
+    for y in range(20, 27, 2):                                 # leather pleats
+        rect(a, 23, y, 26, y, WOOD_DK)
+        rect(a, 23, y + 1, 26, y + 1, WOOD)
+    disc(a, 8, 23, 2.2, BRASS_DK)                              # the hand-crank
+    rect(a, 8, 23, 12, 23, IRON_LT)
+    rect(a, 12, 21, 13, 23, WOOD_LT)
+    # the horn: a brass flare rising up and right from the box
+    for i in range(0, 15):
+        cx = 13 + i * 0.95
+        cy = 17 - i * 0.75
+        r = 1.4 + (i / 14) ** 2.2 * 6.2
+        disc(a, cx, cy, r, BRASS_DK)
+        disc(a, cx - 0.4, cy - 0.5, max(r - 1, 0.6), BRASS)
+    disc(a, 26.2, 6.6, 6.2, BRASS_DK)                          # the bell mouth
+    disc(a, 26.2, 6.6, 5.0, (60, 44, 24))
+    disc(a, 26.2, 6.6, 3.2, (32, 24, 16))
+    for k in range(12):
+        th = k / 12 * 2 * math.pi
+        px(a, int(26.2 + 5.6 * math.cos(th)), int(6.6 + 5.6 * math.sin(th)), BRASS_LT)
+    rect(a, 15, 12, 17, 12, BRASS_LT)
+    rect(a, 2, 29, 23, 30, WOOD_DK)                            # the skid
+    rect(a, 3, 29, 22, 29, WOOD)
+    shadow(a, 2, 27, 31)
+    outline(a)
+    save(a, "foghorn")
+
+
+def buoy_repair():
+    a = clear(2, 2)
+    for x0 in (4, 22):                                         # the trestles
+        rect(a, x0, 18, x0 + 5, 19, WOOD_LT)
+        rect(a, x0, 20, x0 + 5, 20, WOOD_DK)
+        for (lx, d) in ((x0, -1), (x0 + 5, 1)):
+            for y in range(21, 30):
+                px(a, lx + d * ((y - 21) // 4), y, WOOD_DK)
+    # the buoy on its side: a red/white striped barrel, a cone end to the right
+    for x in range(3, 25):
+        stripe = ((x - 3) // 5) % 2
+        base, dk = ((BUOY_RED, BUOY_RED_DK) if stripe == 0 else ((216, 214, 204), (150, 148, 140)))
+        rect(a, x, 9, x, 18, base)
+        rect(a, x, 9, x, 10, tuple(min(255, c + 30) for c in base))
+        rect(a, x, 16, x, 18, dk)
+    for i, x in enumerate(range(25, 30)):                      # the cone
+        rect(a, x, 10 + i, x, 17 - i, BUOY_RED)
+        px(a, x, 17 - i, BUOY_RED_DK)
+    rect(a, 2, 11, 3, 16, IRON_DK)                             # the open hatch
+    # its lamp-cage, set down beside it on the floor
+    rect(a, 12, 22, 19, 29, IRON_DK)
+    rect(a, 13, 23, 18, 28, (40, 44, 56))
+    for x in (13, 15, 17):
+        rect(a, x, 22, x, 29, IRON_LT)
+    rect(a, 14, 25, 16, 27, GLOW_DK)                           # a dull spare bulb-glass
+    rect(a, 15, 20, 16, 21, IRON)
+    rect(a, 22, 26, 28, 26, IRON_LT)                           # a spanner on the floor
+    rect(a, 21, 25, 22, 27, IRON_LT)
+    shadow(a, 3, 29, 30)
+    outline(a)
+    save(a, "buoy_repair")
+
+
+def prism(a, x0, y0, h, tint=0):
+    """One curved prism segment standing on edge: a pale cyan sliver with bright ribs."""
+    for y in range(h):
+        bow = int(round(1.6 * math.sin(math.pi * y / max(h - 1, 1))))
+        x = x0 + bow
+        rect(a, x, y0 + y, x + 2, y0 + y, GLASS)
+        px(a, x, y0 + y, GLASS_LT)
+        if (y + tint) % 4 == 0:
+            rect(a, x, y0 + y, x + 2, y0 + y, GLASS_LT)
+        px(a, x + 3, y0 + y, LENS_DK)
+
+
+def lens_rack():
+    a = clear(2, 2)
+    rect(a, 2, 24, 29, 29, WOOD_DK)                            # the base
+    rect(a, 3, 24, 28, 25, WOOD_LT)
+    rect(a, 3, 26, 28, 28, WOOD)
+    rect(a, 2, 3, 3, 29, WOOD_DK)                              # the end posts
+    rect(a, 28, 3, 29, 29, WOOD_DK)
+    rect(a, 2, 3, 29, 4, WOOD)                                 # the top rail
+    rect(a, 2, 3, 29, 3, WOOD_LT)
+    rect(a, 4, 5, 27, 23, (36, 40, 54))                        # the dark back-board
+    for y in (9, 15):
+        rect(a, 4, y, 27, y, (46, 50, 66))
+    for i, x in enumerate(range(5, 27, 4)):                    # six slotted prisms
+        h = 17 - (i % 3) * 2
+        prism(a, x, 24 - h, h, i)
+        rect(a, x, 24, x + 3, 24, WOOD_DK)                     # its slot
+    shadow(a, 2, 29, 30)
+    outline(a)
+    save(a, "lens_rack")
+
+
+def grind_bench():
+    a = clear(2, 2)
+    rect(a, 1, 12, 30, 15, WOOD_DK)                            # the bench top
+    rect(a, 2, 12, 29, 13, WOOD_LT)
+    rect(a, 2, 14, 29, 14, WOOD)
+    for x in (3, 27):                                          # legs
+        rect(a, x, 16, x + 1, 29, WOOD_DK)
+    rect(a, 3, 24, 28, 25, WOOD)                               # the stretcher
+    rect(a, 12, 26, 19, 28, IRON_DK)                           # the treadle
+    rect(a, 15, 16, 16, 26, IRON)                              # its rod
+    disc(a, 8.5, 7.5, 6.5, STONE_DK)                           # the grinding wheel
+    disc(a, 8.5, 7.5, 5.5, GRIT)
+    disc(a, 8, 7, 3.2, STONE_LT)
+    disc(a, 8.5, 7.5, 1.2, IRON_DK)
+    rect(a, 7, 11, 10, 12, IRON)                               # its axle block
+    # a lens blank in the clamp, the clamp screw, the grit pot
+    rect(a, 17, 9, 25, 11, IRON_DK)
+    ellipse(a, 21, 7.5, 3.6, 2.6, GLASS)
+    ellipse(a, 20.4, 7, 1.8, 1.2, GLASS_LT)
+    rect(a, 25, 8, 27, 8, BRASS)
+    rect(a, 26, 4, 29, 11, COPPER_DK)                          # the grit pot
+    rect(a, 27, 5, 28, 6, GRIT)
+    shadow(a, 1, 30, 30)
+    outline(a)
+    save(a, "grind_bench")
+
+
+def rope_coil():
+    a = clear()
+    for r, col in ((6.6, ROPE_DK), (5.8, ROPE), (4.4, ROPE_DK), (3.6, ROPE), (2.2, ROPE_DK), (1.4, (60, 46, 30))):
+        ellipse(a, 8, 10, r, r * 0.62, col)
+    for k in range(14):                                        # the lay of the strands
+        th = k / 14 * 2 * math.pi
+        px(a, int(8 + 5.2 * math.cos(th)), int(10 + 3.2 * math.sin(th)), ROPE_LT)
+    for y in range(2, 8):                                      # the free end over the top
+        px(a, 12 + (y % 2), y, ROPE)
+        px(a, 13 + (y % 2), y, ROPE_DK)
+    shadow(a, 2, 14, 15)
+    outline(a)
+    save(a, "rope_coil")
+
+
+def notice():
+    """1x1 wall-hung: the keepers' enamel CRANK NOTICE (clarity, fix pass B) — a cream
+    plate with a little crank-wheel and the two pennants, white and red, side by side."""
+    a = clear()
+    rect(a, 1, 2, 14, 14, IRON_DK)
+    rect(a, 2, 3, 13, 13, (226, 220, 198))
+    rect(a, 2, 3, 13, 4, (36, 64, 96))                         # the enamel header band
+    disc(a, 5.5, 9, 2.6, IRON_DK)                              # a crank-wheel
+    disc(a, 5.5, 9, 1.4, BRASS)
+    rect(a, 9, 7, 9, 12, IRON_DK)                              # two pennant staffs
+    rect(a, 12, 7, 12, 12, IRON_DK)
+    rect(a, 10, 7, 11, 8, WHITE)
+    px(a, 10, 9, WHITE)
+    rect(a, 13, 7, 13, 9, RED)
+    rect(a, 7, 1, 8, 2, IRON_LT)                               # the nail
+    outline(a)
+    save(a, "notice")
+
+
+KIT = (cistern, oil_cans, weights, clockwork, lectern, foghorn, buoy_repair, lens_rack,
+       grind_bench, rope_coil, notice)
+
+
 def main():
     for name, fn in SET_SPECS.items():
         build_set(name, fn)
@@ -568,6 +985,8 @@ def main():
     shutter_plate()
     lens_spare()
     lighthouse_lit()
+    for fn in KIT:
+        fn()
 
 
 if __name__ == "__main__":

@@ -61,7 +61,7 @@ function glare(tx: number, ty: number, facing: 'up' | 'down' | 'left' | 'right')
     { op: 'sfx', key: 'world-bump' },
     { op: 'flashColor', color: '#fff4d0', ms: 220 },
     { op: 'narrate', unless_flag: 'flag:drownlight_glare_seen', text: 'Light pours out of the well in the wall: the old lamp\'s light, leaking down the tower. After so long in the dark it is blinding. You throw up an arm and stagger back.' },
-    { op: 'narrate', unless_flag: 'flag:drownlight_glare_seen', text: 'Somewhere on this floor a shutter-crank must swing that louvre. Shut it here, and the light will only pour out somewhere else.' },
+    { op: 'narrate', unless_flag: 'flag:drownlight_glare_seen', text: 'Somewhere on this floor a shutter-crank must swing that louvre. Shut it here, and the light will only pour out somewhere else. Each crank wears a pennant: WHITE at rest, RED once thrown.' },
     { op: 'setFlag', flag: 'flag:drownlight_glare_seen' },
     { op: 'move', actor: 'player', to: { tx, ty } },
     { op: 'face', actor: 'player', facing },
@@ -102,18 +102,31 @@ const RELIGHT: CutsceneStep[] = [
   { op: 'tint', color: '#ffd890', alpha: 0, ms: 1200 },
   { op: 'say', speaker: KEEPER, text: '...I\'d forgotten it was warm. All those winters keeping it, and I\'d forgotten it was warm.' },
   { op: 'say', speaker: KEEPER, text: 'It isn\'t a promise this time, is it. Not one lamp alone, lying to the sea. It\'s one of a great many. That I can keep.' },
-  { op: 'say', speaker: KEEPER, text: 'Here. I cut this from the first shutter\'s latch, the night I bolted it. I meant to throw it in the sea. I\'m glad I didn\'t.' },
+  { op: 'say', speaker: KEEPER, text: 'Here. I cut these from the first shutter\'s latches, the night I bolted it. Three latches, three leaves. I meant to throw them in the sea. I\'m glad I didn\'t.' },
   { op: 'sfx', key: 'world-keyitem' },
-  { op: 'giveItem', item: 'shutter_charm', count: 1 },
-  { op: 'narrate', text: 'She presses a SHUTTER CHARM into your hand: a little iron latch, warm from the lamp.' },
+  { op: 'giveItem', item: 'shutter_charm', count: 3 },
+  { op: 'narrate', text: 'She presses three SHUTTER CHARMS into your hand: little iron latches, warm from the lamp.' },
   { op: 'say', speaker: KEEPER, text: 'For the kin who love the dark. Not every kin wants waking, apprentice. A light that\'s gentle with them, that comes to them where they are, they\'ll follow it home. That\'s the kind of light I mean to keep now.' },
   { op: 'letterbox', on: false },
 ];
 
-/** Her post-dawn stage when the lamp is still shuttered: she asks; you may decline. */
+/** Her post-dawn stage when the lamp is still shuttered: she asks; you may decline.
+ *  Only ever reached once she's BEATEN (the lamp's own offer is guarded on it), so
+ *  her "where I said" always follows a talk that happened. */
 const RELIGHT_OFFER: CutsceneStep[] = [
   { op: 'say', speaker: KEEPER, text: 'You came back. And look at that sky. I sat at that window and watched it go pink, and I didn\'t know what to do with my hands.' },
   { op: 'say', speaker: KEEPER, text: 'The crank\'s where I said it would be. Will you open her up?' },
+  { op: 'run', ref: 'script.drownlight_relight_ask' },
+];
+
+/** The same ask, straight after her tale on a post-dawn first meeting. */
+const RELIGHT_OFFER_NOW: CutsceneStep[] = [
+  { op: 'say', speaker: KEEPER, text: 'And you came up here with that sky at your back. I sat at that window and watched it go pink, and I didn\'t know what to do with my hands.' },
+  { op: 'say', speaker: KEEPER, text: 'It isn\'t one lamp alone any more, is it. The great crank\'s by the lamp; I\'ve taken the chain off. Will you open her up?' },
+  { op: 'run', ref: 'script.drownlight_relight_ask' },
+];
+
+const RELIGHT_ASK: CutsceneStep[] = [
   {
     op: 'choice',
     options: [
@@ -164,18 +177,19 @@ export const DROWNLIGHT_SCRIPTS: ScriptRegistry = {
   'script.drownlight_crank_a': crank('a', 'the arrival crank', 'the glare leaves the door to the lens store and floods the door down to the east gallery.', 'the glare crosses the lens-store door again, and the east gallery door is dark.'),
   'script.drownlight_crank_b': crank('b', 'the east gallery crank', 'the glare leaves the south gallery door and floods the doorway up from the west gallery to the stair room.', 'the glare crosses the south gallery door again, and the west gallery\'s doorway is dark.'),
   'script.drownlight_crank_c': crank('c', 'the south gallery crank', 'the glare leaves the door between the lens store and the stair room and floods the west gallery\'s door.', 'the glare crosses the stair-room door again, and the west gallery door is dark.'),
-  'script.drownlight_glare_f2_d0': glare(13, 4, 'right'),
-  'script.drownlight_glare_f2_d1': glare(16, 4, 'left'),
-  'script.drownlight_glare_f2_e0': glare(5, 4, 'right'),
-  'script.drownlight_glare_f2_e1': glare(8, 4, 'left'),
-  'script.drownlight_glare_f2_a0': glare(18, 6, 'down'),
-  'script.drownlight_glare_f2_a1': glare(18, 9, 'up'),
+  // push tiles mirror build_drownlight_tower.py floor_2()'s door() rows
+  'script.drownlight_glare_f2_d0': glare(16, 4, 'right'),
+  'script.drownlight_glare_f2_d1': glare(19, 4, 'left'),
+  'script.drownlight_glare_f2_e0': glare(6, 4, 'right'),
+  'script.drownlight_glare_f2_e1': glare(9, 4, 'left'),
+  'script.drownlight_glare_f2_a0': glare(22, 8, 'down'),
+  'script.drownlight_glare_f2_a1': glare(22, 11, 'up'),
   'script.drownlight_glare_f2_c0': glare(3, 6, 'down'),
   'script.drownlight_glare_f2_c1': glare(3, 9, 'up'),
-  'script.drownlight_glare_f2_b0': glare(13, 11, 'right'),
-  'script.drownlight_glare_f2_b1': glare(16, 11, 'left'),
-  'script.drownlight_glare_f2_f0': glare(5, 11, 'right'),
-  'script.drownlight_glare_f2_f1': glare(8, 11, 'left'),
+  'script.drownlight_glare_f2_b0': glare(17, 14, 'right'),
+  'script.drownlight_glare_f2_b1': glare(20, 14, 'left'),
+  'script.drownlight_glare_f2_f0': glare(6, 13, 'right'),
+  'script.drownlight_glare_f2_f1': glare(9, 13, 'left'),
   // the watch-cot: the tower's rest point (a bed, so it sleeps)
   'script.drownlight_cot': [
     { op: 'narrate', text: 'The keepers\' watch-cot, made up under a grey blanket with the corners folded square. Someone still makes it every morning, though nobody keeps the watch.' },
@@ -184,8 +198,8 @@ export const DROWNLIGHT_SCRIPTS: ScriptRegistry = {
   ],
   'script.drownlight_log_two': [
     { op: 'sfx', key: 'world-chart' },
-    { op: 'narrate', text: 'A shelf of old logs, one per winter, the spines dated in white paint. Thirty-one of them. Then a gap where a thirty-second would go, and dust.' },
-    { op: 'narrate', text: 'One is pulled half out, as if somebody keeps meaning to read it again. Inside the front cover: a pressed sea-pink and a child\'s drawing of this tower with its light on, done in far too much yellow.' },
+    { op: 'narrate', text: 'The watch-room lectern, and stacked on the shelf under it the old logs, one per winter, the spines dated in white paint. Thirty-one of them. Then a gap where a thirty-second would go, and dust.' },
+    { op: 'narrate', text: 'The one on the lectern is open, as if somebody keeps meaning to read it again. Inside the front cover: a pressed sea-pink and a child\'s drawing of this tower with its light on, done in far too much yellow.' },
   ],
   'script.drownlight_slate_shutters': [
     { op: 'narrate', text: 'A slate in the tidy hand: a list of lamps, each with a date and a tick. THE DROWNLIGHT is the first line, fourteen winters back. The list runs on down the slate and onto a second piece of slate tied under it with string.' },
@@ -214,7 +228,9 @@ export const DROWNLIGHT_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: KEEPER, unless_flag: DAWN, text: 'So, no. Not while the sky\'s dark. One light alone on a dark coast is the cruellest promise there is.' },
     { op: 'say', speaker: KEEPER, unless_flag: DAWN, text: 'But if you mean what you\'re doing up there... if the sky ever wakes, and it isn\'t one lamp alone any more, come back up and ask me again. I\'ll leave the crank where you can reach it.' },
     { op: 'setFlag', flag: BEATEN },
-    { op: 'run', ref: 'script.drownlight_relight_offer', if_flag: DAWN },
+    // RELIT can't be held here (the lamp's offer waits on BEATEN, and this script
+    // hides once she's beaten); the guard keeps one relight, one gift, regardless
+    { op: 'run', ref: 'script.drownlight_relight_offer_now', if_flag: DAWN, unless_flag: RELIT },
   ],
   'script.drownlight_keeper_after': [
     { op: 'face', actor: 'shutterkeeper_after', facing: 'down' },
@@ -224,11 +240,27 @@ export const DROWNLIGHT_SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.drownlight_relight_offer', if_flag: DAWN, unless_flag: RELIT },
   ],
   'script.drownlight_relight_offer': RELIGHT_OFFER,
+  'script.drownlight_relight_offer_now': RELIGHT_OFFER_NOW,
+  'script.drownlight_relight_ask': RELIGHT_ASK,
   'script.drownlight_relight': RELIGHT,
+  // THE GREAT LAMP (fix pass B: the relight waits on her tale). Exactly one branch
+  // plays: RELIT -> it burns; else unbeaten -> shut (+ "ask her first" once the sky's
+  // awake); beaten pre-dawn -> the chain's off, not yet; beaten at dawn -> the offer.
+  // A step carries one if + one unless, so the stages nest through `run`s.
   'script.drownlight_lamp': [
     { op: 'narrate', if_flag: RELIT, text: 'The great lamp burns behind its folded shutters, its lens turning on clockwork somebody winds every evening. Warm as a hearth to stand by.' },
-    { op: 'narrate', unless_flag: BEATEN, text: 'The great lamp, bolted inside iron shutters. Between the leaves a thread of light still shows, low and patient. A keeper never kills a lamp. Beside it, the great crank is chained to its post.' },
+    { op: 'run', ref: 'script.drownlight_lamp_dark', unless_flag: RELIT },
+  ],
+  'script.drownlight_lamp_dark': [
+    { op: 'run', ref: 'script.drownlight_lamp_shut', unless_flag: BEATEN },
     { op: 'narrate', if_flag: BEATEN, unless_flag: DAWN, text: 'The chain is off the great crank now, left coiled on the floor. The Shutterkeeper\'s words stay with you: not while the sky\'s dark.' },
+    { op: 'run', ref: 'script.drownlight_lamp_offer', if_flag: BEATEN },
+  ],
+  'script.drownlight_lamp_shut': [
+    { op: 'narrate', unless_flag: DAWN, text: 'The great lamp, bolted inside iron shutters. Between the leaves a thread of light still shows, low and patient. A keeper never kills a lamp. Beside it, the great crank is chained to its post.' },
+    { op: 'narrate', if_flag: DAWN, text: 'The great lamp, bolted inside iron shutters, a thread of light at the seams. Even with the morning in the glass, the great crank stays chained to its post. Its padlock key hangs at the Shutterkeeper\'s belt, and she is watching you from beside the lamp. It is her lamp. Ask her first.' },
+  ],
+  'script.drownlight_lamp_offer': [
     { op: 'run', ref: 'script.drownlight_relight_offer', if_flag: DAWN, unless_flag: RELIT },
   ],
   'script.drownlight_slate_lost': [
@@ -256,7 +288,7 @@ export const DROWNLIGHT_SCRIPTS: ScriptRegistry = {
   'script.pickup_drownlight_shard': find('flag:picked_drownlight_shard', [{ op: 'giveItem', item: 'starglass_shard', count: 1 }],
     'In a wick-tin in the nook, wrapped in oilcloth: a STARGLASS SHARD, a warm fall from long before the Dusk. Somebody here kept it for luck, and then stopped believing in luck.'),
   'script.pickup_drownlight_drop': find('flag:picked_drownlight_drop', [{ op: 'giveItem', item: 'lumen_drop', count: 1 }],
-    'Tucked behind the barrels, a keeper\'s honey-jar with one bead left in the bottom: a LUMEN DROP!'),
+    'Tucked behind the oil cistern, a keeper\'s honey-jar with one bead left in the bottom: a LUMEN DROP!'),
 };
 
 export const DROWNLIGHT_DIALOGUE: DialogueRegistry = {
@@ -264,16 +296,32 @@ export const DROWNLIGHT_DIALOGUE: DialogueRegistry = {
     { text: 'Coldfog has pooled in the stairwell, grey and heavy as wet wool. Your flame shrinks to a bead in it. Only a tended ember would push through this.' },
   ],
   'sign.drownlight_wick_shelf': [
-    { text: 'Spools of lamp-wick, oil-cans and spare chimneys, every one labelled in a square hand. The labels are fourteen winters old. The shelves have been dusted this week.' },
+    { text: 'Filler-cans with long spouts, for carrying oil up the stair. Every one is labelled in a square hand. The labels are fourteen winters old. The cans have been wiped this week.' },
   ],
   'sign.drownlight_oil_jars': [
-    { text: 'Lamp-oil jars, stoppered and sealed with wax. Enough to keep the Drownlight burning a winter, if anybody wanted it to.' },
+    { text: 'An oil cistern, riveted copper, its sight-glass still showing amber halfway up. Enough to keep the Drownlight burning a winter, if anybody wanted it to.' },
+  ],
+  'sign.drownlight_weights': [
+    { text: 'The foot of the weight-shaft. Two chains come down a timber chute in the wall to a cast-iron weight, resting on its block. Wound to the top, it would have turned the great lens all night. It has been resting a long time.' },
+  ],
+  'sign.drownlight_buoy_repair': [
+    { text: 'A channel buoy up on trestles, its red and white stripes fresh-painted, its lamp-cage unbolted and set down beside it. Somebody has been mending it for a sea nobody sails.' },
+  ],
+  'sign.drownlight_crank_notice': [
+    { text: 'An enamel notice in the keepers\' blue: "SHUTTER-CRANKS. Each crank swings one louvre in the light-wells. The light leaves one doorway and floods another; it is never put out, only sent somewhere else."' },
+    { text: '"Pennant WHITE: louvre at rest. Pennant RED: louvre thrown. Mind where the light goes, not where it is."' },
+  ],
+  'sign.drownlight_clockwork': [
+    { text: 'The turning-gear: a chain drum, a train of brass wheels, a governor\'s fan on top to keep the turn steady. It turned the great lens once a minute, all night, for thirty-one winters. It is oiled. It is still.' },
+  ],
+  'sign.drownlight_grind_bench': [
+    { text: 'The lens-grinding bench: a treadle wheel, a clamp, a pot of grit gone hard. A blank of glass sits in the clamp, half ground, a keeper\'s thumbprint still on it.' },
+  ],
+  'sign.drownlight_foghorn': [
+    { text: 'The fog-signal: a brass horn on a bellows-box with a hand crank. On a thick night the keepers wound it every half minute, so the boats could steer by ear. The crank is tied down with a neat bow of string.' },
   ],
   'sign.drownlight_lamp_rack': [
     { text: 'The keepers\' hand-lamps on their hooks, each with a name burned into its handle. All of them trimmed, filled and unlit.' },
-  ],
-  'sign.drownlight_lens_spare': [
-    { text: 'A spare prism-lens on a wooden cradle, ringed like the inside of a shell. Hold your lamp up to it and the whole room fills with little bright ladders.' },
   ],
   'sign.drownlight_shutter_plate': [
     { text: 'A spare shutter-leaf, hung neatly on a nail. Its paper label reads: "No. 7 — west louvre. Keep oiled. — Q."' },
@@ -291,13 +339,13 @@ export const DROWNLIGHT_DIALOGUE: DialogueRegistry = {
     { text: 'The keepers\' mess table, scrubbed pale. A single candle stands on it in a saucer, lit. The Hollowing don\'t snuff candles. Only lamps that make promises.' },
   ],
   'sign.drownlight_lens_store': [
-    { text: 'The lens store: the great lamp\'s spare lens, wrapped against the damp. It is the size of a cartwheel and as clear as cold water.' },
+    { text: 'The great lamp\'s spare lens, alone on its cradle in the round room, ringed like the inside of a shell. Hold your lamp up to it and the whole room fills with little bright ladders.' },
   ],
   'sign.drownlight_watch_bench': [
     { text: 'A long bench under the gallery wall, worn smooth where people sat to wait for boats. There is a cushion at one end, newer than the rest.' },
   ],
   'sign.drownlight_gallery_lens': [
-    { text: 'A lens set in a cradle to catch the light from the wells and throw it along the gallery. It still does, a little. A pale ring of gold lies on the floor under it.' },
+    { text: 'A rack of prism segments, slotted upright like plates in a dresser, each one a curved sliver of the great lens. Light from the wells catches in them and lies on the floor in pale gold ladders.' },
   ],
   'sign.drownlight_keeper_table': [
     { text: 'A small table: one cup, a pot under a knitted cosy, a pair of scissors for trimming wicks, and the Drownlight log open at a fresh page.' },

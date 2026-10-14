@@ -231,6 +231,14 @@ export interface MapAmbience {
   birds?: { kind?: 'gull' | 'bird'; flocks?: TileCoord[]; flyover?: boolean };
   /** Extra light pools beyond the sprite-keyed LIGHT_SOURCES table (a window, a campfire). */
   light_sources_extra?: { at: TileCoord; radius?: number; color?: string }[];
+  /**
+   * Sweeping light BEAMS (a relit lighthouse): a soft additive wedge from `from`
+   * (tile coords; fractions allowed, e.g. tx 4.5 = a tile's left edge + 4.5 tiles)
+   * whose far end swings to and fro between `a` and `b`, with a pool where it lands.
+   * `period_s` = one full there-and-back (default 9); `width` = the far end's width
+   * in tiles (default 3). With Ambient motion off it rests at the midpoint.
+   */
+  beams?: { from: TileCoord; a: TileCoord; b: TileCoord; period_s?: number; width?: number; color?: string }[];
   /** A quiet looped sfx bed under the music (sfx stem, e.g. 'amb-surf'); silent if missing. */
   sound_bed?: string;
   /** Footprints: 'auto' (sand/trail/snow-tagged terrain, default), 'all' (any open

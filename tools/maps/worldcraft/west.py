@@ -136,6 +136,11 @@ PLACEMENTS: dict[str, dict] = {
         "tint": {"color": "#ffcf7a", "alpha": 0.07},
         "starfall": {"min_s": 25, "max_s": 50},
         "light_sources_extra": [{"at": {"tx": 5, "ty": 1}, "radius": 44, "color": "#ffe2a0"}],
+        # fix pass B: the relit beam SWEEPS the dead shallows, seen from the foot —
+        # from the lamp room out over the south water, west buoy to east buoy
+        "beams": [{"from": {"tx": 4.5, "ty": 1.4}, "a": {"tx": 0.5, "ty": 13.5},
+                   "b": {"tx": 15, "ty": 14.5}, "period_s": 10, "width": 3.4,
+                   "color": "#ffe2a0"}],
     }}]}},
     "hollowfen_stillworks": {
         "ambience": {"particles": [particles("dust", 0.35)],

@@ -45,7 +45,6 @@
         1,
         2,
         1,
-        1,
         2,
         1,
         2,
@@ -67,7 +66,7 @@
         2,
         1,
         2,
-        2,
+        1,
         1,
         2,
         1,
@@ -85,10 +84,11 @@
         1,
         2,
         1,
+        2,
         3,
-        1,
         2,
         1,
+        2,
         1,
         2,
         1,
@@ -132,7 +132,6 @@
         2,
         1,
         2,
-        1,
         1,
         2,
         1,
@@ -155,7 +154,7 @@
         2,
         1,
         2,
-        2,
+        1,
         1,
         2,
         1,
@@ -177,6 +176,7 @@
         1,
         2,
         1,
+        2,
         1,
         2,
         1,
@@ -220,7 +220,6 @@
         2,
         1,
         2,
-        1,
         1,
         2,
         1,
@@ -243,8 +242,8 @@
         2,
         1,
         2,
-        2,
         1,
+        1,
         2,
         1,
         2,
@@ -265,6 +264,7 @@
         1,
         2,
         1,
+        2,
         1,
         2,
         1,
@@ -309,7 +309,6 @@
         1,
         2,
         1,
-        1,
         2,
         1,
         2,
@@ -330,9 +329,9 @@
         1,
         2,
         1,
-        2,
         2,
         1,
+        1,
         2,
         1,
         2,
@@ -353,6 +352,7 @@
         1,
         2,
         1,
+        2,
         1,
         2,
         1,
@@ -791,35 +791,45 @@
       "requires_flag": "flag:drownlight_shutter_2"
     },
     {
-      "id": "wick_shelf",
-      "sprite": "interior_shelf",
+      "id": "weight_shaft",
+      "sprite": "drownlight_weights",
       "at": {
         "tx": 8,
         "ty": 1
       },
-      "w": 2,
+      "w": 1,
       "h": 3,
       "overhang": 1,
       "walk_under": true
     },
     {
-      "id": "oil_jars",
-      "sprite": "interior_oil_jars",
+      "id": "oil_cistern",
+      "sprite": "drownlight_cistern",
       "at": {
         "tx": 2,
-        "ty": 6
+        "ty": 5
       },
       "w": 2,
-      "h": 1
+      "h": 2
     },
     {
-      "id": "barrels",
-      "sprite": "interior_barrels",
+      "id": "oil_cans",
+      "sprite": "drownlight_oil_cans",
       "at": {
         "tx": 8,
         "ty": 6
       },
-      "w": 2,
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "store_rope",
+      "sprite": "drownlight_rope_coil",
+      "at": {
+        "tx": 9,
+        "ty": 2
+      },
+      "w": 1,
       "h": 1
     },
     {
@@ -835,10 +845,10 @@
       "walk_under": true
     },
     {
-      "id": "lens_spare",
-      "sprite": "drownlight_lens_spare",
+      "id": "buoy_repair",
+      "sprite": "drownlight_buoy_repair",
       "at": {
-        "tx": 18,
+        "tx": 17,
         "ty": 5
       },
       "w": 2,
@@ -863,6 +873,17 @@
         "ty": 8
       },
       "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "crank_notice",
+      "sprite": "drownlight_notice",
+      "at": {
+        "tx": 11,
+        "ty": 8
+      },
+      "w": 1,
       "h": 1,
       "solid": false
     },
@@ -909,18 +930,19 @@
       "h": 1
     },
     {
-      "id": "log_desk",
-      "sprite": "interior_desk",
+      "id": "log_lectern",
+      "sprite": "drownlight_lectern",
       "at": {
         "tx": 16,
-        "ty": 13
+        "ty": 12
       },
-      "w": 2,
-      "h": 1
+      "w": 1,
+      "h": 2,
+      "overhang": 1
     },
     {
-      "id": "crates",
-      "sprite": "interior_crates",
+      "id": "hall_cistern",
+      "sprite": "drownlight_cistern",
       "at": {
         "tx": 18,
         "ty": 11
@@ -929,13 +951,13 @@
       "h": 2
     },
     {
-      "id": "nook_sacks",
-      "sprite": "interior_sacks",
+      "id": "nook_rope",
+      "sprite": "drownlight_rope_coil",
       "at": {
         "tx": 1,
         "ty": 11
       },
-      "w": 2,
+      "w": 1,
       "h": 1
     },
     {
@@ -1167,7 +1189,7 @@
       "trigger": "step_on",
       "to_map": "drownlight_f2",
       "to": {
-        "tx": 19,
+        "tx": 23,
         "ty": 3
       },
       "facing": "down",
@@ -1198,24 +1220,44 @@
       "ref": "script.drownlight_crank_2"
     },
     {
-      "id": "wick_shelf_read",
+      "id": "weight_shaft_read",
       "kind": "sign",
       "at": {
         "tx": 8,
         "ty": 3
       },
       "activation": "interact",
-      "ref": "sign.drownlight_wick_shelf"
+      "ref": "sign.drownlight_weights"
     },
     {
-      "id": "oil_jars_read",
+      "id": "oil_cistern_read_2",
       "kind": "sign",
       "at": {
         "tx": 2,
-        "ty": 6
+        "ty": 5
       },
       "activation": "interact",
       "ref": "sign.drownlight_oil_jars"
+    },
+    {
+      "id": "oil_cistern_read_3",
+      "kind": "sign",
+      "at": {
+        "tx": 3,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_oil_jars"
+    },
+    {
+      "id": "oil_cans_read",
+      "kind": "sign",
+      "at": {
+        "tx": 8,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_wick_shelf"
     },
     {
       "id": "lamp_rack_read",
@@ -1228,14 +1270,24 @@
       "ref": "sign.drownlight_lamp_rack"
     },
     {
-      "id": "lens_spare_read",
+      "id": "buoy_repair_read_17",
+      "kind": "sign",
+      "at": {
+        "tx": 17,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_buoy_repair"
+    },
+    {
+      "id": "buoy_repair_read_18",
       "kind": "sign",
       "at": {
         "tx": 18,
         "ty": 5
       },
       "activation": "interact",
-      "ref": "sign.drownlight_lens_spare"
+      "ref": "sign.drownlight_buoy_repair"
     },
     {
       "id": "shutter_plate_n_read",
@@ -1268,6 +1320,16 @@
       "ref": "script.drownlight_slate_keepers"
     },
     {
+      "id": "crank_notice_read",
+      "kind": "sign",
+      "at": {
+        "tx": 11,
+        "ty": 8
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_crank_notice"
+    },
+    {
       "id": "stove_read",
       "kind": "sign",
       "at": {
@@ -1292,16 +1354,6 @@
       "kind": "cutscene",
       "at": {
         "tx": 16,
-        "ty": 13
-      },
-      "activation": "interact",
-      "ref": "script.drownlight_log"
-    },
-    {
-      "id": "log_17",
-      "kind": "cutscene",
-      "at": {
-        "tx": 17,
         "ty": 13
       },
       "activation": "interact",
@@ -1466,7 +1518,7 @@
           "max_level": 52
         },
         {
-          "kin_id": 178,
+          "kin_id": 179,
           "weight": 22,
           "min_level": 50,
           "max_level": 52
@@ -1515,7 +1567,7 @@
           "max_level": 52
         },
         {
-          "kin_id": 178,
+          "kin_id": 179,
           "weight": 22,
           "min_level": 50,
           "max_level": 52
@@ -1564,7 +1616,7 @@
           "max_level": 52
         },
         {
-          "kin_id": 178,
+          "kin_id": 179,
           "weight": 22,
           "min_level": 50,
           "max_level": 52

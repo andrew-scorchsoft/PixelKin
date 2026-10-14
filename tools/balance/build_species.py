@@ -1134,10 +1134,9 @@ for _area, _by_terrain in UNDERTIDE_TABLES.items():
 # roster is skipped. Weights -> rarity as the Undertide's (_ut_rarity).
 DROWNLIGHT_TABLES = {
     "drownlight_f1": [(137, 24, 50, 51), (136, 14, 50, 51), (134, 18, 50, 52),
-                      (85, 14, 51, 52), (178, 22, 50, 52), (180, 8, 51, 52)],
+                      (85, 14, 51, 52), (179, 22, 50, 52), (180, 8, 51, 52)],
     "drownlight_f2": [(138, 20, 51, 53), (135, 8, 52, 53), (87, 14, 51, 53),
-                      (85, 12, 51, 53), (178, 20, 51, 53), (180, 18, 51, 53),
-                      (179, 8, 53, 53)],
+                      (85, 12, 51, 53), (179, 28, 51, 53), (180, 18, 51, 53)],
 }
 with open(SEL) as _fh:
     _DL_SLUG = {i + 1: re.sub(r"[^a-z0-9]+", "_", c["name"].lower()).strip("_")

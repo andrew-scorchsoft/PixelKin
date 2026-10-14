@@ -149,6 +149,7 @@ const DEPTH = {
   print: 6, // above deco (5), below objects (9) and actors (10)
   pool: 8,
   doorway: 9.5,
+  beam: 22.6, // a lighthouse's sweep: over the roof band, under particles/mist/tint
   halo: 21.5, // over the object overhang band (21)
   smoke: 22,
   particles: 23,
@@ -571,6 +572,11 @@ export class Ambience {
     seed: number;
   }[] = [];
   private readonly chimneys: { x: number; y: number; obj: MapObject; nextAt: number }[] = [];
+  private readonly beams: {
+    gfx: Phaser.GameObjects.Graphics;
+    fx: number; fy: number; ax: number; ay: number; bx: number; by: number;
+    period: number; width: number; color: number; seed: number;
+  }[] = [];
   private readonly prints: Phaser.GameObjects.Graphics[] = [];
   private readonly transients = new Set<Phaser.GameObjects.GameObject>();
 
@@ -606,6 +612,7 @@ export class Ambience {
     const now = scene.time.now;
 
     this.buildLights();
+    this.buildBeams();
     this.buildChimneys(now);
 
     // Particles
@@ -680,6 +687,49 @@ export class Ambience {
       );
     }
     this.refreshLights();
+  }
+
+  /** `beams`: one additive Graphics per beam, redrawn each frame in update(). */
+  private buildBeams(): void {
+    const c = (t: TileCoord) => ({ x: t.tx * TILE_SIZE + TILE_SIZE / 2, y: t.ty * TILE_SIZE + TILE_SIZE / 2 });
+    for (const bm of this.cfg.beams ?? []) {
+      const f = c(bm.from);
+      const a = c(bm.a);
+      const b = c(bm.b);
+      this.beams.push({
+        gfx: this.scene.add.graphics().setDepth(DEPTH.beam).setBlendMode(Phaser.BlendModes.ADD),
+        fx: f.x, fy: f.y, ax: a.x, ay: a.y, bx: b.x, by: b.y,
+        period: Math.max(2, bm.period_s ?? 9) * 1000,
+        width: (bm.width ?? 3) * TILE_SIZE,
+        color: bm.color ? Phaser.Display.Color.HexStringToColor(bm.color).color : 0xffe2a0,
+        seed: Math.random() * 1000,
+      });
+    }
+  }
+
+  /** Redraw a beam: the wedge from the lamp to where the sweep has got to, + its pool. */
+  private drawBeam(bm: Ambience['beams'][number], time: number, motion: boolean): void {
+    const k = motion ? 0.5 - 0.5 * Math.cos(((time + bm.seed) / bm.period) * Math.PI * 2) : 0.5;
+    const ex = bm.ax + (bm.bx - bm.ax) * k;
+    const ey = bm.ay + (bm.by - bm.ay) * k;
+    const dx = ex - bm.fx;
+    const dy = ey - bm.fy;
+    const len = Math.max(1, Math.hypot(dx, dy));
+    const nx = -dy / len;
+    const ny = dx / len;
+    const g = bm.gfx;
+    g.clear();
+    // three nested wedges (wide + faint -> narrow + bright): a stepped, pixel-honest glow
+    for (const [w, al] of [[1, 0.07], [0.62, 0.08], [0.3, 0.1]] as const) {
+      const hw = (bm.width / 2) * w;
+      g.fillStyle(bm.color, al);
+      g.fillTriangle(bm.fx + nx * 1.5 * w, bm.fy + ny * 1.5 * w, bm.fx - nx * 1.5 * w, bm.fy - ny * 1.5 * w, ex - nx * hw, ey - ny * hw);
+      g.fillTriangle(bm.fx + nx * 1.5 * w, bm.fy + ny * 1.5 * w, ex - nx * hw, ey - ny * hw, ex + nx * hw, ey + ny * hw);
+    }
+    for (const r of [1, 0.66, 0.36]) {
+      g.fillStyle(bm.color, 0.09);
+      g.fillEllipse(ex, ey, bm.width * 1.2 * r, bm.width * 0.6 * r);
+    }
   }
 
   /** A stepped, additive pool of light on the ground (3 rings → a pixel glow). */
@@ -1350,6 +1400,8 @@ export class Ambience {
       this.mist.tilePositionY = (cam.scrollY * 0.6) / scale;
     }
 
+    for (const bm of this.beams) this.drawBeam(bm, time, motion);
+
     for (const l of this.lights) {
       const a = motion
         ? 0.86 + 0.08 * Math.sin(time / 230 + l.seed) + 0.06 * Math.sin(time / 97 + l.seed * 3)
@@ -1503,6 +1555,7 @@ export class Ambience {
       l.pool.destroy();
       l.halo?.destroy();
     }
+    for (const bm of this.beams) bm.gfx.destroy();
     for (const p of this.prints) p.destroy();
     for (const o of this.transients) o.destroy();
     this.transients.clear();
