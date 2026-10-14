@@ -81,6 +81,15 @@ for y in (7, 8, 9):
 mk.rect(path, W, H, 3, 8, W - 1, 8)
 mk.rect(path, W, H, 13, 7, 13, 7)          # the ferry-house step (shuttered)
 
+# THE FARLAMP SLIP (walkthrough/10 Part I): a planked launch slip runs from the
+# beach under the tower down into the sea (cols 6-7, rows 10-13) — the last row is
+# the Point's south edge, where the Farlamp skiff puts out for the Sound.
+SLIP_X = (6, 7)
+for y in range(10, H):
+    for x in SLIP_X:
+        water[y * W + x] = 0
+        sand[y * W + x] = 1
+
 for i in range(W * H):
     if water[i]:
         sand[i] = 1          # the sea lies OVER sand: its shore pieces meet sand, never grass
@@ -236,10 +245,49 @@ for y in (8, 9):
                           "requires_flag": "flag:q_south_jest_done",
                           "hidden_when_flag": "flag:andrew_tower_winked"})
 
+# ---- THE FARLAMP ISLES' seed + launch (walkthrough/10 Part I; content/regions/farlamp.ts).
+# Ione Fathom mends the old lamp-boat's hull on the meadow under the tower; the
+# brass looking-glass on the beach shows the fog bank + the far lamp's blink (the
+# same blink paints on the southern horizon below, in the fog). After the
+# isles' dawn the fog banks lift (hidden_when_flag). Added after the scatter
+# pass, so the deco roll is untouched.
+DAWN = "flag:isles_dawn"
+m["objects"].append({"id": "farlamp_hull", "sprite": "farlamp_hull",
+                     "at": {"tx": 7, "ty": 4}, "w": 3, "h": 2})
+m["npcs"].append({"id": "ione", "at": {"tx": 9, "ty": 6}, "facing": "down",
+                  "sprite": "npc_old_woman", "movement": "static",
+                  "dialogue_ref": "script.ione"})
+m["objects"].append({"id": "looking_glass", "sprite": "farlamp_looking_glass",
+                     "at": {"tx": 2, "ty": 9}, "w": 1, "h": 2})
+m["triggers"].append({"id": "looking_glass", "kind": "cutscene", "at": {"tx": 2, "ty": 10},
+                      "activation": "interact", "ref": "script.point_looking_glass"})
+m["objects"].append({"id": "farlamp_slip", "sprite": "farlamp_slip",
+                     "at": {"tx": SLIP_X[0], "ty": 11}, "w": 2, "h": 3, "solid": False,
+                     "bob": False})
+for i, (x, y, big) in enumerate(((10, 12, 1), (15, 12, 0), (1, 12, 0))):
+    m["objects"].append({"id": f"fogbank_{i}",
+                         "sprite": "farlamp_fogbank_a" if big else "farlamp_fogbank_b",
+                         "at": {"tx": x, "ty": y}, "w": 4 if big else 3, "h": 2,
+                         "solid": False, "hidden_when_flag": DAWN})
+
 if __name__ == "__main__":
     # deep water (2026-10): the open sea past the shallow shelf — Tidecall
     # swims the shallows only (mapkit.deep_water; the reserved `deepdive` gate)
     mk.deep_water(m)
+    # the far lamp's blink on the horizon, inside the fog (farlamp_set, `above`)
+    import farlamp_kit
+    m["tilesets"].append(mk.register_tileset("farlamp_set", index=farlamp_kit.FARLAMP_INDEX))
+    above_l = next(ly for ly in m["layers"] if ly["role"] == "above")["data"]
+    above_l[13 * W + 13] = gid("blink_far", set="farlamp_set")
+    # the Farlamp Sound seam: every tile of the south edge rows out to the Sound
+    # (x 0-19 <-> farlamp_sound x 0-19), once Ione has put you afloat. Added AFTER
+    # deep_water so its channel-to-warps rule doesn't shoal the open sea.
+    for x in range(W):
+        m["warps"].append({"id": f"to_sound_{x}", "at": {"tx": x, "ty": H - 1},
+                           "trigger": "step_on", "to_map": "farlamp_sound",
+                           "to": {"tx": x, "ty": 1}, "facing": "down", "transition": "fade",
+                           "requires_flag": "flag:q_isles_afloat",
+                           "blocked_ref": "sign.point_slip_end"})
     ok = mk.finalize(m, scale=4)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

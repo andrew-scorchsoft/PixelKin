@@ -1,0 +1,52 @@
+{
+  "name": "farlamp_set",
+  "columns": 3,
+  "tiles": [
+    {
+      "file": "000_blink_lamp.png",
+      "role": "decor",
+      "animation": {
+        "frames": [
+          0,
+          0,
+          1,
+          2,
+          2,
+          2
+        ],
+        "duration_ms": 3000
+      }
+    },
+    {
+      "file": "001_blink_lamp_wane.png",
+      "role": "decor"
+    },
+    {
+      "file": "002_blink_lamp_dark.png",
+      "role": "decor"
+    },
+    {
+      "file": "003_blink_far.png",
+      "role": "decor",
+      "animation": {
+        "frames": [
+          3,
+          4,
+          5,
+          5,
+          5,
+          5
+        ],
+        "duration_ms": 3000
+      }
+    },
+    {
+      "file": "004_blink_far_wane.png",
+      "role": "decor"
+    },
+    {
+      "file": "005_blink_far_dark.png",
+      "role": "decor"
+    }
+  ]
+}

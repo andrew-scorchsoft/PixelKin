@@ -78,6 +78,13 @@ mk.blob(water, W, H, 18.5, 24.2, 4.0, 1.2)
 mk.rect(water, W, H, W - 1, 23, W - 1, H - 1)       # the point's west tip, next door
 for (x, y) in cells(26, 20, W - 1, 22):             # the beach road east stays dry
     water[y * W + x] = 0
+# THE SECOND LAUNCH (walkthrough/10 Part I): a planked slip down the beach into
+# the sea (cols 9-10, rows 25-29); the south edge rows out to the Shelfwater.
+SLIP_X = (9, 10)
+for y in range(25, H):
+    for x in SLIP_X:
+        water[y * W + x] = 0
+        sand[y * W + x] = 1
 for i in range(W * H):
     if water[i]:
         sand[i] = 1
@@ -213,8 +220,21 @@ busy = {(n["at"]["tx"], n["at"]["ty"]) for n in m["npcs"]} | \
        {(t["at"]["tx"], t["at"]["ty"]) for t in m["triggers"]}
 mk.scatter_decor(deco, base, W, H, rng, density=0.10, avoid=covered | objcells | busy)
 
+# the slip's planks (after the scatter pass, so the deco roll is untouched)
+obj("farlamp_slip", "farlamp_slip", (SLIP_X[0], 27), 2, 3, solid=False, bob=False)
+
 if __name__ == "__main__":
     mk.deep_water(m)
+    # the Shelfwater seam: the south edge rows out (x 1-28 <-> farlamp_shelfwater
+    # x 1-28; not the corners, which would land on the Shelfwater's side seams)
+    # once Ione has put you afloat. Added AFTER deep_water so its
+    # channel-to-warps rule doesn't shoal the open sea.
+    for x in range(1, W - 1):
+        m["warps"].append({"id": f"to_shelf_{x}", "at": {"tx": x, "ty": H - 1},
+                           "trigger": "step_on", "to_map": "farlamp_shelfwater",
+                           "to": {"tx": x, "ty": 1}, "facing": "down", "transition": "fade",
+                           "requires_flag": "flag:q_isles_afloat",
+                           "blocked_ref": "sign.foot_slip_end"})
     ok = mk.finalize(m, scale=3, pin_base=pin)
     if owed:
         print("CONTENT OWED:", owed)

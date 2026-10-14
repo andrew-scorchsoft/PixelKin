@@ -147,6 +147,160 @@
       "tw": 3,
       "th": 4
     },
+    "farlamp_boathouse": {
+      "path": "assets/sprites/objects/farlamp_boathouse.webp",
+      "width": 112,
+      "height": 80,
+      "tw": 7,
+      "th": 5
+    },
+    "farlamp_buoy_dark": {
+      "path": "assets/sprites/objects/farlamp_buoy_dark.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "farlamp_buoy_lit": {
+      "path": "assets/sprites/objects/farlamp_buoy_lit.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "farlamp_chandlery": {
+      "path": "assets/sprites/objects/farlamp_chandlery.webp",
+      "width": 96,
+      "height": 80,
+      "tw": 6,
+      "th": 5
+    },
+    "farlamp_cottage": {
+      "path": "assets/sprites/objects/farlamp_cottage.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "farlamp_cottage_b": {
+      "path": "assets/sprites/objects/farlamp_cottage_b.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "farlamp_elder": {
+      "path": "assets/sprites/objects/farlamp_elder.webp",
+      "width": 112,
+      "height": 64,
+      "tw": 7,
+      "th": 4
+    },
+    "farlamp_fogbank_a": {
+      "path": "assets/sprites/objects/farlamp_fogbank_a.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "farlamp_fogbank_b": {
+      "path": "assets/sprites/objects/farlamp_fogbank_b.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "farlamp_hull": {
+      "path": "assets/sprites/objects/farlamp_hull.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "farlamp_inn": {
+      "path": "assets/sprites/objects/farlamp_inn.webp",
+      "width": 96,
+      "height": 96,
+      "tw": 6,
+      "th": 6
+    },
+    "farlamp_keeper_hut": {
+      "path": "assets/sprites/objects/farlamp_keeper_hut.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "farlamp_keephouse": {
+      "path": "assets/sprites/objects/farlamp_keephouse.webp",
+      "width": 80,
+      "height": 112,
+      "tw": 5,
+      "th": 7
+    },
+    "farlamp_kelp_rack": {
+      "path": "assets/sprites/objects/farlamp_kelp_rack.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "farlamp_looking_glass": {
+      "path": "assets/sprites/objects/farlamp_looking_glass.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "farlamp_ruin_pillar": {
+      "path": "assets/sprites/objects/farlamp_ruin_pillar.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "farlamp_ruin_wall": {
+      "path": "assets/sprites/objects/farlamp_ruin_wall.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "farlamp_skerry_light": {
+      "path": "assets/sprites/objects/farlamp_skerry_light.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "farlamp_slip": {
+      "path": "assets/sprites/objects/farlamp_slip.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "farlamp_waystone": {
+      "path": "assets/sprites/objects/farlamp_waystone.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "farlamp_well_open": {
+      "path": "assets/sprites/objects/farlamp_well_open.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "farlamp_well_shut": {
+      "path": "assets/sprites/objects/farlamp_well_shut.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "galehigh_cottage": {
       "path": "assets/sprites/objects/galehigh_cottage.webp",
       "width": 80,
