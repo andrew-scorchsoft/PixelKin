@@ -238,6 +238,27 @@
       "tw": 5,
       "th": 4
     },
+    "drownlight_buoy_repair": {
+      "path": "assets/sprites/objects/drownlight_buoy_repair.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "drownlight_cistern": {
+      "path": "assets/sprites/objects/drownlight_cistern.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "drownlight_clockwork": {
+      "path": "assets/sprites/objects/drownlight_clockwork.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "drownlight_cot": {
       "path": "assets/sprites/objects/drownlight_cot.webp",
       "width": 16,
@@ -257,6 +278,13 @@
       "width": 16,
       "height": 32,
       "tw": 1,
+      "th": 2
+    },
+    "drownlight_foghorn": {
+      "path": "assets/sprites/objects/drownlight_foghorn.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
       "th": 2
     },
     "drownlight_glare_h": {
@@ -287,6 +315,27 @@
       "tw": 4,
       "th": 4
     },
+    "drownlight_grind_bench": {
+      "path": "assets/sprites/objects/drownlight_grind_bench.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "drownlight_lectern": {
+      "path": "assets/sprites/objects/drownlight_lectern.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "drownlight_lens_rack": {
+      "path": "assets/sprites/objects/drownlight_lens_rack.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "drownlight_lens_spare": {
       "path": "assets/sprites/objects/drownlight_lens_spare.webp",
       "width": 32,
@@ -301,6 +350,20 @@
       "tw": 4,
       "th": 7
     },
+    "drownlight_notice": {
+      "path": "assets/sprites/objects/drownlight_notice.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "drownlight_oil_cans": {
+      "path": "assets/sprites/objects/drownlight_oil_cans.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "drownlight_pane": {
       "path": "assets/sprites/objects/drownlight_pane.webp",
       "width": 16,
@@ -310,6 +373,13 @@
     },
     "drownlight_pane_lit": {
       "path": "assets/sprites/objects/drownlight_pane_lit.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "drownlight_rope_coil": {
+      "path": "assets/sprites/objects/drownlight_rope_coil.webp",
       "width": 16,
       "height": 16,
       "tw": 1,
@@ -328,6 +398,13 @@
       "height": 16,
       "tw": 2,
       "th": 1
+    },
+    "drownlight_weights": {
+      "path": "assets/sprites/objects/drownlight_weights.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
     },
     "drownlight_well": {
       "path": "assets/sprites/objects/drownlight_well.webp",

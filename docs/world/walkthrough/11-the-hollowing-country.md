@@ -105,9 +105,11 @@ AbilityGate-free blocked step band, or by flag-gated flows/objects. Every state 
 
 **Top: the Shutterkeeper** (Hollowing elder, keeper/warden-class, ace ~54), who shuttered it
 herself. Win, and she does NOT relight it. She tells you why she put it out, and leaves the choice
-for after the dawn. **After the dawn** you can relight it (a lamp beat, minor → major); the
-coast's buoys wake (Ambience `when`). Rewards: a Lumen Drop, a Starglass Shard, the
-**Shutter Charm** (a new conditional charge, ×2.5 on Dark-type kin; no price).
+for after the dawn. **After the dawn** you can relight it (a lamp beat, minor → major) — only
+once she has told her tale (the lamp waits on `flag:drownlight_keeper_beaten`); the coast's buoys
+wake and the beam sweeps the shallows from the foot (Ambience `when` + `beams`). Rewards: a Lumen
+Drop, a Starglass Shard, three **Shutter Charms** (a new conditional charge, ×2.5 on Dark-type
+kin; no price).
 
 ## C · The Mourning Fields — the loop
 

@@ -63,14 +63,14 @@ F = "flag:drownlight_shutter_{}"
 
 # ---- the wild tables (MIRRORED in tools/balance/build_species.py DROWNLIGHT_TABLES;
 # keep both in step). Dark/Light/Frost of the north + the Hollowing's own family
-# (#178 the snuffer-cap, #179 the shuttered lantern-keeper, #180 the dream-moth —
-# lane N4's kin). (kin, weight, lo, hi)
+# (#179 the shuttered lantern-keeper, #180 the dream-moth — lane N4's kin; #178 the
+# snuffer-cap kindles into #179 at 44, so at these levels it wears its kindled form).
+# (kin, weight, lo, hi)
 TABLES = {
     "drownlight_f1": [(137, 24, 50, 51), (136, 14, 50, 51), (134, 18, 50, 52),
-                      (85, 14, 51, 52), (178, 22, 50, 52), (180, 8, 51, 52)],
+                      (85, 14, 51, 52), (179, 22, 50, 52), (180, 8, 51, 52)],
     "drownlight_f2": [(138, 20, 51, 53), (135, 8, 52, 53), (87, 14, 51, 53),
-                      (85, 12, 51, 53), (178, 20, 51, 53), (180, 18, 51, 53),
-                      (179, 8, 53, 53)],
+                      (85, 12, 51, 53), (179, 28, 51, 53), (180, 18, 51, 53)],
 }
 
 
@@ -83,13 +83,16 @@ def tileset(name: str) -> dict:
 class Floor:
     """A tower floor on a char plan ('#' wall, '.' floor) + roomkit furniture."""
 
-    def __init__(self, mid, name, plan, ts, music, backdrop):
+    def __init__(self, mid, name, plan, ts, music, backdrop, floor=None):
         self.W, self.H = len(plan[0]), len(plan)
         assert all(len(r) == self.W for r in plan), [len(r) for r in plan]
         self.plan = plan
         self.mid = mid
         W, H = self.W, self.H
-        self.base = [FLOOR if (x + y) % 2 else FLOOR_B for y in range(H) for x in range(W)]
+        # each floor lays its own kit's fill (drownlightforge: F1 = oiled boards in two
+        # joint layouts, F2 = polished flags with the odd brass star); default checker
+        floor = floor or (lambda x, y: FLOOR if (x + y) % 2 else FLOOR_B)
+        self.base = [floor(x, y) for y in range(H) for x in range(W)]
         self.over = [0] * (W * H)
         for y in range(H):
             for x in range(W):
@@ -326,8 +329,10 @@ F1_PLAN = [
 
 
 def floor_1():
+    # oiled boards: the two joint layouts alternate by row-pair, so the joints stagger
     fl = Floor("drownlight_f1", "The Drownlight — The Oil Stores", F1_PLAN,
-               "drownlight_f1_set", MUSIC.format("f1"), BACKDROP)
+               "drownlight_f1_set", MUSIC.format("f1"), BACKDROP,
+               floor=lambda x, y: FLOOR if (x + y // 2) % 2 else FLOOR_B)
     fl.short = "f1"
     W, H = fl.W, fl.H
     # the street door (the foot's quay) — walk onto the doormat
@@ -340,7 +345,7 @@ def floor_1():
     # the up-stair (NE) wants Emberward: coldfog pools in the stairwell
     fl.base[2 * W + 18] = DOORMAT
     fl.warps.append({"id": "up_stairs", "at": {"tx": 18, "ty": 2}, "trigger": "step_on",
-                     "to_map": "drownlight_f2", "to": {"tx": 19, "ty": 3}, "facing": "down",
+                     "to_map": "drownlight_f2", "to": {"tx": 23, "ty": 3}, "facing": "down",
                      "transition": "fade", "requires_ability": "emberward",
                      "blocked_ref": "sign.drownlight_stair_fog"})
     fl.goal = (18, 3)
@@ -352,36 +357,45 @@ def floor_1():
     fl.crank(1, (4, 1), "E", "W", "the store crank")
     fl.crank(2, (10, 8), "N", "K", "the hall crank")
     # ---- THE WEST STORE (oil, wick, the keepers' patience) -------------------
-    fl.mount("shelf", 8, 1, oid="wick_shelf")
-    fl.read("wick_shelf_read", (8, 3), "sign.drownlight_wick_shelf")
-    fl.piece("oil_jars", (2, 6), oid="oil_jars")
-    fl.read("oil_jars_read", (2, 6), "sign.drownlight_oil_jars")
-    fl.piece("barrels", (8, 6), oid="barrels")
+    # the lighthouse kit (fix pass B): the clockwork's weight-shaft comes down the
+    # wall here; a riveted oil cistern; filler cans; a coil of tarred rope
+    fl.obj("weight_shaft", "drownlight_weights", (8, 1), 1, 3, overhang=1, walk_under=True)
+    fl.read("weight_shaft_read", (8, 3), "sign.drownlight_weights")
+    fl.obj("oil_cistern", "drownlight_cistern", (2, 5), 2, 2)
+    for x in (2, 3):
+        fl.read(f"oil_cistern_read_{x}", (x, 5), "sign.drownlight_oil_jars")
+    fl.obj("oil_cans", "drownlight_oil_cans", (8, 6), 1, 1)
+    fl.read("oil_cans_read", (8, 6), "sign.drownlight_wick_shelf")
+    fl.obj("store_rope", "drownlight_rope_coil", (9, 2), 1, 1)
     fl.trainer("drownlight_acolyte_odell", (6, 3), "down", 3)
     # ---- THE STAIR ROOM ------------------------------------------------------
     fl.mount("lamp_rack", 13, 1, oid="lamp_rack")
     fl.read("lamp_rack_read", (13, 2), "sign.drownlight_lamp_rack")
-    fl.obj("lens_spare", "drownlight_lens_spare", (18, 5), 2, 2)
-    fl.read("lens_spare_read", (18, 5), "sign.drownlight_lens_spare")
+    fl.obj("buoy_repair", "drownlight_buoy_repair", (17, 5), 2, 2)
+    for x in (17, 18):
+        fl.read(f"buoy_repair_read_{x}", (x, 5), "sign.drownlight_buoy_repair")
     fl.obj("shutter_plate_n", "drownlight_shutter_plate", (15, 1), 1, 1, solid=False)
     fl.read("shutter_plate_n_read", (15, 1), "sign.drownlight_shutter_plate")
     # ---- THE HALL (the keepers' mess) ----------------------------------------
     fl.obj("names_slate", "drownlight_slate", (12, 8), 2, 1, solid=False)
     for x in (12, 13):
         fl.read(f"slate_{x}", (x, 8), "script.drownlight_slate_keepers", kind="cutscene")
+    # the keepers' enamel CRANK NOTICE beside the first crank you meet (clarity):
+    # what a crank does, and how its pennant reads
+    fl.obj("crank_notice", "drownlight_notice", (11, 8), 1, 1, solid=False)
+    fl.read("crank_notice_read", (11, 8), "sign.drownlight_crank_notice")
     fl.mount("stove", 17, 8, oid="kept_stove")
     fl.read("stove_read", (17, 9), "sign.drownlight_stove")
     fl.piece("table", (8, 11), oid="mess_table")
     fl.piece("stool", (7, 12), oid="stool_w")
     fl.piece("stool", (10, 12), oid="stool_e")
     fl.read("mess_table_read", (8, 11), "sign.drownlight_mess_table")
-    fl.piece("desk", (16, 13), oid="log_desk")
-    for x in (16, 17):
-        fl.read(f"log_{x}", (x, 13), "script.drownlight_log", kind="cutscene")
-    fl.piece("crates", (18, 11), oid="crates")
+    fl.obj("log_lectern", "drownlight_lectern", (16, 12), 1, 2, overhang=1)
+    fl.read("log_16", (16, 13), "script.drownlight_log", kind="cutscene")
+    fl.obj("hall_cistern", "drownlight_cistern", (18, 11), 2, 2)
     # THE NOOK — dark only before the hall crank is thrown
     fl.cache("drownlight_shard", (2, 13))
-    fl.piece("sacks", (1, 11), oid="nook_sacks")
+    fl.obj("nook_rope", "drownlight_rope_coil", (1, 11), 1, 1)
     # the first-steps beat: once, on the row in from the door
     fl.triggers.append({"id": "first_steps", "kind": "cutscene", "at": {"tx": 11, "ty": 13},
                         "activation": "step_on", "ref": "script.drownlight_first_steps",
@@ -400,90 +414,115 @@ def floor_1():
 # =====================================================================================
 # F2 — THE LENS GALLERY
 # =====================================================================================
-F2_PLAN = [
-    "######################",
-    "######################",
-    "##....##......##....##",
-    "#.....##......##.....#",
-    "#....................#",
-    "#.....##......##.....#",
-    "#.....##......##.....#",
-    "###.##############.###",
-    "###.##############.###",
-    "#.....##......##.....#",
-    "#.....##......##.....#",
-    "#....................#",
-    "#.....##......##.....#",
-    "#.....##......##.....#",
-    "##....##......##....##",
-    "######################",
-]
+def _f2_plan():
+    """The gallery ring, carved from solid by room (so the shapes read in code)."""
+    W, H = 26, 18
+    cells = set()
+
+    def box(x0, y0, x1, y1):
+        cells.update((x, y) for y in range(y0, y1 + 1) for x in range(x0, x1 + 1))
+    box(1, 2, 6, 5); box(2, 6, 5, 6)                       # NW: the stair turret
+    box(11, 2, 14, 2); box(10, 3, 15, 3); box(9, 4, 16, 5)  # the ROUND lens room
+    box(10, 6, 15, 6); box(11, 7, 14, 7)
+    box(19, 2, 24, 5); box(21, 6, 24, 8)                   # NE: the L-shaped watch room
+    box(20, 11, 24, 16)                                    # E: the tall east gallery
+    box(9, 12, 17, 15); box(12, 10, 14, 11)                # S: the watch passage + crank bay
+    box(1, 9, 3, 16); box(4, 13, 6, 16)                    # W: the L, a long arm north
+    for c in ((7, 4), (8, 4), (17, 4), (18, 4), (3, 7), (3, 8), (22, 9), (22, 10),
+              (7, 13), (8, 13), (18, 14), (19, 14)):       # the six doorways
+        cells.add(c)
+    return ["".join("." if (x, y) in cells else "#" for x in range(W)) for y in range(H)]
+
+
+F2_PLAN = _f2_plan()
+
+
+def f2_floor(x, y):
+    """Polished flags; a brass star let in every fourth crossing."""
+    return FLOOR_B if (x % 4 == 2 and y % 4 == 2) else FLOOR
 
 
 def floor_2():
+    """THE LENS GALLERY (fix pass B: six rooms of six SHAPES, not a 3x2 grid of boxes).
+    NW the stair turret; the ROUND lens room in the middle; NE the L-shaped watch room
+    (you arrive here) whose leg runs south to the east gallery, a tall narrow hall; the
+    south gallery is a long watch passage with a crank bay; the west gallery is an L
+    with a long arm. Same shutter graph as before (prove() re-verifies every state)."""
     fl = Floor("drownlight_f2", "The Drownlight — The Lens Gallery", F2_PLAN,
-               "drownlight_f2_set", MUSIC.format("f2"), BACKDROP)
+               "drownlight_f2_set", MUSIC.format("f2"), BACKDROP, floor=f2_floor)
     fl.short = "f2"
     W = fl.W
-    fl.base[2 * W + 19] = DOORMAT
-    fl.warps.append({"id": "down_stairs", "at": {"tx": 19, "ty": 2}, "trigger": "step_on",
+    fl.base[2 * W + 23] = DOORMAT
+    fl.warps.append({"id": "down_stairs", "at": {"tx": 23, "ty": 2}, "trigger": "step_on",
                      "to_map": "drownlight_f1", "to": {"tx": 18, "ty": 3}, "facing": "down",
                      "transition": "fade"})
-    fl.entry = (19, 3)
+    fl.entry = (23, 3)
     fl.base[2 * W + 2] = DOORMAT
     fl.warps.append({"id": "up_stairs", "at": {"tx": 2, "ty": 2}, "trigger": "step_on",
                      "to_map": "drownlight_lantern", "to": {"tx": 3, "ty": 3}, "facing": "down",
                      "transition": "fade"})
     fl.goal = (2, 3)
-    fl.door("d", [((14, 4), (13, 4)), ((15, 4), (16, 4))], "v", (14, 3))
-    fl.door("e", [((6, 4), (5, 4)), ((7, 4), (8, 4))], "v", (6, 3))
-    fl.door("a", [((18, 7), (18, 6)), ((18, 8), (18, 9))], "h", (19, 8))
+    # (the glare scripts' push tiles in content/regions/drownlight.ts mirror these)
+    fl.door("d", [((17, 4), (16, 4)), ((18, 4), (19, 4))], "v", (17, 3))
+    fl.door("e", [((7, 4), (6, 4)), ((8, 4), (9, 4))], "v", (8, 3))
+    fl.door("a", [((22, 9), (22, 8)), ((22, 10), (22, 11))], "h", (23, 9))
     fl.door("c", [((3, 7), (3, 6)), ((3, 8), (3, 9))], "h", (2, 8))
-    fl.door("b", [((14, 11), (13, 11)), ((15, 11), (16, 11))], "v", (14, 10))
-    fl.door("f", [((6, 11), (5, 11)), ((7, 11), (8, 11))], "v", (6, 10))
-    fl.crank("a", (17, 1), "d", "a", "the arrival crank")
-    fl.crank("b", (17, 8), "b", "c", "the east gallery crank")
-    fl.crank("c", (11, 8), "e", "f", "the south gallery crank")
-    # ---- ARRIVAL (NE): the keepers' watch-cot — the tower's rest point -------
-    fl.obj("watch_cot", "drownlight_cot", (20, 5), 1, 2)
-    for y in (5, 6):
-        fl.read(f"cot_{y}", (20, y), "script.drownlight_cot", kind="cutscene")
-    fl.obj("shutter_plate_ne", "drownlight_shutter_plate", (18, 1), 1, 1, solid=False)
-    fl.read("shutter_plate_ne_read", (18, 1), "sign.drownlight_shutter_plate_b")
-    # ---- THE LENS STORE (north-middle) ---------------------------------------
-    fl.obj("lens_store", "drownlight_lens_spare", (10, 2), 2, 2)
-    fl.read("lens_store_read", (10, 3), "sign.drownlight_lens_store")
-    fl.read("lens_store_read_b", (11, 3), "sign.drownlight_lens_store")
-    fl.mount("bookcase", 8, 1, oid="log_case")
-    fl.read("log_case_read", (8, 3), "script.drownlight_log_two", kind="cutscene")
-    fl.read("log_case_read_b", (9, 3), "script.drownlight_log_two", kind="cutscene")
-    # ---- THE STAIR ROOM (NW) ---------------------------------------------------
-    fl.obj("names_slate", "drownlight_slate", (4, 1), 2, 1, solid=False)
-    for x in (4, 5):
+    fl.door("b", [((18, 14), (17, 14)), ((19, 14), (20, 14))], "v", (18, 13))
+    fl.door("f", [((7, 13), (6, 13)), ((8, 13), (9, 13))], "v", (7, 12))
+    fl.crank("a", (20, 1), "d", "a", "the arrival crank")
+    fl.crank("b", (21, 10), "b", "c", "the east gallery crank")
+    fl.crank("c", (13, 9), "e", "f", "the south gallery crank")
+    # ---- THE WATCH ROOM (NE, an L): the keepers' watch-cot — the tower's rest point
+    fl.obj("watch_cot", "drownlight_cot", (24, 6), 1, 2)
+    for y in (6, 7):
+        fl.read(f"cot_{y}", (24, y), "script.drownlight_cot", kind="cutscene")
+    fl.obj("watch_lectern", "drownlight_lectern", (19, 2), 1, 2, overhang=1)
+    fl.read("watch_lectern_read", (19, 3), "script.drownlight_log_two", kind="cutscene")
+    fl.obj("shutter_plate_ne", "drownlight_shutter_plate", (22, 1), 1, 1, solid=False)
+    fl.read("shutter_plate_ne_read", (22, 1), "sign.drownlight_shutter_plate_b")
+    fl.obj("watch_rope", "drownlight_rope_coil", (21, 8), 1, 1)
+    # ---- THE ROUND LENS ROOM: ONE great lens, the bench that ground it, the rack of
+    # prism segments waiting to be set
+    fl.obj("lens_store", "drownlight_lens_spare", (12, 2), 2, 2)
+    for x in (12, 13):
+        fl.read(f"lens_store_read_{x}", (x, 3), "sign.drownlight_lens_store")
+    fl.obj("grind_bench", "drownlight_grind_bench", (11, 6), 2, 2)
+    for x in (11, 12):
+        fl.read(f"grind_bench_read_{x}", (x, 6), "sign.drownlight_grind_bench")
+    fl.obj("lens_rack", "drownlight_lens_rack", (13, 6), 2, 2)
+    for x in (13, 14):
+        fl.read(f"lens_rack_read_{x}", (x, 6), "sign.drownlight_gallery_lens")
+    # ---- THE STAIR TURRET (NW): the turning-gear that wound the lens round --------
+    fl.obj("names_slate", "drownlight_slate", (3, 1), 2, 1, solid=False)
+    for x in (3, 4):
         fl.read(f"slate_{x}", (x, 1), "script.drownlight_slate_shutters", kind="cutscene")
-    fl.piece("oil_jars", (1, 6), oid="oil_jars")
-    # ---- THE EAST GALLERY (SE) ------------------------------------------------
-    fl.trainer("drownlight_acolyte_prue", (20, 10), "left", 4)
-    fl.piece("crates", (19, 13), oid="crates")
-    # ---- THE SOUTH GALLERY ------------------------------------------------------
-    fl.trainer("drownlight_acolyte_hask", (9, 13), "up", 2)
-    fl.piece("pew", (11, 13), oid="watch_bench")
-    fl.read("watch_bench_read", (12, 13), "sign.drownlight_watch_bench")
-    fl.obj("gallery_lens", "drownlight_lens_spare", (12, 9), 2, 2)
-    fl.read("gallery_lens_read", (12, 10), "sign.drownlight_gallery_lens")
-    fl.piece("sacks", (16, 14), oid="se_sacks")
-    fl.piece("sacks", (1, 10), oid="sw_sacks")
-    # ---- THE WEST GALLERY (SW) — the Lumen Drop, before C is thrown -----------
-    fl.cache("drownlight_drop", (2, 13))
+    fl.obj("clockwork", "drownlight_clockwork", (5, 2), 2, 2)
+    for x in (5, 6):
+        fl.read(f"clockwork_read_{x}", (x, 3), "sign.drownlight_clockwork")
+    # ---- THE EAST GALLERY (a tall narrow hall) -----------------------------------
+    fl.trainer("drownlight_acolyte_prue", (24, 13), "left", 4)
+    fl.obj("east_cans", "drownlight_oil_cans", (24, 16), 1, 1)
+    fl.obj("east_rope", "drownlight_rope_coil", (20, 16), 1, 1)
+    # ---- THE SOUTH GALLERY (a long watch passage) --------------------------------
+    fl.trainer("drownlight_acolyte_hask", (10, 15), "up", 2)
+    fl.obj("foghorn", "drownlight_foghorn", (15, 12), 2, 2)
+    for x in (15, 16):
+        fl.read(f"foghorn_read_{x}", (x, 13), "sign.drownlight_foghorn")
+    fl.piece("pew", (12, 15), oid="watch_bench")
+    fl.read("watch_bench_read", (13, 15), "sign.drownlight_watch_bench")
+    # ---- THE WEST GALLERY (an L) — the Lumen Drop, before C is thrown -------------
+    fl.cache("drownlight_drop", (1, 16))
     fl.obj("shutter_plate_sw", "drownlight_shutter_plate", (1, 8), 1, 1, solid=False)
     fl.read("shutter_plate_sw_read", (1, 8), "sign.drownlight_shutter_plate_c")
-    fl.piece("barrels", (4, 13), oid="barrels")
-    fl.zone("ne", (16, 2, 20, 6))
-    fl.zone("nm", (8, 2, 13, 6))
-    fl.zone("nw", (1, 2, 5, 6))
-    fl.zone("se", (16, 9, 20, 14))
-    fl.zone("s", (8, 9, 13, 14))
-    fl.zone("sw", (1, 9, 5, 14))
+    fl.obj("west_cistern", "drownlight_cistern", (4, 15), 2, 2)
+    fl.zone("ne", (19, 2, 24, 5))
+    fl.zone("ne_leg", (21, 6, 24, 8))
+    fl.zone("nm", (9, 2, 16, 7))
+    fl.zone("nw", (1, 2, 6, 6))
+    fl.zone("se", (20, 11, 24, 16))
+    fl.zone("s", (9, 12, 17, 15))
+    fl.zone("sw", (1, 9, 3, 16))
+    fl.zone("sw_foot", (4, 13, 6, 16))
     m = fl.done()
     return m
 

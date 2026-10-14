@@ -50,6 +50,12 @@ How it works (engine-faithful; worldmodel.MapModel is the collision model):
            never granted is reported DORMANT (WARN). A final fresh walk with the
            end-state keys flags content that was reachable during the journey
            but is sealed off at the end (an NPC that appears later in a lane).
+           TOGGLES (the temp-copy crank/lever pattern: a flag a script both
+           sets and clears under guards — the Drownlight shutters, the Old
+           Seams levers) are not one-way keys: the add-only replay ends with
+           every toggle thrown, which is only ONE of the legal end states. An
+           item on a toggle's map is sealed only if it's cut off in EVERY
+           combination of that map's toggles (each re-walked from the end).
   MAPS     every registered graph node is reached, except ALLOW_UNREACHED_MAPS.
 
 Run:  python3 tools/maps/audit_journey.py            # full report, exit 1 on FAIL
@@ -60,6 +66,7 @@ Needs node + the repo's esbuild (npm ci) for the content dump; otherwise stdlib.
 """
 from __future__ import annotations
 
+import itertools
 import json
 import subprocess
 import sys
@@ -647,6 +654,54 @@ class Replay:
 
 
 # ---- reporting -------------------------------------------------------------------
+def toggle_flags(scripts: Scripts, maps: dict[str, MapData]) -> dict[str, set[str]]:
+    """map id -> the TOGGLE flags its own content writes. A toggle is a flag some
+    script both sets true and clears (value:false) under a guard — the temp-copy
+    crank (content/regions/drownlight.ts crank()) / lever (oldseams.ts lever())
+    pattern; a transient clear with no guard (the `_tmp` copy wiping itself) does
+    not count, so the temp copy is never a toggle. The builders' own proofs
+    (build_drownlight_tower.py prove(), build_old_seams_ii.py) show every state of
+    these is reversible; this audit just stops reading the all-thrown end state
+    as the only one."""
+    sets_g: dict[str, set[str]] = defaultdict(set)    # script -> guarded sets
+    clears_g: dict[str, set[str]] = defaultdict(set)  # script -> guarded clears
+    runs: dict[str, set[str]] = defaultdict(set)
+    for ref, steps in scripts.scripts.items():
+        stack = list(steps)
+        while stack:
+            st = stack.pop()
+            op = st.get("op")
+            guarded = bool(st.get("if_flag") or st.get("unless_flag"))
+            if op == "setFlag" and guarded:
+                (clears_g if st.get("value", True) is False else sets_g)[ref].add(st["flag"])
+            elif op == "run":
+                runs[ref].add(st["ref"])
+            elif op == "choice":
+                for o in st.get("options", []):
+                    stack.extend(o.get("ops", []))
+
+    def written(ref: str, seen: set) -> tuple[set[str], set[str]]:
+        if ref in seen:
+            return set(), set()
+        seen.add(ref)
+        a, b = set(sets_g.get(ref, ())), set(clears_g.get(ref, ()))
+        for r in runs.get(ref, ()):
+            a2, b2 = written(r, seen)
+            a |= a2
+            b |= b2
+        return a, b
+
+    out: dict[str, set[str]] = defaultdict(set)
+    for mid, md in maps.items():
+        for n in md.npcs:
+            a, b = written(n.get("dialogue_ref") or "", set())
+            out[mid] |= a & b
+        for t in md.triggers:
+            a, b = written(t.get("ref") or "", set())
+            out[mid] |= a & b
+    return {m: f for m, f in out.items() if f}
+
+
 def all_content(maps: dict[str, MapData]):
     for mid, md in maps.items():
         for n in md.npcs:
@@ -761,17 +816,34 @@ def main() -> int:
         warns.append(f"ALLOW_UNREACHED_MAPS['{m}'] is reached now — drop the entry")
 
     # ---- content ------------------------------------------------------------------
-    fresh = Replay(world, graph, content, scripts, maps)
-    fresh.flags = set(full.flags)
-    fresh.abilities = set(full.granted_abilities)
-    st = graph["start_at"]
-    fresh.visit(graph["start_map"], st["tx"], st["ty"], True)
-    for ws in content["waystones"]:
-        if ws["visited_flag"] in fresh.flags and ws["map"] in maps:
-            land = fresh.landing(ws["map"], ws["tx"], ws["ty"])
-            if land:
-                fresh.visit(ws["map"], land[0], land[1], True)
-    fresh.drain()
+    def end_walk(drop: frozenset = frozenset()) -> Replay:
+        r = Replay(world, graph, content, scripts, maps)
+        r.flags = set(full.flags) - drop
+        r.abilities = set(full.granted_abilities)
+        st = graph["start_at"]
+        r.visit(graph["start_map"], st["tx"], st["ty"], True)
+        for ws in content["waystones"]:
+            if ws["visited_flag"] in r.flags and ws["map"] in maps:
+                land = r.landing(ws["map"], ws["tx"], ws["ty"])
+                if land:
+                    r.visit(ws["map"], land[0], land[1], True)
+        r.drain()
+        return r
+
+    fresh = end_walk()
+    toggles = toggle_flags(scripts, maps)
+    _walks: dict[frozenset, Replay] = {frozenset(): fresh}
+
+    def sealed_in_every_toggle_state(mid: str, item: dict, kind: str) -> bool:
+        held = sorted(toggles.get(mid, set()) & full.flags)
+        for k in range(1, len(held) + 1):
+            for drop in itertools.combinations(held, k):
+                key = frozenset(drop)
+                if key not in _walks:
+                    _walks[key] = end_walk(key)
+                if geo(_walks[key], mid, item, kind):
+                    return False
+        return True
 
     n_content = n_reached = 0
     dormant, superseded, dead_tiles, sealed_late = [], [], [], []
@@ -793,7 +865,8 @@ def main() -> int:
             n_reached += 1
             present = (npc_present(item, full.flags) if kind == "npc"
                        else trigger_live(item, full.flags))
-            if present and not geo(fresh, mid, item, kind) and k not in ALLOW_UNREACHED:
+            if present and not geo(fresh, mid, item, kind) and k not in ALLOW_UNREACHED \
+                    and sealed_in_every_toggle_state(mid, item, kind):
                 sealed_late.append(k)
             continue
         if mid not in full.first_wave_map:

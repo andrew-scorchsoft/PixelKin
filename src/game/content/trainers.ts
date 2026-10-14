@@ -1973,7 +1973,7 @@ export const TRAINERS: TrainerRegistry = {
     title: 'Hollowing Acolyte',
     party: [
       { species_id: 134, level: 51 }, // Wispwane — Dark/Light
-      { species_id: 178, level: 51 }, // the snuffer-cap (#178, lane N4) — Dark/Ember
+      { species_id: 179, level: 51 }, // Shutterwick (#179, lane N4) — Dark/Light; the snuffer-cap kindles at 44, so a lv-51 one wears its kindled form
       { species_id: 87, level: 52 }, // Prismantus — Light/Frost (ace)
     ],
     payout: 1040, // keeper 20 × ace 52
