@@ -43,6 +43,17 @@
       "requires_flag": "flag:dawn"
     },
     {
+      "id": "underways_lightwell",
+      "sprite": "underways_ring_lightwell",
+      "at": {
+        "tx": 9,
+        "ty": 30
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
       "id": "spire_silhouette",
       "sprite": "penumbra_spire_silhouette",
       "at": {
@@ -478,7 +489,7 @@
       "transition": "fade",
       "requires_flag": "flag:hub_unlocked",
       "requires_ability": "starreach",
-      "blocked_ref": "npc.underways_mouth_shut"
+      "blocked_ref": "script.underways_mouth_shut"
     },
     {
       "id": "to_underways_w_e",
@@ -496,7 +507,7 @@
       "transition": "fade",
       "requires_flag": "flag:hub_unlocked",
       "requires_ability": "starreach",
-      "blocked_ref": "npc.underways_mouth_shut"
+      "blocked_ref": "script.underways_mouth_shut"
     },
     {
       "id": "to_underways_e",
@@ -514,7 +525,7 @@
       "transition": "fade",
       "requires_flag": "flag:hub_unlocked",
       "requires_ability": "starreach",
-      "blocked_ref": "npc.underways_mouth_shut"
+      "blocked_ref": "script.underways_mouth_shut"
     },
     {
       "id": "to_underways_e_e",
@@ -532,7 +543,7 @@
       "transition": "fade",
       "requires_flag": "flag:hub_unlocked",
       "requires_ability": "starreach",
-      "blocked_ref": "npc.underways_mouth_shut"
+      "blocked_ref": "script.underways_mouth_shut"
     }
   ],
   "triggers": [
@@ -545,6 +556,46 @@
       },
       "activation": "interact",
       "ref": "npc.underways_ring_lamp"
+    },
+    {
+      "id": "underways_lightwell_9_30",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 30
+      },
+      "activation": "interact",
+      "ref": "script.underways_lightwell"
+    },
+    {
+      "id": "underways_lightwell_10_30",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 30
+      },
+      "activation": "interact",
+      "ref": "script.underways_lightwell"
+    },
+    {
+      "id": "underways_lightwell_9_31",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 31
+      },
+      "activation": "interact",
+      "ref": "script.underways_lightwell"
+    },
+    {
+      "id": "underways_lightwell_10_31",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 31
+      },
+      "activation": "interact",
+      "ref": "script.underways_lightwell"
     },
     {
       "id": "penumbra_tended_row",
@@ -2623,14 +2674,25 @@
         182,
         0,
         0,
+        0,
+        0,
+        0,
+        5,
         179,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         5,
-        5,
-        0,
-        0,
-        0,
         182,
         0,
         0,
@@ -2643,24 +2705,13 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         179,
+        0,
+        0,
+        0,
+        0,
         5,
         0,
-        0,
-        5,
-        5,
-        0,
-        0,
-        0,
-        0,
-        181,
-        5,
         0,
         0,
         0,

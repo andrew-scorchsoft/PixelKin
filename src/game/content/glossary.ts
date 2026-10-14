@@ -493,6 +493,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'The north coast\'s lighthouse, kept thirty-one winters by Maudry Kell. Fourteen winters ago, three before the sky went dark, she banked its lamp and bolted it in iron shutters: the first light the Hollowing put out. A keeper never kills a lamp, so it burned on behind the iron.',
     unlock_flag: 'flag:drownlight_entered',
   },
+  // Lane N3 / fix FD (walkthrough/11 Part D) — the last road, under the Ring
+  {
+    id: 'the_last_watch',
+    term: 'the Last Watch',
+    desc: 'A handful of the Hollowing who live under the Penumbra Ring, by a fire at the foot of the Spire\'s old shaft. They keep no gate. They try every traveller, to know them, and give the fire to anyone who comes down.',
+    unlock_flag: 'flag:q_underways',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

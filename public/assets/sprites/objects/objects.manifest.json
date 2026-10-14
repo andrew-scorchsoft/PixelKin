@@ -4095,12 +4095,68 @@
       "tw": 2,
       "th": 2
     },
+    "underways_bedroll": {
+      "path": "assets/sprites/objects/underways_bedroll.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "underways_kettle_shelf": {
+      "path": "assets/sprites/objects/underways_kettle_shelf.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "underways_map_table": {
+      "path": "assets/sprites/objects/underways_map_table.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "underways_masonry": {
+      "path": "assets/sprites/objects/underways_masonry.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "underways_ration_crates": {
+      "path": "assets/sprites/objects/underways_ration_crates.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "underways_ring_lightwell": {
+      "path": "assets/sprites/objects/underways_ring_lightwell.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "underways_root_curtain": {
+      "path": "assets/sprites/objects/underways_root_curtain.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "underways_spire_shaft": {
       "path": "assets/sprites/objects/underways_spire_shaft.webp",
       "width": 64,
       "height": 64,
       "tw": 4,
       "th": 4
+    },
+    "underways_watch_bell": {
+      "path": "assets/sprites/objects/underways_watch_bell.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
     },
     "underways_watch_lamp": {
       "path": "assets/sprites/objects/underways_watch_lamp.webp",
@@ -4111,6 +4167,13 @@
     },
     "underways_watch_lamp_lit": {
       "path": "assets/sprites/objects/underways_watch_lamp_lit.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "underways_watch_rota": {
+      "path": "assets/sprites/objects/underways_watch_rota.webp",
       "width": 16,
       "height": 32,
       "tw": 1,

@@ -5209,10 +5209,8 @@ export const SCRIPTS: ScriptRegistry = {
     },
 
     // --- The Crown, the Spire, and after. -------------------------------------
-    {
-      op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:keystar_relit', speaker: 'ANDREW',
-      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. The Spire\'s up the mountain road, north from the Vesper Crossroads — car, waystone or boots if you\'re not there already. It\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
-    },
+    // (one stage: the line + a P.S. for the optional last road under the Ring, Lane FD)
+    { op: 'run', ref: 'script.andrew_hint_crown', if_flag: 'gleam:lunar', unless_flag: 'flag:keystar_relit' },
     {
       op: 'say', if_flag: 'flag:keystar_relit', unless_flag: 'flag:dawn', speaker: 'ANDREW',
       text: 'The Keystar\'s lit. Whatever\'s coming next is coming on its own — stand still and let it.',
@@ -5247,6 +5245,17 @@ export const SCRIPTS: ScriptRegistry = {
       op: 'say', if_flag: 'flag:isles_dawn', speaker: 'ANDREW',
       text: 'The Farlamp\'s burning and the isles have their morning. Next? Nothing. Go and give Bram Fathom a battle on Driftholm\'s quay. He\'s been waiting longer than any of us.',
     },
+  ],
+
+  // The Crown stage of `script.andrew_hint`: the Spire, then a P.S. (Lane FD,
+  // walkthrough/11 Part D) for the optional last road under the Ring once the hub
+  // is open. The P.S. lives in script.underways_hint (regions/underways.ts).
+  'script.andrew_hint_crown': [
+    {
+      op: 'say', speaker: 'ANDREW',
+      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. The Spire\'s up the mountain road, north from the Vesper Crossroads — car, waystone or boots if you\'re not there already. It\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
+    },
+    { op: 'run', ref: 'script.underways_hint', if_flag: 'flag:hub_unlocked' },
   ],
 
   // The Ember → Tide leg of `script.andrew_hint`, latest stage first: each

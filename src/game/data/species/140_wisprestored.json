@@ -111,6 +111,20 @@
       "max": 55
     },
     {
+      "area": "penumbra_underways",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 56,
+      "max": 59
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 57,
+      "max": 60
+    },
+    {
       "area": "stillwater",
       "terrain": "tall_grass",
       "rarity": "uncommon",
