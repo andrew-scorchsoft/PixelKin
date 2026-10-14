@@ -2391,6 +2391,13 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   'trainer.lowtinder_ottery.defeat': [
     { speaker: 'GRAN TALLOW', text: 'Outshone! By a Wayfarer in a borrowed boat. Oh, I haven\'t had this much fun since the water came up.' },
   ],
+  // ---- Lane N2 (walkthrough/11 Part B): the Shutterkeeper ----
+  'trainer.drownlight_shutterkeeper.intro': [
+    { speaker: 'MAUDRY KELL', text: 'Thirty-one winters I kept this light. Let\'s see what yours is made of.' },
+  ],
+  'trainer.drownlight_shutterkeeper.defeat': [
+    { speaker: 'MAUDRY KELL', text: 'Steady. Steady all the way down. ...My girl rowed like that.' },
+  ],
 };
 
 export function getTrainer(id: string): TrainerDef | undefined {
