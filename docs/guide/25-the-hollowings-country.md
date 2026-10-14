@@ -56,10 +56,10 @@ talk to.
 
 | Trainer | Where | Team | Purse |
 |---------|-------|------|------:|
-| Hollowing Acolyte Brin | Near marsh, guarding the way north | Mothdim 47, Cindersob 48 | 960 |
-| Hollowing Elder Fenwick | Near marsh, by the east road to the fields | Flutterwane 48, Lullwing 48, Nullmoth 49 | 980 |
-| Hollowing Acolyte Odran | Deep marsh, east | WispwaneNull 49, Embergone 50 | 1,000 |
-| Hollowing Elder Marrow | Deep marsh, by the quieted camp | Shutterwick 49, Nullmoth 49, Voidmantle 50 | 1,000 |
+| Hollowing Acolyte Brin | Near marsh, guarding the way north | Voidmantle 47, Embergone 48 | 960 |
+| Hollowing Elder Fenwick | Near marsh, by the east road to the fields | Liminalux 48, Lullwing 48, Voidmantle 49 | 980 |
+| Hollowing Acolyte Odran | Deep marsh, east | Liminalux 49, Embergone 50 | 1,000 |
+| Hollowing Elder Marrow | Deep marsh, by the quieted camp | Shutterwick 49, Lullwing 49, Voidmantle 50 | 1,000 |
 
 - **Sefton**, a Stillwater trader, stands at the north gap of the near marsh with **Sefton's Pack**
   (Warm Balm, Bright Balm, Hearth Coal, Glow Charge). There's still no inn in the fog; the nearest
@@ -74,8 +74,12 @@ talk to.
 | Marsh | Wild kin (before the dawn) | Levels |
 |-------|----------------------------|--------|
 | Near marsh | Voidmantle, Liminalux, Embergone, **Lullwing**, and a Lunar/Dark kin | 46–48 |
-| Near marsh, the small golden patch | Flutterwane and Mothdim (only here, and much younger); rarely **Wisprestored** | 17–21 (Wisprestored 47–48) |
+| Near marsh, the small golden patch (east edge) | Liminalux (common), Voidmantle; rarely **Wisprestored** | 46–48 |
 | Deep marsh | Voidmantle, Liminalux, Embergone, Lullwing, and a Lunar/Dark kin | 48–50 |
+
+Looking for a young **Mothdim** or **Flutterwane**? They don't live up here. Their only
+wild home is the grey chamber in Glowmoss Deep, once you've relit its lantern (see
+[[the-east|Chapter 3]]).
 
 The older finds are still here: the **Drownlight Beacon** off the near marsh's west edge, the
 **Hollowfen Stillworks** (Glimmerstep) in the deep marsh, an **Embergloss** and a **Murk Pearl**.
@@ -92,9 +96,9 @@ faces to the wall behind latched louvred screens: still warm, just not looked at
 | Place | What's there |
 |-------|--------------|
 | **The Shutter** (the inn, west of the square) | A free rest. It's a rest point. |
-| **The Quiet Hall** (the square) | The meeting-house and the **shutter-wall**, where the names of every lamp they put out are painted. **Keeper Wenna** runs it. |
+| **The Quiet Hall** (the square) | The meeting-house and the **shutter-wall**, where the names of every lamp they put out are painted. **Keeper Wenna** runs it. At the back, by the benches, an acolyte keeps the **ledger of put-out lamps** on a reading lectern. |
 | **The Dark-Lamp Maker** (east) | **Osric**, a lamplighter who now makes hoods and shutters. His counter sells Warm Balm, Bright Balm, Hearth Coal, Glow Charge, Beacon Charge and the **Hooded Lamp** (600 wicks: hood it to halve wild encounters). |
-| **Margery and Edwy's Cottage** (south-west) | An old couple who came up from the coast so they wouldn't watch their kin grow old. |
+| **Margery and Edwy's Cottage** (south-west) | An old couple who came up from the coast so they wouldn't watch their kin grow old. Their hearth is screened and their stove is banked behind an iron door until the dawn. |
 | **Maren's House** (south-east) | Linnet's mother. Part of "A Light Left On". |
 
 Worth a word: **Elder Ashe** by the square, **Grete** who folds the sleepers' blankets, **Lisbet**
@@ -115,9 +119,9 @@ TALK**, and talking is a perfectly good answer.
 
 | Trainer | Where | Team | Purse |
 |---------|-------|------|------:|
-| Hollowing Acolyte Gethin | The square | Lullwing 49, Mothdim 49, and a Lunar/Dark kin 50 (ace) | 1,000 |
+| Hollowing Acolyte Gethin | The square | Lullwing 49, Voidmantle 49, and a Lunar/Dark kin 50 (ace) | 1,000 |
 | Hollowing Acolyte Vesna | The square, east | Nightwraith 50, Shutterwick 50, Liminalux 51 | 1,020 |
-| Hollowing Lamplighter Grisel | By the willow, north-west | Cindersob 50, Shutterwick 51, Embergone 51, Voidmantle 52 | 1,040 |
+| Hollowing Lamplighter Grisel | By the willow, north-west | Lullwing 50, Shutterwick 51, Embergone 51, Voidmantle 52 | 1,040 |
 
 ### "A Light Left On"
 
@@ -140,8 +144,10 @@ time she reaches the edge of the village her feet stop. Agree to walk ahead with
 2. Find her in the **deep marsh**, where the fog is worst.
 3. Meet her **at home in Pale Vault**, on the west side of the glacier town.
 
-Reward: **3 Tessaly's Lamps**, charges that burn at **×3.0 on a dozing kin** (and are ordinary
-lamps on a wakeful one). Put a kin to sleep first, then raise one.
+Reward: **Tessaly's Lamp**, the lamp she hung in her shop window so the lost could find the door.
+It's a keepsake charge: it burns at **×3.0 on a kin below a quarter of its health** (an ordinary
+lamp on a healthier one), and it's **never spent**, so you keep it after every throw. Wear a kin
+down into the red, then raise it.
 
 ### "The Shutter-wall"
 
@@ -154,7 +160,7 @@ were put out, and read the note left at each:
 |------|-------|
 | The Wayfare Lamp | The near marsh, on the east side south of the long crossing |
 | The Market Lamp | The deep marsh, south, near where a star fell |
-| The First Lamp of Stillwater | Stillwater's far shore, north-east, across the water |
+| The First Lamp of Stillwater | Stillwater's far shore, north-east, round the end of the water. Read its note from the shore below it |
 
 You can find them before you talk to her, but their brass plates are too tarnished to read until
 you know whose they are. Each time you check in, Wenna names the lamps you still haven't found. Bring all three back to Wenna for a **Lumen Drop** and **1,500 wicks**,
@@ -174,7 +180,7 @@ The grey meadows round the village are where the Hollowing's own family of kin l
 | Kin | Type | Notes |
 |-----|------|-------|
 | **Dousecap** | Dark/Ember | A lamp-snuffer cap. Found young (42–44) in the lamp-maker's yard and the Mourning Fields' low verge. Kindles at **level 44**. |
-| **Shutterwick** | Dark/Light | Dousecap's kindled form, a shuttered lantern-keeper. Wild in the grey meadows, the Mourning Fields (and their verge), on both of the Drownlight's floors (the commonest kin in the Lens Gallery) and at the Underways' Warm Stones. |
+| **Shutterwick** | Dark/Light | Dousecap's kindled form, a shuttered lantern-keeper. Wild in the grey meadows, the Mourning Fields (and their verge), all through the Drownlight, from its foot to the Lens Gallery (the commonest kin on both floors) and at the Underways' Warm Stones. |
 | **Lullwing** | Dark/Lunar | A grey dream-moth that keeps sleeping kin asleep. Common in the meadows; also in the Coldfog, the fields, the Drownlight and the Warm Stones. Doesn't kindle. |
 
 - **Against them:** Tide and Stone for Dousecap's Ember half; Solar for all three (four times
@@ -197,15 +203,35 @@ it. From the marsh gate, walk east across the barley drifts to the stair, climb 
 west along the top to Stillwater. The **wool-gatherer** picking fog-wool off the fences by the
 gate explains it too.
 
+**The south crossing.** Below the sleepers' field, a broad drift of grey long grass runs right
+across the fields, its edges lobed and wandering. The road to and from the Rimeway col has to
+go through it, so expect a wild kin or two whichever way you're heading.
+
 - **The field-tender** watches the sleepers' field in the middle. She tucks them in every evening.
 - **The field shrine** sits on a shelf to the east. You'll see it long before you reach it: the only
   way onto the shelf is a drop from the upper terrace, and the way off is a ledge. On the little
   shelf behind it, where harvest-sweets were left for the field, is a **Lumen Drop**.
-- **The east terrace.** On the last post of the top field, east of the stair's head, hangs a
-  **Harvest Knot**, a valuable that sells for 900 wicks.
+- **The east terrace.** On the last post of the top field, east of the stair's head, hangs the
+  **Harvest Knot**, the year's last sheaf plaited and ribboned. It's a **key item**: hang it on
+  your lamp from ITEMS (or pack it away again) and, while it's hung, wild kin come at you only a
+  quarter as often. It does the Hooded Lamp's job better, and the two don't add together. It can't
+  be sold. Show it to the field-tender and she'll tell you to keep it.
 - **The west plot.** In its corner, under a fold of sacking, are **2 Lullwool Charms**: charges
   that burn at **×3.0 on a dozing kin** (and are ordinary lamps on a waking one). They're never
   sold.
+
+### The Brook Piece
+
+The shrine board names five fields, and one of them, **the Brook Piece**, has no road to it. It's
+the little bramble-hedged nook in the **west corner of the col**, down by the Rimeway road. You can
+see it over the hedge from the road, but the hedge won't let you in. The way in is round the back:
+walk through the **long grass along the west wall**, then slip **under the snow pine's skirts**
+into the nook.
+
+Inside are a **marker stone** for the field, a tin under the hedge with a **Hearth Coal** in it,
+and **Tussock**, the field-tender's own old Hushvole, asleep alone under the best blanket in the
+Fields. Let him sleep: he was the first she tucked in, and the hardest. After the dawn he's up
+and nosing through the stubble, his blanket folded (badly) beside him.
 
 | Trainer | Where | Team | Purse |
 |---------|-------|------|------:|
@@ -240,8 +266,8 @@ goes, not where it is.*
 
 | Floor | Wild kin | Levels |
 |-------|----------|--------|
-| The foot (the ruined quay) | Voidmantle, Nullmoth, Wispwane, Liminalux | 48–50 |
-| I, the Oil Stores | Nullmoth, **Shutterwick**, Wispwane, Mothdim, Stillwarden, Lullwing | 50–52 |
+| The foot (the ruined quay) | Voidmantle, Shutterwick, Lullwing, Liminalux | 48–50 |
+| I, the Oil Stores | **Shutterwick** (common), Voidmantle, Lullwing, Stillwarden, Liminalux | 50–52 |
 | II, the Lens Gallery | **Shutterwick** (common), Voidmantle, Lullwing, Prismantus, Stillwarden; rarely Liminalux | 51–53 |
 
 At the foot, the keepers' cache on the islet stone holds a **Bright Balm** and a **Beacon Charge**,
@@ -253,6 +279,11 @@ The floor is four rooms. You come in at the **hall** (south). Above it are the *
 Odell, and the **store crank** on its back wall) and the **stair room** (north-east, with the stair
 up). A small **nook** opens off the hall's west end. The hall connects to each store by a doorway;
 the two upper rooms connect to each other by a doorway in the middle.
+
+The hall is the keepers' old living floor, and it's worth a slow walk: the mess table, the log
+lectern, oil barrels with a tally of winters chalked on them, sandbags kept dry for tides that no
+longer come, and crates of spare chimney-glasses that were never opened. Most of them have
+something to read.
 
 When you arrive, the glare blocks the hall's **east** doorway (to the stair room) and the doorway
 **between** the two upper rooms.
@@ -278,7 +309,7 @@ through.
 
 | Trainer | Team | Purse |
 |---------|------|------:|
-| Hollowing Acolyte Odell | Nullmoth 50, Stillwarden 51 | 1,020 |
+| Hollowing Acolyte Odell | Voidmantle 50, Stillwarden 51 | 1,020 |
 
 ### Floor II: the Lens Gallery
 
@@ -323,8 +354,8 @@ doorway from below, then come back and open the near one last.
 
 | Trainer | Team | Purse |
 |---------|------|------:|
-| Hollowing Acolyte Prue | Wispwane 51, Shutterwick 51, Prismantus 52 | 1,040 |
-| Hollowing Acolyte Hask | Mothdim 52, Cindersob 52, Voidmantle 53 | 1,060 |
+| Hollowing Acolyte Prue | Liminalux 51, Shutterwick 51, Prismantus 52 | 1,040 |
+| Hollowing Acolyte Hask | Lullwing 52, Embergone 52, Voidmantle 53 | 1,060 |
 
 The cranks stay as you left them. Coming back down later, the way is already open.
 
@@ -364,9 +395,10 @@ Once you've beaten her and heard her story, talk to her, or to the great lamp, a
 you'll open it up. (Say "Not yet" and she'll wait.) Together you lean on the great crank. The shutters fold back, the beam goes out over the
 coldfog, and every buoy down the coast wakes in answer.
 
-She gives you **3 Shutter Charms**, cut from the first shutter's three latches: charges that burn
-at **×2.5 on Dark-type kin** (and are ordinary lamps on anything else). They're never sold, so
-those three are all there are.
+She gives you the **Shutter Charm**: the first shutter's own latch, which she worked off the night
+she bolted it and has carried ever since. It's a keepsake charge that burns at **×2.5 on Dark-type
+kin** (an ordinary lamp on anything else), and it's **never spent**: you keep it after every throw.
+It isn't sold anywhere, so this one is the only one.
 
 If you first climb the tower after the dawn, the relight follows straight on from the bout.
 
@@ -395,10 +427,14 @@ back into the Ring. It never connects to the Spire.
 2. **The Last Watch.** Bran holds the narrow way into the watch. **Old Clemency** tends the
    **watch-fire**: a free rest, and a rest point. North of the fire, a round pit gives the **view up
    the Spire's shaft**, all the way to a point of pale light at the top. (There's no way up it.)
-3. **The Warm Stones.** Go east from the fire through the narrow east cut and down the slump into
-   the south-east pocket. A watcher's tin there, marked FOR WHOEVER GOES UP, holds a **Lumen Drop**
-   and a **Hearth Coal**: the last Lumen Drop on the road to the summit. The Warm Stones also have
-   their own wild bed (below), the only place to find **Embralux** before the dawn.
+3. **The Warm Stones.** The south-east pocket, with two ways in. Walk south from the fire along
+   the **south gallery** (hood-lines, a name-slate, a water-butt and a cold brazier) and it opens
+   straight onto the stones, so you can walk there and back. Or take the narrow east cut from the
+   fire and hop down the **slump**, a one-way rubble drop. A watcher's tin there, marked FOR WHOEVER GOES UP,
+   holds a **Lumen Drop** and a **Hearth Coal**: the last Lumen Drop on the road to the summit.
+   The Warm Stones also have their own wild bed (below): the only place to find **Embralux** before
+   the dawn, and the only place in the world where **JesterFull** turns up wild. Old Clemency
+   mentions both, and a chalked stone by the bed has advice for the jester.
 4. **The east galleries.** Climb the east ladder. Hesk stands the last post before the stair back
    up to the Ring.
 
@@ -407,6 +443,10 @@ back into the Ring. It never connects to the Spire.
 Let all three watchers try you (Odalie, Bran and Hesk), then go back to Old Clemency at the fire
 and tell her. Hesk is on the way out, so beat him, then go back down the east ladder to the fire.
 She gives you the **Star-chart: Voidburst** (Dark), the watch's own chart. It isn't sold anywhere.
+
+Then she rings the little **watch-bell** and calls the watch in. From then on Odalie, Bran and Hesk
+have left their posts (the galleries are empty where they stood) and sit together round
+Clemency's fire, each with something to say.
 
 | Trainer | Where | Team | Purse |
 |---------|-------|------|------:|
@@ -420,7 +460,7 @@ She gives you the **Star-chart: Voidburst** (Dark), the watch's own chart. It is
 | Glow-moss beds (upper floor) | Lunvane, Liminalux, Lunarbel, **Lumenmoss**, Wisprestored | 52–55 |
 | The galleries (lower floor) | Liminalux, Voidmantle, a Lunar/Dark kin, Embergone, Whorlix; rarely **Nullhusk** | 54–56 |
 | Glow-moss beds (lower floor) | Lumenmoss, Lunarbel, Lunvane, **Prismara**, Liminalux; rarely **Dawnwatcher** | 54–56 |
-| The Warm Stones (lower floor, south-east) | **Shutterwick** (common), Lullwing, Lumenmoss, Liminalux; rarely **Embralux** | 54–56 |
+| The Warm Stones (lower floor, south-east) | **Shutterwick** (common), Lullwing, Lumenmoss, Liminalux; rarely **Embralux** and **JesterFull** | 54–56 (Embralux and JesterFull 55–56) |
 
 These are the strongest wild Dark and Light beds before the summit, and a good place to finish
 levelling for Warden Còr (see [[the-spire|Chapter 6]]).
@@ -431,20 +471,22 @@ The north doesn't throw open every shutter at once. It's quieter than that.
 
 - **Stillwater.** Two of the shore lamps stand open and lit. In Maren's house, the upstairs
   shutter is open, with a lamp in the window and a child at it. The mist thins, and everybody has
-  something new to say (Elder Ashe has news of the Warden). The screens come off the hearths.
-  Keeper Wenna starts taking the shutter-wall down, one shutter at a time.
+  something new to say (Elder Ashe has news of the Warden). The screens come off the hearths,
+  Margery and Edwy's stove is opened up, and Keeper Wenna starts taking the shutter-wall down,
+  one shutter at a time.
 - **The Mourning Fields.** The sleepers wake and get to work, the scarecrow-lamps are unhooded, and
-  one candle burns again on the field shrine. The field-tender still folds the blankets, and
-  the first time you talk to her she gives you **3 more Lullwool Charms**.
+  all **five candles** burn again on the field shrine, one for each field. Tussock is awake in the
+  Brook Piece. The field-tender still folds the blankets, and the first time you talk to her she
+  gives you **3 more Lullwool Charms**.
 - **The Drownlight** can be relit (above), and its buoys wake when it is.
-- **The Underways.** The watch-lamps are lit, the sleeping kin are awake, and the Spire's shaft is
-  full of morning. Old Clemency has a cup of tea for you.
+- **The Underways.** The watch-lamps and the cold braziers are lit, the sleeping kin are awake,
+  and the Spire's shaft is full of morning. Old Clemency has a cup of tea for you.
 - **The wild kin change.** The kindled and day forms lead:
 
 | Where | Wild kin after the dawn | Levels |
 |-------|-------------------------|--------|
 | Near marsh | Wisprestored, Liminalux, Voidmantle, Embergone, Lullwing, a Lunar/Dark kin | 55–65 |
-| Near marsh, the golden patch | Wisprestored (now the common one, 59–65); Flutterwane and Mothdim still 17–21 | 17–65 |
+| Near marsh, the golden patch | **Wisprestored** (now the common one, 59–65), Liminalux, Voidmantle | 56–65 |
 | Deep marsh | Wisprestored, Liminalux, Voidmantle, Embergone, a Lunar/Dark kin, Lullwing | 57–65 |
 | Stillwater's meadows | **Shutterwick**, **Lullwing**, Wisprestored, Liminalux, Embergone | 55–62 |
 | The lamp-maker's yard | Dousecap (still 42–44), plus Shutterwick and Wisprestored (55–58) | 42–58 |
@@ -453,6 +495,6 @@ The north doesn't throw open every shutter at once. It's quieter than that.
 | The Underways, upper glow-moss | Lumenmoss, Lunvane, Prismara, Dawnwatcher | 56–59 |
 | The Underways, lower galleries | Liminalux, Wisprestored, Prismara, Lunarbel; rarely Embralux | 57–60 |
 | The Underways, lower glow-moss | Lumenmoss, Prismara, Lunvane, Dawnwatcher | 57–60 |
-| The Warm Stones | **Embralux**, Shutterwick, Prismara, Lumenmoss | 57–60 |
+| The Warm Stones | **Embralux**, Shutterwick, Prismara, Lumenmoss; rarely **JesterFull** | 57–60 (JesterFull 58–60) |
 
 The Drownlight's floors keep the same kin as before.

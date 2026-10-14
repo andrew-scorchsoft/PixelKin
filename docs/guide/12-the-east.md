@@ -149,7 +149,12 @@ sky. Wren arrives just after, unsettled, and wonders whether the Hollowing might
 | Moss-tender Dell | Sporeling 19, Sporemid 20 | 400 |
 | Deepwood Warden Mirrel | Glowsip 20, Fennlight 21 | 420 |
 
-Wild kin run 20–23: Mossglow, Fennlight, Sporeling, Sporemid. The lower floor has a Star-chart
+Wild kin run 20–23: Mossglow, Fennlight, Sporeling, Sporemid.
+
+Once the lantern is relit, the green chamber gets a bed of its own: Mossglow and Fennlight
+(20–22), plus two kin you won't find wild anywhere else, **Mothdim** (18–19) and **Flutterwane**
+(20–21), young moths drifting in to the relit light. Both are still below their kindling levels,
+so this is the place to catch them in their first forms. The lower floor has a Star-chart
 (Focus Mind), and the upper floor a Hearth Coal and a Warm Balm among its caches. A side cell
 holds a Bright Balm, but your lamp needs to reach Brightlight (four Gleams) to show it.
 

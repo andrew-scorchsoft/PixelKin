@@ -93,7 +93,6 @@ These do nothing but sell well. Find them in caches and quests.
 | Wax Cake | 250 |
 | Moth-amber | 600 |
 | Embergloss | 600 |
-| Harvest Knot | 900 |
 | Glassmere Pearl | 1,200 |
 | Starglass Shard | 1,500 |
 | Murk Pearl | 1,500 |
@@ -104,6 +103,7 @@ These do nothing but sell well. Find them in caches and quests.
 |------|--------------|-------|
 | Vesperlamp | Catch wild kin | Fenn, at the start |
 | Hooded Lamp | Toggle in ITEMS: halves wild encounters while it's hooded | Pearlmoor Chandlery, 600 wicks, after the Tide Gleam (or Osric in Stillwater) |
+| Harvest Knot | Toggle in ITEMS (hang it or pack it): wild encounters drop to a quarter while it's hung. It doesn't stack with the Hooded Lamp; the stronger of the two wins | Found on the last post of the Mourning Fields' top field. Not sold, and it can't be sold |
 | Runner | Ride the Wick-Run at speed | Rented from Pell at Wick-Run Crest, 300 wicks |
 | Runner's Ribbon | Free runner rentals | Rook, for a gold Wick-Run |
 | Frostglass Lens | See false lights for what they are | Isel, Pale Vault (see [[the-wild-ways|The Wild Ways]]) |

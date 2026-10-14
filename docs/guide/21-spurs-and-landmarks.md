@@ -28,7 +28,7 @@ enter. This chapter is that list.
 | Drownlight Beacon | Coldfog Marches | Emberward | 48–54 | The tower's shutter puzzle and the Shutterkeeper (see [[the-hollowings-country|The Hollowing's Country]]) |
 | Hollowfen Stillworks | Coldfog Marches, deep marsh | Emberward + Glimmerstep | 48–51 | **Whorlix** |
 | Starwell | Penumbra Ring | Starreach | — | **Lunaveil** (lv 54) |
-| The Underways | Penumbra Ring | Starreach + all eight Gleams | 52–56 | The last watch, a rest and the last Lumen Drop before the summit |
+| The Underways | Penumbra Ring | Starreach + all eight Gleams | 52–56 | The last watch, a rest, the last Lumen Drop before the summit, and the only wild **JesterFull** (the Warm Stones) |
 
 There's also a void-gap deep in **Cinderhead Deep** that looks as if Starreach should cross it.
 In the current version, nothing lies beyond it yet.
@@ -133,6 +133,10 @@ A Lumen Drop raises a kin one whole level. You can't buy them anywhere.
 | The Wick-Run | A ledge you can only reach by riding a ramp |
 | The Old Seams | A ledge off the scree, riders only |
 | The Bell Cellar, under Lowtinder | Beside the old town bell |
+| Stillwater's Quiet Hall | Keeper Wenna's reward for "The Shutter-wall" |
+| The Mourning Fields | On the shelf behind the field shrine |
+| The Drownlight, Lens Gallery | Behind the oil cistern in the west gallery |
+| The Penumbra Underways | The watcher's tin at the Warm Stones, the last before the summit |
 | Gran Tallow's reef battle | Three, after the dawn |
 | The Farlamp Isles and the Undertide | Several, after the dawn |
 | Deep-water caches | Off Gullcry Rock and the Dimglass flats, reachable only by skiff after the dawn |
