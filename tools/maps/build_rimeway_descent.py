@@ -28,6 +28,8 @@ HANDSHAKES:
   SOUTH (38,27)/(39,27) `to_fold`/`_e` (requires flag:rime_gate_open,
         blocked_ref npc.rime_gate_wrongside) -> rimeway_fold (6,1)/(7,1); the
         Fold's `to_descent` lands at our (38,26)/(39,26).
+  NORTH (16..19,0) `to_fields` (Lane N3, walkthrough/11 Part C) -> mourning_fields
+        (10..13,30); the Fields' `to_rimeway` (10..13,31) lands at our (16..19,1).
 Geometry (world_geometry frame): x 62..104, y -429..-401.
 
 Run:  python3 tools/maps/build_rimeway_descent.py
@@ -48,6 +50,7 @@ owed: list[str] = []
 c = fk.Canvas(W, H, ".")
 c.rect(0, 0, W - 1, 1, "#").rect(0, 0, 1, H - 1, "#").rect(40, 0, 41, H - 1, "#")
 c.rect(0, 27, W - 1, 27, "#")
+c.rect(16, 0, 19, 1, ".")                     # north: up to the Mourning Fields (Lane N3)
 c.rect(0, 14, 1, 15, "=")                     # west: the marsh
 c.rect(38, 25, 39, 27, "=")                   # south: THE RIME GATE's passage
 c.put([(37, 25), (37, 26), (40, 25), (40, 26)], "#")   # the gate's piers
@@ -65,12 +68,13 @@ c.ladder(34, 13, 16)
 
 # roads (snowtrail on the col; the fen keeps its own drained ground)
 c.rect(2, 14, 12, 15, "=").rect(12, 12, 12, 15, "=")                 # fen road
+c.rect(17, 0, 18, 3, "=")                     # the field road down onto the ridge
 c.rect(12, 4, 13, 7, "=").rect(12, 4, 34, 5, "=").rect(34, 5, 34, 12, "=")   # ridge
 c.rect(34, 17, 35, 20, "=").rect(34, 20, 39, 21, "=").rect(38, 21, 39, 24, "=")  # gate yard
 # tufts
 c.rect(7, 12, 8, 26, '"')                     # MANDATORY: the fen, full height
 c.rect(16, 18, 23, 24, '"')                   # the fen's deep bed
-c.rect(18, 2, 24, 3, '"').rect(26, 6, 31, 7, '"')   # ridge beds
+c.rect(20, 2, 25, 3, '"').rect(26, 6, 31, 7, '"')   # ridge beds
 c.rect(28, 22, 33, 25, '"')                   # the gate yard bed
 c.rect(2, 5, 4, 7, '"')                      # the ridge's west corner
 rows = c.rows()
@@ -108,6 +112,8 @@ frosttuft = [v if (i % W, i // W) not in FEN else 0 for i, v in enumerate(g["tuf
 
 fk.edge_warps(m, wid="to_coldfog", cells=[(0, 14), (0, 15)], to_map="coldfog_marches_ii",
               to=[(28, 16), (28, 17)], facing="left", suffix="_s")
+fk.edge_warps(m, wid="to_fields", cells=[(x, 0) for x in (16, 17, 18, 19)],
+              to_map="mourning_fields", to=[(x, 30) for x in (10, 11, 12, 13)], facing="up")
 fk.edge_warps(m, wid="to_fold", cells=[(38, 27), (39, 27)], to_map="rimeway_fold",
               to=[(6, 1), (7, 1)], facing="down", requires_flag="flag:rime_gate_open",
               blocked_ref="npc.rime_gate_wrongside")
@@ -209,6 +215,7 @@ avoid = fk.busy_cells(m) | set(pin)
 avoid |= {(x, y) for y in range(H) for x in range(W)
           if rows[y][x] != "." or deco[y * W + x] or murk[y * W + x]}
 avoid |= {(38, 24), (39, 24), (38, 23), (39, 23)}
+avoid |= {(x, y) for x in range(16, 20) for y in range(0, 3)}   # the Fields road (N3)
 litter = [gid("g_pebble"), gid("g_tuft")]
 for y in range(H):
     for x in range(W):

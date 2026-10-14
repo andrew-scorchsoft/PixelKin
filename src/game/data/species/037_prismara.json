@@ -111,6 +111,13 @@
       "rarity": "uncommon",
       "min": 64,
       "max": 66
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 55,
+      "max": 56
     }
   ],
   "scripted": true,

@@ -1721,6 +1721,35 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     music: 'assets/audio/music/bell-cellar.mp3',
     battle_backdrops: ['assets/backgrounds/battle/bell-cellar-a.webp'],
   },
+  // ---- Lane N3 — the Hollowing's Country (walkthrough/11 Parts C + D, 2026-10) ----
+  // The Mourning Fields: the fallow fields the Hollowing quieted; closes the north loop.
+  mourning_fields: {
+    json: 'assets/maps/mourning_fields.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/mourning-fields.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/mourning-fields-a.webp'],
+  },
+  // The Penumbra Underways: two portal floors under the Ring (the last road, optional).
+  penumbra_underways: {
+    json: 'assets/maps/penumbra_underways.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/penumbra-underways.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/underways-a.webp'],
+  },
+  penumbra_underways_b1: {
+    json: 'assets/maps/penumbra_underways_b1.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/penumbra-underways.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/underways-a.webp'],
+  },
 };
 
 /**

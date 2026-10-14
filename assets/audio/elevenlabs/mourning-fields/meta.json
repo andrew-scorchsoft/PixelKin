@@ -1,0 +1,14 @@
+{
+ "id": "mourning-fields",
+ "kind": "loop",
+ "where": "The Mourning Fields \u2014 the fallow farmland north of Coldfog where the Hollowing put the field-kin to sleep under grey blankets",
+ "mood": "Hush \u2014 a farm lullaby slowed to a whisper over fields of sleeping kin; tender, grey, almost home.",
+ "duration": 67.527,
+ "loop_start": 3.971,
+ "seam": 0.283,
+ "bpm_est": 89.1,
+ "song_id": "nrRVAmTL7gryGYFdG66W",
+ "raw_ms": 63500,
+ "motif": "low",
+ "lufs": -15.4
+}

@@ -485,6 +485,14 @@
       "name": "Hollowfen Stillworks"
     },
     {
+      "id": "mourning_fields",
+      "x": 150,
+      "y": 19,
+      "kind": "route",
+      "region": "outer",
+      "name": "The Mourning Fields"
+    },
+    {
       "id": "wickrun_crest",
       "x": 82,
       "y": 204,
@@ -912,6 +920,16 @@
       "kind": "road"
     },
     {
+      "a": "coldfog_marches_i",
+      "b": "mourning_fields",
+      "kind": "road"
+    },
+    {
+      "a": "mourning_fields",
+      "b": "rimeway_descent",
+      "kind": "road"
+    },
+    {
       "a": "sunvault_climb_i",
       "b": "wickrun_crest",
       "kind": "road"
@@ -1112,6 +1130,7 @@
     "mirelight_chapel": "mirelight_chapel",
     "mirelight_glassmere": "mirelight_glassmere",
     "mirelight_landing": "mirelight_landing",
+    "mourning_fields": "mourning_fields",
     "nightreach_home": "nightreach_observatory",
     "nightreach_inn": "nightreach_observatory",
     "nightreach_lumenary": "nightreach_observatory",
@@ -1147,6 +1166,8 @@
     "pearlmoor_wanderwood": "pearlmoor_wanderwood",
     "pearlmoor_wanderwood_far": "pearlmoor_wanderwood",
     "penumbra_ring": "penumbra_ring",
+    "penumbra_underways": "penumbra_ring",
+    "penumbra_underways_b1": "penumbra_ring",
     "reckoning_works": "rimeway_fold",
     "rimeway_ascent": "rimeway_ascent",
     "rimeway_descent": "rimeway_descent",

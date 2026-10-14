@@ -102,6 +102,8 @@ const TREND_SKIP_AREAS = new Set([
   'cinderwind_kiln', // Lane A: Kiln Gully — optional, behind the Updraft vent (post-Mira)
   // Lane C2 — the Farlamp Isles' Undertide (post-game, optional, lv 61-66)
   'undertide_i', 'undertide_ii', 'undertide_iii', 'undertide_iv',
+  // Lane N3 (11 Parts C + D): the Mourning Fields (48-52) + the Underways (52-56), optional
+  'mourning_fields', 'penumbra_underways', 'penumbra_underways_b1',
 ]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
@@ -610,6 +612,12 @@ const BUILT_PAYOUTS = {
   undertide_keeper_isolde: ['keeper', 65, 1300],
   undertide_diver_marlo: ['route', 66, 1056],
   undertide_rematch_ondine: ['route', 67, 1072], // post-isles-dawn, re-runnable on the shared spar rest
+  // Lane N3 (11 Parts C + D): the Mourning Fields + the Penumbra Underways — optional
+  mournfields_ines: ['route', 50, 800],
+  mournfields_corran: ['route', 51, 816],
+  underways_watch_a: ['keeper', 54, 1080],
+  underways_watch_b: ['keeper', 55, 1100],
+  underways_watch_c: ['keeper', 56, 1120],
   // The Lumenary sparring partners (2026-10 economy review, content/sparring.ts):
   // repeatable keeper-class bouts, one per SPAR_COOLDOWN (3) won battles — optional
   // income OUTSIDE every solvency leg (like wren_rematch), so a broke player can
