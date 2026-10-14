@@ -44,6 +44,14 @@ mk.rect(floor, W, H, 3, 9, 4, 11)          # west store door
 mk.rect(floor, W, H, 1, 11, 5, 15)         # the west store
 mk.rect(floor, W, H, 17, 9, 18, 11)        # east loft door
 mk.rect(floor, W, H, 16, 11, 20, 15)       # the drying loft
+# (third pass) THE LOOP: the side rooms join the gully mouth along row 14, so the
+# kiln is a ring — hall -> store -> gully -> loft -> hall — not three dead ends.
+mk.rect(floor, W, H, 5, 14, 9, 14)         # store <-> gully
+mk.rect(floor, W, H, 12, 14, 16, 14)       # gully <-> loft
+# THE GLASS-BLOWERS' ALCOVE: walled off from the hall by a rack (seen over it, from
+# the hall), reached only by the cullet crawl up from the store (x=1, rows 6-10).
+mk.rect(floor, W, H, 1, 3, 2, 5)           # the alcove
+mk.rect(floor, W, H, 1, 6, 1, 10)          # the crawl
 for i in range(W * H):
     if floor[i]:
         wall[i] = 0
@@ -85,14 +93,16 @@ m["warps"] += [
 
 # the hall: the cold beehive furnace is the focal point, top-centre
 obj("kiln_furnace", "ashfall_kiln_furnace", (9, 2), 4, 3, overhang=1)
-obj("rack_w", "ashfall_glass_rack", (4, 2), 3, 2)
+obj("rack_w", "ashfall_glass_rack", (3, 3), 3, 2)        # the alcove's screen
 obj("rack_e", "ashfall_glass_rack", (14, 2), 3, 2)
 obj("cullet_w", "ashfall_glass_cullet", (4, 7), 2, 2)
 obj("cullet_e", "ashfall_glass_cullet", (15, 7), 2, 2)
 obj("store_crates", "ashfall_slag_heap_b", (1, 14), 2, 2)
 obj("store_cart", "cinderhead_ore_cart", (3, 12), 2, 2, overhang=1)
-obj("hall_crystal", "cinderhead_crystal_cluster", (12, 6), 2, 2, overhang=1, walk_under=True)
-obj("hall_slag", "ashfall_slag_heap_b", (7, 5), 2, 2)
+# the hall's centre: a cullet-and-crystal island you walk round (the furnace's apron)
+obj("hall_crystal", "cinderhead_crystal_cluster", (11, 6), 2, 2, overhang=1)
+obj("hall_cullet", "ashfall_glass_cullet", (9, 6), 2, 2)
+obj("hall_slag", "ashfall_slag_heap_b", (6, 5), 2, 2)
 obj("loft_rack", "ashfall_glass_rack", (18, 11), 3, 2)
 # THE LAST PANE on the loft's drying rack (seen across the loft; gone once taken)
 obj("last_pane", "ashfall_pane_frame", (20, 13), 1, 2, solid=False,
@@ -110,9 +120,9 @@ owed += ["script.kiln_last_pane", "script.kiln_furnace_lore", "npc.kiln_rack_lor
 owed += pt.sign(m, deco, W, sid="kiln_tally", at=(12, 13))
 
 owed += pt.cache(m, cid="kiln_beacon", at=(18, 3))       # the hall's NE corner
-owed += pt.cache(m, cid="kiln_chart", at=(1, 12))        # the west store: Shardstorm
+owed += pt.cache(m, cid="kiln_chart", at=(1, 4))         # the alcove: Shardstorm (seen first)
 
-for (x, y, n) in [(3, 5, "boulder"), (17, 6, "boulder"), (9, 14, "g_pebble"),
+for (x, y, n) in [(3, 5, "boulder"), (3, 2, "boulder"), (17, 6, "boulder"), (9, 14, "g_pebble"),
                   (12, 15, "g_pebble"), (7, 8, "g_pebble"), (13, 7, "glowshroom_a"),
                   (5, 12, "g_pebble"), (16, 14, "boulder"), (8, 4, "glowshroom_b")]:
     put(x, y, n)
@@ -123,7 +133,8 @@ TABLE = [
     {"kin_id": 54, "weight": 18, "min_level": 33, "max_level": 33},    # Orebound — Stone
     {"kin_id": 43, "weight": 15, "min_level": 34, "max_level": 35},    # Pyrolith — Ember/Stone
     {"kin_id": 15, "weight": 10, "min_level": 34, "max_level": 35},    # Pyriven — Ember/Dark
-    {"kin_id": 37, "weight": 5, "min_level": 35, "max_level": 35},     # Prismara — rare
+    {"kin_id": 17, "weight": 8, "min_level": 34, "max_level": 35},     # Scorchwing — the kiln's signature
+    {"kin_id": 37, "weight": 3, "min_level": 35, "max_level": 35},     # Prismara — very rare
 ]
 m["encounters"] = [
     {"id": "kiln_hall", "terrain": "cave", "rect": {"tx": 3, "ty": 5, "w": 16, "h": 5},

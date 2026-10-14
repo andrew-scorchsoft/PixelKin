@@ -80,7 +80,7 @@
     {
       "area": "cinderwind_kiln",
       "terrain": "cave",
-      "rarity": "rare",
+      "rarity": "very_rare",
       "min": 35,
       "max": 35
     },

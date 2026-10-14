@@ -74,6 +74,13 @@
       "rarity": "uncommon",
       "min": 58,
       "max": 60
+    },
+    {
+      "area": "cinderwind_kiln",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 34,
+      "max": 35
     }
   ],
   "scripted": false,

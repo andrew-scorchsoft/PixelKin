@@ -103,13 +103,15 @@ pt.ledge_run(deco, W, H, 13, NOOK[0], NOOK[1], rng)      # shelf -> nook (one wa
 # at x 7-8 in an inner bank (rows 20-21). The way UP folds: in at x 5-6, east to
 # the gap, up, then back WEST to the cut at x=3. The nook drops straight past
 # all of it — shelf -> nook -> lower basin — so the way DOWN skips the fold.
-mk.rect(cliff, W, H, 9, 15, 10, 21)                      # nook west wall
-mk.rect(cliff, W, H, 13, 14, 14, 26)                     # nook east wall = basin/gate divider
-mk.rect(cliff, W, H, 2, 20, 8, 21)                       # the basin's inner bank...
-for y in (20, 21):
-    for x in (7, 8):
-        cliff[y * W + x] = 0                             # ...and its one gap (the fold)
-pt.ledge_run(deco, W, H, 21, NOOK[0], NOOK[1], rng)      # nook -> lower basin (one way)
+# (third pass) No mid-field cliff slabs (level-design §11 r8): the nook's west side
+# is a RUBBLE RIDGE of rock clusters (objects, below), the basin/gate divider is a
+# strip of the crest wood (tree terrain), and the inner bank is a TERRACE BANK — one
+# long south ledge (hop down, never climb) with its one walk-up gap at x 7-8. The
+# nook's own drop is that same bank's east end.
+mk.rect(tree, W, H, 13, 15, 14, 26)                      # the divider: a strip of the crest wood
+BANK = [x for x in range(2, 13) if x not in (7, 8)]      # the terrace bank (row 21), gap at 7-8
+for x in BANK:
+    deco[21 * W + x] = rng.choice([gid("grass_ledge_s"), gid("grass_ledge_s_v1")])
 
 # ---- lanes (green ground only; the ash keeps no road) --------------------------------
 LANE = set()
@@ -245,14 +247,26 @@ obj("crag_rocks_w", "ashfall_rockfall_b", (0, 17), 2, 2)
 obj("crag_slag_w", "ashfall_slag_heap_b", (0, 23), 2, 2)
 obj("crag_rocks_e", "ashfall_rockfall_b", (22, 15), 2, 2)
 obj("crag_slag_e", "ashfall_slag_heap_b", (22, 20), 2, 2)
+obj("crag_slag_n2", "ashfall_slag_heap_b", (16, 0), 2, 2)
+obj("crag_rocks_ne", "ashfall_rockfall_b", (21, 0), 2, 2)
+obj("crag_rocks_w2", "ashfall_rockfall_b", (0, 4), 2, 2)
+obj("crag_slag_w2", "ashfall_slag_heap_b", (0, 10), 2, 2)
+obj("crag_rocks_e2", "ashfall_rockfall_b", (22, 10), 2, 2)
 
 # ---- the slag nook (the ash-buried cache) -----------------------------------------------
+# its west side: a rubble ridge (three rock clusters, rows 15-20), not a wall
+obj("nook_ridge_a", "ashfall_rockfall_b", (9, 15), 2, 2)
+obj("nook_ridge_b", "ashfall_slag_heap_b", (9, 17), 2, 2)
+obj("nook_ridge_c", "ashfall_rockfall_b", (9, 19), 2, 2)
 owed += pt.cache(m, cid="ashfall_nook", at=(12, 16))
 deco[18 * W + 11] = gid("boulder")      # a slag lump in the nook (one column stays open)
 
 # ---- the basins + the gate shelf ---------------------------------------------------------
 obj("basin_slag", "ashfall_slag_heap", (8, 25), 3, 2)
 obj("basin_tree", "tinderwick_tree", (2, 22), 3, 4, overhang=3, walk_under=True)
+# crown trees breaking the crest-wood divider strip
+obj("divider_tree_n", "tinderwick_tree", (13, 15), 3, 4, overhang=3, walk_under=True)
+obj("divider_tree_s", "tinderwick_tree", (12, 22), 3, 4, overhang=3, walk_under=True)
 obj("upper_rocks", "ashfall_rockfall_b", (5, 18), 2, 2)
 obj("basin_lamp", "tinderwick_lamp_post", (9, 22), 1, 3, overhang=2, walk_under=True)
 obj("gate_slag", "ashfall_slag_heap", (15, 23), 3, 2)
@@ -283,6 +297,20 @@ m["npcs"] += [
 owed += ["script.oda_kilnwright", "npc.ashfall_camp_hauler"]
 
 # ---- encounters (band 30-33; the ash-grass and the green share one table) -----------------
+ASH_TABLE = [
+    {"kin_id": 49, "weight": 30, "min_level": 31, "max_level": 33},    # Gravelo — Stone (the slag itself)
+    {"kin_id": 45, "weight": 22, "min_level": 30, "max_level": 31},    # Sparkrat — Stone/Storm
+    {"kin_id": 43, "weight": 18, "min_level": 32, "max_level": 33},    # Pyrolith — Ember/Stone (warm tips)
+    {"kin_id": 89, "weight": 20, "min_level": 30, "max_level": 32},    # Flintbeak — Storm
+    {"kin_id": 63, "weight": 10, "min_level": 30, "max_level": 31},    # Stonebark — the ash-grass's own rare
+]
+GREEN_TABLE = [
+    {"kin_id": 101, "weight": 30, "min_level": 30, "max_level": 32},   # Galefox — Storm
+    {"kin_id": 89, "weight": 28, "min_level": 30, "max_level": 32},    # Flintbeak — Storm
+    {"kin_id": 98, "weight": 20, "min_level": 30, "max_level": 31},    # Thrumble — Storm
+    {"kin_id": 45, "weight": 14, "min_level": 30, "max_level": 31},    # Sparkrat — Stone/Storm
+    {"kin_id": 46, "weight": 8, "min_level": 32, "max_level": 33},     # Voltcrag — the green's rare
+]
 TABLE = [
     {"kin_id": 49, "weight": 25, "min_level": 31, "max_level": 33},    # Gravelo — Stone
     {"kin_id": 45, "weight": 22, "min_level": 30, "max_level": 31},    # Sparkrat — Stone/Storm
@@ -293,9 +321,9 @@ TABLE = [
 ]
 m["encounters"] = (
     pt.zones_from_grid(tallgrass, W, H, terrain="tall_grass", rate=0.10,
-                       id_prefix="ashfall_green", table=TABLE)
+                       id_prefix="ashfall_green", table=GREEN_TABLE)
     + pt.zones_from_grid(ashtuft, W, H, terrain="tall_grass", rate=0.10,
-                         id_prefix="ashfall_ash", table=TABLE))
+                         id_prefix="ashfall_ash", table=ASH_TABLE))
 
 # ---- deco --------------------------------------------------------------------------------
 object_cells = {(x, y) for o in m["objects"]
@@ -316,7 +344,13 @@ for (x, y) in [(13, 8), (8, 6), (19, 6), (21, 11)]:
     if (x, y) not in avoid:
         deco[y * W + x] = gid("boulder")
 mk.scatter_decor(deco, base, W, H, rng, density=0.12, avoid=avoid)
-crag_bits = [gid("boulder"), gid("greymoss_a"), gid("greymoss_b")]
+crag_bits = [gid("boulder"), gid("greymoss_a"), gid("greymoss_b"), gid("g_pebble")]
+crag_rng = random.Random(2310)            # its own stream: never reshuffles the rest
+for y in range(H):
+    for x in range(W):
+        i = y * W + x
+        if cliff[i] and deco[i] == 0 and (x, y) not in object_cells and crag_rng.random() < 0.22:
+            deco[i] = crag_rng.choice(crag_bits)
 for (x, y) in [(3, 1), (9, 0), (16, 1), (1, 6), (0, 12), (1, 27), (22, 2), (23, 11), (23, 22)]:
     if cliff[y * W + x] and deco[y * W + x] == 0 and (x, y) not in object_cells:
         deco[y * W + x] = rng.choice(crag_bits)

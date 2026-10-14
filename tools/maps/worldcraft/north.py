@@ -223,9 +223,9 @@ PLACEMENTS: dict[str, dict] = {
         },
         "npcs": [
             ambient_kin("amb_gravelo", (9, 6), 49, radius=1),
-            # the rare, teased in plain sight: grazing the gate shelf's grass, right
-            # beside the descent lane (greetable — KIN_CHATTER 63)
-            ambient_kin("amb_stonebark", (16, 18), 63, radius=1),
+            # the rare, teased in plain sight: grazing the ash beside the crossing, right
+            # where the ash-grass it lives in begins (greetable — KIN_CHATTER 63)
+            ambient_kin("amb_stonebark", (13, 7), 63, radius=1),
             ambient_kin("amb_flintbeak", (17, 5), 89, radius=1),
         ],
     },

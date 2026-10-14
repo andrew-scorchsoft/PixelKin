@@ -518,6 +518,16 @@ Ashfall Shelf (30–33) → Galehigh**, with Mira's recommended party raised 28 
   grazes as greetable ambient colour on the gate shelf beside the descent lane. **Day-forms:**
   after `flag:dawn` the beds run Voltcrag/Gravelo/Strikeaven/Tempestail and the woken
   **Rootwarden** (lv 56–62); Kiln Gully runs Prismara/Riddlestone/Ferrolith/Pyrolith/Lithonyx.
+- **Third pass (2026-10, review).** No mid-field cliff slabs: the nook's west side is a rubble
+  ridge of rock clusters, the basin/gate divider is a strip of the crest wood with crown trees,
+  and the two basin tiers are joined by a terrace bank (one long south ledge, walk-up gap at x
+  7–8). The fold and the nook shortcut stand (53 vs 43 steps). The ash beds (Gravelo, Sparkrat,
+  Pyrolith, Flintbeak, Stonebark) and the green beds (Galefox, Flintbeak, Thrumble, Sparkrat, rare
+  Voltcrag) now run different mixes. Kiln Gully is a ring (hall → store → gully → loft), with a
+  cullet-and-crystal island in the hall and the glass-blowers' alcove (seen over a rack from the
+  hall, reached by a crawl from the store) holding the Shardstorm chart. Its signature rare is
+  **Scorchwing** (lv 34–35): the only pre-dawn wild one, since its other placement is the post-dawn
+  Hearthfall vigil. The gate-shelf tin now holds a Beacon charge.
 - **The haulers clear it.** Galehigh's new upper-west landing (rows 7–8, a throat at x=2)
   carries a step_on band, `script.ashfall_rockfall_promise`, setting
   `flag:scarp_rockfall_clear`. Mira's hook (`script.mira_quest`) also rides row 12 under the

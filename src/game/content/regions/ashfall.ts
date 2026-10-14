@@ -104,8 +104,8 @@ export const ASHFALL_SCRIPTS: ScriptRegistry = {
   ],
   'script.pickup_ashfall_tin': [
     { op: 'sfx', key: 'world-pickup' },
-    { op: 'giveItem', item: 'glow_charge', count: 2 },
-    { op: 'say', text: 'A hauler\'s tin wedged under the cart, "FOR THE NEXT ONE UP" scratched on the lid. Found 2 GLOW CHARGES!' },
+    { op: 'giveItem', item: 'beacon_charge', count: 1 },
+    { op: 'say', text: 'A hauler\'s tin wedged under the cart, "FOR THE NEXT ONE UP" scratched on the lid. Packed in straw inside: a BEACON CHARGE!' },
     { op: 'setFlag', flag: 'flag:picked_ashfall_tin' },
   ],
   'script.ashfall_picker': [

@@ -1841,6 +1841,13 @@
      "rarity": "uncommon",
      "min": 58,
      "max": 60
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 34,
+     "max": 35
     }
    ],
    "scripted": false,
@@ -4528,7 +4535,7 @@
     {
      "area": "cinderwind_kiln",
      "terrain": "cave",
-     "rarity": "rare",
+     "rarity": "very_rare",
      "min": 35,
      "max": 35
     },
@@ -5524,6 +5531,13 @@
      "rarity": "very_rare",
      "min": 30,
      "max": 30
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 32,
+     "max": 33
     },
     {
      "area": "cinderwind_ashfall",
@@ -7521,7 +7535,7 @@
     {
      "area": "cinderwind_ashfall",
      "terrain": "tall_grass",
-     "rarity": "rare",
+     "rarity": "uncommon",
      "min": 30,
      "max": 31
     }
@@ -11599,6 +11613,13 @@
      "rarity": "common",
      "min": 29,
      "max": 30
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 30,
+     "max": 31
     }
    ],
    "scripted": false,
@@ -11864,7 +11885,7 @@
     {
      "area": "cinderwind_ashfall",
      "terrain": "tall_grass",
-     "rarity": "uncommon",
+     "rarity": "common",
      "min": 30,
      "max": 32
     }
