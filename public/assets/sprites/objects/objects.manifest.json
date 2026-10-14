@@ -7,6 +7,20 @@
       "tw": 2,
       "th": 3
     },
+    "ashfall_cullet_bin": {
+      "path": "assets/sprites/objects/ashfall_cullet_bin.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "ashfall_glass_crates": {
+      "path": "assets/sprites/objects/ashfall_glass_crates.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
     "ashfall_glass_cullet": {
       "path": "assets/sprites/objects/ashfall_glass_cullet.webp",
       "width": 32,
@@ -30,6 +44,13 @@
     },
     "ashfall_kiln_furnace": {
       "path": "assets/sprites/objects/ashfall_kiln_furnace.webp",
+      "width": 64,
+      "height": 48,
+      "tw": 4,
+      "th": 3
+    },
+    "ashfall_kiln_furnace_cold": {
+      "path": "assets/sprites/objects/ashfall_kiln_furnace_cold.webp",
       "width": 64,
       "height": 48,
       "tw": 4,
@@ -62,6 +83,13 @@
       "height": 48,
       "tw": 1,
       "th": 3
+    },
+    "ashfall_pane_moulds": {
+      "path": "assets/sprites/objects/ashfall_pane_moulds.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
     },
     "ashfall_rockfall": {
       "path": "assets/sprites/objects/ashfall_rockfall.webp",
