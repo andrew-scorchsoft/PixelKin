@@ -551,21 +551,6 @@
       "transition": "fade"
     },
     {
-      "id": "to_fogwall_5",
-      "at": {
-        "tx": 5,
-        "ty": 0
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_fogwall",
-      "to": {
-        "tx": 5,
-        "ty": 34
-      },
-      "facing": "up",
-      "transition": "fade"
-    },
-    {
       "id": "to_fogwall_6",
       "at": {
         "tx": 6,

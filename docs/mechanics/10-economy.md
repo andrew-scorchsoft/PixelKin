@@ -140,10 +140,14 @@ Vigilants pay 5,520w each (ace 69); the Last Lesson is `cor` class — Fenn at
 8,400w (ace 70). Post-crown re-runnable bouts are **optional income outside the
 solvency legs** (modelled as one-time in `progression.mjs`'s POSTGAME leg).
 
-**The Farlamp Isles (post-game, optional).** The two boat-trainers on the sea are
-`route` class (Calder 976w, ace 61; Rowan 992w, ace 62). Keeper **Bram Fathom** of
+**The Farlamp Isles (post-game, optional).** The four boat-trainers on the sea are
+`route` class (Calder 1,040w, ace 65; Rowan 1,056w, ace 66; Dunstan the salvager
+1,072w, ace 67; Willa the fog-pilot 1,088w, ace 68). Keeper **Bram Fathom** of
 Driftholm is `vigilant` class: 5,600w (ace 70), and his re-runnable rematch 5,760w
-(ace 72). All four sit in `BUILT_PAYOUTS`; none enters a solvency leg.
+(ace 72). All six sit in `BUILT_PAYOUTS`; none enters a solvency leg. The isles'
+found money (Kelpcrown's strongbox 2,000w, the *Heron*'s locker 800w), Hesk's
+1,500w thanks and the gull walk's Starglass Shard are added to the post-game leg's
+income.
 
 ## 5. Shops — how they look and work
 

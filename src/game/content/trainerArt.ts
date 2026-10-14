@@ -126,6 +126,7 @@ const TITLE_CLASS: Record<string, string> = {
   'Hall Sparrer': 'wick_tender', // the Lumenary sparring partners (content/sparring.ts)
   // the Farlamp Isles (Lane C1)
   Oarsman: 'net_hand', 'Kelp-farmer': 'net_hand', 'Isle Keeper': 'wick_tender',
+  Salvager: 'net_hand', 'Fog-pilot': 'net_hand', // C1 pass 2: the Shelfwater + Fogwall boats
 };
 
 /** Unique battle sprites, by trainer id (bosses, set-pieces, the Old Light's cast). */

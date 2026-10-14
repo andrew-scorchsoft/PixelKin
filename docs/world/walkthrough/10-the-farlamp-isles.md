@@ -87,11 +87,11 @@ can lock out a save that's already past the dawn.
 
 | id | name | kind | at (x,y) | size | links / role | levels |
 |---|---|---|---|---|---|---|
-| `farlamp_sound` **(BUILT, C1)** | Farlamp Sound | route (sea) | (-21,-69) | 27×33 | Top edge = Lightkeeper's Point's south beach (the slip). Deep sea with islets, two boat-trainers, sea encounters. West → `farlamp_shelfwater`; south → `farlamp_gullwrack`. | 58–61 |
-| `farlamp_shelfwater` **(BUILT, C1)** | The Shelfwater | route (sea) | (-51,-66) | 30×30 | Top edge = Wick-Run Foot's beach (a second launch). Reef islets, mixed shallow and deep water, a sunken-hull cache. West → Fogwall; south → Kelpcrown. | 59–62 |
-| `farlamp_fogwall` **(BUILT, C1)** | The Fogwall | route (sea) | (-83,-66) | 32×36 | Heavy mist. Without the fog-glass a step_on band turns you round ("you lose the buoys…"). With it, a lantern-buoy lane (MapObjects `requires_flag`) leads south to Driftholm. The blinking lamp is here. | 60–63 |
-| `farlamp_gullwrack` **(BUILT, C1)** | Gullwrack Isle | route | (-21,-36) | 27×34 | Gull-cliffs, ledges and tall sea-grass. **Undertide I** mouth. A keeper's hut (rest point). | 60–62 |
-| `farlamp_kelpcrown` **(BUILT, C1)** | Kelpcrown Isle | route | (-51,-36) | 30×34 | Ruins of the old keepers' quarter, kelp-terraces. **Undertide II** mouth; Tidecall pools. | 60–63 |
+| `farlamp_sound` **(BUILT, C1)** | Farlamp Sound | route (sea) | (-21,-69) | 27×33 | Top edge = Lightkeeper's Point's south beach (the slip). Deep sea with islets, two boat-trainers, sea encounters. West → `farlamp_shelfwater`; south → `farlamp_gullwrack`. | 62–65 |
+| `farlamp_shelfwater` **(BUILT, C1)** | The Shelfwater | route (sea) | (-51,-66) | 30×30 | Top edge = Wick-Run Foot's beach (a second launch). Reef islets, mixed shallow and deep water, a sunken-hull cache. West → Fogwall; south → Kelpcrown. | 63–66 |
+| `farlamp_fogwall` **(BUILT, C1)** | The Fogwall | route (sea) | (-83,-66) | 32×36 | Heavy mist. Without the fog-glass a step_on band turns you round ("you lose the buoys…"). With it, a lantern-buoy lane (MapObjects `requires_flag`) leads south to Driftholm. The blinking watch-light is here. | 64–67 |
+| `farlamp_gullwrack` **(BUILT, C1)** | Gullwrack Isle | route | (-21,-36) | 27×34 | Gull-cliffs, ledges and tall sea-grass. **Undertide I** mouth. A keeper's hut (rest point). | 64–66 |
+| `farlamp_kelpcrown` **(BUILT, C1)** | Kelpcrown Isle | route | (-51,-36) | 30×34 | Ruins of the old keepers' quarter, kelp-terraces. **Undertide II** mouth; Tidecall lagoons. | 64–67 |
 | `driftholm` **(BUILT, C1)** | Driftholm | town | (-83,-30) | 32×30 | Island town: inn (rest), chandlery shop, elder's house, the boathouse, the well-stair (→ Undertide III, gated `q_isles_wellstair`), a TRAVEL waystone (`content/waystones.ts`) so the way home is one menu away. | — |
 | `undertide_i` **(BUILT, C2)** | The Undertide | cave | portal | 30×28 | Under Gullwrack. Shallow channels + **tide-races** (`flows` rail on water, flag-switched by tide-bells). Ladder down to II. | 61–63 |
 | `undertide_ii` **(BUILT, C2)** | The Undertide — Kelp Vaults | cave | portal | 30×30 | Joins Gullwrack to Kelpcrown underground. The **fog-glass** at its heart. | 61–64 |
@@ -190,31 +190,55 @@ link edge to edge:
 
 Corner tiles are skipped, so no landing sits on a third map's seam.
 
-**The maps.**
-- **Sound** (58–61): Gannet Stack (cache), the wreck bar, Cormorant Holm with **Calder** the
-  oarsman (route trainer, ace 61), the reef under an old dark buoy line, the cliff-foot cove
-  (Hearth Coal), Tern Islet (the sign), the anchor rock. Ambient Tidwraith, Hermiwick and
-  Fathomote.
-- **Shelfwater** (59–62): two wide SHALLOW reef flats (Tidecall), the sunken lamp-tender
-  *Heron* (Hearth Coal + 800w), Skerry of the Oar with **Rowan** the kelp-farmer (ace 62),
-  the kelp holm.
-- **Fogwall** (60–63): heavy mist (`MapAmbience` + 12 fog-bank objects, all
+**The maps** (pass 2 after the expansion review: each sea map has one designed shape,
+each isle its own silhouette, and levels sit at the post-game player's L69+).
+- **Sound** (62–65): **the Ring**, a reef ring of black rocks and two bars round a shallow
+  lagoon, entered by a north gap or a south-west gap (both marked by the old dark buoys).
+  Also Gannet Stack (a sheer rock stack with gannets on top and a **Lumen Drop** at its
+  foot), the long wreck bar, Cormorant Holm with **Calder** the oarsman (ace 65), the
+  cliff-foot cove (Hearth Coal), Tern Islet (the sign) and the anchor skerry.
+- **Shelfwater** (63–66): **the Shelf channel**, two long reef bars running in parallel with
+  a buoyed rowing channel between them. Also the sunken lamp-tender *Heron* (Hearth Coal +
+  800w), Skerry of the Oar with **Rowan** the kelp-farmer (ace 66), the long kelp holm, and
+  the SE flat: a hooked bar round a shallow bight with the cutter *Gannet*'s ribs and
+  **Dunstan** the salvager in his boat (ace 67).
+- **Fogwall** (64–67): heavy mist (`MapAmbience` + 12 feathered fog-bank objects, all
   `hidden_when_flag: isles_dawn`).
+  - **The Teeth**: a chain of black skerries and reef arcing down the west side of the light
+    from the fog's edge to Driftholm's harbour mouth.
+  - The NW wreck bar: the cutter *Greylag* run aground, and **Willa** the fog-pilot (ace 68),
+    who came out from the mainland in the skiff's lit wake.
   - The **turn-round band** covers every water tile of row 13 (`script.fogwall_turned`:
     "...if only you had a glass to read the buoys by…", then `travel` back to (29,7)), hidden
     once `flag:q_isles_fogglass`.
-  - The **far lamp** on its skerry (16,17) blinks.
+  - The **watch-light** on its skerry (16,17) is the blink seen from the mainland. It is NOT
+    the Farlamp, which lies drowned. It is Driftholm's own watch-light, trimmed nightly by
+    the lamp-boy Lorne Sallow, who poles out along the Teeth (`script.fogwall_watch_light`,
+    interact on its rock; after the isles' dawn the drowned Farlamp glows gold beside it).
   - Eight **lantern-buoys** (dark → lit with the glass) mark the lane south to Driftholm.
-- **Gullwrack Isle** (60–62):
-  - The gull-cliffs over the **Undertide I mouth (13,9)**, as contracted.
-  - The **High Meadow**, a cliff-rimmed sea-grass shelf: you climb in by the north gap and hop
-    its south ledge down to the bothy fields (the loop).
+- **Gullwrack Isle** (64–66): tall and narrow against the mainland's sea-cliffs, opening west
+  like a claw round a cove of **nesting rocks**.
+  - Three tiers: the high gull-cliffs (nests on top); **the gull walk**, a grass ledge between
+    the cliff bands, climbed from the east beach and running out along the headland (a
+    **Starglass Shard** at its end); and the lower face with the **Undertide I mouth (13,9)**,
+    as contracted.
+  - **The sea arch** off the headland's tip: you can row through it.
+  - **The High Meadow**, a cliff-rimmed sea-grass shelf: you climb in by the north gap and
+    hop its south ledge down to the bothy fields (the loop).
   - **The keeper's bothy** (`gullwrack_hut`, a sleeping rest point, Sorrel).
-  - Dunes with dune-grass, and the east landing under the mainland's sea-cliffs.
-- **Kelpcrown Isle** (60–63): the keepers' ruins (the **2,000w purse**), two kelp terraces
-  with ledges (a Star-chart: Tempest), the **Tidecall pools** with an islet cache, and the
-  **Undertide II mouth (10,9)**, as contracted. The west edge is reef cliff, because
+- **Kelpcrown Isle** (64–67): low and wide, shaped like its name. A band of land across the
+  north (a low brow of rock over the **Undertide II mouth (10,9)**, as contracted, and the
+  keepers' quarter of broken walls with the **2,000w purse**), with three points running
+  south and two shallow lagoons between them:
+  - the west point: two kelp terraces with ledges (a Star-chart: Tempest);
+  - the middle point: **the drowned courtyard**, with a gated wall, pillars and a pool, its
+    far half under the lagoon (a broken arch and two pillars standing in the water);
+  - the east point: the landing.
+  An islet cache sits in the east lagoon (Tidecall). The west edge is reef cliff, because
   Driftholm's coast lies beyond.
+- **Kin.** Out here the isles' family is met KINDLED: Fathomere (#173) and Beaconclaw (#175)
+  are the common sea-kin. Their base forms, Fathomote (kindles at 40) and Hermiwick (at 42),
+  are 5–10% finds, because a wild lv-60 base form would long since have kindled.
 
 Every 15×10 screen of every sea map carries an islet, a wreck, a trainer, a buoy, a cache or
 an ambient kin (checked). `audit_visual` shows 0 warnings.

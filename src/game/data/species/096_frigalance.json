@@ -82,6 +82,20 @@
       "rarity": "rare",
       "min": 58,
       "max": 64
+    },
+    {
+      "area": "farlamp_sound",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 65
+    },
+    {
+      "area": "farlamp_gullwrack",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 66
     }
   ],
   "scripted": false,

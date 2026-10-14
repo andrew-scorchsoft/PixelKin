@@ -42,8 +42,8 @@
       "id": "gannet_nest_b",
       "sprite": "pearlmoor_gull_nest",
       "at": {
-        "tx": 6,
-        "ty": 7
+        "tx": 4,
+        "ty": 4
       },
       "w": 1,
       "h": 1,
@@ -105,8 +105,8 @@
       "id": "old_buoy_1",
       "sprite": "farlamp_buoy_dark",
       "at": {
-        "tx": 16,
-        "ty": 11
+        "tx": 15,
+        "ty": 12
       },
       "w": 1,
       "h": 2,
@@ -116,8 +116,8 @@
       "id": "old_buoy_2",
       "sprite": "farlamp_buoy_dark",
       "at": {
-        "tx": 20,
-        "ty": 13
+        "tx": 17,
+        "ty": 12
       },
       "w": 1,
       "h": 2,
@@ -127,8 +127,8 @@
       "id": "old_buoy_3",
       "sprite": "farlamp_buoy_dark",
       "at": {
-        "tx": 16,
-        "ty": 18
+        "tx": 12,
+        "ty": 22
       },
       "w": 1,
       "h": 2,
@@ -139,7 +139,7 @@
       "sprite": "farlamp_buoy_dark",
       "at": {
         "tx": 11,
-        "ty": 22
+        "ty": 24
       },
       "w": 1,
       "h": 2,
@@ -242,6 +242,314 @@
       "w": 1,
       "h": 1,
       "solid": false
+    },
+    {
+      "id": "strand_0",
+      "sprite": "farlamp_strand_shingle",
+      "at": {
+        "tx": 24,
+        "ty": 5
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_1",
+      "sprite": "farlamp_strand_shells",
+      "at": {
+        "tx": 6,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_2",
+      "sprite": "farlamp_strand_shingle",
+      "at": {
+        "tx": 14,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_3",
+      "sprite": "farlamp_strand_wrack",
+      "at": {
+        "tx": 21,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_4",
+      "sprite": "farlamp_strand_shells",
+      "at": {
+        "tx": 4,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_5",
+      "sprite": "farlamp_strand_shingle",
+      "at": {
+        "tx": 6,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_6",
+      "sprite": "farlamp_strand_shingle",
+      "at": {
+        "tx": 15,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_7",
+      "sprite": "farlamp_strand_shells",
+      "at": {
+        "tx": 23,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_8",
+      "sprite": "farlamp_strand_shells",
+      "at": {
+        "tx": 22,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_9",
+      "sprite": "farlamp_strand_shingle",
+      "at": {
+        "tx": 7,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_10",
+      "sprite": "farlamp_strand_shingle",
+      "at": {
+        "tx": 8,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_11",
+      "sprite": "farlamp_strand_wrack",
+      "at": {
+        "tx": 21,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_12",
+      "sprite": "farlamp_strand_shells",
+      "at": {
+        "tx": 4,
+        "ty": 15
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_13",
+      "sprite": "farlamp_strand_wrack",
+      "at": {
+        "tx": 9,
+        "ty": 16
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_14",
+      "sprite": "farlamp_strand_wrack",
+      "at": {
+        "tx": 3,
+        "ty": 17
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_15",
+      "sprite": "farlamp_strand_shells",
+      "at": {
+        "tx": 10,
+        "ty": 17
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_16",
+      "sprite": "farlamp_strand_shingle",
+      "at": {
+        "tx": 6,
+        "ty": 20
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_17",
+      "sprite": "farlamp_strand_shingle",
+      "at": {
+        "tx": 14,
+        "ty": 22
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_18",
+      "sprite": "farlamp_strand_shingle",
+      "at": {
+        "tx": 15,
+        "ty": 22
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_19",
+      "sprite": "farlamp_strand_shingle",
+      "at": {
+        "tx": 10,
+        "ty": 24
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_20",
+      "sprite": "farlamp_strand_shells",
+      "at": {
+        "tx": 10,
+        "ty": 25
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_21",
+      "sprite": "farlamp_strand_wrack",
+      "at": {
+        "tx": 12,
+        "ty": 25
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_22",
+      "sprite": "farlamp_strand_shells",
+      "at": {
+        "tx": 22,
+        "ty": 25
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_23",
+      "sprite": "farlamp_strand_shells",
+      "at": {
+        "tx": 23,
+        "ty": 25
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_24",
+      "sprite": "farlamp_strand_wrack",
+      "at": {
+        "tx": 13,
+        "ty": 27
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_25",
+      "sprite": "farlamp_strand_shells",
+      "at": {
+        "tx": 23,
+        "ty": 27
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_26",
+      "sprite": "farlamp_strand_wrack",
+      "at": {
+        "tx": 23,
+        "ty": 28
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "strand_27",
+      "sprite": "farlamp_strand_wrack",
+      "at": {
+        "tx": 23,
+        "ty": 29
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
     }
   ],
   "warps": [
@@ -294,66 +602,6 @@
       "id": "to_shelf_1",
       "at": {
         "tx": 0,
-        "ty": 5
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 2
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_2",
-      "at": {
-        "tx": 0,
-        "ty": 6
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 3
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_3",
-      "at": {
-        "tx": 0,
-        "ty": 7
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 4
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_4",
-      "at": {
-        "tx": 0,
-        "ty": 8
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 5
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_5",
-      "at": {
-        "tx": 0,
         "ty": 9
       },
       "trigger": "step_on",
@@ -366,7 +614,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_6",
+      "id": "to_shelf_2",
       "at": {
         "tx": 0,
         "ty": 10
@@ -381,7 +629,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_7",
+      "id": "to_shelf_3",
       "at": {
         "tx": 0,
         "ty": 11
@@ -396,7 +644,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_8",
+      "id": "to_shelf_4",
       "at": {
         "tx": 0,
         "ty": 12
@@ -411,7 +659,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_9",
+      "id": "to_shelf_5",
       "at": {
         "tx": 0,
         "ty": 13
@@ -426,7 +674,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_10",
+      "id": "to_shelf_6",
       "at": {
         "tx": 0,
         "ty": 14
@@ -441,7 +689,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_11",
+      "id": "to_shelf_7",
       "at": {
         "tx": 0,
         "ty": 15
@@ -456,37 +704,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_12",
-      "at": {
-        "tx": 0,
-        "ty": 16
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 13
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_13",
-      "at": {
-        "tx": 0,
-        "ty": 17
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 14
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_14",
+      "id": "to_shelf_8",
       "at": {
         "tx": 0,
         "ty": 19
@@ -501,7 +719,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_15",
+      "id": "to_shelf_9",
       "at": {
         "tx": 0,
         "ty": 20
@@ -516,82 +734,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_16",
-      "at": {
-        "tx": 0,
-        "ty": 21
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 18
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_17",
-      "at": {
-        "tx": 0,
-        "ty": 24
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 21
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_18",
-      "at": {
-        "tx": 0,
-        "ty": 25
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 22
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_19",
-      "at": {
-        "tx": 0,
-        "ty": 26
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 23
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_20",
-      "at": {
-        "tx": 0,
-        "ty": 27
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 24
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_21",
+      "id": "to_shelf_10",
       "at": {
         "tx": 0,
         "ty": 28
@@ -606,7 +749,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_22",
+      "id": "to_shelf_11",
       "at": {
         "tx": 0,
         "ty": 29
@@ -621,7 +764,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_23",
+      "id": "to_shelf_12",
       "at": {
         "tx": 0,
         "ty": 30
@@ -636,7 +779,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_24",
+      "id": "to_shelf_13",
       "at": {
         "tx": 0,
         "ty": 31
@@ -728,276 +871,6 @@
     {
       "id": "to_gullwrack_5",
       "at": {
-        "tx": 6,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 6,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_6",
-      "at": {
-        "tx": 7,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 7,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_7",
-      "at": {
-        "tx": 8,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 8,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_8",
-      "at": {
-        "tx": 9,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 9,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_9",
-      "at": {
-        "tx": 10,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 10,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_10",
-      "at": {
-        "tx": 11,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 11,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_11",
-      "at": {
-        "tx": 12,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 12,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_12",
-      "at": {
-        "tx": 13,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 13,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_13",
-      "at": {
-        "tx": 14,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 14,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_14",
-      "at": {
-        "tx": 15,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 15,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_15",
-      "at": {
-        "tx": 16,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 16,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_16",
-      "at": {
-        "tx": 17,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 17,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_17",
-      "at": {
-        "tx": 18,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 18,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_18",
-      "at": {
-        "tx": 19,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 19,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_19",
-      "at": {
-        "tx": 20,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 20,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_20",
-      "at": {
-        "tx": 21,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 21,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_21",
-      "at": {
-        "tx": 22,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 22,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_22",
-      "at": {
-        "tx": 23,
-        "ty": 32
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_gullwrack",
-      "to": {
-        "tx": 23,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_gullwrack_23",
-      "at": {
         "tx": 24,
         "ty": 32
       },
@@ -1037,40 +910,46 @@
       "requires_ability": "deepdive",
       "table": [
         {
-          "kin_id": 172,
+          "kin_id": 173,
           "weight": 35,
-          "min_level": 58,
-          "max_level": 61
+          "min_level": 62,
+          "max_level": 65
         },
         {
-          "kin_id": 174,
-          "weight": 20,
-          "min_level": 58,
-          "max_level": 60
+          "kin_id": 175,
+          "weight": 15,
+          "min_level": 62,
+          "max_level": 64
         },
         {
           "kin_id": 28,
           "weight": 15,
-          "min_level": 59,
-          "max_level": 61
+          "min_level": 63,
+          "max_level": 65
         },
         {
           "kin_id": 22,
           "weight": 12,
-          "min_level": 58,
-          "max_level": 61
+          "min_level": 62,
+          "max_level": 65
         },
         {
           "kin_id": 30,
-          "weight": 10,
-          "min_level": 59,
-          "max_level": 61
+          "weight": 8,
+          "min_level": 63,
+          "max_level": 65
         },
         {
-          "kin_id": 32,
-          "weight": 8,
-          "min_level": 58,
-          "max_level": 60
+          "kin_id": 172,
+          "weight": 5,
+          "min_level": 62,
+          "max_level": 63
+        },
+        {
+          "kin_id": 174,
+          "weight": 5,
+          "min_level": 62,
+          "max_level": 63
         }
       ]
     },
@@ -1087,22 +966,28 @@
       "requires_ability": "tidecall",
       "table": [
         {
-          "kin_id": 172,
-          "weight": 40,
-          "min_level": 58,
-          "max_level": 60
+          "kin_id": 173,
+          "weight": 35,
+          "min_level": 62,
+          "max_level": 64
         },
         {
           "kin_id": 32,
           "weight": 30,
-          "min_level": 58,
-          "max_level": 60
+          "min_level": 62,
+          "max_level": 64
         },
         {
           "kin_id": 61,
           "weight": 30,
-          "min_level": 58,
-          "max_level": 60
+          "min_level": 62,
+          "max_level": 64
+        },
+        {
+          "kin_id": 172,
+          "weight": 5,
+          "min_level": 62,
+          "max_level": 63
         }
       ]
     },
@@ -1110,30 +995,42 @@
       "id": "farlamp_sound_grass_a",
       "terrain": "tall_grass",
       "rect": {
-        "tx": 4,
-        "ty": 15,
-        "w": 4,
+        "tx": 5,
+        "ty": 16,
+        "w": 5,
         "h": 4
       },
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 174,
-          "weight": 45,
-          "min_level": 58,
-          "max_level": 60
+          "kin_id": 175,
+          "weight": 40,
+          "min_level": 62,
+          "max_level": 64
         },
         {
-          "kin_id": 95,
-          "weight": 30,
-          "min_level": 58,
-          "max_level": 61
+          "kin_id": 96,
+          "weight": 25,
+          "min_level": 62,
+          "max_level": 65
         },
         {
           "kin_id": 46,
           "weight": 25,
-          "min_level": 58,
-          "max_level": 60
+          "min_level": 62,
+          "max_level": 64
+        },
+        {
+          "kin_id": 95,
+          "weight": 5,
+          "min_level": 62,
+          "max_level": 63
+        },
+        {
+          "kin_id": 174,
+          "weight": 5,
+          "min_level": 62,
+          "max_level": 63
         }
       ]
     }
@@ -1190,6 +1087,18 @@
       "requires_flag": "flag:sound_oarsman_beaten"
     },
     {
+      "id": "amb_lagoon",
+      "at": {
+        "tx": 16,
+        "ty": 22
+      },
+      "facing": "down",
+      "sprite": "kin_173_overworld",
+      "movement": "wander",
+      "ambient": true,
+      "wander_radius": 1
+    },
+    {
       "id": "cache_sound_cove",
       "at": {
         "tx": 22,
@@ -1202,13 +1111,13 @@
       "hidden_when_flag": "flag:picked_sound_cove"
     },
     {
-      "id": "amb_hermiwick",
+      "id": "amb_beaconclaw",
       "at": {
         "tx": 22,
         "ty": 24
       },
       "facing": "down",
-      "sprite": "kin_174_overworld",
+      "sprite": "kin_175_overworld",
       "movement": "wander",
       "ambient": true,
       "wander_radius": 1
@@ -1361,14 +1270,14 @@
         397,
         397,
         397,
-        397,
-        397,
-        397,
-        397,
-        397,
-        397,
-        397,
-        397,
+        405,
+        400,
+        400,
+        400,
+        400,
+        400,
+        400,
+        404,
         397,
         397,
         397,
@@ -1388,14 +1297,14 @@
         400,
         400,
         397,
-        405,
-        400,
-        400,
-        400,
-        400,
-        400,
-        400,
-        400,
+        398,
+        67,
+        83,
+        73,
+        83,
+        83,
+        67,
+        399,
         404,
         397,
         397,
@@ -1416,12 +1325,12 @@
         83,
         405,
         401,
-        67,
-        73,
-        83,
-        83,
-        73,
-        83,
+        70,
+        85,
+        87,
+        86,
+        88,
+        71,
         67,
         399,
         404,
@@ -1444,11 +1353,11 @@
         398,
         67,
         75,
-        107,
-        40,
-        41,
-        39,
-        106,
+        89,
+        92,
+        91,
+        94,
+        32,
         71,
         67,
         396,
@@ -1457,10 +1366,10 @@
         400,
         401,
         67,
-        74,
-        72,
-        83,
-        83,
+        67,
+        67,
+        67,
+        67,
         67,
         399,
         401,
@@ -1470,26 +1379,26 @@
         93,
         398,
         68,
-        35,
-        36,
-        4,
-        1,
-        3,
+        37,
+        96,
+        98,
+        98,
+        99,
         31,
         35,
         65,
         396,
-        397,
-        398,
+        405,
+        401,
         67,
         73,
-        75,
-        34,
-        33,
-        34,
-        35,
-        71,
-        67,
+        72,
+        83,
+        83,
+        73,
+        83,
+        73,
+        83,
         67,
         75,
         42,
@@ -1497,18 +1406,18 @@
         93,
         398,
         69,
-        35,
-        36,
-        1,
-        1,
-        1,
-        32,
+        105,
+        29,
+        29,
+        27,
+        29,
+        104,
         35,
         64,
         396,
-        397,
-        398,
-        70,
+        401,
+        67,
+        75,
         34,
         34,
         34,
@@ -1516,8 +1425,8 @@
         35,
         34,
         35,
+        35,
         64,
-        68,
         37,
         85,
         112,
@@ -1525,17 +1434,17 @@
         398,
         67,
         63,
-        105,
-        28,
-        28,
-        29,
-        104,
+        34,
+        33,
+        34,
+        33,
+        33,
         59,
         67,
         396,
-        397,
-        398,
-        70,
+        67,
+        68,
+        35,
         35,
         34,
         34,
@@ -1543,8 +1452,8 @@
         33,
         34,
         34,
+        33,
         66,
-        69,
         36,
         89,
         93,
@@ -1559,18 +1468,18 @@
         61,
         67,
         393,
-        402,
-        397,
         398,
         67,
-        61,
-        63,
-        34,
+        69,
+        33,
         35,
-        34,
+        35,
         59,
+        82,
+        60,
+        61,
         62,
-        67,
+        61,
         69,
         37,
         90,
@@ -1586,15 +1495,15 @@
         394,
         394,
         402,
-        397,
-        397,
         403,
-        394,
         395,
         67,
-        62,
-        62,
-        60,
+        82,
+        61,
+        82,
+        67,
+        393,
+        395,
         67,
         67,
         67,
@@ -1614,14 +1523,14 @@
         397,
         397,
         397,
-        397,
-        397,
-        397,
         403,
         394,
         394,
         394,
         394,
+        394,
+        402,
+        403,
         395,
         67,
         67,
@@ -1642,14 +1551,14 @@
         400,
         400,
         404,
+        397,
         405,
         400,
         400,
         400,
         400,
         400,
-        404,
-        398,
+        401,
         67,
         75,
         33,
@@ -1669,14 +1578,14 @@
         73,
         67,
         399,
+        400,
         401,
         67,
-        72,
-        72,
-        74,
         67,
-        396,
-        398,
+        67,
+        67,
+        67,
+        67,
         68,
         33,
         35,
@@ -1697,13 +1606,13 @@
         71,
         67,
         67,
-        70,
-        34,
-        34,
-        34,
-        66,
-        399,
-        401,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
         69,
         33,
         33,
@@ -1717,21 +1626,21 @@
         35,
         107,
         42,
-        76,
+        1,
         1,
         38,
         106,
         35,
         65,
         67,
-        69,
-        33,
-        34,
-        34,
-        65,
-        73,
-        73,
-        70,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        75,
         35,
         33,
         33,
@@ -1743,23 +1652,23 @@
         75,
         107,
         42,
-        77,
-        77,
-        76,
         1,
+        1,
+        76,
+        76,
         38,
         106,
         71,
         67,
         67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        70,
+        33,
         62,
-        82,
-        60,
-        69,
-        35,
-        35,
-        64,
-        63,
         33,
         107,
         42,
@@ -1769,24 +1678,24 @@
         69,
         33,
         36,
-        76,
+        3,
         79,
         78,
-        2,
-        1,
-        1,
+        79,
+        79,
+        77,
         32,
         35,
         65,
-        393,
-        394,
-        394,
-        395,
-        69,
-        33,
-        33,
-        65,
         67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        69,
+        35,
+        64,
         69,
         42,
         85,
@@ -1799,21 +1708,21 @@
         30,
         79,
         77,
-        3,
-        2,
+        77,
+        77,
         26,
         104,
         59,
         67,
-        396,
-        397,
-        397,
-        398,
         67,
-        82,
-        82,
+        67,
+        67,
+        67,
+        67,
         67,
         69,
+        35,
+        65,
         36,
         85,
         112,
@@ -1825,22 +1734,22 @@
         33,
         105,
         30,
-        1,
-        1,
+        77,
+        78,
         26,
         104,
         35,
         66,
         67,
-        399,
-        400,
-        400,
-        403,
-        394,
-        394,
-        394,
-        395,
-        68,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        70,
+        34,
+        64,
         37,
         90,
         91,
@@ -1858,15 +1767,15 @@
         59,
         62,
         67,
-        73,
-        72,
-        73,
         67,
-        396,
-        397,
-        397,
-        397,
-        398,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        60,
         68,
         36,
         96,
@@ -1883,17 +1792,17 @@
         60,
         82,
         67,
+        393,
+        395,
         67,
-        68,
-        35,
-        34,
-        34,
-        65,
-        396,
-        397,
-        397,
-        397,
-        398,
+        67,
+        73,
+        83,
+        83,
+        74,
+        73,
+        67,
+        67,
         67,
         63,
         30,
@@ -1910,17 +1819,17 @@
         394,
         394,
         394,
-        395,
+        400,
+        401,
         67,
-        60,
-        61,
-        61,
+        68,
+        35,
+        34,
+        33,
+        33,
+        35,
+        65,
         67,
-        396,
-        397,
-        397,
-        397,
-        398,
         67,
         72,
         70,
@@ -1934,20 +1843,20 @@
         397,
         405,
         400,
-        400,
-        400,
-        400,
-        400,
-        394,
-        394,
-        394,
-        394,
-        394,
-        402,
-        397,
-        397,
-        397,
-        398,
+        401,
+        67,
+        74,
+        74,
+        74,
+        67,
+        67,
+        60,
+        82,
+        61,
+        61,
+        62,
+        67,
+        67,
         68,
         33,
         35,
@@ -1962,19 +1871,19 @@
         401,
         67,
         72,
-        83,
-        73,
-        73,
-        74,
+        75,
+        35,
+        34,
+        33,
+        71,
         67,
-        399,
-        404,
-        397,
-        397,
-        405,
-        400,
-        400,
-        401,
+        393,
+        394,
+        394,
+        394,
+        398,
+        67,
+        67,
         70,
         35,
         107,
@@ -1993,15 +1902,15 @@
         41,
         41,
         106,
-        71,
-        67,
+        33,
+        65,
         399,
         404,
         405,
         401,
         67,
-        74,
-        73,
+        67,
+        67,
         69,
         34,
         37,
@@ -2024,12 +1933,12 @@
         71,
         67,
         396,
-        398,
+        401,
         67,
-        75,
-        33,
-        35,
-        71,
+        67,
+        67,
+        67,
+        67,
         63,
         37,
         90,
@@ -2051,13 +1960,13 @@
         33,
         66,
         396,
-        398,
-        68,
-        34,
-        34,
-        35,
-        34,
-        66,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
+        69,
         36,
         89,
         93,
@@ -2078,13 +1987,13 @@
         59,
         67,
         396,
-        398,
+        67,
+        67,
+        67,
+        67,
+        67,
+        67,
         69,
-        35,
-        35,
-        33,
-        33,
-        65,
         36,
         89,
         92,
@@ -2105,12 +2014,12 @@
         67,
         393,
         402,
-        398,
+        395,
         67,
-        63,
-        34,
-        33,
-        59,
+        67,
+        67,
+        67,
+        67,
         70,
         37,
         96,
@@ -2135,8 +2044,8 @@
         403,
         395,
         67,
-        62,
-        82,
+        67,
+        67,
         67,
         67,
         63,
@@ -2286,7 +2195,7 @@
         0,
         0,
         0,
-        0,
+        124,
         0,
         0,
         0,
@@ -2311,82 +2220,6 @@
         0,
         0,
         124,
-        0,
-        0,
-        0,
-        124,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        124,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        124,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        124,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -2471,6 +2304,82 @@
         0,
         0,
         0,
+        124,
+        0,
+        0,
+        0,
+        0,
+        124,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -2596,11 +2505,11 @@
         0,
         0,
         0,
-        0,
         124,
         0,
         0,
         0,
+        124,
         0,
         0,
         0,
@@ -2622,13 +2531,13 @@
         0,
         0,
         0,
+        124,
+        124,
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
+        124,
+        124,
         0,
         0,
         0,
@@ -2648,6 +2557,54 @@
         0,
         0,
         0,
+        124,
+        124,
+        0,
+        0,
+        0,
+        0,
+        0,
+        124,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        124,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -2715,54 +2672,8 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        8,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        124,
+        124,
         0,
         0,
         0,
@@ -2787,10 +2698,8 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
+        124,
+        124,
         0,
         0,
         0,
@@ -2924,11 +2833,8 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
+        124,
+        124,
         0,
         0,
         0,
@@ -2956,6 +2862,9 @@
         0,
         124,
         0,
+        124,
+        124,
+        0,
         0,
         0,
         0,
@@ -2968,8 +2877,8 @@
         0,
         126,
         0,
-        5,
-        8,
+        0,
+        0,
         117,
         124,
         0,
@@ -2977,9 +2886,10 @@
         0,
         0,
         124,
+        124,
         0,
-        0,
-        0,
+        124,
+        124,
         124,
         0,
         0,
@@ -3001,14 +2911,13 @@
         0,
         0,
         0,
-        0,
         124,
         0,
         0,
         0,
-        0,
-        0,
-        0,
+        124,
+        124,
+        124,
         0,
         0,
         0,

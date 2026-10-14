@@ -471,7 +471,11 @@ const JOURNEY = [
     // the post-game's only modelled leg, so the isles' found money lands here.
     // Lane E (10 Part III): + the deep backtrack's skiff-only buoy-caches — the
     // Pearlmoor Starglass (1,500) + the Dimglass Moth-amber (600) = +2,100 valuables.
-    income: { quests: 0, valuables: 11100, finds: 7000 }, // Starglass caches + the storm-tithe + the keeper's purse; payouts come from the trainer loop
+    // Lane C1 (10 Part I, the isles' surface): + finds 2,800 (Kelpcrown's keepers'
+    // strongbox 2,000 + the Heron's stern locker 800), + quests 1,500 (Hesk's
+    // letter-home thanks), + valuables 1,500 (the gull walk's Starglass Shard).
+    // The isles' four boat-trainers are BUILT_PAYOUTS-only (optional post-game).
+    income: { quests: 1500, valuables: 12600, finds: 9800 }, // Starglass caches + the storm-tithe + the keepers' purses; payouts come from the trainer loop
     spend: { bright_balm: 4 },
     checkpoint: { name: 'The Last Lesson (Fenn)', rec: 67, ace: 70 },
   },
@@ -586,8 +590,10 @@ const BUILT_PAYOUTS = {
   // THE FARLAMP ISLES (walkthrough/10 Part I, Lane C1) — post-game, optional: the two
   // boat-trainers + Bram Fathom, the isles' keeper (vigilant class; his rematch is
   // re-runnable optional income, outside the solvency legs like the Round's)
-  sound_oarsman: ['route', 61, 976],
-  shelf_kelper: ['route', 62, 992],
+  sound_oarsman: ['route', 65, 1040],
+  shelf_kelper: ['route', 66, 1056],
+  shelf_salvager: ['route', 67, 1072], // pass 2: the Shelfwater's SE flat
+  fog_pilot: ['route', 68, 1088], // pass 2: the Fogwall's wreck bar
   bram_fathom: ['vigilant', 70, 5600],
   bram_fathom_rematch: ['vigilant', 72, 5760],
   mire_lampdiver: ['route', 42, 672], // the Glassmere

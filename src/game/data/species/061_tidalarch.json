@@ -129,29 +129,36 @@
       "area": "farlamp_sound",
       "terrain": "water",
       "rarity": "common",
-      "min": 58,
-      "max": 60
+      "min": 62,
+      "max": 64
     },
     {
       "area": "farlamp_shelfwater",
       "terrain": "water",
       "rarity": "uncommon",
-      "min": 60,
-      "max": 62
+      "min": 64,
+      "max": 66
+    },
+    {
+      "area": "farlamp_gullwrack",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 66
     },
     {
       "area": "farlamp_kelpcrown",
       "terrain": "tall_grass",
       "rarity": "uncommon",
-      "min": 60,
-      "max": 62
+      "min": 64,
+      "max": 66
     },
     {
       "area": "farlamp_kelpcrown",
       "terrain": "water",
       "rarity": "uncommon",
-      "min": 60,
-      "max": 62
+      "min": 64,
+      "max": 66
     }
   ],
   "scripted": false,

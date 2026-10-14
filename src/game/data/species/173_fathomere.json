@@ -135,25 +135,39 @@
       "max": 67
     },
     {
+      "area": "farlamp_sound",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 62,
+      "max": 65
+    },
+    {
       "area": "farlamp_shelfwater",
       "terrain": "water",
-      "rarity": "rare",
-      "min": 61,
-      "max": 62
+      "rarity": "common",
+      "min": 63,
+      "max": 66
     },
     {
       "area": "farlamp_fogwall",
       "terrain": "water",
-      "rarity": "rare",
-      "min": 62,
-      "max": 63
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 66
+    },
+    {
+      "area": "farlamp_gullwrack",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 64,
+      "max": 66
     },
     {
       "area": "farlamp_kelpcrown",
       "terrain": "water",
-      "rarity": "uncommon",
-      "min": 61,
-      "max": 63
+      "rarity": "common",
+      "min": 64,
+      "max": 66
     },
     {
       "area": "tinderwick_bay",

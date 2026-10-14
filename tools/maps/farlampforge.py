@@ -245,30 +245,45 @@ def skerry_light():
 
 
 def _fog(tw: int, th: int, seed: int):
-    """A translucent fog bank: stacked soft lobes, alpha in hard steps (no
-    smooth gradient, so it never picks up a chroma halo) and a dithered rim."""
+    """A translucent fog DRIFT: overlapping soft lobes kept inside the canvas
+    and feathered to nothing at every edge (no cut side), shaded with an ordered
+    (Bayer) dither between a lit top and a shadowed belly (no tone seam), alpha
+    stepped through the same dither so the rim thins out instead of stopping."""
     a = canvas(tw, th)
     W, H = tw * 16, th * 16
     rng = random.Random(seed)
-    lobes = [(rng.uniform(6, W - 6), rng.uniform(H * 0.35, H * 0.7),
-              rng.uniform(W * 0.16, W * 0.3), rng.uniform(H * 0.25, H * 0.42))
-             for _ in range(5 + tw)]
-    dens = np.zeros((H, W))
-    for (cx, cy, rx, ry) in lobes:
-        for y in range(H):
-            for x in range(W):
-                d = ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2
-                if d < 1.0:
-                    dens[y, x] = max(dens[y, x], 1.0 - d)
+    lobes = []
+    n = 4 + tw
+    for k in range(n):
+        rx = rng.uniform(W * 0.18, W * 0.27)
+        ry = rng.uniform(H * 0.2, H * 0.3)
+        cx = rx + 2 + (W - 2 * rx - 4) * (k + rng.uniform(0.1, 0.9)) / n
+        cy = rng.uniform(H * 0.42, H * 0.62)
+        lobes.append((cx, cy, rx, ry))
+    bayer = [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]]
+    feather = 7.0
     for y in range(H):
         for x in range(W):
-            v = dens[y, x]
-            if v <= 0.02:
+            v = 0.0
+            for (cx, cy, rx, ry) in lobes:
+                d = ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2
+                if d < 1.0:
+                    v = max(v, 1.0 - d)
+            if v <= 0:
                 continue
-            if v < 0.18 and (x + y) % 2:
-                continue                       # dithered rim
-            al = 70 if v < 0.18 else 110 if v < 0.45 else 150
-            lit = 222 if y < H * 0.45 else 198
+            edge = min(x, W - 1 - x, y, H - 1 - y) / feather
+            v *= min(1.0, edge) ** 0.8
+            t = (bayer[y % 4][x % 4] + 0.5) / 16.0
+            # alpha: four soft steps, dithered between neighbours
+            level = v * 4.2
+            step = int(level) + (1 if (level - int(level)) > t else 0)
+            if step <= 0:
+                continue
+            al = (0, 46, 78, 108, 132, 150)[min(step, 5)]
+            # shade: lit top -> shadowed belly, dithered (no hard line)
+            shade = (y / H - 0.25) * 1.6
+            dark = shade > t
+            lit = 200 if dark else 222
             a[y, x] = [lit - 30, lit - 14, lit, al]
     return img(a)
 
@@ -461,7 +476,105 @@ def ruin_pillar():
     return img(a)
 
 
+def _rock(a, x0, y0, x1, y1, seed):
+    """A wet black sea-rock mass (cols x0..x1, rows y0..y1) with a lit top-left
+    edge, strata cracks and a weed line at the foot."""
+    rng = random.Random(seed)
+    for x in range(x0, x1 + 1):
+        top = y0 + rng.choice((0, 0, 1, 2)) + (1 if x in (x0, x1) else 0)
+        rect(a, x, top, x, y1, "k")
+        if x0 < x < x1:
+            rect(a, x, top + 1, x, y1 - 1, "s" if (x - x0) % 5 else "K")
+            px(a, x, top + 1, "t" if x < (x0 + x1) // 2 else "S")
+    for y in range(y0 + 4, y1 - 1, 4):
+        for x in range(x0 + 2, x1 - 1, 3):
+            px(a, x + (y // 4) % 2, y, "K")
+    for x in range(x0 + 1, x1):
+        if rng.random() < 0.6:
+            px(a, x, y1 - 1, "V")
+
+
+def sea_arch():
+    """3x3: a sea ARCH — two black rock legs and a lintel, open water through
+    the middle; gull-white streaks on the top (Gullwrack's landmark)."""
+    a = canvas(3, 3)
+    _rock(a, 1, 6, 14, 45, 3)          # west leg
+    _rock(a, 33, 9, 46, 45, 4)         # east leg
+    _rock(a, 6, 4, 42, 17, 5)          # the lintel
+    rect(a, 15, 18, 32, 19, "K")       # the arch's shadowed underside
+    for x in range(16, 32, 2):
+        px(a, x, 20, "K")
+    for (x, y) in ((10, 5), (11, 5), (20, 4), (21, 5), (30, 5), (38, 10), (39, 10), (4, 7)):
+        px(a, x, y, "W"); px(a, x, y + 1, "w")
+    ripple(a, 0, 47, 46)
+    ripple(a, 2, 45, 47)
+    return img(a)
+
+
+def nest_rock():
+    """2x2: a nesting stack — a squat rock streaked white, a twig nest on top."""
+    a = canvas(2, 2)
+    _rock(a, 3, 9, 28, 29, 9)
+    for (x, y) in ((8, 12), (9, 13), (15, 11), (20, 12), (21, 14), (12, 18), (24, 20)):
+        px(a, x, y, "W"); px(a, x, y + 1, "g")
+    stamp(a, ["..bbBBBbb..", ".bBnNNNnBb.", "bBnnWWWnnBb", ".bbbbbbbbb."], 10, 4)
+    ripple(a, 0, 31, 30)
+    ripple(a, 2, 29, 31)
+    return img(a)
+
+
+def broken_arch():
+    """3x3: the keepers' quarter's broken gate-arch — two dressed stone jambs,
+    half a lintel, kelp hanging from the break (Kelpcrown's drowned courtyard)."""
+    a = canvas(3, 3)
+    inked(a, 2, 10, 11, 46, "S", hi="t")
+    inked(a, 36, 6, 45, 46, "S", hi="t")
+    for y in range(14, 46, 5):
+        rect(a, 3, y, 10, y, "s"); rect(a, 37, y, 44, y, "s")
+    stamp(a, ["kkkkkkkkkkkkkkkkkkkkkkkkkkkk..",
+              "kttttttttttttttttttttttttttk...",
+              "kSSSSSSSSSSSSSSSSSSSSSSSSk.....",
+              "kssssssssssssssssssssssk......."], 2, 2)
+    stamp(a, ["kkkkkkkk", "kttttttk", "kSSSSSSk", "kssssssk"], 36, 2)
+    for x in (24, 26, 28):
+        for y in range(6, 6 + 7 + x % 5):
+            px(a, x, y, "V")
+    for (x, y) in ((4, 30), (5, 30), (40, 24), (41, 25), (8, 44), (39, 44)):
+        px(a, x, y, "m"); px(a, x, y + 1, "M")
+    contact(a, 1, 46, 47)
+    return img(a)
+
+
+def strand_shells():
+    """1x1: a few shells and a cockle washed up on the sand (strand litter)."""
+    a = canvas(1, 1)
+    stamp(a, ["..wW..", ".wWWg.", "..gg.."], 2, 4)
+    stamp(a, [".pe.", "pppr", ".rr."], 10, 9)
+    stamp(a, ["wW", "gw"], 6, 11)
+    return img(a)
+
+
+def strand_wrack():
+    """1x1: a tangle of dark kelp wrack left by the tide, a shell caught in it."""
+    a = canvas(1, 1)
+    stamp(a, ["...vV....V..", "..vVxVv.vVv.", ".vV..vVVVxv.", "vV.....vv..V", ".v.......Vv."], 2, 6)
+    stamp(a, ["wW", "gw"], 11, 4)
+    return img(a)
+
+
+def strand_shingle():
+    """1x1: a scatter of grey shingle pebbles, wet-dark on their shadow side."""
+    a = canvas(1, 1)
+    for (x, y, w_) in ((2, 4, 3), (8, 2, 2), (11, 8, 3), (4, 10, 2), (8, 12, 2), (13, 3, 1)):
+        rect(a, x, y, x + w_ - 1, y + 1, "t")
+        rect(a, x, y + 1, x + w_ - 1, y + 1, "S")
+        px(a, x, y, "T")
+    return img(a)
+
+
 PIECES = {
+    "strand_shells": strand_shells, "strand_wrack": strand_wrack, "strand_shingle": strand_shingle,
+    "sea_arch": sea_arch, "nest_rock": nest_rock, "broken_arch": broken_arch,
     "buoy_lit": buoy_lit, "buoy_dark": buoy_dark, "skerry_light": skerry_light,
     "fogbank_a": fogbank_a, "fogbank_b": fogbank_b,
     "slip": slip, "kelp_rack": kelp_rack,

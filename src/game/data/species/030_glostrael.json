@@ -142,15 +142,15 @@
       "area": "farlamp_sound",
       "terrain": "water",
       "rarity": "rare",
-      "min": 59,
-      "max": 61
+      "min": 63,
+      "max": 65
     },
     {
       "area": "farlamp_gullwrack",
       "terrain": "water",
-      "rarity": "common",
-      "min": 60,
-      "max": 62
+      "rarity": "rare",
+      "min": 65,
+      "max": 66
     }
   ],
   "scripted": false,

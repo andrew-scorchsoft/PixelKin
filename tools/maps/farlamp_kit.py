@@ -321,6 +321,13 @@ def warp(src: dict, wid, at, to_map, to, facing, **kw):
     src.setdefault("warps", []).append(w)
 
 
+def _shore(s: Sea, x: int, y: int) -> bool:
+    if not s.water[s.cell(x, y)]:
+        return False
+    return any(0 <= x + dx < s.W and 0 <= y + dy < s.H and not s.water[s.cell(x + dx, y + dy)]
+               for dx in (-1, 0, 1) for dy in (-1, 0, 1))
+
+
 def link(a: Sea, ea: str, b: Sea, eb: str, *, a_lo: int, b_lo: int, n: int,
          prefix_a: str, prefix_b: str, also=None):
     """Stitch a's edge `ea` (indices a_lo..a_lo+n-1) to b's edge `eb` (b_lo..),
@@ -336,6 +343,10 @@ def link(a: Sea, ea: str, b: Sea, eb: str, *, a_lo: int, b_lo: int, n: int,
         la = (pa[0] + ia[0], pa[1] + ia[1])
         lb = (pb[0] + ib[0], pb[1] + ib[1])
         if not (a.passable(*la) and b.passable(*lb)):
+            continue
+        # a landing in the water right against dry land sits on a shore-edge tile,
+        # and the autotiler's corner variants there are solid rock: don't land on one
+        if _shore(a, *la) or _shore(b, *lb):
             continue
         # never land on another edge's row (a corner would land ON a third map's warp)
         if not (0 < la[0] < a.W - 1 and 0 < la[1] < a.H - 1 and
