@@ -111,6 +111,13 @@
       "rarity": "common",
       "min": 57,
       "max": 63
+    },
+    {
+      "area": "cinderwind_ashfall",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 30,
+      "max": 32
     }
   ],
   "scripted": false,

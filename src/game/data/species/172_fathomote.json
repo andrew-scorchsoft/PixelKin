@@ -76,6 +76,34 @@
   },
   "encounters": [
     {
+      "area": "undertide_i",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 61,
+      "max": 63
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 61,
+      "max": 63
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 62,
+      "max": 64
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 63,
+      "max": 65
+    },
+    {
       "area": "tinderwick_bay",
       "terrain": "deep",
       "rarity": "uncommon",

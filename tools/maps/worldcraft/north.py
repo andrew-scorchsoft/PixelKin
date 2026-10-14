@@ -209,6 +209,30 @@ PLACEMENTS: dict[str, dict] = {
                     kite_maker_round_after="kite_weaver"),
         ],
     },
+    # ------------------------------------------------------------------ Lane A
+    # The Ashfall Shelf (walkthrough/10 Part II): ash on the wind, the brazier's
+    # embers, cloud shadow; kin from the shelf's own table, off the lanes —
+    # Stonebark (the shelf's rare) grazes by the lookout as a tease.
+    "cinderwind_ashfall": {
+        "ambience": {
+            "particles": [particles("dust", 0.9), particles("embers", 0.3), particles("motes", 0.5)],
+            "mist": {"color": "#3a3a46", "alpha": 0.06, "speed": 5},
+            "starfall": {"min_s": 45, "max_s": 90},
+            "birds": {"kind": "bird", "flocks": [{"tx": 12, "ty": 4}], "flyover": True},
+            "sound_bed": WIND_BED,
+        },
+        "npcs": [
+            ambient_kin("amb_gravelo", (9, 6), 49, radius=1),
+            # the rare, teased in plain sight: grazing the gate shelf's grass, right
+            # beside the descent lane (greetable — KIN_CHATTER 63)
+            ambient_kin("amb_stonebark", (16, 18), 63, radius=1),
+            ambient_kin("amb_flintbeak", (17, 5), 89, radius=1),
+        ],
+    },
+    "cinderwind_kiln": {
+        "ambience": {"particles": [particles("embers", 0.4), particles("dust", 0.5)],
+                     "tint": {"color": "#ff9a50", "alpha": 0.04}},
+    },
     "galehigh_skyloft": {
         "ambience": {
             "particles": [particles("leaves", 0.6), particles("motes", 1.0)],

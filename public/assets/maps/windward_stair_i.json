@@ -172,6 +172,30 @@
       "bob": false
     },
     {
+      "id": "ashgap_vent",
+      "sprite": "markers_updraft_vent",
+      "at": {
+        "tx": 0,
+        "ty": 29
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
+    },
+    {
+      "id": "ashgap_vent_s",
+      "sprite": "markers_updraft_vent",
+      "at": {
+        "tx": 0,
+        "ty": 30
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
+    },
+    {
       "id": "ww_shrine_foot",
       "sprite": "windward_wind_shrine",
       "at": {
@@ -455,6 +479,40 @@
       "facing": "up",
       "requires_ability": "updraft_kite",
       "blocked_ref": "sign.windward_windgap",
+      "transition": "fade"
+    },
+    {
+      "id": "to_ashfall",
+      "at": {
+        "tx": 0,
+        "ty": 29
+      },
+      "trigger": "step_on",
+      "to_map": "cinderwind_ashfall",
+      "to": {
+        "tx": 22,
+        "ty": 7
+      },
+      "facing": "left",
+      "requires_ability": "updraft_kite",
+      "blocked_ref": "npc.windward_ashfall_gap",
+      "transition": "fade"
+    },
+    {
+      "id": "to_ashfall_s",
+      "at": {
+        "tx": 0,
+        "ty": 30
+      },
+      "trigger": "step_on",
+      "to_map": "cinderwind_ashfall",
+      "to": {
+        "tx": 22,
+        "ty": 8
+      },
+      "facing": "left",
+      "requires_ability": "updraft_kite",
+      "blocked_ref": "npc.windward_ashfall_gap",
       "transition": "fade"
     }
   ],
@@ -1876,8 +1934,8 @@
         97,
         114,
         91,
-        92,
-        94,
+        97,
+        99,
         270,
         268,
         270,
@@ -1900,8 +1958,8 @@
         268,
         89,
         93,
-        93,
-        94,
+        269,
+        270,
         268,
         268,
         270,
@@ -1924,8 +1982,8 @@
         268,
         89,
         92,
-        92,
-        95,
+        268,
+        268,
         268,
         268,
         270,
@@ -1948,8 +2006,8 @@
         268,
         90,
         92,
-        92,
-        94,
+        86,
+        88,
         270,
         268,
         268,

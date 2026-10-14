@@ -93,11 +93,11 @@ can lock out a save that's already past the dawn.
 | `farlamp_gullwrack` | Gullwrack Isle | route | (-21,-36) | 27×34 | Gull-cliffs, ledges and tall sea-grass. **Undertide I** mouth. A keeper's hut (rest point). | 60–62 |
 | `farlamp_kelpcrown` | Kelpcrown Isle | route | (-51,-36) | 30×34 | Ruins of the old keepers' quarter, kelp-terraces. **Undertide II** mouth; Tidecall pools. | 60–63 |
 | `driftholm` | Driftholm | town | (-83,-30) | 32×30 | Island town: inn (rest), chandlery shop, elder's house, the boathouse, the well-stair (→ Undertide III, gated `q_isles_wellstair`), a TRAVEL waystone (`content/waystones.ts`) so the way home is one menu away. | — |
-| `undertide_i` | The Undertide | cave | portal | 30×28 | Under Gullwrack. Shallow channels + **tide-races** (`flows` rail on water, flag-switched by tide-bells). Ladder down to II. | 61–63 |
-| `undertide_ii` | The Undertide — Kelp Vaults | cave | portal | 30×30 | Joins Gullwrack to Kelpcrown underground. The **fog-glass** at its heart. | 61–64 |
-| `undertide_iii` | The Undertide — Bell Galleries | cave | portal | 30×30 | From Driftholm's well-stair. The big tide-bell maze: three bells, every race ends on a ledge in every bell state (the Old Seams invariant). | 62–65 |
-| `undertide_iv` | The Undertide — the Drowned Stair | cave | portal | 26×30 | The last descent; the keeper's logbook pages; the door to the lamp. | 63–66 |
-| `farlamp_drowned` | The Drowned Lamp | cave | portal | 20×22 | The sunken lighthouse floor, an air pocket under the sea. Relight → Farlume. | set-piece |
+| `undertide_i` **(BUILT, C2)** | The Undertide | cave | portal | 30×28 | Under Gullwrack. Shallow channels + **tide-races** (`flows` rail on water, flag-switched by tide-bells). Ladder down to II. | 61–63 |
+| `undertide_ii` **(BUILT, C2)** | The Undertide — Kelp Vaults | cave | portal | 30×30 | Joins Gullwrack to Kelpcrown underground. The **fog-glass** at its heart. | 61–64 |
+| `undertide_iii` **(BUILT, C2)** | The Undertide — Bell Galleries | cave | portal | 30×30 | From Driftholm's well-stair. The big tide-bell maze: three bells, every race ends on a ledge in every bell state (the Old Seams invariant). | 62–65 |
+| `undertide_iv` **(BUILT, C2)** | The Undertide — the Drowned Stair | cave | portal | 26×30 | The last descent; the keeper's logbook pages; the door to the lamp. | 63–66 |
+| `farlamp_drowned` **(BUILT, C2)** | The Drowned Lamp | cave | portal | 20×22 | The sunken lighthouse floor, an air pocket under the sea. Relight → Farlume. | set-piece |
 
 Interiors (roomkit): `driftholm_inn`, `driftholm_chandlery`, `driftholm_elder`,
 `driftholm_boathouse`, `gullwrack_hut`.
@@ -150,9 +150,117 @@ Three Hours' legendary battle cue.
 buildings + boathouse + well-stair, the drowned lighthouse, lantern-buoys, bottle pickup,
 tide-bell, fog-glass, battle backdrops (sea, isle, Undertide, the Drowned Lamp).
 
+### 5. BUILT (lane C2, 2026-10): the Undertide + the Drowned Lamp
+
+**Status: BUILT.** Five portal caves (`kind:'cave'`, region `outer`, registered in
+`world/maps.ts` + `world/graph.ts`), scripts in `content/regions/undertide.ts`, all on a new
+drawn accent kit.
+
+**The kit.** `tools/maps/undertideforge.py` draws `undertide_set` (an accent set on the
+seams_set pattern) and the `undertide_*` objects (own master folder
+`assets/tilesets/undertide/objects/`, packed by `pack_objects.py`):
+- `surge_*`: white water churning over a drop. It collides and is never swum; it forms the maze's walls.
+- `tidepool_*`: sea shallows over wet stone (Tidecall, `water` encounters).
+- `race_<dir>` / `race_fork`: the **tide-races**, calm lanes with drifting chevrons. A
+  `kind:'rail'` flow rides on each. They're tagged `water` so you swim them, and they're
+  `surge` for the autotiler so the churn wraps them seamlessly.
+- `wetstone_*` and decor (barnacles, shells, wrack, drowned lamp-glass).
+- Objects: the tide-bell (still/rung), the race-post (white/red), the logbook chest, the
+  fog-glass stand (full/empty), **the Farlamp** (4×5, dark/lit), the keeper's camp, kelp, a
+  fallen masonry pillar and a glass heap. (The sea-door pair is drawn but unused.)
+
+`tools/maps/undertidekit.py` authors a floor from a char plan and **proves it**. In every
+bell-flag state, every race entered from any free cell must end on a free cell, and every
+pocket must race home. Each builder adds its own puzzle assertions on top
+(`check_traversal.mjs` re-walks every flag combination).
+
+| map | built | what's there |
+|---|---|---|
+| `undertide_i` (30×28) | the mouth | The lesson: one junction with **one bell** on the landing (still → west ledge, rung → ladder ledge). Page 1, a Hearth Coal, lamp-diver Ness. Both ledges race home unswitched. The **bell-ringers' islet** sits mid-basin, seen on the first visit. Its race off the west return only wakes once the Bell Galleries are tuned, and it holds a **Starglass Shard** (the come-back). |
+| `undertide_ii` (30×30) | Kelp Vaults | The **kelp walk** on foot joins the ladder (I) to the Kelpcrown stair through a wading kelp forest and its pools, so passing through never needs a puzzle. The **fog-glass** sits on an island you see from the stair. Ride to the bell vault (Lumen Drop, lamp-diver Corin), ring the bell, ride again, and the junction turns you onto the island. Page 2. |
+| `undertide_iii` (30×30) | Bell Galleries | Seven galleries in one hall of surge. Three bells: **Deep** (NW), **Shoal** (west gallery), **Harbour** (landing). Three junctions plus the tuned shortcut J4. The goal (the stair gallery's ladder) needs Deep + Shoal rung, and the Harbour bell opens the **keeper's ledge** (camp = the **rest point**, a sleeping `heal`). Page 3 (the hint: *"Deep calls, shoal answers, harbour brings them home"*). Net-hand Bryn and keeper Isolde (the Farlamp's second keeper, keeper class). |
+| `undertide_iv` (26×30) | the Drowned Stair | No bells. Every race runs **down**, terrace to terrace, with side lanes into two nooks. One long **up-race** on the east wall carries you from the foot to the top in one ride. Page 4, a Hearth Coal, the **2,000w keeper's purse**, the floor's Lumen Drop, lamp-diver Marlo. |
+| `farlamp_drowned` (20×22) | the Drowned Lamp | The lantern-room's air pocket: dressed flagstones round the fallen lamp, a moat of shallows, the keeper's desk. **The store** sits behind the sluice: a junction race that only runs inward with `flag:isles_log_4`. Inside is the **Star-chart: Maelstrom** (`chart_maelstrom`, chart_end tier, find-first). |
+
+**Tide-bell Tuning.** The old order is Deep → Shoal → Harbour with nothing rung between
+(`flag:undertide_tune_1/2` track the peal). Racing home from the Deep bell passes the Shoal
+bell and then the Harbour bell, so the order is the way the tide comes in. Tuned
+(`flag:q_isles_bells_tuned`):
+- the bell-ringers' tin rises on the landing. It holds III's **Lumen Drop**, so C1's child
+  should thank you rather than pay a second drop.
+- J4 opens the **shortcut race** from the stair gallery straight home to the well-stair.
+
+**The Keeper's Log.** Keeper **Edda Marrow**'s four pages (`flag:isles_log_1..4`, plus
+`flag:isles_log_begun` for the journal) tell the night the deep came up, eleven winters ago.
+She sent Driftholm's boats home, kept the lamp, left her fog-glass for whoever came next, and
+went up the long stair with a small lamp. She is never said to have drowned. Page 4 opens the
+sluice. Both quests are in the journal (`isles_keepers_log`, `isles_bell_tuning`).
+
+**I4.** `script.undertide_fogglass` gives `fog_glass` (key item) and sets
+`flag:q_isles_fogglass`.
+
+**I6 + I7.** `script.farlamp_lamp` → `script.farlamp_relight` is the minor→major cadence:
+1. Letterbox, then silence.
+2. Your vesperlamp carries the prow-flame Fenn lit from the Keystar; you raise the lamp.
+3. Warm tint and the lantern sfx. The `undertide_lamp_dark` object swaps to `_lit` mid-scene.
+4. `flag:isles_dawn` and `flag:q_isles_done` are set. Flash, shake, then a crossfade to
+   `farlamp-relit`. The fog lifts, and the scene says no Gleam is granted ("it isn't that
+   kind of light").
+5. **Farlume** (#177) rises: `legendaryBattle` lv 68, cooldown 12 (`npc.farlume_resting`),
+   terrain `water`, `flag:farlume_caught`.
+
+A miss leaves Farlume by the lamp (`script.farlume_wake`, `requires_flag: isles_dawn`). The
+room's ambience swaps on `isles_dawn` (`MapAmbience.when`: warm light pool, motes), and its
+music swaps through `music_when`.
+
+**Beds (lv 61–66).** Cave zones sit rect-wide on the galleries; water zones sit on the pools.
+`undertidekit.zone` asserts no zone ever covers a race lane. The isles' own kin are Hermiwick,
+Fogwisp, Fathomote, rare Beaconclaw and Fathomere. Existing Tide/Stone/Frost/Dark kin fill the
+rest: Glostern, Glostrael, Brinewrath, Tidalarch, Prismare, Tideveil (very rare, IV),
+Lithonyx, Ferrolith, Stillwarden and Voidmantle. The tables are mirrored in `build_species.py`
+`UNDERTIDE_TABLES` and `CURATED_AREAS`, and listed in `progression.mjs TREND_SKIP_AREAS`. The
+purse is counted in the post-game leg's `finds`, and the 5 trainers in `BUILT_PAYOUTS`.
+
+**Pass 2 (the surge filled; the Undertide after the isles' dawn).**
+- **The surge is dressed.** Builders call `Floor.dress_surge()`, which places drawn wrecks,
+  sea-stacks, kelp crowns and drowned masts, about four per screen. Each footprint is on surge
+  only, never on a lane or a pocket. Lamp-glass glints sit on the floors. The objects per
+  15×10 screen are 8–12 in I–IV, against the South bar of 2–5. `audit_visual` passes.
+- **Seen-but-unreached caches.** I's bell-ringers' islet opens after Tuning (a Starglass
+  Shard). III and IV each gain a **dawn islet**, a junction gated on `flag:isles_dawn`. It's a
+  waypoint on an existing race, never a dead end: III holds a Starglass Shard, IV 3 Beacon
+  charges.
+- **After `flag:isles_dawn`:**
+  - The **tide-lamps** along every race light up (`undertide_tidelamp` → `_lit`, the same
+    footprint).
+  - Each map's ambience swaps (`MapAmbience.when`).
+  - The **day-form tables** rise (night zones hide at `isles_dawn`; the `_day` twins hold
+    Beaconclaw, Fathomere and Glostrael, +1 level). These are `undertidekit.day_table`,
+    mirrored in `build_species.py` `UNDERTIDE_DAY_SWAP`.
+  - Hermiwick ambients give way to Beaconclaw.
+  - **Ondine** the diver waits at IV's stair-head for a re-runnable bout
+    (`undertide_rematch_ondine`, ace 67).
+  - **Keeper Edda Marrow** stands by the lit lamp with her epilogue (`script.farlamp_edda`).
+- **IV's rest point.** The keeper's dry niche at the stair-foot (`script.undertide_niche_rest`,
+  a sleeping `heal`) sits right before the Drowned Lamp.
+- **Ambience and ambient kin** live in the world-craft module `tools/maps/worldcraft/outer.py`
+  (region `outer`, registered in `add_world_craft.py`).
+
+**Handshake with C1:** exactly the contract table (`to_gullwrack` (15,27), `to_kelpcrown`
+(14,29), `to_driftholm` (15,29) with the contract landings). The cave side owns the three
+surface edges in `graph.ts` (bidirectional), so C1 should not add reverse edges.
+
+**Audio/art from D:** `undertide.mp3`, `farlamp-relit.mp3`, `undertide-a.webp` and
+`farlamp-drowned-a.webp` are referenced; until D lands, the music is silent and the battle
+backdrop is blank.
+
 ---
 
 ## Part II — The Ashfall Shelf (main path, Cinderhead → Galehigh)
+
+> **BUILT (2026-10, Lane A).** As specced, plus the v3 panel revisions. Details and validation
+> hooks: [`03-north.md`](./03-north.md) "The Ashfall Shelf". Mira's recommended party is now 30
+> (the Scarp and the shelf carry 28–33).
 
 ### Problem
 After Otho (ace 28) the player walks Cinderhead Deep (cave) → **one** map, Cinderwind Scarp

@@ -110,6 +110,62 @@
       "rarity": "common",
       "min": 57,
       "max": 64
+    },
+    {
+      "area": "undertide_i",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 63
+    },
+    {
+      "area": "undertide_i",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 65
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 65
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 65
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 66
     }
   ],
   "scripted": false,

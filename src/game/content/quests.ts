@@ -441,6 +441,42 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:lowtinder_reef_rowed'],
     done_flag: 'flag:lowtinder_grandmother_beaten',
   },
+  // Lane A — the Ashfall Shelf (walkthrough/10 Part II): the Kilnwright kiln's last pane
+  {
+    id: 'north_last_pane',
+    name: 'The Last Pane',
+    region: 'north',
+    giver: 'Oda Kilnwright',
+    blurb: 'The Kilnwright kiln went cold with one pane still on its drying rack. Ride the old stack\'s thermal up to Kiln Gully, and carry the glass to the blind lamp by Galehigh\'s kite-stall.',
+    start_flag: 'flag:q_north_pane_hook',
+    stage_flags: ['flag:q_north_pane'],
+    done_flag: 'flag:q_north_pane_done',
+  },
+  // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide's two side quests.
+  // Keeper Edda Marrow's four logbook pages (Undertide I-IV) tell the night the deep
+  // came up; the fourth opens the Drowned Lamp's store (its Star-chart is the close).
+  {
+    id: 'isles_keepers_log',
+    name: 'The Keeper\'s Log',
+    region: 'outer',
+    giver: 'Keeper Edda Marrow',
+    blurb: 'Four pages of the Farlamp\'s last log, left in sea-chests down the Undertide. Read them all and the keeper will tell you where she left the things that mattered.',
+    start_flag: 'flag:isles_log_begun',
+    stage_flags: ['flag:isles_log_1', 'flag:isles_log_2', 'flag:isles_log_3', 'flag:isles_log_4'],
+    done_flag: 'flag:picked_farlamp_store_chart',
+  },
+  // The Bell Galleries' three bells, rung in the old order (Deep, Shoal, Harbour):
+  // the bell-ringers' tin (a Lumen Drop) and the shortcut race home to the well-stair.
+  {
+    id: 'isles_bell_tuning',
+    name: 'Tide-bell Tuning',
+    region: 'outer',
+    giver: 'Driftholm\'s bell-ringers',
+    blurb: 'The Undertide\'s bells were hung to tell the tide\'s order. Ring the Bell Galleries\' three the old way, with nothing between, and hear them come true.',
+    start_flag: 'flag:undertide_bells_heard',
+    stage_flags: ['flag:isles_log_3', 'flag:picked_undertide_tuned'],
+    done_flag: 'flag:q_isles_bells_tuned',
+  },
 ];
 
 /** Lookup by id. */

@@ -97,6 +97,14 @@ mk.rect(cliff, W, H, 0, 2, 1, H - 1)
 for y in (14, 15):
     cliff[y * W + 0] = 0
     cliff[y * W + 1] = 0
+# UPPER WEST GAP (Lane A, 2026-10): the Ashfall Shelf's road arrives on the
+# upper route at rows 7-8 (Ashfall rows 25-26; the geometry offset is 18). A
+# 1-deep throat at x=2 (cliff above and below) makes the landing band a choke.
+for y in (7, 8):
+    cliff[y * W + 0] = 0
+    cliff[y * W + 1] = 0
+cliff[6 * W + 2] = 1
+cliff[9 * W + 2] = 1
 
 # MID BANK: upper route (rows 2-9) over the festival terrace (rows 12-20)
 mk.rect(cliff, W, H, 0, 10, 22, 11)
@@ -132,6 +140,8 @@ for y in (29, 30, 31):                              # the Lanternway road gap so
     tree[y * W + 16] = 0
 
 # ---- lanes -----------------------------------------------------------------------
+mk.hline(path, W, H, 7, 0, 13)                      # the Ashfall road in (Lane A)
+mk.hline(path, W, H, 8, 0, 13)
 mk.hline(path, W, H, 14, 1, 5)                      # the entry throat lane
 mk.hline(path, W, H, 15, 1, 5)
 mk.rect(path, W, H, 8, 18, 19, 19)                  # the lumenary/winch front street
@@ -278,8 +288,15 @@ m["objects"] += [
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
     {"id": "lamp_plaza", "sprite": "tinderwick_lamp_post", "at": {"tx": 12, "ty": 16},
      "w": 1, "h": 3, "overhang": 2, "walk_under": True},
-    {"id": "lamp_town", "sprite": "tinderwick_lamp_post", "at": {"tx": 17, "ty": 24},
-     "w": 1, "h": 3, "overhang": 2, "walk_under": True},
+    # (Lane A, "The Last Pane") the kite-stall lamp stands BLIND — its pane
+    # cracked since the kiln went cold — until Kiln Gully's last pane is set in
+    # it (a flag-swapped twin, same footprint/solidity)
+    {"id": "lamp_town", "sprite": "ashfall_pane_lamp_dark", "at": {"tx": 17, "ty": 24},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True,
+     "hidden_when_flag": "flag:q_north_pane_done"},
+    {"id": "lamp_town_glazed", "sprite": "ashfall_pane_lamp_lit", "at": {"tx": 17, "ty": 24},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True,
+     "requires_flag": "flag:q_north_pane_done"},
     # crown trees on the wooded valley border
     {"id": "tree_a", "sprite": "tinderwick_tree", "at": {"tx": 1, "ty": 28}, "w": 3, "h": 4,
      "overhang": 3, "walk_under": True},
@@ -305,11 +322,22 @@ pt.ledge_run(deco, W, H, 21, 18, 20, rng)           # festival -> lower town hop
 m["warps"] += [
     # WEST <-> cinderwind_scarp (2026-10: the climb out of the mine; its
     # `to_terraces` lands {1,14}/{1,15}; we land one tile inside its gate)
+    # (Lane A: gated on the Scarp's rockfall — open once the haulers clear it,
+    # or for any save past Mira; flag:scarp_short_open is DERIVED in FlagStore)
     {"id": "to_cinderhead", "at": {"tx": 0, "ty": 14}, "trigger": "step_on",
      "to_map": "cinderwind_scarp", "to": {"tx": 22, "ty": 4}, "facing": "left",
-     "transition": "fade"},
+     "transition": "fade", "requires_flag": "flag:scarp_short_open",
+     "blocked_ref": "npc.galehigh_rockfall_blocked"},
     {"id": "to_cinderhead_s", "at": {"tx": 0, "ty": 15}, "trigger": "step_on",
      "to_map": "cinderwind_scarp", "to": {"tx": 22, "ty": 5}, "facing": "left",
+     "transition": "fade", "requires_flag": "flag:scarp_short_open",
+     "blocked_ref": "npc.galehigh_rockfall_blocked"},
+    # WEST (upper) <-> cinderwind_ashfall (Lane A; its `to_terraces` lands {1,7}/{1,8})
+    {"id": "to_ashfall", "at": {"tx": 0, "ty": 7}, "trigger": "step_on",
+     "to_map": "cinderwind_ashfall", "to": {"tx": 22, "ty": 25}, "facing": "left",
+     "transition": "fade"},
+    {"id": "to_ashfall_s", "at": {"tx": 0, "ty": 8}, "trigger": "step_on",
+     "to_map": "cinderwind_ashfall", "to": {"tx": 22, "ty": 26}, "facing": "left",
      "transition": "fade"},
     # NORTH -> windward_stair_i (graph `to_stair`, ungated; N2 authors the far
     # side — its return pair must land at our (14,1)/(15,1))
@@ -358,7 +386,25 @@ for i, ty in enumerate((14, 15)):
         "activation": "step_on", "ref": "script.mira_quest", "once": True,
         "sets_flags": ["flag:q_north_kite"],
         "hidden_when_flag": "flag:q_north_kite"})
-owed += ["script.mira_quest (sets flag:q_north_kite)"]
+# (Lane A) arriving by the Ashfall road you come DOWN the switchback instead of
+# up the throat: the same hook rides row 12 under the switchback gap + ledge —
+# every way down from the upper route crosses it.
+for tx in range(14, 19):
+    m["triggers"].append({
+        "id": f"mira_quest_down_{tx}", "kind": "cutscene", "at": {"tx": tx, "ty": 12},
+        "activation": "step_on", "ref": "script.mira_quest", "once": True,
+        "sets_flags": ["flag:q_north_kite"],
+        "hidden_when_flag": "flag:q_north_kite"})
+# (Lane A) the Ashfall landing band: the haulers promise to clear the Scarp's
+# rockfall the first time you arrive (the return compressor)
+for ty in (7, 8):
+    m["triggers"].append({
+        "id": f"ashfall_arrival_{ty}", "kind": "cutscene", "at": {"tx": 2, "ty": ty},
+        "activation": "step_on", "ref": "script.ashfall_rockfall_promise", "once": True,
+        "sets_flags": ["flag:scarp_rockfall_clear"],
+        "hidden_when_flag": "flag:scarp_short_open"})
+owed += ["script.mira_quest (sets flag:q_north_kite)", "script.ashfall_rockfall_promise",
+         "npc.galehigh_rockfall_blocked"]
 
 # ---- signs (refs owed; suggested copy in the module docstring) ---------------------
 # NOT on the x=6 connector column — a sign there seals the entry throat
@@ -367,6 +413,9 @@ owed += pt.sign(m, deco, W, sid="galehigh_welcome", at=(6, 19))
 owed += pt.sign(m, deco, W, sid="galehigh_winch", at=(19, 17))
 owed += pt.sign(m, deco, W, sid="galehigh_high_ledges", at=(22, 8))
 owed += pt.sign(m, deco, W, sid="galehigh_lanternway", at=(17, 27))
+m["triggers"].append({"id": "pane_lamp", "kind": "cutscene", "at": {"tx": 17, "ty": 26},
+                      "activation": "interact", "ref": "script.galehigh_pane_lamp"})
+owed += ["script.galehigh_pane_lamp"]
 
 # ---- trainer beats on the upper route (sight trainers ARE geometry) ----------------
 owed += pt.trainer_beat(m, tid="galehigh_kitehand", at=(15, 2), facing="down",

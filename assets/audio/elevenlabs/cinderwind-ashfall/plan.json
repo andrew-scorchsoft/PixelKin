@@ -1,0 +1,191 @@
+{
+ "chunks": [
+  {
+   "text": "[Open Sky]\n{a gust of harp arpeggios sweeps up on the first beat, the strings settle under it, and the walking pulse sets off on the next downbeat}",
+   "duration_ms": 8000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "D dorian, minor with a bright raised sixth",
+    "4/4",
+    "a square-wave pulse lead carrying a wide, singable melody",
+    "plucked sampled harp arpeggios like wind through grass",
+    "warm sampled string chords as a soft bed",
+    "plucked sampled bass treading steadily uphill",
+    "dry sampled tom taps and a soft snare, a gentle walking pace",
+    "a wooden flute answering the lead in the middle section",
+    "high glass bell glints at phrase ends",
+    "windswept highland route theme, hopeful and a little melancholy, open sky after the mines",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "harp arpeggio opening",
+    "wide open air"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "horror"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "medium"
+  },
+  {
+   "text": "[Main Theme]\n{the pulse-wave lead sings the theme: a rising leap that overshoots, then a stepwise settle home, over harp arpeggios and a steady plucked bass}",
+   "duration_ms": 21333,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "D dorian, minor with a bright raised sixth",
+    "4/4",
+    "a square-wave pulse lead carrying a wide, singable melody",
+    "plucked sampled harp arpeggios like wind through grass",
+    "warm sampled string chords as a soft bed",
+    "plucked sampled bass treading steadily uphill",
+    "dry sampled tom taps and a soft snare, a gentle walking pace",
+    "a wooden flute answering the lead in the middle section",
+    "high glass bell glints at phrase ends",
+    "windswept highland route theme, hopeful and a little melancholy, open sky after the mines",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "walking pace"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "horror"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Theme Reprise]\n{the theme again an octave higher, strings doubling it, a bell glint closing each phrase, tom taps like picks on stone}",
+   "duration_ms": 21333,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "D dorian, minor with a bright raised sixth",
+    "4/4",
+    "a square-wave pulse lead carrying a wide, singable melody",
+    "plucked sampled harp arpeggios like wind through grass",
+    "warm sampled string chords as a soft bed",
+    "plucked sampled bass treading steadily uphill",
+    "dry sampled tom taps and a soft snare, a gentle walking pace",
+    "a wooden flute answering the lead in the middle section",
+    "high glass bell glints at phrase ends",
+    "windswept highland route theme, hopeful and a little melancholy, open sky after the mines",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "theme reprise",
+    "fuller arrangement",
+    "bell counter-melody"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "horror"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast in B flat and F major: the wooden flute answers the lead across held strings, warm as a brazier on a cold shelf, then the harp climbs back toward the theme}",
+   "duration_ms": 21333,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "D dorian, minor with a bright raised sixth",
+    "4/4",
+    "a square-wave pulse lead carrying a wide, singable melody",
+    "plucked sampled harp arpeggios like wind through grass",
+    "warm sampled string chords as a soft bed",
+    "plucked sampled bass treading steadily uphill",
+    "dry sampled tom taps and a soft snare, a gentle walking pace",
+    "a wooden flute answering the lead in the middle section",
+    "high glass bell glints at phrase ends",
+    "windswept highland route theme, hopeful and a little melancholy, open sky after the mines",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "B flat major",
+    "call and response",
+    "warm breather"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "horror"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Theme Return]\n{the theme returns at full stride with the whole band; the last bar lands on A major and leads straight back into the theme}",
+   "duration_ms": 21333,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "D dorian, minor with a bright raised sixth",
+    "4/4",
+    "a square-wave pulse lead carrying a wide, singable melody",
+    "plucked sampled harp arpeggios like wind through grass",
+    "warm sampled string chords as a soft bed",
+    "plucked sampled bass treading steadily uphill",
+    "dry sampled tom taps and a soft snare, a gentle walking pace",
+    "a wooden flute answering the lead in the middle section",
+    "high glass bell glints at phrase ends",
+    "windswept highland route theme, hopeful and a little melancholy, open sky after the mines",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme return",
+    "steady stride",
+    "seamless loop"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "heavy sub bass",
+    "electric guitar",
+    "fade out",
+    "horror"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

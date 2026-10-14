@@ -69,6 +69,13 @@
   },
   "encounters": [
     {
+      "area": "cinderwind_kiln",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 58,
+      "max": 63
+    },
+    {
       "area": "old_seams_ii",
       "terrain": "cave",
       "rarity": "uncommon",
@@ -95,6 +102,34 @@
       "rarity": "uncommon",
       "min": 58,
       "max": 63
+    },
+    {
+      "area": "undertide_i",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 62,
+      "max": 63
+    },
+    {
+      "area": "undertide_i",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 63
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 64
     }
   ],
   "scripted": false,

@@ -1,0 +1,93 @@
+{
+ "id": "undertide",
+ "kind": "loop",
+ "where": "The Undertide, the sea-caves under the Farlamp Isles: dark tidal channels, dripping water, tide-bells ringing far away",
+ "mood": "A sea-cave in the deep: drips, distant bells, the isles' hymn broken into low fragments.",
+ "bpm": 84,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "medium",
+  "source": "farlamp"
+ },
+ "_motif_note": "Medium on motif-farlamp.json: the cave rung keeps only fragments of the hymn, low.",
+ "max_stall": 4.5,
+ "_stall_note": "deliberately sparse cave cue: drips in a held hush are part of it",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "84 BPM",
+  "3/4 time, slow and spacious",
+  "D minor with a dark Phrygian E flat",
+  "a low hollow pulse-wave lead playing short broken fragments of a seafaring hymn, long rests between",
+  "high plinking water-drip notes with fainter echoes",
+  "distant soft tide-bells ringing in the dark",
+  "a deep held bass drone like the tide",
+  "far soft tom hits",
+  "mysterious, deep, dark and still, a sea-cave under the waves",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "horror",
+  "jump scare",
+  "cheerful",
+  "dense arrangement",
+  "busy drums"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 3,
+   "text": "{a deep bass drone, then a single water drip and its fainter echo}",
+   "styles": [
+    "a lone instrument breathing in",
+    "cave"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 12,
+   "text": "{low broken fragments of the hymn tune on a hollow pulse-wave lead, three notes then a pause, drips plinking around them, a far tide-bell}",
+   "styles": [
+    "main theme",
+    "sparse",
+    "mysterious"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 12,
+   "text": "{the fragments again, a little longer, tide-bells answering from deeper in the cave, a soft tom far away}",
+   "styles": [
+    "distant bells",
+    "deep"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the bass leans to a dark E flat, the drips quicken like a tide-race running, then still}",
+   "styles": [
+    "contrasting section",
+    "tension"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 12,
+   "text": "{the broken hymn fragments return low and still; the last bar drips straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

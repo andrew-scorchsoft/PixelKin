@@ -84,7 +84,57 @@
     "weight_kg": 62,
     "habitat": "isles"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "undertide_i",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 62,
+      "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 62,
+      "max": 65
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 65
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 63,
+      "max": 66
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 66
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 64,
+      "max": 67
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "A long, graceful deep-sea lantern-fish seen side-on: a sleek tapering body with a row of small glowing spots along each flank, broad ribbon-like fins that trail like a veil, large calm eyes and a gentle closed mouth. A tall arching lure-stalk curves forward over its head and ends in a bright glass-like lamp-bulb. At 64px it reads as an elegant fish carrying a lantern before it.",

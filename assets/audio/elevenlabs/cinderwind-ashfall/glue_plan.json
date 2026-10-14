@@ -1,0 +1,50 @@
+{
+ "chunks": [
+  {
+   "song_id": "vc0NcUCsGXMArv2JeFa3",
+   "range": {
+    "start_ms": 73309,
+    "end_ms": 93309
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "D dorian, minor with a bright raised sixth",
+    "4/4",
+    "a square-wave pulse lead carrying a wide, singable melody",
+    "plucked sampled harp arpeggios like wind through grass",
+    "warm sampled string chords as a soft bed",
+    "plucked sampled bass treading steadily uphill",
+    "dry sampled tom taps and a soft snare, a gentle walking pace",
+    "a wooden flute answering the lead in the middle section",
+    "high glass bell glints at phrase ends",
+    "windswept highland route theme, hopeful and a little melancholy, open sky after the mines",
+    "strong singable melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "vc0NcUCsGXMArv2JeFa3",
+   "range": {
+    "start_ms": 8000,
+    "end_ms": 18000
+   }
+  }
+ ]
+}

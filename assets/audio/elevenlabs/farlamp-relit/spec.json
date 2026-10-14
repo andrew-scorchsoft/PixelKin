@@ -1,0 +1,102 @@
+{
+ "id": "farlamp-relit",
+ "kind": "loop",
+ "where": "The Drowned Lamp, the moment the Farlamp burns again and the Farlamp Isles get their own dawn",
+ "mood": "The relight: the isles' hymn heard in the dark's minor, then blooming into warm major as the fog lifts.",
+ "bpm": 84,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "high",
+  "source": "farlamp"
+ },
+ "_motif_note": "High on motif-farlamp.json: the family's payoff rung, the minor-to-major cadence.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "84 BPM",
+  "3/4 time",
+  "D minor resolving to D major",
+  "a single glass bell, then a warm pulse-wave lead singing the seafaring hymn tune",
+  "swelling warm string pad chords",
+  "plucked harp arpeggios",
+  "bright celesta and bell counter-melody",
+  "round warm bass",
+  "gentle festive drums with soft snare joining later",
+  "emotional swelling release, warm and a touch bittersweet, a drowned lighthouse lit again and fog lifting from the sea",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "singing",
+  "choir",
+  "orchestral film score",
+  "ending",
+  "dark horror",
+  "aggressive"
+ ],
+ "sections": [
+  {
+   "name": "The Dark Water",
+   "bars": 4,
+   "text": "{hushed: a single glass bell states the opening of the hymn tune in D minor over a soft harp, then strings swell up into the light}",
+   "styles": [
+    "D minor",
+    "hushed",
+    "rising swell"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "The Lamp Catches",
+   "bars": 12,
+   "text": "{the same hymn tune blooms in radiant D major on the warm lead over swelling strings and harp arpeggios}",
+   "styles": [
+    "D major",
+    "radiant bloom",
+    "main theme"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Fog Lifting",
+   "bars": 12,
+   "text": "{the hymn again, fuller, the bells singing the tune an octave up, gentle festive drums joining}",
+   "styles": [
+    "festive",
+    "bell counter-melody",
+    "fuller arrangement"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Remembering",
+   "bars": 8,
+   "text": "{contrast: a tender turn to B minor and G major, slower and lower, remembering the eleven dark winters, then lifting on A major}",
+   "styles": [
+    "bittersweet",
+    "tender",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "The Lamp Catches Return",
+   "bars": 12,
+   "text": "{the radiant D major hymn returns in full; the last bar leads straight back into the melody}",
+   "styles": [
+    "main theme returns",
+    "radiant warmth",
+    "seamless loop back to the start of the theme"
+   ],
+   "adherence": "high"
+  }
+ ]
+}

@@ -1622,6 +1622,13 @@
      "rarity": "uncommon",
      "min": 51,
      "max": 53
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 34,
+     "max": 35
     }
    ],
    "scripted": false,
@@ -2806,6 +2813,34 @@
      "max": 60
     },
     {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "rare",
+     "min": 64,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "rare",
+     "min": 65,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 65,
+     "max": 67
+    },
+    {
      "area": "tinderwick_bay",
      "terrain": "deep",
      "rarity": "common",
@@ -3234,6 +3269,62 @@
    },
    "encounters": [
     {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 63
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 64,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 65,
+     "max": 67
+    },
+    {
      "area": "tinderwick_bay",
      "terrain": "deep",
      "rarity": "common",
@@ -3352,6 +3443,20 @@
      "rarity": "common",
      "min": 57,
      "max": 62
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 61,
+     "max": 62
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 61,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -3445,6 +3550,62 @@
      "rarity": "very_rare",
      "min": 22,
      "max": 24
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "rare",
+     "min": 63,
+     "max": 63
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "very_rare",
+     "min": 64,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 65,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 65,
+     "max": 67
     },
     {
      "area": "tinderwick_bay",
@@ -3982,6 +4143,20 @@
      "rarity": "very_rare",
      "min": 60,
      "max": 60
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "very_rare",
+     "min": 66,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "very_rare",
+     "min": 67,
+     "max": 67
     }
    ],
    "scripted": true,
@@ -4176,7 +4351,14 @@
      "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 29,
-     "max": 31
+     "max": 30
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 33,
+     "max": 35
     }
    ],
    "scripted": false,
@@ -4266,6 +4448,20 @@
     "habitat": "east"
    },
    "encounters": [
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 35,
+     "max": 35
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
     {
      "area": "old_seams_iii",
      "terrain": "cave",
@@ -4866,6 +5062,27 @@
    },
    "encounters": [
     {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 32,
+     "max": 33
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 34,
+     "max": 35
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
      "area": "old_seams_ii",
      "terrain": "cave",
      "rarity": "uncommon",
@@ -5124,6 +5341,13 @@
      "max": 27
     },
     {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 30,
+     "max": 31
+    },
+    {
      "area": "old_seams_ii",
      "terrain": "cave",
      "rarity": "common",
@@ -5221,8 +5445,15 @@
      "area": "cinderwind_scarp",
      "terrain": "tall_grass",
      "rarity": "very_rare",
-     "min": 31,
-     "max": 31
+     "min": 30,
+     "max": 30
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -5532,6 +5763,20 @@
      "max": 27
     },
     {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 31,
+     "max": 33
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 61
+    },
+    {
      "area": "old_seams_i",
      "terrain": "cave",
      "rarity": "uncommon",
@@ -5797,6 +6042,13 @@
    },
    "encounters": [
     {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 63
+    },
+    {
      "area": "old_seams_ii",
      "terrain": "cave",
      "rarity": "uncommon",
@@ -5823,6 +6075,34 @@
      "rarity": "uncommon",
      "min": 58,
      "max": 63
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 62,
+     "max": 63
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 63
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -6011,6 +6291,13 @@
    },
    "encounters": [
     {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 33,
+     "max": 33
+    },
+    {
      "area": "old_seams_i",
      "terrain": "cave",
      "rarity": "uncommon",
@@ -6132,6 +6419,13 @@
    },
    "encounters": [
     {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
      "area": "old_seams_ii",
      "terrain": "cave",
      "rarity": "rare",
@@ -6158,6 +6452,48 @@
      "rarity": "uncommon",
      "min": 60,
      "max": 65
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 63
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 65,
+     "max": 67
     }
    ],
    "scripted": false,
@@ -6796,6 +7132,48 @@
      "rarity": "uncommon",
      "min": 58,
      "max": 65
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 63
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -7006,7 +7384,15 @@
     "weight_kg": 185,
     "habitat": "east"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 30,
+     "max": 31
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Stocky upright tortoise-golem, concentric mineral-bark rings clearly visible on shell, mossy patches on flat back, two large stone-knuckled fists, calm half-lidded eyes.",
@@ -7095,6 +7481,13 @@
      "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 60,
+     "max": 62
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
      "max": 62
     }
    ],
@@ -7595,6 +7988,20 @@
      "rarity": "rare",
      "min": 26,
      "max": 27
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 33,
+     "max": 35
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
     },
     {
      "area": "old_seams_i",
@@ -9510,6 +9917,62 @@
      "rarity": "common",
      "min": 57,
      "max": 64
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 63
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -10009,6 +10472,13 @@
      "rarity": "common",
      "min": 57,
      "max": 63
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 30,
+     "max": 32
     }
    ],
    "scripted": false,
@@ -10109,6 +10579,13 @@
      "rarity": "common",
      "min": 60,
      "max": 65
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -10311,7 +10788,7 @@
      "terrain": "tall_grass",
      "rarity": "rare",
      "min": 30,
-     "max": 31
+     "max": 30
     }
    ],
    "scripted": false,
@@ -10946,7 +11423,7 @@
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 29,
-     "max": 31
+     "max": 30
     }
    ],
    "scripted": false,
@@ -11207,7 +11684,14 @@
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 28,
-     "max": 31
+     "max": 30
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 30,
+     "max": 32
     }
    ],
    "scripted": false,
@@ -11294,6 +11778,13 @@
      "rarity": "uncommon",
      "min": 62,
      "max": 64
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -15493,6 +15984,48 @@
      "rarity": "common",
      "min": 50,
      "max": 53
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 65,
+     "max": 67
     }
    ],
    "scripted": false,
@@ -18505,6 +19038,34 @@
    },
    "encounters": [
     {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 61,
+     "max": 63
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 61,
+     "max": 63
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 63,
+     "max": 65
+    },
+    {
      "area": "tinderwick_bay",
      "terrain": "deep",
      "rarity": "uncommon",
@@ -18606,7 +19167,57 @@
     "weight_kg": 62,
     "habitat": "isles"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "rare",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 63,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 64,
+     "max": 67
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A long, graceful deep-sea lantern-fish seen side-on: a sleek tapering body with a row of small glowing spots along each flank, broad ribbon-like fins that trail like a veil, large calm eyes and a gentle closed mouth. A tall arching lure-stalk curves forward over its head and ends in a bright glass-like lamp-bulb. At 64px it reads as an elegant fish carrying a lantern before it.",
@@ -18700,6 +19311,34 @@
     "habitat": "isles"
    },
    "encounters": [
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 61,
+     "max": 63
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 61,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 62,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 63,
+     "max": 65
+    },
     {
      "area": "tinderwick_bay",
      "terrain": "deep",
@@ -18810,7 +19449,57 @@
     "weight_kg": 210,
     "habitat": "isles"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 62,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 63,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 64,
+     "max": 67
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A big armoured crab built like a small lighthouse, three-quarter view: a broad stone-plated body on thick jointed legs, one huge rounded claw raised like a shield, stalked eyes. On its back stands a tall, whole lantern tower: a brass lantern room with clean glass panes and a bright lamp shining inside, under a little conical roof, with soft beams of light fanning out. At 64px it reads as a crab wearing a lit lighthouse.",
@@ -18901,7 +19590,64 @@
     "weight_kg": 0.3,
     "habitat": "isles"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 61,
+     "max": 63
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 62,
+     "max": 65
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 63,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 63,
+     "max": 66
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 64,
+     "max": 67
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A soft, round-bodied moth that seems made of fog, front view with wings spread: a fluffy pale body, big feathery antennae, two pairs of wide frayed wings whose edges dissolve into curling wisps of mist, and two large dark gentle eyes. Little curls of fog trail off the wingtips. At 64px it reads as a fluffy misty moth drifting in the dark.",

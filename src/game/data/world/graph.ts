@@ -227,6 +227,16 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'lowtinder_school_garden', region: 'south', optional: true, reward: 'Mossmantle (never wild before) — Brightlight only' },
     { map_id: 'lowtinder_cellar', region: 'south', optional: true, reward: 'the winch-key' },
     { map_id: 'lowtinder_cellar_b2', region: 'south', optional: true, reward: 'the old town bell, a Lumen Drop, the climb up Tinderwick\'s well' },
+
+    // Lane A — the Ashfall Shelf (walkthrough/10 Part II): the main-path leg Scarp -> Ashfall -> Galehigh
+    { map_id: 'cinderwind_ashfall', region: 'north' }, // route: the slag-tip shelf, the haulers' camp (rest point)
+    { map_id: 'cinderwind_kiln', region: 'north', optional: true, reward: 'Kiln Gully: the Last Pane, a Beacon charge, the Star-chart: Shardstorm; Lumecite/Pyrolith/rare Prismara' },
+    // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide (portal caves under the isles)
+    { map_id: 'undertide_i', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the tide-race lesson: the keeper\'s first page, a Hearth Coal' },
+    { map_id: 'undertide_ii', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the FOG-GLASS (the Fogwall\'s buoy lane), a Lumen Drop, the second page' },
+    { map_id: 'undertide_iii', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the three-bell maze, the keeper\'s ledge (rest), Tide-bell Tuning (a Lumen Drop + the shortcut race)' },
+    { map_id: 'undertide_iv', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the Drowned Stair: a Lumen Drop, a Hearth Coal, the keeper\'s 2,000w purse, the last page' },
+    { map_id: 'farlamp_drowned', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the relight (the isles\' dawn) + FARLUME #177 (lv 68) + the store\'s Star-chart' },
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -304,7 +314,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_deep', via_warp: 'to_deep', requires_ability: 'glimmerstep', bidirectional: true },
     // 2026-10: the Deep opens onto Cinderwind Scarp, the climb to the terraces
     { from_map: 'cinderhead_deep', to_map: 'cinderwind_scarp', via_warp: 'to_terraces', bidirectional: true },
-    { from_map: 'cinderwind_scarp', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
+    // Lane A (walkthrough/10 Part II): the Scarp's east cut is a ROCKFALL until the Galehigh
+    // haulers clear it (flag:scarp_short_open = scarp_rockfall_clear OR gleam:storm, FlagStore ANY_OF)
+    { from_map: 'cinderwind_scarp', to_map: 'galehigh_terraces', via_warp: 'to_terraces', requires_flag: 'flag:scarp_short_open', bidirectional: true },
     // Galehigh interiors (door warps, both ways) + the Kite-Rising Winch: the
     // skyloft is gated by the FESTIVAL flag (the earned loop, spine §5 shape #5)
     // — never by Updraft Kite (§0 rule 1; Updraft is Mira's reward).
@@ -461,6 +473,20 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'lowtinder_school', to_map: 'lowtinder_school_garden', via_warp: 'to_garden', requires_flag: 'flag:lamplight_brightlight', bidirectional: true },
     { from_map: 'lowtinder', to_map: 'lowtinder_cellar', via_warp: 'to_cellar', bidirectional: true },
     { from_map: 'lowtinder_cellar', to_map: 'lowtinder_cellar_b2', via_warp: 'ladder_down', bidirectional: true },
+
+    // Lane A — the Ashfall Shelf (walkthrough/10 Part II)
+    { from_map: 'cinderwind_scarp', to_map: 'cinderwind_ashfall', via_warp: 'to_ashfall', bidirectional: true },
+    { from_map: 'cinderwind_ashfall', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
+    { from_map: 'cinderwind_ashfall', to_map: 'windward_stair_i', via_warp: 'to_windward', requires_ability: 'updraft_kite', bidirectional: true },
+    { from_map: 'cinderwind_ashfall', to_map: 'cinderwind_kiln', via_warp: 'to_kiln', requires_ability: 'updraft_kite', bidirectional: true },
+    // ---- Lane C2: the Undertide. The cave side owns these surface links (C1's surface
+    // warps are the far ends; one bidirectional edge each, never a second reverse edge).
+    { from_map: 'undertide_i', to_map: 'farlamp_gullwrack', via_warp: 'to_gullwrack', bidirectional: true },
+    { from_map: 'undertide_ii', to_map: 'farlamp_kelpcrown', via_warp: 'to_kelpcrown', bidirectional: true },
+    { from_map: 'undertide_iii', to_map: 'driftholm', via_warp: 'to_driftholm', requires_flag: 'flag:q_isles_wellstair', bidirectional: true },
+    { from_map: 'undertide_i', to_map: 'undertide_ii', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'undertide_iii', to_map: 'undertide_iv', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'undertide_iv', to_map: 'farlamp_drowned', via_warp: 'ladder_down', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',
