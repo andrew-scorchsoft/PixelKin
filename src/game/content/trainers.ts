@@ -1627,6 +1627,7 @@ export const TRAINERS: TrainerRegistry = {
     payout: 5760, // vigilant 80 × ace 72
     music: 'battle-nightfall',
     ai: 'smart',
+  },
   // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide's divers + the
   // Farlamp's second keeper (post-game, 61-66; route 16 / keeper 20 × ace).
   undertide_diver_ness: {

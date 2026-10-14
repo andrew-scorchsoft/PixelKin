@@ -444,6 +444,7 @@ export const QUESTS: QuestRegistry = [
     count_prefix: 'flag:isles_letter_home_',
     count_total: 5,
     done_flag: 'flag:q_isles_letters_done',
+  },
   // Lane A — the Ashfall Shelf (walkthrough/10 Part II): the Kilnwright kiln's last pane
   {
     id: 'north_last_pane',

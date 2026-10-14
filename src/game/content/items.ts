@@ -769,6 +769,7 @@ export const ITEMS: ItemRegistry = {
     catch_bonus: 3.0,
     condition: { kind: 'terrain', terrain: 'deep' },
     price: 900,
+  },
   // ---- Lane A — the Ashfall Shelf + Kiln Gully (walkthrough/10 Part II, 2026-10) ----
   // "The Last Pane": the last lamp-glass ever drawn at the Kilnwright kiln.
   kiln_pane: {
