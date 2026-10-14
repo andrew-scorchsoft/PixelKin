@@ -1638,31 +1638,31 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   },
   driftholm_inn: {
     json: 'assets/maps/driftholm_inn.json',
-    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    tilesets: { interior_sea_set: 'assets/tilesets/interior_sea_set.webp' }, // the isles' sea-washed kit
     kind: 'interior',
     music: 'assets/audio/music/inn-rest.mp3',
   },
   driftholm_chandlery: {
     json: 'assets/maps/driftholm_chandlery.json',
-    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    tilesets: { interior_sea_set: 'assets/tilesets/interior_sea_set.webp' }, // the isles' sea-washed kit
     kind: 'interior',
     music: 'assets/audio/music/shop-counter.mp3',
   },
   driftholm_elder: {
     json: 'assets/maps/driftholm_elder.json',
-    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    tilesets: { interior_sea_set: 'assets/tilesets/interior_sea_set.webp' }, // the isles' sea-washed kit
     kind: 'interior',
     music: 'assets/audio/music/interior-lamplit.mp3',
   },
   driftholm_boathouse: {
     json: 'assets/maps/driftholm_boathouse.json',
-    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    tilesets: { interior_sea_set: 'assets/tilesets/interior_sea_set.webp' }, // the isles' sea-washed kit
     kind: 'interior',
     music: 'assets/audio/music/interior-hush.mp3',
   },
   gullwrack_hut: {
     json: 'assets/maps/gullwrack_hut.json',
-    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    tilesets: { interior_sea_set: 'assets/tilesets/interior_sea_set.webp' }, // the isles' sea-washed kit
     kind: 'interior',
     music: 'assets/audio/music/interior-hush.mp3',
   },

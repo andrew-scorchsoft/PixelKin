@@ -8,8 +8,8 @@
   "kind": "interior",
   "tilesets": [
     {
-      "name": "interior_set",
-      "image": "assets/tilesets/interior_set.webp",
+      "name": "interior_sea_set",
+      "image": "assets/tilesets/interior_sea_set.webp",
       "tile_width": 16,
       "tile_height": 16,
       "first_gid": 1,
@@ -327,6 +327,19 @@
       "walk_under": true
     },
     {
+      "id": "ships_wheel",
+      "sprite": "farlamp_ships_wheel",
+      "at": {
+        "tx": 3,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
       "id": "hearth",
       "sprite": "interior_hearth",
       "at": {
@@ -361,14 +374,14 @@
       "h": 3
     },
     {
-      "id": "plant",
-      "sprite": "interior_plant",
+      "id": "keepers_lens",
+      "sprite": "farlamp_lamp_lens",
       "at": {
         "tx": 12,
         "ty": 2
       },
       "w": 1,
-      "h": 1
+      "h": 2
     },
     {
       "id": "rug",
@@ -382,14 +395,14 @@
       "solid": false
     },
     {
-      "id": "table_round",
-      "sprite": "interior_table",
+      "id": "drift_table",
+      "sprite": "farlamp_drift_table",
       "at": {
         "tx": 3,
-        "ty": 5
+        "ty": 6
       },
       "w": 2,
-      "h": 2
+      "h": 1
     },
     {
       "id": "armchair",
@@ -402,24 +415,24 @@
       "h": 2
     },
     {
-      "id": "sacks",
-      "sprite": "interior_sacks",
+      "id": "floats",
+      "sprite": "farlamp_float_basket",
       "at": {
         "tx": 1,
         "ty": 8
       },
-      "w": 2,
+      "w": 1,
       "h": 1
     },
     {
-      "id": "stool",
-      "sprite": "interior_stool",
+      "id": "nook_lamp",
+      "sprite": "farlamp_oil_lamp",
       "at": {
         "tx": 12,
-        "ty": 7
+        "ty": 6
       },
       "w": 1,
-      "h": 1
+      "h": 2
     }
   ],
   "warps": [

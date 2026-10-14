@@ -8,8 +8,8 @@
   "kind": "interior",
   "tilesets": [
     {
-      "name": "interior_set",
-      "image": "assets/tilesets/interior_set.webp",
+      "name": "interior_sea_set",
+      "image": "assets/tilesets/interior_sea_set.webp",
       "tile_width": 16,
       "tile_height": 16,
       "first_gid": 1,
@@ -355,14 +355,14 @@
   ],
   "objects": [
     {
-      "id": "lamp_rack",
-      "sprite": "interior_lamp_rack",
+      "id": "net_a",
+      "sprite": "farlamp_net_hung",
       "at": {
         "tx": 1,
         "ty": 1
       },
       "w": 2,
-      "h": 2,
+      "h": 1,
       "overhang": 1,
       "walk_under": true,
       "solid": false
@@ -380,14 +380,27 @@
       "walk_under": true
     },
     {
-      "id": "lamp_rack_b",
-      "sprite": "interior_lamp_rack",
+      "id": "ships_wheel",
+      "sprite": "farlamp_ships_wheel",
       "at": {
         "tx": 8,
         "ty": 1
       },
+      "w": 1,
+      "h": 1,
+      "overhang": 1,
+      "walk_under": true,
+      "solid": false
+    },
+    {
+      "id": "net_b",
+      "sprite": "farlamp_net_hung",
+      "at": {
+        "tx": 9,
+        "ty": 1
+      },
       "w": 2,
-      "h": 2,
+      "h": 1,
       "overhang": 1,
       "walk_under": true,
       "solid": false
@@ -413,6 +426,16 @@
       "h": 2
     },
     {
+      "id": "oars",
+      "sprite": "farlamp_oar_rack",
+      "at": {
+        "tx": 14,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
       "id": "tar",
       "sprite": "interior_barrels",
       "at": {
@@ -430,6 +453,16 @@
         "ty": 7
       },
       "w": 2,
+      "h": 1
+    },
+    {
+      "id": "floats",
+      "sprite": "farlamp_float_basket",
+      "at": {
+        "tx": 3,
+        "ty": 7
+      },
+      "w": 1,
       "h": 1
     },
     {

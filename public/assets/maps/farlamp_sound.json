@@ -707,21 +707,6 @@
       "id": "to_shelf_8",
       "at": {
         "tx": 0,
-        "ty": 19
-      },
-      "trigger": "step_on",
-      "to_map": "farlamp_shelfwater",
-      "to": {
-        "tx": 28,
-        "ty": 16
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_shelf_9",
-      "at": {
-        "tx": 0,
         "ty": 20
       },
       "trigger": "step_on",
@@ -734,7 +719,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_10",
+      "id": "to_shelf_9",
       "at": {
         "tx": 0,
         "ty": 28
@@ -749,7 +734,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_11",
+      "id": "to_shelf_10",
       "at": {
         "tx": 0,
         "ty": 29
@@ -764,7 +749,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_12",
+      "id": "to_shelf_11",
       "at": {
         "tx": 0,
         "ty": 30
@@ -779,7 +764,7 @@
       "transition": "fade"
     },
     {
-      "id": "to_shelf_13",
+      "id": "to_shelf_12",
       "at": {
         "tx": 0,
         "ty": 31

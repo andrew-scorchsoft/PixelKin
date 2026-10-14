@@ -209,13 +209,13 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     { op: 'travel', map: 'farlamp_fogwall', to: { tx: 29, ty: 7 }, facing: 'left' },
   ],
   'script.sound_oarsman': [
-    { op: 'say', speaker: 'CALDER', text: 'A boat! A real boat, with a lamp on it! I\'ve been fishing off this holm in a tub for three winters waiting for one. Show me what\'s in it!' },
+    { op: 'say', speaker: 'CALDER', text: 'A boat! A real boat, with a lamp on it! I was out on this holm after cormorant eggs the night the deep came up, and it never went down again. Eleven winters I\'ve lived off the reef, waving at every gull. Show me what\'s in it!' },
     { op: 'battle', trainer: 'sound_oarsman' },
-    { op: 'say', speaker: 'CALDER', text: 'Bested by a boat. Fair\'s fair. The reefs west are the Shelfwater: shallow as a puddle in places, so mind your keel.' },
+    { op: 'say', speaker: 'CALDER', text: 'Bested by a boat. Fair\'s fair. The reefs west are the Shelfwater: shallow as a puddle in places, so mind your keel. Rowan\'s out there. Tell her Calder says hello. Loudly. We\'ve been shouting it across the water for years.' },
     { op: 'setFlag', flag: 'flag:sound_oarsman_beaten' },
   ],
   'script.shelf_kelper': [
-    { op: 'say', speaker: 'ROWAN', text: 'You\'re off the mainland? Then you\'re the first thing to come out of the north in eleven years that isn\'t a gull. Let\'s see your kin, then.' },
+    { op: 'say', speaker: 'ROWAN', text: 'You\'re off the mainland? In a BOAT? I was cutting kelp out here when the deep came up, and I\'ve been marooned on these reefs ever since. Kelp to eat, kelp to sleep on, Calder to shout at. Eleven winters! Let\'s see your kin, then.' },
     { op: 'battle', trainer: 'shelf_kelper' },
     { op: 'say', speaker: 'ROWAN', text: 'Good. You\'ll want to be good where you\'re going. The fog west eats boats. The keepers used to read the buoys through some sort of glass.' },
     { op: 'setFlag', flag: 'flag:shelf_kelper_beaten' },
@@ -223,7 +223,7 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   // pass 2: the Shelfwater's SE flat and the Fogwall's wreck bar
   'script.shelf_salvager': [
     { op: 'say', speaker: 'DUNSTAN', text: 'Mind the ribs, they\'re sharp. That\'s the GANNET, a Driftholm cutter. She came apart on this hook the night the deep came up.' },
-    { op: 'say', speaker: 'DUNSTAN', text: 'Eleven winters I\'ve been taking her home a plank at a time. Half the doors in Driftholm are her. Now, a salvager tests what he finds. Let\'s see yours.' },
+    { op: 'say', speaker: 'DUNSTAN', text: 'I was aboard her. Waded ashore on this bar, and the bar\'s been my home since. Eleven winters I\'ve stacked her planks up the dry end, sorted and oiled, for when the fog lifts and Driftholm wants its doors mended. Now, a salvager tests what he finds. Let\'s see yours.' },
     { op: 'battle', trainer: 'shelf_salvager' },
     { op: 'say', speaker: 'DUNSTAN', text: 'Sound timber, that lot. Row the channel between the two long bars if you\'re heading for the Foot. The old tenders buoyed it so they wouldn\'t lose their keels.' },
     { op: 'setFlag', flag: 'flag:shelf_salvager_beaten' },
@@ -579,13 +579,13 @@ export const FARLAMP_DIALOGUE: DialogueRegistry = {
     { speaker: 'CALDER', text: 'I\'m going to build a boat like yours. With a lamp on it. Twice the size.' },
   ],
   'npc.shelf_salvager_after': [
-    { speaker: 'DUNSTAN', text: 'Her stern-post is going to be a lintel over the schoolhouse door. Maudie wants something with a story in it.' },
+    { speaker: 'DUNSTAN', text: 'When the fog lifts, her stern-post goes home to Driftholm. A lintel over the schoolhouse door, I think. Children like a door with a story in it.' },
   ],
   'npc.fog_pilot_after': [
     { speaker: 'WILLA', text: 'I\'m drawing her lines for Dad. He\'ll want to know she\'s still sitting up proud.' },
   ],
   'npc.shelf_kelper_after': [
-    { speaker: 'ROWAN', text: 'The kelp on these reefs is the best in the isles. I come out at low water and nobody bothers me. Except you.' },
+    { speaker: 'ROWAN', text: 'Eleven winters of kelp and I still like it. Mostly. When the fog lifts I\'m rowing home with a boatload for every table in Driftholm.' },
   ],
   'npc.driftholm_kelper': [
     { text: 'Eleven winters of kelp by lamplight. You get so you can tell the good fronds by feel.' },

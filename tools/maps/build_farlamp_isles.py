@@ -275,6 +275,23 @@ def strand(s: Sea, rate=0.22):
                 k += 1
 
 
+def kelp_bed(s: Sea, cid, cx, cy, rx, ry, rate=0.5):
+    """A KELP BED: fronds lying on a shallow flat (a reef feature you row
+    through, never solid) — the open water's texture between the bars."""
+    k = 0
+    for y in range(int(cy - ry) - 1, int(cy + ry) + 2):
+        for x in range(int(cx - rx) - 1, int(cx + rx) + 2):
+            if not (0 < x < s.W - 1 and 0 < y < s.H - 1):
+                continue
+            d = ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2
+            if d <= 1.6:
+                s.no_deep.add((x, y))
+            if d <= 1.0 and s.water[s.cell(x, y)] and not s.deco[s.cell(x, y)] \
+                    and s.rng.random() < rate * (1.2 - d):
+                s.obj(f"{cid}_{k}", "farlamp_kelp_bed", (x, y), 1, 1, solid=False)
+                k += 1
+
+
 def sea_buoys(s: Sea, cells, prefix="buoy"):
     for i, (x, y) in enumerate(cells):
         s.obj(f"{prefix}_{i}", "markers_sea_buoy", (x, y), 1, 1, solid=False)
@@ -427,8 +444,10 @@ def build_shelfwater() -> Sea:
     s.trainer("shelf_salvager", (23, 23), "left", "fisher_man")
     s.obj("salvager_pots", "pearlmoor_crab_pots", (24, 23), 1, 1)
     s.obj("salvager_drift", "pearlmoor_driftwood", (26, 22), 2, 1, solid=False)
-    s.kin("amb_hermiwick", (22, 20), 175, radius=1)
+    s.kin("amb_beaconclaw_flat", (22, 20), 175, radius=1)
     sea_buoys(s, [(2, 2), (27, 4), (26, 13), (2, 27), (17, 22)])
+    kelp_bed(s, "kelp_bed_e", 23.5, 15.5, 3.8, 2.2)      # the open water east of the hull
+    kelp_bed(s, "kelp_bed_s", 6.5, 27.4, 3.4, 1.4)
     for (cx, cy, n) in ((24, 3, 3), (28, 16, 2), (2, 18, 2), (13, 27, 2), (8, 27, 2)):
         sea_rocks(s, cx, cy, n)
     s.m["ambience"] = sea_ambience(flocks=[(20, 10), (11, 20), (5, 23)])
@@ -622,6 +641,15 @@ def build_gullwrack() -> Sea:
     for y in range(16, 26):
         for x in range(13, 24):
             s.sand[s.cell(x, y)] = 0
+    # the meadow's WEST side is a tumbled ridge of gull-rocks, not a cliff column
+    # (a 2-wide cliff fill mid-field reads as a wall slab — level-design §11 r8):
+    # boulders shoulder to shoulder along x14, a nest-rock stack in the middle
+    # (`ridge_nest_rock`, placed with the objects), a few strays on the west flank
+    for y in range(18, 25):
+        for x in (13, 14):
+            s.cliff[s.cell(x, y)] = 0
+    for (x, y) in ((14, 18), (14, 19), (14, 20), (14, 23), (14, 24), (13, 18), (13, 24)):
+        s.deco[s.cell(x, y)] = gid("boulder")
     tufts(s, s.tallgrass, [(18, 20.5, 2.6), (10.6, 14.0, 2.2), (11.5, 26.0, 2.0)])
     dunes(s, [(20, 28.3, 3.0, 1.6, True), (7.5, 21.5, 1.8, 1.2, False), (17.5, 12.5, 1.6, 1.0, False)])
     # the lanes: the east landing west to the cave; up to the gull walk; a fork
@@ -646,6 +674,9 @@ def build_gullwrack() -> Sea:
     s.obj("nest_rock_a", "farlamp_nest_rock", (2, 12), 2, 2)
     s.obj("nest_rock_b", "farlamp_nest_rock", (5, 15), 2, 2)
     s.obj("nest_rock_c", "farlamp_nest_rock", (1, 30), 2, 2)
+    s.obj("ridge_nest_rock", "farlamp_nest_rock", (13, 21), 2, 2)     # the meadow ridge
+    for (x, y) in ((14, 18), (14, 19), (14, 20), (14, 23), (14, 24), (13, 18), (13, 24)):
+        s.tallgrass[s.cell(x, y)] = 0
     s.cache("gull_spur", (6, 5))
     # the keeper's bothy (rest point) + its lamp, nets, woodpile
     s.obj("keeper_hut", "farlamp_keeper_hut", GULL_HUT, 4, 4, overhang=2)

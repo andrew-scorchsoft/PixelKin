@@ -18,8 +18,8 @@ Three signature touches (level-design §8):
      cut into steps — down to the Undertide's Bell Galleries. Chained shut until
      Elder Nan Creel opens it (`flag:q_isles_wellstair`; the warp at (16,12),
      contract, answers with her script until then).
-  2. THE QUAY + BOATHOUSE: the harbour's stone quay with boats moored dry for
-     eleven winters, the tarred boathouse at its west end.
+  2. THE QUAY + BOATHOUSE: the harbour's stone quay, its boats hauled out
+     keel-up on trestles for eleven winters, the tarred boathouse at its west end.
   3. THE LAMP-STONE (TRAVEL waystone) by the quay steps — the way home is one
      menu away (content/waystones.ts).
 
@@ -88,7 +88,7 @@ def build() -> Sea:
     mk.organic_border(s.tree, W, H, left=1, depth=2,
                       bumps=[(1, 14, 2), (2, 22, 2), (1, 27, 2)], rng=s.rng)
     mk.rect(s.tree, W, H, 0, 27, W - 1, H - 1)
-    for (bx, by, br) in ((4, 25, 2), (28, 25, 1)):
+    for (bx, by, br) in ((4, 25, 2),):
         mk.blob(s.tree, W, H, bx, by, br + 0.5, br)
     for y in range(0, 5):
         for x in range(0, 2):
@@ -172,8 +172,10 @@ def build() -> Sea:
     s.m["triggers"].append({"id": "waystone", "kind": "sign", "at": {"tx": 12, "ty": 10},
                             "activation": "interact", "ref": "sign.driftholm_waystone"})
     s.owed.append("sign.driftholm_waystone")
-    for (oid, x, y) in (("boat_a", 11, 5), ("boat_b", 20, 5), ("boat_c", 24, 4)):
-        s.obj(oid, "pearlmoor_boat", (x, y), 2, 3)
+    # the boats, hauled out keel-up on trestles for eleven winters (no boat has
+    # crossed the deep since the Dusk; they wait on the grass above the quay)
+    s.obj("hauled_boat_a", "farlamp_keel_trestle", (8, 11), 3, 2)
+    s.obj("hauled_boat_b", "farlamp_keel_trestle", (11, 11), 3, 2)
     s.obj("quay_lamp_a", "tinderwick_lamp_post", (14, 6), 1, 3, overhang=2, walk_under=True)
     s.obj("quay_lamp_b", "tinderwick_lamp_post", (23, 6), 1, 3, overhang=2, walk_under=True)
     s.obj("quay_bell", "pearlmoor_moorbell", (27, 6), 2, 3, overhang=1)
