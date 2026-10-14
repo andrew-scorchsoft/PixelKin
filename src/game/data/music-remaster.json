@@ -25,6 +25,12 @@
    "where": "Cinderhead Deep (the three descent galleries to the old crew's vigil-lamp)",
    "mood": "The deep galleries where dense crystal turns the dark luminous — a sparkle-led descent, minor warming to its relative major."
   },
+  "cinderwind-ashfall": {
+   "loop_start": 11.981,
+   "duration": 101.329,
+   "where": "The Ashfall Shelf (cinderwind_ashfall): the main-path route between Cinderwind Scarp and Galehigh — a high grey shelf of century-old slag tips, ash-grass in the wind, the haulers' camp brazier, the old kiln stack on the cliff",
+   "mood": "Daylight after three caves: wide, windswept and a little melancholy, warmed by a brazier; grey ash-grass, coal-smoke and open sky, the climb nearly done."
+  },
   "coldfog-marches-a": {
    "loop_start": 7.221,
    "duration": 86.204,

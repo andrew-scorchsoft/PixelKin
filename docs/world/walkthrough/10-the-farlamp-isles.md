@@ -154,6 +154,10 @@ tide-bell, fog-glass, battle backdrops (sea, isle, Undertide, the Drowned Lamp).
 
 ## Part II — The Ashfall Shelf (main path, Cinderhead → Galehigh)
 
+> **BUILT (2026-10, Lane A).** As specced, plus the v3 panel revisions. Details and validation
+> hooks: [`03-north.md`](./03-north.md) "The Ashfall Shelf". Mira's recommended party is now 30
+> (the Scarp and the shelf carry 28–33).
+
 ### Problem
 After Otho (ace 28) the player walks Cinderhead Deep (cave) → **one** map, Cinderwind Scarp
 (24×28, lv 28–31) → Galehigh (Mira, ace 34). That's three caves in a row, then six levels of

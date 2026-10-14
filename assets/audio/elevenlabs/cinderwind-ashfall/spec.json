@@ -1,0 +1,92 @@
+{
+ "id": "cinderwind-ashfall",
+ "kind": "loop",
+ "where": "The Ashfall Shelf (cinderwind_ashfall): the main-path route between Cinderwind Scarp and Galehigh — a high grey shelf of century-old slag tips, ash-grass in the wind, the haulers' camp brazier, the old kiln stack on the cliff",
+ "mood": "Daylight after three caves: wide, windswept and a little melancholy, warmed by a brazier; grey ash-grass, coal-smoke and open sky, the climb nearly done.",
+ "bpm": 90,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "medium"
+ },
+ "_motif_note": "Routes condition at medium strength (house method); 90 BPM sits on the motif's tempo grid. The classic chip render runs 104 BPM in D dorian.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "90 BPM",
+  "D dorian, minor with a bright raised sixth",
+  "4/4",
+  "a square-wave pulse lead carrying a wide, singable melody",
+  "plucked sampled harp arpeggios like wind through grass",
+  "warm sampled string chords as a soft bed",
+  "plucked sampled bass treading steadily uphill",
+  "dry sampled tom taps and a soft snare, a gentle walking pace",
+  "a wooden flute answering the lead in the middle section",
+  "high glass bell glints at phrase ends",
+  "windswept highland route theme, hopeful and a little melancholy, open sky after the mines",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "heavy sub bass",
+  "electric guitar",
+  "fade out",
+  "horror"
+ ],
+ "sections": [
+  {
+   "name": "Open Sky",
+   "bars": 3,
+   "text": "{a gust of harp arpeggios sweeps up on the first beat, the strings settle under it, and the walking pulse sets off on the next downbeat}",
+   "styles": [
+    "harp arpeggio opening",
+    "wide open air"
+   ],
+   "adherence": "high"
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the pulse-wave lead sings the theme: a rising leap that overshoots, then a stepwise settle home, over harp arpeggios and a steady plucked bass}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "walking pace"
+   ]
+  },
+  {
+   "name": "Theme Reprise",
+   "bars": 8,
+   "text": "{the theme again an octave higher, strings doubling it, a bell glint closing each phrase, tom taps like picks on stone}",
+   "styles": [
+    "theme reprise",
+    "fuller arrangement",
+    "bell counter-melody"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast in B flat and F major: the wooden flute answers the lead across held strings, warm as a brazier on a cold shelf, then the harp climbs back toward the theme}",
+   "styles": [
+    "B flat major",
+    "call and response",
+    "warm breather"
+   ]
+  },
+  {
+   "name": "Theme Return",
+   "bars": 8,
+   "text": "{the theme returns at full stride with the whole band; the last bar lands on A major and leads straight back into the theme}",
+   "styles": [
+    "main theme return",
+    "steady stride",
+    "seamless loop"
+   ]
+  }
+ ]
+}
