@@ -121,6 +121,13 @@
       "rarity": "common",
       "min": 58,
       "max": 65
+    },
+    {
+      "area": "drownlight_f2",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 51,
+      "max": 53
     }
   ],
   "scripted": false,

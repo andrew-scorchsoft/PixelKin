@@ -106,6 +106,8 @@ const TREND_SKIP_AREAS = new Set([
   'mourning_fields', 'penumbra_underways', 'penumbra_underways_b1',
   // Lane N1 (11 Part A): Stillwater, the Hollowing's village — optional + late (48-52)
   'stillwater',
+  // Lane N2 (walkthrough/11 Part B): the Drownlight's two floors (optional, lv 50-53)
+  'drownlight_f1', 'drownlight_f2',
 ]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
@@ -640,6 +642,11 @@ const BUILT_PAYOUTS = {
   still_acolyte_hale: ['keeper', 50, 1000],
   still_acolyte_vesna: ['keeper', 51, 1020],
   still_lamplighter_grisel: ['keeper', 52, 1040],
+  // Lane N2 (walkthrough/11 Part B): the Drownlight — optional, BUILT_PAYOUTS-only
+  drownlight_acolyte_odell: ['keeper', 51, 1020],
+  drownlight_acolyte_prue: ['keeper', 52, 1040],
+  drownlight_acolyte_hask: ['keeper', 53, 1060],
+  drownlight_shutterkeeper: ['warden', 54, 3240], // one-time; she does not rematch
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {

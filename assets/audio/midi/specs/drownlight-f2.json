@@ -1,0 +1,49 @@
+{
+  "title": "The Drownlight F2 - The Lens Gallery",
+  "_note": "Drownlight family rung 2 (drownlight_f2): the hymn darkened to D phrygian (every E flattened, the A chord turned to E-flat), carried an octave down on a hollow triangle, while a glass BELL answers it one bar late \u2014 the lamp's light leaking down the wells. Pedal-D bass, the clockwork every other beat. Same 76 BPM grid.",
+  "era": "snes",
+  "tempo": 76,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D phrygian",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "triangle",
+      "octave": 4,
+      "gain": 0.8,
+      "notes": "A4q F4q D4q Eb4h A3q Bb3q C4q D4q C4h. A4q F4q D4q G4h Bb4q A4q G4q Eb4q F4h. D5q C5q A4q Bb4h G4q A4q F4q D4q Eb4h. F4q Eb4q D4q Bb4h A4q G4q Eb4q C4q D4h."
+    },
+    {
+      "name": "well echo",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.34,
+      "notes": "rh. A5q@58 F5q@58 D5q@58 Eb5h@58 A4q@58 Bb4q@58 C5q@58 D5q@58 C5h.@58 A5q@58 F5q@58 D5q@58 G5h@58 Bb5q@58 A5q@58 G5q@58 Eb5q@58 F5h.@58 D6q@58 C6q@58 A5q@58 Bb5h@58 G5q@58 A5q@58 F5q@58 D5q@58 Eb5h.@58 F5q@58 Eb5q@58 D5q@58 Bb5h@58 A5q@58 G5q@58 Eb5q@58 C5q@58"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.32,
+      "notes": "D3+F3+A3h.@52 Eb3+G3+Bb3h.@52 G3+Bb3+D3h.@52 C3+Eb3+G3h.@52 D3+F3+A3h.@52 G3+Bb3+D3h.@52 C3+Eb3+G3h.@52 F3+A3+C3h.@52 D3+F3+A3h.@52 G3+Bb3+D3h.@52 D3+F3+A3h.@52 Eb3+G3+Bb3h.@52 D3+F3+A3h.@52 G3+Bb3+D3h.@52 C3+Eb3+G3h.@52 D3+F3+A3h.@52"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.62,
+      "notes": "D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70 D2h.@70"
+    },
+    {
+      "name": "clockwork",
+      "voice": "drums",
+      "gain": 0.24,
+      "notes": "q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26 q hat@40 rq hat@26"
+    }
+  ]
+}

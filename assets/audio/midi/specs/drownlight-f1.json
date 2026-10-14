@@ -1,0 +1,49 @@
+{
+  "title": "The Drownlight F1 - The Oil Stores",
+  "_note": "Drownlight family ANCHOR (drownlight_f1): the keeper's hymn played straight \u2014 D minor, 3/4, 76 BPM. Flute lead (the motif), harp-pluck arpeggio, warm pad, walking triangle bass, and the lens clockwork ticking softly on every beat. Cold, tended, patient. 16 bars, the last leans home.",
+  "era": "snes",
+  "tempo": 76,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "flute",
+      "octave": 5,
+      "gain": 0.82,
+      "notes": "A5q F5q D5q E5h A4q Bb4q C5q D5q C#5h. A5q F5q D5q G5h Bb5q A5q G5q E5q F5h. D6q C6q A5q Bb5h G5q A5q F5q D5q E5h. F5q E5q D5q Bb5h A5q G5q E5q C#5q D5h."
+    },
+    {
+      "name": "harp",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.4,
+      "notes": "D3e@60 A3e@50 D4e@56 F4e@52 A3e@48 D4e@50 A3e@60 E3e@50 A4e@56 C#4e@52 E3e@48 A4e@50 G3e@60 D3e@50 G4e@56 Bb4e@52 D3e@48 G4e@50 A3e@60 E3e@50 A4e@56 C#4e@52 E3e@48 A4e@50 D3e@60 A3e@50 D4e@56 F4e@52 A3e@48 D4e@50 G3e@60 D3e@50 G4e@56 Bb4e@52 D3e@48 G4e@50 C3e@60 G3e@50 C4e@56 E4e@52 G3e@48 C4e@50 F3e@60 C3e@50 F4e@56 A4e@52 C3e@48 F4e@50 D3e@60 A3e@50 D4e@56 F4e@52 A3e@48 D4e@50 G3e@60 D3e@50 G4e@56 Bb4e@52 D3e@48 G4e@50 D3e@60 A3e@50 D4e@56 F4e@52 A3e@48 D4e@50 A3e@60 E3e@50 A4e@56 C#4e@52 E3e@48 A4e@50 D3e@60 A3e@50 D4e@56 F4e@52 A3e@48 D4e@50 G3e@60 D3e@50 G4e@56 Bb4e@52 D3e@48 G4e@50 A3e@60 E3e@50 A4e@56 C#4e@52 E3e@48 A4e@50 D3e@60 A3e@50 D4e@56 F4e@52 A3e@48 D4e@50"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.34,
+      "notes": "D3+F3+A3h.@58 A3+C#3+E3h.@58 G3+Bb3+D3h.@58 A3+C#3+E3h.@58 D3+F3+A3h.@58 G3+Bb3+D3h.@58 C3+E3+G3h.@58 F3+A3+C3h.@58 D3+F3+A3h.@58 G3+Bb3+D3h.@58 D3+F3+A3h.@58 A3+C#3+E3h.@58 D3+F3+A3h.@58 G3+Bb3+D3h.@58 A3+C#3+E3h.@58 D3+F3+A3h.@58"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.7,
+      "notes": "D2h@88 A2q@70 A2h@88 E2q@70 G2h@88 D2q@70 A2h@88 E2q@70 D2h@88 A2q@70 G2h@88 D2q@70 C2h@88 G2q@70 F2h@88 C2q@70 D2h@88 A2q@70 G2h@88 D2q@70 D2h@88 A2q@70 A2h@88 E2q@70 D2h@88 A2q@70 G2h@88 D2q@70 A2h@88 E2q@70 D2h@88 A2q@70"
+    },
+    {
+      "name": "clockwork",
+      "voice": "drums",
+      "gain": 0.28,
+      "notes": "q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30 q hat@46 hat@30 hat@30"
+    }
+  ]
+}

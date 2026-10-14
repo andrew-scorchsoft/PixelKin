@@ -262,6 +262,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'stillwater_lampmaker', region: 'outer', optional: true }, // interior: the dark-lamp maker (shop)
     { map_id: 'stillwater_home_a', region: 'outer', optional: true }, // interior: Ines and Tam's cottage
     { map_id: 'stillwater_home_b', region: 'outer', optional: true }, // interior: Maren's house
+    // ---- Lane N2 (walkthrough/11 Part B): the Drownlight, above drownlight_beacon
+    { map_id: 'drownlight_f1', region: 'outer', optional: true, reward: 'the shutter-crank lesson; a Starglass Shard in the nook' }, // interior
+    { map_id: 'drownlight_f2', region: 'outer', optional: true, reward: 'the gallery ring of shutters; the watch-cot (rest); a Lumen Drop' }, // interior
+    { map_id: 'drownlight_lantern', region: 'outer', optional: true, reward: 'the Shutterkeeper; after the dawn, the relight + the Shutter Charm' }, // interior
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -545,6 +549,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'stillwater', to_map: 'stillwater_lampmaker', via_warp: 'enter_lampmaker_2', bidirectional: true },
     { from_map: 'stillwater', to_map: 'stillwater_home_a', via_warp: 'enter_home_a', bidirectional: true },
     { from_map: 'stillwater', to_map: 'stillwater_home_b', via_warp: 'enter_home_b', bidirectional: true },
+    // ---- Lane N2: the Drownlight (door, then stairs; the upper floors want Emberward)
+    { from_map: 'drownlight_beacon', to_map: 'drownlight_f1', via_warp: 'to_tower_4', bidirectional: true },
+    { from_map: 'drownlight_f1', to_map: 'drownlight_f2', via_warp: 'up_stairs', requires_ability: 'emberward', bidirectional: true },
+    { from_map: 'drownlight_f2', to_map: 'drownlight_lantern', via_warp: 'up_stairs', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

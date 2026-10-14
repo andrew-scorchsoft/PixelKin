@@ -44,6 +44,8 @@ import { MOURNFIELDS_DIALOGUE, MOURNFIELDS_SCRIPTS } from './mournfields';
 import { UNDERWAYS_DIALOGUE, UNDERWAYS_SCRIPTS } from './underways';
 // Lane N1 (11-the-hollowing-country.md Parts A + E): Stillwater + the late-north density.
 import { STILLWATER_DIALOGUE, STILLWATER_SCRIPTS } from './stillwater';
+// Lane N2 (walkthrough/11 Part B): the Drownlight, the first lamp the Hollowing put out.
+import { DROWNLIGHT_DIALOGUE, DROWNLIGHT_SCRIPTS } from './drownlight';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -71,6 +73,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...MOURNFIELDS_SCRIPTS, // Lane N3
   ...UNDERWAYS_SCRIPTS, // Lane N3
   ...STILLWATER_SCRIPTS, // Lane N1
+  ...DROWNLIGHT_SCRIPTS, // Lane N2
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -99,4 +102,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...MOURNFIELDS_DIALOGUE, // Lane N3
   ...UNDERWAYS_DIALOGUE, // Lane N3
   ...STILLWATER_DIALOGUE, // Lane N1
+  ...DROWNLIGHT_DIALOGUE, // Lane N2
 };

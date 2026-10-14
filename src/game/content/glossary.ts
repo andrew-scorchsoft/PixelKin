@@ -479,6 +479,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A wall of small grey shutters in Stillwater\'s Quiet Hall, each painted with the name of a lamp the Hollowing put to sleep. Not a list of victories: a list of goodbyes.',
     unlock_flag: 'flag:q_still_wall',
   },
+  // Lane N2 (walkthrough/11 Part B) — the Hollowing's first lamp
+  {
+    id: 'drownlight',
+    term: 'the Drownlight',
+    desc: 'The north coast\'s lighthouse, kept thirty-one winters by Maudry Kell. Fourteen winters ago, three before the sky went dark, she banked its lamp and bolted it in iron shutters: the first light the Hollowing put out. A keeper never kills a lamp, so it burned on behind the iron.',
+    unlock_flag: 'flag:drownlight_entered',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

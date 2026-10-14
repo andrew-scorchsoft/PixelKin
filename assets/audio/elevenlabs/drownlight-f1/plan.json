@@ -1,0 +1,180 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a lone flute breathes the hymn's first rising phrase over one held harp chord, the clockwork tick starting under it}",
+   "duration_ms": 4737,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 waltz-time hymn",
+    "airy sampled flute carrying a slow sea-hymn melody",
+    "harp arpeggios rising and falling like a turning lens",
+    "warm sampled string pad underneath",
+    "a soft clockwork tick on every beat from a small woodblock",
+    "melancholy, tended, patient, cold stone and lamp-oil",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "lone instrument opening",
+    "gentle"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme]\n{the keeper's hymn on flute: up a fourth, a lift to the minor third, then a slow fall home, over rolling harp arpeggios and a string pad}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 waltz-time hymn",
+    "airy sampled flute carrying a slow sea-hymn melody",
+    "harp arpeggios rising and falling like a turning lens",
+    "warm sampled string pad underneath",
+    "a soft clockwork tick on every beat from a small woodblock",
+    "melancholy, tended, patient, cold stone and lamp-oil",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "waltz time"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the hymn again, a glass bell doubling the flute an octave up, a low cello line answering each phrase}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 waltz-time hymn",
+    "airy sampled flute carrying a slow sea-hymn melody",
+    "harp arpeggios rising and falling like a turning lens",
+    "warm sampled string pad underneath",
+    "a soft clockwork tick on every beat from a small woodblock",
+    "melancholy, tended, patient, cold stone and lamp-oil",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "counter-melody",
+    "fuller"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast in F major: the harp alone with the strings, warmer, like lamplight remembered, the clockwork ticking on}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 waltz-time hymn",
+    "airy sampled flute carrying a slow sea-hymn melody",
+    "harp arpeggios rising and falling like a turning lens",
+    "warm sampled string pad underneath",
+    "a soft clockwork tick on every beat from a small woodblock",
+    "melancholy, tended, patient, cold stone and lamp-oil",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "contrasting section",
+    "relative major"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the hymn returns on flute in D minor, the last bar lifting straight back into the top of the theme}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 waltz-time hymn",
+    "airy sampled flute carrying a slow sea-hymn melody",
+    "harp arpeggios rising and falling like a turning lens",
+    "warm sampled string pad underneath",
+    "a soft clockwork tick on every beat from a small woodblock",
+    "melancholy, tended, patient, cold stone and lamp-oil",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

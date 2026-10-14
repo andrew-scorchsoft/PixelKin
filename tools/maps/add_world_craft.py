@@ -48,7 +48,8 @@ from worldcraft._kit import AMBIENCE_KEYS, PARTICLE_KINDS, PRE_CHICKENPIG, gid  
 
 REPO = HERE.parents[1]
 MAPS = REPO / "public" / "assets" / "maps"
-REGIONS = ("south", "east", "north", "west", "central", "outer")  # outer: the Farlamp Isles' Undertide (lane C2)
+REGIONS = ("south", "east", "north", "west", "central", "outer",  # outer: the Farlamp Isles' Undertide (lane C2)
+           "drownlight")  # lane N2: the Drownlight tower (walkthrough/11 Part B)
 SIGN_GID = gid("sign")
 
 

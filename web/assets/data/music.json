@@ -1007,6 +1007,50 @@
      "note": null
     },
     {
+     "id": "drownlight-f1",
+     "title": "The Drownlight — The Oil Stores",
+     "where": "The Drownlight — The Oil Stores",
+     "mood": "The Keeper's Hymn — a slow, tended sea-hymn in a cold stone tower: flute over harp, a clockwork ticking somewhere in the walls.",
+     "classic": "play/assets/audio/music/drownlight-f1.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/drownlight-f1.mp3",
+     "loop_start": 5.689,
+     "note": null
+    },
+    {
+     "id": "drownlight-f2",
+     "title": "The Drownlight — The Lens Gallery",
+     "where": "The Drownlight — The Lens Gallery",
+     "mood": "The Keeper's Hymn, darkened — carried low on a hollow ocarina while glass bells echo it a bar behind, like light leaking down a shaft.",
+     "classic": "play/assets/audio/music/drownlight-f2.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/drownlight-f2.mp3",
+     "loop_start": 6.385,
+     "note": null
+    },
+    {
+     "id": "drownlight-lantern",
+     "title": "The Drownlight — The Lantern Room",
+     "where": "The Drownlight — The Lantern Room",
+     "mood": "The Keeper's Hymn in pieces — a solo cello remembering the tune phrase by phrase over a held organ drone, one high bell like the thread of light at the shutters' seam.",
+     "classic": "play/assets/audio/music/drownlight-lantern.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/drownlight-lantern.mp3",
+     "loop_start": 3.533,
+     "note": null
+    },
+    {
+     "id": "drownlight-relit",
+     "title": "Drownlight Beacon",
+     "where": "Drownlight Beacon · The Drownlight — The Lantern Room",
+     "mood": "The Keeper's Hymn turned major — the lamp turning again: flute and bells over swelling strings and harp, warm and grateful.",
+     "classic": "play/assets/audio/music/drownlight-relit.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/drownlight-relit.mp3",
+     "loop_start": 5.248,
+     "note": null
+    },
+    {
      "id": "farlamp-relit",
      "title": "The Drowned Lamp",
      "where": "The Drowned Lamp",

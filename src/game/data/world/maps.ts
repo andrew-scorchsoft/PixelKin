@@ -1047,6 +1047,8 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     },
     kind: 'route',
     music: 'assets/audio/music/coldfog-marches-a.mp3',
+    // Lane N2: once the Drownlight is relit (post-dawn), its foot plays the relit cue
+    music_when: [{ flag: 'flag:drownlight_relit', music: 'assets/audio/music/drownlight-relit.mp3' }],
     battle_backdrops: [
       'assets/backgrounds/battle/coldfog-marches-a.webp',
       'assets/backgrounds/battle/coldfog-marches-b.webp',
@@ -1795,6 +1797,31 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: { interior_shutter_set: 'assets/tilesets/interior_shutter_set.webp' },
     kind: 'interior',
     music: 'assets/audio/music/interior-unease.mp3',
+  },
+  // ---- Lane N2 (walkthrough/11 Part B): THE DROWNLIGHT — the tower above
+  // drownlight_beacon (builder: build_drownlight_tower.py). One cue family, darker
+  // as you climb (drownlight-f1 / -f2 / -lantern); the relit cue once flag:drownlight_relit.
+  drownlight_f1: {
+    json: 'assets/maps/drownlight_f1.json',
+    tilesets: { drownlight_f1_set: 'assets/tilesets/drownlight_f1_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/drownlight-f1.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/drownlight-a.webp'],
+  },
+  drownlight_f2: {
+    json: 'assets/maps/drownlight_f2.json',
+    tilesets: { drownlight_f2_set: 'assets/tilesets/drownlight_f2_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/drownlight-f2.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/drownlight-a.webp'],
+  },
+  drownlight_lantern: {
+    json: 'assets/maps/drownlight_lantern.json',
+    tilesets: { drownlight_lantern_set: 'assets/tilesets/drownlight_lantern_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/drownlight-lantern.mp3',
+    music_when: [{ flag: 'flag:drownlight_relit', music: 'assets/audio/music/drownlight-relit.mp3' }],
+    battle_backdrops: ['assets/backgrounds/battle/drownlight-lantern-a.webp'],
   },
 };
 

@@ -121,6 +121,13 @@
       "max": 62
     },
     {
+      "area": "drownlight_f1",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 50,
+      "max": 52
+    },
+    {
       "area": "stillwater",
       "terrain": "tall_grass",
       "rarity": "uncommon",

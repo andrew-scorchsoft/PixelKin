@@ -83,6 +83,10 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   undertide_niche: { hx: 24, hy: 14, radius: 10, color: 0xffc46b },
   farlamp_buoy_lit: { hx: 8, hy: 6, radius: 12, color: 0xffd890 },
   farlamp_skerry_light: { hx: 24, hy: 10, radius: 22, color: 0xffd890 },
+  // The Drownlight relit (11 Part B): the lamp room, the great lamp, the light-wells.
+  drownlight_lighthouse_lit: { hx: 32, hy: 15, radius: 30, color: 0xffe2a0 },
+  drownlight_great_lamp_lit: { hx: 32, hy: 22, radius: 34, color: 0xffe2a0 },
+  drownlight_well_lit: { hx: 8, hy: 8, radius: 10, color: 0xffd890 },
   // east
   cinderhead_lamp_hooks: { hx: 40, hy: 24, radius: 22, color: 0xffb86b }, // Harl's seven lit hooks
   // south

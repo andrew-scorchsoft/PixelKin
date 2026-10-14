@@ -238,6 +238,111 @@
       "tw": 5,
       "th": 4
     },
+    "drownlight_cot": {
+      "path": "assets/sprites/objects/drownlight_cot.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "drownlight_crank": {
+      "path": "assets/sprites/objects/drownlight_crank.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "drownlight_crank_on": {
+      "path": "assets/sprites/objects/drownlight_crank_on.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "drownlight_glare_h": {
+      "path": "assets/sprites/objects/drownlight_glare_h.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "drownlight_glare_v": {
+      "path": "assets/sprites/objects/drownlight_glare_v.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "drownlight_great_lamp": {
+      "path": "assets/sprites/objects/drownlight_great_lamp.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "drownlight_great_lamp_lit": {
+      "path": "assets/sprites/objects/drownlight_great_lamp_lit.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "drownlight_lens_spare": {
+      "path": "assets/sprites/objects/drownlight_lens_spare.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "drownlight_lighthouse_lit": {
+      "path": "assets/sprites/objects/drownlight_lighthouse_lit.webp",
+      "width": 64,
+      "height": 112,
+      "tw": 4,
+      "th": 7
+    },
+    "drownlight_pane": {
+      "path": "assets/sprites/objects/drownlight_pane.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "drownlight_pane_lit": {
+      "path": "assets/sprites/objects/drownlight_pane_lit.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "drownlight_shutter_plate": {
+      "path": "assets/sprites/objects/drownlight_shutter_plate.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "drownlight_slate": {
+      "path": "assets/sprites/objects/drownlight_slate.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "drownlight_well": {
+      "path": "assets/sprites/objects/drownlight_well.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "drownlight_well_lit": {
+      "path": "assets/sprites/objects/drownlight_well_lit.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "fallenstar_cinder_star": {
       "path": "assets/sprites/objects/fallenstar_cinder_star.webp",
       "width": 32,

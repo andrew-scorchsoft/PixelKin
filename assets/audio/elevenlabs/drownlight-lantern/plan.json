@@ -1,0 +1,187 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{the organ drone swells in on low D with a single high bell, the cello drawing its bow}",
+   "duration_ms": 4737,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 time with a slow half-time feel",
+    "a solo cello playing the hymn in long held fragments",
+    "a soft pipe organ holding a continuous low drone under every bar",
+    "a single high glass bell now and then, like a thin seam of light",
+    "a slow clockwork tick once a bar",
+    "solemn, elegiac, grieving, quiet and close",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "drone opening"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "d9I5aE5h3fzG1TXLu1Or",
+    "range": {
+     "start_ms": 4700,
+     "end_ms": 34700
+    }
+   },
+   "condition_strength": "medium"
+  },
+  {
+   "text": "[Main Theme]\n{the tower's hymn on solo cello, slow and held, each phrase trailing off into the organ drone before the next begins}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 time with a slow half-time feel",
+    "a solo cello playing the hymn in long held fragments",
+    "a soft pipe organ holding a continuous low drone under every bar",
+    "a single high glass bell now and then, like a thin seam of light",
+    "a slow clockwork tick once a bar",
+    "solemn, elegiac, grieving, quiet and close",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme",
+    "fragmentary melody",
+    "held notes"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the hymn fragments again, a viola joining low and close, the bell ringing once like a thread of light}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 time with a slow half-time feel",
+    "a solo cello playing the hymn in long held fragments",
+    "a soft pipe organ holding a continuous low drone under every bar",
+    "a single high glass bell now and then, like a thin seam of light",
+    "a slow clockwork tick once a bar",
+    "solemn, elegiac, grieving, quiet and close",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "counter-melody",
+    "elegiac"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: the organ shifts to a darker chord and the cello climbs, aching, then sinks back}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 time with a slow half-time feel",
+    "a solo cello playing the hymn in long held fragments",
+    "a soft pipe organ holding a continuous low drone under every bar",
+    "a single high glass bell now and then, like a thin seam of light",
+    "a slow clockwork tick once a bar",
+    "solemn, elegiac, grieving, quiet and close",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "contrasting section",
+    "grieving"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the cello's hymn returns over the drone, the last bar lifting back to the first fragment}",
+   "duration_ms": 18947,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "76 BPM",
+    "D minor",
+    "3/4 time with a slow half-time feel",
+    "a solo cello playing the hymn in long held fragments",
+    "a soft pipe organ holding a continuous low drone under every bar",
+    "a single high glass bell now and then, like a thin seam of light",
+    "a slow clockwork tick once a bar",
+    "solemn, elegiac, grieving, quiet and close",
+    "strong singable melody, instantly hummable and pleasant on repeat",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "singing",
+    "EDM",
+    "four-on-the-floor kick",
+    "heavy drums",
+    "electric guitar",
+    "heavy sub bass",
+    "fade out",
+    "ending",
+    "horror",
+    "silence"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

@@ -36,7 +36,20 @@
       },
       "w": 4,
       "h": 7,
-      "overhang": 4
+      "overhang": 4,
+      "hidden_when_flag": "flag:drownlight_relit"
+    },
+    {
+      "id": "drownlight_tower_lit",
+      "sprite": "drownlight_lighthouse_lit",
+      "at": {
+        "tx": 3,
+        "ty": 1
+      },
+      "w": 4,
+      "h": 7,
+      "overhang": 4,
+      "requires_flag": "flag:drownlight_relit"
     },
     {
       "id": "dead_lantern",
@@ -95,6 +108,145 @@
       "h": 2,
       "overhang": 1,
       "walk_under": true
+    },
+    {
+      "id": "quay_wall",
+      "sprite": "farlamp_ruin_wall",
+      "at": {
+        "tx": 8,
+        "ty": 10
+      },
+      "w": 3,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "quay_post",
+      "sprite": "farlamp_ruin_pillar",
+      "at": {
+        "tx": 2,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "quay_steps",
+      "sprite": "undertide_stairfrag",
+      "at": {
+        "tx": 6,
+        "ty": 11
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "buoy_0",
+      "sprite": "farlamp_buoy_dark",
+      "at": {
+        "tx": 1,
+        "ty": 13
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "hidden_when_flag": "flag:drownlight_relit"
+    },
+    {
+      "id": "buoy_0_lit",
+      "sprite": "farlamp_buoy_lit",
+      "at": {
+        "tx": 1,
+        "ty": 13
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "requires_flag": "flag:drownlight_relit"
+    },
+    {
+      "id": "buoy_1",
+      "sprite": "farlamp_buoy_dark",
+      "at": {
+        "tx": 6,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "hidden_when_flag": "flag:drownlight_relit"
+    },
+    {
+      "id": "buoy_1_lit",
+      "sprite": "farlamp_buoy_lit",
+      "at": {
+        "tx": 6,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "requires_flag": "flag:drownlight_relit"
+    },
+    {
+      "id": "buoy_2",
+      "sprite": "farlamp_buoy_dark",
+      "at": {
+        "tx": 14,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "hidden_when_flag": "flag:drownlight_relit"
+    },
+    {
+      "id": "buoy_2_lit",
+      "sprite": "farlamp_buoy_lit",
+      "at": {
+        "tx": 14,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "requires_flag": "flag:drownlight_relit"
+    },
+    {
+      "id": "buoy_3",
+      "sprite": "farlamp_buoy_dark",
+      "at": {
+        "tx": 0,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "hidden_when_flag": "flag:drownlight_relit"
+    },
+    {
+      "id": "buoy_3_lit",
+      "sprite": "farlamp_buoy_lit",
+      "at": {
+        "tx": 0,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "requires_flag": "flag:drownlight_relit"
     }
   ],
   "warps": [
@@ -131,29 +283,39 @@
       "requires_ability": "emberward",
       "blocked_ref": "sign.coldfog_beacon",
       "transition": "fade"
-    }
-  ],
-  "triggers": [
+    },
     {
-      "id": "drownlight_door_0",
-      "kind": "dialogue",
+      "id": "to_tower_4",
       "at": {
         "tx": 4,
         "ty": 7
       },
-      "activation": "interact",
-      "ref": "npc.drownlight_door"
+      "trigger": "step_on",
+      "to_map": "drownlight_f1",
+      "to": {
+        "tx": 11,
+        "ty": 14
+      },
+      "facing": "up",
+      "transition": "door"
     },
     {
-      "id": "drownlight_door_1",
-      "kind": "dialogue",
+      "id": "to_tower_5",
       "at": {
         "tx": 5,
         "ty": 7
       },
-      "activation": "interact",
-      "ref": "npc.drownlight_door"
-    },
+      "trigger": "step_on",
+      "to_map": "drownlight_f1",
+      "to": {
+        "tx": 11,
+        "ty": 14
+      },
+      "facing": "up",
+      "transition": "door"
+    }
+  ],
+  "triggers": [
     {
       "id": "boat_read",
       "kind": "script",
@@ -183,6 +345,16 @@
       },
       "activation": "interact",
       "ref": "script.coldfog_notice"
+    },
+    {
+      "id": "quay_read",
+      "kind": "script",
+      "at": {
+        "tx": 9,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_quay"
     }
   ],
   "encounters": [
@@ -782,7 +954,7 @@
         0,
         0,
         0,
-        124,
+        0,
         0,
         0,
         182,
@@ -1199,6 +1371,42 @@
     "starfall": {
       "min_s": 25,
       "max_s": 50
-    }
+    },
+    "when": [
+      {
+        "flag": "flag:drownlight_relit",
+        "ambience": {
+          "particles": [
+            {
+              "kind": "motes",
+              "density": 0.5
+            }
+          ],
+          "mist": {
+            "color": "#d8d6cc",
+            "alpha": 0.16,
+            "speed": 4
+          },
+          "tint": {
+            "color": "#ffcf7a",
+            "alpha": 0.07
+          },
+          "starfall": {
+            "min_s": 25,
+            "max_s": 50
+          },
+          "light_sources_extra": [
+            {
+              "at": {
+                "tx": 5,
+                "ty": 1
+              },
+              "radius": 44,
+              "color": "#ffe2a0"
+            }
+          ]
+        }
+      }
+    ]
   }
 }
