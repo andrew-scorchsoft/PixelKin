@@ -708,11 +708,11 @@
         0,
         0,
         0,
+        124,
         0,
         0,
         0,
-        0,
-        0,
+        124,
         0,
         0,
         0,
@@ -827,7 +827,7 @@
         0,
         0,
         0,
-        0,
+        124,
         0,
         0,
         0,
@@ -863,7 +863,7 @@
         0,
         0,
         0,
-        0,
+        124,
         0,
         0,
         0,
@@ -979,6 +979,7 @@
         0,
         0,
         0,
+        124,
         0,
         0,
         0,
@@ -993,8 +994,7 @@
         0,
         0,
         0,
-        0,
-        0,
+        124,
         0,
         0,
         0,
@@ -1742,6 +1742,114 @@
       },
       "w": 2,
       "h": 2
+    },
+    {
+      "id": "bell_wheel",
+      "sprite": "lowtinder_bell_wheel",
+      "at": {
+        "tx": 15,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "ropes_a",
+      "sprite": "lowtinder_bell_ropes",
+      "at": {
+        "tx": 7,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "ropes_b",
+      "sprite": "lowtinder_bell_ropes",
+      "at": {
+        "tx": 18,
+        "ty": 14
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "ropes_c",
+      "sprite": "lowtinder_bell_ropes",
+      "at": {
+        "tx": 9,
+        "ty": 18
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "b2_puddle_1",
+      "sprite": "lowtinder_puddle_a",
+      "at": {
+        "tx": 3,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "b2_puddle_2",
+      "sprite": "lowtinder_puddle_b",
+      "at": {
+        "tx": 20,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "b2_puddle_3",
+      "sprite": "lowtinder_puddle_c",
+      "at": {
+        "tx": 11,
+        "ty": 17
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "b2_wrack",
+      "sprite": "lowtinder_wrack_b",
+      "at": {
+        "tx": 16,
+        "ty": 16
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "b2_shells",
+      "sprite": "lowtinder_shells_b",
+      "at": {
+        "tx": 5,
+        "ty": 15
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "b2_barrels",
+      "sprite": "interior_barrels",
+      "at": {
+        "tx": 5,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 1
     }
   ],
   "warps": [

@@ -170,6 +170,32 @@ objects = [
     o("puddle_6", "lowtinder_puddle_c", 18, 22, 2, 1, solid=False),
     o("puddle_7", "lowtinder_puddle_b", 4, 9, 1, 1, solid=False),
     o("puddle_8", "lowtinder_puddle_a", 4, 6, 2, 1, solid=False),
+    # THE TIDE WAS HERE (review 2026-10 round 2: the streets still read dry):
+    # wet-sand tint where the water just left, strand-lines of wrack along the
+    # high-water mark, stranded shells and a starfish, and the old cart ruts in
+    # the cobbles brimming with seawater. All non-solid decals (lowtinderforge.py).
+    o("wet_1", "lowtinder_wet_a", 6, 2, 2, 2, solid=False),
+    o("wet_2", "lowtinder_wet_b", 8, 10, 2, 2, solid=False),
+    o("wet_3", "lowtinder_wet_a", 14, 9, 2, 2, solid=False),
+    o("wet_4", "lowtinder_wet_b", 20, 17, 2, 2, solid=False),
+    o("wet_5", "lowtinder_wet_a", 9, 19, 2, 2, solid=False),
+    o("wet_6", "lowtinder_wet_b", 14, 21, 2, 2, solid=False),
+    o("wet_7", "lowtinder_wet_a", 22, 13, 2, 2, solid=False),
+    o("wet_8", "lowtinder_wet_b", 3, 3, 2, 2, solid=False),
+    o("wrack_1", "lowtinder_wrack_a", 3, 14, 2, 1, solid=False),
+    o("wrack_2", "lowtinder_wrack_b", 12, 19, 2, 1, solid=False),
+    o("wrack_3", "lowtinder_wrack_a", 21, 18, 2, 1, solid=False),
+    o("wrack_4", "lowtinder_wrack_b", 6, 22, 2, 1, solid=False),
+    o("wrack_5", "lowtinder_wrack_a", 15, 23, 2, 1, solid=False),
+    o("wrack_6", "lowtinder_wrack_b", 18, 10, 2, 1, solid=False),
+    o("shells_1", "lowtinder_shells_a", 8, 21, 1, 1, solid=False),
+    o("shells_2", "lowtinder_shells_b", 13, 10, 1, 1, solid=False),
+    o("shells_3", "lowtinder_shells_a", 22, 20, 1, 1, solid=False),
+    o("shells_4", "lowtinder_shells_b", 3, 8, 1, 1, solid=False),
+    o("ruts_1", "lowtinder_ruts", 9, 12, 2, 1, solid=False),
+    o("ruts_2", "lowtinder_ruts", 18, 13, 2, 1, solid=False),
+    o("ruts_3", "lowtinder_ruts", 12, 7, 2, 1, solid=False),
+    o("ruts_4", "lowtinder_ruts", 19, 16, 2, 1, solid=False),
 ]
 
 # ---- deco ------------------------------------------------------------------------

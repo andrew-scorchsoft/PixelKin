@@ -38,7 +38,13 @@ from mapkit import gid
 
 W, H = 28, 28
 rng = random.Random(2410)
-REEF_ROW = 20                 # rows >= this are the outer deep (skiff only)
+REEF_ROW = 20                 # the shelf edge's nominal row (the deep starts here, give or take)
+# THE SHELF EDGE (review 2026-10: a ruler-straight deep line read as a seam, not a
+# reef). Per column, the first DEEP row: the bay's mouth bows out in the middle,
+# two shallow reef FINGERS reach down (x 9-10 and x 25-26), and the edge stays
+# at/above row 21 wherever a reef islet lies beyond it, so no swimmer reaches one.
+SHELF = [20, 20, 21, 21, 21, 21, 21, 21, 22, 23, 23, 22, 21, 21,
+         20, 20, 19, 19, 19, 20, 20, 20, 21, 21, 22, 23, 22, 21]
 
 # Tinderwick's bottom-row columns its drowned roofs/tower cover (build_tinderwick
 # SEA_SOLID_COLS): no swim warp there — the rubble continues into our row 0.
@@ -61,7 +67,9 @@ mk.blob(sand, W, H, 2.5, 9.0, 1.4, 1.0)
 mk.blob(sand, W, H, 17.5, 13.5, 3.8, 2.6)        # Tidepool Skerry (centre)
 mk.blob(sand, W, H, 21.0, 15.0, 1.8, 1.3)
 mk.blob(sand, W, H, 20.5, 24.5, 4.6, 2.3)        # the Tinder Light's reef islet
-mk.blob(sand, W, H, 5.0, 24.0, 1.7, 1.3)         # the west reef skerry (skiff cache)
+mk.blob(sand, W, H, 5.0, 24.2, 2.3, 1.4)         # the west reef skerry (skiff cache):
+mk.blob(sand, W, H, 6.8, 25.3, 1.4, 0.9)         #   a ragged rock, not a box —
+mk.blob(sand, W, H, 3.4, 23.4, 1.1, 0.8)         #   three overlapping lobes
 mk.blob(sand, W, H, 24.0, 2.5, 1.6, 1.2)         # a tiny sand-bar by the tower
 for i in range(W * H):
     if sand[i]:
@@ -134,9 +142,16 @@ for x in (19, 20):                                    # the bell-tower's footing
 # the buoy lane: from the beach, down the drowned street, east to Lowtinder
 for (x, y) in [(14, 1), (17, 3), (19, 5), (23, 9), (26, 6), (25, 11)]:
     deco[y * W + x] = gid("buoy")
-# the reef lip: rocks along row 19 with swim gaps (the deep beyond is SEEN early)
-for x in (0, 1, 3, 6, 7, 12, 13, 15, 26, 27):
-    deco[19 * W + x] = gid("boulder")
+# the reef lip: rock CLUSTERS along the shelf edge with wide gaps between, plus a
+# few sea-stacks out in the deep (the deep beyond is SEEN early)
+for (x, dy) in [(0, -1), (1, -1), (1, -2), (6, -1), (7, -1), (9, -2), (12, -1), (13, -2),
+                (17, -1), (18, -1), (25, -2), (27, -1)]:
+    y = SHELF[x] + dy
+    if water[y * W + x] and deco[y * W + x] == 0:
+        deco[y * W + x] = gid("boulder")
+for (x, y) in [(11, 25), (14, 27), (1, 26), (26, 26)]:
+    if water[y * W + x]:
+        deco[y * W + x] = gid("boulder")
 # skerry rocks (the chart cache hides behind the east cluster)
 # the channel's rubble: north (23, rows 13-14), south (row 17, x 22-27)
 for (x, y) in [(23, 13), (23, 14), (22, 17), (23, 17), (27, 17)]:
@@ -181,7 +196,7 @@ m = {
          "activation": "interact", "ref": "script.lowtinder_tinder_light"},
     ],
     "encounters": [
-        {"id": "bay_shallows", "terrain": "water", "rect": {"tx": 0, "ty": 0, "w": W, "h": REEF_ROW},
+        {"id": "bay_shallows", "terrain": "water", "rect": {"tx": 0, "ty": 0, "w": W, "h": H},
          "encounter_rate": 0.08, "requires_ability": "tidecall",
          "table": [{"kin_id": 27, "weight": 35, "min_level": 17, "max_level": 19},
                    {"kin_id": 24, "weight": 30, "min_level": 17, "max_level": 19},
@@ -195,7 +210,7 @@ m = {
                    {"kin_id": 11, "weight": 10, "min_level": 18, "max_level": 19}]},
         # the outer reef: rowed water, post-game (deep terrain rolls only on the
         # deepwater tiles — the engine's 'deep' tile-bound terrain)
-        {"id": "reef_deep", "terrain": "deep", "rect": {"tx": 0, "ty": REEF_ROW, "w": W, "h": H - REEF_ROW},
+        {"id": "reef_deep", "terrain": "deep", "rect": {"tx": 0, "ty": 18, "w": W, "h": H - 18},
          "encounter_rate": 0.08,
          "table": [{"kin_id": 28, "weight": 28, "min_level": 58, "max_level": 61},
                    {"kin_id": 25, "weight": 20, "min_level": 58, "max_level": 61},
@@ -235,12 +250,12 @@ m["npcs"].append(
 
 
 def deep_layer(m: dict) -> None:
-    """Rows >= REEF_ROW of open water are DEEP — the outer reef, no shallow
+    """Open water at/below the SHELF edge is DEEP — the outer reef, no shallow
     channels (mk.deep_water would carve one to every islet, and the reef islets
     are the point of rowing). Above the lip stays Tidecall-shallow."""
     mk.register_tileset("deepwater_set", index=mk.DEEPWATER_INDEX)
     m["tilesets"].append(mk.register_tileset("deepwater_set", index=mk.DEEPWATER_INDEX))
-    deep = [1 if (water[i] and i // W >= REEF_ROW) else 0 for i in range(W * H)]
+    deep = [1 if (water[i] and i // W >= SHELF[i % W]) else 0 for i in range(W * H)]
     layer = {"name": "t_deepwater", "role": "terrain", "terrain": "deepwater",
              "set": "deepwater_set", "depth": 0, "data": deep}
     last = max(i for i, ly in enumerate(m["layers"]) if ly.get("role") in ("terrain", "base"))
