@@ -70,7 +70,7 @@ quest).
 | Step | Where | What | Flags |
 |---|---|---|---|
 | Seed (any time) | Lightkeeper's Point | A fog bank + blinking lamp on the horizon (ambience + a looking-glass you can read). **Ione Fathom**, an old boatwright mending a hull under the tower, says the far lamp "went quiet eleven winters back". | `flag:isles_rumour` (first talk) |
-| Letters (any time) | 5 shores | Driftletters: Dimglass Coast I strand, Gullcry Rock, the Pearlmoor breakwater foot, the Glassmere shallows, the Drownlight Beacon shingle. Each is readable lore and a pickup. | `flag:driftletter_1..5`; `flag:driftletters_3` **derives** (FlagStore: ≥3 of 5) |
+| Letters (any time) | 5 shores | Driftletters: Dimglass Coast I strand, Gullcry Rock, the Wick-Run Foot beach, the Glassmere shallows, the Drownlight Beacon shingle. Each is readable lore and a pickup. | `flag:driftletter_1..5`; `flag:driftletters_3` **derives** (FlagStore: ≥3 of 5) |
 | I1 (after the dawn) | Point | Ione: the sky's lit everywhere *but* there. With ≥3 letters she says "Then they're alive", fetches the hull and asks for the prow-lamp to be lit "from the Star-tender's light". | `flag:q_isles` (needs `flag:dawn` + `flag:driftletters_3`) |
 | I2 | Dawnstead | Fenn lights the prow-lamp from the Starlamp. One quiet beat, never naming its first keeper. | `flag:q_isles_prow_lit` |
 | I3 | Point | Ione hands over the **Farlamp Skiff**, and you launch from the slip below the tower. | `flag:q_isles_afloat`; item `farlamp_skiff`; ability `deepdive` |

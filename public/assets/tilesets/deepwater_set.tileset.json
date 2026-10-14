@@ -12,6 +12,7 @@
       "terrain": "deepwater",
       "autotile": "corner_nw",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
@@ -20,6 +21,7 @@
       "terrain": "deepwater",
       "autotile": "edge_n",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
@@ -28,6 +30,7 @@
       "terrain": "deepwater",
       "autotile": "corner_ne",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
@@ -36,6 +39,7 @@
       "terrain": "deepwater",
       "autotile": "edge_w",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
@@ -44,6 +48,7 @@
       "terrain": "deepwater",
       "autotile": "fill",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive",
       "animation": {
         "frames": [
@@ -60,6 +65,7 @@
       "terrain": "deepwater",
       "autotile": "edge_e",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
@@ -68,6 +74,7 @@
       "terrain": "deepwater",
       "autotile": "corner_sw",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
@@ -76,6 +83,7 @@
       "terrain": "deepwater",
       "autotile": "edge_s",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
@@ -84,6 +92,7 @@
       "terrain": "deepwater",
       "autotile": "corner_se",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
@@ -92,6 +101,7 @@
       "terrain": "deepwater",
       "autotile": "inner_nw",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
@@ -100,6 +110,7 @@
       "terrain": "deepwater",
       "autotile": "inner_ne",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
@@ -108,6 +119,7 @@
       "terrain": "deepwater",
       "autotile": "inner_sw",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
@@ -116,18 +128,21 @@
       "terrain": "deepwater",
       "autotile": "inner_se",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
       "index": 13,
       "role": "water",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     },
     {
       "index": 14,
       "role": "water",
       "collides": true,
+      "encounter_terrain": "deep",
       "requires_ability": "deepdive"
     }
   ]

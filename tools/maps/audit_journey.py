@@ -153,7 +153,10 @@ DERIVED_ANY = [
     ("flag:q_south_rope_or_later", ["flag:q_south_has_rope", "gleam:tide"]),
     ("flag:skyloft_open", ["flag:q_north_kite_blessed", "gleam:storm"]),
     ("flag:undercroft_open", ["flag:q_north_aurora_oil", "gleam:frost"]),
+    ("flag:scarp_short_open", ["flag:scarp_rockfall_clear", "gleam:storm"]),
 ]
+# FlagStore COUNT_AT_LEAST (mirrored): N held flags with a prefix derive a flag
+DERIVED_COUNT = [("flag:driftletters_3", "flag:driftletter_", 3)]
 LAMPLIGHT = [("flag:lamplight_warmlight", 2), ("flag:lamplight_brightlight", 4),
              ("flag:lamplight_starlight", 6), ("flag:lamplight_radiant", 8)]
 POST_LETTERS = ["wren", "fenn", "tinderwick", "pearlmoor", "lowleaf", "cinderhead",
@@ -233,6 +236,10 @@ class Scripts:
                 add(PARTY)
             elif op == "giveItem" or op == "ensureItem":
                 add(f"item:{s['item']}")
+            elif op == "giveAbility":   # the Farlamp skiff's deepdive (10 §2)
+                if s["ability"] not in held:
+                    held.add(s["ability"])
+                    got_a.add(s["ability"])
             elif op == "battle":
                 t = self.trainers.get(s["trainer"], {})
                 for f in t.get("reward_flags", []):
@@ -531,6 +538,10 @@ class Replay:
             if any(f in held for f in anyf):
                 out.append((gate, "engine:derive"))
                 held.add(gate)
+        for gate, prefix, need in DERIVED_COUNT:
+            if sum(1 for f in held if f.startswith(prefix)) >= need:
+                out.append((gate, "engine:derive"))
+                held.add(gate)
         if all(c in held for c, _, _ in DERIVED_CROWNS):
             out.append(("flag:hub_unlocked", "engine:derive"))
         if all(f"flag:q_post_letter_{x}" in held for x in POST_LETTERS):
@@ -551,7 +562,7 @@ class Replay:
             if z.get("requires_ability") and z["requires_ability"] not in self.abilities:
                 continue
             r = z["rect"]
-            tile_bound = z.get("terrain") in ("tall_grass", "water")
+            tile_bound = z.get("terrain") in ("tall_grass", "water", "deep")
             for ty in range(r["ty"], r["ty"] + r["h"]):
                 for tx in range(r["tx"], r["tx"] + r["w"]):
                     if not self.reached(md.id, (tx, ty)):

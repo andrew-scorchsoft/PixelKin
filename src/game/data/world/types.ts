@@ -119,7 +119,8 @@ export interface EncounterTableEntry {
   max_level: number;
 }
 
-export type EncounterTerrain = 'tall_grass' | 'water' | 'cave' | 'sand';
+// 'deep' = open sea, rowed in the Farlamp skiff (the deepwater_set tiles carry it).
+export type EncounterTerrain = 'tall_grass' | 'water' | 'cave' | 'sand' | 'deep';
 
 export interface EncounterZone {
   id: string;

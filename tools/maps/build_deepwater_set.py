@@ -85,7 +85,8 @@ def main() -> None:
         fn = f"{len(tiles):03d}_{name}.png"
         im.save(TILES_DIR / fn)
         index[name] = len(tiles)
-        t = {"file": fn, "role": "water", "collides": True, "requires_ability": "deepdive"}
+        t = {"file": fn, "role": "water", "collides": True, "requires_ability": "deepdive",
+             "encounter_terrain": "deep"}   # rowed sea encounters (10 §2)
         if autotile:                       # animation frames carry no terrain role
             t.update({"terrain": "deepwater", "autotile": autotile})
         tiles.append({**t, **extra})

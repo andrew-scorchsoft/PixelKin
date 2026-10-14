@@ -66,7 +66,7 @@ from PIL import Image
 
 # Canonical enum values from src/game/data/world/types.ts — validated so a typo in a
 # manifest fails here rather than silently producing a tile the engine ignores.
-ENCOUNTER_TERRAINS = {"tall_grass", "water", "cave", "sand"}
+ENCOUNTER_TERRAINS = {"tall_grass", "water", "cave", "sand", "deep"}  # deep = rowed open sea
 ABILITIES = {"glimmerstep", "tidecall", "emberward", "updraft_kite", "sunsketch", "starreach",
              "deepdive"}  # deepdive: RESERVED — deep water's gate; no Gift grants it yet
 

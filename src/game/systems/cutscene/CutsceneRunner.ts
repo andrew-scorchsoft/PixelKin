@@ -8,7 +8,7 @@
 import Phaser from 'phaser';
 import type { CutsceneStep, ActorRef } from '@game/content/types';
 import { Actor, STEP_MS } from '@game/entities/Actor';
-import type { Facing, EncounterTerrain } from '@game/data/world/types';
+import type { Facing, EncounterTerrain, AbilityId } from '@game/data/world/types';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
 import { Menu } from '@game/ui/Menu';
@@ -81,6 +81,8 @@ export interface CutsceneContext {
   resumeMapMusic?(): void;
   /** Hand the player wicks (quest rewards, found purses). */
   onGiveMoney?(amount: number): void;
+  /** Add a traversal ability to the live set (the `giveAbility` op). */
+  onGiveAbility?(ability: AbilityId): void;
   /** Take `amount` wicks if the purse holds them; true when paid (the `pay` op). */
   onPay?(amount: number): boolean;
   /** The player's chosen name, if they've been asked for one — substituted into
@@ -493,6 +495,9 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       void ctx.sfx.playVariant('world-heal', ['a', 'b']);
       return true;
     }
+    case 'giveAbility':
+      ctx.onGiveAbility?.(step.ability);
+      return true;
     case 'giveMoney':
       ctx.onGiveMoney?.(step.amount);
       void ctx.sfx.play('world-wicks');

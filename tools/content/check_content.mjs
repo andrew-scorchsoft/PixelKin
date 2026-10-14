@@ -287,7 +287,7 @@ async function analyse(root, tag) {
           if (missing.length) add('E-ACTOR', `${ref}: actor '${s.actor}' absent on ${missing.join(', ')} (op ${s.op} silently no-ops)`);
         }
       }
-      const progOps = ['battle', 'giveItem', 'giveKin', 'giveStarter', 'legendaryBattle', 'bossBattle', 'cinematic', 'giveMoney', 'heal', 'ensureItem'];
+      const progOps = ['battle', 'giveItem', 'giveKin', 'giveStarter', 'legendaryBattle', 'bossBattle', 'cinematic', 'giveMoney', 'giveAbility', 'heal', 'ensureItem'];
       if (guards.length && (progOps.includes(s.op) || s.op === 'setFlag'))
         progGuarded.push({ ref, op: s.op, flag: s.flag ?? s.trainer ?? s.item ?? s.kin ?? '', guards: guards.map((g) => (g.if ? 'if ' + g.if : 'unless ' + g.unless)).join(' & '), onStep: !!(s.if_flag || s.unless_flag) });
     }

@@ -212,6 +212,9 @@ type CutsceneStepBase =
   | { op: 'heal'; rest?: boolean; sleep?: boolean }
   | { op: 'gleam'; element: string } // diegetic Gleam cue (relight the sky)
   | { op: 'giveMoney'; amount: number } // hand the player wicks (quest rewards, finds)
+  // Grant a traversal ability outside a Lampwarden win (the Farlamp skiff's
+  // `deepdive`, 10 §2). The six Lantern Gifts still come from wardens only.
+  | { op: 'giveAbility'; ability: AbilityId }
   // Take `amount` wicks IF the purse holds that many, and set `flag` to mark the
   // sale; a short purse is a silent no-op. Scripts branch on the outcome with the
   // ordinary per-step `if_flag`/`unless_flag` guards (no new conditional machinery).

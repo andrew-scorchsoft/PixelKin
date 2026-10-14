@@ -20,7 +20,7 @@ export interface EncounterIntent {
 /** Terrains whose encounters fire only ON a matching painted tile (grass tufts,
  *  surf). 'cave'/'sand' zones roll anywhere in their rect — a cave's whole floor
  *  is encounter ground, like the classics. */
-const TILE_BOUND = new Set<EncounterTerrain>(['tall_grass', 'water']);
+const TILE_BOUND = new Set<EncounterTerrain>(['tall_grass', 'water', 'deep']);
 
 /** World flag set while the Hooded Lamp is shaded (ITEMS → toggle). Kept as a
  *  named export for callers; the lamp's damping itself is now data — its ItemDef

@@ -51,6 +51,10 @@ const SLIDE_MS = Math.round(STEP_MS * 0.5);
 /** The player's runner-riding walk-sheet (same 4×4 layout). Optional — a drawn
  *  wheel under the walking sprite stands in when it isn't packed. */
 const PLAYER_RIDE_SHEET = 'player_indi_runner';
+/** The player rowing the Farlamp skiff on DEEP water (10 §2; same 4×4 layout).
+ *  Optional — a drawn hull with a prow-lamp under the waterline-cropped sprite
+ *  stands in when it isn't packed. */
+const PLAYER_SKIFF_SHEET = 'player_indi_skiff';
 
 /** The traversal kit, handed in by WorldScene when the map uses it. */
 export interface TraverseHooks {
@@ -75,6 +79,10 @@ export class Player extends Actor {
   private riding = false;
   /** The drawn wheel under the walking sprite when no runner sheet is packed. */
   private wheel?: Phaser.GameObjects.Graphics;
+  /** Rowing the skiff on deep water (set each frame by WorldScene). */
+  private boating = false;
+  /** The drawn hull + prow-lamp when no skiff sheet is packed. */
+  private hull?: Phaser.GameObjects.Graphics;
   constructor(scene: Phaser.Scene, tx: number, ty: number, facing: Facing) {
     super(scene, tx, ty, facing, ...Player.resolveSheet(scene));
   }
@@ -162,6 +170,11 @@ export class Player extends Actor {
       this.wheel.setPosition(this.sprite.x, this.sprite.y);
       this.wheel.setDepth(this.sprite.depth - 0.0005);
     }
+    if (this.hull) {
+      if (this.hullFacing !== this.facing) this.drawHull();
+      this.hull.setPosition(this.sprite.x, this.sprite.y);
+      this.hull.setDepth(this.sprite.depth - 0.0005);
+    }
     if (!this.wake) return;
     this.wake.setPosition(this.sprite.x, this.sprite.y - this.sprite.height * 0.32);
     this.wake.setDepth(this.sprite.depth - 1);
@@ -196,6 +209,53 @@ export class Player extends Actor {
     return this.riding;
   }
 
+  /**
+   * In or out of the Farlamp skiff (deep water). The packed skiff sheet if there
+   * is one; else the sprite cropped at the gunwale over a drawn hull whose
+   * prow-lamp points the way you face (redrawn on turn in syncDepth).
+   */
+  setBoating(boating: boolean): void {
+    if (boating === this.boating) return;
+    this.boating = boating;
+    const real = this.currentTextureKey !== 'player_placeholder';
+    if (real && this.scene.textures.exists(PLAYER_SKIFF_SHEET)) {
+      this.setWalkSheet(boating ? PLAYER_SKIFF_SHEET : PLAYER_SHEET, HUMAN_WALK_FRAMES);
+      return;
+    }
+    this.hull?.destroy();
+    this.hull = undefined;
+    if (!boating) {
+      this.sprite.setCrop();
+      return;
+    }
+    this.sprite.setCrop(0, 0, this.sprite.width, Math.round(this.sprite.height * 0.72));
+    this.hull = this.scene.add.graphics();
+    this.drawHull();
+  }
+
+  get isBoating(): boolean {
+    return this.boating;
+  }
+
+  private hullFacing?: Facing;
+
+  /** A small clinker hull seen from above-front, the prow-lamp lit at the bow. */
+  private drawHull(): void {
+    const g = this.hull;
+    if (!g) return;
+    this.hullFacing = this.facing;
+    g.clear();
+    const side = this.facing === 'left' || this.facing === 'right';
+    const hw = side ? 11 : 7; // half-length along the travel axis reads at 16px
+    const hh = side ? 4 : 6;
+    g.fillStyle(0x2a1a12, 1).fillEllipse(0, -6, hw * 2 + 2, hh * 2 + 2);
+    g.fillStyle(0x7a4a2a, 1).fillEllipse(0, -6, hw * 2, hh * 2);
+    g.fillStyle(0xa8703e, 1).fillEllipse(0, -7, hw * 2 - 4, hh * 2 - 4);
+    const bow = { up: [0, -6 - hh], down: [0, -6 + hh], left: [-hw, -6], right: [hw, -6] }[this.facing];
+    g.fillStyle(0xffe08a, 0.35).fillCircle(bow[0], bow[1], 4);
+    g.fillStyle(0xffd25e, 1).fillCircle(bow[0], bow[1], 1.5);
+  }
+
   /** Re-derive deck elevation for the tile we stand on (after a warp/cutscene). */
   settleOn(rules: Traversal | undefined): void {
     this.elevated = Player.drawnOverDeck(rules, this.tx, this.ty);
@@ -212,6 +272,8 @@ export class Player extends Actor {
   }
 
   override destroy(): void {
+    this.hull?.destroy();
+    this.hull = undefined;
     this.wheel?.destroy();
     this.wheel = undefined;
     this.wake?.destroy();

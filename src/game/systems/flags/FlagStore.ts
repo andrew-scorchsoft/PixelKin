@@ -65,6 +65,13 @@ const ANY_OF: [WorldFlag, WorldFlag[]][] = [
   // Galehigh's winch to the skyloft, Pale Vault's undercroft arch
   ['flag:skyloft_open', ['flag:q_north_kite_blessed', 'gleam:storm']],
   ['flag:undercroft_open', ['flag:q_north_aurora_oil', 'gleam:frost']],
+  // the Scarp's rockfall (10 Part II): cleared once you've come round by the Ashfall
+  ['flag:scarp_short_open', ['flag:scarp_rockfall_clear', 'gleam:storm']],
+];
+
+/** "N of these prefix flags" — e.g. three of the five driftletters (10 §3). */
+const COUNT_AT_LEAST: { flag: WorldFlag; prefix: string; min: number }[] = [
+  { flag: 'flag:driftletters_3', prefix: 'flag:driftletter_', min: 3 },
 ];
 
 export class FlagStore {
@@ -111,6 +118,9 @@ export class FlagStore {
     }
     for (const [gate, any] of ANY_OF) {
       if (any.some((f) => this.flags[f] === true)) this.flags[gate] = true;
+    }
+    for (const { flag, prefix, min } of COUNT_AT_LEAST) {
+      if (this.countHeld(prefix) >= min) this.flags[flag] = true;
     }
     if (POST_LETTER_FLAGS.every((f) => this.flags[f] === true)) {
       this.flags[POST_LETTERS_ALL] = true;

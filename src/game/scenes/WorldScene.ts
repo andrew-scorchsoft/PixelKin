@@ -1421,6 +1421,10 @@ export class WorldScene extends Phaser.Scene {
       onGiveMoney: (amount) => {
         this.money = Math.max(0, this.money + Math.floor(amount));
       },
+      onGiveAbility: (ability) => {
+        this.abilities.add(ability);
+        void this.persist();
+      },
       onPay: (amount) => {
         const cost = Math.max(0, Math.floor(amount));
         if (this.money < cost) return false;
@@ -2159,7 +2163,10 @@ export class WorldScene extends Phaser.Scene {
     // Ride maps (the Wick-Run): holding the rented runner, you ride it.
     this.player.setRiding(this.isRiding());
     const wasSwimming = this.player.isSwimming;
-    this.player.setSwimming(this.map.hasTerrainAt(this.player.tx, this.player.ty, 'water'));
+    // Deep water is rowed in the Farlamp skiff (10 §2); the shallows are swum.
+    const deep = this.map.hasTerrainAt(this.player.tx, this.player.ty, 'deep');
+    this.player.setBoating(deep);
+    this.player.setSwimming(!deep && this.map.hasTerrainAt(this.player.tx, this.player.ty, 'water'));
     // A small splash as the lamp carries you onto (or off) open water — only on
     // a free step, so a warp/cutscene landing in the water stays quiet.
     if (this.player.isSwimming !== wasSwimming && !this.modal) void this.sfx.play('world-splash');
