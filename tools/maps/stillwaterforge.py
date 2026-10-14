@@ -41,6 +41,10 @@ and the one forbidden candle in a jar.
   spinning_wheel 2x2  (interior) home B: Maren's wheel, grey wool on the distaff
   candle_sill    1x1  (interior) home B: the candle kept on the child's shelf
   old_chairs     2x1  (interior) home A: two chairs with their backs to the hearth
+  -- the 2026-10 r3 pass: the mere at dawn (flag:dawn overlays, never solid) --
+  punt_lit       2x1  the punt's swap twin: prow-lamp unhooded and lit, glow on the water
+  mere_glint     1x1  lamplight laid on still water (a broken warm streak)
+  mere_sheen     2x1  the first pale sky caught in the mere
 
 Run:  python3 tools/maps/stillwaterforge.py [--only a,b]
       python3 .claude/skills/generate-sprite-sheet/scripts/pack_objects.py
@@ -668,7 +672,60 @@ def sprig_basket():
     return img(a)
 
 
+# ---- the dawn on the mere (2026-10, Plan 4 r3: "the mere at dawn reads as dusk") ---
+# Three flag-gated (flag:dawn) overlays laid ON the water, never solid: the punt's
+# prow-lamp unhooded and lit, lamplight lying on the still water under the two
+# opened shore lamps, and the first pale sky caught in the mere. All drawn over a
+# transparent canvas so the `mere` tiles below still read through.
+DAWN_SKY = [hx("#6c7488"), hx("#a6a4b4"), hx("#e8c8a8"), hx("#ffe6c4")]
+
+
+def punt_lit():
+    """2x1 the same punt (same footprint) after the dawn: the prow-lamp's hood
+    folded back, a warm flame in it, and its light lying on the water."""
+    a = np.array(punt(), dtype=np.int16)
+    fill(a, 25, 0, 29, 5, np.array([0, 0, 0, 0], np.int16))  # strip the hood
+    fill(a, 26, 1, 28, 1, IRON[2])                           # the folded-back cap
+    fill(a, 26, 2, 28, 5, FLAME[2])
+    a[3:5, 27] = FLAME[3]
+    a[5, 26:29] = FLAME[1]
+    a[0, 26:29] = INK
+    a[1:6, 25] = INK
+    a[1:6, 29] = INK
+    for (x, y) in [(27, 12), (26, 13), (27, 13), (28, 13), (27, 14), (25, 14), (29, 14)]:
+        a[y, x] = FLAME[2] if y < 14 else FLAME[1]           # the glow on the water
+    a[15, 27] = FLAME[0]
+    return img(a)
+
+
+def mere_glint():
+    """1x1 lamplight laid on still water: a broken vertical streak of warm dashes,
+    brightest at the top, the way a lamp shows in a mere with no wind on it."""
+    a = canvas(1, 1)
+    rows = [(1, 6, 9, 3), (3, 5, 10, 2), (5, 7, 9, 3), (7, 6, 9, 2), (9, 5, 10, 1),
+            (11, 7, 8, 1), (13, 6, 9, 0)]
+    for (y, x0, x1, tone) in rows:
+        a[y, x0:x1 + 1] = FLAME[tone]
+        if tone >= 2:
+            a[y, (x0 + x1) // 2] = FLAME[min(3, tone + 1)]
+    return img(a)
+
+
+def mere_sheen():
+    """2x1 the first pale sky in the water: two long, slightly broken bands of
+    dawn colour across the dark, a little warmer at their middles."""
+    a = canvas(2, 1)
+    for (y, x0, x1) in [(4, 3, 27), (9, 7, 22), (12, 12, 18)]:
+        for x in range(x0, x1 + 1):
+            if (x * 5 + y) % 11 == 0:
+                continue                                     # a break in the band
+            mid = abs(x - (x0 + x1) / 2) / max(1, (x1 - x0) / 2)
+            a[y, x] = DAWN_SKY[3 if mid < 0.25 else 2 if mid < 0.6 else 1]
+    return img(a)
+
+
 PIECES.update({
+    "punt_lit": punt_lit, "mere_glint": mere_glint, "mere_sheen": mere_sheen,
     "lectern": lectern, "shutter_box": shutter_box, "sprig_basket": sprig_basket,
     "stove_banked": stove_banked,
     "hearth_banked": hearth_banked, "waystone": waystone, "crag_boulders": crag_boulders,
