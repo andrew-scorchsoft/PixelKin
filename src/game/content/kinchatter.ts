@@ -385,6 +385,31 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
     ],
     dawn: [{ text: '"Mmmm!" A thread of daylight finds the garden through the fallen roof. It leans toward it, every frond at once.' }],
   },
+  // --- Lane N4 (11 §F): the Hollowing family — Stillwater, the Mourning Fields, Drownlight
+  178: { // Dousecap — the snuffer-cap that puts the lamps to bed
+    lines: [
+      { text: '"Tff." It hops toward your vesperlamp, stops, and looks up at you. It is asking if it may.', react: 'hop' },
+      { text: '"...pff." A thread of smoke curls off its tip. Somewhere behind it, a candle has just gone to sleep.' },
+      { text: '"Tff-tff." It tips its brim at you, very politely, then settles down on the grass like a little brass bell.', react: 'shake' },
+    ],
+    dawn: [{ text: '"Tff?" It peeks out from under its brim at the morning, blinks, and decides to leave this one lit.', react: 'hop' }],
+  },
+  179: { // Shutterwick — the shuttered lantern-keeper
+    lines: [
+      { text: '"Hhmm." It turns its lantern away from you, the way you would shield a candle from the wind.', react: 'turn' },
+      { text: '"...mmh." One slat of its shutters opens, just a crack. Warm light falls across your boots, and then it is gone.' },
+    ],
+    dawn: [{ text: '"Hhmm-hm." It opens every shutter at once and stands there in the morning, glowing, a little shy about it.', react: 'twirl' }],
+  },
+  180: { // Lullwing — the dream-moth that keeps sleepers asleep
+    lines: [
+      { text: '"Hmmmmm." It hums one low note, and your eyelids feel heavy. You shake it off. It looks a little disappointed.', react: 'twirl' },
+      { text: '"...fff." Silver dust sifts off its wings onto your sleeve. It smells of clean linen and a fire banked for the night.' },
+      { text: '"Hm." It lands on your lamp-hand and folds its wings, as if you are the one who needs looking after.', react: 'hop' },
+    ],
+    dawn: [{ text: '"Hmm?" It flutters up into the light, confused, then follows a dozing kin home to tuck it in properly.', react: 'twirl' }],
+    event: { flag: 'flag:kinchat_lullwing', follow_ms: 4000 },
+  },
 };
 
 /** The event scripts (spread into content/scripts.ts SCRIPTS). Lore, finds and

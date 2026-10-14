@@ -1,0 +1,93 @@
+{
+  "id": 178,
+  "slug": "dousecap",
+  "name": "Dousecap",
+  "types": [
+    "Dark",
+    "Ember"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "B",
+  "stats": {
+    "hp": 64,
+    "atk": 60,
+    "def": 60,
+    "spa": 59,
+    "spd": 59,
+    "spe": 48
+  },
+  "bst": 350,
+  "ability": "cinderveil",
+  "hidden_ability": "nullheart",
+  "catchRate": 175,
+  "kindling": {
+    "into": 179,
+    "trigger": {
+      "kind": "level",
+      "level": 44
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "shade_nip"
+      },
+      {
+        "level": 6,
+        "move": "ember_jab"
+      },
+      {
+        "level": 10,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 15,
+        "move": "duskmaw"
+      },
+      {
+        "level": 20,
+        "move": "cinderclaw"
+      },
+      {
+        "level": 26,
+        "move": "hone"
+      },
+      {
+        "level": 32,
+        "move": "null_claw"
+      },
+      {
+        "level": 38,
+        "move": "flame_lash"
+      },
+      {
+        "level": 43,
+        "move": "blight_touch"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A little brass snuffer-cap of a kin that hops from wick to wick at bedtime and sits on each flame until it goes out. In Stillwater a Dousecap on the windowsill means the house has gone to sleep, and nobody minds the dark there.",
+    "category": "Snuffer-Cap Kin",
+    "size_cm": 22,
+    "weight_kg": 1.1,
+    "habitat": "north_hollow"
+  },
+  "encounters": [],
+  "scripted": false,
+  "art": {
+    "silhouette": "A small round kin shaped like a candle-snuffer's bell cap, front three-quarter view: a tarnished-brass cone that is body and hat in one, its tip curling up into a tiny wisp of grey smoke, a soft charcoal-grey face peeping out from under the wide brim with two big sleepy half-closed eyes and a small content smile, and two stubby charcoal feet. A faint warm ember-glow shows under the rim where it last sat on a flame. At 64px it reads as a tiny sleepy brass cap on little legs.",
+    "palette": "Tarnished brass cone (warm ochre-gold with darker umber shading and one pale highlight streak); charcoal-grey face and feet (#2a2633); the eyes deep night (#0b1026) with one bone (#f5f0e1) highlight each; a soft fire-amber (#ff8a3d) ember glow under the rim, the brightest pixel; the smoke-curl pale grey; ink (#1a1430) outlines.",
+    "direction": "Drowsy, dutiful and sweet: a tidy little kin that puts the lights to bed. Cosy-melancholy, round and huggable, never spooky. Must read as the same line as Shutterwick: same brass snuffer-cap, same charcoal, same sleepy eyes."
+  },
+  "provenance_concept_id": "X-DOUSECAP"
+}
