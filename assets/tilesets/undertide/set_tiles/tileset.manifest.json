@@ -1,0 +1,1503 @@
+{
+  "name": "undertide_set",
+  "columns": 10,
+  "tiles": [
+    {
+      "file": "000_tidepool_corner_nw.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "corner_nw",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          0,
+          40,
+          41
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "001_tidepool_edge_n.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "edge_n",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          1,
+          42,
+          43
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "002_tidepool_corner_ne.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "corner_ne",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          2,
+          44,
+          45
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "003_tidepool_edge_w.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "edge_w",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          3,
+          46,
+          47
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "004_tidepool_fill.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "fill",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          4,
+          48,
+          49
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "005_tidepool_edge_e.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "edge_e",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          5,
+          50,
+          51
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "006_tidepool_corner_sw.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "corner_sw",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          6,
+          52,
+          53
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "007_tidepool_edge_s.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "edge_s",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          7,
+          54,
+          55
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "008_tidepool_corner_se.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "corner_se",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          8,
+          56,
+          57
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "009_tidepool_inner_nw.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "inner_nw",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          9,
+          58,
+          59
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "010_tidepool_inner_ne.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "inner_ne",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          10,
+          60,
+          61
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "011_tidepool_inner_sw.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "inner_sw",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          11,
+          62,
+          63
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "012_tidepool_inner_se.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "inner_se",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          12,
+          64,
+          65
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "013_tidepool_strip_h.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "strip_h",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          13,
+          66,
+          67
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "014_tidepool_strip_v.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "strip_v",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          14,
+          68,
+          69
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "015_tidepool_end_n.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "end_n",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          15,
+          70,
+          71
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "016_tidepool_end_s.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "end_s",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          16,
+          72,
+          73
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "017_tidepool_end_w.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "end_w",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          17,
+          74,
+          75
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "018_tidepool_end_e.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "end_e",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          18,
+          76,
+          77
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "019_tidepool_single.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "single",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          19,
+          78,
+          79
+        ],
+        "duration_ms": 1100
+      }
+    },
+    {
+      "file": "020_surge_corner_nw.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "corner_nw",
+      "collides": true,
+      "animation": {
+        "frames": [
+          20,
+          80,
+          81
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "021_surge_edge_n.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_n",
+      "collides": true,
+      "animation": {
+        "frames": [
+          21,
+          82,
+          83
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "022_surge_corner_ne.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "corner_ne",
+      "collides": true,
+      "animation": {
+        "frames": [
+          22,
+          84,
+          85
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "023_surge_edge_w.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_w",
+      "collides": true,
+      "animation": {
+        "frames": [
+          23,
+          86,
+          87
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "024_surge_fill.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "fill",
+      "collides": true,
+      "animation": {
+        "frames": [
+          24,
+          88,
+          89
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "025_surge_edge_e.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_e",
+      "collides": true,
+      "animation": {
+        "frames": [
+          25,
+          90,
+          91
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "026_surge_corner_sw.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "corner_sw",
+      "collides": true,
+      "animation": {
+        "frames": [
+          26,
+          92,
+          93
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "027_surge_edge_s.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_s",
+      "collides": true,
+      "animation": {
+        "frames": [
+          27,
+          94,
+          95
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "028_surge_corner_se.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "corner_se",
+      "collides": true,
+      "animation": {
+        "frames": [
+          28,
+          96,
+          97
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "029_surge_inner_nw.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "inner_nw",
+      "collides": true,
+      "animation": {
+        "frames": [
+          29,
+          98,
+          99
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "030_surge_inner_ne.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "inner_ne",
+      "collides": true,
+      "animation": {
+        "frames": [
+          30,
+          100,
+          101
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "031_surge_inner_sw.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "inner_sw",
+      "collides": true,
+      "animation": {
+        "frames": [
+          31,
+          102,
+          103
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "032_surge_inner_se.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "inner_se",
+      "collides": true,
+      "animation": {
+        "frames": [
+          32,
+          104,
+          105
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "033_surge_strip_h.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "strip_h",
+      "collides": true,
+      "animation": {
+        "frames": [
+          33,
+          106,
+          107
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "034_surge_strip_v.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "strip_v",
+      "collides": true,
+      "animation": {
+        "frames": [
+          34,
+          108,
+          109
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "035_surge_end_n.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "end_n",
+      "collides": true,
+      "animation": {
+        "frames": [
+          35,
+          110,
+          111
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "036_surge_end_s.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "end_s",
+      "collides": true,
+      "animation": {
+        "frames": [
+          36,
+          112,
+          113
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "037_surge_end_w.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "end_w",
+      "collides": true,
+      "animation": {
+        "frames": [
+          37,
+          114,
+          115
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "038_surge_end_e.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "end_e",
+      "collides": true,
+      "animation": {
+        "frames": [
+          38,
+          116,
+          117
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "039_surge_single.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "single",
+      "collides": true,
+      "animation": {
+        "frames": [
+          39,
+          118,
+          119
+        ],
+        "duration_ms": 650
+      }
+    },
+    {
+      "file": "040_tidepool_corner_nw_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "041_tidepool_corner_nw_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "042_tidepool_edge_n_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "043_tidepool_edge_n_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "044_tidepool_corner_ne_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "045_tidepool_corner_ne_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "046_tidepool_edge_w_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "047_tidepool_edge_w_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "048_tidepool_fill_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "049_tidepool_fill_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "050_tidepool_edge_e_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "051_tidepool_edge_e_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "052_tidepool_corner_sw_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "053_tidepool_corner_sw_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "054_tidepool_edge_s_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "055_tidepool_edge_s_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "056_tidepool_corner_se_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "057_tidepool_corner_se_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "058_tidepool_inner_nw_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "059_tidepool_inner_nw_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "060_tidepool_inner_ne_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "061_tidepool_inner_ne_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "062_tidepool_inner_sw_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "063_tidepool_inner_sw_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "064_tidepool_inner_se_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "065_tidepool_inner_se_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "066_tidepool_strip_h_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "067_tidepool_strip_h_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "068_tidepool_strip_v_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "069_tidepool_strip_v_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "070_tidepool_end_n_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "071_tidepool_end_n_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "072_tidepool_end_s_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "073_tidepool_end_s_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "074_tidepool_end_w_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "075_tidepool_end_w_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "076_tidepool_end_e_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "077_tidepool_end_e_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "078_tidepool_single_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "079_tidepool_single_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "080_surge_corner_nw_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "081_surge_corner_nw_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "082_surge_edge_n_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "083_surge_edge_n_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "084_surge_corner_ne_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "085_surge_corner_ne_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "086_surge_edge_w_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "087_surge_edge_w_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "088_surge_fill_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "089_surge_fill_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "090_surge_edge_e_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "091_surge_edge_e_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "092_surge_corner_sw_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "093_surge_corner_sw_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "094_surge_edge_s_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "095_surge_edge_s_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "096_surge_corner_se_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "097_surge_corner_se_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "098_surge_inner_nw_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "099_surge_inner_nw_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "100_surge_inner_ne_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "101_surge_inner_ne_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "102_surge_inner_sw_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "103_surge_inner_sw_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "104_surge_inner_se_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "105_surge_inner_se_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "106_surge_strip_h_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "107_surge_strip_h_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "108_surge_strip_v_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "109_surge_strip_v_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "110_surge_end_n_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "111_surge_end_n_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "112_surge_end_s_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "113_surge_end_s_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "114_surge_end_w_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "115_surge_end_w_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "116_surge_end_e_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "117_surge_end_e_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "118_surge_single_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "119_surge_single_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "120_race_up.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge",
+      "animation": {
+        "frames": [
+          120,
+          121,
+          122
+        ],
+        "duration_ms": 220
+      }
+    },
+    {
+      "file": "121_race_up_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge"
+    },
+    {
+      "file": "122_race_up_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge"
+    },
+    {
+      "file": "123_race_down.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge",
+      "animation": {
+        "frames": [
+          123,
+          124,
+          125
+        ],
+        "duration_ms": 220
+      }
+    },
+    {
+      "file": "124_race_down_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge"
+    },
+    {
+      "file": "125_race_down_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge"
+    },
+    {
+      "file": "126_race_left.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge",
+      "animation": {
+        "frames": [
+          126,
+          127,
+          128
+        ],
+        "duration_ms": 220
+      }
+    },
+    {
+      "file": "127_race_left_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge"
+    },
+    {
+      "file": "128_race_left_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge"
+    },
+    {
+      "file": "129_race_right.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge",
+      "animation": {
+        "frames": [
+          129,
+          130,
+          131
+        ],
+        "duration_ms": 220
+      }
+    },
+    {
+      "file": "130_race_right_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge"
+    },
+    {
+      "file": "131_race_right_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge"
+    },
+    {
+      "file": "132_race_fork.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge",
+      "animation": {
+        "frames": [
+          132,
+          133,
+          134
+        ],
+        "duration_ms": 400
+      }
+    },
+    {
+      "file": "133_race_fork_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge"
+    },
+    {
+      "file": "134_race_fork_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "terrain": "surge"
+    },
+    {
+      "file": "135_wetstone_0.png",
+      "role": "ground"
+    },
+    {
+      "file": "136_wetstone_1.png",
+      "role": "ground"
+    },
+    {
+      "file": "137_wetstone_2.png",
+      "role": "ground"
+    },
+    {
+      "file": "138_barnacle_a.png",
+      "role": "decor"
+    },
+    {
+      "file": "139_barnacle_b.png",
+      "role": "decor"
+    },
+    {
+      "file": "140_shell_a.png",
+      "role": "decor"
+    },
+    {
+      "file": "141_wrack_a.png",
+      "role": "decor"
+    },
+    {
+      "file": "142_glass_a.png",
+      "role": "decor"
+    },
+    {
+      "file": "143_glass_b.png",
+      "role": "decor"
+    },
+    {
+      "file": "144_surge_fill_v1.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "fill",
+      "collides": true,
+      "animation": {
+        "frames": [
+          144,
+          145,
+          146
+        ],
+        "duration_ms": 710
+      }
+    },
+    {
+      "file": "145_surge_fill_v1_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "146_surge_fill_v1_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "147_surge_fill_v2.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "fill",
+      "collides": true,
+      "animation": {
+        "frames": [
+          147,
+          148,
+          149
+        ],
+        "duration_ms": 770
+      }
+    },
+    {
+      "file": "148_surge_fill_v2_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "149_surge_fill_v2_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "150_surge_edge_n_v1.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_n",
+      "collides": true,
+      "animation": {
+        "frames": [
+          150,
+          151,
+          152
+        ],
+        "duration_ms": 700
+      }
+    },
+    {
+      "file": "151_surge_edge_n_v1_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "152_surge_edge_n_v1_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "153_surge_edge_s_v1.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_s",
+      "collides": true,
+      "animation": {
+        "frames": [
+          153,
+          154,
+          155
+        ],
+        "duration_ms": 700
+      }
+    },
+    {
+      "file": "154_surge_edge_s_v1_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "155_surge_edge_s_v1_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "156_surge_edge_w_v1.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_w",
+      "collides": true,
+      "animation": {
+        "frames": [
+          156,
+          157,
+          158
+        ],
+        "duration_ms": 700
+      }
+    },
+    {
+      "file": "157_surge_edge_w_v1_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "158_surge_edge_w_v1_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "159_surge_edge_e_v1.png",
+      "role": "wall",
+      "terrain": "surge",
+      "autotile": "edge_e",
+      "collides": true,
+      "animation": {
+        "frames": [
+          159,
+          160,
+          161
+        ],
+        "duration_ms": 700
+      }
+    },
+    {
+      "file": "160_surge_edge_e_v1_a2.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "161_surge_edge_e_v1_a3.png",
+      "role": "wall",
+      "collides": true
+    },
+    {
+      "file": "162_tidepool_fill_v1.png",
+      "role": "water",
+      "terrain": "tidepool",
+      "autotile": "fill",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water",
+      "animation": {
+        "frames": [
+          162,
+          163,
+          164
+        ],
+        "duration_ms": 1200
+      }
+    },
+    {
+      "file": "163_tidepool_fill_v1_a2.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    },
+    {
+      "file": "164_tidepool_fill_v1_a3.png",
+      "role": "water",
+      "collides": true,
+      "requires_ability": "tidecall",
+      "encounter_terrain": "water"
+    }
+  ]
+}

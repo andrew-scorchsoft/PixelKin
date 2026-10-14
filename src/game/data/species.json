@@ -2670,6 +2670,20 @@
      "rarity": "uncommon",
      "min": 58,
      "max": 60
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "rare",
+     "min": 64,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -3049,7 +3063,36 @@
     "weight_kg": 52,
     "habitat": "south"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 63
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "Streamlined low-slung body, swept-back shell ridges like breaking waves, twin luminous teal eye-stalks, long trailing fin-limbs. Seafoam-blue and deep indigo palette, white crest markings.",
@@ -3161,6 +3204,20 @@
      "rarity": "common",
      "min": 57,
      "max": 62
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 61,
+     "max": 62
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 61,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -3254,6 +3311,34 @@
      "rarity": "very_rare",
      "min": 22,
      "max": 24
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "rare",
+     "min": 63,
+     "max": 63
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "very_rare",
+     "min": 64,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -3763,6 +3848,13 @@
      "rarity": "very_rare",
      "min": 60,
      "max": 60
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "very_rare",
+     "min": 66,
+     "max": 66
     }
    ],
    "scripted": true,
@@ -5624,6 +5716,20 @@
      "rarity": "uncommon",
      "min": 58,
      "max": 63
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 62,
+     "max": 63
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 63
     }
    ],
    "scripted": false,
@@ -5966,6 +6072,27 @@
      "rarity": "uncommon",
      "min": 60,
      "max": 65
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 63
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -6604,6 +6731,27 @@
      "rarity": "uncommon",
      "min": 58,
      "max": 65
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 63
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 64
     }
    ],
    "scripted": false,
@@ -9333,6 +9481,34 @@
      "rarity": "common",
      "min": 57,
      "max": 64
+    },
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 63
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 65
     }
    ],
    "scripted": false,
@@ -15330,6 +15506,27 @@
      "rarity": "common",
      "min": 50,
      "max": 53
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 63,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
     }
    ],
    "scripted": false,
@@ -18340,7 +18537,36 @@
     "weight_kg": 0.4,
     "habitat": "isles"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "undertide_i",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 61,
+     "max": 63
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 61,
+     "max": 63
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "common",
+     "min": 63,
+     "max": 65
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A tiny round-bodied lantern-fish fry seen side-on, swimming upright: a big head with huge round dark eyes, a small smiling underbite, stubby frilled pectoral fins and a short fanned tail. A thin curved stalk rises from its brow and ends in a round glowing lure-bulb held out in front of its face. At 64px it reads as a chubby baby fish carrying its own little lamp.",
@@ -18435,7 +18661,29 @@
     "weight_kg": 62,
     "habitat": "isles"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "undertide_ii",
+     "terrain": "water",
+     "rarity": "rare",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "water",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A long, graceful deep-sea lantern-fish seen side-on: a sleek tapering body with a row of small glowing spots along each flank, broad ribbon-like fins that trail like a veil, large calm eyes and a gentle closed mouth. A tall arching lure-stalk curves forward over its head and ends in a bright glass-like lamp-bulb. At 64px it reads as an elegant fish carrying a lantern before it.",
@@ -18528,7 +18776,36 @@
     "weight_kg": 7.5,
     "habitat": "isles"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 61,
+     "max": 63
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 61,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 62,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 63,
+     "max": 65
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A small sturdy hermit crab, three-quarter view: a pebble-grey plated body, two mismatched claws (one big, one small), stalked eyes and short jointed legs. On its back, instead of a shell, it wears a little brass lantern housing with cracked, chipped glass panes and a dark unlit wick inside. At 64px it reads as a crab carrying a broken lantern as its home.",
@@ -18631,7 +18908,29 @@
     "weight_kg": 210,
     "habitat": "isles"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 63,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 64,
+     "max": 66
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A big armoured crab built like a small lighthouse, three-quarter view: a broad stone-plated body on thick jointed legs, one huge rounded claw raised like a shield, stalked eyes. On its back stands a tall, whole lantern tower: a brass lantern room with clean glass panes and a bright lamp shining inside, under a little conical roof, with soft beams of light fanning out. At 64px it reads as a crab wearing a lit lighthouse.",
@@ -18722,7 +19021,36 @@
     "weight_kg": 0.3,
     "habitat": "isles"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "undertide_i",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 61,
+     "max": 63
+    },
+    {
+     "area": "undertide_ii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 62,
+     "max": 64
+    },
+    {
+     "area": "undertide_iii",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 62,
+     "max": 65
+    },
+    {
+     "area": "undertide_iv",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 63,
+     "max": 66
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A soft, round-bodied moth that seems made of fog, front view with wings spread: a fluffy pale body, big feathery antennae, two pairs of wide frayed wings whose edges dissolve into curling wisps of mist, and two large dark gentle eyes. Little curls of fog trail off the wingtips. At 64px it reads as a fluffy misty moth drifting in the dark.",

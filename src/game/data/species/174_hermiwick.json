@@ -82,7 +82,36 @@
     "weight_kg": 7.5,
     "habitat": "isles"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "undertide_i",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 61,
+      "max": 63
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 61,
+      "max": 64
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 62,
+      "max": 65
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 63,
+      "max": 65
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "A small sturdy hermit crab, three-quarter view: a pebble-grey plated body, two mismatched claws (one big, one small), stalked eyes and short jointed legs. On its back, instead of a shell, it wears a little brass lantern housing with cracked, chipped glass panes and a dark unlit wick inside. At 64px it reads as a crab carrying a broken lantern as its home.",

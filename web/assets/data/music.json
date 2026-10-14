@@ -974,6 +974,28 @@
      "note": null
     },
     {
+     "id": "driftholm",
+     "title": "Driftholm",
+     "where": "Driftholm, the island town of the Farlamp Isles, cut off in the long dark for eleven winters",
+     "mood": "A sea-town hymn in the long dark: warm but lonely, small lamps kept alone in the windows.",
+     "classic": "play/assets/audio/music/driftholm.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/driftholm.mp3",
+     "loop_start": 10.733,
+     "note": null
+    },
+    {
+     "id": "farlamp-relit",
+     "title": "The Drowned Lamp",
+     "where": "The Drowned Lamp",
+     "mood": "The relight: the isles' hymn heard in the dark's minor, then blooming into warm major as the fog lifts.",
+     "classic": "play/assets/audio/music/farlamp-relit.mp3",
+     "classic_loop_start": 17.1429,
+     "remaster": "play/assets/audio/music/remaster/farlamp-relit.mp3",
+     "loop_start": 10.943,
+     "note": null
+    },
+    {
      "id": "kindle-ceremony",
      "title": "Kindle Ceremony",
      "where": "",
@@ -993,6 +1015,17 @@
      "classic_loop_start": null,
      "remaster": null,
      "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "undertide",
+     "title": "The Sun Ledges",
+     "where": "The Sun Ledges · The Undertide: Kelp Vaults · The Undertide: Bell Galleries · The Undertide: the Drowned Stair · The Drowned Lamp",
+     "mood": "A sea-cave in the deep: drips, distant bells, the isles' hymn broken into low fragments.",
+     "classic": "play/assets/audio/music/undertide.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/undertide.mp3",
+     "loop_start": 7.407,
      "note": null
     }
    ]

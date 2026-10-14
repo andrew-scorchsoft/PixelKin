@@ -1036,6 +1036,49 @@ for _area, _tab, _shift in _MIRE_TABLES:
 for _slug, _rows_ in MIRELIGHT_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
+# ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide — MIRRORS of the
+# built in-map tables (tools/maps/build_undertide_i/ii/iii/iv.py are the truth;
+# keep both in step). Post-game only (no night/day pair: the isles keep their own
+# dusk). Cave = rect-wide on the galleries; water = the shallows (tide-race lanes
+# never roll). Weights -> rarity: >=20 common, 10-19 uncommon, 5-9 rare, <5 very_rare.
+_UT_SLUG = {172: "fathomote", 173: "fathomere", 174: "hermiwick", 175: "beaconclaw",
+            176: "fogwisp", 25: "prismare", 28: "brinewrath", 29: "glostern",
+            30: "glostrael", 34: "tideveil", 52: "lithonyx", 55: "ferrolith",
+            61: "tidalarch", 85: "stillwarden", 138: "voidmantle"}
+UNDERTIDE_TABLES = {
+    "undertide_i": {
+        "cave": [(174, 30, 61, 63), (176, 26, 61, 63), (52, 20, 62, 63), (85, 14, 62, 63),
+                 (55, 10, 62, 63)],
+        "water": [(172, 34, 61, 63), (29, 24, 61, 62), (28, 20, 62, 63), (61, 14, 62, 63),
+                  (30, 8, 63, 63)]},
+    "undertide_ii": {
+        "cave": [(174, 28, 61, 64), (176, 24, 62, 64), (52, 18, 62, 63), (85, 14, 62, 64),
+                 (175, 6, 63, 64), (138, 10, 62, 64)],
+        "water": [(172, 32, 61, 63), (61, 22, 62, 64), (28, 20, 62, 64), (29, 16, 61, 63),
+                  (173, 6, 63, 64), (30, 4, 64, 64)]},
+    "undertide_iii": {
+        "cave": [(174, 26, 62, 65), (176, 24, 62, 65), (85, 16, 63, 64), (138, 14, 63, 65),
+                 (175, 10, 64, 65), (55, 10, 63, 65)],
+        "water": [(172, 30, 62, 64), (28, 20, 63, 65), (61, 18, 63, 64), (30, 12, 64, 65),
+                  (173, 12, 64, 65), (25, 8, 64, 65)]},
+    "undertide_iv": {
+        "cave": [(176, 26, 63, 66), (174, 22, 63, 65), (175, 14, 64, 66), (138, 14, 64, 66),
+                 (85, 14, 63, 65), (55, 10, 64, 66)],
+        "water": [(172, 26, 63, 65), (173, 18, 64, 66), (28, 18, 64, 66), (30, 14, 64, 66),
+                  (25, 14, 64, 66), (34, 4, 66, 66)]},
+}
+
+
+def _ut_rarity(w):
+    return "common" if w >= 20 else "uncommon" if w >= 10 else "rare" if w >= 5 else "very_rare"
+
+
+for _area, _by_terrain in UNDERTIDE_TABLES.items():
+    for _terrain, _tab in _by_terrain.items():
+        for (_k, _w, _lo, _hi) in _tab:
+            EXTRA_ENCOUNTERS.setdefault(_UT_SLUG[_k], []).append(
+                {"area": _area, "terrain": _terrain, "rarity": _ut_rarity(_w), "min": _lo, "max": _hi})
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -1102,6 +1145,9 @@ CURATED_AREAS = {
     # THE WILD WAYS — the Mirelights (mirrored above, MIRELIGHT_ENCOUNTERS);
     # the hollow is the legendary's room, listed so nothing generated claims it
     "mirelight_landing", "mirelight_glassmere", "mirelight_chapel", "lanthorne_hollow",
+    # Lane C2 — the Farlamp Isles' Undertide (mirrored above, UNDERTIDE_TABLES); the
+    # Drowned Lamp is Farlume's room, encounter-free, listed so nothing claims it.
+    "undertide_i", "undertide_ii", "undertide_iii", "undertide_iv", "farlamp_drowned",
 }
 
 # The Old Light's hall tables (R10) — MIRROR of build_pearlmoor_oldlight.py's

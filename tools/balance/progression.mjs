@@ -91,6 +91,8 @@ const trend = []; // [midLevel, bst, weight]
 const TREND_SKIP_AREAS = new Set([
   'old_seams_i', 'old_seams_ii', 'old_seams_iii', // the Old Seams (D)
   'cinderwind_kiln', // Lane A: Kiln Gully — optional, behind the Updraft vent (post-Mira)
+  // Lane C2 — the Farlamp Isles' Undertide (post-game, optional, lv 61-66)
+  'undertide_i', 'undertide_ii', 'undertide_iii', 'undertide_iv',
 ]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
@@ -451,7 +453,9 @@ const JOURNEY = [
       T('Warden Mer (Round)', 'vigilant', [K(68, 135), K(68, 138), K(68, 85), K(69, 140), K(69, 145), K(69, 146)]),
       T('Star-tender Fenn', 'cor', [K(68, 9), K(68, 107), K(68, 125), K(69, 87), K(69, 131), K(70, 129)]),
     ],
-    income: { quests: 0, valuables: 9000, finds: 5000 }, // Starglass caches + the storm-tithe; payouts come from the trainer loop
+    // Lane C2: + the Undertide keeper's purse (2,000w, undertide_iv's west nook) —
+    // the post-game's only modelled leg, so the isles' found money lands here.
+    income: { quests: 0, valuables: 9000, finds: 7000 }, // Starglass caches + the storm-tithe + the keeper's purse; payouts come from the trainer loop
     spend: { bright_balm: 4 },
     checkpoint: { name: 'The Last Lesson (Fenn)', rec: 67, ace: 70 },
   },
@@ -565,6 +569,12 @@ const BUILT_PAYOUTS = {
   mire_eelcatcher: ['route', 40, 640], // the landing
   mire_lampdiver: ['route', 42, 672], // the Glassmere
   mire_acolyte: ['route', 43, 688], // the drowned chapel
+  // Lane C2 — the Farlamp Isles' Undertide (post-game)
+  undertide_diver_ness: ['route', 62, 992],
+  undertide_diver_corin: ['route', 63, 1008],
+  undertide_nethand_bryn: ['route', 64, 1024],
+  undertide_keeper_isolde: ['keeper', 65, 1300],
+  undertide_diver_marlo: ['route', 66, 1056],
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {
@@ -579,7 +589,7 @@ if (!(PRICES.chart_early < PRICES.chart_mid && PRICES.chart_mid < PRICES.chart_l
 // Move-id sanity for the shipped charts (mirror items.ts teach_move values).
 for (const id of ['cinder_spit', 'mist_spray', 'gust_up', 'focus_mind', 'wave_crash', 'hearth_pulse',
   'spore_puff', 'root_strike', 'lifedrain', 'thunder_kick', 'volt_arc', 'gale_slam', 'swift_step', 'tempest',
-  'sunburst_nova', 'tremor_quake']) {
+  'sunburst_nova', 'tremor_quake', 'maelstrom']) {
   if (!MOVES.moves.some((m) => m.id === id)) failures.push(`chart teaches unknown move '${id}'`);
 }
 

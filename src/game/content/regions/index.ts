@@ -31,6 +31,8 @@ import { JESTHOUSE_DIALOGUE, JESTHOUSE_SCRIPTS } from './jesthouse';
 import { INNFOLK_DIALOGUE, INNFOLK_SCRIPTS } from './innfolk';
 // Lane A (walkthrough/10 Part II): the Ashfall Shelf + Kiln Gully.
 import { ASHFALL_DIALOGUE, ASHFALL_SCRIPTS } from './ashfall';
+// The Farlamp Isles, lane C2 (2026-10): the Undertide + the Drowned Lamp.
+import { UNDERTIDE_DIALOGUE, UNDERTIDE_SCRIPTS } from './undertide';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -51,6 +53,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...JESTHOUSE_SCRIPTS,
   ...INNFOLK_SCRIPTS,
   ...ASHFALL_SCRIPTS,
+  ...UNDERTIDE_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -72,4 +75,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...JESTHOUSE_DIALOGUE,
   ...INNFOLK_DIALOGUE,
   ...ASHFALL_DIALOGUE,
+  ...UNDERTIDE_DIALOGUE,
 };
