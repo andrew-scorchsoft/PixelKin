@@ -155,7 +155,13 @@ async function analyse(root, tag) {
       if (isScript) mark(t.ref, mid);
       if (t.blocked_ref) refUsers.push({ ref: t.blocked_ref, where: `${mid} trigger ${t.id} blocked_ref`, script: false });
     }
-    for (const w of m.warps ?? []) if (w.blocked_ref) refUsers.push({ ref: w.blocked_ref, where: `${mid} warp ${w.id} blocked_ref`, script: false });
+    for (const w of m.warps ?? []) {
+      if (!w.blocked_ref) continue;
+      // a warp's blocked_ref may be a script.* (WorldScene.runBlockedScript)
+      const isScript = w.blocked_ref.startsWith('script.');
+      refUsers.push({ ref: w.blocked_ref, where: `${mid} warp ${w.id} blocked_ref`, script: isScript });
+      if (isScript) mark(w.blocked_ref, mid);
+    }
     for (const g of m.gates ?? []) if (g.blocked_ref) refUsers.push({ ref: g.blocked_ref, where: `${mid} gate blocked_ref`, script: false });
   }
   for (const u of refUsers) {

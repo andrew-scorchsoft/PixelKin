@@ -151,7 +151,7 @@
       "facing": "up",
       "transition": "fade",
       "requires_flag": "flag:q_south_wander_word",
-      "blocked_ref": "sign.wander_gap"
+      "blocked_ref": "script.wander_gap_blocked"
     },
     {
       "id": "to_quay_e",
@@ -183,7 +183,7 @@
       "facing": "up",
       "transition": "fade",
       "requires_flag": "flag:q_south_wander_word",
-      "blocked_ref": "sign.wander_gap"
+      "blocked_ref": "script.wander_gap_blocked"
     }
   ],
   "triggers": [
@@ -268,6 +268,18 @@
       "movement": "look_around",
       "dialogue_ref": "npc.allotment_anth_done",
       "requires_flag": "flag:q_south_wander_done"
+    },
+    {
+      "id": "hob_waiting",
+      "at": {
+        "tx": 8,
+        "ty": 3
+      },
+      "facing": "right",
+      "sprite": "npc_man",
+      "movement": "look_around",
+      "dialogue_ref": "script.wander_hob_waiting",
+      "hidden_when_flag": "flag:q_south_wander_open"
     }
   ],
   "gates": [],

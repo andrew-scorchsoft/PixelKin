@@ -113,6 +113,17 @@ export const QUESTS: QuestRegistry = [
     done_flag: 'flag:q_south_booji_done',
   },
   {
+    // A teaser, not S5 itself: the closed wood above the allotments, logged the
+    // first time Wanderer Hob says "come back later" (it was easy to forget).
+    id: 's5_wood_that_waits',
+    name: 'The Wood That Waits',
+    region: 'south',
+    giver: 'Wanderer Hob, at the wood above the Hillside Allotments',
+    blurb: 'An old wood above the Hillside Allotments won\'t let anyone in. Hob says the trees open for whoever the old man at the dark end of the breakwater sends.',
+    start_flag: 'flag:wander_wood_seen',
+    done_flag: 'flag:q_south_wander_open',
+  },
+  {
     id: 's5_not_all_who_wander',
     name: 'Not All Who Wander',
     region: 'south',

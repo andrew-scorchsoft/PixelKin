@@ -1295,6 +1295,18 @@ export class WorldScene extends Phaser.Scene {
     });
   }
 
+  /** A gated warp whose "not yet" is a script (someone there to say so, staged
+   *  on flags) plays it as a cutscene — the NPC `script.*` pattern. */
+  private async runBlockedScript(ref: string): Promise<void> {
+    const steps = getScript(ref);
+    if (!steps) return;
+    this.modal = true;
+    const completed = await this.playScene(steps);
+    if (completed) void this.persist();
+    this.modal = false;
+    this.refreshNpcs();
+  }
+
   private async runDialogue(ref: string | undefined): Promise<void> {
     this.modal = true;
     await new DialogueBox(this, this.sfx).run(getDialogue(ref));
@@ -2020,7 +2032,8 @@ export class WorldScene extends Phaser.Scene {
       // answers — its own line if it has one, else a generic "it's locked" — so a
       // walk-in (or the instinctive Confirm press) is never met with silence.
       // Other gated warps only hint on an active interact.
-      if (warp.blocked_ref) await this.runDialogue(warp.blocked_ref);
+      if (warp.blocked_ref?.startsWith('script.')) await this.runBlockedScript(warp.blocked_ref);
+      else if (warp.blocked_ref) await this.runDialogue(warp.blocked_ref);
       else if (warp.transition === 'door') await this.showLockedDoor();
       else if (warp.trigger === 'interact') await this.showHint();
       return;

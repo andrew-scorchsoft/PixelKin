@@ -504,10 +504,6 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'PAUL', text: 'Ah — {name}. You found the last word. ...But you\'ve come without the bird-pig, or it\'s too worn out to stand.' },
     { speaker: 'PAUL', text: 'Bring it here in your lamp, rested and ready. This next bit is ITS business more than yours. I\'ll wait. I\'m good at waiting.' },
   ],
-  'sign.wander_gap': [
-    { text: 'The trees here stand shoulder to shoulder. Something about the way they lean suggests they are waiting to be told something. The waystone, perhaps, knows what.' },
-    { text: 'Its last word is worn away. Whoever walks this wood every evening would know it — and the quay says that\'s the old man with the dark lamp, out past the bell on the breakwater.' },
-  ],
   'sign.pearlmoor_allotment': [
     { text: 'HILLSIDE ALLOTMENTS\nPlot 4: R. & A.\nSQUIRRELS WILL BE PROSECUTED.' },
   ],

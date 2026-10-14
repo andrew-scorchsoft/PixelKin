@@ -643,6 +643,27 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'He tips an imaginary cap, steps round you, and is away up the boards at a pace no eighty-something has any business keeping.' },
     { op: 'setFlag', flag: 'flag:q_south_wander' },
   ],
+  // Wanderer Hob waits beside the wood's mouth until the trees part (2026-10
+  // playtest: the gap said "no" and nobody said "come back later", so the wood
+  // read as a dead end and was easy to forget). He names the CURRENT next step,
+  // staged like the gate note, and the first meeting opens a journal entry so
+  // the wood stays on the player's list until they can get in.
+  'script.wander_hob_waiting': [
+    { op: 'say', unless_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Don\'t bother pushing. I\'ve tried. These trees don\'t open for just anybody — only for whoever the old man sends up.' },
+    { op: 'say', unless_flag: 'gleam:tide', speaker: 'WANDERER HOB', text: 'He keeps a dark lamp at the far end of the breakwater, and the breakwater\'s chained until you\'ve done right by the Lumenary. Win your Tide Gleam from Reyl Wash first.' },
+    { op: 'say', if_flag: 'gleam:tide', unless_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Got your Tide, have you? Then he\'s your next stop: out past the bell, at the dark end of the breakwater. Get to know him. He doesn\'t send just anybody.' },
+    { op: 'say', unless_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Come back when he\'s sent you. I\'ll be here. I\'m not lost, mind. I\'m WAITING. There\'s a difference.' },
+    { op: 'say', if_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'He\'s sent you! I can tell. You\'ve got the look of someone who\'s been given half a sentence.' },
+    { op: 'say', if_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Tell the stone the rest of it. Then we can both go in.' },
+    { op: 'setFlag', flag: 'flag:wander_wood_seen' },
+  ],
+  // Walking into the closed gap: the trees answer, then Hob does.
+  'script.wander_gap_blocked': [
+    { op: 'narrate', text: 'The trees here stand shoulder to shoulder. They lean, very slightly, as if waiting to be told something.' },
+    { op: 'emote', actor: 'hob_waiting', emote: 'alert' },
+    { op: 'face', actor: 'hob_waiting', facing: 'up' },
+    { op: 'run', ref: 'script.wander_hob_waiting' },
+  ],
   // The waystone at the wood's mouth (pearlmoor_allotment). Readable any time —
   // before the quest it's a tease; once Paul has sent you, it asks for the word.
   'script.wander_stone': [

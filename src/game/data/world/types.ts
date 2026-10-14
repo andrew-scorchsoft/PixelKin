@@ -84,7 +84,9 @@ export interface Warp {
   requires_flag?: WorldFlag; // warp inactive until the flag is set
   /** Dialogue shown when the warp is gated and the requirement is unmet — a
    *  diegetic "not yet" in a character's voice (mirror of EventTrigger.blocked_ref),
-   *  e.g. the netmender's chained breakwater gate. Works on step_on and interact. */
+   *  e.g. the netmender's chained breakwater gate. Works on step_on and interact.
+   *  A `script.*` ref plays as a cutscene instead (staged on flags — the wood
+   *  gap's waiting wanderer). */
   blocked_ref?: string;
   transition?: WarpTransition;
 }
