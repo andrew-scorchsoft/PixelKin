@@ -105,7 +105,7 @@ export const UNDERWAYS_SCRIPTS: ScriptRegistry = {
   ],
   'script.underways_watch_b_fire': [
     { op: 'say', speaker: 'BRAN', text: 'No gap to hold now. I sat in that choke so long it\'s worn to my shape. Look at it on your way past: empty. Strange thing to be proud of.', unless_flag: DAWN },
-    { op: 'say', speaker: 'BRAN', text: 'He came down, after. The Warden. Sat right where you\'re standing and lost to me at cards. Laughed about it, same as the first time.', if_flag: DAWN },
+    { op: 'say', speaker: 'BRAN', text: 'Eleven winters of cards with one eye on the dark. This morning I dealt to the Warden himself, both eyes on the hand. He still can\'t bluff. Pull up a stone, I\'ll deal you in.', if_flag: DAWN },
   ],
   'script.underways_watch_c_fire': [
     { op: 'say', speaker: 'HESK', text: 'Last post of the last watch, and I walked off it. Felt like stepping off a cliff. Turns out it\'s just floor, and a fire at the end of it.', unless_flag: DAWN },

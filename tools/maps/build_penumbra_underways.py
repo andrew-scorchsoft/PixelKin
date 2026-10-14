@@ -208,6 +208,15 @@ def brazier(m, oid, at):
     prop(m, f"{oid}_lit", "brazier_lit", at, 1, 2, requires_flag="flag:dawn")
 
 
+# FD3 (review r3: "three identical sheets at the fire"): each watcher wears their own
+# sheet, on the post AND at the fire, so no screen shows the same one twice.
+WATCH_SHEET = {
+    "underways_watch_a": "star_watcher",       # Odalie: grey-haired, the long watch coat
+    "underways_watch_b": "hollowing_acolyte",  # Bran: the grey hood
+    "underways_watch_c": "pass_walker",        # Hesk: hooded, the stair-sweeper's lantern
+}
+
+
 def gathered(m, posts, at_fire):
     """FD2: once the whole watch is kept (flag:underways_watch_kept) the watchers leave their
     posts and gather at Clemency's fire: each post's `_after` NPC hides, and a fire twin
@@ -217,7 +226,7 @@ def gathered(m, posts, at_fire):
             n["hidden_when_flag"] = "flag:underways_watch_kept"
     for tid, (x, y), facing in at_fire:
         m["npcs"].append({"id": f"{tid}_fire", "at": {"tx": x, "ty": y}, "facing": facing,
-                          "sprite": "hollowing_acolyte", "movement": "static",
+                          "sprite": WATCH_SHEET[tid], "movement": "static",
                           "dialogue_ref": f"script.{tid}_fire",
                           "requires_flag": "flag:underways_watch_kept"})
     return [f"script.{tid}_fire" for tid, _, _ in at_fire]
@@ -343,9 +352,9 @@ def build_f1() -> tuple[dict, list[str]]:
     deco[ly * W + lx] = gid("scree_ledge_s")
     # the watchers (the last watch's outer posts)
     owed += pt.trainer_beat(m, tid="underways_watch_a", at=(4, 7), facing="down", sight=4,
-                            sprite="hollowing_acolyte")
+                            sprite=WATCH_SHEET["underways_watch_a"])
     owed += pt.trainer_beat(m, tid="underways_watch_c", at=(23, 8), facing="left", sight=2,
-                            sprite="hollowing_acolyte")
+                            sprite=WATCH_SHEET["underways_watch_c"])
     # FD2: once the watch is kept, Odalie and Hesk leave these posts for the fire (B1)
     gathered(m, ("underways_watch_a", "underways_watch_c"), ())
     owed += pt.cache(m, cid="underways_starglass", at=(12, 3))
@@ -453,6 +462,25 @@ def build_b1() -> tuple[dict, list[str]]:
     m = mapdict("penumbra_underways_b1", "The Underways", W, H, ground(W, H, rng),
                 layers_for(wall, allmoss), deco)
     m["display_name"] = "The Last Watch"
+    # FD3 (review r3: "B1 itself looks the same at dawn"): at flag:dawn the morning comes
+    # down the shaft: a pale pool on the chamber floor, a slow beam, a spill down the root
+    # neck toward the fire, and the cave's dusk wash thins. (The lit braziers + unhooded
+    # lamps carry their own pools: LIGHT_SOURCES in Ambience.ts.)
+    m["ambience"]["when"] = [{"flag": "flag:dawn", "ambience": {
+        "particles": [{"kind": "dust", "density": 0.6,
+                       "area": {"tx": 12, "ty": 2, "w": 8, "h": 7}},
+                      {"kind": "starglint", "density": 0.2}],
+        "tint": {"color": "#1a1828", "alpha": 0.08},
+        "sound_bed": "amb-drips",
+        "beams": [{"from": {"tx": 16.0, "ty": 1.2}, "a": {"tx": 15.3, "ty": 6.6},
+                   "b": {"tx": 16.7, "ty": 6.6}, "period_s": 16, "width": 3,
+                   "color": "#e8eeff"}],
+        "light_sources_extra": [
+            {"at": {"tx": 15.5, "ty": 5.6}, "radius": 34, "color": "#e8eeff"},
+            {"at": {"tx": 15.5, "ty": 8.2}, "radius": 20, "color": "#dfe6ff"},
+            {"at": {"tx": 16.0, "ty": 10.4}, "radius": 14, "color": "#dfe6ff"},
+        ],
+    }}]
     owed: list[str] = []
     pt.cave_ladder(m, deco, W, kind="up", at=(5, 3), to_map="penumbra_underways",
                    to=(6, 18), wid="ladder_up_w")
@@ -496,7 +524,7 @@ def build_b1() -> tuple[dict, list[str]]:
         obj(m, f"sleeper_{n}_awake", f"spire_sleeper_{kin}_awake", (x, y), 2, 2, requires_flag="flag:dawn")
     # Bran holds the choke from the west gallery into the watch
     owed += pt.trainer_beat(m, tid="underways_watch_b", at=(12, 12), facing="down", sight=2,
-                            sprite="hollowing_acolyte")
+                            sprite=WATCH_SHEET["underways_watch_b"])
     # FD2: the watch KEPT changes the world — all three leave their posts for the fire
     owed += gathered(m, ("underways_watch_b",),
                      [("underways_watch_a", (14, 12), "right"),

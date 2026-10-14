@@ -3013,7 +3013,7 @@
         "ty": 7
       },
       "facing": "down",
-      "sprite": "hollowing_acolyte",
+      "sprite": "star_watcher",
       "movement": "static",
       "dialogue_ref": "script.underways_watch_a",
       "sight_range": 4,
@@ -3027,7 +3027,7 @@
         "ty": 7
       },
       "facing": "down",
-      "sprite": "hollowing_acolyte",
+      "sprite": "star_watcher",
       "movement": "look_around",
       "dialogue_ref": "npc.underways_watch_a_after",
       "requires_flag": "flag:underways_watch_a_beaten",
@@ -3040,7 +3040,7 @@
         "ty": 8
       },
       "facing": "left",
-      "sprite": "hollowing_acolyte",
+      "sprite": "pass_walker",
       "movement": "static",
       "dialogue_ref": "script.underways_watch_c",
       "sight_range": 2,
@@ -3054,7 +3054,7 @@
         "ty": 8
       },
       "facing": "left",
-      "sprite": "hollowing_acolyte",
+      "sprite": "pass_walker",
       "movement": "look_around",
       "dialogue_ref": "npc.underways_watch_c_after",
       "requires_flag": "flag:underways_watch_c_beaten",
