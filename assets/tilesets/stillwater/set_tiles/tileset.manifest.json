@@ -120,6 +120,210 @@
       "terrain": "flagway",
       "autotile": "fill",
       "collides": false
+    },
+    {
+      "file": "017_mere_corner_nw.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "corner_nw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "018_mere_edge_n.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "edge_n",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "019_mere_corner_ne.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "corner_ne",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "020_mere_edge_w.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "edge_w",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "021_mere_fill.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "fill",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "022_mere_edge_e.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "edge_e",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "023_mere_corner_sw.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "corner_sw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "024_mere_edge_s.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "edge_s",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "025_mere_corner_se.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "corner_se",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "026_mere_strip_h.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "strip_h",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "027_mere_strip_v.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "strip_v",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "028_mere_inner_nw.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "inner_nw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "029_mere_inner_ne.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "inner_ne",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "030_mere_inner_sw.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "inner_sw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "031_mere_inner_se.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "inner_se",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "032_mere_end_n.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "end_n",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "033_mere_end_s.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "end_s",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "034_mere_end_w.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "end_w",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "035_mere_end_e.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "end_e",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "036_mere_single.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "single",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "037_mere_fill_v1.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "fill",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "038_mere_fill_v2.png",
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "fill",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "file": "039_mere_jetty_root.png",
+      "role": "path",
+      "terrain": "jetty",
+      "collides": false
+    },
+    {
+      "file": "040_mere_jetty.png",
+      "role": "path",
+      "terrain": "jetty",
+      "collides": false
+    },
+    {
+      "file": "041_mere_jetty_end.png",
+      "role": "path",
+      "terrain": "jetty",
+      "collides": false
+    },
+    {
+      "file": "042_mere_reeds_a.png",
+      "role": "deco",
+      "collides": false
+    },
+    {
+      "file": "043_mere_reeds_b.png",
+      "role": "deco",
+      "collides": false
     }
   ]
 }

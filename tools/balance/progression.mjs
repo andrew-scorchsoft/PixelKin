@@ -639,7 +639,7 @@ const BUILT_PAYOUTS = {
   coldfog_acolyte_east: ['keeper', 49, 980],
   coldfog_acolyte_deep: ['keeper', 50, 1000],
   coldfog_acolyte_west: ['keeper', 50, 1000],
-  still_acolyte_hale: ['keeper', 50, 1000],
+  still_acolyte_gethin: ['keeper', 50, 1000],
   still_acolyte_vesna: ['keeper', 51, 1020],
   still_lamplighter_grisel: ['keeper', 52, 1040],
   // Lane N2 (walkthrough/11 Part B): the Drownlight — optional, BUILT_PAYOUTS-only

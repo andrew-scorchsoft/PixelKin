@@ -28,6 +28,19 @@ and the one forbidden candle in a jar.
   hood_rack      2x2  (interior, wall-hung) a rack of hooded dark lamps, capped and tagged
   lamp_bench     2x1  (interior) the lamp-maker's bench: hoods, caps, a half-made shutter
   wool_basket    1x1  (interior) a basket of grey wool / folded blankets
+  -- the 2026-10 fix pass --
+  hearth_banked  3x3  (interior, wall) interior_hearth with a louvred fire-screen
+                      latched over it: the hearth "with its face to the wall"
+                      (flag-paired with the open hearth, which returns at dawn)
+  waystone       1x2  the village lamp-stone (TRAVEL), its lantern shuttered
+  crag_boulders  2x2  slate boulders for the crag rim
+  wash_line      3x2  grey blankets aired on a line between two posts
+  woodpile       2x1  a tidy log stack under a slate hood
+  punt           2x1  the last fishing punt, moored on the mere
+  kin_basket     2x1  (interior) home A: Old Bracken asleep in his basket
+  spinning_wheel 2x2  (interior) home B: Maren's wheel, grey wool on the distaff
+  candle_sill    1x1  (interior) home B: the candle kept on the child's shelf
+  old_chairs     2x1  (interior) home A: two chairs with their backs to the hearth
 
 Run:  python3 tools/maps/stillwaterforge.py [--only a,b]
       python3 .claude/skills/generate-sprite-sheet/scripts/pack_objects.py
@@ -36,6 +49,9 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
+
+import numpy as np
+from PIL import Image
 
 from interiorforge import (INK, canvas, contact_shadow, fill, hx, img, outline)
 
@@ -204,25 +220,42 @@ def window_lit():
 
 
 def shutter_wall():
-    """4x2 wall-hung: a board of small grey shutters, a name painted on each."""
+    """4x2 wall-hung: a board of small PAINTED, LOUVRED grey shutters (pale paint,
+    slatted, each with a little brass name-plate), a few dried sprigs tucked into
+    the louvres. Pale on purpose: it must read as painted wood, never as black
+    window glass (the 2026-10 review)."""
     a = canvas(4, 2)
-    fill(a, 1, 1, 62, 30, WOOD[0])
+    BOARD = [hx("#3a3632"), hx("#5e5850"), hx("#7c756a")]           # weathered rail
+    fill(a, 0, 0, 63, 31, BOARD[1])
+    a[0, 0:64] = BOARD[2]
+    for y in (15, 16):                                             # the middle rail
+        a[y, 0:64] = BOARD[0]
     outline(a, 0, 0, 63, 31, INK)
+    PAINT = [hx("#5c6478"), hx("#7c8498"), hx("#9ea6b8"), hx("#c4cad6")]  # painted shutter
     k = 0
-    for row, y in enumerate((3, 17)):
-        for x in range(3, 60, 10):
-            fill(a, x, y, x + 7, y + 11, SHUT[1 + (k % 2)])
-            a[y, x:x + 8] = SHUT[3]
-            for yy in (y + 3, y + 6):
-                a[yy, x + 1:x + 7] = SHUT[0]
-            # the painted name: a tiny pale scrawl
-            a[y + 9, x + 1:x + 2 + (k * 3) % 5 + 2] = PALE[2]
-            outline(a, x, y, x + 7, y + 11, INK)
+    for y in (2, 18):
+        for x in range(2, 62, 10):
+            w, h = 8, 12
+            shade = 0 if k % 3 else 1                              # not all freshly painted
+            fill(a, x, y, x + w - 1, y + h - 1, PAINT[1 + shade])
+            a[y:y + h, x] = PAINT[3]                               # lit stile
+            a[y:y + h, x + w - 1] = PAINT[0]
+            a[y, x:x + w] = PAINT[3]
+            # the louvres: slat (pale) over shadow (dark), every 2px below the plate
+            for yy in range(y + 4, y + h - 1, 2):
+                a[yy, x + 1:x + w - 1] = PAINT[2 + shade]
+                a[yy + 1, x + 1:x + w - 1] = PAINT[0]
+            # the name-plate: a small brass slip with a painted scrawl
+            fill(a, x + 1, y + 1, x + w - 2, y + 2, BRASS[2])
+            a[y + 2, x + 2:x + 3 + (k * 3) % 4] = BRASS[0]
+            outline(a, x, y, x + w - 1, y + h - 1, INK)
             k += 1
-    # a dried sprig tucked into one shutter (someone remembers)
-    a[18:24, 45] = hx("#6a7a4a")
-    a[19, 46] = hx("#8a9a5a")
-    a[21, 44] = hx("#8a9a5a")
+    # dried sprigs tucked into three of the louvres (someone remembers)
+    for (sx, sy) in ((26, 7), (45, 22), (6, 23)):
+        a[sy:sy + 5, sx] = hx("#6a7a4a")
+        a[sy + 1, sx + 1] = hx("#9aaa62")
+        a[sy + 3, sx - 1] = hx("#9aaa62")
+        a[sy, sx] = hx("#c8b070")
     return img(a)
 
 
@@ -283,6 +316,277 @@ PIECES = {
     "shutter_wall": shutter_wall, "hood_rack": hood_rack, "lamp_bench": lamp_bench,
     "wool_basket": wool_basket,
 }
+
+
+# ---- the 2026-10 fix pass (Part A review): hearths, homes, the yards, the mere ----
+def _ink_rim(a):
+    """Ink every opaque pixel that touches transparency (a crisp silhouette)."""
+    op = a[..., 3] > 0
+    edge = np.zeros_like(op)
+    edge[1:, :] |= ~op[:-1, :]
+    edge[:-1, :] |= ~op[1:, :]
+    edge[:, 1:] |= ~op[:, :-1]
+    edge[:, :-1] |= ~op[:, 1:]
+    edge[0, :] = edge[-1, :] = True
+    edge[:, 0] = edge[:, -1] = True
+    a[op & edge] = INK
+
+
+def hearth_banked():
+    """3x3 WALL piece, the SAME footprint + silhouette as interior_hearth: the
+    village's hearth with its face to the wall — the firebox closed by a painted,
+    louvred fire-screen, latched; only a thread of ember-light at the seams, the
+    mantel candles snuffed. (The open hearth swaps back in at flag:dawn.)"""
+    src = Image.open(REPO / "assets/tilesets/interior/objects/hearth.png").convert("RGBA")
+    a = np.asarray(src).astype("int16").copy()
+    # the mantel candles snuffed first (their warm halos go cold grey)
+    top_rows = a[:26]
+    flame = (top_rows[..., 0] > 200) & (top_rows[..., 1] > 140) & (top_rows[..., 2] < 150)
+    top_rows[flame] = np.array([206, 200, 186, 255], np.int16)   # bare wax, no flame
+    glow = (top_rows[..., 0] > 140) & (top_rows[..., 0] > top_rows[..., 2] + 30) & ~flame
+    top_rows[glow, :3] = (top_rows[glow, :3] * np.array([0.62, 0.72, 0.95])).astype(np.int16) + 18
+    PAINT = [hx("#4a5062"), hx("#666e82"), hx("#8a92a6"), hx("#b0b8c8")]
+    cx, top, bot, x0, x1 = 23.5, 29, 45, 12, 35
+    cells = []
+    for y in range(top, bot + 1):
+        for x in range(x0, x1 + 1):
+            if y < 34 and (x - cx) ** 2 / 12.5 ** 2 + (y - 34) ** 2 / 5.5 ** 2 > 1:
+                continue
+            cells.append((y, x))
+            a[y, x] = PAINT[1]
+    for y in range(top + 6, bot - 1, 2):                     # the louvres
+        for x in range(x0 + 1, x1):
+            if (y, x) in cells:
+                a[y, x] = PAINT[2]
+                a[y + 1, x] = PAINT[0]
+    for y in range(top, bot + 1):                            # where the leaves meet
+        a[y, 23] = PAINT[0]
+        a[y, 24] = PAINT[3]
+    a[38:40, 22] = BRASS[2]                                  # the latch, shut
+    a[38:40, 25] = BRASS[1]
+    cs = set(cells)
+    for (y, x) in cells:                                     # ink rim of the screen
+        if (y - 1, x) not in cs or (y, x - 1) not in cs or (y, x + 1) not in cs:
+            a[y, x] = INK
+    for x in range(x0 + 1, x1):                              # banked: a thread of ember-light
+        a[bot, x] = FLAME[1] if x % 3 else FLAME[0]
+    return img(a)
+
+
+def waystone():
+    """1x2 the village's lamp-stone (TRAVEL): a squat pale stone with a small
+    shuttered lantern set in its head — the waystone kept the Hollowing way."""
+    a = canvas(1, 2)
+    fill(a, 3, 11, 12, 29, PALE[1])
+    a[11:30, 3] = PALE[2]
+    a[11:30, 12] = PALE[0]
+    for y in (16, 22, 27):
+        a[y, 4:12] = PALE[0]
+    fill(a, 4, 2, 11, 10, IRON[2])                           # the lantern box
+    fill(a, 5, 4, 10, 9, SHUT[2])
+    a[4:10, 7:9] = SHUT[0]
+    a[6, 5:7] = SHUT[3]
+    a[6, 9:11] = SHUT[3]
+    a[8, 7] = BRASS[2]
+    outline(a, 4, 2, 11, 10, INK)
+    a[1, 6:10] = IRON[3]
+    outline(a, 3, 11, 12, 29, INK)
+    contact_shadow(a, 2, 13, 30)
+    return img(a)
+
+
+def crag_boulders():
+    """2x2 a slate boulder cluster for the crag rim (cool grey, frost-flecked)."""
+    a = canvas(2, 2)
+    SL = [hx("#2c3038"), hx("#4a5058"), hx("#6a7078"), hx("#8e949a")]
+    for (bx, by, rx, ry) in ((10, 18, 9, 9), (22, 21, 8, 8), (16, 26, 8, 4)):
+        for y in range(32):
+            for x in range(32):
+                d = (x - bx) ** 2 / rx ** 2 + (y - by) ** 2 / ry ** 2
+                if d <= 1:
+                    c = SL[1]
+                    if d > 0.75:
+                        c = SL[0]
+                    elif (y - by) < -ry * 0.3 and (x - bx) < rx * 0.35:
+                        c = SL[3] if d < 0.35 else SL[2]
+                    a[y, x] = c
+    for (x, y) in ((6, 12), (9, 11), (20, 16), (24, 15), (14, 22), (25, 23)):
+        a[y, x] = hx("#c8ccd2")                               # frost flecks
+    _ink_rim(a)
+    contact_shadow(a, 3, 29, 31)
+    return img(a)
+
+
+def _sag(x):
+    return int(round(3 * (1 - ((x - 24) / 21) ** 2)))
+
+
+def wash_line():
+    """3x2 a wash-line between two posts: grey blankets aired over it (the
+    sleepers' blankets, washed and folded back every morning)."""
+    a = canvas(3, 2)
+    for px in (2, 44):
+        fill(a, px, 4, px + 1, 29, WOOD[1])
+        a[4:30, px] = WOOD[2]
+        fill(a, px - 1, 3, px + 2, 3, WOOD[0])
+        contact_shadow(a, px - 1, px + 2, 30)
+    for x in range(4, 44):                                    # the line, a soft sag
+        a[6 + _sag(x), x] = IRON[1]
+    for (x0, x1, c) in ((7, 18, WOOL[2]), (21, 30, WOOL[1]), (33, 41, WOOL[3])):
+        for x in range(x0, x1 + 1):
+            y = 7 + _sag(x)
+            fill(a, x, y, x, y + 12, c)
+            a[y, x] = WOOL[3]
+            a[y + 12, x] = WOOL[0]
+            a[y + 13, x] = INK
+        for x in range(x0 + 2, x1, 3):
+            a[12 + _sag(x), x] = WOOL[0]
+        for x in (x0, x1):
+            y = 7 + _sag(x)
+            a[y:y + 13, x] = INK
+    return img(a)
+
+
+def woodpile():
+    """2x1 a tidy stack of grey-weathered logs under a little slate hood."""
+    a = canvas(2, 1)
+    for row, y in enumerate((10, 6)):
+        for k in range(4 - row):
+            x = 2 + row * 3 + k * 7
+            fill(a, x, y, x + 5, y + 4, WOOD[1])
+            fill(a, x + 1, y + 1, x + 3, y + 3, WOOD[2])
+            a[y + 2, x + 2] = WOOD[0]
+            outline(a, x, y, x + 5, y + 4, INK)
+    fill(a, 1, 2, 30, 4, IRON[2])
+    a[2, 1:31] = IRON[3]
+    outline(a, 0, 1, 31, 4, INK)
+    contact_shadow(a, 1, 30, 15)
+    return img(a)
+
+
+def punt():
+    """2x1 a small grey punt moored on the mere, a hooded lamp on its prow —
+    the last boat of the fishing village the mere used to be."""
+    a = canvas(2, 1)
+    for x in range(2, 30):
+        t = abs(x - 16) / 14
+        y0 = 4 + int(round(4 * t * t))
+        fill(a, x, y0, x, 11, hx("#7c746a"))
+        a[y0, x] = hx("#a89e92")
+        a[11, x] = WOOD[0]
+    fill(a, 7, 6, 24, 9, WOOD[0])                            # the well of the boat
+    a[7, 7:25] = hx("#1c2430")
+    for x in (12, 19):
+        a[5:10, x] = WOOD[2]                                 # thwarts
+    _ink_rim(a)
+    fill(a, 26, 1, 28, 5, IRON[2])                           # the hooded prow-lamp
+    outline(a, 26, 1, 28, 5, INK)
+    for x in range(3, 29):                                   # still water, a faint ring
+        a[12, x] = hx("#0e1218")
+        if x % 4 == 0:
+            a[13, x] = hx("#3a4656")
+    return img(a)
+
+
+def kin_basket():
+    """2x1 Old Bracken's basket: a wide wicker bed, a big grey old kin asleep in
+    it under a blanket, grey muzzle on the rim (home A's story prop)."""
+    a = canvas(2, 1)
+    fill(a, 2, 8, 29, 14, WOOD[1])
+    for x in range(3, 29, 2):
+        a[9:14, x] = WOOD[2]
+    a[8, 2:30] = WOOD[2]
+    outline(a, 2, 8, 29, 14, INK)
+    for x in range(5, 23):                                    # the sleeper's grey back
+        h = int(round(5 * (1 - ((x - 13) / 9) ** 2)))
+        fill(a, x, 8 - h, x, 8, FUR[1])
+        a[8 - h, x] = FUR[2]
+        a[7 - h, x] = INK
+    fill(a, 22, 4, 27, 8, PALE[1])                            # a grey-white muzzle on the rim
+    outline(a, 21, 3, 28, 8, INK)
+    a[5, 26] = INK
+    a[6, 23:25] = INK                                         # a closed eye
+    fill(a, 6, 6, 17, 8, WOOL[2])                             # the blanket over its haunch
+    a[6, 6:18] = WOOL[3]
+    a[8, 6:18] = WOOL[0]
+    return img(a)
+
+
+def spinning_wheel():
+    """2x2 Maren's spinning wheel, grey wool on the distaff (home B's prop)."""
+    import math
+    a = canvas(2, 2)
+    cx, cy, r = 12, 12, 9
+    for t in range(0, 180, 30):
+        for k in range(-r + 1, r):
+            x = int(round(cx + k * math.cos(math.radians(t))))
+            y = int(round(cy + k * math.sin(math.radians(t))))
+            a[y, x] = WOOD[1]
+    for t in range(0, 360, 3):
+        x = int(round(cx + r * math.cos(math.radians(t))))
+        y = int(round(cy + r * math.sin(math.radians(t))))
+        a[y, x] = WOOD[2]
+        a[y + 1, x] = WOOD[0]
+    fill(a, 11, 11, 13, 13, BRASS[1])
+    a[13:24, 12] = WOOD[0]                                    # the upright
+    fill(a, 4, 23, 28, 25, WOOD[1])                           # the bench
+    a[23, 4:29] = WOOD[2]
+    outline(a, 4, 23, 28, 25, INK)
+    for x in (6, 26):
+        fill(a, x, 26, x + 1, 30, WOOD[0])
+    a[4:23, 25] = WOOD[0]                                     # the distaff
+    fill(a, 23, 6, 27, 16, WOOL[2])
+    a[6, 23:28] = WOOL[3]
+    a[11, 23:28] = WOOL[1]
+    outline(a, 23, 6, 27, 16, INK)
+    contact_shadow(a, 3, 29, 31)
+    return img(a)
+
+
+def candle_sill():
+    """1x1 a candle-jar on a little shelf by the child's bed: the candle kept,
+    safely, once her mother has seen it (home B, flag:q_still_candle_shown)."""
+    a = canvas(1, 1)
+    fill(a, 1, 12, 14, 13, WOOD[2])
+    a[14, 1:15] = WOOD[0]
+    outline(a, 1, 12, 14, 14, INK)
+    for (x, y) in ((3, 2), (12, 2), (2, 6), (13, 6)):
+        a[y, x] = GLOW
+        a[y, x, 3] = 120
+    fill(a, 5, 3, 10, 11, GLASS[2])
+    a[4:11, 5] = GLASS[3]
+    fill(a, 7, 7, 8, 11, PALE[2])
+    a[6, 7:9] = FLAME[2]
+    a[5, 7] = FLAME[3]
+    outline(a, 5, 3, 10, 11, INK)
+    return img(a)
+
+
+def old_chairs():
+    """2x1 two old high-backed chairs with their BACKS to the hearth — the way the
+    village sits (home A); a grey shawl over one."""
+    a = canvas(2, 1)
+    for x0 in (2, 18):
+        fill(a, x0, 1, x0 + 10, 9, WOOD[1])
+        a[1, x0:x0 + 11] = WOOD[2]
+        fill(a, x0 + 2, 3, x0 + 8, 8, hx("#4a5062"))
+        outline(a, x0, 1, x0 + 10, 9, INK)
+        fill(a, x0, 10, x0 + 10, 12, WOOD[2])
+        outline(a, x0, 10, x0 + 10, 12, INK)
+        for x in (x0 + 1, x0 + 9):
+            a[13:15, x] = WOOD[0]
+    fill(a, 19, 2, 27, 6, WOOL[2])                            # the shawl
+    a[6, 19:28:2] = WOOL[0]
+    a[2, 19:28] = WOOL[3]
+    contact_shadow(a, 1, 30, 15)
+    return img(a)
+
+
+PIECES.update({
+    "hearth_banked": hearth_banked, "waystone": waystone, "crag_boulders": crag_boulders,
+    "wash_line": wash_line, "woodpile": woodpile, "punt": punt, "kin_basket": kin_basket,
+    "spinning_wheel": spinning_wheel, "candle_sill": candle_sill, "old_chairs": old_chairs,
+})
 
 
 def main() -> None:

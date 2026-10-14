@@ -3500,6 +3500,27 @@
       "tw": 1,
       "th": 1
     },
+    "stillwater_candle_sill": {
+      "path": "assets/sprites/objects/stillwater_candle_sill.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "stillwater_crag_boulders": {
+      "path": "assets/sprites/objects/stillwater_crag_boulders.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "stillwater_hearth_banked": {
+      "path": "assets/sprites/objects/stillwater_hearth_banked.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
     "stillwater_home_a": {
       "path": "assets/sprites/objects/stillwater_home_a.webp",
       "width": 80,
@@ -3528,6 +3549,13 @@
       "tw": 6,
       "th": 6
     },
+    "stillwater_kin_basket": {
+      "path": "assets/sprites/objects/stillwater_kin_basket.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "stillwater_lamp_bench": {
       "path": "assets/sprites/objects/stillwater_lamp_bench.webp",
       "width": 32,
@@ -3542,12 +3570,26 @@
       "tw": 6,
       "th": 5
     },
+    "stillwater_old_chairs": {
+      "path": "assets/sprites/objects/stillwater_old_chairs.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "stillwater_open_lamp": {
       "path": "assets/sprites/objects/stillwater_open_lamp.webp",
       "width": 16,
       "height": 48,
       "tw": 1,
       "th": 3
+    },
+    "stillwater_punt": {
+      "path": "assets/sprites/objects/stillwater_punt.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
     },
     "stillwater_quiet_hall": {
       "path": "assets/sprites/objects/stillwater_quiet_hall.webp",
@@ -3570,12 +3612,40 @@
       "tw": 4,
       "th": 2
     },
+    "stillwater_spinning_wheel": {
+      "path": "assets/sprites/objects/stillwater_spinning_wheel.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "stillwater_wash_line": {
+      "path": "assets/sprites/objects/stillwater_wash_line.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "stillwater_waystone": {
+      "path": "assets/sprites/objects/stillwater_waystone.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
     "stillwater_window_lit": {
       "path": "assets/sprites/objects/stillwater_window_lit.webp",
       "width": 32,
       "height": 32,
       "tw": 2,
       "th": 2
+    },
+    "stillwater_woodpile": {
+      "path": "assets/sprites/objects/stillwater_woodpile.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
     },
     "stillwater_wool_basket": {
       "path": "assets/sprites/objects/stillwater_wool_basket.webp",

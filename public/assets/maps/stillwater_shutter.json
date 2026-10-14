@@ -449,7 +449,7 @@
       "h": 1
     },
     {
-      "id": "hearth",
+      "id": "hearth_open",
       "sprite": "interior_hearth",
       "at": {
         "tx": 8,
@@ -458,7 +458,21 @@
       "w": 3,
       "h": 3,
       "overhang": 1,
-      "walk_under": true
+      "walk_under": true,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "hearth_banked",
+      "sprite": "stillwater_hearth_banked",
+      "at": {
+        "tx": 8,
+        "ty": 1
+      },
+      "w": 3,
+      "h": 3,
+      "overhang": 1,
+      "walk_under": true,
+      "hidden_when_flag": "flag:dawn"
     },
     {
       "id": "hood_rack",

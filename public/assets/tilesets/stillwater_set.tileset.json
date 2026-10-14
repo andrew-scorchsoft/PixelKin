@@ -4,7 +4,7 @@
   "tile_width": 16,
   "tile_height": 16,
   "columns": 6,
-  "tile_count": 17,
+  "tile_count": 44,
   "tiles": [
     {
       "index": 0,
@@ -107,6 +107,205 @@
       "role": "path",
       "terrain": "flagway",
       "autotile": "fill"
+    },
+    {
+      "index": 17,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "corner_nw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 18,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "edge_n",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 19,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "corner_ne",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 20,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "edge_w",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 21,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "fill",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 22,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "edge_e",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 23,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "corner_sw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 24,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "edge_s",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 25,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "corner_se",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 26,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "strip_h",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 27,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "strip_v",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 28,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "inner_nw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 29,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "inner_ne",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 30,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "inner_sw",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 31,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "inner_se",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 32,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "end_n",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 33,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "end_s",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 34,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "end_w",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 35,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "end_e",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 36,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "single",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 37,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "fill",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 38,
+      "role": "water",
+      "terrain": "mere",
+      "autotile": "fill",
+      "collides": true,
+      "requires_ability": "tidecall"
+    },
+    {
+      "index": 39,
+      "role": "path",
+      "terrain": "jetty"
+    },
+    {
+      "index": 40,
+      "role": "path",
+      "terrain": "jetty"
+    },
+    {
+      "index": 41,
+      "role": "path",
+      "terrain": "jetty"
+    },
+    {
+      "index": 42,
+      "role": "deco"
+    },
+    {
+      "index": 43,
+      "role": "deco"
     }
   ]
 }
