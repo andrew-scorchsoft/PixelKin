@@ -165,3 +165,42 @@ past Galehigh find it open. After that, Cinderhead ↔ Galehigh is the short way
 Ashfall leg (2 route trainers + the new band); `audit_region` band step ≤4 (Deep 24–27 →
 Scarp 28–30 → Ashfall 30–33 → Galehigh); `world_geometry --check` + `world_layout.py`; music
 `cinderwind-ashfall` (classic + remaster); a battle backdrop.
+
+---
+
+## Build contract (the lanes that built this round agree on these exactly)
+
+**Lanes:**
+- **A** = Part II (Ashfall Shelf + Kiln Gully, its music/backdrop/trainers).
+- **B** = kin #172–177.
+- **C1** = isles overworld + Driftholm + interiors + mainland hooks.
+- **C2** = Undertide I–IV + the Drowned Lamp + Farlume + the relight.
+- **D** = isles audio + skiff sheet + isles battle backdrops.
+
+**Cross-map warps (C1 owns the surface side, C2 the cave side; landings sit ON the return warp's neighbour per audit_warps):**
+
+| From | Warp id @ tile | To | Landing |
+|---|---|---|---|
+| `farlamp_gullwrack` | `to_undertide` @ (13,9) | `undertide_i` | (15,26) facing up |
+| `undertide_i` | `to_gullwrack` @ (15,27) | `farlamp_gullwrack` | (13,10) facing down |
+| `farlamp_kelpcrown` | `to_undertide` @ (10,9) | `undertide_ii` | (14,28) facing up |
+| `undertide_ii` | `to_kelpcrown` @ (14,29) | `farlamp_kelpcrown` | (10,10) facing down |
+| `driftholm` | `to_wellstair` @ (16,12), `requires_flag: flag:q_isles_wellstair`, `blocked_ref` = Elder Creel's script | `undertide_iii` | (15,28) facing up |
+| `undertide_iii` | `to_driftholm` @ (15,29) | `driftholm` | (16,13) facing down |
+
+A lane may move its own side by ±2 tiles if the art forces it, and must then report the new tile.
+
+**Files:**
+- Scripts: A `content/regions/ashfall.ts`; C1 `content/regions/farlamp.ts`; C2 `content/regions/undertide.ts`.
+- Music (served): `assets/audio/music/cinderwind-ashfall.mp3` (A); `farlamp-sound.mp3`, `driftholm.mp3`, `driftholm-dawn.mp3` (Driftholm's `music_when` after `flag:isles_dawn`), `undertide.mp3` and `farlamp-relit.mp3` (all D; maps reference them now and `MusicDirector` tolerates a missing file).
+- Battle backdrops: A `ashfall-a.webp`, `kiln-a.webp`; D `farlamp-sea-a.webp`, `farlamp-isle-a.webp`, `undertide-a.webp`, `farlamp-drowned-a.webp`.
+- Player skiff sheet: D `player_indi_skiff`.
+
+**Items:**
+- C1: `farlamp_skiff` (key), `deep_charm` (charge, `condition` = deep-water-met, priced 900w, sold at the Driftholm chandlery after `flag:isles_dawn`).
+- C2: `fog_glass` (key item; giving it also sets `flag:q_isles_fogglass`).
+- Driftletters are flags `flag:driftletter_1..5`, not items.
+
+**Flags:** as in §3. C2 sets `flag:isles_dawn` + `flag:q_isles_done`. C1 maps react to `flag:isles_dawn`: fog-bank objects get `hidden_when_flag`, day-form NPC swaps, `music_when`.
+
+**Levels:** as in §4. Isles beds go in `progression.mjs TREND_SKIP_AREAS` (optional post-game).
