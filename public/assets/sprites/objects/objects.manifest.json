@@ -2072,11 +2072,25 @@
       "tw": 3,
       "th": 3
     },
+    "mournfields_bank_stair": {
+      "path": "assets/sprites/objects/mournfields_bank_stair.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
     "mournfields_blanket_stack": {
       "path": "assets/sprites/objects/mournfields_blanket_stack.webp",
       "width": 32,
       "height": 16,
       "tw": 2,
+      "th": 1
+    },
+    "mournfields_bramble": {
+      "path": "assets/sprites/objects/mournfields_bramble.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
       "th": 1
     },
     "mournfields_field_shrine": {
@@ -2085,6 +2099,13 @@
       "height": 48,
       "tw": 3,
       "th": 3
+    },
+    "mournfields_plough": {
+      "path": "assets/sprites/objects/mournfields_plough.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
     },
     "mournfields_scarecrow_lamp": {
       "path": "assets/sprites/objects/mournfields_scarecrow_lamp.webp",
@@ -2154,6 +2175,13 @@
       "width": 32,
       "height": 32,
       "tw": 2,
+      "th": 2
+    },
+    "mournfields_stile": {
+      "path": "assets/sprites/objects/mournfields_stile.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
       "th": 2
     },
     "mournfields_stook": {

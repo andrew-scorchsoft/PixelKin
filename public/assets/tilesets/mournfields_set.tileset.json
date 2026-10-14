@@ -1,0 +1,126 @@
+{
+  "name": "mournfields_set",
+  "image": "assets/tilesets/mournfields_set.webp",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 6,
+  "tile_count": 20,
+  "tiles": [
+    {
+      "index": 0,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "corner_nw"
+    },
+    {
+      "index": 1,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "edge_n"
+    },
+    {
+      "index": 2,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "corner_ne"
+    },
+    {
+      "index": 3,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "edge_w"
+    },
+    {
+      "index": 4,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "fill"
+    },
+    {
+      "index": 5,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "edge_e"
+    },
+    {
+      "index": 6,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "corner_sw"
+    },
+    {
+      "index": 7,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "edge_s"
+    },
+    {
+      "index": 8,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "corner_se"
+    },
+    {
+      "index": 9,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "strip_h"
+    },
+    {
+      "index": 10,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "strip_v"
+    },
+    {
+      "index": 11,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "inner_nw"
+    },
+    {
+      "index": 12,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "inner_ne"
+    },
+    {
+      "index": 13,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "inner_sw"
+    },
+    {
+      "index": 14,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "inner_se"
+    },
+    {
+      "index": 15,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "fill"
+    },
+    {
+      "index": 16,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "fill"
+    },
+    {
+      "index": 17,
+      "role": "ground",
+      "terrain": "stubble",
+      "autotile": "fill"
+    },
+    {
+      "index": 18,
+      "role": "ground"
+    },
+    {
+      "index": 19,
+      "role": "ground"
+    }
+  ]
+}

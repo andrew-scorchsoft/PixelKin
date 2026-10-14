@@ -617,8 +617,8 @@ const BUILT_PAYOUTS = {
   undertide_diver_marlo: ['route', 66, 1056],
   undertide_rematch_ondine: ['route', 67, 1072], // post-isles-dawn, re-runnable on the shared spar rest
   // Lane N3 (11 Parts C + D): the Mourning Fields + the Penumbra Underways — optional
-  mournfields_ines: ['route', 50, 800],
-  mournfields_corran: ['route', 51, 816],
+  mournfields_ines: ['keeper', 50, 1000],
+  mournfields_corran: ['keeper', 51, 1020],
   underways_watch_a: ['keeper', 54, 1080],
   underways_watch_b: ['keeper', 55, 1100],
   underways_watch_c: ['keeper', 56, 1120],

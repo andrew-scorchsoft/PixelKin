@@ -479,6 +479,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A wall of small grey shutters in Stillwater\'s Quiet Hall, each painted with the name of a lamp the Hollowing put to sleep. Not a list of victories: a list of goodbyes.',
     unlock_flag: 'flag:q_still_wall',
   },
+  // Lane N3 (walkthrough/11 Part C) — Stillwater's fallow fields
+  {
+    id: 'mourning_fields',
+    term: 'the Mourning Fields',
+    desc: 'Stillwater\'s farmland, once Moorlea Fields. When the barley would not ripen in the dark, the field-kin woke hungry every night, and the farmers let the Hollowing put them to sleep where they lay. They are tucked in each evening under quilts of coldfog wool. Nobody here thinks it was cruel. That is what makes it hard.',
+    unlock_flag: 'chart:mourning-fields',
+  },
   // Lane N2 (walkthrough/11 Part B) — the Hollowing's first lamp
   {
     id: 'drownlight',

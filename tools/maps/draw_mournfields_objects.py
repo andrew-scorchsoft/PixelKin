@@ -12,9 +12,10 @@ blankets are folded square; the scarecrow-lamps are hooded with care. Cute, sad,
 creepy.
 
 Mourning Fields (assets/tilesets/mournfields/objects -> mournfields_<stem>):
-  sleeper_<kin>       2x2  a field kin asleep under a grey coldfog blanket (the kin's own
-                           packed overworld master, sleep-greyed, the blanket drawn over
-                           it) + `_awake` twin (post-dawn: the kin in its own colours, the
+  sleeper_<kin>       2x2  a field kin asleep under a soft coldfog quilt (the kin's own
+                           packed overworld master, sleep-greyed; a dome-shaded wool quilt
+                           with a woven rose band, stitching, a pooled tasselled hem and a
+                           tail peeking out — redrawn 2026-10-14: the old checks read as stone) + `_awake` twin (post-dawn: the kin in its own colours, the
                            blanket folded at its side) — same footprint and solidity.
   scarecrow_lamp      1x3  a lamp-post dressed as a scarecrow: a grey field-coat on the
                            crossbar, a lantern for a head with its hood drawn down
@@ -23,7 +24,11 @@ Mourning Fields (assets/tilesets/mournfields/objects -> mournfields_<stem>):
                            step, its candles put out in a neat row, folded blankets left
                            as offerings. Seen from the lower field long before it's reached.
   stook               1x2  a sheaf-stook of the last harvest, never brought in (grey-gold).
-  blanket_stack       2x1  coldfog blankets folded square on a flat stone, ready.
+  blanket_stack       2x1  coldfog quilts folded on a flat stone, ready.
+  plough              2x1  a hand plough left in the last furrow (2026-10-14 review fix).
+  stile               1x2  a step-stile over a gap in a field fence (walked over).
+  bramble             1x1  a dusk bramble on the bank's lip (solid).
+  bank_stair          1x2  the ONE walk-up: stone steps in the crag, a rope rail, a rag.
 
 Penumbra Underways (assets/tilesets/underways/objects -> underways_<stem>):
   spire_shaft         4x4  THE VIEW UP: the foot of the Umbral Spire's shaft — a round
@@ -66,8 +71,9 @@ STARDIM = (140, 170, 214)
 SLEEP_DARK = (22, 24, 34)
 SLEEP_PALE = (150, 148, 160)
 
-SLEEPERS = (("105_snoozlet", "snoozlet"), ("136_mothdim", "mothdim"),
-            ("083_hushvole", "hushvole"), ("065_glowsip", "glowsip"))
+# (creature slug, stem, which side the tail/wing-tip peeks from: -1 west, +1 east)
+SLEEPERS = (("105_snoozlet", "snoozlet", 1), ("136_mothdim", "mothdim", -1),
+            ("083_hushvole", "hushvole", 1), ("065_glowsip", "glowsip", -1))
 
 
 def _kin(slug: str) -> np.ndarray:
@@ -91,62 +97,160 @@ def _bbox(a: np.ndarray):
     return xs.min(), ys.min(), xs.max(), ys.max()
 
 
-def sleeper(slug: str) -> tuple[Image.Image, Image.Image]:
-    """The kin asleep, sleep-greyed, a coldfog blanket tucked over its lower half:
-    the blanket HUGS the kin's own silhouette (its mask, grown a pixel), so the head
-    and ears stay out on top and it reads as tucked in, never boxed. A warm-grey hem,
-    soft fold lines. The awake twin: the kin in its own colours, the blanket folded."""
+# Coldfog wool, the field-tender's quilts (the 2026-10-14 review: the old checkered
+# quilt read as a stone slab). Soft heather-blue: rounded, lit along the top, falling
+# away into the folds — warm running stitches and a tasselled hem say "wool".
+QUILT = [hx("#43425a"), hx("#5b5c78"), hx("#757893"), hx("#9093ad"), hx("#b4b6cc")]
+STITCH = hx("#d8c096")
+BAND = [hx("#6c5662"), hx("#8a6e78"), hx("#a88a90")]   # the woven rose band
+TASSEL = hx("#a48a6a")
+
+
+def _quilt_mound(sleeping, x0: int, x1: int, top_mid: int, bot: int, *, fold_seed: int,
+                 tail_side: int | None = None, tail_rgb=None):
+    """Lay a soft quilt over [x0, x1]: a rounded PILLOW, shaded as a dome lit from the
+    top-left (five wool tones, quantised from the surface normal — no checks, no hard
+    bands), with two drape creases running down its meridians, a running stitch round its
+    shoulders, a dark rolled hem and tassels on the ground. The rim is the darkest wool,
+    not ink, so it reads soft; ink only where it meets the ground."""
+    mid = (x0 + x1) / 2.0
+    half = (x1 - x0) / 2.0 + 0.5
+    H = float(bot - top_mid) + 0.5
+    L = np.array([-0.45, 0.55, 0.70])
+    L = L / np.linalg.norm(L)
+    inside = np.zeros((32, 32), dtype=bool)
+    tone = np.zeros((32, 32), dtype=np.int16)
+    for y in range(max(0, top_mid - 1), bot + 1):
+        for x in range(x0, x1 + 1):
+            u = (x + 0.5 - mid - 0.5) / half
+            v = (bot + 0.5 - y) / H
+            r = u * u + v * v
+            if r > 1.0:
+                continue
+            nz = np.sqrt(max(0.0, 1.0 - r))
+            b = float(np.dot(L, [u, v, nz]))
+            inside[y, x] = True
+            tone[y, x] = int(np.clip(round(1.0 + b * 3.4), 0, 4))
+    # a wavy, pooled hem: the cloth settles in soft scallops on the ground
+    for x in range(x0, x1 + 1):
+        if (x - x0) % 5 in (2, 3):
+            inside[bot, x] = False
+    for (y, x) in zip(*np.nonzero(inside)):
+        t = int(tone[y, x])
+        # the knit: a staggered fleck lifts a tone every few stitches (wool, not metal)
+        if 1 <= t <= 3 and (x + 2 * (y % 2)) % 4 == 0 and y % 2 == 0:
+            t += 1
+        sleeping[y, x] = QUILT[t]
+        v = (bot + 0.5 - y) / H
+        u = (x + 0.5 - mid - 0.5) / half
+        # the woven band: a warm rose stripe across the lower third, following the dome
+        band = 0.30 * np.sqrt(max(0.0, 1 - u * u))
+        if abs(v - band) < 0.5 / H + 0.06:
+            sleeping[y, x] = BAND[min(2, max(0, t - 1))]
+    # drape creases down two meridians (u' = u / sqrt(1 - v^2) = const)
+    creases = ((-0.42, 0.38), (-0.30, 0.50))[fold_seed % 2]
+    for s in creases:
+        for y in range(top_mid + 2, bot):
+            v = (bot + 0.5 - y) / H
+            if v >= 0.62:          # creases gather low, where the cloth falls slack
+                continue
+            x = int(round(mid + s * half * np.sqrt(max(0.0, 1 - v * v))))
+            if inside[y, x] and inside[y - 1, x]:
+                sleeping[y, x] = QUILT[max(0, tone[y, x] - 1)]
+                lit = x + (1 if s < 0 else -1)
+                if inside[y, lit]:
+                    sleeping[y, lit] = QUILT[min(4, tone[y, lit] + 1)]
+    # running stitch round the shoulders (the v = 0.72 parallel), every other pixel
+    for x in range(x0 + 1, x1):
+        u = (x - mid) / half
+        vv = 0.72 * np.sqrt(max(0.0, 1 - u * u))
+        y = int(round(bot + 0.5 - vv * H))
+        if inside[y, x] and (x % 3 != 0) and abs(u) < 0.7:
+            sleeping[y, x] = STITCH
+    # the rolled hem along the ground + tassels
+    for x in range(x0, x1 + 1):
+        if inside[bot, x]:
+            sleeping[bot, x] = QUILT[0]
+    for x in range(x0 + 2, x1 - 1, 3):
+        sleeping[bot + 1, x] = TASSEL
+    # soft rim: darkest wool where the quilt meets air (ink only at the ground line)
+    rim = np.zeros_like(inside)
+    for dy, dx in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+        rim |= np.roll(np.roll(inside, dy, 0), dx, 1)
+    for (y, x) in zip(*np.nonzero(rim & ~inside)):
+        if y > bot:
+            continue
+        if sleeping[y, x][3] < 40:
+            sleeping[y, x] = QUILT[0]
+    # a tail (or a wing-tip) peeking out from under the hem on one side
+    if tail_side is not None and tail_rgb is not None:
+        row = [x for x in range(32) if inside[bot - 1, x]]
+        tx = (max(row) + 1) if tail_side > 0 else (min(row) - 1)
+        pts = [(tx, bot), (tx + tail_side, bot), (tx + 2 * tail_side, bot - 1),
+               (tx + 2 * tail_side, bot - 2), (tx + tail_side, bot - 3)]
+        for (px_, py_) in pts:
+            if 0 <= px_ < 32:
+                sleeping[py_, px_] = tail_rgb
+        for (px_, py_) in pts:
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                qx, qy = px_ + dx, py_ + dy
+                if 0 <= qx < 32 and sleeping[qy, qx][3] < 40:
+                    sleeping[qy, qx] = INK
+    return inside
+
+
+def _folded_quilt(a, x0: int, y1: int, w: int = 9):
+    """A quilt folded in three beside the awake kin: rounded corners, two fold lines,
+    a stitch and a tassel or two — the same wool, put by."""
+    y0 = y1 - 4
+    for y in range(y0, y1 + 1):
+        for x in range(x0, x0 + w):
+            corner = (x in (x0, x0 + w - 1)) and y in (y0, y1)
+            if corner:
+                continue
+            col = QUILT[2]
+            if y == y0:
+                col = QUILT[4]
+            elif y == y0 + 2:
+                col = BAND[1]               # the woven band, on the fold
+            elif y == y0 + 1:
+                col = QUILT[3]
+            elif y == y1:
+                col = QUILT[0]
+            a[y, x] = col
+    for x in range(x0 + 1, x0 + w - 1, 2):
+        a[y0 + 3, x] = STITCH
+    for x in range(x0 - 1, x0 + w + 1):
+        for y in range(y0 - 1, y1 + 2):
+            if 0 <= x < 32 and 0 <= y < 32 and a[y, x][3] < 40:
+                a[y, x] = INK if y == y1 + 1 else QUILT[0]
+    a[y1 + 1, x0 + 2] = TASSEL
+    a[y1 + 1, x0 + 5] = TASSEL
+
+
+def sleeper(slug: str, tail_side: int) -> tuple[Image.Image, Image.Image]:
+    """The kin asleep, sleep-greyed, a soft coldfog quilt tucked up to its chin: the head
+    and ears stay out on top, a tail peeks from one side, and the cloth falls in folds to
+    a tasselled hem. The awake twin: the kin in its own colours, the quilt folded beside
+    it (same 2x2 footprint and solidity — the flag-pair rule)."""
     kin = _kin(slug)
     a = kin.copy()
     sleeping = _grey(a)
     x0, y0, x1, y1 = _bbox(a)
-    cut = y0 + int((y1 - y0 + 1) * 0.46)
-    mid = (x0 + x1) / 2.0
-    half = (x1 - x0) / 2.0 + 1.5
-    bot = min(30, y1 + 1)
-    # a soft MOUND, not a box: the top edge arcs down toward the sides
-    blanket = np.zeros((32, 32), dtype=bool)
-    for x in range(32):
-        t = (x - mid) / half
-        if abs(t) > 1.0:
-            continue
-        top = cut + int(round(4.0 * t * t))
-        side_lift = 1 if abs(t) > 0.85 else 0
-        for y in range(top, bot + 1 - side_lift):
-            blanket[y, x] = True
-    QUILT = [hx("#3e3a4c"), hx("#625e74"), hx("#78748c"), hx("#9c98ae")]
-    STITCH = hx("#a8927c")
-    for y in range(32):
-        for x in range(32):
-            if not blanket[y, x]:
-                continue
-            check = ((x // 4) + ((y - cut) // 4)) % 2
-            col = QUILT[2] if check else QUILT[1]
-            if not blanket[y - 1, x]:
-                col = QUILT[3]                       # the lit top edge
-            elif y == bot or not blanket[min(31, y + 1), x]:
-                col = STITCH if x % 2 else QUILT[0]  # the stitched, scalloped hem
-            elif (x - int(mid)) % 8 == 0:
-                col = QUILT[0]                       # a quilting seam
-            sleeping[y, x] = col
-    edge = np.zeros_like(blanket)
-    for dy, dx in ((0, 1), (0, -1), (1, 0), (-1, 0)):
-        edge |= np.roll(np.roll(blanket, dy, 0), dx, 1)
-    mask = a[..., 3] > 40
-    for y in range(32):
-        for x in range(32):
-            if edge[y, x] and not blanket[y, x] and not (mask[y, x] and y < cut + 4):
-                sleeping[y, x] = INK
-    contact_shadow(sleeping, max(0, int(mid - half)), min(31, int(mid + half)), min(31, bot + 1))
+    cut = y0 + int((y1 - y0 + 1) * 0.40)
+    qx0, qx1 = max(2, x0 - 2), min(29, x1 + 2)
+    bot = min(28, y1)
+    # the quilt is laid OVER the kin (its flanks may show at the quilt's shoulders,
+    # the way a body shows under a blanket); nothing of it below the hem
+    tail_rgb = tuple(int(v) for v in sleeping[max(y0, cut - 2), (x0 + x1) // 2])
+    sleeping[bot + 1:, :] = 0
+    _quilt_mound(sleeping, qx0, qx1, cut, bot, fold_seed=len(slug),
+                 tail_side=tail_side, tail_rgb=(*tail_rgb[:3], 255))
+    contact_shadow(sleeping, qx0, qx1, min(31, bot + 2))
 
     awake = a.copy()
-    fy = min(29, y1 - 1)
-    fill(awake, 23, fy - 2, 30, fy, QUILT[1])
-    for x in range(23, 31, 4):
-        awake[fy - 1, x:x + 2] = QUILT[2]
-    awake[fy - 2, 23:31] = QUILT[3]
-    awake[fy, 23:31] = STITCH
-    outline(awake, 22, fy - 3, 31, fy + 1, INK)
+    _folded_quilt(awake, 22, min(29, y1 - 1))
+    contact_shadow(awake, 21, 31, min(31, y1 + 1))
     return img(sleeping), img(awake)
 
 
@@ -313,18 +417,122 @@ def stook() -> Image.Image:
 
 
 def blanket_stack() -> Image.Image:
-    """2x1 coldfog blankets folded square on a flat stone, ready for the night."""
+    """2x1 coldfog quilts folded on a flat stone, ready for the night: the same soft
+    wool as the sleepers' (rounded corners, the rose band on each fold, a stitch line)."""
     a = canvas(2, 1)
     fill(a, 2, 11, 29, 14, STONE[1])
     a[11, 2:30] = STONE[2]
     outline(a, 2, 11, 29, 14, INK)
-    for i, (y0, col) in enumerate(((7, WOOL[1]), (3, WOOL[2]))):
+    for i, y0 in enumerate((7, 3)):
         x0, x1 = 5 + i * 2, 26 - i * 2
-        fill(a, x0, y0, x1, y0 + 3, col)
-        a[y0, x0:x1 + 1] = WOOL[3] if i else WOOL[2]
-        a[y0 + 3, x0:x1 + 1] = WOOLHEM
-        outline(a, x0, y0, x1, y0 + 4, INK)
+        fill(a, x0, y0, x1, y0 + 3, QUILT[2 + i])
+        a[y0, x0 + 1:x1] = QUILT[4] if i else QUILT[3]
+        a[y0 + 2, x0:x1 + 1] = BAND[1 + i]
+        for x in range(x0 + 1, x1, 3):
+            a[y0 + 1, x] = STITCH
+        a[y0 + 3, x0:x1 + 1] = QUILT[1]
+        a[y0 + 4, x0 + 1:x1] = QUILT[0]
+        a[y0, x0] = a[y0, x1] = (0, 0, 0, 0)
+        a[y0 + 4, x0 + 3] = TASSEL
+        a[y0 + 4, x1 - 3] = TASSEL
     contact_shadow(a, 2, 29, 15)
+    return img(a)
+
+
+def plough() -> Image.Image:
+    """2x1 a horse-less hand plough left at the end of a drill, handles up, share in the
+    earth — the last furrow the field was given before the dark."""
+    a = canvas(2, 1)
+    # the beam, sloping down to the share
+    for x in range(4, 27):
+        y = 6 + (x - 4) * 6 // 22
+        a[y, x] = POST[2]
+        a[y + 1, x] = POST[1]
+    a[6, 4:7] = POST[3]
+    # the two handles rising at the back (left)
+    for k, hx0 in enumerate((3, 7)):
+        for y in range(1, 8):
+            a[y, hx0 + (7 - y) // 3] = POST[2 - k]
+        a[1, hx0 + 2] = POST[3]
+    # the iron share and coulter, bitten into the earth (right)
+    fill(a, 24, 9, 29, 12, IRON[2])
+    a[9, 24:30] = IRON[3]
+    a[12, 25:30] = IRON[1]
+    a[5:10, 22] = IRON[2]
+    # a little heap of turned earth at the share
+    a[13, 22:31] = hx("#463e32")
+    a[12, 30] = hx("#5a5040")
+    # ink
+    outline(a, 23, 8, 30, 13, INK)
+    contact_shadow(a, 3, 30, 14)
+    return img(a)
+
+
+def stile() -> Image.Image:
+    """1x2 a wooden step-stile over a gap in the field fence: two treads between posts.
+    Walked over (non-solid) — the fence's one civil crossing."""
+    a = canvas(1, 2)
+    for px in (1, 13):
+        fill(a, px, 4, px + 1, 28, POST[1])
+        a[4:29, px] = POST[2]
+        a[3, px:px + 2] = POST[3]
+    for (y, x0, x1) in ((12, 3, 12), (21, 3, 12)):
+        fill(a, x0, y, x1, y + 2, POST[2])
+        a[y, x0:x1 + 1] = POST[3]
+        a[y + 2, x0:x1 + 1] = POST[0]
+        outline(a, x0 - 1, y - 1, x1 + 1, y + 3, INK)
+    a[6, 3:13] = POST[1]                            # the top rail
+    a[6, 3:13:3] = POST[0]
+    contact_shadow(a, 1, 14, 29)
+    return img(a)
+
+
+def bramble() -> Image.Image:
+    """1x1 a dusk bramble on the bank's lip: arching grey canes, a few dark berries
+    nobody picked. Solid."""
+    a = canvas(1, 1)
+    CANE = [hx("#2c3030"), hx("#465048"), hx("#5e6c5e"), hx("#7a8a76")]
+    for (cx, cy, rx, ry) in ((5, 9, 5, 5), (10, 8, 5, 6), (8, 11, 6, 4)):
+        for y in range(16):
+            for x in range(16):
+                if ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 <= 1.0:
+                    a[y, x] = CANE[1] if (x + y) % 3 else CANE[2]
+    for (x, y) in ((4, 5), (9, 3), (12, 6), (6, 12), (13, 11)):
+        a[y, x] = CANE[3]
+    for (x, y) in ((3, 9), (8, 7), (11, 11), (6, 6)):
+        a[y, x] = hx("#2a2240")
+        a[y - 1, x] = hx("#5a4a7a")
+    mask = a[..., 3] > 0
+    for y in range(16):
+        for x in range(16):
+            if not mask[y, x] and any(0 <= y + dy < 16 and 0 <= x + dx < 16 and mask[y + dy, x + dx]
+                                      for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                a[y, x] = INK
+    contact_shadow(a, 1, 14, 15)
+    return img(a)
+
+
+def bank_stair() -> Image.Image:
+    """1x2 the ONE walk-up: rough stone steps cut into the fog-crag, a worn wool rope
+    pegged up the side as a handrail and a grey rag tied at the top so you can find it
+    in the fog. Walked on (non-solid), drawn under the player."""
+    a = canvas(1, 2)
+    for i, y in enumerate(range(2, 30, 5)):
+        x0, x1 = 1 + (i % 2), 13 - (i % 2)
+        fill(a, x0, y, x1, y + 3, STONE[2])
+        a[y, x0:x1 + 1] = STONE[3]
+        a[y + 3, x0:x1 + 1] = STONE[0]
+        a[y + 4, x0:x1 + 1] = INK
+        a[y + 1, x0 + 3] = STONE[1]
+        a[y + 2, x1 - 4] = STONE[1]
+    # the rope handrail, pegged at the steps' west side
+    for y in range(1, 31):
+        a[y, 0 if (y // 4) % 2 else 1] = WOOL[2]
+    for y in (3, 13, 23):
+        a[y, 0:2] = POST[0]
+    # the rag at the top
+    a[0:3, 1:4] = WOOLHEM
+    a[3, 2] = WOOLHEM
     return img(a)
 
 
@@ -422,12 +630,16 @@ def main() -> None:
         (FIELDS / "field_shrine.png", field_shrine()),
         (FIELDS / "stook.png", stook()),
         (FIELDS / "blanket_stack.png", blanket_stack()),
+        (FIELDS / "plough.png", plough()),
+        (FIELDS / "stile.png", stile()),
+        (FIELDS / "bramble.png", bramble()),
+        (FIELDS / "bank_stair.png", bank_stair()),
         (UNDER / "spire_shaft.png", spire_shaft()),
         (UNDER / "watch_lamp.png", watch_lamp(False)),
         (UNDER / "watch_lamp_lit.png", watch_lamp(True)),
     ]
-    for slug, stem in SLEEPERS:
-        sleeping, awake = sleeper(slug)
+    for slug, stem, tail in SLEEPERS:
+        sleeping, awake = sleeper(slug, tail)
         out.append((FIELDS / f"sleeper_{stem}.png", sleeping))
         out.append((FIELDS / f"sleeper_{stem}_awake.png", awake))
     for path, im in out:

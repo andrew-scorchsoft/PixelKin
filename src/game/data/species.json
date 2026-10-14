@@ -20574,6 +20574,13 @@
      "max": 53
     },
     {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 42,
+     "max": 44
+    },
+    {
      "area": "stillwater",
      "terrain": "tall_grass",
      "rarity": "common",
@@ -20706,6 +20713,13 @@
      "max": 52
     },
     {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 47,
+     "max": 49
+    },
+    {
      "area": "stillwater",
      "terrain": "tall_grass",
      "rarity": "common",
@@ -20827,6 +20841,13 @@
      "rarity": "uncommon",
      "min": 48,
      "max": 51
+    },
+    {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 46,
+     "max": 48
     },
     {
      "area": "stillwater",

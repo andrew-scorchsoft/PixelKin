@@ -108,6 +108,13 @@
       "max": 52
     },
     {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 47,
+      "max": 49
+    },
+    {
       "area": "stillwater",
       "terrain": "tall_grass",
       "rarity": "common",

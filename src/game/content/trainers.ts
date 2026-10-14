@@ -1807,17 +1807,18 @@ export const TRAINERS: TrainerRegistry = {
     ],
     payout: 1072, // route 16 × ace 67
   },
-  // ---- Lane N3 (walkthrough/11 Parts C + D): the Mourning Fields' two acolytes (route
-  // class) and the Penumbra Underways' last watch (keeper class, the Umbral Approach's).
+  // ---- Lane N3 (walkthrough/11 Parts C + D): the Mourning Fields' two acolytes (keeper
+  // rate, like every northern acolyte) and the Penumbra Underways' last watch (keeper class, the Umbral Approach's).
   mournfields_ines: {
     id: 'mournfields_ines',
     name: 'INES',
     title: 'Hollowing Acolyte',
     party: [
       { species_id: 113, level: 48 }, // Omenire — Lunar/Dark
+      { species_id: 180, level: 49 }, // Lullwing — Dark/Lunar (the grey dream-moth)
       { species_id: 85, level: 50 }, // Stillwarden — Frost/Dark (ace)
     ],
-    payout: 800, // route 16 × ace 50
+    payout: 1000, // keeper 20 × ace 50 (every northern acolyte pays keeper rate)
   },
   mournfields_corran: {
     id: 'mournfields_corran',
@@ -1828,7 +1829,7 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 142, level: 50 }, // Embergone — Dark/Ember
       { species_id: 138, level: 51 }, // Voidmantle — Dark (ace)
     ],
-    payout: 816, // route 16 × ace 51
+    payout: 1020, // keeper 20 × ace 51
   },
   underways_watch_a: {
     id: 'underways_watch_a',

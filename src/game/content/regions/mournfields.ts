@@ -9,7 +9,10 @@
  *
  * Flags this file owns:
  *   flag:mournfields_ines_beaten / flag:mournfields_corran_beaten  the two acolytes
- *   flag:picked_mournfields_shelf / _plot   the shrine shelf's cache, the west plot's
+ *   flag:picked_mournfields_shelf / _plot / _terrace   the shrine shelf's cache (a Lumen
+ *                                      Drop), the west plot's (Lullwool Charms), the east
+ *                                      terrace's (a Harvest Knot) — Fields-only, never sold
+ *   flag:mournfields_tender_gift       the field-tender's dawn gift (Lullwool Charms), once
  *   flag:mournfields_shrine_read       first read of the field shrine (longer narration)
  *   flag:mournfields_tender_met        the field-tender's first meeting (longer lines)
  * Reads flag:dawn (the post-dawn branches: the sleepers wake, the lanterns unhood).
@@ -28,18 +31,27 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'Five trimmed candles. Folded blankets left at the step, ready for whoever is cold.', unless_flag: DAWN },
     { op: 'narrate', text: 'One of the five candles is burning again: THE TOP FIELD. Nobody has written anything new on the board. Nobody needed to.', if_flag: DAWN },
   ],
+  // The Fields' finds are the Fields' own (2026-10-14 review: no shop-stock here).
   'script.pickup_mournfields_shelf': [
     { op: 'sfx', key: 'world-pickup' },
-    { op: 'giveItem', item: 'beacon_charge', count: 2 },
-    { op: 'say', text: 'Tucked behind the shrine, out of the wind: a lamp-tender\'s tin, never opened. Inside, packed in wool, 2 BEACON CHARGES!' },
+    { op: 'giveItem', item: 'lumen_drop', count: 1 },
+    { op: 'say', text: 'Behind the shrine, on the little shelf where the harvest-sweets were left for the field: one honey-bead, wrapped in a twist of straw. Found a LUMEN DROP!' },
     { op: 'setFlag', flag: 'flag:picked_mournfields_shelf' },
   ],
 
   'script.pickup_mournfields_plot': [
     { op: 'sfx', key: 'world-pickup' },
-    { op: 'giveItem', item: 'hearth_coal', count: 1 },
-    { op: 'say', text: 'In the corner of the west plot, under a fold of old sacking: a farmer\'s ember-pot, still faintly warm. Found a HEARTH COAL!' },
+    { op: 'giveItem', item: 'lullwool_charm', count: 2 },
+    { op: 'say', text: 'In the corner of the west plot, under a fold of sacking: two charge cells wound round and round in grey wool, the way you\'d wrap something you didn\'t want to wake. Found 2 LULLWOOL CHARMS!' },
+    { op: 'say', text: 'They burn threefold bright at a dozing kin, and plain at a waking one.' },
     { op: 'setFlag', flag: 'flag:picked_mournfields_plot' },
+  ],
+
+  'script.pickup_mournfields_terrace': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'harvest_knot', count: 1 },
+    { op: 'say', text: 'Hung on the last post of the top field, out of reach of the wind: the year\'s last sheaf, plaited into a knot and tied with ribbon. Found a HARVEST KNOT!' },
+    { op: 'setFlag', flag: 'flag:picked_mournfields_terrace' },
   ],
 
   // ---- the field-tender (the sleepers' field) -----------------------------------------
@@ -60,15 +72,29 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
     { op: 'emote', actor: 'field_tender', emote: 'music' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'Look at them. Up before me, the lazy things. They\'ve been at the stooks all morning.' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'I kept the blankets. I fold them every evening anyway. Habit. Or maybe in case.' },
-    { op: 'say', speaker: 'FIELD-TENDER', text: 'Thank you. I don\'t know how else to say it, so I\'ll just say it the once and then go back to work.' },
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'Thank you. I don\'t know how else to say it, so I\'ll just say it the once and then go back to work.', unless_flag: 'flag:mournfields_tender_gift' },
+    { op: 'run', ref: 'script.mournfields_tender_gift', unless_flag: 'flag:mournfields_tender_gift' },
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'Go on, then. They\'ve the whole day to make up for, and so have you.' },
+  ],
+  // the dawn gift, once: the wool charms she wound for the sleepers' lamps
+  'script.mournfields_tender_gift': [
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'Here. I wound these for the sleepers\' lamps, the nights they wouldn\'t settle. Wool off the blankets. I won\'t need them now.' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'lullwool_charm', count: 3 },
+    { op: 'say', text: 'Got 3 LULLWOOL CHARMS! They burn threefold bright at a dozing kin.' },
+    { op: 'setFlag', flag: 'flag:mournfields_tender_gift' },
   ],
 
-  // ---- the walker at the Coldfog gate (the wayfinding voice) -----------------------
+  // ---- the wool-gatherer at the Coldfog gate (the wayfinding voice) ----------------
+  // (was "Stillwater trader" — a trader with nothing to sell; the 2026-10-14 review)
   'script.mournfields_walker': [
-    { op: 'say', speaker: 'STILLWATER TRADER', text: 'West, that gap? Coldfog Marches. North, up the bank, Stillwater. South, down the col, the Rimeway.' },
-    { op: 'say', speaker: 'STILLWATER TRADER', text: 'The bank\'s the thing. You can hop down off it anywhere, but you can\'t climb it. To go up to Stillwater you walk east to the one stair by the shrine, then back along the top.' },
-    { op: 'say', speaker: 'STILLWATER TRADER', text: 'It\'s not a wrong turn, love. It\'s just the long way round, and the long way round is how fields are.', unless_flag: DAWN },
-    { op: 'say', speaker: 'STILLWATER TRADER', text: 'I\'m carrying candles down to Coldfog now. Can you believe it? Candles. Somebody ordered a hundred.', if_flag: DAWN },
+    { op: 'say', speaker: 'WOOL-GATHERER', text: 'Mind the fences, love, I\'ve not done that one yet. The fog leaves its wool on the wire overnight, and somebody has to pick it off. That\'s me.', unless_flag: DAWN },
+    { op: 'say', speaker: 'WOOL-GATHERER', text: 'West, that gap? Coldfog Marches. North, up the bank, Stillwater. South, down the col, the Rimeway.' },
+    { op: 'say', speaker: 'WOOL-GATHERER', text: 'The bank\'s the thing. You can hop down off it anywhere, but you can\'t climb it. To go up to Stillwater you walk east to the one stair by the shrine, the one with the lamp left a slit open, then back along the top.' },
+    { op: 'say', speaker: 'WOOL-GATHERER', text: 'It\'s not a wrong turn. It\'s just the long way round, and the long way round is how fields are.', unless_flag: DAWN },
+    { op: 'say', speaker: 'WOOL-GATHERER', text: 'Every blanket on this field came off these fences. A year of fog, a skein a night. I don\'t know what it\'s for any more. I just know how to do it.', unless_flag: DAWN },
+    { op: 'say', speaker: 'WOOL-GATHERER', text: 'No fog on the wire this morning. First time in eleven winters. I came out with my basket anyway and stood here like a fool, laughing.', if_flag: DAWN },
+    { op: 'say', speaker: 'WOOL-GATHERER', text: 'I\'m carrying candles down to Coldfog now. Can you believe it? Candles. Somebody ordered a hundred.', if_flag: DAWN },
   ],
 
   // ---- the two acolytes ------------------------------------------------------------

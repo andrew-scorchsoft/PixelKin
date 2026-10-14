@@ -227,6 +227,17 @@ export const ITEMS: ItemRegistry = {
     catch_bonus: 3.0,
     condition: { kind: 'terrain', terrain: 'water' },
   },
+  // The Mourning Fields (walkthrough/11 Part C): the field-tender's own charge, found
+  // in the west plot and given at dawn — never sold. A conditional charge keyed to a
+  // DOZING foe (the Fields put kin to sleep; this is the gentle way to bring one home).
+  lullwool_charm: {
+    id: 'lullwool_charm',
+    name: 'Lullwool Charm',
+    desc: 'A charge cell wound in the field-tender\'s coldfog wool. Thrown at a dozing kin it burns threefold bright; at a waking one it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 3.0,
+    condition: { kind: 'status', status: 'doze' },
+  },
   // E1 "The Quiet Reeds" — the fen fisher's thanks for tending her lantern-reed
   // line (Saltreach Fen II). A reed-wick charge that blazes in deep growth —
   // reed beds, fringe grass, glowmoss — and burns plain on open ground.
@@ -524,6 +535,14 @@ export const ITEMS: ItemRegistry = {
     desc: 'A fen-pearl with a small blue light turning inside, like a lost dream.',
     category: 'valuable',
     sell: 1200,
+  },
+  // The Mourning Fields' east terrace (seen from the lower field, reached up the one stair).
+  harvest_knot: {
+    id: 'harvest_knot',
+    name: 'Harvest Knot',
+    desc: 'The last sheaf of the top field, plaited into a knot and tied with ribbon, the way the valleys keep one through the winter for luck. Collectors pay well; the field-tender would rather you kept it.',
+    category: 'valuable',
+    sell: 900,
   },
   murk_pearl: {
     id: 'murk_pearl',

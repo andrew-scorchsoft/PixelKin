@@ -303,6 +303,16 @@ export const CHARTS: readonly ChartEntry[] = [
     art: AREA('stillwater'),
     maps: ['stillwater'],
   },
+  // Lane N3 (walkthrough/11 Part C): Stillwater's fallow farmland (its LORE entry unlocks on this chart)
+  {
+    id: 'mourning-fields',
+    name: 'The Mourning Fields',
+    subtitle: 'Stillwater\'s fallow fields: the harvest left in the stook, the field-kin tucked in where they lay.',
+    region: 'outer',
+    kind: 'area',
+    art: AREA('mourning-fields'),
+    maps: ['mourning_fields'],
+  },
 ];
 
 /** Display order + label for each region group in the gallery. */
