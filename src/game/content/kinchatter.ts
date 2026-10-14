@@ -293,6 +293,123 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
       { text: '"Rrff." Its fur glows gold at the edges. That means it is happy.', react: 'hop' },
     ],
   },
+
+  // --- The Farlamp Isles (post-game; Lane B) ---------------------------------
+  // No `dawn` pools on purpose: the isles keep their own dusk after the mainland
+  // morning (10-the-farlamp-isles.md §1), so the plain lines are the ones heard.
+  172: { // Fathomote — the lantern-fish fry (the deep, the isles' shallows)
+    lines: [
+      { text: '"Blip!" Its lure flicks on, off, on. It is very proud of that.', react: 'hop' },
+      { text: '"Bloop." It swims a circle round your lamp, as if checking whose light is bigger.', react: 'twirl' },
+      { text: '"Blip-blip." It noses your boot, then darts back to show its little light to the others.' },
+    ],
+    event: { flag: 'flag:kinchat_fathomote', script: 'script.kinchat_fathomote' },
+  },
+  173: { // Fathomere — the grown lantern-fish
+    lines: [
+      { text: '"Mmmmohh." A slow, deep hum. Its lure dims, then brightens, like a lamp being trimmed.' },
+      { text: '"Ohhmm." It turns its light toward the open sea and holds it there, steady, the way a keeper would.', react: 'turn' },
+    ],
+  },
+  174: { // Hermiwick — the hermit crab in a broken lamp-glass
+    lines: [
+      { text: '"Clik-clik." It backs into its cracked glass until only its eyes show. Then, slowly, the claws.', react: 'shake' },
+      { text: '"Tik." It polishes one chipped pane with its small claw, very carefully, and waits for you to notice.' },
+      { text: '"Clk-clk!" It peers into your vesperlamp a long time. Looking for the lamp its glass came from.', react: 'hop' },
+    ],
+  },
+  175: { // Beaconclaw — the crab-lighthouse
+    lines: [
+      { text: '"KLAK." It raises its great claw like a shield, then lowers it. You passed.', react: 'shake' },
+      { text: '"Hmmm-klak." The lamp on its back turns once, slow, and sweeps its beam right across you.', react: 'twirl' },
+    ],
+  },
+  176: { // Fogwisp — the sea-fog moth (the Fogwall, the Undertide)
+    lines: [
+      { text: '"...fffh." It drifts to your lamp and settles on the glass. The glass goes cold and grey.' },
+      { text: '"Hhhh." It flutters a slow circle. When it is gone the air still smells of the sea.', react: 'twirl' },
+      { text: '"...ff." It tries to land on your lamp-flame, thinks better of it, and sits on your hat instead.', react: 'hop' },
+    ],
+  },
+  // Lane C1 (pass 2) — the isles' other ambient kin
+  61: { // Tidalarch — the pool-spanning kelp entity (Kelpcrown's drowned courtyard)
+    lines: [
+      { text: '"Shhhhaa." A frond lifts out of the pool and arches over your head, dripping, then lays itself back down.', react: 'twirl' },
+      { text: '"Hhuu." Its blossom crown glows a little brighter while you stand there, as if the pool approves of you.' },
+    ],
+  },
+  76: { // Vaultclaw — the glacier-hermit (Gullwrack's gull walk)
+    lines: [
+      { text: '"KRRNK." It shifts its great ice-shell. Something small inside chirps and goes quiet again.', react: 'shake' },
+      { text: '"Grrmm." It holds very still and lets a gull land on its shell. It seems to like the company.' },
+    ],
+  },
+  96: { // Frigalance — the blizzard-wasp (Gullwrack's high meadow)
+    lines: [
+      { text: '"Zzzt!" It hovers at your eye level. The air round its wings goes cold and smells of thunder.', react: 'hop' },
+      { text: '"Zzz-zip." It darts once round your lamp, fast as a spark, and is back where it started.', react: 'twirl' },
+    ],
+  },
+  // ---- Lane A — the Ashfall Shelf (walkthrough/10 Part II) ----
+  49: { // Gravelo — the slag-heap boulder (the Ashfall Shelf)
+    lines: [
+      { text: '"Grrmmm." It settles deeper into the slag with a sound like a cart tipping.', react: 'shake' },
+      { text: '"Hrmp." A little avalanche of cinders runs off its back. It looks pleased.' },
+    ],
+  },
+  63: { // Stonebark — the ash-grass stump (the Ashfall Shelf, rare)
+    lines: [
+      { text: '"...rrrk." Grey grass rustles on its shoulders. It turns, very slowly, to face the wind.', react: 'hop' },
+      { text: '"Hhhm." It roots its toes in the ash. Something green pokes up beside them.' },
+    ],
+    dawn: [{ text: '"Hhhmm!" The ash-grass on its back has gone a little green at the tips.' }],
+  },
+  // --- Lane E (10 Part III): Lowtinder, the town under the bay ----------------
+  11: { // Tallowcrest — warms itself in the drowned hearths (Lowtinder)
+    lines: [
+      { text: '"Fff." It sits in an old fireplace that has not had a fire in forty years, and glows, so now it has one.', react: 'hop' },
+      { text: '"Tsss." A drop of sea lands on its back and steams. It looks offended at the whole ocean.' },
+    ],
+    dawn: [{ text: '"Fff-fff!" It basks in a square of real sunlight on the old cobbles, belly-up.' }],
+  },
+  21: { // Tidmaren — the tide-pool glimmer (Lowtinder, the bay)
+    lines: [
+      { text: '"Plip." It bobs in a puddle that used to be somebody\'s kitchen, and blinks a little light at you.', react: 'hop' },
+      { text: '"Plip-plip." It drifts round your boots like you are a rock worth circling.' },
+    ],
+  },
+  39: { // Mossmantle — the moss that kept the lamp-school's lesson (the moss-garden)
+    lines: [
+      { text: '"Mmmm." Its mossy cloak glows a little brighter as your lamp comes near, like a pupil answering a question.', react: 'twirl' },
+      { text: '"Mm." It shuffles over and settles by your feet, warm and damp and quite pleased with itself.' },
+    ],
+    dawn: [{ text: '"Mmmm!" A thread of daylight finds the garden through the fallen roof. It leans toward it, every frond at once.' }],
+  },
+  // --- Lane N4 (11 §F): the Hollowing family — Stillwater, the Mourning Fields, Drownlight
+  178: { // Dousecap — the snuffer-cap that puts the lamps to bed
+    lines: [
+      { text: '"Tff." It hops toward your vesperlamp, stops, and looks up at you. It is asking if it may.', react: 'hop' },
+      { text: '"...pff." A thread of smoke curls off its tip. Somewhere behind it, a candle has just gone to sleep.' },
+      { text: '"Tff-tff." It tips its brim at you, very politely, then settles down on the grass like a little brass bell.', react: 'shake' },
+    ],
+    dawn: [{ text: '"Tff?" It peeks out from under its brim at the morning, blinks, and decides to leave this one lit.', react: 'hop' }],
+  },
+  179: { // Shutterwick — the shuttered lantern-keeper
+    lines: [
+      { text: '"Hhmm." It turns its lantern away from you, the way you would shield a candle from the wind.', react: 'turn' },
+      { text: '"...mmh." One slat of its shutters opens, just a crack. Warm light falls across your boots, and then it is gone.' },
+    ],
+    dawn: [{ text: '"Hhmm-hm." It opens every shutter at once and stands there in the morning, glowing, a little shy about it.', react: 'twirl' }],
+  },
+  180: { // Lullwing — the dream-moth that keeps sleepers asleep
+    lines: [
+      { text: '"Hmmmmm." It hums one low note, and your eyelids feel heavy. You shake it off. It looks a little disappointed.', react: 'twirl' },
+      { text: '"...fff." Silver dust sifts off its wings onto your sleeve. It smells of clean linen and a fire banked for the night.' },
+      { text: '"Hm." It lands on your lamp-hand and folds its wings, as if you are the one who needs looking after.', react: 'hop' },
+    ],
+    dawn: [{ text: '"Hmm?" It flutters up into the light, confused, then follows a dozing kin home to tuck it in properly.', react: 'twirl' }],
+    event: { flag: 'flag:kinchat_lullwing', follow_ms: 4000 },
+  },
 };
 
 /** The event scripts (spread into content/scripts.ts SCRIPTS). Lore, finds and
@@ -327,6 +444,12 @@ export const KINCHAT_SCRIPTS: ScriptRegistry = {
     { op: 'emote', actor: 'player', emote: 'alert', holdMs: 600 },
     { op: 'narrate', text: 'It stops pecking and stares straight up, every feather flat. You look too. Nothing, only the dark.' },
     { op: 'narrate', text: 'Up here they say the birds see the falling stars before anyone does. It watches for a long while before it goes back to its flint.' },
+  ],
+  // Fathomote: the shoal answers your lamp (the Farlamp Isles' lore, §1).
+  'script.kinchat_fathomote': [
+    { op: 'emote', actor: 'player', emote: 'alert', holdMs: 700 },
+    { op: 'narrate', text: 'It dives. A moment later the dark water lights up, one small lure after another, until a whole shoal is blinking back at your lamp.' },
+    { op: 'narrate', text: 'Driftholm folk used to set lamps by the water for the fry. Eleven winters, and the fry still come to any light that waits for them.' },
   ],
 };
 

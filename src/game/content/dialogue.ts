@@ -55,12 +55,13 @@ export const DIALOGUE: DialogueRegistry = {
     { speaker: 'GATE-WARDEN', text: "One more kindness for the road: your whole journey is kept in your lamp's memory — and a memory can be lost. In SETTINGS you can press a copy of it to keep somewhere safe. Do that now and then, and a cleared shelf can never take the road behind you." },
   ],
   // The rival Wren — a fellow young Wayfarer in the plaza (A1). Warm and competitive;
-  // by canon Wren takes the starter that beats yours along Ember->Verdant->Tide->Ember.
+  // Wren's partner is a Glimflit (Light), not one of the starter trio (every Wren team
+  // leads with the Glimflit line).
   // R8: Wren mills about Duskapple Orchard now (not the town garden).
   'npc.wren_intro': [
     { speaker: 'WREN', text: "Shh — I'm minding the courier's cart for her. Mostly by eating the windfalls." },
     { speaker: 'WREN', text: 'You as well? Ha — Fenn sends us all out the same week. Good.' },
-    { speaker: 'WREN', text: "Whatever partner you pick, I'm taking the one that gives you trouble. Only fair." },
+    { speaker: 'WREN', text: "Whatever partner you pick, mine's already picked me — a little Glimflit. Trouble enough for anyone." },
     { speaker: 'WREN', text: "Race you to fill the whole map with light, then. Loser carries the lamp oil." },
   ],
 
@@ -503,10 +504,6 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.wander_chickenpig_missing': [
     { speaker: 'PAUL', text: 'Ah — {name}. You found the last word. ...But you\'ve come without the bird-pig, or it\'s too worn out to stand.' },
     { speaker: 'PAUL', text: 'Bring it here in your lamp, rested and ready. This next bit is ITS business more than yours. I\'ll wait. I\'m good at waiting.' },
-  ],
-  'sign.wander_gap': [
-    { text: 'The trees here stand shoulder to shoulder. Something about the way they lean suggests they are waiting to be told something. The waystone, perhaps, knows what.' },
-    { text: 'Its last word is worn away. Whoever walks this wood every evening would know it — and the quay says that\'s the old man with the dark lamp, out past the bell on the breakwater.' },
   ],
   'sign.pearlmoor_allotment': [
     { text: 'HILLSIDE ALLOTMENTS\nPlot 4: R. & A.\nSQUIRRELS WILL BE PROSECUTED.' },

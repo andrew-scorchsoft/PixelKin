@@ -1,0 +1,49 @@
+{
+  "title": "The Penumbra Underways",
+  "_note": "Lane N3 (walkthrough/11 Part D). The last road under the Penumbra Ring: the Hollowing's last watch keeps its fire here under the Spire's roots. snes register (kept sparse, <=6 voices), C minor, 92 bpm (cave band), 24 bars (A A' B C). Dark signature: a lone faltering pulse lead and long silences; Light signature: a high bell sparkle that takes over when the lead falls silent (C). Vesper motif FRAGMENTED: the lift G3-C4-D4 survives and hangs, the settle fails onto the leading tone B3; B widens the leap toward the Spire's minor boom (Eb5) and still lands on the dominant. A heartbeat bass (lub-dub) and a soft kick like footsteps carry it; the last two bars leave only G under the bells, falling back into the lift.",
+  "era": "snes",
+  "tempo": 92,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "C minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.8,
+      "notes": "rh G3q C4q | D4h. rq | rq Eb4q D4q C4q | B3h. rq | rh G3q C4q | F4h. rq | Eb4q D4q C4q Eb4q | D4w | C5h. Bb4q | Bb4h. rq | G4q Ab4q G4q Eb4q | G4w | F4q G4q Ab4q C5q | Eb5h. C5q | D5h B4h | G4w | rw | rw | rw | rw | rh F4q Ab4q | G4h. rq | rw | rw"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.22,
+      "notes": "C3+Eb3+G3w | C3+Eb3+G3w | Ab3+C4+Eb4w | G3+B3+D4w | C3+Eb3+G3w | F3+Ab3+C4w | Ab3+C4+Eb4w | G3+B3+D4w | Ab3+C4+Eb4w | Bb3+D4+F4w | C3+Eb3+G3w | C3+Eb3+G3w | F3+Ab3+C4w | Ab3+C4+Eb4w | G3+B3+D4w | G3+B3+D4w | C3+Eb3+G3w | C3+Eb3+G3w | Ab3+C4+Eb4w | Ab3+C4+Eb4w | F3+Ab3+C4w | F3+Ab3+C4w | G3+B3+D4w | G3+B3+D4w"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.8,
+      "notes": "C2e C2e rq G2e C2e rq | C2e C2e rq G2e C2e rq | Ab2e Ab2e rq Eb2e Ab2e rq | G2e G2e rq D2e G2e rq | C2e C2e rq G2e C2e rq | F2e F2e rq C2e F2e rq | Ab2e Ab2e rq Eb2e Ab2e rq | G2e G2e rq D2e G2e rq | Ab2e Ab2e rq Eb2e Ab2e rq | Bb2e Bb2e rq F2e Bb2e rq | C2e C2e rq G2e C2e rq | C2e C2e rq G2e C2e rq | F2e F2e rq C2e F2e rq | Ab2e Ab2e rq Eb2e Ab2e rq | G2e G2e rq D2e G2e rq | G2e G2e rq D2e G2e rq | C2e C2e rq G2e C2e rq | C2e C2e rq G2e C2e rq | Ab2e Ab2e rq Eb2e Ab2e rq | Ab2e Ab2e rq Eb2e Ab2e rq | F2e F2e rq C2e F2e rq | F2e F2e rq C2e F2e rq | G2e G2e rq D2e G2e rq | G2e G2e rq D2e G2e rq"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.34,
+      "notes": "rw | rw | rw | rh. G5q | rw | rw | rw | rh. D6q | rw | rw | rw | rh. Eb6q | rw | rw | rw | rh. B5q | G5q rq C6q rq | Eb6h rh | rq C6q rq Ab5q | G5w | rh. Ab5q | rw | rh B5q D6q | rw"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.32,
+      "notes": "q kick r r hat | q kick r r hat | q kick r r hat | q kick r tom r | q kick r r hat | q kick r r hat | q kick r r hat | q kick r tom r | q kick r r hat | q kick r r hat | q kick r r hat | q kick r tom r | q kick r r hat | q kick r r hat | q kick r r hat | q kick r tom r | q kick r r hat | q kick r r hat | q kick r r hat | q kick r tom r | q kick r r hat | q kick r r hat | q kick r r hat | q kick r tom r"
+    }
+  ]
+}

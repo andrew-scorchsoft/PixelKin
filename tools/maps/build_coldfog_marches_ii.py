@@ -24,7 +24,7 @@ is the point — Coldfog is optional, late, and entered from the hub; the
 Crossroads inn is 2 short legs back (I is one screen south of it). A heal
 here would tell the player the fen is safe. It must not feel safe; it must
 feel ASLEEP.
-NO TRAINERS (the I-side note applies — hooks name zero; the §11 r7 gameplay
+(SUPERSEDED 2026-10 by walkthrough/11 Part E: two acolytes, a mourner and Tessaly — see the density block at the end.) NO TRAINERS (the I-side note applies — hooks name zero; the §11 r7 gameplay
 load is carried by the full-corridor blight crossing + the murk-priced finds).
 
 HANDSHAKE (W3-internal, built both sides): I's `to_marsh_ii` at (8,0)/(9,0)
@@ -331,13 +331,14 @@ owed += pt.cache(m, cid="coldfog_camp_tonic", at=(3, 9))        # consumable, by
 owed += pt.cache(m, cid="coldfog_bank_charm", at=(24, 13))      # valuable, the shelf top
 
 # ---- encounters (band 48-50; Light-kin ABSENT; murk carries nothing) -----------------
+# 2026-10 (Part A review): every line in its KINDLED form at 48-50 (the bases
+# kindle at 20-36); the Light-only Wisprestored stays absent until the dawn.
 TABLE_II = [
-    {"kin_id": 137, "weight": 26, "min_level": 48, "max_level": 50},  # Nullmoth
-    {"kin_id": 139, "weight": 22, "min_level": 48, "max_level": 50},  # WispwaneNull
-    {"kin_id": 141, "weight": 18, "min_level": 48, "max_level": 50},  # Cindersob
-    {"kin_id": 142, "weight": 14, "min_level": 49, "max_level": 50},  # Embergone
-    {"kin_id": 134, "weight": 12, "min_level": 49, "max_level": 50},  # Wispwane
-    {"kin_id": 138, "weight": 8, "min_level": 49, "max_level": 50},   # Voidmantle
+    {"kin_id": 138, "weight": 26, "min_level": 48, "max_level": 50},  # Voidmantle
+    {"kin_id": 135, "weight": 22, "min_level": 48, "max_level": 50},  # Liminalux
+    {"kin_id": 142, "weight": 22, "min_level": 48, "max_level": 50},  # Embergone
+    {"kin_id": 113, "weight": 14, "min_level": 49, "max_level": 50},  # Omenire
+    {"kin_id": 180, "weight": 16, "min_level": 48, "max_level": 50},  # Lullwing
 ]
 band_grid = mk.make_grid(W, H)
 patch_grid = mk.make_grid(W, H)
@@ -384,6 +385,51 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
     {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)},
 ]
+
+# ---- the Hollowing's Country density (walkthrough/11 Part E, 2026-10) --------------
+# The deep fog is still asleep, but no longer empty: two acolytes walk it (sight
+# trainers, keeper class — they speak first, then ask), a mourner keeps the
+# quieted camp, the Shutter-wall's second cold lamp stands on the old bank, Tessaly
+# rests here on her way home, and the Lamplight-STARLIGHT nook in the west reeds
+# finally gives something back. Zero humour still; nobody here is cruel.
+m["npcs"] += [
+    {"id": "coldfog_acolyte_deep", "at": {"tx": 25, "ty": 12}, "facing": "up",
+     "sprite": "hollowing_acolyte", "movement": "static",
+     "dialogue_ref": "script.coldfog_acolyte_deep", "sight_range": 4,
+     "defeated_flag": "flag:coldfog_acolyte_deep_beaten",
+     "hidden_when_flag": "flag:coldfog_acolyte_deep_beaten"},
+    {"id": "coldfog_acolyte_deep_after", "at": {"tx": 25, "ty": 12}, "facing": "up",
+     "sprite": "hollowing_acolyte", "movement": "look_around",
+     "dialogue_ref": "npc.coldfog_acolyte_deep_after",
+     "requires_flag": "flag:coldfog_acolyte_deep_beaten"},
+    {"id": "coldfog_acolyte_west", "at": {"tx": 7, "ty": 12}, "facing": "right",
+     "sprite": "hollowing_elder", "movement": "static",
+     "dialogue_ref": "script.coldfog_acolyte_west", "sight_range": 5,
+     "defeated_flag": "flag:coldfog_acolyte_west_beaten",
+     "hidden_when_flag": "flag:coldfog_acolyte_west_beaten"},
+    {"id": "coldfog_acolyte_west_after", "at": {"tx": 7, "ty": 12}, "facing": "right",
+     "sprite": "hollowing_elder", "movement": "look_around",
+     "dialogue_ref": "npc.coldfog_acolyte_west_after",
+     "requires_flag": "flag:coldfog_acolyte_west_beaten"},
+    {"id": "camp_mourner", "at": {"tx": 7, "ty": 9}, "facing": "down",
+     "sprite": "npc_old_woman", "movement": "static",
+     "dialogue_ref": "script.coldfog_camp_mourner"},
+    {"id": "tessaly_fog2", "at": {"tx": 20, "ty": 15}, "facing": "right",
+     "sprite": "fen_folk", "movement": "static", "dialogue_ref": "script.still_tessaly_fog2",
+     "requires_flag": "flag:q_still_tessaly_fog1",
+     "hidden_when_flag": "flag:q_still_tessaly_fog2"},
+    {"id": "cache_coldfog_deep_starlight", "at": {"tx": 2, "ty": 14}, "facing": "down",
+     "sprite": "item_cache", "movement": "static",
+     "dialogue_ref": "script.pickup_coldfog_deep_starlight",
+     "requires_flag": "flag:lamplight_starlight",
+     "hidden_when_flag": "flag:picked_coldfog_deep_starlight"},
+]
+m["objects"].append(
+    {"id": "named_lamp_2", "sprite": "coldfog_doused_lamp", "at": {"tx": 12, "ty": 17},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True})
+m["triggers"].append(
+    {"id": "named_lamp_2_read", "kind": "script", "at": {"tx": 12, "ty": 20},
+     "activation": "interact", "ref": "script.still_coldlamp_2"})
 
 if __name__ == "__main__":
     ok = mk.finalize(m, scale=3)

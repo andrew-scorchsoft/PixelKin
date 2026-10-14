@@ -1,0 +1,95 @@
+{
+  "id": 177,
+  "slug": "farlume",
+  "name": "Farlume",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "F",
+  "stats": {
+    "hp": 128,
+    "atk": 56,
+    "def": 90,
+    "spa": 143,
+    "spd": 116,
+    "spe": 109
+  },
+  "bst": 642,
+  "ability": "lumenward",
+  "hidden_ability": "tidecaller",
+  "catchRate": 6,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 9,
+        "move": "spark_mote"
+      },
+      {
+        "level": 16,
+        "move": "drench_song"
+      },
+      {
+        "level": 24,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 32,
+        "move": "light_pulse"
+      },
+      {
+        "level": 40,
+        "move": "deepsurge"
+      },
+      {
+        "level": 48,
+        "move": "focus_mind"
+      },
+      {
+        "level": 56,
+        "move": "lightspire"
+      },
+      {
+        "level": 60,
+        "move": "mend"
+      },
+      {
+        "level": 64,
+        "move": "maelstrom"
+      },
+      {
+        "level": 68,
+        "move": "mist_screen"
+      },
+      {
+        "level": 74,
+        "move": "dawnburst"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "The Farlamp's own keeper-kin, the light that lived inside Vesperholm's outermost sea-lamp. The night the deep came up it went down with the lamp and kept it burning on the sea floor as long as it could, then waited in the drowned tower for someone to bring the flame back.",
+    "category": "Drowned Lamp Kin",
+    "size_cm": 1200,
+    "weight_kg": 880,
+    "habitat": "isles"
+  },
+  "encounters": [],
+  "scripted": true,
+  "art": {
+    "silhouette": "A great, serene sea-serpent coiled upright around itself like the spiral stair of a lighthouse: a long body of deep sea-blue scales banded with pale stone-white rings, broad translucent fin-sails along its back, and a noble head crowned with a lantern room of brass and glass in which a steady flame burns. Light spills from the lantern down its coils. At 64px it reads as a living lighthouse coiled out of the sea.",
+    "palette": "Deep sea-blue (#13205a) scales with water-blue (#4fb4ff) highlights and bone-white (#f5f0e1) stone bands; translucent diamond-cyan (#9fe7ff) fin-sails; the lantern crown in warm brass; the flame a white-gold, the brightest pixel; ink (#1a1430) outlines.",
+    "direction": "Ancient, faithful and grieving, then hopeful: a keeper that never stopped tending its lamp. Majestic and gentle, calm eyes, the drowned light's guardian, never a monster."
+  },
+  "provenance_concept_id": "X-FARLUME"
+}

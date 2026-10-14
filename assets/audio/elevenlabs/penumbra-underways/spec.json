@@ -1,0 +1,91 @@
+{
+ "id": "penumbra-underways",
+ "kind": "loop",
+ "where": "The Penumbra Underways — the two cave floors under the Penumbra Ring where the Hollowing's last watch keeps its fire beneath the Spire's roots",
+ "mood": "The last road — a heartbeat in the dark under the Ring, a lone faltering melody, and starlight glinting down a shaft from far above.",
+ "bpm": 90,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "90 BPM",
+  "C minor",
+  "deep cave dungeon before the final ascent",
+  "low triangle bass pulsing like a slow heartbeat",
+  "soft muffled kick like footsteps in a tunnel",
+  "lone pulse-wave lead with a faltering melody",
+  "cold string pad",
+  "high glassy bells like starlight falling from far above",
+  "solemn, resolute, hushed, awe",
+  "strong memorable melody",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "fade out",
+  "ritardando",
+  "cheerful",
+  "upbeat",
+  "horror jump scares",
+  "epic orchestral",
+  "guitar",
+  "ending"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a lone heartbeat bass in the dark, two soft footstep kicks, a cold string chord breathing in}",
+   "styles": [
+    "lone bass breathing in",
+    "cave opening"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the lead lifts with a rising leap that hangs in the air, reaches for home and falters on the leading tone; the heartbeat steady underneath}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "faltering"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the same climb again, wider and higher, reaching toward something vast above; a few high bells answer like starlight down a shaft}",
+   "styles": [
+    "wider leap",
+    "distant bell answer"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the lead falls silent; only the heartbeat bass, the cold strings and slow glassy bells drifting down from far above, in A-flat major then F minor, hushed and full of awe}",
+   "styles": [
+    "A-flat major",
+    "bells and heartbeat only",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the lead returns with the rising leap, steadier now, resolute, still landing short of home; the last bar leads straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "id": "driftholm-dawn",
+ "kind": "loop",
+ "where": "Driftholm after the isles' dawn: the fog lifted, boats out, the town awake in daylight",
+ "mood": "The same island hymn turned major and full: a town that has its morning back.",
+ "duration": 103.537,
+ "loop_start": 10.1,
+ "seam": 0.094,
+ "bpm_est": 83.4,
+ "song_id": "KslaKEuFCuvzCvYFeHRS",
+ "raw_ms": 98000,
+ "motif": "high",
+ "lufs": -15.4,
+ "edits": [
+  "trimmed 1.440s of head"
+ ]
+}

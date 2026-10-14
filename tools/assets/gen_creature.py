@@ -90,7 +90,7 @@ def gen_view(cid: int, slug: str, vtype: str, subject: str, reference: Path | No
     return res.returncode == 0
 
 
-def gen_creature(cid: int, provider: str | None = None) -> bool:
+def gen_creature(cid: int, provider: str | None = None, front_ref: Path | None = None) -> bool:
     sp = load_species(cid)
     slug = sp["slug"]
     subject = build_subject(sp)
@@ -99,7 +99,10 @@ def gen_creature(cid: int, provider: str | None = None) -> bool:
 
     ok = True
     for vtype, fname in VIEWS:
-        ref = front if vtype != "creature-front" else None
+        # the front may lean on another kin's front (--front-ref: the earlier
+        # stage of a kindling line, so the pair reads as one line); the other
+        # four views always lean on this kin's own fresh front
+        ref = front if vtype != "creature-front" else front_ref
         if not gen_view(cid, slug, vtype, subject, ref, provider):
             print(f"  !! FAILED {vtype} for {cid:03d}_{slug}", file=sys.stderr)
             ok = False
@@ -118,6 +121,9 @@ def main() -> int:
                    help="Image provider passed through to generate_sprite.py. Default: the "
                         "skill's default (google). Use 'openai' as a fallback when Google is "
                         "rate-limited / spend-capped.")
+    p.add_argument("--front-ref", type=Path, default=None,
+                   help="Reference image for the battle_front view only — e.g. the earlier "
+                        "stage's battle_front.png, so a kindled form reads as the same line.")
     args = p.parse_args()
 
     ids: list[int] = list(args.ids)
@@ -129,7 +135,7 @@ def main() -> int:
     failures = []
     for cid in ids:
         print(f"=== creature {cid} ===", flush=True)
-        if not gen_creature(cid, provider=args.provider):
+        if not gen_creature(cid, provider=args.provider, front_ref=args.front_ref):
             failures.append(cid)
     if failures:
         print(f"\nFAILURES: {failures}", file=sys.stderr)

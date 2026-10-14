@@ -104,6 +104,6 @@ PRE_CHICKENPIG = {
 
 # Keys the engine reads from MapDefinition.ambience (data/world/types.ts MapAmbience).
 AMBIENCE_KEYS = {"particles", "mist", "tint", "starfall", "birds", "light_sources_extra",
-                 "sound_bed", "footprints", "bob_gids"}
+                 "beams", "sound_bed", "footprints", "bob_gids", "when"}
 PARTICLE_KINDS = {"snow", "ash", "embers", "glowmotes", "spores", "spray", "motes",
                   "leaves", "starglint", "dust"}

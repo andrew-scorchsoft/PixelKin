@@ -272,6 +272,47 @@ export const CHARTS: readonly ChartEntry[] = [
     art: LAND('starwell'),
     maps: ['starwell'],
   },
+
+  // ---- The Farlamp Isles (walkthrough/10 Part I, post-game) — Lane C1 ----------
+  {
+    id: 'farlamp-isles',
+    name: 'The Farlamp Isles',
+    subtitle: 'Black water, red buoys, and a blink in the fog that never quite went out.',
+    region: 'south',
+    kind: 'area',
+    art: AREA('farlamp-isles'),
+    maps: ['farlamp_sound', 'farlamp_shelfwater', 'farlamp_fogwall', 'farlamp_gullwrack',
+      'farlamp_kelpcrown'],
+  },
+  {
+    id: 'driftholm',
+    name: 'Driftholm',
+    subtitle: 'An island town that kept its small lamps lit for eleven winters, waiting for a boat.',
+    region: 'south',
+    kind: 'area',
+    art: AREA('driftholm'),
+    maps: ['driftholm'],
+  },
+  // Lane N1 (walkthrough/11 Part A): the Hollowing's village (its LORE entry unlocks on this chart)
+  {
+    id: 'stillwater',
+    name: 'Stillwater',
+    subtitle: 'The Hollowing\'s village: shuttered lamps, soft voices, kin asleep under grey blankets.',
+    region: 'outer',
+    kind: 'area',
+    art: AREA('stillwater'),
+    maps: ['stillwater'],
+  },
+  // Lane N3 (walkthrough/11 Part C): Stillwater's fallow farmland (its LORE entry unlocks on this chart)
+  {
+    id: 'mourning-fields',
+    name: 'The Mourning Fields',
+    subtitle: 'Stillwater\'s fallow fields: the harvest left in the stook, the field-kin tucked in where they lay.',
+    region: 'outer',
+    kind: 'area',
+    art: AREA('mourning-fields'),
+    maps: ['mourning_fields'],
+  },
 ];
 
 /** Display order + label for each region group in the gallery. */

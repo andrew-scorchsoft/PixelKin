@@ -737,6 +737,18 @@
       "movement": "look_around",
       "dialogue_ref": "npc.nightreach_hall_festival",
       "requires_flag": "gleam:lunar"
+    },
+    {
+      "id": "hall_sparrer",
+      "at": {
+        "tx": 3,
+        "ty": 7
+      },
+      "facing": "right",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "requires_flag": "gleam:lunar",
+      "dialogue_ref": "script.spar_nightreach"
     }
   ],
   "gates": [],

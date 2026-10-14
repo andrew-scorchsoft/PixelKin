@@ -5397,6 +5397,18 @@
       "movement": "wander",
       "ambient": true,
       "wander_radius": 1
+    },
+    {
+      "id": "driftletter_4",
+      "at": {
+        "tx": 12,
+        "ty": 19
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_driftletter_4",
+      "hidden_when_flag": "flag:driftletter_4"
     }
   ],
   "gates": [],

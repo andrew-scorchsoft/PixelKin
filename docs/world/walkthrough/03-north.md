@@ -17,7 +17,7 @@
 | | |
 |---|---|
 | **Areas** | Galehigh Terraces (cliff town, Lumenary 5) · Windward Stair I → II (mountain route) · Pale Vault Glacier (ice town, Lumenary 6) · spurs **Wind-Eye**, **Thunderroost** |
-| **Reading order** | `cinderhead_deep` → **Galehigh Terraces** → **Windward Stair I → II** → **Pale Vault Glacier** → `hushfrost_pass_i` (handed to West) |
+| **Reading order** | `cinderhead_deep` → `cinderwind_scarp` → `cinderwind_ashfall` (the Ashfall Shelf, built 2026-10) → **Galehigh Terraces** → **Windward Stair I → II** → **Pale Vault Glacier** → `hushfrost_pass_i` (handed to West) |
 | **Entry state** (from East) | ~lv28 · holds **Tidecall + Glimmerstep** · `gleam:verdant` + `gleam:stone` · `flag:crown_east` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` |
 | **Exit state** (to West) | ~lv40 · holds **Tidecall + Glimmerstep + Updraft Kite + Emberward** · `gleam:storm` + `gleam:frost` · `flag:crown_north` · `flag:shortcut_windward` · narrative ledger `flag:dusk_begins` + `flag:met_hollowing` + `flag:met_cor` (all persistent, carried forward) |
 | **Gleams earned** | **Storm** (Mira Vael, Galehigh, ace ~34) · **Frost** (Ysolde Frost, Pale Vault, ace ~40) — both relit → `flag:crown_north` |
@@ -63,13 +63,20 @@ the map walked in from (spine §0 rule 2).
 ## Galehigh Terraces — *the last fire before the climb*
 
 **At a glance** — `galehigh_terraces` · kind route/town · region north · **enter** from
-`cinderhead_deep` (ungated) **→ exit** to `windward_stair_i` (ungated) · **gate ability:**
+the **Ashfall Shelf** (`cinderwind_ashfall`, built 2026-10 — the main path from Cinderhead Deep
+runs Deep → Cinderwind Scarp (chained until `gleam:stone`/`gleam:storm`, `flag:scarp_climb_open`)
+→ Ashfall → here; the Scarp's direct cut `to_cinderhead` is a rockfall until
+`flag:scarp_short_open`; see "The Ashfall Shelf" below) **→ exit** to `windward_stair_i`
+(ungated) + the Galehigh lane (`to_crossroads` → `lanternway_galehigh`, a Lantern-car station
+running on `gleam:storm`) · **gate ability:**
 Updraft Kite (its own high ledges + the Wind-Eye landmark only) · **Gleam:** Storm (Mira Vael,
 ace ~34) · **rec. level ~28.**
 
 ### 1. Main path
 
-1. **Out of the dark, into the wind.** You step from Cinderhead's pitch-black gallery onto a
+1. **Out of the dark, into the wind.** *(Built 2026-10: you now arrive over the Ashfall Shelf's
+   slag-tips after the Scarp, not straight out of the mine; the beat holds.)* You step from the
+   mine country's dark onto a
    stepped cliff-farm catching the **last of the sunset** — the first colour in screens. One
    screen: a banner of climbing terraces, kites snapping overhead, `diamond` updraft motes
    rising off the ledges. The lit, paved switchback is the way up and in.
@@ -176,9 +183,11 @@ ace ~34) · **rec. level ~28.**
 ### 6. Validation hooks
 
 - **Map id / kind:** `galehigh_terraces`, kind `route`/`town`, region `north`.
-- **Entry/exit warps (graph.ts):** in from `cinderhead_deep` via `to_terraces` (ungated, bidir);
-  out to `windward_stair_i` via `to_stair` (ungated, bidir); Lanternway spoke
-  `galehigh_terraces ↔ vesper_crossroads` via `to_crossroads` (bidir).
+- **Entry/exit warps (built 2026-10):** in from `cinderwind_ashfall` via `to_ashfall`
+  (ungated, bidir — the main path); `to_cinderhead` ↔ `cinderwind_scarp` gated
+  `flag:scarp_short_open` (the rockfall cut); out to `windward_stair_i` via `to_stair`
+  (ungated, bidir); `to_crossroads` → `lanternway_galehigh` (the lane ends at a Lantern-car
+  station — no walked road to the hub).
 - **Gated warp:** `to_windeye` → `wind_eye`, `requires_ability: updraft_kite`, bidir.
   Late shortcut **back** lives on Windward II: `windward_stair_ii → galehigh_terraces` via
   `shortcut_galehigh`, `requires_flag: flag:shortcut_windward`.
@@ -291,7 +300,9 @@ kind route · region north · **enter** from `galehigh_terraces` **→ exit** to
 ## Pale Vault Glacier — *the lonely aurora, where the cold man speaks*
 
 **At a glance** — `pale_vault_glacier` · kind route/town · region north · **enter** from
-`windward_stair_ii` (ungated) **→ exit** to `hushfrost_pass_i` (ungated, handed to West) ·
+`windward_stair_ii` (ungated) **→ exit** to `hushfrost_pass_i` (ungated, handed to West) + the
+Rimeway (`to_rimeway` → `rimeway_ascent`, optional Wild Way to Coldfog II —
+[09](./09-the-wild-ways.md)) + the Hourfold (Emberward + `flag:three_mid_snuffer`, [07](./07-the-three.md)) ·
 **gate ability:** Emberward — but it gates only **onward** content (Hushfrost II + Pale Vault's
 deep-ice spurs), **NOT** the town or Lumenary · **Gleam:** Frost (Ysolde Frost, ace ~40) ·
 **rec. level ~36 → 40.**
@@ -485,3 +496,77 @@ middle tier past the hauler, up B, east to the gate). Each band keeps a grass le
 other end, so the way down is two quick hops (62 steps up vs 36 down). No Gift involved;
 warps, trainers (hauler moved to watch the middle tier's full height), caches and tables
 unchanged. Before: two bands with walk-up gaps under the ledges (both ways ~37 steps).
+
+## The Ashfall Shelf (2026-10, [10-the-farlamp-isles.md](./10-the-farlamp-isles.md) Part II)
+
+The thinnest stretch of the main path was Cinderhead Deep → Cinderwind Scarp → Galehigh:
+three caves, then one map carrying Otho 28 → Mira 34. It is now **Scarp (28–30) → the
+Ashfall Shelf (30–33) → Galehigh**, with Mira's recommended party raised 28 → 30.
+
+- **The rockfall (the return compressor).** The Scarp's east cut to Galehigh is a boulder
+  rockfall (`ashfall_rockfall`, dressing only) with a pushback band at x=20 and both
+  `to_terraces` warps gated on `flag:scarp_short_open` (DERIVED: `scarp_rockfall_clear` OR
+  `gleam:storm`). A hauler beside it says "up and round by the Ashfall, love". The way on is
+  north through the crest wood at x 5–6, past Rue the kite-runner (now posted at (7,2)).
+  Galehigh's old `to_cinderhead` warps carry the same gate.
+- **The shelf** (`cinderwind_ashfall`, 24×28 at world (93,−231)): grey ash-grass on century-old
+  slag tips. In from the Scarp at the basin (green, a mandatory grass band), up a 1-wide slag
+  cut past **Sile** the ore-hauler (ace 32), across the ash (a full-height blighttuft band),
+  past the **haulers' camp** (brazier rest point, `script.ashfall_brazier_rest`, sleeps;
+  **Oda Kilnwright**), down the descent past **Pell** the gale-watch (ace 33), out east to
+  Galehigh's upper road. Seen and earned later: the **old kiln stack** on the north lip (its
+  updraft vent is Kiln Gully, Updraft Kite) and the **Windward lookout** (a wind cairn + a
+  Kite crossing to Windward Stair I). A **slag nook**: a ledge drops off the shelf into a
+  walled pocket (a Starglass Shard under the ash), and a second ledge drops you out into the
+  basin. Wild 30–33: Gravelo, Sparkrat, Flintbeak, Galefox, Pyrolith and **Stonebark** (#63, its
+  first wild placement, ~5%).
+- **Second pass (2026-10).** The shelf is threaded, not open: three lanes across the west ash
+  (the camp; two slag-and-rock ridges; the haulers' old ore track with a stranded cart and the
+  **century stone**), a walled west pocket seen from the cut head and reached round by the camp
+  (a hauler's lunch-tin: a Hearth Coal), a charred tree east of the crossing, and dressed crags.
+  The basin is now two tiers joined by one gap, so the way UP folds (in, east, up, back west to
+  the cut at x=3) and the nook drop skips the fold on the way DOWN (53 vs 43 steps). Stonebark
+  grazes as greetable ambient colour on the gate shelf beside the descent lane. **Day-forms:**
+  after `flag:dawn` the beds run Voltcrag/Gravelo/Strikeaven/Tempestail and the woken
+  **Rootwarden** (lv 56–62); Kiln Gully runs Prismara/Riddlestone/Ferrolith/Pyrolith/Lithonyx.
+- **Third pass (2026-10, review).** No mid-field cliff slabs: the nook's west side is a rubble
+  ridge of rock clusters, the basin/gate divider is a strip of the crest wood with crown trees,
+  and the two basin tiers are joined by a terrace bank (one long south ledge, walk-up gap at x
+  7–8). The fold and the nook shortcut stand (53 vs 43 steps). The ash beds (Gravelo, Sparkrat,
+  Pyrolith, Flintbeak, Stonebark) and the green beds (Galefox, Flintbeak, Thrumble, Sparkrat, rare
+  Voltcrag) now run different mixes. Kiln Gully is a ring (hall → store → gully → loft), with a
+  cullet-and-crystal island in the hall and the glass-blowers' alcove (seen over a rack from the
+  hall, reached by a crawl from the store) holding the Shardstorm chart. Its signature rare is
+  **Scorchwing** (lv 34–35): the only pre-dawn wild one, since its other placement is the post-dawn
+  Hearthfall vigil. The gate-shelf tin now holds a Beacon charge.
+- **Fourth pass (2026-10, review 2).** The basin/gate divider is a boulder ridge (alternating rock
+  and slag clusters), not a tree strip; crest wood now caps the north lip (rows 0–1) and the east
+  drop (x 22–23), with a crown tree on its edge. In Kiln Gully the furnace is **cold until you take
+  the Last Pane**: lifting it off the rack wakes the furnace (a same-footprint swap
+  `ashfall_kiln_furnace_cold` → `ashfall_kiln_furnace` on `flag:q_north_pane`, with a camera beat and
+  a flash). The store and loft carry glass crates, a cullet bin and the pane moulds.
+- **The haulers clear it.** Galehigh's new upper-west landing (rows 7–8, a throat at x=2)
+  carries a step_on band, `script.ashfall_rockfall_promise`, setting
+  `flag:scarp_rockfall_clear`. Mira's hook (`script.mira_quest`) also rides row 12 under the
+  switchback, since players now arrive from above.
+- **Kiln Gully** (`cinderwind_kiln`, 22×18 cave, optional, lv 33–35: Lumecite, Riddlestone,
+  Orebound, Pyrolith, Pyriven, rare Prismara): the cold Kilnwright furnace, a Beacon charge,
+  the **Star-chart: Shardstorm** (find-only) and **the Last Pane**.
+- **"The Last Pane"** (`north_last_pane`): Oda (`flag:q_north_pane_hook`) → the pane from the
+  kiln's drying loft (`flag:q_north_pane`, key item `kiln_pane`) → the blind lamp by Galehigh's
+  kite-stall (`script.galehigh_pane_lamp`; the lamp is a same-footprint flag swap
+  `ashfall_pane_lamp_dark` → `_lit`) → 1,200 wicks, `flag:q_north_pane_done`.
+
+### Validation hooks
+
+- Map ids: `cinderwind_ashfall`, `cinderwind_kiln`; warps `to_scarp`/`to_scarp_e` (5–6,27),
+  `to_terraces`/`_s` (23,25–26) ↔ Galehigh `to_ashfall`/`_s` (0,7–8), `to_windward`/`_s`
+  (23,7–8) ↔ Windward Stair I `to_ashfall`/`_s` (0,29–30) (`requires_ability: updraft_kite`),
+  `to_kiln` (18,3) ↔ kiln `to_shelf`/`_e` (10–11,17) (`updraft_kite`); Scarp `to_ashfall`/`_e`
+  (5–6,0).
+- `requires_flag: flag:scarp_short_open` on Scarp `to_terraces`/`_s` and Galehigh
+  `to_cinderhead`/`_s`; `sets_flags: flag:scarp_rockfall_clear` on Galehigh
+  `ashfall_arrival_7/8`.
+- Encounter bands: Ashfall 30–33, Kiln 33–35, Scarp 28–30 (mirrored in `build_species.py`;
+  `cinderwind_kiln` is in `progression.mjs` `TREND_SKIP_AREAS`).
+- Trainers: `ashfall_picker` (512w), `ashfall_galewatch` (528w), mirrored in `BUILT_PAYOUTS`.

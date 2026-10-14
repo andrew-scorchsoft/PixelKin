@@ -658,6 +658,18 @@
       "movement": "look_around",
       "dialogue_ref": "npc.pale_vault_hall_festival",
       "requires_flag": "gleam:frost"
+    },
+    {
+      "id": "hall_sparrer",
+      "at": {
+        "tx": 3,
+        "ty": 8
+      },
+      "facing": "right",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "requires_flag": "gleam:frost",
+      "dialogue_ref": "script.spar_pale_vault"
     }
   ],
   "gates": [],

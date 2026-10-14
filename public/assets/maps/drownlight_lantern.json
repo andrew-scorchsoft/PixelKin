@@ -1,0 +1,908 @@
+{
+  "id": "drownlight_lantern",
+  "display_name": "The Drownlight \u2014 The Lantern Room",
+  "width": 16,
+  "height": 12,
+  "tile_width": 16,
+  "tile_height": 16,
+  "kind": "interior",
+  "tilesets": [
+    {
+      "name": "drownlight_lantern_set",
+      "image": "assets/tilesets/drownlight_lantern_set.webp",
+      "tile_width": 16,
+      "tile_height": 16,
+      "first_gid": 1,
+      "columns": 8,
+      "tile_count": 55
+    }
+  ],
+  "layers": [
+    {
+      "name": "base",
+      "role": "base",
+      "depth": 0,
+      "data": [
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        3,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "walls",
+      "role": "deco",
+      "depth": 5,
+      "data": [
+        14,
+        14,
+        18,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        22,
+        14,
+        14,
+        14,
+        18,
+        10,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        11,
+        22,
+        14,
+        18,
+        10,
+        54,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        53,
+        11,
+        22,
+        8,
+        54,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        53,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        15,
+        12,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        13,
+        16,
+        14,
+        15,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        16,
+        14
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "great_lamp",
+      "sprite": "drownlight_great_lamp",
+      "at": {
+        "tx": 6,
+        "ty": 3
+      },
+      "w": 4,
+      "h": 4,
+      "overhang": 1,
+      "walk_under": true,
+      "hidden_when_flag": "flag:drownlight_relit"
+    },
+    {
+      "id": "great_lamp_lit",
+      "sprite": "drownlight_great_lamp_lit",
+      "at": {
+        "tx": 6,
+        "ty": 3
+      },
+      "w": 4,
+      "h": 4,
+      "overhang": 1,
+      "walk_under": true,
+      "requires_flag": "flag:drownlight_relit"
+    },
+    {
+      "id": "pane_5",
+      "sprite": "drownlight_pane",
+      "at": {
+        "tx": 5,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "pane_5_lit",
+      "sprite": "drownlight_pane_lit",
+      "at": {
+        "tx": 5,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "pane_8",
+      "sprite": "drownlight_pane",
+      "at": {
+        "tx": 8,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "pane_8_lit",
+      "sprite": "drownlight_pane_lit",
+      "at": {
+        "tx": 8,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "pane_12",
+      "sprite": "drownlight_pane",
+      "at": {
+        "tx": 12,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "pane_12_lit",
+      "sprite": "drownlight_pane_lit",
+      "at": {
+        "tx": 12,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "pane_1_3",
+      "sprite": "drownlight_pane",
+      "at": {
+        "tx": 1,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "pane_1_3_lit",
+      "sprite": "drownlight_pane_lit",
+      "at": {
+        "tx": 1,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "pane_14_3",
+      "sprite": "drownlight_pane",
+      "at": {
+        "tx": 14,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "pane_14_3_lit",
+      "sprite": "drownlight_pane_lit",
+      "at": {
+        "tx": 14,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "keeper_chair",
+      "sprite": "interior_armchair",
+      "at": {
+        "tx": 11,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "keeper_table",
+      "sprite": "interior_table",
+      "at": {
+        "tx": 12,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "names_slate",
+      "sprite": "drownlight_slate",
+      "at": {
+        "tx": 10,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "keeper_cot",
+      "sprite": "drownlight_cot",
+      "at": {
+        "tx": 13,
+        "ty": 5
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "wick_basket",
+      "sprite": "interior_oil_jars",
+      "at": {
+        "tx": 2,
+        "ty": 9
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "shutter_plate",
+      "sprite": "drownlight_shutter_plate",
+      "at": {
+        "tx": 13,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "sea_pink",
+      "sprite": "interior_plant",
+      "at": {
+        "tx": 2,
+        "ty": 5
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "stairs_down_sprite",
+      "sprite": "interior_stairs_down",
+      "at": {
+        "tx": 3,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    }
+  ],
+  "warps": [
+    {
+      "id": "down_stairs",
+      "at": {
+        "tx": 3,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "drownlight_f2",
+      "to": {
+        "tx": 2,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade"
+    }
+  ],
+  "triggers": [
+    {
+      "id": "lamp_6",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_lamp"
+    },
+    {
+      "id": "lamp_7",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_lamp"
+    },
+    {
+      "id": "lamp_8",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_lamp"
+    },
+    {
+      "id": "lamp_9",
+      "kind": "cutscene",
+      "at": {
+        "tx": 9,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_lamp"
+    },
+    {
+      "id": "pane_read",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_pane"
+    },
+    {
+      "id": "keeper_hail_2_3",
+      "kind": "cutscene",
+      "at": {
+        "tx": 2,
+        "ty": 3
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_keeper_hail",
+      "hidden_when_flag": "flag:drownlight_keeper_hailed"
+    },
+    {
+      "id": "keeper_hail_4_3",
+      "kind": "cutscene",
+      "at": {
+        "tx": 4,
+        "ty": 3
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_keeper_hail",
+      "hidden_when_flag": "flag:drownlight_keeper_hailed"
+    },
+    {
+      "id": "keeper_hail_3_4",
+      "kind": "cutscene",
+      "at": {
+        "tx": 3,
+        "ty": 4
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_keeper_hail",
+      "hidden_when_flag": "flag:drownlight_keeper_hailed"
+    },
+    {
+      "id": "keeper_table_read",
+      "kind": "sign",
+      "at": {
+        "tx": 12,
+        "ty": 8
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_keeper_table"
+    },
+    {
+      "id": "keeper_table_read_b",
+      "kind": "sign",
+      "at": {
+        "tx": 13,
+        "ty": 8
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_keeper_table"
+    },
+    {
+      "id": "keeper_cot_read",
+      "kind": "sign",
+      "at": {
+        "tx": 13,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_keeper_cot"
+    },
+    {
+      "id": "slate_10",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_slate_lost"
+    },
+    {
+      "id": "slate_11",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_slate_lost"
+    },
+    {
+      "id": "wick_basket_read",
+      "kind": "sign",
+      "at": {
+        "tx": 2,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_wick_basket"
+    },
+    {
+      "id": "sea_pink_read",
+      "kind": "sign",
+      "at": {
+        "tx": 2,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_sea_pink"
+    }
+  ],
+  "encounters": [],
+  "npcs": [
+    {
+      "id": "shutterkeeper",
+      "at": {
+        "tx": 8,
+        "ty": 8
+      },
+      "facing": "up",
+      "sprite": "hollowing_elder",
+      "movement": "static",
+      "dialogue_ref": "script.drownlight_keeper",
+      "hidden_when_flag": "flag:drownlight_keeper_beaten"
+    },
+    {
+      "id": "shutterkeeper_after",
+      "at": {
+        "tx": 8,
+        "ty": 8
+      },
+      "facing": "up",
+      "sprite": "hollowing_elder",
+      "movement": "static",
+      "dialogue_ref": "script.drownlight_keeper_after",
+      "requires_flag": "flag:drownlight_keeper_beaten"
+    }
+  ],
+  "gates": [],
+  "music": "assets/audio/music/drownlight-lantern.mp3",
+  "battle_backdrops": [
+    "assets/backgrounds/battle/drownlight-lantern-a.webp"
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.3
+      }
+    ],
+    "tint": {
+      "color": "#2a3348",
+      "alpha": 0.18
+    },
+    "light_sources_extra": [
+      {
+        "at": {
+          "tx": 7,
+          "ty": 4
+        },
+        "radius": 10,
+        "color": "#c98a48"
+      }
+    ],
+    "when": [
+      {
+        "flag": "flag:drownlight_relit",
+        "ambience": {
+          "particles": [
+            {
+              "kind": "dust",
+              "density": 0.7
+            },
+            {
+              "kind": "glowmotes",
+              "density": 0.4
+            }
+          ],
+          "tint": {
+            "color": "#ffcf7a",
+            "alpha": 0.08
+          },
+          "light_sources_extra": [
+            {
+              "at": {
+                "tx": 7,
+                "ty": 4
+              },
+              "radius": 40,
+              "color": "#ffe2a0"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

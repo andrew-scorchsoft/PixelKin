@@ -165,6 +165,17 @@ mk.blob(void, W, H, 4.0, 30.0, 2.5, 2.0)
 for (x, y) in [(6, 21), (7, 21), (21, 30), (22, 30)]:
     void[y * W + x] = 0
 
+# THE UNDERWAYS' MOUTHS (Lane N3, walkthrough/11 Part D): two cave mouths in the south
+# wall, each on a little islet of ground in the dark — the SW one beside the threshold
+# (seen from the moment you enter), the SE one the void-sealed pocket's back wall. Both
+# beyond the starlit dark (Starreach) and gated besides; the Ring's crossing is untouched.
+UNDERWAYS_W = [(4, 32), (5, 32)]
+UNDERWAYS_E = [(22, 32), (23, 32)]
+for (x, y) in UNDERWAYS_W + UNDERWAYS_E:
+    for yy in (y - 1, y):
+        wall[yy * W + x] = 0
+        void[yy * W + x] = 0
+
 # ---- precedence ----------------------------------------------------------------------
 for i in range(W * H):
     if wall[i]:
@@ -221,6 +232,44 @@ m["warps"] += [
      "to_map": "umbral_spire", "to": {"tx": 14, "ty": 30}, "facing": "up",
      "requires_ability": "starreach", "transition": "door"},
 ]
+
+# THE UNDERWAYS (Lane N3): the last road, under the Ring — gated hub + Starreach
+UNDERWAYS_GATE = {"requires_flag": "flag:hub_unlocked", "requires_ability": "starreach",
+                  "blocked_ref": "script.underways_mouth_shut"}
+for n, ((x, y), (tx, ty)) in enumerate(zip(UNDERWAYS_W, [(3, 2), (4, 2)])):
+    m["warps"].append({"id": "to_underways_w" + ("_e" if n else ""), "at": {"tx": x, "ty": y},
+                       "trigger": "step_on", "to_map": "penumbra_underways",
+                       "to": {"tx": tx, "ty": ty}, "facing": "down", "transition": "fade",
+                       **UNDERWAYS_GATE})
+for n, ((x, y), (tx, ty)) in enumerate(zip(UNDERWAYS_E, [(26, 2), (27, 2)])):
+    m["warps"].append({"id": "to_underways_e" + ("_e" if n else ""), "at": {"tx": x, "ty": y},
+                       "trigger": "step_on", "to_map": "penumbra_underways",
+                       "to": {"tx": tx, "ty": ty}, "facing": "down", "transition": "fade",
+                       **UNDERWAYS_GATE})
+owed += ["script.underways_mouth_shut (content/regions/underways.ts)"]
+# the watch's hooded lamp on the west strip, its slit of light turned toward the SW
+# mouth (the breadcrumb, and the strip's read)
+m["objects"].append({"id": "underways_watch_lamp", "sprite": "underways_watch_lamp",
+                     "at": {"tx": 2, "ty": 22}, "w": 1, "h": 2, "overhang": 1,
+                     "hidden_when_flag": "flag:dawn"})
+m["objects"].append({"id": "underways_watch_lamp_lit", "sprite": "underways_watch_lamp_lit",
+                     "at": {"tx": 2, "ty": 22}, "w": 1, "h": 2, "overhang": 1,
+                     "requires_flag": "flag:dawn"})
+m["triggers"].append({"id": "underways_watch_lamp_read", "kind": "dialogue",
+                      "at": {"tx": 2, "ty": 24}, "activation": "interact",
+                      "ref": "npc.underways_ring_lamp"})
+owed += ["npc.underways_ring_lamp"]
+# THE LIGHT-WELL (review FD 2026-10-14, "seen before reached"): an iron grate flush in
+# the south strip's floor, between the two mouths and off the crossing; looking down it
+# you see the Underways first: the Crown's pale column and the watch's small fire.
+# Walk-over (solid:false), so it changes no route; read from any side.
+m["objects"].append({"id": "underways_lightwell", "sprite": "underways_ring_lightwell",
+                     "at": {"tx": 9, "ty": 30}, "w": 2, "h": 2, "solid": False})
+for (lx, ly) in ((9, 30), (10, 30), (9, 31), (10, 31)):
+    m["triggers"].append({"id": f"underways_lightwell_{lx}_{ly}", "kind": "cutscene",
+                          "at": {"tx": lx, "ty": ly}, "activation": "interact",
+                          "ref": "script.underways_lightwell"})
+owed += ["script.underways_lightwell"]
 
 # ---- THE SPIRE, SEEN BEFORE WALKED (touch #1) -----------------------------------------
 # The silhouette mass rides the north rim; its bottom row is the gate row
@@ -390,6 +439,9 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + \
 ]
 
 if __name__ == "__main__":
+    import warp_markers as wm
+    wm.add(m, wm.marker("underways_mouth_w", "cave_mouth_wide", 4, 32),
+           wm.marker("underways_mouth_e", "cave_mouth_wide", 22, 32))
     ok = mk.finalize(m, scale=3)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

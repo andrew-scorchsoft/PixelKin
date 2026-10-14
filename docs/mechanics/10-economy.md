@@ -38,11 +38,47 @@ custom (and took its name from it). Diegetic, humble, and ours.
 | **Loose finds** | small `giveMoney` drops | a purse in a cache, festival thanks |
 | **Selling items** | half price (`SELL_RATE 0.5`) | keepers buy anything priced; never key items |
 
+**Repeatable income (2026-10 review).** Wild battles pay nothing and almost every
+trainer fights once, so a player who kept losing used to have no honest way to earn
+their wicks back. Two fair farms now exist, both outside every solvency leg:
+
+| Farm | Pays | Limit | Where |
+|---|---|---|---|
+| **Lumenary sparring** | keeper 20w × ace, every win: Tinderwick 180 · Pearlmoor 300 · Lowleaf 420 · Cinderhead 540 · Galehigh 660 · Pale Vault 780 · Solarium 900 · Nightreach 1,020 | every hall's sparrer rests (one shared rest, so halls can't be rotated) for **3 won battles** elsewhere (`SPAR_COOLDOWN`, the `spar` op on the battle-counted cooldown clock) | each Lumenary's hall apprentice, once that hall's Gleam is relit (`content/sparring.ts`, posts in `hand_placed_data.py`) |
+| **The Wick-Run day purse** | 250w a repeat GOLD run, 100w a repeat SILVER (silver only once the ribbon makes rentals free) | skill + ~2 minutes a lap with the lift home; only once that tier's one-time prize is paid | `regions/wickrun.ts` (`WICKRUN_DAY_PURSE`; the timer op sets `<tier>_now` per run) |
+
+The 2026-10 post-dawn rematches (Bram Fathom, Gran Tallow after her first bout, Ondine) ride
+the **same shared rest** (`spar` op). The older post-game rematches (Wren, the Vigilants, Fenn)
+predate it and stay as they were: post-dawn wicks are plentiful by design.
+
+That's roughly one bout's purse per four battles: a struggling player can always earn
+back a couple of balms near the next warden, but it never beats playing forward.
+
 And where they go (sinks): balms, lamps, **Star-charts** (the aspirational
-sink), and the **faint tithe** — on a blackout the kind light keeps **10%** of
-your wicks (`FAINT_TITHE_RATE`; narrated as thanks left at the hearth — losing
-costs, gently). Inn/home rests stay **free** (canon hospitality); pressure
-lives in consumables and charts, not in healing.
+sink), and the **faint tithe**. On a blackout the kind light keeps **10%** of
+your wicks (`FAINT_TITHE_RATE`; narrated as thanks left at the hearth). Losing costs,
+but gently, and it never rinses you:
+- **Repeat losses to the same foe** (a trainer, a set-piece kin, or one map's wild
+  grass) halve it each time: 10% → 5% → 2.5% → **nothing** from the fourth loss in a
+  row (`TITHE_FREE_AFTER`). Beating that foe clears the streak. The streak lives in the
+  save's `cooldowns` record under a `loss:<foe>` key.
+- **A ceiling that grows with the journey:** one blackout never costs more than
+  **300w + 300w per Gleam held** (`titheCap`): 300w before Brisa, 1,500w at four Gleams,
+  2,700w with all eight. A loss costs about a balm or two of the current tier, never a fortune
+  (a flat 10% of a late purse used to be 3,000–5,000w).
+- **The hearth floor:** the tithe never takes the purse below **300w**
+  (`HEARTH_FLOOR`, two Tallow Balms and change).
+
+| Purse | Gleams | 1st loss | 2nd in a row | 3rd | 4th+ |
+|---:|--:|--:|--:|--:|--:|
+| 250w | 0 | 0 | 0 | 0 | 0 |
+| 1,200w | 1 | 120 | 60 | 30 | 0 |
+| 6,000w | 3 | 600 | 300 | 150 | 0 |
+| 20,000w | 5 | 1,800 (cap) | 1,000 | 500 | 0 |
+| 50,000w | 8 | 2,700 (cap) | 2,500 | 1,250 | 0 |
+
+Inn/home rests stay **free** (canon hospitality); pressure lives in consumables and
+charts, not in healing.
 
 ## 3. The price list (authoritative)
 
@@ -60,6 +96,8 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 | Star-charts | teach a move | 800–4,000w by tier (§6) | everywhere |
 | Hooded Lamp | key item; toggle — wild encounter rate ×0.5 while hooded | 600w | Pearlmoor chandlery, once `gleam:tide` is held (flag-gated stock) |
 | Tin Rower | key item; toggle — wild encounter rate ×0.5 while wound (the lowest active toggle factor applies; they never stack) | 12,000w **or a story** | Aldous Wink, Dimglass Coast I (R9, once `flag:has_starter`) — a one-time optional via the `pay` cutscene op, outside every solvency leg |
+| Harvest Knot | key item; toggle — wild encounter rate ×0.25 while hung (the strongest damper) | not sold, not sellable | the Mourning Fields' terrace cache (optional, late, lv 48–52 ground) — moves no wicks |
+| Deep Charm | one throw, catch ×3.0 on kin met over the open DEEP (a conditional charge; plain elsewhere) | 900w | the Driftholm chandlery (the Farlamp Isles), once `flag:isles_dawn` is held — post-game optional, outside every solvency leg; Nan Creel gives three for "Letters Home" |
 | A plate at Marisol's | restores the whole party (a courtesy heal, not a rest point) + her food talk; the first plate adds a Salsa Roja (heal 60, once) | 60w | Marisol's kitchen, Lowleaf Hollow — the `pay` op (`content/regions/kitchens.ts`), optional colour outside every solvency leg |
 
 Key items leave a shop's shelf once held (`ShopMenu`), so a toggle can't be bought
@@ -75,7 +113,9 @@ is retired; saves migrate (v3) old lamps into charges.
 Quest charms (Tide Charm, Drift Charm, Wrecklight Charm, the Marsh Lamp —
 E1's ×2.0 deep-growth conditional — the Aurora Charm and Sun Charm — N2's and
 X2's ×2.5 conditionals on Frost-met / Solar-met kin — the caretaker's **Bright
-Lamp** (X1, item id `caretaker_lamp`, an unconditional ×2.5), the Starlamp, and
+Lamp** (X1, item id `caretaker_lamp`, an unconditional ×2.5), Tessaly's Lamp (×2, given
+once as ONE reusable keepsake for the Stillwater escort, ×2.0 on a kin below 25% HP — never spent), the Starlamp, and
+the Drownlight's **Shutter Charm** (ONE, reusable — `reusable: true`, never spent — ×2.0 on Dark kin — reusable charges sit a notch under the Beacon's ×2.5),
 the festival Glow Salve) have **no price** — unbuyable, unsellable, earned only. Now that status conditions run (Part B, BUILT), add
 next: **Soothing Tea** (cure any status, ~200w) and **Rekindle Drop** (wake a
 fainted kin at half health, ~900w) — add to this table + items.ts together.
@@ -107,6 +147,15 @@ Vigilants pay 5,520w each (ace 69); the Last Lesson is `cor` class — Fenn at
 8,400w (ace 70). Post-crown re-runnable bouts are **optional income outside the
 solvency legs** (modelled as one-time in `progression.mjs`'s POSTGAME leg).
 
+**The Farlamp Isles (post-game, optional).** The four boat-trainers on the sea are
+`route` class (Calder 1,040w, ace 65; Rowan 1,056w, ace 66; Dunstan the salvager
+1,072w, ace 67; Willa the fog-pilot 1,088w, ace 68). Keeper **Bram Fathom** of
+Driftholm is `vigilant` class: 5,600w (ace 70), and his re-runnable rematch 5,760w
+(ace 72). All six sit in `BUILT_PAYOUTS`; none enters a solvency leg. The isles'
+found money (Kelpcrown's strongbox 2,000w, the *Heron*'s locker 800w), Hesk's
+1,500w thanks and the gull walk's Starglass Shard are added to the post-game leg's
+income.
+
 ## 5. Shops — how they look and work
 
 **The counter (built — `ui/ShopMenu.ts`).** Talking to a keeper runs their
@@ -137,6 +186,7 @@ the region's element pair + one Plain utility. Planned counters:
 | Cinderhead pit-stores *(built)* | charts: Focus Mind, Gust Up (no Stone chart minted yet) |
 | Galehigh kite-stall *(built)* | Bright Balm (once `gleam:storm`), charts: Thunder Kick, Volt Arc, Gale Slam, Swift Step — **the whole cold leg's counter: Pale Vault deliberately keeps no shop** (resupply rides the Windward drop-shortcut); the find-first Tempest nuke chart is Thunderroost's prize |
 | ~~Pale Vault warm-house~~ | — (no counter; see Galehigh row) |
+| Driftholm chandlery *(built, post-game — the Farlamp Isles)* | Warm + Bright Balm, Hearth Coal, Glow + Beacon Charges, the **Deep Charm** once `flag:isles_dawn` |
 | ~~Solarium dig-counter~~ | — **dropped (2026-06, built):** the Solarium is a ruin — the festival trades in bread and stories; the Lumenary green room is the rest point, no counter (the Pale Vault precedent) |
 | ~~Nightreach last-counter~~ | — **dropped (2026-06, built):** the star-temple keeps a vigil, not a till; **the West ships no counter** — the Galehigh kite-stall (one hub-spoke away) remains the late counter, and the West's aspirational chart (Sunburst Nova, 4,000w tier) is the Helia Vault's find-first prize. The planned West charts may land on a Central/postgame counter instead |
 
@@ -219,13 +269,15 @@ Engine formulas (`KinInstance.ts`, `BattleScene.ts`):
 | Tide Gleam (Reyl) | 14 | 16 | L18 | L17 | L20 |
 | Verdant Gleam (Sable) | 18 | 22 | L23 | L22 | L25 |
 | Stone Gleam (Otho) — *the wall* | 26* | 28 | L28 | L28 | L31 |
-| Storm Gleam (Mira) | 28 | 34 | L32 | L32 | L36 |
+| Storm Gleam (Mira) | 30† | 34 | L34 | L33 | L36 |
 | Frost Gleam (Ysolde) | 36 | 40 | L38 | L37 | L41 |
 | Solar Gleam (Lucan) | 42 | 46 | L43 | L42 | L46 |
 | Lunar Gleam (Nessa) | 48 | 52 | L48 | L47 | L52 |
 | Warden Còr (climax) | 54 | 56 | L53 | L53 | L58 |
 
 \* post-Descent-Vigil expectation; §4 entry rec is 22 (the wall by design).
+† rec 28 → 30 with the Ashfall Shelf (2026-10, walkthrough/10 Part II): the Scarp (28–30) and the
+shelf (30–33, two route trainers) now carry the climb that one map used to.
 
 **The difficulty shape this buys** — early Gleams land at/above ace (gentle
 on-ramp); from Mira onward the mainline player fights wardens **2–4 levels

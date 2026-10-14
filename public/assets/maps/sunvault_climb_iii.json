@@ -1561,6 +1561,17 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_sunvault_pitch",
       "hidden_when_flag": "flag:picked_sunvault_pitch"
+    },
+    {
+      "id": "climber_iii",
+      "at": {
+        "tx": 24,
+        "ty": 22
+      },
+      "facing": "left",
+      "sprite": "kite_weaver",
+      "movement": "look_around",
+      "dialogue_ref": "script.sunvault_climber_iii"
     }
   ],
   "gates": [],

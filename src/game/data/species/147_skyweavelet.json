@@ -8,14 +8,14 @@
   "role": "Utility / Speedster",
   "tier": "B",
   "stats": {
-    "hp": 53,
-    "atk": 48,
-    "def": 52,
-    "spa": 52,
-    "spd": 52,
-    "spe": 93
+    "hp": 58,
+    "atk": 50,
+    "def": 55,
+    "spa": 58,
+    "spd": 55,
+    "spe": 92
   },
-  "bst": 350,
+  "bst": 368,
   "ability": "mirrorlight",
   "hidden_ability": "brisk",
   "catchRate": 175,

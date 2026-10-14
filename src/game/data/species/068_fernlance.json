@@ -75,6 +75,13 @@
       "rarity": "uncommon",
       "min": 60,
       "max": 62
+    },
+    {
+      "area": "lowleaf_hollow",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 58,
+      "max": 65
     }
   ],
   "scripted": false,

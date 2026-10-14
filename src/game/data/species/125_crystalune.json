@@ -96,6 +96,41 @@
       "rarity": "rare",
       "min": 60,
       "max": 65
+    },
+    {
+      "area": "rimeway_ascent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 39,
+      "max": 40
+    },
+    {
+      "area": "rimeway_ascent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 48,
+      "max": 50
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 62
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 48,
+      "max": 50
     }
   ],
   "scripted": false,

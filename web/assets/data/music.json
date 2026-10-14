@@ -309,7 +309,7 @@
     {
      "id": "cinderhead-mine-b",
      "title": "Cinderhead Stone Lumenary",
-     "where": "Cinderhead Stone Lumenary",
+     "where": "Cinderhead Stone Lumenary · Kiln Gully",
      "mood": "The mine under pressure — groaning timbers, charged air, a terse staccato motif over a driving low walk; held-breath tension before the wall.",
      "classic": "play/assets/audio/music/cinderhead-mine-b.mp3",
      "classic_loop_start": null,
@@ -702,7 +702,7 @@
     {
      "id": "interior-hearth",
      "title": "Indoors — a warm home",
-     "where": "Terrace Cottage",
+     "where": "Terrace Cottage · The Old Lamp-house",
      "mood": "Kettle on, a cat by the stove — a bright, bouncing little home tune for rooms where folk are glad you came.",
      "classic": "play/assets/audio/music/interior-hearth.mp3",
      "classic_loop_start": null,
@@ -724,7 +724,7 @@
     {
      "id": "interior-lamplit",
      "title": "Indoors — lamplit rooms",
-     "where": "Glacier Cottage",
+     "where": "Glacier Cottage · Elder Creel's House",
      "mood": "Lamplit rooms — an unhurried, conversational little tune that sits under a chat by the stove and never asks for attention.",
      "classic": "play/assets/audio/music/interior-lamplit.mp3",
      "classic_loop_start": null,
@@ -735,7 +735,7 @@
     {
      "id": "interior-study",
      "title": "Indoors — charts & lenses",
-     "where": "Wickstead Lamp-school · Watcher's Cottage",
+     "where": "Wickstead Lamp-school · Watcher's Cottage · The Old Lamp-school",
      "mood": "Charts and Lenses — a ticking, curious little room of ground glass and inked stars, gently absorbed in its work.",
      "classic": "play/assets/audio/music/interior-study.mp3",
      "classic_loop_start": null,
@@ -746,7 +746,7 @@
     {
      "id": "interior-hush",
      "title": "Indoors — the quiet after",
-     "where": "Apprentice's House",
+     "where": "Apprentice's House · The Boathouse · The Keeper's Bothy · The Quiet Hall · Margery and Edwy's Cottage",
      "mood": "The Quiet After — the hometown lullaby played softly in a frightened house; the fire still lit, a music box that keeps trying to rise.",
      "classic": "play/assets/audio/music/interior-hush.mp3",
      "classic_loop_start": null,
@@ -757,7 +757,7 @@
     {
      "id": "interior-unease",
      "title": "Indoors — a cold hearth",
-     "where": "Hollowfen Stillworks",
+     "where": "Hollowfen Stillworks · Maren's House",
      "mood": "Cold Hearth — glass tones and a music box winding down in a room the warmth has left; eerie, beautiful, and strangely gentle.",
      "classic": "play/assets/audio/music/interior-unease.mp3",
      "classic_loop_start": null,
@@ -768,7 +768,7 @@
     {
      "id": "shop-counter",
      "title": "Shops",
-     "where": "Tinderwick General Store · Pearlmoor Chandlery · The Kite-Maker's",
+     "where": "Tinderwick General Store · Pearlmoor Chandlery · The Kite-Maker's · Creel & Daughter, Chandlers · The Dark-Lamp Maker",
      "mood": "The Counter Bell — a bouncy little shop tune with a doorbell for a hook; browse as long as you like.",
      "classic": "play/assets/audio/music/shop-counter.mp3",
      "classic_loop_start": null,
@@ -779,7 +779,7 @@
     {
      "id": "inn-rest",
      "title": "Inns — rest a while",
-     "where": "The Wayward Arms · Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn",
+     "where": "The Wayward Arms · Pearlmoor Quayside Inn · Vesper Crossroads Inn · Lowleaf Guest-bower · The Steady Gust Inn · The Held Flame Inn · The Long Watch Inn · The Lamplighters' Rest · The Shutter",
      "mood": "Rest a while — a fire's glow, a full kettle and a warm bed; the hometown tune settled into a contented waltz.",
      "classic": "play/assets/audio/music/inn-rest.mp3",
      "classic_loop_start": null,
@@ -963,6 +963,116 @@
      "note": null
     },
     {
+     "id": "bell-cellar",
+     "title": "The Bell Cellar",
+     "where": "The Bell Cellar · The Bell Cellar — the Belfry Pit",
+     "mood": "A flooded stone cellar under the sea: dripping water, black still pools, and somewhere a huge old bell humming when the tide turns. Hushed, patient and a little sad, never horror.",
+     "classic": "play/assets/audio/music/bell-cellar.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/bell-cellar.mp3",
+     "loop_start": 7.988,
+     "note": null
+    },
+    {
+     "id": "cinderwind-ashfall",
+     "title": "The Ashfall Shelf",
+     "where": "The Ashfall Shelf",
+     "mood": "Daylight after three caves: wide, windswept and a little melancholy, warmed by a brazier; grey ash-grass, coal-smoke and open sky, the climb nearly done.",
+     "classic": "play/assets/audio/music/cinderwind-ashfall.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/cinderwind-ashfall.mp3",
+     "loop_start": 11.981,
+     "note": null
+    },
+    {
+     "id": "driftholm",
+     "title": "Driftholm",
+     "where": "Driftholm",
+     "mood": "A sea-town hymn in the long dark: warm but lonely, small lamps kept alone in the windows.",
+     "classic": "play/assets/audio/music/driftholm.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/driftholm.mp3",
+     "loop_start": 10.733,
+     "note": null
+    },
+    {
+     "id": "driftholm-dawn",
+     "title": "Driftholm",
+     "where": "Driftholm",
+     "mood": "The same island hymn turned major and full: a town that has its morning back.",
+     "classic": "play/assets/audio/music/driftholm-dawn.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/driftholm-dawn.mp3",
+     "loop_start": 10.1,
+     "note": null
+    },
+    {
+     "id": "drownlight-f1",
+     "title": "The Drownlight — The Oil Stores",
+     "where": "The Drownlight — The Oil Stores",
+     "mood": "The Keeper's Hymn — a slow, tended sea-hymn in a cold stone tower: flute over harp, a clockwork ticking somewhere in the walls.",
+     "classic": "play/assets/audio/music/drownlight-f1.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/drownlight-f1.mp3",
+     "loop_start": 5.689,
+     "note": null
+    },
+    {
+     "id": "drownlight-f2",
+     "title": "The Drownlight — The Lens Gallery",
+     "where": "The Drownlight — The Lens Gallery",
+     "mood": "The Keeper's Hymn, darkened — carried low on a hollow ocarina while glass bells echo it a bar behind, like light leaking down a shaft.",
+     "classic": "play/assets/audio/music/drownlight-f2.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/drownlight-f2.mp3",
+     "loop_start": 6.385,
+     "note": null
+    },
+    {
+     "id": "drownlight-lantern",
+     "title": "The Drownlight — The Lantern Room",
+     "where": "The Drownlight — The Lantern Room",
+     "mood": "The Keeper's Hymn in pieces — a solo cello remembering the tune phrase by phrase over a held organ drone, one high bell like the thread of light at the shutters' seam.",
+     "classic": "play/assets/audio/music/drownlight-lantern.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/drownlight-lantern.mp3",
+     "loop_start": 3.533,
+     "note": null
+    },
+    {
+     "id": "drownlight-relit",
+     "title": "Drownlight Beacon",
+     "where": "Drownlight Beacon · The Drownlight — The Lantern Room",
+     "mood": "The Keeper's Hymn turned major — the lamp turning again: flute and bells over swelling strings and harp, warm and grateful.",
+     "classic": "play/assets/audio/music/drownlight-relit.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/drownlight-relit.mp3",
+     "loop_start": 5.248,
+     "note": null
+    },
+    {
+     "id": "farlamp-relit",
+     "title": "The Drowned Lamp",
+     "where": "The Drowned Lamp",
+     "mood": "The relight: the isles' hymn heard in the dark's minor, then blooming into warm major as the fog lifts.",
+     "classic": "play/assets/audio/music/farlamp-relit.mp3",
+     "classic_loop_start": 17.1429,
+     "remaster": "play/assets/audio/music/remaster/farlamp-relit.mp3",
+     "loop_start": 10.943,
+     "note": null
+    },
+    {
+     "id": "farlamp-sound",
+     "title": "Farlamp Sound",
+     "where": "Farlamp Sound · The Shelfwater · The Fogwall · Gullwrack Isle · Kelpcrown Isle",
+     "mood": "Rowing on a long swell in the fog: the isles' hymn as a lone line over the sea.",
+     "classic": "play/assets/audio/music/farlamp-sound.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/farlamp-sound.mp3",
+     "loop_start": 7.293,
+     "note": null
+    },
+    {
      "id": "kindle-ceremony",
      "title": "Kindle Ceremony",
      "where": "",
@@ -982,6 +1092,61 @@
      "classic_loop_start": null,
      "remaster": null,
      "loop_start": null,
+     "note": null
+    },
+    {
+     "id": "lowtinder",
+     "title": "Tinderwick Bay",
+     "where": "Tinderwick Bay · Lowtinder · The Moss-garden",
+     "mood": "The hometown lullaby, drowned: the same tune heard from under forty years of quiet sea. Cosy-melancholy, tender, a little haunted but never frightening; a music-box in an upstairs window.",
+     "classic": "play/assets/audio/music/lowtinder.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/lowtinder.mp3",
+     "loop_start": 9.288,
+     "note": null
+    },
+    {
+     "id": "mourning-fields",
+     "title": "The Mourning Fields",
+     "where": "The Mourning Fields",
+     "mood": "Hush — a farm lullaby slowed to a whisper over fields of sleeping kin; tender, grey, almost home.",
+     "classic": "play/assets/audio/music/mourning-fields.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/mourning-fields.mp3",
+     "loop_start": 3.971,
+     "note": null
+    },
+    {
+     "id": "penumbra-underways",
+     "title": "The Underways",
+     "where": "The Underways · The Last Watch",
+     "mood": "The last road — a heartbeat in the dark under the Ring, a lone faltering melody, and starlight glinting down a shaft from far above.",
+     "classic": "play/assets/audio/music/penumbra-underways.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/penumbra-underways.mp3",
+     "loop_start": 8.963,
+     "note": null
+    },
+    {
+     "id": "stillwater",
+     "title": "Stillwater",
+     "where": "Stillwater",
+     "mood": "A hush-hymn: a music-box with a felt damper, sung softly by tired, kind people who believe the dark is mercy.",
+     "classic": "play/assets/audio/music/stillwater.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/stillwater.mp3",
+     "loop_start": 8.615,
+     "note": null
+    },
+    {
+     "id": "undertide",
+     "title": "The Sun Ledges",
+     "where": "The Sun Ledges · The Undertide: Kelp Vaults · The Undertide: Bell Galleries · The Undertide: the Drowned Stair · The Drowned Lamp",
+     "mood": "A sea-cave in the deep: drips, distant bells, the isles' hymn broken into low fragments.",
+     "classic": "play/assets/audio/music/undertide.mp3",
+     "classic_loop_start": null,
+     "remaster": "play/assets/audio/music/remaster/undertide.mp3",
+     "loop_start": 7.407,
      "note": null
     }
    ]

@@ -4787,6 +4787,258 @@
         "width": 96,
         "height": 96
       }
+    },
+    "172": {
+      "slug": "fathomote",
+      "front": {
+        "path": "assets/sprites/creatures/172_fathomote/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/172_fathomote/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/172_fathomote/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/172_fathomote/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/172_fathomote/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "173": {
+      "slug": "fathomere",
+      "front": {
+        "path": "assets/sprites/creatures/173_fathomere/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/173_fathomere/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/173_fathomere/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/173_fathomere/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/173_fathomere/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "174": {
+      "slug": "hermiwick",
+      "front": {
+        "path": "assets/sprites/creatures/174_hermiwick/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/174_hermiwick/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/174_hermiwick/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/174_hermiwick/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/174_hermiwick/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "175": {
+      "slug": "beaconclaw",
+      "front": {
+        "path": "assets/sprites/creatures/175_beaconclaw/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/175_beaconclaw/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/175_beaconclaw/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/175_beaconclaw/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/175_beaconclaw/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "176": {
+      "slug": "fogwisp",
+      "front": {
+        "path": "assets/sprites/creatures/176_fogwisp/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/176_fogwisp/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/176_fogwisp/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/176_fogwisp/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/176_fogwisp/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "177": {
+      "slug": "farlume",
+      "front": {
+        "path": "assets/sprites/creatures/177_farlume/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/177_farlume/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/177_farlume/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/177_farlume/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/177_farlume/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "178": {
+      "slug": "dousecap",
+      "front": {
+        "path": "assets/sprites/creatures/178_dousecap/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/178_dousecap/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/178_dousecap/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/178_dousecap/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/178_dousecap/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "179": {
+      "slug": "shutterwick",
+      "front": {
+        "path": "assets/sprites/creatures/179_shutterwick/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/179_shutterwick/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/179_shutterwick/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/179_shutterwick/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/179_shutterwick/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
+    },
+    "180": {
+      "slug": "lullwing",
+      "front": {
+        "path": "assets/sprites/creatures/180_lullwing/battle_front.webp",
+        "width": 64,
+        "height": 64
+      },
+      "back": {
+        "path": "assets/sprites/creatures/180_lullwing/battle_back.webp",
+        "width": 64,
+        "height": 64
+      },
+      "icon": {
+        "path": "assets/sprites/creatures/180_lullwing/icon.webp",
+        "width": 32,
+        "height": 32
+      },
+      "overworld": {
+        "path": "assets/sprites/creatures/180_lullwing/overworld.webp",
+        "width": 32,
+        "height": 32
+      },
+      "portrait": {
+        "path": "assets/sprites/creatures/180_lullwing/portrait.webp",
+        "width": 96,
+        "height": 96
+      }
     }
   }
 }

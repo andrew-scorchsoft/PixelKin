@@ -68,7 +68,7 @@ GRANTS: dict[str, list[str]] = {
     # +flag:q_east_georgina: the hollow neighbour points the way to Georgina's
     # dell (the optional E4 spur), post-Verdant — gates lowleaf_hollow->gloamwood_dell.
     "lowleaf_hollow": ["glimmerstep", "gleam:verdant", "flag:q_east_georgina"],
-    "cinderhead_mine": ["gleam:stone", "flag:crown_east"],
+    "cinderhead_mine": ["gleam:stone", "flag:crown_east", "flag:scarp_climb_open"],  # the climb DERIVES from gleam:stone
     "cinderhead_deep": ["flag:shortcut_mine"],
     # The Kite-Rising Winch loop: the kite chain + festival blessing happen in
     # town; Mira's bond-test at the skyloft then grants the Gleam + the Gift.
@@ -127,10 +127,22 @@ GRANTS["cinderhead_mine"] += ["flag:old_seams_told", "flag:old_seams_open"]  # O
 # the Lamplight Starlight tier is DERIVED at six Gleams (FlagStore.derive); the
 # sixth in canon order is Frost, earned at the undercroft — model it there.
 GRANTS["pale_vault_undercroft"].append("flag:lamplight_starlight")
+# Lane E (10 Part III): Brightlight derives at FOUR Gleams — the fourth in canon
+# order is Stone, earned in Otho's hall (the lamp-school's moss-garden door).
+GRANTS.setdefault("cinderhead_lumenary", []).append("flag:lamplight_brightlight")
 # the Mirelights (B): Ansel ferries you once he's seen the Frostglass Lens
 # (flag:has_frostglass_lens — Isel, credited to pale_vault_glacier by the Rimeway lane)
 GRANTS.setdefault("saltreach_fen_i", []).append("flag:mirelight_ferry")
 GRANTS["mirelight_chapel"] = ["flag:mirelight_tobin_found"]                  # Tobin found
+# THE FARLAMP ISLES (walkthrough/10 Part I, Lane C1): Ione launches you from the
+# Point (the skiff + `deepdive`) only after Fenn lights her prow-lamp AT DAWNSTEAD,
+# post-dawn — so the launch is credited to Dawnstead (the Point itself is reachable
+# from the first hour, which would hand the deep out before Tidecall). The
+# fog-glass waits in Undertide II, under Kelpcrown (the cave lane's map); Elder
+# Creel opens the well-stair.
+GRANTS["dawnstead"] = ["flag:q_isles_afloat", "deepdive"]
+GRANTS["undertide_ii"] = ["flag:q_isles_fogglass"]
+GRANTS["driftholm_elder"] = ["flag:q_isles_wellstair"]
 POSTGAME_FLAGS = {"flag:dawn"}
 
 

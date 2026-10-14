@@ -434,6 +434,72 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A tall, crooked house beside the Wayward Arms, three floors of evidence about one man, none of which agrees: tickets from the maple country and the cape country, a museum of t-shirts, a WANTED poster he swears is a joke. He is never in. His granddaughter Lottie usually is.',
     unlock_flag: 'flag:paul_house_seen',
   },
+  // ---- THE FARLAMP ISLES (walkthrough/10 Part I) — Lane C1 ----
+  {
+    id: 'the_farlamp',
+    term: 'the Farlamp',
+    desc: 'Vesperholm\'s outermost sea-light, on a skerry at the edge of the Fogwall. The night the Long Dusk fell the deep came up a fathom, and the Farlamp went under still burning. Something out there still blinks.',
+    unlock_flag: 'flag:isles_rumour',
+  },
+  {
+    id: 'driftletters',
+    term: 'driftletters',
+    desc: 'Letters in stoppered bottles, thrown from the isles and carried to the mainland by the current. Five shores catch them: the Dimglass strand, Gullcry Rock, the Wick-Run\'s beach, the Glassmere shallows and the Drownlight shingle.',
+    unlock_flag: 'flag:isles_rumour',
+  },
+  {
+    id: 'the_deep',
+    term: 'the deep',
+    desc: 'Open sea past the shallow shelf. Tidecall parts the moon-tides, but the deep doesn\'t answer to the moon, so no Lantern Gift can cross it. A boat whose prow-lamp is lit from the Keystar\'s own light can.',
+    unlock_flag: 'flag:q_isles',
+  },
+  {
+    id: 'driftholm',
+    term: 'Driftholm',
+    desc: 'The island town of lamp-keepers and kelp-farmers beyond the Fogwall. For eleven winters it kept small lamps alone, waiting for a boat.',
+    unlock_flag: 'flag:q_isles_driftholm',
+  },
+  // Lane E (walkthrough/10 Part III) — the town under the bay
+  {
+    id: 'lowtinder',
+    term: 'Lowtinder',
+    desc: 'Old Tinderwick, the shore town that went under the bay the winter the water rose, forty years ago. The town moved up the bluff. Gran Tallow, its last Lampwarden, did not — she says it is not drowned, only having a lie-in.',
+    unlock_flag: 'flag:q_lowtinder',
+  },
+  // ---- Lane N1 (walkthrough/11 Part A): the Hollowing's own country ----
+  {
+    id: 'stillwater',
+    term: 'Stillwater',
+    desc: 'The Hollowing\'s village, north of the Coldfog marshes: shuttered lamps, soft voices, kin asleep under grey blankets. Its mere went still the winter the dark came and never rippled again. Travellers are tolerated, and asked to speak softly.',
+    unlock_flag: 'chart:stillwater',
+  },
+  {
+    id: 'the_shutter_wall',
+    term: 'the shutter-wall',
+    desc: 'A wall of small grey shutters in Stillwater\'s Quiet Hall, each painted with the name of a lamp the Hollowing put to sleep. Not a list of victories: a list of goodbyes.',
+    unlock_flag: 'flag:q_still_wall',
+  },
+  // Lane N3 (walkthrough/11 Part C) — Stillwater's fallow fields
+  {
+    id: 'mourning_fields',
+    term: 'the Mourning Fields',
+    desc: 'Stillwater\'s farmland, once Moorlea Fields. When the barley would not ripen in the dark, the field-kin woke hungry every night, and the farmers let the Hollowing put them to sleep where they lay. They are tucked in each evening under quilts of coldfog wool. Nobody here thinks it was cruel. That is what makes it hard.',
+    unlock_flag: 'chart:mourning-fields',
+  },
+  // Lane N2 (walkthrough/11 Part B) — the Hollowing's first lamp
+  {
+    id: 'drownlight',
+    term: 'the Drownlight',
+    desc: 'The north coast\'s lighthouse, kept thirty-one winters by Maudry Kell. Fourteen winters ago, three before the sky went dark, she banked its lamp and bolted it in iron shutters: the first light the Hollowing put out. A keeper never kills a lamp, so it burned on behind the iron.',
+    unlock_flag: 'flag:drownlight_entered',
+  },
+  // Lane N3 / fix FD (walkthrough/11 Part D) — the last road, under the Ring
+  {
+    id: 'the_last_watch',
+    term: 'the Last Watch',
+    desc: 'A handful of the Hollowing who live under the Penumbra Ring, by a fire at the foot of the Spire\'s old shaft. They keep no gate. They try every traveller, to know them, and give the fire to anyone who comes down.',
+    unlock_flag: 'flag:q_underways',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

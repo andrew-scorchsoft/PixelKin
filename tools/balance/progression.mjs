@@ -74,6 +74,10 @@ const PRICES = {
   // heal + her food talk; pure optional colour, never in a solvency leg.
   // Mirrored in 10-economy.md and content/regions/kitchens.ts CANTINA_PRICE.
   cantina_dish: 60,
+  // The Farlamp Isles (Lane C1): the Deep Charm, Driftholm's chandlery once the
+  // isles' dawn breaks — a post-game optional buy, never in a solvency leg.
+  // Mirrored in items.ts and 10-economy.md.
+  deep_charm: 900,
 };
 
 // ---------------------------------------------------------------------------
@@ -90,6 +94,23 @@ const trend = []; // [midLevel, bst, weight]
 // Each Wild Ways lane appends its encounter-bearing maps here.
 const TREND_SKIP_AREAS = new Set([
   'old_seams_i', 'old_seams_ii', 'old_seams_iii', // the Old Seams (D)
+  // the Farlamp Isles (walkthrough/10 Part I, optional post-game — Lane C1)
+  'farlamp_sound', 'farlamp_shelfwater', 'farlamp_fogwall', 'farlamp_gullwrack', 'farlamp_kelpcrown',
+  // Lane E (10 Part III): Lowtinder & Tinderwick Bay — optional, Tidecall-opened
+  // mid-game beds (17-27) + the post-game deep reef (58-62); off the journey.
+  'tinderwick_bay', 'lowtinder', 'lowtinder_cellar', 'lowtinder_cellar_b2', 'lowtinder_school_garden',
+  'cinderwind_kiln', // Lane A: Kiln Gully — optional, behind the Updraft vent (post-Mira)
+  // Lane C2 — the Farlamp Isles' Undertide (post-game, optional, lv 61-66)
+  'undertide_i', 'undertide_ii', 'undertide_iii', 'undertide_iv',
+  // Lane N3 (11 Parts C + D): the Mourning Fields (48-52) + the Underways (52-56), optional
+  'mourning_fields', 'penumbra_underways', 'penumbra_underways_b1',
+  // Lane N1 (11 Part A): Stillwater, the Hollowing's village — optional + late (48-52)
+  'stillwater',
+  // Lane N2 (walkthrough/11 Part B): the Drownlight's two floors (optional, lv 50-53)
+  'drownlight_f1', 'drownlight_f2',
+  // the Rimeway (09-the-wild-ways §2 C, optional, 39-48): FC3 moved its beds to final
+  // forms (the old base forms sat 10-40 lv past kindling), so it now bends the trend too
+  'rimeway_ascent', 'rimeway_fold', 'rimeway_descent',
 ]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
@@ -229,7 +250,10 @@ const JOURNEY = [
       T('Osprey (plank-courier)', 'route', [K(17, 31), K(18, 60)]),
       T('Tarn (reed-lamplighter)', 'route', [K(17, 31), K(18, 59)]),
     ],
-    income: { quests: 200, valuables: 600, finds: 600 }, // + the fen west-bank wick-purse (300)
+    // Lane E (10 Part III): Lowtinder opens with Tidecall, right here — quests +=
+    // "The Town Bell"'s fair-chest (1,500, script.tinderwick_bell_ceremony);
+    // finds += the flooded-yard jar (400) + the lamp-school's fee-tin (600).
+    income: { quests: 1700, valuables: 600, finds: 1600 }, // + the fen west-bank wick-purse (300)
     spend: { tallow_balm: 3 },
     checkpoint: { name: 'Lowleaf arrival', rec: 18 },
   },
@@ -290,19 +314,24 @@ const JOURNEY = [
     // its two route trainers, its lv 28-31 beds and a Moth-amber (600).
     // (the Scarp's mandatory strips are part of this leg's walking, not extra to it:
     // its two trainers' XP stands in for a couple of the old leg's wild fights)
-    wild: { areas: ['cinderwind_scarp', 'galehigh_terraces'], band: [27, 31], fights: { rusher: 4, mainline: 8, explorer: 14 } },
+    // Lane A (walkthrough/10 Part II, 2026-10): the ASHFALL SHELF now sits between
+    // the Scarp (retuned 28-30) and Galehigh — its 30-33 beds, two route trainers
+    // (Sile, Pell) and the slag nook's Starglass Shard (+1500 valuables).
+    wild: { areas: ['cinderwind_scarp', 'cinderwind_ashfall', 'galehigh_terraces'], band: [27, 31], fights: { rusher: 2, mainline: 4, explorer: 7 } },
     trainers: [
       T('Hobb-Ree (ore-hauler)', 'route', [K(28, 53), K(30, 48)]),
       T('Rue (kite-runner)', 'route', [K(29, 100), K(29, 91), K(31, 101)]),
+      T('Sile (ore-hauler)', 'route', [K(30, 45), K(32, 49)]),
+      T('Pell (gale-watch)', 'route', [K(31, 89), K(33, 46)]),
       T('Perrin (kite-hand)', 'route', [K(28, 88), K(29, 97)]),
       T('Sorrel (terrace-farmer)', 'route', [K(29, 91), K(30, 45)]),
       T('Tamsin (wind-ward)', 'keeper', [K(29, 97), K(30, 98)]),
       T('Bran (wind-ward)', 'keeper', [K(30, 91), K(31, 89)]),
       T('Mira Vael', 'warden', [K(30, 98), K(31, 95), K(32, 89), K(34, 90)]),
     ],
-    income: { quests: 300, valuables: 1200, finds: 200 },
+    income: { quests: 300, valuables: 2700, finds: 200 },
     spend: { warm_balm: 3, beacon_charge: 2, chart_late: 1 },
-    checkpoint: { name: 'Storm Gleam (Mira)', rec: 28, ace: 34 },
+    checkpoint: { name: 'Storm Gleam (Mira)', rec: 30, ace: 34 }, // rec 28 -> 30 (Lane A): the Scarp + Ashfall now carry 28-33
   },
   {
     name: 'Windward II → Pale Vault (+ Wren A4)',
@@ -445,7 +474,15 @@ const JOURNEY = [
       T('Warden Mer (Round)', 'vigilant', [K(68, 135), K(68, 138), K(68, 85), K(69, 140), K(69, 145), K(69, 146)]),
       T('Star-tender Fenn', 'cor', [K(68, 9), K(68, 107), K(68, 125), K(69, 87), K(69, 131), K(70, 129)]),
     ],
-    income: { quests: 0, valuables: 9000, finds: 5000 }, // Starglass caches + the storm-tithe; payouts come from the trainer loop
+    // Lane E (10 Part III): + the deep backtrack's skiff-only buoy-caches — the
+    // Pearlmoor Starglass (1,500) + the Dimglass Moth-amber (600) = +2,100 valuables.
+    // Lane C2: + the Undertide keeper's purse (2,000w, undertide_iv's west nook) —
+    // the post-game's only modelled leg, so the isles' found money lands here.
+    // Lane C1 (10 Part I, the isles' surface): + finds 2,800 (Kelpcrown's keepers'
+    // strongbox 2,000 + the Heron's stern locker 800), + quests 1,500 (Hesk's
+    // letter-home thanks), + valuables 1,500 (the gull walk's Starglass Shard).
+    // The isles' four boat-trainers are BUILT_PAYOUTS-only (optional post-game).
+    income: { quests: 1500, valuables: 12600, finds: 9800 }, // Starglass caches + the storm-tithe + the keepers' purses; payouts come from the trainer loop
     spend: { bright_balm: 4 },
     checkpoint: { name: 'The Last Lesson (Fenn)', rec: 67, ace: 70 },
   },
@@ -490,6 +527,8 @@ const BUILT_PAYOUTS = {
   lampwarden_cinderhead: ['warden', 28, 1680],
   scarp_hauler: ['route', 30, 480], // Cinderwind Scarp (2026-10)
   scarp_kiterunner: ['route', 31, 496],
+  ashfall_picker: ['route', 32, 512], // the Ashfall Shelf (Lane A, 2026-10)
+  ashfall_galewatch: ['route', 33, 528],
   galehigh_kitehand: ['route', 29, 464],
   galehigh_terracer: ['route', 30, 480],
   skyloft_ward_a: ['keeper', 30, 600],
@@ -555,8 +594,62 @@ const BUILT_PAYOUTS = {
   seams_miner_jory: ['route', 33, 528],
   // the Mirelights (B)
   mire_eelcatcher: ['route', 40, 640], // the landing
+  // THE FARLAMP ISLES (walkthrough/10 Part I, Lane C1) — post-game, optional: the two
+  // boat-trainers + Bram Fathom, the isles' keeper (vigilant class; his rematch is
+  // re-runnable optional income, outside the solvency legs like the Round's)
+  sound_oarsman: ['route', 65, 1040],
+  shelf_kelper: ['route', 66, 1056],
+  shelf_salvager: ['route', 67, 1072], // pass 2: the Shelfwater's SE flat
+  fog_pilot: ['route', 68, 1088], // pass 2: the Fogwall's wreck bar
+  bram_fathom: ['vigilant', 70, 5600],
+  bram_fathom_rematch: ['vigilant', 72, 5760],
   mire_lampdiver: ['route', 42, 672], // the Glassmere
   mire_acolyte: ['route', 43, 688], // the drowned chapel
+  // Lane E (10 Part III): Lowtinder & Tinderwick Bay — optional, BUILT_PAYOUTS-only
+  bay_diver: ['route', 19, 304],
+  bay_nethand: ['route', 20, 320],
+  lt_mudlark: ['route', 20, 320],
+  lt_lampwright: ['keeper', 21, 420],
+  lt_cellar_keeper: ['keeper', 22, 440],
+  lowtinder_ottery: ['warden', 66, 3960], // Gran Tallow's reef bout (post-game, rematchable)
+  // Lane C2 — the Farlamp Isles' Undertide (post-game)
+  undertide_diver_ness: ['route', 62, 992],
+  undertide_diver_corin: ['route', 63, 1008],
+  undertide_nethand_bryn: ['route', 64, 1024],
+  undertide_keeper_isolde: ['keeper', 65, 1300],
+  undertide_diver_marlo: ['route', 66, 1056],
+  undertide_rematch_ondine: ['route', 67, 1072], // post-isles-dawn, re-runnable on the shared spar rest
+  // Lane N3 (11 Parts C + D): the Mourning Fields + the Penumbra Underways — optional
+  mournfields_ines: ['keeper', 50, 1000],
+  mournfields_corran: ['keeper', 51, 1020],
+  underways_watch_a: ['keeper', 54, 1080],
+  underways_watch_b: ['keeper', 55, 1100],
+  underways_watch_c: ['keeper', 56, 1120],
+  // The Lumenary sparring partners (2026-10 economy review, content/sparring.ts):
+  // repeatable keeper-class bouts, one per SPAR_COOLDOWN (3) won battles — optional
+  // income OUTSIDE every solvency leg (like wren_rematch), so a broke player can
+  // always earn back. Farm rate: ~ one payout per 4 battles (the shared rest).
+  spar_tinderwick: ['keeper', 9, 180],
+  spar_pearlmoor: ['keeper', 15, 300],
+  spar_lowleaf: ['keeper', 21, 420],
+  spar_cinderhead: ['keeper', 27, 540],
+  spar_galehigh: ['keeper', 33, 660],
+  spar_pale_vault: ['keeper', 39, 780],
+  spar_sunken_solarium: ['keeper', 45, 900],
+  spar_nightreach: ['keeper', 51, 1020],
+  // Lane N1 (11 Parts A + E): the Hollowing's Country — optional + late, BUILT_PAYOUTS-only
+  coldfog_acolyte_north: ['keeper', 48, 960],
+  coldfog_acolyte_east: ['keeper', 49, 980],
+  coldfog_acolyte_deep: ['keeper', 50, 1000],
+  coldfog_acolyte_west: ['keeper', 50, 1000],
+  still_acolyte_gethin: ['keeper', 50, 1000],
+  still_acolyte_vesna: ['keeper', 51, 1020],
+  still_lamplighter_grisel: ['keeper', 52, 1040],
+  // Lane N2 (walkthrough/11 Part B): the Drownlight — optional, BUILT_PAYOUTS-only
+  drownlight_acolyte_odell: ['keeper', 51, 1020],
+  drownlight_acolyte_prue: ['keeper', 52, 1040],
+  drownlight_acolyte_hask: ['keeper', 53, 1060],
+  drownlight_shutterkeeper: ['warden', 54, 3240], // one-time; she does not rematch
 };
 const failures = [];
 for (const [id, [klass, ace, authored]] of Object.entries(BUILT_PAYOUTS)) {
@@ -571,7 +664,7 @@ if (!(PRICES.chart_early < PRICES.chart_mid && PRICES.chart_mid < PRICES.chart_l
 // Move-id sanity for the shipped charts (mirror items.ts teach_move values).
 for (const id of ['cinder_spit', 'mist_spray', 'gust_up', 'focus_mind', 'wave_crash', 'hearth_pulse',
   'spore_puff', 'root_strike', 'lifedrain', 'thunder_kick', 'volt_arc', 'gale_slam', 'swift_step', 'tempest',
-  'sunburst_nova', 'tremor_quake']) {
+  'sunburst_nova', 'tremor_quake', 'maelstrom']) {
   if (!MOVES.moves.some((m) => m.id === id)) failures.push(`chart teaches unknown move '${id}'`);
 }
 

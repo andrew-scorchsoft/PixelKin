@@ -1,0 +1,56 @@
+{
+  "title": "The Mourning Fields",
+  "_note": "Lane N3 (walkthrough/11 Part C). A farm lullaby slowed into a hush for the fields where the Hollowing put the field-kin to sleep. snes register, 3/4 sway, D minor, 84 bpm, 32 bars (A B A' C). Vesper motif TENDER-BUT-WITHHELD: the lift A3-D4-E4 overshoots every phrase and the settle lands on the dominant, never quite home (the Hollowing-zone rule, softened: they are asleep, not gone). Music-box pluck = the sleepers; strings low and thin; a bell at each phrase end; a faint hat drip, no beat. Last bar hangs on E over A and falls back into the lift.",
+  "era": "snes",
+  "tempo": 84,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.78,
+      "notes": "A3q D4q E4q | F4h E4q | D4h. | rh C4q | A3q D4q E4q | G4h F4q | E4h D4q | E4h. | D5q C5q Bb4q | A4h. | G4q A4q Bb4q | A4h F4q | G4q F4q E4q | F4h D4q | E4h C#4q | D4h rq | A3q D4q E4q | F4h E4q | D4h. | rq E4q C4q | A3q D4q E4q | G4h F4q | E4q F4q D4q | E4h. | rh. | rh. | rq A4q G4q | F4h. | rh. | rh. | E4q D4q C#4q | E4h rq"
+    },
+    {
+      "name": "musicbox",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.36,
+      "notes": "D4e F4e A4e D5e A4e F4e | Bb4e D5e F5e Bb5e F5e D5e | F4e A4e C5e F5e C5e A4e | C4e E4e G4e C5e G4e E4e | D4e F4e A4e D5e A4e F4e | G4e Bb4e D5e G5e D5e Bb4e | Bb4e D5e F5e Bb5e F5e D5e | A4e C#5e E5e A5e E5e C#5e | Bb4e D5e F5e Bb5e F5e D5e | F4e A4e C5e F5e C5e A4e | G4e Bb4e D5e G5e D5e Bb4e | D4e F4e A4e D5e A4e F4e | C4e E4e G4e C5e G4e E4e | D4e F4e A4e D5e A4e F4e | A4e C#5e E5e A5e E5e C#5e | D4e F4e A4e D5e A4e F4e | D4e F4e A4e D5e A4e F4e | Bb4e D5e F5e Bb5e F5e D5e | F4e A4e C5e F5e C5e A4e | C4e E4e G4e C5e G4e E4e | D4e F4e A4e D5e A4e F4e | G4e Bb4e D5e G5e D5e Bb4e | Bb4e D5e F5e Bb5e F5e D5e | A4e C#5e E5e A5e E5e C#5e | Bb4e D5e F5e Bb5e F5e D5e | F4e A4e C5e F5e C5e A4e | G4e Bb4e D5e G5e D5e Bb4e | D4e F4e A4e D5e A4e F4e | Bb4e D5e F5e Bb5e F5e D5e | C4e E4e G4e C5e G4e E4e | A4e C#5e E5e A5e E5e C#5e | A4e C#5e E5e A5e E5e C#5e"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.24,
+      "notes": "D3+F3+A3h. | Bb3+D4+F4h. | F3+A3+C4h. | C3+E3+G3h. | D3+F3+A3h. | G3+Bb3+D4h. | Bb3+D4+F4h. | A3+C#4+E4h. | Bb3+D4+F4h. | F3+A3+C4h. | G3+Bb3+D4h. | D3+F3+A3h. | C3+E3+G3h. | D3+F3+A3h. | A3+C#4+E4h. | D3+F3+A3h. | D3+F3+A3h. | Bb3+D4+F4h. | F3+A3+C4h. | C3+E3+G3h. | D3+F3+A3h. | G3+Bb3+D4h. | Bb3+D4+F4h. | A3+C#4+E4h. | Bb3+D4+F4h. | F3+A3+C4h. | G3+Bb3+D4h. | D3+F3+A3h. | Bb3+D4+F4h. | C3+E3+G3h. | A3+C#4+E4h. | A3+C#4+E4h."
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.72,
+      "notes": "D2q A2q D3q | Bb2q F3q Bb3q | F2q C3q F3q | C2q G2q C3q | D2q A2q D3q | G2q D3q G3q | Bb2q F3q Bb3q | A2q E3q A3q | Bb2q F3q Bb3q | F2q C3q F3q | G2q D3q G3q | D2q A2q D3q | C2q G2q C3q | D2q A2q D3q | A2q E3q A3q | D2q A2q D3q | D2q A2q D3q | Bb2q F3q Bb3q | F2q C3q F3q | C2q G2q C3q | D2q A2q D3q | G2q D3q G3q | Bb2q F3q Bb3q | A2q E3q A3q | Bb2q F3q Bb3q | F2q C3q F3q | G2q D3q G3q | D2q A2q D3q | Bb2q F3q Bb3q | C2q G2q C3q | A2q E3q A3q | A2q E3q A3q"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.3,
+      "notes": "rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh A5q | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh D6q | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh A5q | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rq E6q rq"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.22,
+      "notes": "q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r | q hat r r | q r r r"
+    }
+  ]
+}

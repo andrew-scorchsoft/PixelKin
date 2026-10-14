@@ -1305,3 +1305,58 @@ body.lb-open { overflow: hidden; }
 .change-notes { padding-left: 1.2rem; margin: 0; }
 .change-notes li { color: #d8d2e8; line-height: 1.6; margin-bottom: 0.4rem; }
 .change-notes li:last-child { margin-bottom: 0; }
+
+/* ============================================================================
+   The Wayfarer's Guide (docs/guide/*.md -> tools/build/guide.mjs)
+   ============================================================================ */
+.guide-crumb { font-size: 0.8rem; color: var(--dim); margin-bottom: 0.5rem; }
+.guide-crumb a { color: var(--diamond); }
+.guide-section-blurb { color: var(--dim); max-width: 720px; margin: -0.5rem auto 1.25rem; text-align: center; }
+.guide-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; max-width: var(--maxw); margin: 0 auto; }
+.guide-card {
+    display: block; padding: 1rem 1.1rem; border-radius: 10px; text-decoration: none;
+    background: var(--panel); border: 1px solid var(--panel-edge); box-shadow: var(--shadow);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.guide-card:hover { transform: translateY(-2px); border-color: var(--diamond); }
+.guide-card h3 { font-family: var(--pixel); font-size: 0.72rem; line-height: 1.5; color: var(--diamond); margin-bottom: 0.5rem; }
+.guide-card p { color: #d8d2e8; font-size: 0.92rem; line-height: 1.45; }
+
+.guide-layout {
+    display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 2rem;
+    max-width: var(--maxw); margin: 0 auto 3rem; padding: 0 16px;
+}
+.guide-nav { position: sticky; top: calc(var(--nav-h) + 12px); align-self: start; max-height: calc(100vh - var(--nav-h) - 24px); overflow-y: auto; }
+.guide-nav-group { margin-bottom: 1.1rem; }
+.guide-nav-group h3 { font-family: var(--pixel); font-size: 0.6rem; color: var(--fire); margin-bottom: 0.45rem; letter-spacing: 0.04em; }
+.guide-nav ul { list-style: none; }
+.guide-nav li a { display: block; padding: 0.28rem 0.5rem; border-radius: 6px; color: #d8d2e8; text-decoration: none; font-size: 0.88rem; line-height: 1.35; }
+.guide-nav li a:hover { background: rgba(159, 231, 255, 0.08); color: var(--bone); }
+.guide-nav li a.active { background: rgba(159, 231, 255, 0.14); color: var(--diamond); font-weight: 600; }
+
+.guide-article { min-width: 0; color: #e4dff0; line-height: 1.65; }
+.guide-article h2 { font-family: var(--pixel); font-size: 0.9rem; line-height: 1.5; color: var(--diamond); margin: 2.2rem 0 0.9rem; }
+.guide-article h3 { font-size: 1.05rem; color: var(--bone); margin: 1.5rem 0 0.6rem; }
+.guide-article h2 .anchor, .guide-article h3 .anchor { color: var(--panel-edge); text-decoration: none; margin-right: 0.4rem; opacity: 0; transition: opacity 0.15s; }
+.guide-article h2:hover .anchor, .guide-article h3:hover .anchor { opacity: 1; }
+.guide-article p, .guide-article ul, .guide-article ol { margin-bottom: 0.9rem; }
+.guide-article ul, .guide-article ol { padding-left: 1.4rem; }
+.guide-article li { margin-bottom: 0.3rem; }
+.guide-article strong { color: var(--diamond); font-weight: 600; }
+.guide-article a { color: var(--diamond); }
+.guide-article blockquote { border-left: 3px solid var(--fire); padding: 0.4rem 0 0.4rem 1rem; margin: 1rem 0; color: #d8d2e8; background: rgba(255, 138, 61, 0.06); border-radius: 0 6px 6px 0; }
+.guide-article table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.4rem; font-size: 0.92rem; display: block; overflow-x: auto; }
+.guide-article th, .guide-article td { padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--panel-edge); text-align: left; vertical-align: top; }
+.guide-article th { color: var(--fire); font-weight: 600; white-space: nowrap; }
+.guide-article details { background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 8px; padding: 0.6rem 0.9rem; margin: 1rem 0; }
+.guide-article details summary { cursor: pointer; color: var(--diamond); }
+.guide-spoiler { background: rgba(255, 138, 61, 0.08); border: 1px solid rgba(255, 138, 61, 0.35); border-radius: 8px; padding: 0.7rem 0.9rem; font-size: 0.9rem; color: #f2dccb; }
+.guide-toc ol { margin: 0.5rem 0 0 1.2rem; }
+.guide-pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--panel-edge); }
+.guide-pager a { color: var(--diamond); text-decoration: none; font-size: 0.92rem; }
+.guide-pager .guide-next { margin-left: auto; text-align: right; }
+
+@media (max-width: 820px) {
+    .guide-layout { grid-template-columns: 1fr; gap: 1rem; }
+    .guide-nav { position: static; max-height: none; border: 1px solid var(--panel-edge); border-radius: 10px; padding: 0.8rem; background: var(--panel); }
+}

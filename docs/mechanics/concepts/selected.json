@@ -4797,5 +4797,230 @@
   "hook": "Bumbling, good-natured slapstick \u2014 a seaside clown who means well. Silly, warm, physical comedy.",
   "dex_id": 171,
   "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "X-FATHOMOTE",
+  "name": "Fathomote",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "region": "isles",
+  "rarity": "common",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "X-FATHOMERE",
+   "kindle_trigger": "level 40"
+  },
+  "concept": "A lantern-fish fry no longer than a hand, with a little glowing lure on a stalk over its nose. Shoals of them drift under the Farlamp Isles at night like spilled stars, and the old Driftholm keepers set small lamps by the water so the fry have something to swim towards.",
+  "visual": "A tiny round-bodied lantern-fish fry: a big head with huge round dark eyes, a small smiling underbite, stubby frilled pectoral fins and a short fanned tail. A thin curved stalk rises from its brow and ends in a round glowing lure-bulb. At 64px it reads as a chubby baby fish carrying its own little lamp.",
+  "size_cm": 14,
+  "weight_kg": 0.4,
+  "hook": "Wide-eyed, curious and brave in a small way: a baby that swims out into the dark because its own light says it can. Cute and round, never toothy.",
+  "dex_id": 172,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "X-FATHOMERE",
+  "name": "Fathomere",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "region": "isles",
+  "rarity": "uncommon",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "A grown lantern-fish whose lure lights a whole fathom of sea. Fishers lost in the Fogwall used to follow a Fathomere's glow down the buoy lanes, and Driftholm says it still swims the old route home every night, in case anyone is out there.",
+  "visual": "A long, graceful deep-sea lantern-fish: a sleek midnight-blue body with a row of small glowing spots along each flank, broad ribbon-like fins that trail like a veil, large calm eyes and a gentle closed mouth. A tall arching lure-stalk curves forward over its head and ends in a bright glass-like lamp-bulb, the brightest thing on the sprite. At 64px it reads as an elegant fish carrying a lantern before it.",
+  "size_cm": 180,
+  "weight_kg": 62,
+  "hook": "Calm, steady, a guide: the fry grown up into the light it once swam towards. Elegant and deep, never menacing.",
+  "dex_id": 173,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "X-HERMIWICK",
+  "name": "Hermiwick",
+  "types": [
+   "Stone",
+   "Tide"
+  ],
+  "role": "Physical Wall",
+  "tier": "B",
+  "region": "isles",
+  "rarity": "common",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "X-BEACONCLAW",
+   "kindle_trigger": "level 42"
+  },
+  "concept": "A small hermit crab that has made its home in the broken glass of a drowned lamp. It polishes the cracked panes every morning with its claws and backs into them at the first sign of trouble. Driftholm children say every Hermiwick is looking for the lamp its glass came from.",
+  "visual": "A small sturdy hermit crab with a pebble-grey plated body, two mismatched claws (one big, one small), stalked eyes and short jointed legs. On its back, instead of a shell, it wears a cracked lamp-glass: a little brass lantern housing with chipped glass panes and a dark, unlit wick inside. At 64px it reads as a crab carrying a broken lantern as its home.",
+  "size_cm": 30,
+  "weight_kg": 7.5,
+  "hook": "Shy, stubborn and house-proud: a tiny keeper of a lamp that doesn't work yet. Plucky, never pitiful.",
+  "dex_id": 174,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "X-BEACONCLAW",
+  "name": "Beaconclaw",
+  "types": [
+   "Stone",
+   "Light"
+  ],
+  "role": "Physical Wall",
+  "tier": "D",
+  "region": "isles",
+  "rarity": "uncommon",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "When a Hermiwick finally finds a whole glass, it kindles into a Beaconclaw, and the lamp on its back lights for the first time. It stands on the reef at the tide's edge and turns slowly all night, sweeping its beam across the water like a lighthouse with legs.",
+  "visual": "A big armoured crab built like a small lighthouse: a broad stone-plated body on thick jointed legs, one huge rounded claw raised like a shield, stalked eyes. On its back stands a tall, whole lamp-glass tower: a brass lantern room with clean glass panes and a bright beam-light shining inside, under a little conical roof. At 64px it reads as a crab wearing a lit lighthouse.",
+  "size_cm": 160,
+  "weight_kg": 210,
+  "hook": "Proud, protective and patient: the little crab grown into a lighthouse. Solid and kind, a guardian of the reef. Same crab, same brass lantern, now whole and lit.",
+  "dex_id": 175,
+  "line_primary_type": "Stone"
+ },
+ {
+  "concept_id": "X-FOGWISP",
+  "name": "Fogwisp",
+  "types": [
+   "Frost",
+   "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "region": "isles",
+  "rarity": "uncommon",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "A moth made of sea-fog, drawn to lamps it can never reach. Where a flock of Fogwisps settles the air turns cold and grey, and lights seem farther away than they are. Driftholm keepers don't chase them off; they say a Fogwisp is only lonely, and lonely things go where the light is.",
+  "visual": "A soft, round-bodied moth that seems made of fog: a fluffy pale grey-white body, big feathery antennae, two pairs of wide frayed wings that fade into wisps of mist at their edges, a faint frost-blue sheen on the wings, and two large dark gentle eyes. Little curls of fog trail off the wingtips. At 64px it reads as a fluffy misty moth drifting in the dark.",
+  "size_cm": 50,
+  "weight_kg": 0.3,
+  "hook": "Eerie-cosy: quiet, wistful, soft as breath on a window. A little sad, never sinister.",
+  "dex_id": 176,
+  "line_primary_type": "Frost"
+ },
+ {
+  "concept_id": "X-FARLUME",
+  "name": "Farlume",
+  "types": [
+   "Tide",
+   "Light"
+  ],
+  "role": "Special Tank",
+  "tier": "F",
+  "region": "isles",
+  "rarity": "very_rare",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "The Farlamp's own keeper-kin, the light that lived inside Vesperholm's outermost sea-lamp. The night the deep came up it went down with the lamp and kept it burning on the sea floor as long as it could. It has waited in the drowned tower ever since for someone to bring the flame back.",
+  "visual": "A great, serene sea-serpent coiled around itself like the spiral stair of a lighthouse: a long body of deep sea-blue scales banded with pale stone-white rings, broad translucent fin-sails along its back, and a noble head crowned with a lantern-room of brass and glass in which a steady white-gold flame burns. Light spills from the lantern down its coils. At 64px it reads as a living lighthouse coiled out of the sea.",
+  "size_cm": 1200,
+  "weight_kg": 880,
+  "hook": "Ancient, faithful and grieving, then hopeful: a keeper that never stopped tending its lamp. Majestic and gentle, the drowned light's guardian, never a monster.",
+  "dex_id": 177,
+  "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "X-DOUSECAP",
+  "name": "Dousecap",
+  "types": [
+   "Dark",
+   "Ember"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "B",
+  "region": "north_hollow",
+  "rarity": "common",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "X-SHUTTERWICK",
+   "kindle_trigger": "level 44"
+  },
+  "concept": "A little kin shaped like a brass snuffer-cap, that hops from wick to wick at bedtime and settles over each flame until it goes out. The Hollowing of Stillwater keep them as household kin; a Dousecap on the windowsill means the house has gone to sleep.",
+  "visual": "A small round kin shaped like a candle-snuffer's bell cap: a tarnished-brass cone for a body and hat in one, tipped with a tiny curl of smoke, with a soft charcoal face peeping from under the brim, two sleepy round eyes and stubby little feet. A faint ember glows under the rim where it last sat on a flame. At 64px it reads as a tiny sleepy brass cap on legs.",
+  "size_cm": 22,
+  "weight_kg": 1.1,
+  "hook": "Drowsy, dutiful and sweet: a tidy little kin that puts the lights to bed. Cosy-melancholy, never spooky.",
+  "dex_id": 178,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "X-SHUTTERWICK",
+  "name": "Shutterwick",
+  "types": [
+   "Dark",
+   "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "D",
+  "region": "north_hollow",
+  "rarity": "uncommon",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "When a Dousecap has put out a thousand flames it kindles into a Shutterwick, a lantern-keeper whose own lamp burns behind closed shutters. It keeps that light for the Hollowing, hidden and warm, and opens a single slat only for someone lost in the dark.",
+  "visual": "A tall, gentle lantern-keeper kin: a body of charcoal-grey cloth like a long quilted cloak, with a big square brass lantern set into its chest whose four little wooden shutters are closed, warm gold light leaking between the slats. A wide brass snuffer-cap sits on its head, and under the brim its round charcoal face, Dousecap's face grown up, looks out with calm half-lidded eyes. Its long sleeves fold in front, cupping the lamp. at 64px it reads as a keeper carrying a shuttered lamp inside itself.",
+  "size_cm": 150,
+  "weight_kg": 34,
+  "hook": "Quiet, protective and sad-eyed: it believes the light is safest hidden. Kind, never menacing.",
+  "dex_id": 179,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "X-LULLWING",
+  "name": "Lullwing",
+  "types": [
+   "Dark",
+   "Lunar"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "region": "north_hollow",
+  "rarity": "uncommon",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "A grey moth that drifts over sleeping kin and fans their dreams with dusty wings, so that they sleep on and on. The Hollowing call it a mercy: in Stillwater the Lullwings settle on every hearth-warm heap of dozing kin and hum to them until a morning that never comes.",
+  "visual": "A soft, plump moth in dove-grey and dusk-lilac, front view with wings spread: a round furry body, feathery drooping antennae, heavy-lidded sleepy eyes, and broad rounded wings patterned with pale crescent-moon eye-spots. A gentle haze of silver dream-dust sifts from the wing edges. At 64px it reads as a sleepy grey moth scattering moon-dust.",
+  "size_cm": 40,
+  "weight_kg": 0.6,
+  "hook": "Hushing, tender and a little lonely: it only wants everyone to rest. Soft and drowsy, never sinister.",
+  "dex_id": 180,
+  "line_primary_type": "Dark"
  }
 ]

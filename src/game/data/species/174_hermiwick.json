@@ -1,0 +1,157 @@
+{
+  "id": 174,
+  "slug": "hermiwick",
+  "name": "Hermiwick",
+  "types": [
+    "Stone",
+    "Tide"
+  ],
+  "role": "Physical Wall",
+  "tier": "B",
+  "stats": {
+    "hp": 64,
+    "atk": 47,
+    "def": 88,
+    "spa": 25,
+    "spd": 56,
+    "spe": 56
+  },
+  "bst": 336,
+  "ability": "grounded",
+  "hidden_ability": "stonehide",
+  "catchRate": 175,
+  "kindling": {
+    "into": 175,
+    "trigger": {
+      "kind": "level",
+      "level": 42
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 6,
+        "move": "brine_flick"
+      },
+      {
+        "level": 10,
+        "move": "stone_wall"
+      },
+      {
+        "level": 14,
+        "move": "gritfist"
+      },
+      {
+        "level": 19,
+        "move": "tidewhip"
+      },
+      {
+        "level": 24,
+        "move": "guard_up"
+      },
+      {
+        "level": 29,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 35,
+        "move": "wave_crash"
+      },
+      {
+        "level": 40,
+        "move": "bulwark"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A small hermit crab that has made its home in the broken glass of a drowned lamp. It polishes the cracked panes every morning and backs into them at the first sign of trouble. Driftholm children say every Hermiwick is looking for the lamp its glass came from.",
+    "category": "Lamp-Glass Crab Kin",
+    "size_cm": 30,
+    "weight_kg": 7.5,
+    "habitat": "isles"
+  },
+  "encounters": [
+    {
+      "area": "undertide_i",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 61,
+      "max": 63
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 61,
+      "max": 64
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 64
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "farlamp_sound",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 62,
+      "max": 63
+    },
+    {
+      "area": "farlamp_sound",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 62,
+      "max": 63
+    },
+    {
+      "area": "farlamp_shelfwater",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "farlamp_gullwrack",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 64,
+      "max": 65
+    },
+    {
+      "area": "farlamp_kelpcrown",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 64,
+      "max": 65
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "A small sturdy hermit crab, three-quarter view: a pebble-grey plated body, two mismatched claws (one big, one small), stalked eyes and short jointed legs. On its back, instead of a shell, it wears a little brass lantern housing with cracked, chipped glass panes and a dark unlit wick inside. At 64px it reads as a crab carrying a broken lantern as its home.",
+    "palette": "Pebble-grey and slate shell-plates with sandy-cream undersides; coral-orange claw tips; the lantern housing in tarnished brass with pale sea-glass panes (#9fe7ff tint) showing white crack-lines; the wick dark and unlit; ink (#1a1430) outlines.",
+    "direction": "Shy, stubborn and house-proud: a tiny keeper of a lamp that doesn't work yet. Plucky, never pitiful. The broken lantern-home is the whole design; Beaconclaw is the same crab with the same brass lantern made whole and lit."
+  },
+  "provenance_concept_id": "X-HERMIWICK"
+}

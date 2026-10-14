@@ -110,6 +110,27 @@
       "rarity": "rare",
       "min": 58,
       "max": 64
+    },
+    {
+      "area": "farlamp_sound",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 62,
+      "max": 65
+    },
+    {
+      "area": "farlamp_fogwall",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 64,
+      "max": 66
+    },
+    {
+      "area": "tinderwick_bay",
+      "terrain": "deep",
+      "rarity": "common",
+      "min": 58,
+      "max": 61
     }
   ],
   "scripted": false,

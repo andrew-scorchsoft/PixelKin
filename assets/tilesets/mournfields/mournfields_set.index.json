@@ -1,0 +1,22 @@
+{
+  "stubble_corner_nw": 0,
+  "stubble_edge_n": 1,
+  "stubble_corner_ne": 2,
+  "stubble_edge_w": 3,
+  "stubble_fill": 4,
+  "stubble_edge_e": 5,
+  "stubble_corner_sw": 6,
+  "stubble_edge_s": 7,
+  "stubble_corner_se": 8,
+  "stubble_strip_h": 9,
+  "stubble_strip_v": 10,
+  "stubble_inner_nw": 11,
+  "stubble_inner_ne": 12,
+  "stubble_inner_sw": 13,
+  "stubble_inner_se": 14,
+  "stubble_fill_v1": 15,
+  "stubble_fill_v2": 16,
+  "stubble_fill_v3": 17,
+  "stubble_drill": 18,
+  "stubble_drill_v1": 19
+}

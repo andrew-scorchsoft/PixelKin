@@ -83,6 +83,27 @@
       "rarity": "very_rare",
       "min": 60,
       "max": 60
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 55,
+      "max": 56
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 59,
+      "max": 60
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 60
     }
   ],
   "scripted": true,

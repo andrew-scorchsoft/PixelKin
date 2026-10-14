@@ -73,8 +73,36 @@
       "area": "cinderwind_scarp",
       "terrain": "tall_grass",
       "rarity": "very_rare",
-      "min": 31,
-      "max": 31
+      "min": 30,
+      "max": 30
+    },
+    {
+      "area": "cinderwind_ashfall",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 32,
+      "max": 33
+    },
+    {
+      "area": "cinderwind_ashfall",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 56,
+      "max": 61
+    },
+    {
+      "area": "farlamp_sound",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 64
+    },
+    {
+      "area": "farlamp_gullwrack",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 65,
+      "max": 66
     }
   ],
   "scripted": false,

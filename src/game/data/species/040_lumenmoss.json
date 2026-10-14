@@ -72,7 +72,50 @@
     "weight_kg": 180,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "penumbra_underways",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 53,
+      "max": 55
+    },
+    {
+      "area": "penumbra_underways",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 56,
+      "max": 59
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 54,
+      "max": 56
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 54,
+      "max": 56
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 60
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 60
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Huge bipedal form entirely cloaked in thick layered glowing moss-panels; a great antler-rack of twisted branches sprouting glowing spore-bulbs; a solemn carved-wood face deep within a moss-arch; radiates green-amber light in gentle pulses; awe-inspiring at 48px.",

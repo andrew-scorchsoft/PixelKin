@@ -107,6 +107,13 @@
       "rarity": "uncommon",
       "min": 9,
       "max": 11
+    },
+    {
+      "area": "lowtinder",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 17,
+      "max": 18
     }
   ],
   "scripted": false,

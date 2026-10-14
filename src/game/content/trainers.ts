@@ -10,6 +10,7 @@
  * 'crown_south' progression flag.
  */
 import type { DialogueLine, TrainerDef, TrainerRegistry } from './types';
+import { SPAR_TRAINERS } from './sparring';
 
 export const TRAINERS: TrainerRegistry = {
   lampwarden_tinderwick: {
@@ -1521,6 +1522,29 @@ export const TRAINERS: TrainerRegistry = {
     payout: 784, // route 16 × ace 49
     music: 'battle-emberfall',
   },
+
+  // ---- Lane A — the Ashfall Shelf (walkthrough/10 Part II): two route trainers on
+  // the shelf's chokes (route 16 × ace, 10-economy §4).
+  ashfall_picker: {
+    id: 'ashfall_picker',
+    name: 'SILE',
+    title: 'Ore-hauler',
+    party: [
+      { species_id: 45, level: 30 }, // Sparkrat — Stone/Storm
+      { species_id: 49, level: 32 }, // Gravelo — Stone (ace)
+    ],
+    payout: 512, // route 16 × ace 32
+  },
+  ashfall_galewatch: {
+    id: 'ashfall_galewatch',
+    name: 'PELL',
+    title: 'Gale-watch',
+    party: [
+      { species_id: 89, level: 31 }, // Flintbeak — Storm
+      { species_id: 46, level: 33 }, // Voltcrag — Stone/Storm (ace)
+    ],
+    payout: 528, // route 16 × ace 33
+  },
   sunvault_stargazer: {
     id: 'sunvault_stargazer',
     name: 'ORRIN',
@@ -1544,10 +1568,457 @@ export const TRAINERS: TrainerRegistry = {
     payout: 784, // route 16 × ace 49
     music: 'battle-emberfall',
   },
+
+  // ---- THE FARLAMP ISLES (walkthrough/10 Part I) — Lane C1: the two boat-trainers
+  // on the sea + Bram Fathom, the isles' keeper (post-isles-dawn super-trainer) ----
+  sound_oarsman: {
+    id: 'sound_oarsman',
+    name: 'CALDER',
+    title: 'Oarsman',
+    party: [
+      { species_id: 173, level: 64 }, // Fathomere — Tide/Light
+      { species_id: 28, level: 65 }, // Brinewrath — Tide (ace)
+    ],
+    payout: 1040, // route 16 × ace 65
+  },
+  shelf_kelper: {
+    id: 'shelf_kelper',
+    name: 'ROWAN',
+    title: 'Kelp-farmer',
+    party: [
+      { species_id: 175, level: 64 }, // Beaconclaw — Stone/Light
+      { species_id: 61, level: 65 }, // Tidalarch — Verdant/Tide
+      { species_id: 32, level: 66 }, // Lumplass — Tide/Light (ace)
+    ],
+    payout: 1056, // route 16 × ace 66
+  },
+  // pass 2: a boat-trainer on each of the two emptiest waters
+  shelf_salvager: {
+    id: 'shelf_salvager',
+    name: 'DUNSTAN',
+    title: 'Salvager',
+    party: [
+      { species_id: 175, level: 65 }, // Beaconclaw — Stone/Light
+      { species_id: 30, level: 66 }, // Glostrael — Tide/Light
+      { species_id: 28, level: 67 }, // Brinewrath — Tide (ace)
+    ],
+    payout: 1072, // route 16 × ace 67
+  },
+  fog_pilot: {
+    id: 'fog_pilot',
+    name: 'WILLA',
+    title: 'Fog-pilot',
+    party: [
+      { species_id: 176, level: 66 }, // Fogwisp
+      { species_id: 85, level: 67 }, // Stillwarden — Frost/Dark
+      { species_id: 173, level: 68 }, // Fathomere — Tide/Light (ace)
+    ],
+    payout: 1088, // route 16 × ace 68
+  },
+  bram_fathom: {
+    id: 'bram_fathom',
+    name: 'BRAM FATHOM',
+    title: 'Isle Keeper',
+    party: [
+      { species_id: 28, level: 68 }, // Brinewrath — Tide
+      { species_id: 85, level: 68 }, // Stillwarden — Frost/Dark
+      { species_id: 61, level: 69 }, // Tidalarch — Verdant/Tide
+      { species_id: 30, level: 69 }, // Glostrael — Tide/Light
+      { species_id: 173, level: 69 }, // Fathomere — Tide/Light
+      { species_id: 175, level: 70 }, // Beaconclaw — Stone/Light (ace)
+    ],
+    intro_ref: 'trainer.bram_fathom.intro',
+    defeat_ref: 'trainer.bram_fathom.defeat',
+    payout: 5600, // vigilant 80 × ace 70
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  // the rematch: re-runnable forever (optional income outside the solvency legs)
+  bram_fathom_rematch: {
+    id: 'bram_fathom_rematch',
+    name: 'BRAM FATHOM',
+    title: 'Isle Keeper',
+    party: [
+      { species_id: 28, level: 70 },
+      { species_id: 85, level: 70 },
+      { species_id: 61, level: 71 },
+      { species_id: 30, level: 71 },
+      { species_id: 173, level: 71 },
+      { species_id: 175, level: 72 }, // Beaconclaw (ace)
+    ],
+    intro_ref: 'trainer.bram_fathom_rematch.intro',
+    defeat_ref: 'trainer.bram_fathom_rematch.defeat',
+    payout: 5760, // vigilant 80 × ace 72
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  // ---- Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay ------------------
+  // Optional mid-game beds (Tidecall, 17-23) + Gran Tallow's post-game reef bout.
+  // Payouts = class rate x ace (10-economy §4), mirrored in progression.mjs BUILT_PAYOUTS.
+  bay_diver: {
+    id: 'bay_diver',
+    name: 'SKERRY',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 27, level: 17 }, // Brineroll — Tide
+      { species_id: 24, level: 18 }, // Shimmral — Tide/Light
+      { species_id: 31, level: 19 }, // Lumpin — Tide/Light (ace)
+    ],
+    payout: 304, // route 16 × ace 19
+    music: 'battle-emberfall',
+  },
+  bay_nethand: {
+    id: 'bay_nethand',
+    name: 'CORRA',
+    title: 'Net-hand',
+    party: [
+      { species_id: 21, level: 18 }, // Tidmaren — Tide/Light
+      { species_id: 27, level: 19 }, // Brineroll — Tide
+      { species_id: 24, level: 20 }, // Shimmral — Tide/Light (ace)
+    ],
+    payout: 320, // route 16 × ace 20
+    music: 'battle-emberfall',
+  },
+  lt_mudlark: {
+    id: 'lt_mudlark',
+    name: 'PIP',
+    title: 'Eel-catcher',
+    party: [
+      { species_id: 14, level: 19 }, // Embrift — Ember
+      { species_id: 27, level: 19 }, // Brineroll — Tide
+      { species_id: 11, level: 20 }, // Tallowcrest — Ember (ace)
+    ],
+    payout: 320, // route 16 × ace 20
+    music: 'battle-emberfall',
+  },
+  lt_lampwright: {
+    id: 'lt_lampwright',
+    name: 'HOLLIS',
+    title: 'Lampwright',
+    party: [
+      { species_id: 16, level: 18 }, // Wickmoth — Ember
+      { species_id: 6, level: 20 }, // Wickmere — Light/Ember
+      { species_id: 14, level: 21 }, // Embrift — Ember (ace)
+    ],
+    payout: 420, // keeper 20 × ace 21
+    music: 'battle-emberfall',
+  },
+  lt_cellar_keeper: {
+    id: 'lt_cellar_keeper',
+    name: 'OLD WICKMAN',
+    title: 'Wick-tender',
+    party: [
+      { species_id: 11, level: 20 }, // Tallowcrest — Ember
+      { species_id: 42, level: 21 }, // Coalump — Ember
+      { species_id: 6, level: 22 }, // Wickmere — Light/Ember (ace)
+    ],
+    payout: 440, // keeper 20 × ace 22
+    music: 'battle-emberfall',
+  },
+  // Gran Tallow (post-game, rematchable): Lowtinder's last Lampwarden, on her reef by
+  // the old Tinder Light. Ember lamps + forty years of sea; warden-class pay.
+  lowtinder_ottery: {
+    id: 'lowtinder_ottery',
+    name: 'GRAN TALLOW',
+    title: 'Lampwarden',
+    party: [
+      { species_id: 12, level: 63 }, // Chandrek — Ember/Light
+      { species_id: 17, level: 64 }, // Scorchwing — Ember
+      { species_id: 25, level: 64 }, // Prismare — Tide/Light
+      { species_id: 7, level: 64 }, // Wicklord — Light/Ember
+      { species_id: 33, level: 65 }, // Embralux — Ember/Light
+      { species_id: 34, level: 66 }, // Tideveil — Tide/Light (ace: forty years under the sea)
+    ],
+    intro_ref: 'trainer.lowtinder_ottery.intro',
+    defeat_ref: 'trainer.lowtinder_ottery.defeat',
+    payout: 3960, // warden 60 × ace 66
+    music: 'battle-emberfall',
+    ai: 'smart',
+  },
+  // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide's divers + the
+  // Farlamp's second keeper (post-game, 61-66; route 16 / keeper 20 × ace).
+  undertide_diver_ness: {
+    id: 'undertide_diver_ness',
+    name: 'NESS',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 172, level: 60 }, // Fathomote — Tide/Light
+      { species_id: 29, level: 61 }, // Glostern — Tide/Light
+      { species_id: 173, level: 62 }, // Fathomere — Tide/Light (ace)
+    ],
+    payout: 992, // route 16 × ace 62
+  },
+  undertide_diver_corin: {
+    id: 'undertide_diver_corin',
+    name: 'CORIN',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 174, level: 61 }, // Hermiwick — Stone/Tide
+      { species_id: 28, level: 62 }, // Brinewrath — Tide
+      { species_id: 61, level: 63 }, // Tidalarch — Verdant/Tide (ace)
+    ],
+    payout: 1008, // route 16 × ace 63
+  },
+  undertide_nethand_bryn: {
+    id: 'undertide_nethand_bryn',
+    name: 'BRYN',
+    title: 'Net-hand',
+    party: [
+      { species_id: 85, level: 62 }, // Stillwarden — Frost/Dark
+      { species_id: 176, level: 63 }, // Fogwisp — Frost/Dark
+      { species_id: 175, level: 64 }, // Beaconclaw — Stone/Light (ace)
+    ],
+    payout: 1024, // route 16 × ace 64
+  },
+  undertide_keeper_isolde: {
+    id: 'undertide_keeper_isolde',
+    name: 'ISOLDE',
+    title: 'Wick-tender',
+    party: [
+      { species_id: 30, level: 63 }, // Glostrael — Tide/Light
+      { species_id: 25, level: 64 }, // Prismare — Tide/Light
+      { species_id: 176, level: 64 }, // Fogwisp — Frost/Dark
+      { species_id: 175, level: 65 }, // Beaconclaw — Stone/Light (ace)
+    ],
+    payout: 1300, // keeper 20 × ace 65
+  },
+  undertide_diver_marlo: {
+    id: 'undertide_diver_marlo',
+    name: 'MARLO',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 138, level: 64 }, // Voidmantle — Dark
+      { species_id: 173, level: 65 }, // Fathomere — Tide/Light
+      { species_id: 55, level: 66 }, // Ferrolith — Stone (ace)
+    ],
+    payout: 1056, // route 16 × ace 66
+  },
+  // After the isles' dawn: Ondine's re-runnable bout at the Drowned Stair's head
+  // (optional income, outside the one-time journey budget).
+  undertide_rematch_ondine: {
+    id: 'undertide_rematch_ondine',
+    name: 'ONDINE',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 30, level: 66 }, // Glostrael — Tide/Light
+      { species_id: 175, level: 66 }, // Beaconclaw — Stone/Light
+      { species_id: 176, level: 67 }, // Fogwisp — Frost/Dark
+      { species_id: 173, level: 67 }, // Fathomere — Tide/Light (ace)
+    ],
+    payout: 1072, // route 16 × ace 67
+  },
+  // ---- Lane N3 (walkthrough/11 Parts C + D): the Mourning Fields' two acolytes (keeper
+  // rate, like every northern acolyte) and the Penumbra Underways' last watch (keeper class, the Umbral Approach's).
+  mournfields_ines: {
+    id: 'mournfields_ines',
+    name: 'INES',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 113, level: 48 }, // Omenire — Lunar/Dark
+      { species_id: 180, level: 49 }, // Lullwing — Dark/Lunar (the grey dream-moth)
+      { species_id: 85, level: 50 }, // Stillwarden — Frost/Dark (ace)
+    ],
+    payout: 1000, // keeper 20 × ace 50 (every northern acolyte pays keeper rate)
+  },
+  mournfields_corran: {
+    id: 'mournfields_corran',
+    name: 'CORRAN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 125, level: 49 }, // Crystalune — Lunar/Frost
+      { species_id: 142, level: 50 }, // Embergone — Dark/Ember
+      { species_id: 138, level: 51 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1020, // keeper 20 × ace 51
+  },
+  underways_watch_a: {
+    id: 'underways_watch_a',
+    name: 'ODALIE',
+    title: 'Hollowing Acolyte',
+    sprite: 'sky_watcher', // FD3: matches her star_watcher walk sheet (grey hair, watch coat)
+    party: [
+      { species_id: 143, level: 52 }, // Whorlix — Storm/Dark
+      { species_id: 135, level: 53 }, // Liminalux — Dark/Light
+      { species_id: 138, level: 54 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1080, // keeper 20 × ace 54
+  },
+  underways_watch_b: {
+    id: 'underways_watch_b',
+    name: 'BRAN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 113, level: 53 }, // Omenire — Lunar/Dark
+      { species_id: 127, level: 53 }, // Lunvane — Light/Lunar
+      { species_id: 85, level: 54 }, // Stillwarden — Frost/Dark
+      { species_id: 142, level: 55 }, // Embergone — Dark/Ember (ace)
+    ],
+    payout: 1100, // keeper 20 × ace 55
+  },
+  underways_watch_c: {
+    id: 'underways_watch_c',
+    name: 'HESK',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 135, level: 54 }, // Liminalux — Dark/Light
+      { species_id: 15, level: 55 }, // Pyriven — Ember/Dark
+      { species_id: 138, level: 56 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1120, // keeper 20 × ace 56
+  },
+  // ---- Lane N1 (walkthrough/11 Parts A + E): the Hollowing's Country. Keeper class
+  // like their Approach/Spire siblings, plain AI (they'd rather talk). Coldfog 46-50,
+  // Stillwater 48-52. The Hollowing family #178-#180 is Lane N4's (ids fixed by the
+  // build contract).
+  coldfog_acolyte_north: {
+    id: 'coldfog_acolyte_north',
+    name: 'BRIN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 138, level: 47 }, // Voidmantle — Dark (Mothdim kindles at 20; at 47 it wears its final form)
+      { species_id: 142, level: 48 }, // Embergone — Dark/Ember (ace)
+    ],
+    payout: 960, // keeper 20 × ace 48
+    music: 'battle-nightfall',
+  },
+  coldfog_acolyte_east: {
+    id: 'coldfog_acolyte_east',
+    name: 'FENWICK',
+    title: 'Hollowing Elder',
+    party: [
+      { species_id: 135, level: 48 }, // Liminalux — Dark/Light
+      { species_id: 180, level: 48 }, // the dream-moth — Dark/Lunar
+      { species_id: 138, level: 49 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 980, // keeper 20 × ace 49
+    music: 'battle-nightfall',
+  },
+  coldfog_acolyte_deep: {
+    id: 'coldfog_acolyte_deep',
+    name: 'ODRAN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 135, level: 49 }, // Liminalux — Dark/Light
+      { species_id: 142, level: 50 }, // Embergone — Dark/Ember (ace)
+    ],
+    payout: 1000, // keeper 20 × ace 50
+    music: 'battle-nightfall',
+  },
+  coldfog_acolyte_west: {
+    id: 'coldfog_acolyte_west',
+    name: 'MARROW',
+    title: 'Hollowing Elder',
+    party: [
+      { species_id: 179, level: 49 }, // the lantern-keeper — Dark/Light
+      { species_id: 180, level: 49 }, // the dream-moth — Dark/Lunar
+      { species_id: 138, level: 50 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1000, // keeper 20 × ace 50
+    music: 'battle-nightfall',
+  },
+  still_acolyte_gethin: {
+    id: 'still_acolyte_gethin',
+    name: 'GETHIN',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 180, level: 49 }, // the dream-moth — Dark/Lunar
+      { species_id: 138, level: 49 }, // Voidmantle — Dark (Mothdim's final form; at 49 no base moth is left)
+      { species_id: 113, level: 50 }, // Omenire — Lunar/Dark (ace)
+    ],
+    payout: 1000, // keeper 20 × ace 50
+    music: 'battle-nightfall',
+  },
+  still_acolyte_vesna: {
+    id: 'still_acolyte_vesna',
+    name: 'VESNA',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 112, level: 50 }, // Nightwraith — Lunar
+      { species_id: 179, level: 50 }, // the lantern-keeper — Dark/Light
+      { species_id: 135, level: 51 }, // Liminalux — Dark/Light (ace)
+    ],
+    payout: 1020, // keeper 20 × ace 51
+    music: 'battle-nightfall',
+  },
+  still_lamplighter_grisel: {
+    id: 'still_lamplighter_grisel',
+    name: 'GRISEL',
+    title: 'Hollowing Lamplighter',
+    party: [
+      { species_id: 180, level: 50 }, // the dream-moth — Dark/Lunar
+      { species_id: 179, level: 51 }, // the lantern-keeper — Dark/Light
+      { species_id: 142, level: 51 }, // Embergone — Dark/Ember
+      { species_id: 138, level: 52 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1040, // keeper 20 × ace 52
+    music: 'battle-nightfall',
+  },
+  // ---- Lane N2 (walkthrough/11 Part B): THE DROWNLIGHT — three acolytes who
+  // sit with the shutters (keeper class, sight trainers) and the SHUTTERKEEPER
+  // (warden class, 'smart'; a one-time optional bout, ace = #179 the shuttered
+  // lantern-keeper — lane N4's kin). Lines in content/regions/drownlight.ts.
+  drownlight_acolyte_odell: {
+    id: 'drownlight_acolyte_odell',
+    name: 'ODELL',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 138, level: 50 }, // Voidmantle — Dark (Nullmoth kindles at 36: a lv-50 one wears its final form)
+      { species_id: 85, level: 51 }, // Stillwarden — Frost/Dark (ace)
+    ],
+    payout: 1020, // keeper 20 × ace 51
+    music: 'battle-nightfall',
+  },
+  drownlight_acolyte_prue: {
+    id: 'drownlight_acolyte_prue',
+    name: 'PRUE',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 135, level: 51 }, // Liminalux — Dark/Light (Wispwane kindles at 38)
+      { species_id: 179, level: 51 }, // Shutterwick (#179, lane N4) — Dark/Light; the snuffer-cap kindles at 44, so a lv-51 one wears its kindled form
+      { species_id: 87, level: 52 }, // Prismantus — Light/Frost (ace)
+    ],
+    payout: 1040, // keeper 20 × ace 52
+    music: 'battle-nightfall',
+  },
+  drownlight_acolyte_hask: {
+    id: 'drownlight_acolyte_hask',
+    name: 'HASK',
+    title: 'Hollowing Acolyte',
+    party: [
+      { species_id: 180, level: 52 }, // Lullwing (#180, lane N4) — Dark/Lunar
+      { species_id: 142, level: 52 }, // Embergone — Dark/Ember (Cindersob kindles at 30)
+      { species_id: 138, level: 53 }, // Voidmantle — Dark (ace)
+    ],
+    payout: 1060, // keeper 20 × ace 53
+    music: 'battle-nightfall',
+  },
+  drownlight_shutterkeeper: {
+    id: 'drownlight_shutterkeeper',
+    name: 'MAUDRY KELL',
+    title: 'Shutterkeeper',
+    party: [
+      { species_id: 85, level: 52 }, // Stillwarden — Frost/Dark
+      { species_id: 135, level: 53 }, // Liminalux — Dark/Light
+      { species_id: 113, level: 53 }, // Omenire — Lunar/Dark
+      { species_id: 179, level: 54 }, // the shuttered lantern-keeper (#179, lane N4) — Dark/Light (ace)
+    ],
+    intro_ref: 'trainer.drownlight_shutterkeeper.intro',
+    defeat_ref: 'trainer.drownlight_shutterkeeper.defeat',
+    payout: 3240, // warden 60 × ace 54
+    music: 'battle-nightfall',
+    ai: 'smart',
+  },
+  // The Lumenary sparring partners (2026-10 economy review): content/sparring.ts.
+  ...SPAR_TRAINERS,
 };
 
 /** Intro/defeat dialogue for trainers, kept beside the roster they belong to. */
 export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
+  // THE FARLAMP ISLES (Lane C1): Bram Fathom, the isles' keeper
+  'trainer.bram_fathom.intro': [{ speaker: 'BRAM', text: 'By the lit lamp, then. Show me what the mainland\'s made of.' }],
+  'trainer.bram_fathom.defeat': [{ speaker: 'BRAM', text: 'Well rowed. Well fought. The isles are yours to come and go.' }],
+  'trainer.bram_fathom_rematch.intro': [{ speaker: 'BRAM', text: 'I\'ve been practising. On the gulls, mostly.' }],
+  'trainer.bram_fathom_rematch.defeat': [{ speaker: 'BRAM', text: 'Again! You\'ll make an old keeper humble yet.' }],
   'trainer.lampwarden_tinderwick.intro': [
     { speaker: 'BRISA TALLOW', text: 'So the lamp-tender sends an apprentice. Good. The dark needs fewer cowards.' },
     { speaker: 'BRISA TALLOW', text: 'Show me your spark, Wayfarer. If it holds, the Ember Gleam is yours.' },
@@ -1914,6 +2385,20 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.startender_fenn.defeat': [
     { speaker: 'STAR-TENDER FENN', text: 'Kept. Every lamp of it, kept.' },
+  ],
+  // ---- Lane E (walkthrough/10 Part III): Gran Tallow on her reef ----
+  'trainer.lowtinder_ottery.intro': [
+    { speaker: 'GRAN TALLOW', text: 'Lampwarden of the low town, forty years on shift. Show me the light that woke the whole sky, duckling.' },
+  ],
+  'trainer.lowtinder_ottery.defeat': [
+    { speaker: 'GRAN TALLOW', text: 'Outshone! By a Wayfarer in a borrowed boat. Oh, I haven\'t had this much fun since the water came up.' },
+  ],
+  // ---- Lane N2 (walkthrough/11 Part B): the Shutterkeeper ----
+  'trainer.drownlight_shutterkeeper.intro': [
+    { speaker: 'MAUDRY KELL', text: 'Thirty-one winters I kept this light. Let\'s see what yours is made of.' },
+  ],
+  'trainer.drownlight_shutterkeeper.defeat': [
+    { speaker: 'MAUDRY KELL', text: 'Steady. Steady all the way down. ...My girl rowed like that.' },
   ],
 };
 

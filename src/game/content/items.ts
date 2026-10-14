@@ -227,6 +227,17 @@ export const ITEMS: ItemRegistry = {
     catch_bonus: 3.0,
     condition: { kind: 'terrain', terrain: 'water' },
   },
+  // The Mourning Fields (walkthrough/11 Part C): the field-tender's own charge, found
+  // in the west plot and given at dawn — never sold. A conditional charge keyed to a
+  // DOZING foe (the Fields put kin to sleep; this is the gentle way to bring one home).
+  lullwool_charm: {
+    id: 'lullwool_charm',
+    name: 'Lullwool Charm',
+    desc: 'A charge cell wound in the field-tender\'s coldfog wool. Thrown at a dozing kin it burns threefold bright; at a waking one it is only a lamp.',
+    category: 'charge',
+    catch_bonus: 3.0,
+    condition: { kind: 'status', status: 'doze' },
+  },
   // E1 "The Quiet Reeds" — the fen fisher's thanks for tending her lantern-reed
   // line (Saltreach Fen II). A reed-wick charge that blazes in deep growth —
   // reed beds, fringe grass, glowmoss — and burns plain on open ground.
@@ -525,6 +536,28 @@ export const ITEMS: ItemRegistry = {
     category: 'valuable',
     sell: 1200,
   },
+  // The Mourning Fields' east terrace (seen from the lower field, reached up the one stair).
+  // A toggle key item like the Hooded Lamp / Tin Rower (2026-10-14 second review: it was
+  // sell-fodder). Hung on the vesperlamp, wild kin take you for the harvest coming home
+  // and let you by: ×0.25, the strongest damper — a late, optional, Fields-only find,
+  // never sold and never sellable (key), so it moves no wicks.
+  harvest_knot: {
+    id: 'harvest_knot',
+    name: 'Harvest Knot',
+    // ≤ ~110 chars — one page of the pack's detail pane.
+    desc: 'The top field\'s last sheaf, plaited and ribboned. Hung on your lamp, wild kin take you for the harvest home.',
+    category: 'key',
+    toggle_flag: 'flag:harvest_knot_hung',
+    encounter_factor: 0.25,
+    toggle_text: {
+      on: 'HUNG',
+      off: 'PACKED',
+      on_note: '(Hung — wild kin let the harvest by.)',
+      off_note: '(Packed — wild kin stir as usual.)',
+      turn_on: 'You tie the knot to the lamp\'s hook. It smells of straw and old summers, and the wilds settle as you pass.',
+      turn_off: 'You untie the knot and tuck it in your pack. The wild kin look up again.',
+    },
+  },
   murk_pearl: {
     id: 'murk_pearl',
     name: 'Murk Pearl',
@@ -748,6 +781,110 @@ export const ITEMS: ItemRegistry = {
     name: 'Fenn\'s Journal Page',
     desc: 'A field-journal page in Fenn\'s careful hand: three day-forms, inked in morning light, and a note — "brighter lamps will show us more."',
     category: 'key',
+  },
+  // ---- THE FARLAMP ISLES (walkthrough/10 Part I) — Lane C1 ----
+  // Ione Fathom's rebuilt lamp-boat, its prow-lamp lit from the Star-tender's
+  // light: holding it is what grants `deepdive` (script.ione_launch gives both).
+  farlamp_skiff: {
+    id: 'farlamp_skiff',
+    name: 'Farlamp Skiff',
+    desc: 'The Farlamp\'s old lamp-boat, rebuilt. Its prow-lamp lets you row the deep.',
+    category: 'key',
+  },
+  // The isles' conditional charge (the Drift Charm pattern): blazes over the open
+  // deep, plain anywhere else. Sold at the Driftholm chandlery once the isles'
+  // dawn breaks (mirrored in progression.mjs PRICES + 10-economy.md).
+  deep_charm: {
+    id: 'deep_charm',
+    name: 'Deep Charm',
+    desc: 'A lamp-cell steeped in sea-light. Over the open deep its throw burns threefold.',
+    category: 'charge',
+    catch_bonus: 3.0,
+    condition: { kind: 'terrain', terrain: 'deep' },
+    price: 900,
+  },
+  // ---- Lane A — the Ashfall Shelf + Kiln Gully (walkthrough/10 Part II, 2026-10) ----
+  // "The Last Pane": the last lamp-glass ever drawn at the Kilnwright kiln.
+  kiln_pane: {
+    id: 'kiln_pane',
+    name: 'The Last Pane',
+    desc: 'A pane of old amber lamp-glass, the last the Kilnwright kiln ever drew. Light goes into it plain and comes out warm. Galehigh\'s kite-stall lamp has a hole this exact size.',
+    category: 'key',
+  },
+  // Kiln Gully's find-first chart (never stocked: no counter ever pressed it).
+  chart_shardstorm: {
+    id: 'chart_shardstorm',
+    name: 'Star-chart: Shardstorm',
+    desc: 'A chart the glass-blowers pressed for luck, of the Stone\'s figure breaking into a hundred bright shards. Teaches a willing kin SHARDSTORM (Stone). One study burns it out.',
+    category: 'chart',
+    teach_move: 'shardstorm',
+    price: 2400,
+  },
+  // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide.
+  // I4 — the old keeper's lens from the Kelp Vaults' island; reading the Fogwall's
+  // buoy lane by it is what lets the skiff through to Driftholm (`flag:q_isles_fogglass`,
+  // set by the same pickup). A keepsake once the isles are lit.
+  fog_glass: {
+    id: 'fog_glass',
+    name: 'Fog-glass',
+    desc: 'Keeper Marrow\'s lens in a brass ring. Through it, fog goes thin and the buoys read true.',
+    category: 'key',
+  },
+  // The Drowned Lamp's store (the Keeper's Log's reward): the Tide end-tier chart,
+  // found-first like Tremor Quake (chart_end tier, 10-economy §6).
+  chart_maelstrom: {
+    id: 'chart_maelstrom',
+    name: 'Star-chart: Maelstrom',
+    desc: 'The Farlamp\'s own sea-chart, the whirl the boats were taught to steer round. Teaches a willing kin MAELSTROM (Tide). One study burns it out.',
+    category: 'chart',
+    teach_move: 'maelstrom',
+    price: 4000,
+  },
+  // The Last Watch's keepsake (11 Part D): Clemency's reward once all three watchers
+  // are met — the Dark end-tier chart, found-first like Maelstrom (chart_end tier).
+  chart_voidburst: {
+    id: 'chart_voidburst',
+    name: 'Star-chart: Voidburst',
+    desc: 'The last watch\'s own chart, the dark drawn as a held breath rather than an empty one. Teaches a willing kin VOIDBURST (Dark). One study burns it out.',
+    category: 'chart',
+    teach_move: 'voidburst',
+    price: 4000,
+  },
+  // ---- Lane N1 (walkthrough/11 Part A): Stillwater's two quest items -------------
+  // "A Light Left On": Linnet's forbidden candle, carried to the willow or to her mother.
+  still_candle: {
+    id: 'still_candle',
+    name: 'Linnet\'s Candle',
+    desc: 'A stub of candle burning in a stoppered jar. The only thing in Stillwater that moves when you breathe on it.',
+    category: 'key',
+  },
+  // "The Way Home": Tessaly's own old shop-lamp — ONE, given once (a four-map
+  // escort pays), a REUSABLE keepsake (the throw never spends it): ×2.0 on a kin
+  // worn below a quarter of its health — a lamp to bring the lost home. Distinct
+  // from the Fields' doze charms by design. Never sold.
+  tessalys_lamp: {
+    id: 'tessalys_lamp',
+    name: 'Tessaly\'s Lamp',
+    desc: 'The Pale Vault shop-lamp Tessaly carried home. Raised to a kin worn to its last quarter it calls it home twice over, and it never burns down. A lamp to bring the lost home.',
+    category: 'charge',
+    catch_bonus: 2.0,
+    condition: { kind: 'hp_below', ratio: 0.25 },
+    reusable: true,
+  },
+  // ---- Lane N2 (walkthrough/11 Part B): the Drownlight's relight reward — the
+  // Shutterkeeper's latch. A conditional charge (the Aurora Charm pattern, the
+  // Hollowing's edition): blazes toward Dark-hearted kin, plain toward the rest.
+  // Never sold (no price): ONE per game, from the post-dawn relight, and REUSABLE
+  // (a keepsake, never spent) — the tower's capstone keeps paying for the
+  // Dark-hearted kin of the whole north rather than three throws and gone.
+  shutter_charm: {
+    id: 'shutter_charm',
+    name: 'Shutter Charm',
+    desc: 'The first shutter\'s own latch, warm from the relit lamp. Raised toward a Dark-hearted kin its throw burns gentle and sure; toward any other it is only a lamp. A keepsake: never spent.',
+    category: 'charge',
+    catch_bonus: 2.0, // reusable, so a notch under the Beacon's ×2.5 (third Plan-4 review)
+    reusable: true,
+    condition: { kind: 'defender_type', types: ['Dark'] },
   },
 };
 

@@ -212,6 +212,14 @@ type CutsceneStepBase =
   | { op: 'heal'; rest?: boolean; sleep?: boolean }
   | { op: 'gleam'; element: string } // diegetic Gleam cue (relight the sky)
   | { op: 'giveMoney'; amount: number } // hand the player wicks (quest rewards, finds)
+  // Grant a traversal ability outside a Lampwarden win (the Farlamp skiff's
+  // `deepdive`, 10 §2). The six Lantern Gifts still come from wardens only.
+  | { op: 'giveAbility'; ability: AbilityId }
+  // A REPEATABLE sparring bout (the fair money farm, 10-economy §2): fights
+  // `trainer` (pays its payout every win), then ALL hall sparrers rest for
+  // `cooldown` WON battles elsewhere (one shared rest — no hall-to-hall rotation). While resting, plays `restingRef` ({remaining} = wins to go) and
+  // ends the scene. A lost bout is an ordinary blackout.
+  | { op: 'spar'; trainer: string; cooldown: number; restingRef: string }
   // Take `amount` wicks IF the purse holds that many, and set `flag` to mark the
   // sale; a short purse is a silent no-op. Scripts branch on the outcome with the
   // ordinary per-step `if_flag`/`unless_flag` guards (no new conditional machinery).
@@ -283,6 +291,12 @@ export interface ItemDef {
    * Unconditional charges simply omit it — they behave exactly as before.
    */
   condition?: ChargeCondition;
+  /**
+   * A REUSABLE charge (a keepsake lamp, not a waxed cell): the throw never spends
+   * it. Only for conditional, quest-earned charges — never sold, never a guaranteed
+   * catch — so it widens one niche without cheapening the shop charges.
+   */
+  reusable?: boolean;
   /** For 'key' Kindlestone-type items: fires a kin's stone-trigger kindling. */
   kindle_stone?: boolean;
   /** HP restored for 'medicine' items. */

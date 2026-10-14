@@ -1,0 +1,56 @@
+{
+  "title": "The Drownlight - Relit",
+  "_note": "Drownlight family RELIGHT (flag:drownlight_relit): the keeper's hymn turned MAJOR \u2014 D major, 3/4, 84 BPM \u2014 whole and warm. Flute and a bell double the motif, strings swell under it, the harp arpeggios open up, a soft processional kick and hat, a crash on the downbeat. The lamp turns again. Loops back to bar 1 from the tonic.",
+  "era": "snes",
+  "tempo": 84,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "flute",
+      "octave": 5,
+      "gain": 0.8,
+      "notes": "A5q F#5q D5q E5h A4q B4q C#5q D5q C#5h. A5q F#5q D5q G5h B5q A5q G5q E5q F#5h. D6q C#6q A5q B5h G5q A5q F#5q D5q E5h. F#5q E5q D5q B5h A5q G5q E5q C#5q D5h."
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.36,
+      "notes": "A6q F#6q D6q E6h A5q B5q C#6q D6q C#6h. A6q F#6q D6q G6h B6q A6q G6q E6q F#6h. D7q C#7q A6q B6h G6q A6q F#6q D6q E6h. F#6q E6q D6q B6h A6q G6q E6q C#6q D6h."
+    },
+    {
+      "name": "strings",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.36,
+      "notes": "D3+F#3+A3h.@64 A3+C#3+E3h.@64 G3+B3+D3h.@64 A3+C#3+E3h.@64 D3+F#3+A3h.@64 G3+B3+D3h.@64 A3+C#3+E3h.@64 D3+F#3+A3h.@64 D3+F#3+A3h.@64 G3+B3+D3h.@64 D3+F#3+A3h.@64 A3+C#3+E3h.@64 D3+F#3+A3h.@64 G3+B3+D3h.@64 A3+C#3+E3h.@64 D3+F#3+A3h.@64"
+    },
+    {
+      "name": "harp",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.42,
+      "notes": "D3e@66 A3e@56 D4e@62 F#4e@58 A3e@54 D4e@56 A3e@66 E3e@56 A4e@62 C#4e@58 E3e@54 A4e@56 G3e@66 D3e@56 G4e@62 B4e@58 D3e@54 G4e@56 A3e@66 E3e@56 A4e@62 C#4e@58 E3e@54 A4e@56 D3e@66 A3e@56 D4e@62 F#4e@58 A3e@54 D4e@56 G3e@66 D3e@56 G4e@62 B4e@58 D3e@54 G4e@56 A3e@66 E3e@56 A4e@62 C#4e@58 E3e@54 A4e@56 D3e@66 A3e@56 D4e@62 F#4e@58 A3e@54 D4e@56 D3e@66 A3e@56 D4e@62 F#4e@58 A3e@54 D4e@56 G3e@66 D3e@56 G4e@62 B4e@58 D3e@54 G4e@56 D3e@66 A3e@56 D4e@62 F#4e@58 A3e@54 D4e@56 A3e@66 E3e@56 A4e@62 C#4e@58 E3e@54 A4e@56 D3e@66 A3e@56 D4e@62 F#4e@58 A3e@54 D4e@56 G3e@66 D3e@56 G4e@62 B4e@58 D3e@54 G4e@56 A3e@66 E3e@56 A4e@62 C#4e@58 E3e@54 A4e@56 D3e@66 A3e@56 D4e@62 F#4e@58 A3e@54 D4e@56"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.72,
+      "notes": "D2h@88 A2q@70 A2h@88 E2q@70 G2h@88 D2q@70 A2h@88 E2q@70 D2h@88 A2q@70 G2h@88 D2q@70 A2h@88 E2q@70 D2h@88 A2q@70 D2h@88 A2q@70 G2h@88 D2q@70 D2h@88 A2q@70 A2h@88 E2q@70 D2h@88 A2q@70 G2h@88 D2q@70 A2h@88 E2q@70 D2h@88 A2q@70"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.3,
+      "notes": "q crash+kick@70 hat@40 hat@40 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36 q kick@56 hat@40 hat@36"
+    }
+  ]
+}

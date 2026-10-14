@@ -661,6 +661,18 @@
       "movement": "static",
       "dialogue_ref": "npc.otho_after",
       "requires_flag": "flag:old_seams_open"
+    },
+    {
+      "id": "hall_sparrer",
+      "at": {
+        "tx": 4,
+        "ty": 9
+      },
+      "facing": "right",
+      "sprite": "npc_man",
+      "movement": "static",
+      "requires_flag": "gleam:stone",
+      "dialogue_ref": "script.spar_cinderhead"
     }
   ],
   "gates": [],

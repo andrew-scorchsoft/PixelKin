@@ -173,8 +173,17 @@ REGION_AREA = {
     # the Old Light's own kin (#167-171, R10): their default row names a curated
     # tower floor, so it is dropped — only the mirrored tower tables place them
     "jesthouse": ("pearlmoor_oldlight_1", (9, 14)),
+    # Lane B (Farlamp Isles, #172-177): the isles' kin live ONLY in the isles'
+    # own map tables (mirrored into EXTRA_ENCOUNTERS by the map work), so
+    # MAP_TABLE_ONLY_REGIONS below suppresses the generated default row.
+    "isles": ("farlamp_sound", (58, 66)),
+    # Lane N4 (the Hollowing's Country, #178-180): the Hollowing family lives
+    # ONLY in Stillwater / the Mourning Fields / Drownlight tables (mirrored
+    # into EXTRA_ENCOUNTERS by the map lanes) — table-only like the isles.
+    "north_hollow": ("stillwater", (46, 56)),
 }
-TERRAIN = {"jesthouse":"cave","south":"tall_grass","east":"cave","north":"tall_grass","west":"water","outer":"tall_grass","central":"cave","post":"tall_grass"}
+MAP_TABLE_ONLY_REGIONS = {"isles", "north_hollow"}
+TERRAIN = {"north_hollow":"tall_grass","isles":"water","jesthouse":"cave","south":"tall_grass","east":"cave","north":"tall_grass","west":"water","outer":"tall_grass","central":"cave","post":"tall_grass"}
 
 def encounters(region, rarity, tier, stage, scripted):
     area, (blo, bhi) = REGION_AREA.get(region, ("dimglass_coast", (3, 12)))
@@ -182,7 +191,7 @@ def encounters(region, rarity, tier, stage, scripted):
     bump = {"A":0,"B":3,"C":7,"D":12,"E":16,"F":20}[tier]
     lo = min(bhi-2, blo + bump + (stage-1)*3)
     hi = min(bhi, lo + 3)
-    if scripted:
+    if scripted or region in MAP_TABLE_ONLY_REGIONS:
         return []  # legendaries/very-rare apexes are scripted/landmark, not in open tables
     return [{"area": area, "terrain": TERRAIN.get(region, "tall_grass"), "rarity": rarity, "min": lo, "max": hi}]
 
@@ -392,30 +401,12 @@ EXTRA_ENCOUNTERS = {
     "heliovast":   [{"area": "helia_vault", "terrain": "cave", "rarity": "rare", "min": 49, "max": 50}],
     # nightreach verge w3 Lunar-Light apex teaser (scripted kin)
     "dawnwatcher": [{"area": "nightreach_observatory", "terrain": "tall_grass", "rarity": "very_rare", "min": 51, "max": 52}],
-    # Coldfog — the maps split the designed coldfog_marches rows into I/II
-    "mothdim":     [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48}],
-    "flutterwane": [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48}],
-    "nullmoth":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50},
-                    {"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 49},
-                    {"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
-    "wispwane":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 49, "max": 50},
-                    {"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
+    # Coldfog I/II: mirrored by COLDFOG_TABLES (dex-id keyed, below the Stillwater mirror)
+    "nullmoth":    [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
     "cindersob":   [# hushfrost II's "numbed" pockets only (w30 there) — rare cap
-                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 42},
-                    {"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 48, "max": 50}],
-    # the gold bed (coldfog I's 1-tile gold_a pocket, w5) — the lone Light
-    # exception in the Dark marches
-    "wisprestored": [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48}],
-    "wispwanenull": [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50},
-                     {"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
-    "embergone":   [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 49, "max": 50},
-                    {"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 49, "max": 50}],
-    "voidmantle":  [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 50},
-                    {"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "common", "min": 49, "max": 50}],
-    "liminalux":   [{"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": "rare", "min": 49, "max": 50}],
+                    {"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 42}],
+    "wispwanenull": [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 48, "max": 50}],
+    "embergone":   [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "common", "min": 49, "max": 50}],
     # the husk-cradle (w55 pocket) + the works bed (w12)
     "whorlix":     [{"area": "hollowfen_stillworks", "terrain": "tall_grass", "rarity": "uncommon", "min": 50, "max": 51}],
 }
@@ -540,7 +531,9 @@ R4_DAYFORM_ENCOUNTERS = {
     "sporeling":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 62}],
     "mossglow":   [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63}],
     "barkhelm":   [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
-    "lumournis":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 65}],
+    # FC3 (2026-10-14): Lowleaf's dawn rare is Fernlance (its dex: "the Lowleaf Hollow
+    # signature rare"); Lumournis moved to the Mourning Fields' Brook Piece, its only wild home.
+    "fernlance":  [{"area": "lowleaf_hollow", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 65}],
     "tidalarch":  [{"area": "sunkbell_shallows", "terrain": "water", "rarity": "uncommon", "min": 58, "max": 65}],
     # ---- North day rows ----
     "sparrowcaw": [{"area": "galehigh_terraces", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 60}],
@@ -594,8 +587,7 @@ R4_DAYFORM_ENCOUNTERS = {
     "frigalance": [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64}],
     "glacitern":  [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64}],
     # day numbed-pocket cap: pocket-only species stay rare (the W6 rule)
-    "cindersob":  [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 63},
-                   {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 63}],
+    "cindersob":  [{"area": "hushfrost_pass_ii", "terrain": "tall_grass", "rarity": "rare", "min": 57, "max": 63}],
     "frostholm":  [{"area": "aurora_hollow", "terrain": "tall_grass", "rarity": "very_rare", "min": 62, "max": 65}],
     "sunsprout":  [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62}],
     "helibud":    [{"area": "sunvault_climb_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62},
@@ -615,19 +607,7 @@ R4_DAYFORM_ENCOUNTERS = {
                    {"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "rare", "min": 59, "max": 65}],
     "lunveil":    [{"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64}],
     "lunvane":    [{"area": "sunvault_climb_ii", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65}],
-    # ---- the Coldfog Light RE-BLOOM (the day tables change character) ----
-    "wisprestored":[{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 58, "max": 65},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 60, "max": 65}],
-    "flutterwane": [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 55, "max": 62},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63}],
-    "wispwane":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "common", "min": 56, "max": 63},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64}],
-    "wispwanenull":[{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "common", "min": 57, "max": 64}],
-    "mothdim":     [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "uncommon", "min": 55, "max": 61}],
-    "nullmoth":    [{"area": "coldfog_marches_i", "terrain": "tall_grass", "rarity": "rare", "min": 56, "max": 62},
-                    {"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63}],
-    "embergone":   [{"area": "coldfog_marches_ii", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64}],
+    # (the Coldfog day RE-BLOOM rows: COLDFOG_TABLES, below the Stillwater mirror)
 }
 for _slug, _rows in R4_DAYFORM_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows)
@@ -753,11 +733,12 @@ def _rows(area, lo_hi_rarity):
 GEOMETRY_ENCOUNTERS = {
     # Cinderwind Scarp (lv 28-31): the climb from Cinderhead Deep to Galehigh
     "rubbol":   _rows("cinderwind_scarp", [(28, 30, "common")]),
-    "galefox":  _rows("cinderwind_scarp", [(28, 31, "common")]),
-    "thrumble": _rows("cinderwind_scarp", [(29, 31, "common")]),
-    "lumecite": _rows("cinderwind_scarp", [(29, 31, "uncommon")]),
-    "nimbruff": _rows("cinderwind_scarp", [(30, 31, "rare")]),
-    "voltcrag": _rows("cinderwind_scarp", [(31, 31, "very_rare")]),
+    # (Lane A, 2026-10: retuned to 28-30 — the Ashfall Shelf above carries 30-33)
+    "galefox":  _rows("cinderwind_scarp", [(28, 30, "common")]),
+    "thrumble": _rows("cinderwind_scarp", [(29, 30, "common")]),
+    "lumecite": _rows("cinderwind_scarp", [(29, 30, "uncommon")]),
+    "nimbruff": _rows("cinderwind_scarp", [(30, 30, "rare")]),
+    "voltcrag": _rows("cinderwind_scarp", [(30, 30, "very_rare")]),
     # The Umbral Approach (lv 50-53): the mountain road to the Penumbra
     "voidmantle":  _rows("umbral_approach", [(50, 53, "common")]),
     "omenire":     _rows("umbral_approach", [(50, 53, "common")]),
@@ -767,6 +748,54 @@ GEOMETRY_ENCOUNTERS = {
     "liminalux":   _rows("umbral_approach", [(51, 53, "uncommon")]),
 }
 for _slug, _rows_ in GEOMETRY_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
+# Lane A (walkthrough/10 Part II, 2026-10): the Ashfall Shelf (lv 30-33, the main
+# path between the Scarp and Galehigh) + Kiln Gully (lv 33-35, optional, the cold
+# lamp-glass kiln behind the Updraft vent) — mirrors of the BUILT in-map tables
+# (tools/maps/build_cinderwind_ashfall.py, build_cinderwind_kiln.py). Stonebark is
+# the shelf's own rare: never wild before, it grows in the grey ash-grass.
+def _cave(area, lo_hi_rarity):
+    return [{"area": area, "terrain": "cave", "rarity": r, "min": lo, "max": hi}
+            for (lo, hi, r) in lo_hi_rarity]
+ASHFALL_ENCOUNTERS = {
+    # (third pass) the ash beds and the green beds run DIFFERENT mixes — the ash is
+    # slag country (Stone/Ember + Stonebark), the green is the wind's (Storm +
+    # Voltcrag); the dex merges same-terrain rows per area (W6 rule)
+    "gravelo":     _rows("cinderwind_ashfall", [(31, 33, "common")]),
+    "sparkrat":    _rows("cinderwind_ashfall", [(30, 31, "common")]),
+    "flintbeak":   _rows("cinderwind_ashfall", [(30, 32, "common")]),
+    "galefox":     _rows("cinderwind_ashfall", [(30, 32, "common")]),
+    "thrumble":    _rows("cinderwind_ashfall", [(30, 31, "common")]),
+    "pyrolith":    _rows("cinderwind_ashfall", [(32, 33, "uncommon")])
+                   + _cave("cinderwind_kiln", [(34, 35, "uncommon")]),
+    "stonebark":   _rows("cinderwind_ashfall", [(30, 31, "uncommon")]),
+    "voltcrag":    _rows("cinderwind_ashfall", [(32, 33, "rare")]),
+    "lumecite":    _cave("cinderwind_kiln", [(33, 35, "common")]),
+    "riddlestone": _cave("cinderwind_kiln", [(33, 35, "common")]),
+    "orebound":    _cave("cinderwind_kiln", [(33, 33, "uncommon")]),
+    "pyriven":     _cave("cinderwind_kiln", [(34, 35, "uncommon")]),
+    # the kiln's signature: the only pre-dawn wild Scorchwing (its other placement is
+    # the post-dawn Hearthfall vigil) — a moth-hawk drawn to the old furnace's coals
+    "scorchwing":  _cave("cinderwind_kiln", [(34, 35, "rare")]),
+    "prismara":    _cave("cinderwind_kiln", [(35, 35, "very_rare")]),
+}
+for _slug, _rows_ in ASHFALL_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+# ...and their post-dawn DAY-FORM twins (tools/maps/hand_placed_data.py, the R4 pattern)
+ASHFALL_DAY_ENCOUNTERS = {
+    "voltcrag":    _rows("cinderwind_ashfall", [(56, 61, "common")]),
+    "gravelo":     _rows("cinderwind_ashfall", [(56, 61, "common")]),
+    "strikeaven":  _rows("cinderwind_ashfall", [(57, 62, "common")]),
+    "tempestail":  _rows("cinderwind_ashfall", [(57, 62, "uncommon")]),
+    "rootwarden":  _rows("cinderwind_ashfall", [(58, 62, "uncommon")]),
+    "prismara":    _cave("cinderwind_kiln", [(57, 63, "common")]),
+    "riddlestone": _cave("cinderwind_kiln", [(56, 62, "common")]),
+    "ferrolith":   _cave("cinderwind_kiln", [(57, 63, "common")]),
+    "pyrolith":    _cave("cinderwind_kiln", [(56, 62, "common")]),
+    "lithonyx":    _cave("cinderwind_kiln", [(58, 63, "uncommon")]),
+}
+for _slug, _rows_ in ASHFALL_DAY_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
 # The Wild Ways — Sunvault Climb rebuild (S, 09-the-wild-ways §2 S, 2026-10): the
@@ -820,54 +849,49 @@ for _slug, _rows_ in SUNVAULT_FACE_ENCOUNTERS.items():
 
 # The Wild Ways — the Rimeway (C, 09-the-wild-ways §2 C, 2026-10): the Ascent/Fold/Descent
 # BUILT in-map tables (tools/maps/build_rimeway_*.py), night + day twins; Vaultclaw #76
-# lives only up here. Same W6 weight->rarity rule.
+# is the Fold's own. Same W6 weight->rarity rule. FC3 (2026-10-14): FINAL forms only
+# (the old rows rolled base forms 10-40 levels past their kindling).
 RIMEWAY_ENCOUNTERS: dict = {}
-RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "common", "min": 39, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("hushbore", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("prismcub", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
-RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
-RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 40, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 41, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("hushbore", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("prismcub", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
+RIMEWAY_ENCOUNTERS.setdefault("vortexlope", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "common", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("prismantus", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
+RIMEWAY_ENCOUNTERS.setdefault("frigalance", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
+RIMEWAY_ENCOUNTERS.setdefault("crystalune", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 39, "max": 40})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "very_rare", "min": 41, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("vortexlope", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("prismantus", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("frigalance", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("crystalune", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
 RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_ascent", "terrain": "tall_grass", "rarity": "rare", "min": 60, "max": 65})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42})
-RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 42})
-RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("snowcune", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("chillpip", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
-RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "rare", "min": 41, "max": 42})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("geodrake", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("blizzrhare", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("snowcune", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("geolace", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("chillpip", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 61})
-RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
-RIMEWAY_ENCOUNTERS.setdefault("wispwane", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 47})
-RIMEWAY_ENCOUNTERS.setdefault("nullmoth", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48})
-RIMEWAY_ENCOUNTERS.setdefault("wispwanenull", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48})
-RIMEWAY_ENCOUNTERS.setdefault("mothdim", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
-RIMEWAY_ENCOUNTERS.setdefault("cindersob", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "common", "min": 40, "max": 42})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 42})
+RIMEWAY_ENCOUNTERS.setdefault("vortexlope", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("frigalance", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("prismantus", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 40, "max": 41})
+RIMEWAY_ENCOUNTERS.setdefault("vaultclaw", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("vortexlope", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("frigalance", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("prismantus", []).append({"area": "rimeway_fold", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 61})
+RIMEWAY_ENCOUNTERS.setdefault("liminalux", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("voidmantle", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "common", "min": 46, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("wisprestored", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 48})
+RIMEWAY_ENCOUNTERS.setdefault("lullwing", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 46, "max": 47})
+RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 47, "max": 48})
 RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 47, "max": 48})
-RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 48, "max": 48})
-RIMEWAY_ENCOUNTERS.setdefault("wispwane", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("nullmoth", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("wispwanenull", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("mothdim", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
-RIMEWAY_ENCOUNTERS.setdefault("crystarn", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
-RIMEWAY_ENCOUNTERS.setdefault("cindersob", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("liminalux", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("voidmantle", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("wisprestored", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("lullwing", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 56, "max": 62})
+RIMEWAY_ENCOUNTERS.setdefault("stillwarden", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 63})
+RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 57, "max": 64})
 RIMEWAY_ENCOUNTERS.setdefault("glacitern", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "uncommon", "min": 58, "max": 64})
-RIMEWAY_ENCOUNTERS.setdefault("embergone", []).append({"area": "rimeway_descent", "terrain": "tall_grass", "rarity": "rare", "min": 58, "max": 64})
 for _slug, _rows_ in RIMEWAY_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
@@ -1005,6 +1029,97 @@ for _area, _tab, _shift in _MIRE_TABLES:
 for _slug, _rows_ in MIRELIGHT_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
+# ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide — MIRRORS of the
+# built in-map tables (tools/maps/build_undertide_i/ii/iii/iv.py are the truth;
+# keep both in step). Post-game only (no night/day pair: the isles keep their own
+# dusk). Cave = rect-wide on the galleries; water = the shallows (tide-race lanes
+# never roll). Weights -> rarity: >=20 common, 10-19 uncommon, 5-9 rare, <5 very_rare.
+_UT_SLUG = {172: "fathomote", 173: "fathomere", 174: "hermiwick", 175: "beaconclaw",
+            176: "fogwisp", 25: "prismare", 28: "brinewrath", 29: "glostern",
+            30: "glostrael", 34: "tideveil", 52: "lithonyx", 55: "ferrolith",
+            61: "tidalarch", 85: "stillwarden", 138: "voidmantle", 157: "pharolux"}
+UNDERTIDE_TABLES = {
+    "undertide_i": {
+        "cave": [(174, 30, 61, 63), (176, 26, 61, 63), (52, 20, 62, 63), (85, 14, 62, 63),
+                 (55, 10, 62, 63)],
+        "water": [(172, 34, 61, 63), (29, 24, 61, 62), (28, 20, 62, 63), (61, 14, 62, 63),
+                  (30, 8, 63, 63)]},
+    "undertide_ii": {
+        "cave": [(174, 24, 61, 64), (176, 24, 62, 64), (175, 12, 63, 64), (52, 14, 62, 63),
+                 (85, 12, 62, 64), (138, 10, 62, 64)],
+        "water": [(172, 26, 61, 63), (173, 14, 63, 64), (61, 20, 62, 64), (28, 18, 62, 64),
+                  (29, 14, 61, 63), (30, 6, 64, 64)]},
+    "undertide_iii": {
+        "cave": [(175, 22, 63, 65), (176, 24, 62, 65), (174, 14, 62, 64), (85, 14, 63, 64),
+                 (138, 14, 63, 65), (55, 10, 63, 65)],
+        "water": [(173, 24, 63, 65), (172, 14, 62, 64), (28, 20, 63, 65), (61, 16, 63, 64),
+                  (30, 14, 64, 65), (25, 10, 64, 65)]},
+    # deepest: kindled forms common, base forms rare; PHAROLUX (#157) the signature very-rare
+    "undertide_iv": {
+        "cave": [(175, 28, 64, 66), (176, 26, 63, 66), (138, 14, 64, 66), (85, 12, 63, 65),
+                 (55, 12, 64, 66), (174, 6, 63, 64)],
+        "water": [(173, 30, 64, 66), (28, 18, 64, 66), (30, 16, 64, 66), (25, 14, 64, 66),
+                  (172, 6, 63, 64), (157, 3, 66, 66)]},
+}
+
+
+def _ut_rarity(w):
+    return "common" if w >= 20 else "uncommon" if w >= 10 else "rare" if w >= 5 else "very_rare"
+
+
+# The isles' DAWN (pass 2): each table's day-form twin rises at `flag:isles_dawn` —
+# the kindled forms of the same water, +1 level (MIRROR of undertidekit.DAY_SWAP /
+# day_table; keep both in step).
+UNDERTIDE_DAY_SWAP = {174: 175, 172: 173, 29: 30}
+
+
+def _ut_day(rows):
+    out = {}
+    for (k, w, lo, hi) in rows:
+        d = UNDERTIDE_DAY_SWAP.get(k, k)
+        lo, hi = min(lo + 1, 67), min(hi + 1, 67)
+        if d in out:
+            pw, plo, phi = out[d]
+            out[d] = (pw + w, min(plo, lo), max(phi, hi))
+        else:
+            out[d] = (w, lo, hi)
+    return [(k, w, lo, hi) for k, (w, lo, hi) in out.items()]
+
+
+for _area, _by_terrain in UNDERTIDE_TABLES.items():
+    for _terrain, _tab in _by_terrain.items():
+        for (_k, _w, _lo, _hi) in _tab + _ut_day(_tab):
+            EXTRA_ENCOUNTERS.setdefault(_UT_SLUG[_k], []).append(
+                {"area": _area, "terrain": _terrain, "rarity": _ut_rarity(_w), "min": _lo, "max": _hi})
+
+# ---- Lane N2 (walkthrough/11 Part B): THE DROWNLIGHT — MIRROR of
+# tools/maps/build_drownlight_tower.py TABLES (the map is the truth; keep both in
+# step). Cave = rect-wide in the tower's rooms. Ids, not slugs: #178-#180 are lane
+# N4's Hollowing family, resolved by position in selected.json (dex id = index + 1)
+# so this block never hard-codes another lane's names; an id not yet in the
+# roster is skipped. Weights -> rarity as the Undertide's (_ut_rarity).
+DROWNLIGHT_TABLES = {
+    "drownlight_f1": [(179, 28, 50, 52), (138, 24, 50, 51), (180, 18, 51, 52),
+                      (85, 16, 51, 52), (135, 14, 50, 52)],
+    "drownlight_f2": [(138, 20, 51, 53), (135, 8, 52, 53), (87, 14, 51, 53),
+                      (85, 12, 51, 53), (179, 28, 51, 53), (180, 18, 51, 53)],
+}
+with open(SEL) as _fh:
+    _DL_SLUG = {i + 1: re.sub(r"[^a-z0-9]+", "_", c["name"].lower()).strip("_")
+                for i, c in enumerate(json.load(_fh))}
+for _area, _tab in DROWNLIGHT_TABLES.items():
+    for (_k, _w, _lo, _hi) in _tab:
+        if _k in _DL_SLUG:
+            EXTRA_ENCOUNTERS.setdefault(_DL_SLUG[_k], []).append(
+                {"area": _area, "terrain": "cave", "rarity": _ut_rarity(_w), "min": _lo, "max": _hi})
+# The tower's FOOT (drownlight_beacon's blight-tuft beds) — MIRROR of
+# tools/maps/build_drownlight_beacon.py TABLE_BEACON. Final forms only at band.
+DROWNLIGHT_BEACON_TABLE = [(138, 34, 49, 50), (179, 28, 48, 50), (180, 24, 48, 49), (135, 9, 49, 50)]
+for (_k, _w, _lo, _hi) in DROWNLIGHT_BEACON_TABLE:
+    if _k in _DL_SLUG:
+        EXTRA_ENCOUNTERS.setdefault(_DL_SLUG[_k], []).append(
+            {"area": "drownlight_beacon", "terrain": "tall_grass", "rarity": _ut_rarity(_w), "min": _lo, "max": _hi})
+
 # Areas whose encounter tables are BUILT into the map JSONs (the in-map zones
 # are the truth, mirrored above). Generated region defaults — and stale rows
 # carried in the previous per-species files — must not claim these areas:
@@ -1055,6 +1170,8 @@ CURATED_AREAS = {
     "duskapple_orchard",
     # the 2026-10 geometry fix's new routes (mirrored above, GEOMETRY_ENCOUNTERS)
     "cinderwind_scarp", "umbral_approach",
+    # Lane A (walkthrough/10 Part II): the Ashfall Shelf + Kiln Gully (mirrored above)
+    "cinderwind_ashfall", "cinderwind_kiln",
     # The Wild Ways — Sunvault Climb rebuild (S): the two new face maps
     "sunvault_climb_iii", "sunvault_climb_iv",
     # The Wild Ways — the Rimeway (C)
@@ -1069,6 +1186,16 @@ CURATED_AREAS = {
     # THE WILD WAYS — the Mirelights (mirrored above, MIRELIGHT_ENCOUNTERS);
     # the hollow is the legendary's room, listed so nothing generated claims it
     "mirelight_landing", "mirelight_glassmere", "mirelight_chapel", "lanthorne_hollow",
+    # THE FARLAMP ISLES — the surface (Lane C1; mirrored above, FARLAMP_TABLES);
+    # Driftholm is a town (no encounters), listed so nothing generated claims it
+    "farlamp_sound", "farlamp_shelfwater", "farlamp_fogwall", "farlamp_gullwrack",
+    "farlamp_kelpcrown", "driftholm",
+    # Lane C2 — the Farlamp Isles' Undertide (mirrored above, UNDERTIDE_TABLES); the
+    # Drowned Lamp is Farlume's room, encounter-free, listed so nothing claims it.
+    "undertide_i", "undertide_ii", "undertide_iii", "undertide_iv", "farlamp_drowned",
+    # Lane N2 — the Drownlight (mirrored above, DROWNLIGHT_TABLES); the lantern room
+    # is the Shutterkeeper's, encounter-free, listed so nothing generated claims it.
+    "drownlight_f1", "drownlight_f2", "drownlight_lantern",
 }
 
 # The Old Light's hall tables (R10) — MIRROR of build_pearlmoor_oldlight.py's
@@ -1088,6 +1215,197 @@ for _floor, _rows_ in OLDLIGHT_TABLES.items():
             "area": f"pearlmoor_oldlight_{_floor}", "terrain": "cave",
             "rarity": "common" if _w >= 30 else "uncommon" if _w >= 15 else "rare",
             "min": _lo, "max": _hi})
+
+# THE FARLAMP ISLES (walkthrough/10 Part I, Lane C1) — MIRROR of the surface maps'
+# zone tables (tools/maps/build_farlamp_isles.py TABLES — the map is the truth):
+# area -> [(slug, weight, lo, hi, terrain)]. The deep (rowed) and the shallows
+# both read as "water" in the dex; the isles' tall sea-grass is "tall_grass".
+FARLAMP_TABLES = {
+    # pass 2: +4 levels (the player crosses at L69+); the isles' family is met
+    # KINDLED (fathomere/beaconclaw common), the base forms are the rare finds
+    "farlamp_sound": [
+        ("fathomere", 35, 62, 65, "water"), ("beaconclaw", 15, 62, 64, "water"),
+        ("brinewrath", 15, 63, 65, "water"), ("tidwraith", 12, 62, 65, "water"),
+        ("glostrael", 8, 63, 65, "water"), ("fathomote", 5, 62, 63, "water"),
+        ("hermiwick", 5, 62, 63, "water"),
+        ("lumplass", 30, 62, 64, "water"), ("tidalarch", 30, 62, 64, "water"),
+        ("beaconclaw", 40, 62, 64, "tall_grass"), ("frigalance", 25, 62, 65, "tall_grass"),
+        ("voltcrag", 25, 62, 64, "tall_grass"), ("glacewing", 5, 62, 63, "tall_grass"),
+        ("hermiwick", 5, 62, 63, "tall_grass")],
+    "farlamp_shelfwater": [
+        ("fathomere", 35, 63, 66, "water"), ("beaconclaw", 15, 63, 65, "water"),
+        ("tidalarch", 15, 64, 66, "water"), ("lumplass", 15, 63, 66, "water"),
+        ("brinewrath", 10, 64, 66, "water"), ("fathomote", 5, 63, 64, "water"),
+        ("hermiwick", 5, 63, 64, "water")],
+    "farlamp_fogwall": [
+        ("fogwisp", 35, 64, 67, "water"), ("fathomere", 25, 64, 66, "water"),
+        ("stillwarden", 15, 65, 67, "water"), ("glacitern", 10, 64, 67, "water"),
+        ("tidwraith", 10, 64, 66, "water"), ("fathomote", 5, 64, 65, "water")],
+    "farlamp_gullwrack": [
+        ("beaconclaw", 30, 64, 66, "tall_grass"), ("frigalance", 20, 64, 66, "tall_grass"),
+        ("vaultclaw", 15, 64, 66, "tall_grass"), ("lithonyx", 15, 64, 66, "tall_grass"),
+        ("voltcrag", 15, 65, 66, "tall_grass"), ("hermiwick", 5, 64, 65, "tall_grass"),
+        ("fathomere", 40, 64, 66, "water"), ("brinewrath", 30, 64, 66, "water"),
+        ("tidalarch", 22, 64, 66, "water"), ("glostrael", 8, 65, 66, "water"),
+        ("fathomote", 5, 64, 65, "water")],
+    "farlamp_kelpcrown": [
+        ("beaconclaw", 25, 64, 67, "tall_grass"), ("tidalarch", 20, 64, 66, "tall_grass"),
+        ("rootwarden", 15, 65, 67, "tall_grass"), ("ferrolith", 15, 64, 66, "tall_grass"),
+        ("prismara", 15, 64, 66, "tall_grass"), ("hermiwick", 10, 64, 65, "tall_grass"),
+        ("fathomere", 35, 64, 66, "water"), ("lumplass", 35, 64, 66, "water"),
+        ("tidalarch", 25, 64, 66, "water"), ("fathomote", 5, 64, 65, "water")],
+}
+
+
+for _area, _rows_ in FARLAMP_TABLES.items():
+    _seen = set()
+    for _slug, _w, _lo, _hi, _terr in _rows_:
+        if (_slug, _terr) in _seen:      # one dex row per kin per terrain
+            continue
+        _seen.add((_slug, _terr))
+        EXTRA_ENCOUNTERS.setdefault(_slug, []).append({
+            "area": _area, "terrain": _terr,
+            "rarity": "common" if _w >= 30 else "uncommon" if _w >= 15 else "rare",
+            "min": _lo, "max": _hi})
+
+# ---- Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay -----------------
+# MIRROR of the built in-map zone tables (build_tinderwick_bay.py, build_lowtinder.py,
+# build_lowtinder_cellar.py, build_lowtinder_interiors.py — the maps are the truth):
+# (area, terrain, [(slug, weight, lo, hi)]). Embrift (#14) and Mossmantle (#39) are
+# wild here and nowhere else; the reef is the post-game deep (rowed, `deep`).
+# Every row sits at or under its kin's kindle level (review 2026-10: the base
+# forms that kindle at 13-15 were swapped for their kindled forms).
+LOWTINDER_TABLES = [
+    ("tinderwick_bay", "water", [("brineroll", 35, 17, 19), ("shimmral", 30, 17, 19), ("lumpin", 25, 18, 20), ("tidmaren", 6, 19, 20)]),
+    ("tinderwick_bay", "tall_grass", [("lumpin", 40, 17, 19), ("brineroll", 30, 17, 18), ("shimmral", 20, 18, 19), ("tallowcrest", 10, 18, 19)]),
+    ("tinderwick_bay", "deep", [("brinewrath", 28, 58, 61), ("prismare", 20, 58, 61), ("tidwraith", 20, 58, 61), ("fathomere", 15, 58, 60), ("beaconclaw", 12, 58, 60), ("tideveil", 5, 60, 62)]),
+    ("lowtinder", "tall_grass", [("tallowcrest", 30, 18, 20), ("coalump", 25, 18, 20), ("tidmaren", 20, 18, 20), ("wickmoth", 15, 17, 18), ("embrift", 7, 20, 21)]),
+    ("lowtinder", "water", [("brineroll", 35, 18, 20), ("tidmaren", 30, 18, 20), ("shimmral", 25, 18, 20), ("embrift", 5, 20, 21)]),
+    ("lowtinder_cellar", "cave", [("tidmaren", 30, 19, 21), ("coalump", 25, 19, 22), ("tallowcrest", 20, 20, 22), ("lumpin", 18, 20, 22), ("embrift", 5, 21, 22)]),
+    ("lowtinder_cellar_b2", "cave", [("coalump", 25, 20, 23), ("tallowcrest", 25, 20, 23), ("lumpin", 20, 21, 22), ("brineroll", 20, 21, 23), ("embrift", 8, 22, 23)]),
+    ("lowtinder_school_garden", "tall_grass", [("mossmantle", 40, 24, 27), ("wickmere", 35, 24, 26), ("tidmaren", 25, 24, 26)]),
+]
+for _area, _terrain, _rows_ in LOWTINDER_TABLES:
+    for _slug, _w, _lo, _hi in _rows_:
+        EXTRA_ENCOUNTERS.setdefault(_slug, []).append({
+            "area": _area, "terrain": _terrain,
+            "rarity": _mire_rarity(_w), "min": _lo, "max": _hi})
+CURATED_AREAS |= {"tinderwick_bay", "lowtinder", "lowtinder_cellar", "lowtinder_cellar_b2",
+                  "lowtinder_school_garden", "lowtinder_lamphouse", "lowtinder_school"}
+
+# ---- Lane N3 (walkthrough/11 Parts C + D): the Mourning Fields + the Penumbra Underways
+# MIRROR of the built in-map tables (build_mourning_fields.py NIGHT/DAY,
+# build_penumbra_underways.py F1_/B1_ tables — the maps are the truth):
+# (area, terrain, [(kin_id, weight, lo, hi)]). The Fields' day rows are the post-dawn
+# twins. The Hollowing family (#178-#180, Lane N4) joins the Fields' night table only
+# once its species exist (the builder applies the same rule).
+MOURNING_TABLES = [
+    ("mourning_fields", "tall_grass", [(138, 22, 49, 51), (113, 18, 48, 50), (85, 16, 49, 51),
+                                       (125, 14, 48, 50), (58, 12, 49, 51), (142, 10, 50, 52),
+                                       (135, 6, 51, 52), (180, 14, 48, 51), (179, 8, 50, 52)]),
+    # the north mouth's verge: the deliberately LOW Dousecap bed (it kindles at 44)
+    ("mourning_fields", "tall_grass", [(178, 60, 42, 44), (180, 25, 46, 48), (179, 15, 47, 49)]),
+    ("mourning_fields", "tall_grass", [(127, 22, 56, 61), (58, 18, 56, 61), (125, 16, 57, 62),
+                                       (107, 14, 57, 62), (140, 14, 56, 61), (9, 10, 57, 62),
+                                       (129, 6, 60, 62)]),
+    # FC3 (2026-10-14): the Brook Piece's long grass, night then day; LUMOURNIS (#66)
+    # is wild ONLY here (the Fields' kin of its own)
+    ("mourning_fields", "tall_grass", [(180, 30, 48, 51), (58, 24, 49, 51), (125, 20, 48, 50),
+                                       (113, 18, 48, 50), (66, 8, 51, 52)]),
+    ("mourning_fields", "tall_grass", [(127, 26, 56, 61), (58, 24, 56, 61), (107, 20, 57, 62),
+                                       (9, 16, 57, 62), (66, 14, 59, 62)]),
+    # the Underways (build_penumbra_underways.py): night tables, then the post-dawn
+    # `_day` twins; B1's warm-stones pocket is the only pre-dawn Embralux (#33) ground,
+    # and (FD2, 2026-10-14) the ONLY wild JesterFull (#168, Light/Dark) anywhere
+    ("penumbra_underways", "cave", [(138, 24, 52, 54), (113, 18, 52, 54), (143, 16, 52, 54),
+                                    (15, 14, 53, 55), (85, 14, 53, 55), (135, 14, 53, 55)]),
+    ("penumbra_underways", "tall_grass", [(127, 30, 52, 54), (135, 25, 53, 55), (107, 20, 53, 55),
+                                          (40, 15, 53, 55), (140, 10, 54, 55)]),
+    ("penumbra_underways", "cave", [(135, 26, 56, 59), (107, 22, 56, 59), (140, 20, 56, 59),
+                                    (85, 18, 56, 59), (37, 14, 57, 59)]),
+    ("penumbra_underways", "tall_grass", [(40, 32, 56, 59), (127, 28, 56, 59), (37, 24, 57, 59),
+                                          (129, 16, 58, 59)]),
+    ("penumbra_underways_b1", "cave", [(135, 24, 54, 56), (138, 22, 54, 56), (113, 16, 54, 56),
+                                       (142, 14, 54, 56), (143, 14, 54, 56), (144, 6, 55, 56)]),
+    ("penumbra_underways_b1", "tall_grass", [(40, 26, 54, 56), (107, 22, 54, 56), (127, 20, 54, 56),
+                                             (37, 14, 55, 56), (135, 12, 54, 56), (129, 6, 56, 56)]),
+    ("penumbra_underways_b1", "tall_grass", [(179, 34, 54, 56), (180, 24, 54, 56), (40, 20, 54, 56),
+                                             (135, 14, 54, 56), (33, 8, 55, 56), (168, 6, 55, 56)]),
+    ("penumbra_underways_b1", "cave", [(135, 28, 57, 60), (140, 24, 57, 60), (37, 22, 57, 60),
+                                       (107, 20, 57, 60), (33, 6, 59, 60)]),
+    ("penumbra_underways_b1", "tall_grass", [(40, 34, 57, 60), (37, 26, 57, 60), (127, 24, 57, 60),
+                                             (129, 16, 58, 60)]),
+    ("penumbra_underways_b1", "tall_grass", [(33, 30, 57, 60), (179, 30, 57, 60), (37, 22, 57, 60),
+                                             (40, 18, 57, 60), (168, 6, 58, 60)]),
+]
+
+
+def _slug_of(kid):
+    import glob as _glob
+    hits = sorted(_glob.glob(os.path.join(ROOT, "src/game/data/species", f"{kid:03d}_*.json")))
+    return os.path.basename(hits[0])[4:-5] if hits else None
+
+
+for _area, _terrain, _rows_ in MOURNING_TABLES:
+    for _kid, _w, _lo, _hi in _rows_:
+        _slug = _slug_of(_kid)
+        if _slug is None:          # a Lane N4 kin not merged yet
+            continue
+        EXTRA_ENCOUNTERS.setdefault(_slug, []).append({
+            "area": _area, "terrain": _terrain,
+            "rarity": _mire_rarity(_w), "min": _lo, "max": _hi})
+CURATED_AREAS |= {"mourning_fields", "penumbra_underways", "penumbra_underways_b1"}
+# ---- Lane N1 (walkthrough/11 Part A): Stillwater, the Hollowing's village -----------
+# MIRROR of build_stillwater.py's in-map tables (the map is the truth): the grey-meadow
+# beds (night 48-52 -> their day twins at flag:dawn) and the lampmaker's yard (the
+# young snuffer-caps, #178 kept at/below its lv-44 kindling). Keyed by DEX ID because
+# #178-#180 are Lane N4's: the slug resolves from selected.json, and an id not yet in
+# the roster is skipped (no row lost once it lands — re-run this builder then).
+STILLWATER_TABLES = [
+    ("stillwater", [(180, 28, 48, 51), (179, 20, 49, 52), (138, 20, 48, 50), (113, 18, 50, 52),
+                    (135, 14, 50, 52)]),
+    ("stillwater", [(179, 24, 56, 60), (180, 22, 55, 59), (140, 22, 58, 62), (135, 18, 55, 60),
+                    (142, 14, 56, 61)]),                                   # day (flag:dawn)
+    ("stillwater", [(178, 70, 42, 44), (180, 30, 46, 48)]),                # the yard, night
+    ("stillwater", [(178, 50, 42, 44), (179, 30, 55, 58), (140, 20, 55, 58)]),  # the yard, day
+    # Coldfog I/II (2026-10 Part A review: kindled forms at 46+; r2: the base-form
+    # gold pocket is gone — Mothdim/Flutterwane moved to Glowmoss Deep, below). MIRROR
+    # of the builders' TABLE_I/TABLE_GOLD/TABLE_II + hand_placed_data's day tables.
+    ("coldfog_marches_i", [(138, 30, 46, 48), (135, 26, 46, 48), (113, 16, 47, 48),
+                           (142, 14, 46, 48), (180, 14, 46, 48)]),
+    ("coldfog_marches_i", [(135, 56, 46, 48), (138, 28, 46, 48), (140, 8, 47, 48),
+                           (116, 8, 46, 48)]),                             # gold (+ Auravane)
+    ("coldfog_marches_i", [(140, 26, 58, 65), (135, 26, 55, 62), (138, 16, 56, 62),
+                           (142, 12, 56, 62), (180, 12, 55, 60), (113, 8, 56, 62)]),     # day
+    ("coldfog_marches_i", [(140, 48, 59, 65), (135, 30, 56, 62), (138, 14, 56, 62),
+                           (116, 8, 58, 63)]),                             # gold, day
+    ("coldfog_marches_ii", [(138, 26, 48, 50), (135, 22, 48, 50), (142, 22, 48, 50),
+                            (113, 14, 49, 50), (180, 16, 48, 50)]),
+    ("coldfog_marches_ii", [(140, 24, 60, 65), (135, 24, 57, 64), (138, 18, 57, 63),
+                            (142, 16, 58, 64), (113, 10, 57, 63), (180, 8, 57, 62)]),    # day
+]
+_SW_SLUG = {c["dex_id"]: re.sub(r"[^a-z0-9]+", "_", c["name"].lower()).strip("_")
+            for c in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..",
+                                                 "docs", "mechanics", "concepts", "selected.json")))
+            if c.get("dex_id")}
+for _area, _tab in STILLWATER_TABLES:
+    for (_k, _w, _lo, _hi) in _tab:
+        if _k not in _SW_SLUG:
+            continue
+        _row = {"area": _area, "terrain": "tall_grass", "rarity": _mire_rarity(_w),
+                "min": _lo, "max": _hi}
+        _have = EXTRA_ENCOUNTERS.setdefault(_SW_SLUG[_k], [])
+        if _row not in _have:          # a bed that keeps its night table by day
+            _have.append(_row)
+# Glowmoss Deep's DRAINED chamber (build_glowmoss_deep.py `drained_woken`, cave,
+# flag:met_hollowing): the young Hollowing-touched moths drift in to the relit
+# null-lantern, under their kindling levels (Mothdim 20, Flutterwane 22). Their
+# only wild bed. MIRROR of the builder's table (the map is the truth).
+for _slug_, _rar_, _lo_, _hi_ in [("mothdim", "uncommon", 18, 19), ("flutterwane", "uncommon", 20, 21)]:
+    EXTRA_ENCOUNTERS.setdefault(_slug_, []).append({
+        "area": "glowmoss_deep", "terrain": "cave", "rarity": _rar_, "min": _lo_, "max": _hi_})
+CURATED_AREAS |= {"stillwater", "stillwater_quiet_hall", "stillwater_shutter",
+                  "stillwater_lampmaker", "stillwater_home_a", "stillwater_home_b"}
 
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though
 # tier/rarity alone wouldn't mark them scripted. #148 Lampling is C1
@@ -1284,6 +1602,177 @@ CANON = {
             "silhouette": "A vast, ancient, low-slung beast half-made of the mountain: a broad tortoise-like body under a humped shell of dark basalt strata, heavy legs ending in root-like claws that spread into the rock. Deep cracks run across the shell and shoulders, each glowing a slow molten amber from within; at the crown of the shell a star-shaped core shows through the stone like a banked coal. A small heavy head with eyes like embers in a kiln-mouth. At 64px it reads as a glowing, cracked boulder that is breathing.",
             "palette": "Basalt charcoal and ink (#1a1430) stone with cool grey strata bands; glowing seams of ember amber (#ff8a3d) deepening to red at their edges; the star-core a pale gold-white, the brightest pixel; ash-grey dust on the root-claws.",
             "direction": "Ancient, patient, rooted — the oldest thing in the world, asleep, not angry. Its weight should be felt: grounded, enormous, slow. The glowing cracks are breath, not wounds; the star inside is still warm.",
+        },
+    },
+    # #135 Liminalux (2026-10, with the Farlamp kin): its generated spread sat on
+    # the D-tier outlier line (~82-84% vs the ~84.7% gate across seeds) and the
+    # six appended kin reshuffled the sim's pairings enough to tip it over at the
+    # CI seed. spa 112->100 (BST 498->486, inside the D band) clears it with margin.
+    "liminalux": {
+        "stats": {"hp": 99, "atk": 42, "def": 70, "spa": 100, "spd": 90, "spe": 85},
+    },
+    # ---- Lane B: the Farlamp Isles kin (#172-177) — docs/world/walkthrough/
+    # 10-the-farlamp-isles.md §4. Post-game, met at lv 58+, so every kit is
+    # pinned to climb past the generator's B-tier stop at lv 24 (a wild
+    # Fathomote at 60 must not carry a lv-13 kit). Stats are NOT pinned
+    # (make_stats on role/tier) unless the sim says otherwise. No signature
+    # moves: the Wild Ways legendary pattern (#165-166) uses the shared pool.
+    "fathomote": {
+        "entry": "A lantern-fish fry no longer than a hand, with a little glowing lure on a stalk over its nose. Shoals of them drift under the Farlamp Isles at night like spilled stars, and the old keepers set small lamps by the water so the fry have something to swim towards.",
+        "category": "Lantern-Fry Kin",
+        # pinned (sim): the generated 350 spread ran ~41% vs a ~31% B mean and
+        # pushed the B tier's floor kin over the gate; trimmed to 330
+        "stats": {"hp": 48, "atk": 30, "def": 42, "spa": 80, "spd": 50, "spe": 80},
+        # kindles at lv 40; met at 58+ knowing tide_pulse/focus_mind/light_pulse/swift_step
+        "levelup": [(1, "quick_jab"), (1, "mist_spray"), (6, "spark_mote"), (10, "drench_song"),
+                    (16, "tide_pulse"), (22, "focus_mind"), (28, "light_pulse"), (34, "swift_step")],
+        "art": {
+            "silhouette": "A tiny round-bodied lantern-fish fry seen side-on, swimming upright: a big head with huge round dark eyes, a small smiling underbite, stubby frilled pectoral fins and a short fanned tail. A thin curved stalk rises from its brow and ends in a round glowing lure-bulb held out in front of its face. At 64px it reads as a chubby baby fish carrying its own little lamp.",
+            "palette": "Deep sea-blue body (#13205a) with a paler water-blue (#4fb4ff) belly and fin-frills; tiny diamond-cyan (#9fe7ff) freckle-spots along the flank; the lure-bulb a warm bone-gold (#f5f0e1) glow, the brightest pixel; soft ink (#1a1430) outlines.",
+            "direction": "Wide-eyed, curious and brave in a small way: a baby that swims out into the dark because its own light says it can. Cute and round, never toothy. Must read as the same line as Fathomere: same lure-stalk, same blue, same spot row.",
+        },
+    },
+    "fathomere": {
+        "entry": "A grown lantern-fish whose lure lights a whole fathom of sea. Fishers lost in the Fogwall used to follow a Fathomere's glow down the buoy lanes, and Driftholm says it still swims the old route home every night, in case anyone is out there.",
+        "category": "Lantern-Fish Kin",
+        # met at 58+ knowing deepsurge/lightspire/mist_screen/maelstrom
+        "levelup": [(1, "quick_jab"), (1, "mist_spray"), (6, "spark_mote"), (10, "drench_song"),
+                    (16, "tide_pulse"), (22, "focus_mind"), (28, "light_pulse"), (34, "swift_step"),
+                    (40, "deepsurge"), (46, "lightspire"), (52, "mist_screen"), (58, "maelstrom")],
+        "art": {
+            "silhouette": "A long, graceful deep-sea lantern-fish seen side-on: a sleek tapering body with a row of small glowing spots along each flank, broad ribbon-like fins that trail like a veil, large calm eyes and a gentle closed mouth. A tall arching lure-stalk curves forward over its head and ends in a bright glass-like lamp-bulb. At 64px it reads as an elegant fish carrying a lantern before it.",
+            "palette": "Midnight body (#13205a deepening to #0b1026 along the back) with a water-blue (#4fb4ff) belly and translucent sea-blue fin-veils; the flank spot-row in diamond-cyan (#9fe7ff); the lure-bulb a warm bone-gold (#f5f0e1) lamp with a soft amber core, the brightest pixel; ink (#1a1430) outlines.",
+            "direction": "Calm, steady, a guide: the fry grown up into the light it once swam towards. Elegant and deep, never menacing, no teeth showing. Same lure-stalk, same spot row and same blues as Fathomote, now long and graceful.",
+        },
+    },
+    "hermiwick": {
+        "entry": "A small hermit crab that has made its home in the broken glass of a drowned lamp. It polishes the cracked panes every morning and backs into them at the first sign of trouble. Driftholm children say every Hermiwick is looking for the lamp its glass came from.",
+        "category": "Lamp-Glass Crab Kin",
+        # pinned (sim): the generated 350 wall ran ~36% vs a ~31% B mean; 336
+        "stats": {"hp": 64, "atk": 47, "def": 88, "spa": 25, "spd": 56, "spe": 56},
+        # kindles at lv 42; met at 58+ knowing guard_up/rock_hurl/wave_crash/bulwark
+        "levelup": [(1, "quick_jab"), (1, "pebble_toss"), (6, "brine_flick"), (10, "stone_wall"),
+                    (14, "gritfist"), (19, "tidewhip"), (24, "guard_up"), (29, "rock_hurl"),
+                    (35, "wave_crash"), (40, "bulwark")],
+        "art": {
+            "silhouette": "A small sturdy hermit crab, three-quarter view: a pebble-grey plated body, two mismatched claws (one big, one small), stalked eyes and short jointed legs. On its back, instead of a shell, it wears a little brass lantern housing with cracked, chipped glass panes and a dark unlit wick inside. At 64px it reads as a crab carrying a broken lantern as its home.",
+            "palette": "Pebble-grey and slate shell-plates with sandy-cream undersides; coral-orange claw tips; the lantern housing in tarnished brass with pale sea-glass panes (#9fe7ff tint) showing white crack-lines; the wick dark and unlit; ink (#1a1430) outlines.",
+            "direction": "Shy, stubborn and house-proud: a tiny keeper of a lamp that doesn't work yet. Plucky, never pitiful. The broken lantern-home is the whole design; Beaconclaw is the same crab with the same brass lantern made whole and lit.",
+        },
+    },
+    "beaconclaw": {
+        "entry": "When a Hermiwick finally finds a whole glass, it kindles into a Beaconclaw and the lamp on its back lights for the first time. It stands on the reef at the tide's edge and turns slowly all night, sweeping its beam across the water like a lighthouse with legs.",
+        "category": "Lighthouse Crab Kin",
+        # pinned (sim): the generated wall spread (atk 70) ran ~55% vs a ~66%
+        # D mean; same 498, re-cut so the claw actually hits
+        "stats": {"hp": 95, "atk": 95, "def": 120, "spa": 40, "spd": 80, "spe": 68},
+        # Stone/Tide -> Stone/Light (the Exciter precedent). Met at 58+ knowing
+        # radiant_strike/boulder_smash/dazzle_flash/prism_beam
+        "ability": "lumenward", "hidden_ability": "stonehide",
+        "levelup": [(1, "quick_jab"), (1, "pebble_toss"), (6, "brine_flick"), (10, "stone_wall"),
+                    (14, "gritfist"), (19, "tidewhip"), (24, "guard_up"), (29, "rock_hurl"),
+                    (35, "wave_crash"), (40, "bulwark"), (42, "radiant_strike"),
+                    (47, "boulder_smash"), (53, "dazzle_flash"), (59, "prism_beam")],
+        "art": {
+            "silhouette": "A big armoured crab built like a small lighthouse, three-quarter view: a broad stone-plated body on thick jointed legs, one huge rounded claw raised like a shield, stalked eyes. On its back stands a tall, whole lantern tower: a brass lantern room with clean glass panes and a bright lamp shining inside, under a little conical roof, with soft beams of light fanning out. At 64px it reads as a crab wearing a lit lighthouse.",
+            "palette": "Pebble-grey and slate shell-plates with sandy-cream undersides and coral-orange claw tips (Hermiwick's colours, bigger and bolder); the lantern room in polished brass with clear glass; the lamp a warm bone-gold (#f5f0e1) with a fire-amber (#ff8a3d) core, the brightest pixel; a white-and-red banded stripe on the tower base; ink (#1a1430) outlines.",
+            "direction": "Proud, protective and patient: the little crab grown into a lighthouse. Solid and kind, a guardian of the reef. Same crab, same brass lantern as Hermiwick, now whole and lit.",
+        },
+    },
+    "fogwisp": {
+        "entry": "A moth made of sea-fog, drawn to lamps it can never reach. Where Fogwisps settle the air turns cold and grey, and lights seem farther away than they are. Driftholm keepers don't chase them off: a Fogwisp is only lonely, they say, and lonely things go where the light is.",
+        "category": "Sea-Fog Moth Kin",
+        # a disruptor: chill + fog + a dark/frost special ladder; met at 60+
+        # knowing chill_mist/whiteout/mist_screen/gloomswell
+        "levelup": [(1, "quick_jab"), (1, "snow_veil"), (7, "gloom_spit"), (12, "blight_touch"),
+                    (18, "glacier_beam"), (24, "hollow_pulse"), (30, "focus_mind"),
+                    (36, "chill_mist"), (42, "whiteout"), (48, "mist_screen"), (54, "gloomswell")],
+        "art": {
+            "silhouette": "A soft, round-bodied moth that seems made of fog, front view with wings spread: a fluffy pale body, big feathery antennae, two pairs of wide frayed wings whose edges dissolve into curling wisps of mist, and two large dark gentle eyes. Little curls of fog trail off the wingtips. At 64px it reads as a fluffy misty moth drifting in the dark.",
+            "palette": "Fog-white and pale grey body and wings shading to a cool grey-violet; a faint frost-blue sheen (#9fe7ff) along the wing veins; dusky violet-grey eye-spots on the hind wings; the eyes deep night (#0b1026) with one bone (#f5f0e1) highlight each; ink (#1a1430) outlines kept soft.",
+            "direction": "Eerie-cosy: quiet, wistful, soft as breath on a window. A little sad, never sinister, no fangs, no skulls.",
+        },
+    },
+    "farlume": {
+        # Tide-F default is phoenix: wrong for the keeper of a drowned light.
+        # lumenward = the lamp it kept; tidecaller = the sea it waited in.
+        "ability": "lumenward", "hidden_ability": "tidecaller",
+        "entry": "The Farlamp's own keeper-kin, the light that lived inside Vesperholm's outermost sea-lamp. The night the deep came up it went down with the lamp and kept it burning on the sea floor as long as it could, then waited in the drowned tower for someone to bring the flame back.",
+        "category": "Drowned Lamp Kin",
+        # as met at lv 68 (set-piece): lightspire / mend / maelstrom / mist_screen
+        "levelup": [(1, "mist_spray"), (9, "spark_mote"), (16, "drench_song"),
+                    (24, "tide_pulse"), (32, "light_pulse"), (40, "deepsurge"),
+                    (48, "focus_mind"), (56, "lightspire"), (60, "mend"),
+                    (64, "maelstrom"), (68, "mist_screen"), (74, "dawnburst")],
+        "art": {
+            "silhouette": "A great, serene sea-serpent coiled upright around itself like the spiral stair of a lighthouse: a long body of deep sea-blue scales banded with pale stone-white rings, broad translucent fin-sails along its back, and a noble head crowned with a lantern room of brass and glass in which a steady flame burns. Light spills from the lantern down its coils. At 64px it reads as a living lighthouse coiled out of the sea.",
+            "palette": "Deep sea-blue (#13205a) scales with water-blue (#4fb4ff) highlights and bone-white (#f5f0e1) stone bands; translucent diamond-cyan (#9fe7ff) fin-sails; the lantern crown in warm brass; the flame a white-gold, the brightest pixel; ink (#1a1430) outlines.",
+            "direction": "Ancient, faithful and grieving, then hopeful: a keeper that never stopped tending its lamp. Majestic and gentle, calm eyes, the drowned light's guardian, never a monster.",
+        },
+    },
+    # #147 Skyweavelet / #148 Lampling (2026-10, with the Hollowing kin): both
+    # are pre-existing Light edge cases (~-16/-17pp from their tier means) and
+    # three new Dark kin — Dark hits Light x2 — tipped them over the 18pp gate
+    # at seeds 4/6/7. Minimal in-band trims, the Liminalux precedent:
+    # Skyweavelet 350->368 (B band 320-375, same speedster shape), Lampling
+    # same 418 with 8 spd moved into spa so its spark actually lands.
+    "skyweavelet": {
+        "stats": {"hp": 58, "atk": 50, "def": 55, "spa": 58, "spd": 55, "spe": 92},
+    },
+    "lampling": {
+        "stats": {"hp": 84, "atk": 30, "def": 71, "spa": 67, "spd": 95, "spe": 71},
+    },
+    # ---- Lane N4: the Hollowing family (#178-180) — docs/world/walkthrough/
+    # 11-the-hollowing-country.md §F. Late and optional: met wild at lv 46-56
+    # in Stillwater, the Mourning Fields and Drownlight, so every kit is
+    # pinned to climb past the generator's early stop (a wild lv-50 kin must
+    # not carry a lv-20 kit). Stats trust make_stats unless the sim objects.
+    # No signature moves (the shared pool, the Wild Ways pattern).
+    "dousecap": {
+        # a snuffer eats flame: Ember moves heal it; nullheart = nothing wakes it
+        "ability": "cinderveil", "hidden_ability": "nullheart",
+        "entry": "A little brass snuffer-cap of a kin that hops from wick to wick at bedtime and sits on each flame until it goes out. In Stillwater a Dousecap on the windowsill means the house has gone to sleep, and nobody minds the dark there.",
+        "category": "Snuffer-Cap Kin",
+        # kindles at lv 44; met at 46+ knowing hone/null_claw/flame_lash/blight_touch
+        "levelup": [(1, "quick_jab"), (1, "shade_nip"), (6, "ember_jab"), (10, "scorch_veil"),
+                    (15, "duskmaw"), (20, "cinderclaw"), (26, "hone"), (32, "null_claw"),
+                    (38, "flame_lash"), (43, "blight_touch")],
+        "art": {
+            "silhouette": "A small round kin shaped like a candle-snuffer's bell cap, front three-quarter view: a tarnished-brass cone that is body and hat in one, its tip curling up into a tiny wisp of grey smoke, a soft charcoal-grey face peeping out from under the wide brim with two big sleepy half-closed eyes and a small content smile, and two stubby charcoal feet. A faint warm ember-glow shows under the rim where it last sat on a flame. At 64px it reads as a tiny sleepy brass cap on little legs.",
+            "palette": "Tarnished brass cone (warm ochre-gold with darker umber shading and one pale highlight streak); charcoal-grey face and feet (#2a2633); the eyes deep night (#0b1026) with one bone (#f5f0e1) highlight each; a soft fire-amber (#ff8a3d) ember glow under the rim, the brightest pixel; the smoke-curl pale grey; ink (#1a1430) outlines.",
+            "direction": "Drowsy, dutiful and sweet: a tidy little kin that puts the lights to bed. Cosy-melancholy, round and huggable, never spooky. Must read as the same line as Shutterwick: same brass snuffer-cap, same charcoal, same sleepy eyes.",
+        },
+    },
+    "shutterwick": {
+        "ability": "mirrorlight", "hidden_ability": "cinderveil",
+        "entry": "When a Dousecap has put out a thousand flames it kindles into a Shutterwick, whose own lamp burns behind closed shutters in its chest. It keeps that light hidden and warm for the Hollowing, and opens a single slat only for someone lost in the dark.",
+        "category": "Shuttered Lantern Kin",
+        # kindled at 44; met at 50-56 knowing blight_touch/radiant_strike/
+        # shadow_rend/bulwark (the shutters), later prism_beam
+        "levelup": [(1, "quick_jab"), (1, "shade_nip"), (6, "ember_jab"), (10, "scorch_veil"),
+                    (15, "duskmaw"), (20, "cinderclaw"), (26, "hone"), (32, "null_claw"),
+                    (38, "flame_lash"), (43, "blight_touch"), (44, "radiant_strike"),
+                    (49, "shadow_rend"), (54, "bulwark"), (60, "prism_beam")],
+        "art": {
+            "silhouette": "A tall, gentle lantern-keeper kin, front three-quarter view, with a broad bell-shaped silhouette that widens to the ground: a body of soft charcoal-grey cloth like a long quilted cloak, and set into its chest a BIG square brass lantern whose four little wooden shutters are closed, with bright lines of warm gold light leaking out between the slats and spilling down the cloak. On its head sits a wide brass snuffer-cap with a little ring-handle on top. Under the brim its round charcoal face is clearly visible, the same face as Dousecap: large calm half-lidded eyes with a bone-white highlight and a small, kind, sad smile. Two long sleeves fold in front, cupping the lantern. At 64px it reads as a gentle keeper carrying a shuttered lamp inside itself.",
+            "palette": "Charcoal-grey cloak (#2a2633 with slate-violet folds); tarnished brass snuffer-cap and lantern frame (warm ochre-gold, umber shading); dark wood shutters; the light leaking through the slats a warm bone-gold (#f5f0e1) with a fire-amber (#ff8a3d) core, the brightest pixels; the eyes pale moon-white; ink (#1a1430) outlines.",
+            "direction": "Quiet, protective and sad-eyed: it believes the light is safest hidden. Tall and dignified but kind and round-faced, a keeper not a phantom: a visible soft face with real eyes, NOT a dark void with glowing dot eyes, never menacing, no teeth. Same brass snuffer-cap and charcoal as Dousecap, grown up; the leaking lantern-light is its signature.",
+        },
+    },
+    "lullwing": {
+        # dream-dust dims the foe's aim; nightsight = a night-flyer
+        "ability": "mistveil", "hidden_ability": "nightsight",
+        "entry": "A grey moth that drifts over sleeping kin and fans their dreams with dusty wings, so they sleep on and on. The Hollowing call it a mercy. In Stillwater the Lullwings settle on every hearth-warm heap of dozing kin and hum to them until a morning that never comes.",
+        "category": "Dream-Moth Kin",
+        # met at 46-51 knowing moonbeam/mend/lull/gloomswell; 52+ trades
+        # moonbeam for moonflood
+        "levelup": [(1, "quick_jab"), (1, "gloom_spit"), (6, "dream_wisp"), (12, "veil_up"),
+                    (18, "hollow_pulse"), (24, "moonbeam"), (36, "mend"), (41, "lull"),
+                    (46, "gloomswell"), (52, "moonflood")],
+        "art": {
+            "silhouette": "A soft, plump moth seen from the front with its wings spread: a round furry body, feathery drooping antennae, big heavy-lidded sleepy eyes, tiny tucked legs, and broad rounded wings patterned with pale crescent-moon eye-spots. A gentle haze of silver dream-dust sifts down from the wing edges in little sparkles. At 64px it reads as a sleepy grey moth scattering moon-dust.",
+            "palette": "Dove-grey furry body and wings shading to dusk-lilac (#6b5a8e) at the wing edges; pale moon-silver (#d8d4ec) crescent eye-spots; the dream-dust silver-white specks; the eyes deep night (#0b1026), half-lidded, one bone (#f5f0e1) highlight each; ink (#1a1430) outlines kept soft.",
+            "direction": "Hushing, tender and a little lonely: it only wants everyone to rest. Soft, round and drowsy, a lullaby with wings, never sinister, no skulls, no fangs. Distinct from the sea-fog moth (Fogwisp): warmer grey-lilac, rounder, moon-marked, sleepy.",
         },
     },
 }

@@ -640,7 +640,9 @@ rect — ONE cap of 40 alive), `mist` (`color`, `alpha` ≤.6, `speed`), `tint`
 (`color`, `alpha`), `starfall` (default ON outdoors / OFF in interiors + caves;
 `{min_s,max_s}`, min clamped to 20 s — cinder blue-grey before `flag:dawn`, gold
 after), `birds` (`kind` gull/bird, perched `flocks` that lift within 3 tiles,
-`flyover`), `light_sources_extra`, `sound_bed` (a bare sfx stem; silent until it's
+`flyover`), `light_sources_extra`, `beams` (a lighthouse sweep: an additive wedge `from` a
+tile to a far end swinging between `a` and `b` over `period_s`, at rest mid-sweep with
+Ambient motion off — the relit Drownlight), `sound_bed` (a bare sfx stem; silent until it's
 rendered), `footprints` (`auto`/`all`/`none` — `all` for a snowfield whose base tiles
 carry no terrain tag) and `bob_gids` (tile gids lifted off the layer and bobbed —
 buoys). **Ambient kin** are `NpcPlacement.ambient: true` (+ `wander_radius`, default

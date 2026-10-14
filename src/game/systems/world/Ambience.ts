@@ -69,9 +69,25 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   solarium_brazier_lit: { hx: 16, hy: 12, radius: 18, color: 0xffd76b },
   pale_vault_brazier: { hx: 16, hy: 10, radius: 18, color: 0x9fe7ff },
   saltreach_reed_lantern_lit: { hx: 8, hy: 6, radius: 12, color: 0xffd089 },
+  mournfields_field_shrine_lit: { hx: 24, hy: 26, radius: 18, color: 0xffc46b }, // the five field-candles, relit at dawn
   nightreach_watch_lamp_lit: { hx: 16, hy: 8, radius: 17, color: 0xdfe6ff },
   nightreach_vigil_lamp: { hx: 8, hy: 6, radius: 12, color: 0xdfe6ff },
   tideglass_wrecklamp_lit: { hx: 8, hy: 8, radius: 12, color: 0x9fe7ff },
+  // north — the Ashfall Shelf (10 Part II)
+  ashfall_brazier: { hx: 16, hy: 12, radius: 18, color: 0xff9a4a },
+  ashfall_pane_lamp_lit: { hx: 8, hy: 8, radius: 15, color: 0xffd089 },
+  ashfall_kiln_furnace: { hx: 32, hy: 28, radius: 30, color: 0xff8a3a }, // lit once the Last Pane is taken
+  // outer — the Undertide + the Drowned Lamp (10 Part I)
+  undertide_tidelamp_lit: { hx: 8, hy: 8, radius: 14, color: 0xffd890 },
+  undertide_lamp_lit: { hx: 32, hy: 34, radius: 40, color: 0xffd890 },
+  undertide_camp: { hx: 23, hy: 7, radius: 12, color: 0xffb060 },
+  undertide_niche: { hx: 24, hy: 14, radius: 10, color: 0xffc46b },
+  farlamp_buoy_lit: { hx: 8, hy: 6, radius: 12, color: 0xffd890 },
+  farlamp_skerry_light: { hx: 24, hy: 10, radius: 22, color: 0xffd890 },
+  // The Drownlight relit (11 Part B): the lamp room, the great lamp, the light-wells.
+  drownlight_lighthouse_lit: { hx: 32, hy: 15, radius: 30, color: 0xffe2a0 },
+  drownlight_great_lamp_lit: { hx: 32, hy: 22, radius: 34, color: 0xffe2a0 },
+  drownlight_well_lit: { hx: 8, hy: 8, radius: 10, color: 0xffd890 },
   // east
   cinderhead_lamp_hooks: { hx: 40, hy: 24, radius: 22, color: 0xffb86b }, // Harl's seven lit hooks
   // south
@@ -92,6 +108,9 @@ export const LIGHT_SOURCES: Record<string, { hx: number; hy: number; radius: num
   // lit sprites that had no pool (review 2026-10): the Pale Vault camp + brackets,
   // the Tideglass lenses, and the Old Light's lamp room
   pale_vault_camp_lit: { hx: 24, hy: 15, radius: 20, color: 0xffb05a },
+  // the Penumbra Underways (11 Part D): the watch's braziers + unhooded lamps, lit at dawn
+  underways_brazier_lit: { hx: 8, hy: 5, radius: 14, color: 0xff9a4a },
+  underways_watch_lamp_lit: { hx: 8, hy: 12, radius: 13, color: 0xffd089 },
   pale_vault_bracket_lit: { hx: 6, hy: 6, radius: 12, color: 0xcaf0ff },
   tideglass_lens_lit: { hx: 16, hy: 8, radius: 14, color: 0x9fe7ff },
   pearlmoor_oldlight_lit: { hx: 35, hy: 29, radius: 26, color: 0xfff096 },
@@ -134,6 +153,7 @@ const DEPTH = {
   print: 6, // above deco (5), below objects (9) and actors (10)
   pool: 8,
   doorway: 9.5,
+  beam: 22.6, // a lighthouse's sweep: over the roof band, under particles/mist/tint
   halo: 21.5, // over the object overhang band (21)
   smoke: 22,
   particles: 23,
@@ -556,6 +576,11 @@ export class Ambience {
     seed: number;
   }[] = [];
   private readonly chimneys: { x: number; y: number; obj: MapObject; nextAt: number }[] = [];
+  private readonly beams: {
+    gfx: Phaser.GameObjects.Graphics;
+    fx: number; fy: number; ax: number; ay: number; bx: number; by: number;
+    period: number; width: number; color: number; seed: number;
+  }[] = [];
   private readonly prints: Phaser.GameObjects.Graphics[] = [];
   private readonly transients = new Set<Phaser.GameObjects.GameObject>();
 
@@ -585,11 +610,13 @@ export class Ambience {
     private readonly map: RuntimeMap,
     private readonly host: AmbienceHost,
   ) {
-    this.cfg = map.def.ambience ?? {};
+    const base = map.def.ambience ?? {};
+    this.cfg = base.when?.find((w) => host.flag(w.flag))?.ambience ?? base;
     this.outdoor = OUTDOOR_KINDS.has(map.def.kind);
     const now = scene.time.now;
 
     this.buildLights();
+    this.buildBeams();
     this.buildChimneys(now);
 
     // Particles
@@ -664,6 +691,49 @@ export class Ambience {
       );
     }
     this.refreshLights();
+  }
+
+  /** `beams`: one additive Graphics per beam, redrawn each frame in update(). */
+  private buildBeams(): void {
+    const c = (t: TileCoord) => ({ x: t.tx * TILE_SIZE + TILE_SIZE / 2, y: t.ty * TILE_SIZE + TILE_SIZE / 2 });
+    for (const bm of this.cfg.beams ?? []) {
+      const f = c(bm.from);
+      const a = c(bm.a);
+      const b = c(bm.b);
+      this.beams.push({
+        gfx: this.scene.add.graphics().setDepth(DEPTH.beam).setBlendMode(Phaser.BlendModes.ADD),
+        fx: f.x, fy: f.y, ax: a.x, ay: a.y, bx: b.x, by: b.y,
+        period: Math.max(2, bm.period_s ?? 9) * 1000,
+        width: (bm.width ?? 3) * TILE_SIZE,
+        color: bm.color ? Phaser.Display.Color.HexStringToColor(bm.color).color : 0xffe2a0,
+        seed: Math.random() * 1000,
+      });
+    }
+  }
+
+  /** Redraw a beam: the wedge from the lamp to where the sweep has got to, + its pool. */
+  private drawBeam(bm: Ambience['beams'][number], time: number, motion: boolean): void {
+    const k = motion ? 0.5 - 0.5 * Math.cos(((time + bm.seed) / bm.period) * Math.PI * 2) : 0.5;
+    const ex = bm.ax + (bm.bx - bm.ax) * k;
+    const ey = bm.ay + (bm.by - bm.ay) * k;
+    const dx = ex - bm.fx;
+    const dy = ey - bm.fy;
+    const len = Math.max(1, Math.hypot(dx, dy));
+    const nx = -dy / len;
+    const ny = dx / len;
+    const g = bm.gfx;
+    g.clear();
+    // three nested wedges (wide + faint -> narrow + bright): a stepped, pixel-honest glow
+    for (const [w, al] of [[1, 0.07], [0.62, 0.08], [0.3, 0.1]] as const) {
+      const hw = (bm.width / 2) * w;
+      g.fillStyle(bm.color, al);
+      g.fillTriangle(bm.fx + nx * 1.5 * w, bm.fy + ny * 1.5 * w, bm.fx - nx * 1.5 * w, bm.fy - ny * 1.5 * w, ex - nx * hw, ey - ny * hw);
+      g.fillTriangle(bm.fx + nx * 1.5 * w, bm.fy + ny * 1.5 * w, ex - nx * hw, ey - ny * hw, ex + nx * hw, ey + ny * hw);
+    }
+    for (const r of [1, 0.66, 0.36]) {
+      g.fillStyle(bm.color, 0.09);
+      g.fillEllipse(ex, ey, bm.width * 1.2 * r, bm.width * 0.6 * r);
+    }
   }
 
   /** A stepped, additive pool of light on the ground (3 rings → a pixel glow). */
@@ -1334,6 +1404,8 @@ export class Ambience {
       this.mist.tilePositionY = (cam.scrollY * 0.6) / scale;
     }
 
+    for (const bm of this.beams) this.drawBeam(bm, time, motion);
+
     for (const l of this.lights) {
       const a = motion
         ? 0.86 + 0.08 * Math.sin(time / 230 + l.seed) + 0.06 * Math.sin(time / 97 + l.seed * 3)
@@ -1487,6 +1559,7 @@ export class Ambience {
       l.pool.destroy();
       l.halo?.destroy();
     }
+    for (const bm of this.beams) bm.gfx.destroy();
     for (const p of this.prints) p.destroy();
     for (const o of this.transients) o.destroy();
     this.transients.clear();

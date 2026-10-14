@@ -133,6 +133,13 @@
       "rarity": "common",
       "min": 58,
       "max": 64
+    },
+    {
+      "area": "farlamp_sound",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 62,
+      "max": 63
     }
   ],
   "scripted": false,

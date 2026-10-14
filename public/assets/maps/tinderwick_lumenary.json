@@ -623,6 +623,18 @@
       "movement": "static",
       "dialogue_ref": "script.brisa_after_staged",
       "requires_flag": "gleam:ember"
+    },
+    {
+      "id": "hall_sparrer",
+      "at": {
+        "tx": 3,
+        "ty": 8
+      },
+      "facing": "right",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "requires_flag": "gleam:ember",
+      "dialogue_ref": "script.spar_tinderwick"
     }
   ],
   "gates": [],

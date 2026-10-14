@@ -670,6 +670,18 @@
       "movement": "static",
       "dialogue_ref": "npc.sable_after",
       "requires_flag": "gleam:verdant"
+    },
+    {
+      "id": "hall_sparrer",
+      "at": {
+        "tx": 13,
+        "ty": 7
+      },
+      "facing": "left",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "requires_flag": "gleam:verdant",
+      "dialogue_ref": "script.spar_lowleaf"
     }
   ],
   "gates": [],

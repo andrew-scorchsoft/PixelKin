@@ -2258,6 +2258,83 @@
       "requires_flag": "flag:dawn"
     },
     {
+      "id": "wc_well",
+      "sprite": "tinderwick_well",
+      "at": {
+        "tx": 17,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "lt_ridge_w",
+      "sprite": "lowtinder_roof_ridge",
+      "at": {
+        "tx": 16,
+        "ty": 22
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "lt_belltower",
+      "sprite": "lowtinder_belltower",
+      "at": {
+        "tx": 19,
+        "ty": 20
+      },
+      "w": 2,
+      "h": 4,
+      "overhang": 3
+    },
+    {
+      "id": "lt_ridge_e",
+      "sprite": "lowtinder_roof_ridge_b",
+      "at": {
+        "tx": 5,
+        "ty": 22
+      },
+      "w": 4,
+      "h": 2
+    },
+    {
+      "id": "lt_ridge_m",
+      "sprite": "lowtinder_roof_ridge_b",
+      "at": {
+        "tx": 11,
+        "ty": 22
+      },
+      "w": 4,
+      "h": 2
+    },
+    {
+      "id": "bell_frame",
+      "sprite": "lowtinder_bell_frame",
+      "at": {
+        "tx": 7,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "hidden_when_flag": "flag:q_lowtinder_bell_home"
+    },
+    {
+      "id": "bell_hung",
+      "sprite": "lowtinder_bell_hung",
+      "at": {
+        "tx": 7,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 2,
+      "requires_flag": "flag:q_lowtinder_bell_home"
+    },
+    {
       "id": "vigil_seam_hearthfall",
       "sprite": "markers_vigil_seam",
       "at": {
@@ -2269,18 +2346,6 @@
       "solid": false,
       "bob": false,
       "requires_flag": "flag:vigil_reading_1"
-    },
-    {
-      "id": "wc_well",
-      "sprite": "tinderwick_well",
-      "at": {
-        "tx": 17,
-        "ty": 10
-      },
-      "w": 2,
-      "h": 3,
-      "overhang": 1,
-      "walk_under": true
     },
     {
       "id": "wc_notice",
@@ -2481,6 +2546,111 @@
       "transition": "fade"
     },
     {
+      "id": "to_bay_21",
+      "at": {
+        "tx": 21,
+        "ty": 23
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick_bay",
+      "to": {
+        "tx": 21,
+        "ty": 0
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "to_bay_22",
+      "at": {
+        "tx": 22,
+        "ty": 23
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick_bay",
+      "to": {
+        "tx": 22,
+        "ty": 0
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "to_bay_23",
+      "at": {
+        "tx": 23,
+        "ty": 23
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick_bay",
+      "to": {
+        "tx": 23,
+        "ty": 0
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "to_bay_24",
+      "at": {
+        "tx": 24,
+        "ty": 23
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick_bay",
+      "to": {
+        "tx": 24,
+        "ty": 0
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "to_bay_25",
+      "at": {
+        "tx": 25,
+        "ty": 23
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick_bay",
+      "to": {
+        "tx": 25,
+        "ty": 0
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "to_bay_26",
+      "at": {
+        "tx": 26,
+        "ty": 23
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick_bay",
+      "to": {
+        "tx": 26,
+        "ty": 0
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "to_bay_27",
+      "at": {
+        "tx": 27,
+        "ty": 23
+      },
+      "trigger": "step_on",
+      "to_map": "tinderwick_bay",
+      "to": {
+        "tx": 27,
+        "ty": 0
+      },
+      "facing": "down",
+      "transition": "fade"
+    },
+    {
       "id": "to_orchard",
       "at": {
         "tx": 0,
@@ -2582,6 +2752,26 @@
       },
       "activation": "interact",
       "ref": "sign.beacon_door"
+    },
+    {
+      "id": "bell_frame_read",
+      "kind": "script",
+      "at": {
+        "tx": 7,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "script.tinderwick_bell"
+    },
+    {
+      "id": "old_well",
+      "kind": "script",
+      "at": {
+        "tx": 18,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "script.tinderwick_well"
     }
   ],
   "encounters": [
@@ -2812,6 +3002,30 @@
       "sprite": "orchard_farmer",
       "movement": "static",
       "dialogue_ref": "script.peril_tinderwick_neighbour"
+    },
+    {
+      "id": "lt_old_fisher",
+      "at": {
+        "tx": 16,
+        "ty": 21
+      },
+      "facing": "right",
+      "sprite": "fisher_man",
+      "movement": "static",
+      "dialogue_ref": "script.lowtinder_fisher"
+    },
+    {
+      "id": "brisa_bell",
+      "at": {
+        "tx": 9,
+        "ty": 11
+      },
+      "facing": "left",
+      "sprite": "npc_lampwarden",
+      "movement": "static",
+      "dialogue_ref": "script.tinderwick_bell_ceremony",
+      "requires_flag": "flag:q_lowtinder_bell",
+      "hidden_when_flag": "flag:q_lowtinder_bell_home"
     },
     {
       "id": "cache_purse",

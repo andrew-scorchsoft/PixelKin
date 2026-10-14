@@ -1,0 +1,142 @@
+{
+  "name": "mournfields_set",
+  "columns": 6,
+  "tiles": [
+    {
+      "file": "000_stubble_corner_nw.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "001_stubble_edge_n.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "002_stubble_corner_ne.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "003_stubble_edge_w.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "004_stubble_fill.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "fill"
+    },
+    {
+      "file": "005_stubble_edge_e.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "006_stubble_corner_sw.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "007_stubble_edge_s.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "008_stubble_corner_se.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "009_stubble_strip_h.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "010_stubble_strip_v.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "011_stubble_inner_nw.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "012_stubble_inner_ne.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "013_stubble_inner_sw.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "014_stubble_inner_se.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "015_stubble_fill_v1.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "fill"
+    },
+    {
+      "file": "016_stubble_fill_v2.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "fill"
+    },
+    {
+      "file": "017_stubble_fill_v3.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "stubble",
+      "autotile": "fill"
+    },
+    {
+      "file": "018_stubble_drill.png",
+      "role": "ground",
+      "collides": false
+    },
+    {
+      "file": "019_stubble_drill_v1.png",
+      "role": "ground",
+      "collides": false
+    }
+  ]
+}

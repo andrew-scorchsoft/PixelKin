@@ -70,57 +70,7 @@
     "weight_kg": 1.4,
     "habitat": "outer"
   },
-  "encounters": [
-    {
-      "area": "coldfog_marches_i",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 47,
-      "max": 48
-    },
-    {
-      "area": "coldfog_marches_ii",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 49,
-      "max": 50
-    },
-    {
-      "area": "drownlight_beacon",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 48,
-      "max": 50
-    },
-    {
-      "area": "coldfog_marches_i",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 56,
-      "max": 63
-    },
-    {
-      "area": "coldfog_marches_ii",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 57,
-      "max": 64
-    },
-    {
-      "area": "rimeway_descent",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 46,
-      "max": 47
-    },
-    {
-      "area": "rimeway_descent",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 56,
-      "max": 62
-    }
-  ],
+  "encounters": [],
   "scripted": false,
   "art": {
     "silhouette": "Elongated wisp with a clear left/right split: the light half is warm ivory-gold with a faint inner shimmer; the dark half is deep indigo-void with null-mist tendrils; the division is a crackling seam of sparks.",

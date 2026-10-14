@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "EKxdL4n8uLYO2XbSZbnx",
+   "range": {
+    "start_ms": 58500,
+    "end_ms": 78500
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM",
+    "C minor",
+    "deep cave dungeon before the final ascent",
+    "low triangle bass pulsing like a slow heartbeat",
+    "soft muffled kick like footsteps in a tunnel",
+    "lone pulse-wave lead with a faltering melody",
+    "cold string pad",
+    "high glassy bells like starlight falling from far above",
+    "solemn, resolute, hushed, awe",
+    "strong memorable melody",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "EKxdL4n8uLYO2XbSZbnx",
+   "range": {
+    "start_ms": 5333,
+    "end_ms": 15333
+   }
+  }
+ ]
+}

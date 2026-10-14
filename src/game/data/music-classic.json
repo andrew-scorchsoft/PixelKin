@@ -1,6 +1,10 @@
 {
   "_generated": "tools/audio/stitch_intro_loop.py — classic cues with a play-once intro",
   "tracks": {
+    "farlamp-relit": {
+      "loop_start": 17.1429,
+      "duration": 102.8572
+    },
     "trainer-eyes": {
       "loop_start": 1.5789,
       "duration": 14.2105

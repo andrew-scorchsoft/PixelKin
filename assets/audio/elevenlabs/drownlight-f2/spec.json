@@ -1,0 +1,89 @@
+{
+ "id": "drownlight-f2",
+ "kind": "loop",
+ "where": "The Drownlight, floor 2 — the Lens Gallery (a ring of rooms where the shuttered lamp's light leaks down the wells)",
+ "mood": "The Keeper's Hymn, darkened — carried low on a hollow ocarina while glass bells echo it a bar behind, like light leaking down a shaft.",
+ "bpm": 76,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "high",
+  "source": "drownlight"
+ },
+ "_note": "Lane N2, Drownlight family rung 2: the anchor's hymn darkened to D phrygian, an octave lower on a hollow ocarina-like lead, glass bells echoing a bar late (the light-wells). On the anchor's 76 grid. Never name the tune or mention the reference in a brief.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "76 BPM",
+  "D phrygian",
+  "3/4 waltz-time hymn",
+  "a hollow ocarina-like lead carrying the hymn an octave low",
+  "glass bells echoing each phrase one bar later, like light down a shaft",
+  "a low bowed string pedal on D",
+  "a quiet woodblock tick on every other beat",
+  "colder, darker, hushed, stone and salt",
+  "strong singable melody, instantly hummable and pleasant on repeat",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "heavy drums",
+  "electric guitar",
+  "heavy sub bass",
+  "fade out",
+  "ending",
+  "horror",
+  "silence"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a held low string D and one bell note ringing down from far above, the ocarina breathing in}",
+   "styles": [
+    "lone instrument opening"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the tower's hymn on a hollow ocarina, low and darkened, every second step flattened, the glass bells answering each phrase a bar behind}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "echoing bells"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the hymn again, the bell echoes closer, a cello doubling the ocarina underneath}",
+   "styles": [
+    "counter-melody",
+    "colder"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the bells alone tracing the hymn's shape over the string pedal, then the ocarina rejoining}",
+   "styles": [
+    "contrasting section",
+    "bell-led"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the darkened hymn on ocarina with the echoing bells, the last bar leading straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

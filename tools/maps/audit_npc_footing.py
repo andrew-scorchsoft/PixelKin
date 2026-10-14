@@ -49,6 +49,12 @@ ALLOW: dict[tuple[str, str], str] = {
     ("georgina_cottage", "gloampurr_nook"):
         "Georgina's cat curled on her cushion (the `cat_cushion` bed object) — "
         "seated ON furniture by design, talked to from the floor beside it.",
+    # Lane E (walkthrough/10 Part III — the deep backtrack): buoy-caches moored on
+    # DEEP water, every neighbour deep, so only the Farlamp skiff rows up to them.
+    ("gullcry_rock", "cache_gullcry_deep"): "a buoy-cache moored on the deep (skiff only, 10 Part III).",
+    ("pearlmoor_quay", "cache_pearlmoor_deep"): "a buoy-cache moored on the deep (skiff only, 10 Part III).",
+    ("dimglass_coast_ii", "cache_dimglass_deep"): "a buoy-cache moored on the deep (skiff only, 10 Part III).",
+    ("vigil_hearthfall", "cache_hearthfall_deep"): "a buoy-cache moored on the deep (skiff only, 10 Part III).",
 }
 
 

@@ -37,7 +37,15 @@ audit_flow waiver — `loop`: a one-screen in-and-out SPUR by design
 REGION scale — hub -> marches -> beacon -> back is the priced detour). Same
 waiver class as the East's first-dungeon note in build_glowmoss_deep.py.
 
-Suggested copy (wiring agent; zero humour):
+LANE N2 (walkthrough/11-the-hollowing-country.md Part B, 2026-10): this map is now
+the FOOT of the Drownlight tower — the door opens (step_on door warps on both art
+tiles, (4,7)/(5,7) -> drownlight_f1 (11,14); build_drownlight_tower.py builds the
+floors), the keepers' ruined quay (a wall run, a mooring post, the steps), four dead
+channel buoys, and the post-dawn twins: the lit lighthouse + lit buoys on
+flag:drownlight_relit (its `when` ambience lives in worldcraft/west.py). The seam to
+Coldfog Marches I is UNCHANGED. The old door read below is retired.
+
+Former copy (the swollen door, pre-N2):
   npc.drownlight_door  "The door has swollen shut against its frame. Salt and
                         years hold it better than any lock. High above, the
                         lamp room keeps its dark."
@@ -51,6 +59,7 @@ import patterns as pt
 from mapkit import gid
 
 W, H = 18, 16
+FOOT_DOOR_COLS = (4, 5)   # the tower door's two art tiles (row 7) -> drownlight_f1
 rng = random.Random(78)
 owed: list[str] = []
 
@@ -149,13 +158,20 @@ m["warps"] += [
 m["objects"].append(
     {"id": "drownlight_tower", "sprite": "coldfog_lighthouse",
      "at": {"tx": 3, "ty": 1}, "w": 4, "h": 7, "overhang": 4})
-# the swollen door's read (the only voice on the map)
-for i, tx in enumerate((4, 5)):
-    m["triggers"].append(
-        {"id": f"drownlight_door_{i}", "kind": "dialogue",
-         "at": {"tx": tx, "ty": 7}, "activation": "interact",
-         "ref": "npc.drownlight_door"})
-owed += ["npc.drownlight_door (the swollen-shut door read — see docstring)"]
+# THE DROWNLIGHT'S DOOR (lane N2, walkthrough/11 Part B): no longer swollen shut —
+# the Shutterkeeper lives up there and keeps its hinges oiled. Walk onto either art
+# tile of the door (the 2-wide door convention) into the Oil Stores.
+for tx in FOOT_DOOR_COLS:
+    m["warps"].append(
+        {"id": f"to_tower_{tx}", "at": {"tx": tx, "ty": 7}, "trigger": "step_on",
+         "to_map": "drownlight_f1", "to": {"tx": 11, "ty": 14}, "facing": "up",
+         "transition": "door"})
+# ...and after the dawn's relight the lamp room burns again (a same-footprint swap)
+m["objects"][-1]["hidden_when_flag"] = "flag:drownlight_relit"
+m["objects"].append(
+    {"id": "drownlight_tower_lit", "sprite": "drownlight_lighthouse_lit",
+     "at": {"tx": 3, "ty": 1}, "w": 4, "h": 7, "overhang": 4,
+     "requires_flag": "flag:drownlight_relit"})
 
 # one dark reed-lantern where the fen-road once landed (the keeper's last)
 m["objects"].append(
@@ -189,11 +205,14 @@ m["triggers"] += [
 ]
 
 # ---- encounters (the rare Dark bed; band 48-50; murk dead) ---------------------------
+# (final forms only at band: Nullmoth kindles at 36 and Wispwane at 38, so the old
+# lv-48 rows wore their kindled forms; the Hollowing's #179/#180 share the bed.
+# MIRRORED in build_species.py DROWNLIGHT_BEACON_TABLE.)
 TABLE_BEACON = [
-    {"kin_id": 138, "weight": 30, "min_level": 49, "max_level": 50},  # Voidmantle
-    {"kin_id": 137, "weight": 35, "min_level": 48, "max_level": 49},  # Nullmoth
-    {"kin_id": 134, "weight": 22, "min_level": 48, "max_level": 50},  # Wispwane
-    {"kin_id": 135, "weight": 8, "min_level": 49, "max_level": 50},   # Liminalux
+    {"kin_id": 138, "weight": 34, "min_level": 49, "max_level": 50},  # Voidmantle
+    {"kin_id": 179, "weight": 28, "min_level": 48, "max_level": 50},  # Shutterwick
+    {"kin_id": 180, "weight": 24, "min_level": 48, "max_level": 49},  # Lullwing
+    {"kin_id": 135, "weight": 9, "min_level": 49, "max_level": 50},   # Liminalux
 ]
 m["encounters"] += pt.zones_from_grid(blighttuft, W, H, terrain="tall_grass",
                                       rate=0.14, table=TABLE_BEACON, id_prefix="bed")
@@ -207,9 +226,33 @@ for (x, y, n) in [(7, 9, "greymoss_a"), (11, 10, "greymoss_b"), (3, 8, "greymoss
 for (x, y) in [(9, 9), (12, 5), (7, 11), (14, 10), (10, 3), (3, 10)]:
     if deco[y * W + x] == 0:
         deco[y * W + x] = gid("g_pebble")
-for (x, y) in [(8, 10), (14, 7), (10, 4), (2, 6)]:
+for (x, y) in [(14, 7), (10, 4), (2, 6)]:  # (8,10) now under the quay wall
     if deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
+
+# THE RUINED QUAY (lane N2): what's left of the keepers' landing — a run of dressed
+# wall, a mooring post and the quay steps going down into water that no longer moves.
+m["objects"] += [
+    {"id": "quay_wall", "sprite": "farlamp_ruin_wall", "at": {"tx": 8, "ty": 10}, "w": 3, "h": 2,
+     "overhang": 1, "walk_under": True},
+    {"id": "quay_post", "sprite": "farlamp_ruin_pillar", "at": {"tx": 2, "ty": 10}, "w": 1, "h": 2,
+     "overhang": 1, "walk_under": True},
+    {"id": "quay_steps", "sprite": "undertide_stairfrag", "at": {"tx": 6, "ty": 11}, "w": 2, "h": 1,
+     "solid": False},
+]
+m["triggers"].append({"id": "quay_read", "kind": "script", "at": {"tx": 9, "ty": 11},
+                      "activation": "interact", "ref": "script.drownlight_quay"})
+# THE COAST'S BUOYS: dead in the dead shallows until the Drownlight is relit; then
+# they wake (lit, + the light pools of the `when` ambience in worldcraft/west.py)
+BUOYS = [(1, 13), (6, 14), (14, 14), (0, 6)]
+for i, (bx, by) in enumerate(BUOYS):
+    assert murk[by * W + bx] and murk[(by + 1) * W + bx], (bx, by)
+    for sprite, cond in (("farlamp_buoy_dark", {"hidden_when_flag": "flag:drownlight_relit"}),
+                         ("farlamp_buoy_lit", {"requires_flag": "flag:drownlight_relit"})):
+        o = {"id": f"buoy_{i}" + ("_lit" if "requires_flag" in cond else ""), "sprite": sprite,
+             "at": {"tx": bx, "ty": by}, "w": 1, "h": 2, "overhang": 1, "walk_under": True}
+        o.update(cond)
+        m["objects"].append(o)
 
 # R10 LITTER: seeded scatter on the open ground (off every structure, object,
 # NPC, trigger and warp) so the ground reads weathered, not blank (audit_visual).

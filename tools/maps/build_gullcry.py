@@ -126,7 +126,10 @@ for y in range(H):
 if __name__ == "__main__":
     # deep water (2026-10): the open sea past the shallow shelf — Tidecall
     # swims the shallows only (mapkit.deep_water; the reserved `deepdive` gate)
-    mk.deep_water(m, shelf=3)
+    # Lane E (10 Part III, the deep backtrack): the two outermost columns are the
+    # open deep regardless of the shelf, so the skiff-only buoy-cache out there
+    # (hand_placed_data.py) has no shallow neighbour to swim up to.
+    mk.deep_water(m, shelf=3, deep_cols=(14, 15))
     # warp marker: the little jetty you swim back from
     wm.add(m, wm.marker("flats_jetty", "jetty", 4, 9))
     ok = mk.finalize(m, scale=3)

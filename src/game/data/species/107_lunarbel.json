@@ -75,6 +75,48 @@
       "rarity": "rare",
       "min": 45,
       "max": 46
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 62
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 62
+    },
+    {
+      "area": "penumbra_underways",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 53,
+      "max": 55
+    },
+    {
+      "area": "penumbra_underways",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 56,
+      "max": 59
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 54,
+      "max": 56
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 57,
+      "max": 60
     }
   ],
   "scripted": false,

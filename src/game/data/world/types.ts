@@ -84,7 +84,9 @@ export interface Warp {
   requires_flag?: WorldFlag; // warp inactive until the flag is set
   /** Dialogue shown when the warp is gated and the requirement is unmet — a
    *  diegetic "not yet" in a character's voice (mirror of EventTrigger.blocked_ref),
-   *  e.g. the netmender's chained breakwater gate. Works on step_on and interact. */
+   *  e.g. the netmender's chained breakwater gate. Works on step_on and interact.
+   *  A `script.*` ref plays as a cutscene instead (staged on flags — the wood
+   *  gap's waiting wanderer). */
   blocked_ref?: string;
   transition?: WarpTransition;
 }
@@ -117,7 +119,8 @@ export interface EncounterTableEntry {
   max_level: number;
 }
 
-export type EncounterTerrain = 'tall_grass' | 'water' | 'cave' | 'sand';
+// 'deep' = open sea, rowed in the Farlamp skiff (the deepwater_set tiles carry it).
+export type EncounterTerrain = 'tall_grass' | 'water' | 'cave' | 'sand' | 'deep';
 
 export interface EncounterZone {
   id: string;
@@ -228,6 +231,14 @@ export interface MapAmbience {
   birds?: { kind?: 'gull' | 'bird'; flocks?: TileCoord[]; flyover?: boolean };
   /** Extra light pools beyond the sprite-keyed LIGHT_SOURCES table (a window, a campfire). */
   light_sources_extra?: { at: TileCoord; radius?: number; color?: string }[];
+  /**
+   * Sweeping light BEAMS (a relit lighthouse): a soft additive wedge from `from`
+   * (tile coords; fractions allowed, e.g. tx 4.5 = a tile's left edge + 4.5 tiles)
+   * whose far end swings to and fro between `a` and `b`, with a pool where it lands.
+   * `period_s` = one full there-and-back (default 9); `width` = the far end's width
+   * in tiles (default 3). With Ambient motion off it rests at the midpoint.
+   */
+  beams?: { from: TileCoord; a: TileCoord; b: TileCoord; period_s?: number; width?: number; color?: string }[];
   /** A quiet looped sfx bed under the music (sfx stem, e.g. 'amb-surf'); silent if missing. */
   sound_bed?: string;
   /** Footprints: 'auto' (sand/trail/snow-tagged terrain, default), 'all' (any open
@@ -235,6 +246,9 @@ export interface MapAmbience {
   footprints?: 'auto' | 'all' | 'none';
   /** Global gids lifted off their layer and bobbed 1px (buoys); `MapRenderer`. */
   bob_gids?: number[];
+  /** Story-state overrides: the FIRST rule whose flag is held replaces this whole
+   *  block (read on map entry) — the Fogwall's mist lifts after `flag:isles_dawn`. */
+  when?: { flag: WorldFlag; ambience: MapAmbience }[];
 }
 
 export type AbilityGateEffect = 'make_passable' | 'remove_tile' | 'set_flag';

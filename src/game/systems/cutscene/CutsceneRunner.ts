@@ -8,7 +8,7 @@
 import Phaser from 'phaser';
 import type { CutsceneStep, ActorRef } from '@game/content/types';
 import { Actor, STEP_MS } from '@game/entities/Actor';
-import type { Facing, EncounterTerrain } from '@game/data/world/types';
+import type { Facing, EncounterTerrain, AbilityId } from '@game/data/world/types';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
 import { Menu } from '@game/ui/Menu';
@@ -81,6 +81,10 @@ export interface CutsceneContext {
   resumeMapMusic?(): void;
   /** Hand the player wicks (quest rewards, found purses). */
   onGiveMoney?(amount: number): void;
+  /** Wins still owed before a named battle-counted cooldown expires (0 = ready). */
+  cooldownRemaining?(name: string): number;
+  /** Add a traversal ability to the live set (the `giveAbility` op). */
+  onGiveAbility?(ability: AbilityId): void;
   /** Take `amount` wicks if the purse holds them; true when paid (the `pay` op). */
   onPay?(amount: number): boolean;
   /** The player's chosen name, if they've been asked for one — substituted into
@@ -493,6 +497,28 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       void ctx.sfx.playVariant('world-heal', ['a', 'b']);
       return true;
     }
+    case 'spar': {
+      if (!ctx.startTrainerBattle) return true;
+      // ONE rest shared by every hall (review 2026-10: per-hall keys let a
+      // four-hall rotation farm forever with no other battles).
+      const key = 'spar';
+      const remaining = ctx.cooldownRemaining?.(key) ?? 0;
+      if (remaining > 0) {
+        const lines = getDialogue(step.restingRef).map((l) => ({
+          ...l,
+          text: fillTokens(ctx, l.text.replace(/\{remaining\}/g, String(remaining))),
+        }));
+        await new DialogueBox(scene, ctx.sfx).run(lines);
+        return false;
+      }
+      const won = await ctx.startTrainerBattle(step.trainer);
+      if (!won) return false;
+      ctx.setLegendaryCooldown?.(key, step.cooldown);
+      return true;
+    }
+    case 'giveAbility':
+      ctx.onGiveAbility?.(step.ability);
+      return true;
     case 'giveMoney':
       ctx.onGiveMoney?.(step.amount);
       void ctx.sfx.play('world-wicks');
@@ -520,6 +546,10 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
         return true;
       }
       const ms = ctx.timerStop?.(step.id);
+      // `<flag>_now` = beaten on THIS run. Clear/set them BEFORE any early return:
+      // a clock lost to a reload (it lives in memory) must not leave the last
+      // run's gold standing to pay a day purse for a slow lap.
+      for (const t of step.tiers ?? []) ctx.flags.set(`${t.flag}_now`, ms !== undefined && step.action !== 'cancel' && ms <= t.ms);
       if (step.action === 'cancel' || ms === undefined) return true;
       const secs = (ms / 1000).toFixed(1);
       const beat = (step.tiers ?? []).filter((t) => ms <= t.ms);

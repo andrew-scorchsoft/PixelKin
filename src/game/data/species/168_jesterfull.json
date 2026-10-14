@@ -72,7 +72,22 @@
     "weight_kg": 38,
     "habitat": "jesthouse"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 55,
+      "max": 56
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 58,
+      "max": 60
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "A tall, graceful jester kin, now whole: a lithe figure in quartered motley (cream-gold and indigo-black diamonds checkered across it), a grand three-pointed cap with bells that glow gold and silver, a theatrical ruffled collar, long pointed sleeves, and a jester's sceptre topped with a little laughing-and-solemn double mask. Both eyes now open and bright. Poised mid-bow. At 64px: a dignified, balanced harlequin in gold and indigo.",

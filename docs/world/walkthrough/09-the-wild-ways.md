@@ -63,7 +63,7 @@ where wicks — the game's money — literally come from.
 
 | Map | Size | Placement (x..x2, y..y2) | Role |
 |---|---|---|---|
-| `wickrun_crest` | 30×28 | -5..25, -266..-238 | Top station off Sunvault Climb I's south edge: the chandlery ruin, **runner rental** (300w, or free after a Runner beats you), the Tallow Lift's top house + brake (`flag:tallow_lift_freed`), the start gate (timer start). Flat, no encounters. |
+| `wickrun_crest` | 30×28 | -5..25, -266..-238 | Top station off Sunvault Climb I's south edge: the chandlery ruin, **runner rental** (300w; free only once you hold the **Runner's Ribbon**, Rook's gold-run prize), the Tallow Lift's top house + brake (`flag:tallow_lift_freed`), the start gate (timer start). Flat, no encounters. |
 | `wickrun_chute` | 28×44 | -8..20, -238..-194 | The upper chute: slope lanes with berms, a split (left line = grass + a trainer, right line = a ramp jump to an item ledge). |
 | `wickrun_trestles` | 28×44 | -27..1, -194..-150 | The trestles: the run crosses OVER itself on a trestle bridge, hairpins, and passes back UNDER it. Two Runners on landings. |
 | `wickrun_traverse` | 30×30 | -57..-27, -170..-140 | The traverse: the chute turns west across the slope (`slope dir:left`), a rock garden of stoppers and a ramp line; an old wax-cart wreck cache. |
@@ -82,7 +82,8 @@ kin are its slope-dwellers (see the encounter tables in `build_species.py EXTRA_
 Five Runners (route class) + Rook (route class, ace 50). Items: a Lumen Drop on a ramp-only
 ledge, a Beacon charge in the cart wreck, a wick purse. **Time trial:** gold/silver/bronze
 ribbons (`flag:wickrun_gold` …) pay wicks once each and Rook gives the **Runner's Ribbon** key
-item for gold (cosmetic + bragging; the free rental).
+item for gold (`flag:runner_ribbon`) — the ONLY way to free rentals; until then every ride
+costs 300w (so the silver day purse waits on the ribbon — a silver lap never nets a loss).
 
 **BUILT (2026-10) — what each map does.** Builders `tools/maps/build_wickrun_*.py`; content
 `src/game/content/regions/wickrun.ts`.
@@ -206,7 +207,7 @@ keeps one lamp at the Fold; a Hollowing acolyte still keeps the bar — and lets
 | Map | Size | Placement (x..x2, y..y2) | Role |
 |---|---|---|---|
 | `rimeway_ascent` | 30×56 | 118..148, -357..-301 | Off Pale Vault's new north road (cols 23-24). Three glacier-wall bands (`glacierwall` lip + `face_ice` rows) climbed on ladders; **the Glare** — a full-width glare-ice sheet (shelf 1) whose only way off is the north-west ladder pad: a stopper-stone slide puzzle, **5 slides minimum, no trap** (searched with `facekit.ice_solve`; a full snow strip at its foot is the reset lane); a cache pool (second, optional slide); the west-notch ledge home. Band 39-41; trainer Ivo (rime-walker, ace 41). |
-| `rimeway_fold` | 32×44 | 94..126, -401..-357 | The high plateau. **The frozen falls** (`rimeway_frozen_falls`) above a plunge pool of glare ice (5-slide puzzle) — the falls' foot runs `script.rimeway_ice_core` → `flag:rimeway_ice_core`. **The tenders' refuge** (`rimeway_tender_waystation`, a rest point) + Hale. **The Rime Gate** at the north edge (cols 6-7; `rimeway_rime_gate_barred/_open` swap on `flag:rime_gate_open`): from here it's a locked door with a line. Vaultclaw #76's only wild bed; trainer Sef (ace 42). Band 40-42. |
+| `rimeway_fold` | 32×44 | 94..126, -401..-357 | The high plateau. **The frozen falls** (`rimeway_frozen_falls`) above a plunge pool of glare ice (5-slide puzzle) — the falls' foot runs `script.rimeway_ice_core` → `flag:rimeway_ice_core`. **The tenders' refuge** (`rimeway_tender_waystation`, a rest point) + Hale. **The Rime Gate** at the north edge (cols 6-7; `rimeway_rime_gate_barred/_open` swap on `flag:rime_gate_open`): from here it's a locked door with a line. Vaultclaw #76's common wild bed; trainer Sef (ace 42). Band 40-42. |
 | `rimeway_descent` | 42×28 | 62..104, -429..-401 | Out of Coldfog Marches II's new east road (rows 16-17). The drained fen → ladder up onto the col ridge → ladder down to the gate yard; walking onto the yard before the gate **lifts the bar** (`script.rime_gate_lift`, step_on band, `flag:rime_gate_open`) and every rime-lamp on the road wakes (dead/lit swap pairs on the same flag, all three maps). The acolyte at the bar; trainer Dunne (fog-walker, ace 48). Band 46-48. |
 
 **The one-way unlock.** North era (~lv 40): climb from Pale Vault to the Fold, see the

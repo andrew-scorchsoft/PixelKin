@@ -1,0 +1,1823 @@
+{
+  "id": "drownlight_f1",
+  "display_name": "The Drownlight \u2014 The Oil Stores",
+  "width": 22,
+  "height": 16,
+  "tile_width": 16,
+  "tile_height": 16,
+  "kind": "interior",
+  "tilesets": [
+    {
+      "name": "drownlight_f1_set",
+      "image": "assets/tilesets/drownlight_f1_set.webp",
+      "tile_width": 16,
+      "tile_height": 16,
+      "first_gid": 1,
+      "columns": 8,
+      "tile_count": 55
+    }
+  ],
+  "layers": [
+    {
+      "name": "base",
+      "role": "base",
+      "depth": 0,
+      "data": [
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        3,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        3,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "walls",
+      "role": "deco",
+      "depth": 5,
+      "data": [
+        14,
+        14,
+        18,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        22,
+        18,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        22,
+        14,
+        14,
+        14,
+        18,
+        10,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        9,
+        8,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        11,
+        22,
+        14,
+        14,
+        8,
+        54,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        11,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        53,
+        9,
+        14,
+        14,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        53,
+        54,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        14,
+        14,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        14,
+        14,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        13,
+        12,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        14,
+        14,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        14,
+        14,
+        15,
+        7,
+        7,
+        7,
+        30,
+        42,
+        0,
+        48,
+        36,
+        34,
+        33,
+        36,
+        36,
+        36,
+        42,
+        0,
+        48,
+        36,
+        36,
+        24,
+        14,
+        14,
+        14,
+        14,
+        14,
+        14,
+        8,
+        54,
+        0,
+        53,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        54,
+        0,
+        53,
+        4,
+        4,
+        9,
+        14,
+        18,
+        6,
+        6,
+        6,
+        22,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        14,
+        8,
+        4,
+        4,
+        4,
+        11,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        14,
+        8,
+        0,
+        0,
+        0,
+        53,
+        54,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        14,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        14,
+        8,
+        0,
+        0,
+        0,
+        13,
+        12,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        14,
+        15,
+        12,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        14,
+        14,
+        15,
+        7,
+        7,
+        16,
+        15,
+        7,
+        7,
+        7,
+        7,
+        12,
+        0,
+        13,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        16,
+        14
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "crank_1",
+      "sprite": "drownlight_crank",
+      "at": {
+        "tx": 4,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "hidden_when_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "crank_1_on",
+      "sprite": "drownlight_crank_on",
+      "at": {
+        "tx": 4,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "requires_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "crank_2",
+      "sprite": "drownlight_crank",
+      "at": {
+        "tx": 10,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "hidden_when_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "crank_2_on",
+      "sprite": "drownlight_crank_on",
+      "at": {
+        "tx": 10,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true,
+      "requires_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "weight_shaft",
+      "sprite": "drownlight_weights",
+      "at": {
+        "tx": 8,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 3,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "oil_cistern",
+      "sprite": "drownlight_cistern",
+      "at": {
+        "tx": 2,
+        "ty": 5
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "oil_cans",
+      "sprite": "drownlight_oil_cans",
+      "at": {
+        "tx": 8,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "store_rope",
+      "sprite": "drownlight_rope_coil",
+      "at": {
+        "tx": 9,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "lamp_rack",
+      "sprite": "interior_lamp_rack",
+      "at": {
+        "tx": 13,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "buoy_repair",
+      "sprite": "drownlight_buoy_repair",
+      "at": {
+        "tx": 17,
+        "ty": 5
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "shutter_plate_n",
+      "sprite": "drownlight_shutter_plate",
+      "at": {
+        "tx": 15,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "names_slate",
+      "sprite": "drownlight_slate",
+      "at": {
+        "tx": 12,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "crank_notice",
+      "sprite": "drownlight_notice",
+      "at": {
+        "tx": 11,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "kept_stove",
+      "sprite": "interior_stove",
+      "at": {
+        "tx": 17,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "mess_table",
+      "sprite": "interior_table",
+      "at": {
+        "tx": 8,
+        "ty": 11
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "stool_w",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 7,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "stool_e",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 10,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "log_lectern",
+      "sprite": "drownlight_lectern",
+      "at": {
+        "tx": 16,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "hall_cistern",
+      "sprite": "drownlight_cistern",
+      "at": {
+        "tx": 18,
+        "ty": 11
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "hall_barrels",
+      "sprite": "interior_barrels",
+      "at": {
+        "tx": 13,
+        "ty": 14
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "hall_oil_cans",
+      "sprite": "drownlight_oil_cans",
+      "at": {
+        "tx": 15,
+        "ty": 14
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "hall_sacks",
+      "sprite": "interior_sacks",
+      "at": {
+        "tx": 6,
+        "ty": 14
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "hall_crates",
+      "sprite": "interior_crates",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "hall_rope",
+      "sprite": "drownlight_rope_coil",
+      "at": {
+        "tx": 19,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "hall_rope_b",
+      "sprite": "drownlight_rope_coil",
+      "at": {
+        "tx": 14,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "nook_rope",
+      "sprite": "drownlight_rope_coil",
+      "at": {
+        "tx": 1,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "well_E_lit",
+      "sprite": "drownlight_well_lit",
+      "at": {
+        "tx": 15,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "well_E",
+      "sprite": "drownlight_well",
+      "at": {
+        "tx": 15,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "glare_E_0",
+      "sprite": "drownlight_glare_h",
+      "at": {
+        "tx": 16,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "glare_E_1",
+      "sprite": "drownlight_glare_h",
+      "at": {
+        "tx": 16,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "well_W_lit",
+      "sprite": "drownlight_well_lit",
+      "at": {
+        "tx": 6,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "well_W",
+      "sprite": "drownlight_well",
+      "at": {
+        "tx": 6,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "glare_W_0",
+      "sprite": "drownlight_glare_h",
+      "at": {
+        "tx": 7,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "glare_W_1",
+      "sprite": "drownlight_glare_h",
+      "at": {
+        "tx": 7,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "well_N_lit",
+      "sprite": "drownlight_well_lit",
+      "at": {
+        "tx": 10,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "well_N",
+      "sprite": "drownlight_well",
+      "at": {
+        "tx": 10,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "glare_N_0",
+      "sprite": "drownlight_glare_v",
+      "at": {
+        "tx": 10,
+        "ty": 4
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "glare_N_1",
+      "sprite": "drownlight_glare_v",
+      "at": {
+        "tx": 11,
+        "ty": 4
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "well_K_lit",
+      "sprite": "drownlight_well_lit",
+      "at": {
+        "tx": 4,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "well_K",
+      "sprite": "drownlight_well",
+      "at": {
+        "tx": 4,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "hidden_when_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "glare_K_0",
+      "sprite": "drownlight_glare_v",
+      "at": {
+        "tx": 4,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "glare_K_1",
+      "sprite": "drownlight_glare_v",
+      "at": {
+        "tx": 5,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "requires_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "stairs_up_sprite",
+      "sprite": "interior_stairs_up",
+      "at": {
+        "tx": 18,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false
+    }
+  ],
+  "warps": [
+    {
+      "id": "to_foot",
+      "at": {
+        "tx": 11,
+        "ty": 15
+      },
+      "trigger": "step_on",
+      "to_map": "drownlight_beacon",
+      "to": {
+        "tx": 4,
+        "ty": 8
+      },
+      "facing": "down",
+      "transition": "door"
+    },
+    {
+      "id": "up_stairs",
+      "at": {
+        "tx": 18,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "drownlight_f2",
+      "to": {
+        "tx": 23,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade",
+      "requires_ability": "emberward",
+      "blocked_ref": "sign.drownlight_stair_fog"
+    }
+  ],
+  "triggers": [
+    {
+      "id": "crank_1",
+      "kind": "cutscene",
+      "at": {
+        "tx": 4,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_crank_1"
+    },
+    {
+      "id": "crank_2",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_crank_2"
+    },
+    {
+      "id": "weight_shaft_read",
+      "kind": "sign",
+      "at": {
+        "tx": 8,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_weights"
+    },
+    {
+      "id": "oil_cistern_read_2",
+      "kind": "sign",
+      "at": {
+        "tx": 2,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_oil_jars"
+    },
+    {
+      "id": "oil_cistern_read_3",
+      "kind": "sign",
+      "at": {
+        "tx": 3,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_oil_jars"
+    },
+    {
+      "id": "oil_cans_read",
+      "kind": "sign",
+      "at": {
+        "tx": 8,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_wick_shelf"
+    },
+    {
+      "id": "lamp_rack_read",
+      "kind": "sign",
+      "at": {
+        "tx": 13,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_lamp_rack"
+    },
+    {
+      "id": "buoy_repair_read_17",
+      "kind": "sign",
+      "at": {
+        "tx": 17,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_buoy_repair"
+    },
+    {
+      "id": "buoy_repair_read_18",
+      "kind": "sign",
+      "at": {
+        "tx": 18,
+        "ty": 5
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_buoy_repair"
+    },
+    {
+      "id": "shutter_plate_n_read",
+      "kind": "sign",
+      "at": {
+        "tx": 15,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_shutter_plate"
+    },
+    {
+      "id": "slate_12",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 8
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_slate_keepers"
+    },
+    {
+      "id": "slate_13",
+      "kind": "cutscene",
+      "at": {
+        "tx": 13,
+        "ty": 8
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_slate_keepers"
+    },
+    {
+      "id": "crank_notice_read",
+      "kind": "sign",
+      "at": {
+        "tx": 11,
+        "ty": 8
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_crank_notice"
+    },
+    {
+      "id": "stove_read",
+      "kind": "sign",
+      "at": {
+        "tx": 17,
+        "ty": 9
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_stove"
+    },
+    {
+      "id": "mess_table_read",
+      "kind": "sign",
+      "at": {
+        "tx": 8,
+        "ty": 11
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_mess_table"
+    },
+    {
+      "id": "log_16",
+      "kind": "cutscene",
+      "at": {
+        "tx": 16,
+        "ty": 13
+      },
+      "activation": "interact",
+      "ref": "script.drownlight_log"
+    },
+    {
+      "id": "hall_barrels_read_13",
+      "kind": "sign",
+      "at": {
+        "tx": 13,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_oil_barrels"
+    },
+    {
+      "id": "hall_barrels_read_14",
+      "kind": "sign",
+      "at": {
+        "tx": 14,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_oil_barrels"
+    },
+    {
+      "id": "hall_oil_cans_read",
+      "kind": "sign",
+      "at": {
+        "tx": 15,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_wick_shelf"
+    },
+    {
+      "id": "hall_sacks_read_6",
+      "kind": "sign",
+      "at": {
+        "tx": 6,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_sand_sacks"
+    },
+    {
+      "id": "hall_sacks_read_7",
+      "kind": "sign",
+      "at": {
+        "tx": 7,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_sand_sacks"
+    },
+    {
+      "id": "hall_crates_read_13",
+      "kind": "sign",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_glass_crates"
+    },
+    {
+      "id": "hall_crates_read_14",
+      "kind": "sign",
+      "at": {
+        "tx": 18,
+        "ty": 14
+      },
+      "activation": "interact",
+      "ref": "sign.drownlight_glass_crates"
+    },
+    {
+      "id": "first_steps",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 13
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_first_steps",
+      "hidden_when_flag": "flag:drownlight_entered"
+    },
+    {
+      "id": "first_steps_10",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 13
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_first_steps",
+      "hidden_when_flag": "flag:drownlight_entered"
+    },
+    {
+      "id": "first_steps_12",
+      "kind": "cutscene",
+      "at": {
+        "tx": 12,
+        "ty": 13
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_first_steps",
+      "hidden_when_flag": "flag:drownlight_entered"
+    },
+    {
+      "id": "glare_E_0",
+      "kind": "cutscene",
+      "at": {
+        "tx": 16,
+        "ty": 7
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_glare_f1_E0",
+      "hidden_when_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "glare_E_1",
+      "kind": "cutscene",
+      "at": {
+        "tx": 16,
+        "ty": 8
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_glare_f1_E1",
+      "hidden_when_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "glare_W_0",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 7
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_glare_f1_W0",
+      "requires_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "glare_W_1",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 8
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_glare_f1_W1",
+      "requires_flag": "flag:drownlight_shutter_1"
+    },
+    {
+      "id": "glare_N_0",
+      "kind": "cutscene",
+      "at": {
+        "tx": 10,
+        "ty": 4
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_glare_f1_N0",
+      "hidden_when_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "glare_N_1",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 4
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_glare_f1_N1",
+      "hidden_when_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "glare_K_0",
+      "kind": "cutscene",
+      "at": {
+        "tx": 4,
+        "ty": 12
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_glare_f1_K0",
+      "requires_flag": "flag:drownlight_shutter_2"
+    },
+    {
+      "id": "glare_K_1",
+      "kind": "cutscene",
+      "at": {
+        "tx": 5,
+        "ty": 12
+      },
+      "activation": "step_on",
+      "ref": "script.drownlight_glare_f1_K1",
+      "requires_flag": "flag:drownlight_shutter_2"
+    }
+  ],
+  "encounters": [
+    {
+      "id": "store",
+      "terrain": "cave",
+      "rect": {
+        "tx": 2,
+        "ty": 2,
+        "w": 8,
+        "h": 5
+      },
+      "encounter_rate": 0.06,
+      "table": [
+        {
+          "kin_id": 179,
+          "weight": 28,
+          "min_level": 50,
+          "max_level": 52
+        },
+        {
+          "kin_id": 138,
+          "weight": 24,
+          "min_level": 50,
+          "max_level": 51
+        },
+        {
+          "kin_id": 180,
+          "weight": 18,
+          "min_level": 51,
+          "max_level": 52
+        },
+        {
+          "kin_id": 85,
+          "weight": 16,
+          "min_level": 51,
+          "max_level": 52
+        },
+        {
+          "kin_id": 135,
+          "weight": 14,
+          "min_level": 50,
+          "max_level": 52
+        }
+      ]
+    },
+    {
+      "id": "stair_room",
+      "terrain": "cave",
+      "rect": {
+        "tx": 12,
+        "ty": 2,
+        "w": 8,
+        "h": 5
+      },
+      "encounter_rate": 0.06,
+      "table": [
+        {
+          "kin_id": 179,
+          "weight": 28,
+          "min_level": 50,
+          "max_level": 52
+        },
+        {
+          "kin_id": 138,
+          "weight": 24,
+          "min_level": 50,
+          "max_level": 51
+        },
+        {
+          "kin_id": 180,
+          "weight": 18,
+          "min_level": 51,
+          "max_level": 52
+        },
+        {
+          "kin_id": 85,
+          "weight": 16,
+          "min_level": 51,
+          "max_level": 52
+        },
+        {
+          "kin_id": 135,
+          "weight": 14,
+          "min_level": 50,
+          "max_level": 52
+        }
+      ]
+    },
+    {
+      "id": "hall",
+      "terrain": "cave",
+      "rect": {
+        "tx": 6,
+        "ty": 9,
+        "w": 14,
+        "h": 6
+      },
+      "encounter_rate": 0.05,
+      "table": [
+        {
+          "kin_id": 179,
+          "weight": 28,
+          "min_level": 50,
+          "max_level": 52
+        },
+        {
+          "kin_id": 138,
+          "weight": 24,
+          "min_level": 50,
+          "max_level": 51
+        },
+        {
+          "kin_id": 180,
+          "weight": 18,
+          "min_level": 51,
+          "max_level": 52
+        },
+        {
+          "kin_id": 85,
+          "weight": 16,
+          "min_level": 51,
+          "max_level": 52
+        },
+        {
+          "kin_id": 135,
+          "weight": 14,
+          "min_level": 50,
+          "max_level": 52
+        }
+      ]
+    }
+  ],
+  "npcs": [
+    {
+      "id": "drownlight_acolyte_odell",
+      "at": {
+        "tx": 6,
+        "ty": 3
+      },
+      "facing": "down",
+      "sprite": "hollowing_acolyte",
+      "movement": "static",
+      "dialogue_ref": "script.drownlight_acolyte_odell",
+      "sight_range": 3,
+      "defeated_flag": "flag:drownlight_acolyte_odell_beaten",
+      "hidden_when_flag": "flag:drownlight_acolyte_odell_beaten"
+    },
+    {
+      "id": "drownlight_acolyte_odell_after",
+      "at": {
+        "tx": 6,
+        "ty": 3
+      },
+      "facing": "down",
+      "sprite": "hollowing_acolyte",
+      "movement": "look_around",
+      "dialogue_ref": "npc.drownlight_acolyte_odell_after",
+      "requires_flag": "flag:drownlight_acolyte_odell_beaten"
+    },
+    {
+      "id": "cache_drownlight_shard",
+      "at": {
+        "tx": 2,
+        "ty": 13
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_drownlight_shard",
+      "hidden_when_flag": "flag:picked_drownlight_shard"
+    }
+  ],
+  "gates": [],
+  "music": "assets/audio/music/drownlight-f1.mp3",
+  "battle_backdrops": [
+    "assets/backgrounds/battle/drownlight-a.webp"
+  ],
+  "ambience": {
+    "particles": [
+      {
+        "kind": "dust",
+        "density": 0.45
+      }
+    ],
+    "tint": {
+      "color": "#55606e",
+      "alpha": 0.12
+    },
+    "when": [
+      {
+        "flag": "flag:drownlight_relit",
+        "ambience": {
+          "particles": [
+            {
+              "kind": "dust",
+              "density": 0.7
+            },
+            {
+              "kind": "glowmotes",
+              "density": 0.4
+            }
+          ],
+          "tint": {
+            "color": "#ffcf7a",
+            "alpha": 0.08
+          }
+        }
+      }
+    ]
+  }
+}

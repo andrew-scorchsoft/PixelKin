@@ -123,6 +123,12 @@ const TITLE_CLASS: Record<string, string> = {
   'Sun-keeper': 'sun_keeper',
   'Hollowing Acolyte': 'acolyte',
   Runner: 'runner', "Runners' Captain": 'runner',
+  'Hall Sparrer': 'wick_tender', // the Lumenary sparring partners (content/sparring.ts)
+  // the Farlamp Isles (Lane C1)
+  Oarsman: 'net_hand', 'Kelp-farmer': 'net_hand', 'Isle Keeper': 'wick_tender',
+  Salvager: 'net_hand', 'Fog-pilot': 'net_hand', // C1 pass 2: the Shelfwater + Fogwall boats
+  // Lane N1 (11 Parts A + E): the Hollowing's elders and their old lamplighter
+  'Hollowing Elder': 'acolyte', 'Hollowing Lamplighter': 'wick_tender',
 };
 
 /** Unique battle sprites, by trainer id (bosses, set-pieces, the Old Light's cast). */
@@ -140,6 +146,10 @@ const UNIQUE_SPRITE: Record<string, string> = {
   oldlight_juggler: 'juggler', oldlight_pie_thrower: 'pie_thrower', oldlight_critic: 'critic',
   oldlight_mirror: 'player_front', // THE MIRROR wears your own face
   oldlight_headliners: 'punchwheel', // Mr. Punchwheel presents his act
+  // Lane E (walkthrough/10 Part III): Gran Tallow on her reef, by the old Tinder Light
+  lowtinder_ottery: 'ottery',
+  // Lane N2 (walkthrough/11 Part B): the Drownlight's Shutterkeeper
+  drownlight_shutterkeeper: 'shutterkeeper',
 };
 
 function pick<T>(xs: T[], seed: string): T {

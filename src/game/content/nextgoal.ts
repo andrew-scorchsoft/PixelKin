@@ -17,13 +17,20 @@ interface GoalStage {
 }
 
 export const NEXT_GOALS: GoalStage[] = [
+  // the Farlamp Isles (optional post-game; walkthrough/10 Part I) — once begun
+  { flag: 'flag:isles_dawn', text: 'The Farlamp burns. Battle Bram Fathom on Driftholm\'s quay.' },
+  { flag: 'flag:q_isles_driftholm', text: 'Take Elder Creel\'s well-stair under the sea to the drowned Farlamp, and light it.' },
+  { flag: 'flag:q_isles_fogglass', text: 'Follow the lit buoys south through the Fogwall to Driftholm.' },
+  { flag: 'flag:q_isles_afloat', text: 'Row south across the Sound; find the old keepers\' fog-glass in the sea-caves under the isles.' },
+  { flag: 'flag:q_isles_prow_lit', text: 'Take the lit prow-lamp back to Ione on Lightkeeper\'s Point.' },
+  { flag: 'flag:q_isles', text: 'Have Fenn light Ione\'s prow-lamp, at Dawnstead on the front.' },
   { flag: 'flag:dawn', text: 'Look up. Then walk down to Dawnstead and see the valley in the morning.' },
   { flag: 'flag:keystar_relit', text: 'The Keystar is lit. Stand still and let what comes, come.' },
   { flag: 'gleam:lunar', text: 'The Crown is whole: climb the Umbral Spire, up the mountain road north of the Vesper Crossroads.' },
   { flag: 'gleam:solar', text: 'Lunar Gleam: Nessa Cole at Nightreach Observatory, top of the Sunvault Climb.' },
   { flag: 'gleam:frost', text: 'Solar Gleam: Lucan Pyre in the Sunken Solarium, west through Hushfrost Pass.' },
   { flag: 'gleam:storm', text: 'Frost Gleam: Ysolde Frost at the Pale Vault Glacier, up the Windward Stair.' },
-  { flag: 'gleam:stone', text: 'Storm Gleam: Mira Vael on the Galehigh Terraces, up Cinderwind Scarp.' },
+  { flag: 'gleam:stone', text: 'Storm Gleam: Mira Vael on the Galehigh Terraces, up Cinderwind Scarp and over the Ashfall Shelf.' },
   { flag: 'gleam:verdant', text: 'Stone Gleam: Otho Grist at Cinderhead Mine, through the deep wood behind Lowleaf.' },
   { flag: 'gleam:tide', text: 'Verdant Gleam: Sable Quill at Lowleaf Hollow, east of Pearlmoor on the fen road.' },
   { flag: 'flag:q_south_bell_rung', text: 'Tide Gleam: face Reyl Wash at the Lumenary atop Pearlmoor Quay.' },

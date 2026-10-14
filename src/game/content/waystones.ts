@@ -162,6 +162,32 @@ export const WAYSTONES: readonly Waystone[] = [
     visited_flag: 'chart:vesper-crossroads',
     flavour: 'Where every lantern-road meets, and the Lanternway begins.',
   },
+  // ---- The Farlamp Isles (walkthrough/10 Part I) — Lane C1: Driftholm's lamp-stone
+  // by the quay steps, so the way home (and back) is one menu away.
+  {
+    id: 'driftholm',
+    name: 'Driftholm',
+    region: 'south',
+    map: 'driftholm',
+    tx: 14,
+    ty: 10,
+    facing: 'down',
+    visited_flag: 'chart:driftholm',
+    flavour: 'The island town beyond the Fogwall, lamps in every window.',
+  },
+  // ---- The Hollowing's Country (walkthrough/11 Part A) — Stillwater's square, by the
+  // Quiet Hall: a long fog road away, and its post-dawn return is the payoff.
+  {
+    id: 'stillwater',
+    name: 'Stillwater',
+    region: 'outer',
+    map: 'stillwater',
+    tx: 14,
+    ty: 16,
+    facing: 'down',
+    visited_flag: 'chart:stillwater',
+    flavour: 'The Hollowing’s village by the still mere, its lamps shuttered, not out.',
+  },
 ];
 
 /** The flag that opens the TRAVEL option at all (the four-way hub connected). */

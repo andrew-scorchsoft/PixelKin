@@ -157,7 +157,7 @@ go digging on every task.
 - **Stats — the genre's six:** hp/atk/def/spa/spd/spe. Power is costed against a
   shared budget (EPS) and **empirically balanced** by a Monte Carlo sim — all
   types land 46.7–53.3% win-rate. (`docs/mechanics/02-stats-and-balance.md`)
-- **Roster:** **171 kin** — the **151** curated from ~463 concepts via a panel-scored
+- **Roster:** **180 kin** — the **151** curated from ~463 concepts via a panel-scored
   pipeline (the ~312 cuts are archived as an idea bank), **plus appended additions**
   (later ids never renumber the original 1–151): the third starter line (#152–#153),
   the three starter middle stages (#154–#156), the apex kindlings #157 **Pharolux**
@@ -175,7 +175,11 @@ go digging on every task.
   and #166 **Emberroot** (Stone/Ember, the first star that fell; Cinderhead's coal is its breath, lv 46), and the Old Light's own **jest-house clowns** (R11,
   region `jesthouse`, tower-only wild tables lv 9–14): #167 **JesterHalf** →lv 24→ #168 **JesterFull**
   (Light/Dark), #169 **The Smiler** →lv 22→ #170 **The Exciter** (Light → Light/Storm), #171
-  **McClownface** (Tide/Light). Cute, never creepy. Moves: **≤4 per kin**
+  **McClownface** (Tide/Light). Cute, never creepy. And the post-game **Farlamp Isles** kin
+  (`walkthrough/10-the-farlamp-isles.md`, region `isles`, placed ONLY by the isles' map tables —
+  `MAP_TABLE_ONLY_REGIONS`): #172 **Fathomote** →lv 40→ #173 **Fathomere** (Tide/Light lantern-fish),
+  #174 **Hermiwick** →lv 42→ #175 **Beaconclaw** (Stone/Tide → Stone/Light lamp-crab), #176 **Fogwisp**
+  (Frost/Dark fog-moth), #177 **Farlume** (Tide/Light, F-tier, the drowned lamp's set-piece catch, lv 68). And the late-game **Hollowing family** (`walkthrough/11-the-hollowing-country.md` §F, region `north_hollow`, MAP_TABLE_ONLY, wild lv 46–56): #178 **Dousecap** →lv 44→ #179 **Shutterwick** (Dark/Ember → Dark/Light snuffer-cap → shuttered lantern-keeper), #180 **Lullwing** (Dark/Lunar dream-moth). Moves: **≤4 per kin**
   from a **125-move** shared pool (wave 2: full phys/spec ladders per type + 13 signature
   moves) + 28 abilities. (`docs/mechanics/dex.md` for the readable dex)
 - **Starters:** the founding trio is **complete** and every starter is a **three-stage
@@ -196,6 +200,19 @@ go digging on every task.
   the Mirelights (east of Saltreach Fen I; the ferry wants Isel's Frostglass Lens from Pale
   Vault), the Rimeway (Pale Vault ⇄ Coldfog II; the Rime Gate opens from the marsh side), the
   Old Seams (under Cinderhead; the heart waits on Starlight), and Sunvault Climb as four maps.
+  **The expansion round (2026-10, `walkthrough/10-the-farlamp-isles.md`):** the **Ashfall Shelf**
+  (`cinderwind_ashfall`, main path Scarp → Ashfall → Galehigh; the Scarp's east cut is a rockfall
+  that clears once you've come round — `flag:scarp_short_open`) + Kiln Gully (Kite); **Lowtinder**,
+  old Tinderwick drowned "the winter the water rose" (Tidecall, mid-game: `tinderwick_bay` off
+  home's beach, Gran Ottery Tallow, the town bell comes home, the well climbs back into Tinderwick);
+  and the post-dawn **Farlamp Isles** (rowed in the **Farlamp Skiff** — a KEY ITEM, not a 7th
+  Gift: Ione at Lightkeeper's Point, 3 of 5 driftletters, Fenn lights the prow-lamp; Driftholm,
+  the Undertide's bell-switched tide-races, the Drowned Lamp relit → `flag:isles_dawn`, Farlume).
+  Scored against `docs/reviews/expansion-panel.md` (bar 85). **The Hollowing's Country** (2026-10,
+  `walkthrough/11`, optional + late, off Coldfog I): **Stillwater** (the Hollowing's village, 3 quests),
+  the **Drownlight** (3 floors of shutter-crank glare puzzles; Maudry Kell the Shutterkeeper; relit
+  after the dawn → the reusable Shutter Charm), the **Mourning Fields** (the north loop to the Rimeway)
+  and the **Penumbra Underways** (hub + Starreach; Old Clemency's last watch; never reaches the Spire).
 - **The journey is canon, written before the game.** `docs/world/walkthrough/` is the
   start-to-finish **user-journey blueprint** — golden thread, five interlocking arcs (Wren,
   the Hollowing/Còr, Fenn, the celestial calendar, festivals), the level curve, the
@@ -217,7 +234,7 @@ go digging on every task.
   (`content/shops.ts` + the `shop` cutscene op — Tinderwick & Pearlmoor counters live;
   a stock line may carry `requires_flag` for tier unlocks); trainer wins pay `payout`
   = class rate × ace (route 16 / keeper 20 / rival 24 /
-  warden 60 / Còr 120); blackout keeps a 10% wick tithe and wakes you at your **last rest point**
+  warden 60 / Còr 120); blackout keeps a 10% wick tithe — halving per repeat loss to the SAME foe, nothing from the 4th, capped at 300w + 300w/Gleam, never below a 300w floor (`faintTithe`) — and wakes you at your **last rest point**
   (not the start — see the respawn gotcha); XP yield is `bst·level/20`,
   ×1.5 vs trainers, **catches pay like knock-outs**, **EXP share** (Settings, default ON: the finisher keeps the full yield — the model's lead — kin that fought take ½, the bench ¼; `BattleScene.awardExp`), and a **first-hours boost** (foe lv ≤8 ×1.5, 9–12 ×1.25 — `BattleScene.earlyExpBoost`, mirrored in the model). Design + per-region battle/earnings
   budget: `docs/mechanics/10-economy.md`; executable model: `tools/balance/progression.mjs`.
@@ -643,10 +660,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   separate creature path — `systems/sprites/CreatureSprites.ts` — is now wired into
   `StarterSelect`, `Battler` (battle), `PartyMenu`, and `AttractScene`: each lazy-loads a packed
   sprite keyed `kin_<id>_<view>` and falls back to the type-tinted placeholder **only** when a kin
-  isn't packed. **All 171 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
+  isn't packed. **All 180 kin are packed** under `public/assets/sprites/creatures/NNN_slug/` —
   5 views each (battle_front/back, icon, overworld, portrait) listed in `creatures.manifest.json`.
   Regenerate any kin's full view set from its species `art` block with
-  `./venv/bin/python tools/assets/gen_creature.py <id>` (supports `--provider openai` when Google
+  `./venv/bin/python tools/assets/gen_creature.py <id>` (`--front-ref <earlier stage front.png>` keeps a kindled form on-line; supports `--provider openai` when Google
   is spend-capped), then re-run `pack_creatures.py`. The placeholder path remains as a safety net.
 - **Character animation is 3 layered sheets, not one big sheet** (docs/art-style.md §A/§A2/§A3):
   layer 1 = the 4×4 walk sheet (required; *running* is free — same frames, faster, so don't
@@ -1160,8 +1177,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   trainer (e.g. Reyl Wash = `reward_flags:['gleam:tide','crown_south']` + `reward_abilities:['tidecall']`).
 - **Water is SHALLOW or DEEP (2026-10).** Tidecall swims the shallows (the shared `water`
   family); past a two-tile shelf, sea maps paint DEEP water (`mk.deep_water(m)` before finalize →
-  the `deepwater_set` accent family, gated on the RESERVED `deepdive` ability no Gift grants yet —
-  a future deep-swim is one `reward_abilities` entry). It keeps shallow channels to islets and to
+  the `deepwater_set` accent family, gated on `deepdive` — granted ONLY by the Farlamp Skiff via
+  `{op:'giveAbility'}`, never a Gift). On deep water the player ROWS (`Player.setBoating`,
+  `player_indi_skiff`) and deep tiles roll `terrain:'deep'` encounter zones. It keeps shallow channels to islets and to
   anything placed on water; marsh/fen/pond/sun-pool water never goes deep (Fen II's crossing is
   Tidecall-load-bearing). A Tidecall AbilityGate never softens deep water (CollisionGrid + worldmodel).
 - **A `dock`/`floor` tile over `water` does NOT make it walkable — water still gates it.** Water
@@ -1380,6 +1398,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   lightbox (world gallery, Lumenaries, the first-50 kin grid). Site imagery is copied into
   `web/assets/img/` and the kin grid reads a generated `web/assets/data/kin.json` so the site deploys
   standalone — refresh recipes are in `web/README.md`.
+- **The website's player GUIDE is compiled from `docs/guide/*.md` (2026-10) — one source of truth.**
+  Front-matter `title/section/order/desc/spoilers`; `section` must be one of `GUIDE_SECTIONS` in
+  `tools/build/guide.mjs`; `[[slug|label]]` links chapters; `<!-- block:name -->` reuses site blocks.
+  `build_site.mjs` renders `guide.html` + `guide-<slug>.html` (CI). The build FAILS on any hidden
+  real-people term (`FORBIDDEN` there) — the guide must never mention Paul's content. When content
+  changes, update the matching chapter in the same commit (the design walkthrough is `docs/world/walkthrough/`).
 - **Maps must pass the LOOK gate, not just the play audits (2026-10).** `tools/maps/audit_visual.py
   --all` FAILs a flat void (< 0.75 props/landmarks per 15×10 screen — the South bar is 2–5) and
   box pools (water filling its bounding box, ≥16 tiles); it's at 0 FAIL / 0 warn across all 46
@@ -1472,3 +1496,24 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   plays `Battler.recall` + `battle-recall`, then `Battler.sendOut` + `battle-sendout`. The engine has already
   swapped the active slot when the event plays, so the scene keeps its own `shownPlayer`/`shownFoe` — a fainted
   kin skips the recall. Free-standing props you can walk behind = `overhang: 1, walk_under: true` (the F4 mirrors).
+- **The Undertide's tide-races (Farlamp Isles, 2026-10):** sea-cave floors are char PLANS on
+  `tools/maps/undertidekit.py` (`~` surge = solid churn, `o` shallows, `><^v` race = a `kind:'rail'`
+  flow on swum water, `J` junction); `Floor.prove()` asserts every race lands and every pocket races
+  home in EVERY bell state — add a bell, re-run the builder. Tiles/props: `undertideforge.py`
+  (`undertide_set`, `undertide_*` objects). Never let an encounter zone cover a race (`zone()` asserts).
+  Their ambience + ambient kin live in `worldcraft/outer.py`; `flag:isles_dawn` lights the tide-lamps and
+  swaps in the day-form zone pairs (`undertidekit.day_table` ⇄ `build_species.py UNDERTIDE_DAY_SWAP`).
+- **Money farms are deliberate and capped (2026-10 economy review).** Lumenary sparrers
+  (`content/sparring.ts`, `{op:'spar'}`) pay keeper-class every win but share ONE rest of 3 won
+  battles across ALL halls (per-hall rests let a hall rotation farm forever); the Wick-Run day purse
+  pays repeat tiers (`<tier>_now` flags from the timer op). Any new repeatable payout: share a cooldown,
+  mirror it in `progression.mjs` BUILT_PAYOUTS and 10-economy §2, and make sure it can't net-lose money.
+- **A gated warp's `blocked_ref` may be a `script.*`** (played as a cutscene — someone standing there
+  says "not yet", staged on flags: Wanderer Hob at the Wanderwood gap). Prefer that to a bare sign line
+  for any long-term "come back later" gate, and open a journal teaser on first contact so it's remembered.
+- **A map that stacks a new accent set must list it in `world/maps.ts` `tilesets` too** — no CI gate
+  catches a missing one; the map just fails to load in-game (Coldfog I + `stillwater_set`'s `murkpool`,
+  2026-10). Concave pools need a FULL family (inner corners): the shared `murk` is a 9-slice.
+- **One-way exits are `travel`, not warps** (Lowtinder's well climb into Tinderwick): audit_warps
+  rejects a warp with no return; a scripted `travel` is the legal one-way door.
+

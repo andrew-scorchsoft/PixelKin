@@ -59,6 +59,8 @@ NODE_KINDS: dict[str, str] = {
     "dimglass_coast_ii": "route", "tideglass_cavern": "landmark", "gullcry_rock": "landmark",
     "pearlmoor_quay": "town", "pearlmoor_breakwater": "landmark", "pearlmoor_wanderwood": "landmark",
     "wayward_rise": "landmark",
+    # Lane E (10 Part III): the bay under the beach + the drowned old town
+    "tinderwick_bay": "route", "lowtinder": "town",
     "dawnstead": "town",
     # the hub + the bay road home + the mountain road
     "vesper_crossroads": "hub", "lanternway_tinderwick": "route",
@@ -73,6 +75,7 @@ NODE_KINDS: dict[str, str] = {
     "cinderwind_scarp": "route", "galehigh_terraces": "town", "lanternway_galehigh": "route",
     "wind_eye": "landmark", "windward_stair_i": "route", "windward_stair_ii": "route",
     "thunderroost": "landmark", "pale_vault_glacier": "town",
+    "cinderwind_ashfall": "route", "cinderwind_kiln": "landmark",  # Lane A (walkthrough/10 Part II)
     # west
     "hushfrost_pass_i": "route", "hushfrost_pass_ii": "route", "aurora_hollow": "landmark",
     "sunken_solarium": "town", "unrisen_stair": "landmark", "sunvault_climb_i": "route",
@@ -83,11 +86,17 @@ NODE_KINDS: dict[str, str] = {
     # the marshes (off Nightreach)
     "coldfog_marches_ii": "route", "coldfog_marches_i": "route", "drownlight_beacon": "landmark",
     "hollowfen_stillworks": "landmark",
+    "mourning_fields": "route",  # Lane N3 (walkthrough/11 Part C): the north loop
+    # Lane N1 (11 Part A): the Hollowing's village, north of Coldfog I
+    "stillwater": "town",
     # THE WILD WAYS — the Wick-Run (09 §2 A): Sunvault Climb I down the west flank to the sea
     "wickrun_crest": "route", "wickrun_chute": "route", "wickrun_trestles": "route",
     "wickrun_traverse": "route", "wickrun_lower": "route", "wickrun_foot": "route",
     # THE WILD WAYS — the Mirelights (east of Saltreach Fen I, over Ansel's ferry)
     "mirelight_landing": "route", "mirelight_glassmere": "route", "mirelight_chapel": "landmark",
+    # THE FARLAMP ISLES (walkthrough/10 Part I, Lane C1): the sea south of the Point
+    "farlamp_sound": "route", "farlamp_shelfwater": "route", "farlamp_fogwall": "route",
+    "farlamp_gullwrack": "route", "farlamp_kelpcrown": "route", "driftholm": "town",
 }
 # places hung off a stacked interior chain, pinned near their anchor (tiles)
 ANCHORED: dict[str, tuple[str, float, float]] = {
@@ -155,6 +164,9 @@ ROADS: list[tuple[str, str, str]] = [
     ("dimglass_coast", "tideglass_cavern", "gate"),
     ("dimglass_coast_ii", "tideglass_cavern", "gate"),
     ("dimglass_coast_ii", "gullcry_rock", "gate"),
+    # Lane E (10 Part III): swum with Tidecall off the beach, then east
+    ("tinderwick", "tinderwick_bay", "gate"),
+    ("tinderwick_bay", "lowtinder", "gate"),
     ("pearlmoor_quay", "pearlmoor_breakwater", "gate"),
     ("pearlmoor_quay", "pearlmoor_wanderwood", "road"),   # up through the allotment
     ("pearlmoor_wanderwood", "wayward_rise", "road"),     # north out of the glade
@@ -178,7 +190,11 @@ ROADS: list[tuple[str, str, str]] = [
     ("cinderhead_mine", "cinderhead_deep", "gate"),
     ("cinderhead_deep", "cinderwind_scarp", "pass"),
     # north
-    ("cinderwind_scarp", "galehigh_terraces", "road"),
+    ("cinderwind_scarp", "galehigh_terraces", "gate"),   # the rockfall (open once cleared)
+    ("cinderwind_scarp", "cinderwind_ashfall", "road"),  # Lane A: up onto the Ashfall Shelf
+    ("cinderwind_ashfall", "galehigh_terraces", "road"),
+    ("cinderwind_ashfall", "cinderwind_kiln", "gate"),   # the kiln stack's thermal (Kite)
+    ("cinderwind_ashfall", "windward_stair_i", "gate"),  # the Windward gap (Kite)
     ("galehigh_terraces", "lanternway_galehigh", "lane"),
     ("galehigh_terraces", "wind_eye", "gate"),
     ("galehigh_terraces", "windward_stair_i", "road"),
@@ -204,11 +220,15 @@ ROADS: list[tuple[str, str, str]] = [
     ("coldfog_marches_ii", "coldfog_marches_i", "gate"),
     ("coldfog_marches_i", "drownlight_beacon", "gate"),
     ("coldfog_marches_ii", "hollowfen_stillworks", "gate"),
+    ("coldfog_marches_i", "stillwater", "road"),  # Lane N1 (11 Part A)
     # the Rimeway (09-the-wild-ways §2 C): Pale Vault -> the Fold -> the Rime Gate -> the marsh
     ("pale_vault_glacier", "rimeway_ascent", "road"),
     ("rimeway_ascent", "rimeway_fold", "road"),
     ("rimeway_fold", "rimeway_descent", "gate"),
     ("coldfog_marches_ii", "rimeway_descent", "road"),
+    ("coldfog_marches_i", "mourning_fields", "road"),   # Lane N3: the north loop
+    ("mourning_fields", "rimeway_descent", "road"),     # ...and its col road down
+    ("stillwater", "mourning_fields", "road"),          # closes the north loop
     # THE WILD WAYS — the Wick-Run (one-way chutes; the Tallow Lift is the ride home)
     ("sunvault_climb_i", "wickrun_crest", "road"),
     ("wickrun_crest", "wickrun_chute", "road"),
@@ -221,6 +241,16 @@ ROADS: list[tuple[str, str, str]] = [
     ("saltreach_fen_i", "mirelight_landing", "gate"),
     ("mirelight_landing", "mirelight_glassmere", "road"),
     ("mirelight_glassmere", "mirelight_chapel", "road"),
+    # THE FARLAMP ISLES (Lane C1): rowed from the Point's slip / the Wick-Run's beach
+    # (gated on Ione's skiff); the fog lets you through to Driftholm only with the glass
+    ("pearlmoor_quay", "farlamp_sound", "gate"),      # the Point's launch slip
+    ("wickrun_foot", "farlamp_shelfwater", "gate"),
+    ("farlamp_sound", "farlamp_shelfwater", "road"),
+    ("farlamp_shelfwater", "farlamp_fogwall", "road"),
+    ("farlamp_sound", "farlamp_gullwrack", "road"),
+    ("farlamp_shelfwater", "farlamp_kelpcrown", "road"),
+    ("farlamp_gullwrack", "farlamp_kelpcrown", "road"),
+    ("farlamp_fogwall", "driftholm", "gate"),
     # THE LANTERN-CAR (rides, not roads) + the Cinderhead ore-hoist
     ("lanternway_lowleaf", "vesper_crossroads", "car"),
     ("lanternway_galehigh", "vesper_crossroads", "car"),

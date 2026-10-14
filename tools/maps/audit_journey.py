@@ -50,6 +50,12 @@ How it works (engine-faithful; worldmodel.MapModel is the collision model):
            never granted is reported DORMANT (WARN). A final fresh walk with the
            end-state keys flags content that was reachable during the journey
            but is sealed off at the end (an NPC that appears later in a lane).
+           TOGGLES (the temp-copy crank/lever pattern: a flag a script both
+           sets and clears under guards — the Drownlight shutters, the Old
+           Seams levers) are not one-way keys: the add-only replay ends with
+           every toggle thrown, which is only ONE of the legal end states. An
+           item on a toggle's map is sealed only if it's cut off in EVERY
+           combination of that map's toggles (each re-walked from the end).
   MAPS     every registered graph node is reached, except ALLOW_UNREACHED_MAPS.
 
 Run:  python3 tools/maps/audit_journey.py            # full report, exit 1 on FAIL
@@ -60,6 +66,7 @@ Needs node + the repo's esbuild (npm ci) for the content dump; otherwise stdlib.
 """
 from __future__ import annotations
 
+import itertools
 import json
 import subprocess
 import sys
@@ -153,7 +160,11 @@ DERIVED_ANY = [
     ("flag:q_south_rope_or_later", ["flag:q_south_has_rope", "gleam:tide"]),
     ("flag:skyloft_open", ["flag:q_north_kite_blessed", "gleam:storm"]),
     ("flag:undercroft_open", ["flag:q_north_aurora_oil", "gleam:frost"]),
+    ("flag:scarp_short_open", ["flag:scarp_rockfall_clear", "gleam:storm"]),
+    ("flag:scarp_climb_open", ["gleam:stone", "gleam:storm"]),
 ]
+# FlagStore COUNT_AT_LEAST (mirrored): N held flags with a prefix derive a flag
+DERIVED_COUNT = [("flag:driftletters_3", "flag:driftletter_", 3)]
 LAMPLIGHT = [("flag:lamplight_warmlight", 2), ("flag:lamplight_brightlight", 4),
              ("flag:lamplight_starlight", 6), ("flag:lamplight_radiant", 8)]
 POST_LETTERS = ["wren", "fenn", "tinderwick", "pearlmoor", "lowleaf", "cinderhead",
@@ -224,6 +235,7 @@ class Scripts:
             elif op == "timer":   # a run clock's stop: every tier is earnable (the Wick-Run)
                 for t in s.get("tiers", []) or []:
                     add(t["flag"])
+                    add(t["flag"] + "_now")   # this-run tier (the repeat day purse)
             elif op == "askName":
                 for mt in s.get("matches", []):
                     add(mt["flag"])
@@ -233,6 +245,10 @@ class Scripts:
                 add(PARTY)
             elif op == "giveItem" or op == "ensureItem":
                 add(f"item:{s['item']}")
+            elif op == "giveAbility":   # the Farlamp skiff's deepdive (10 §2)
+                if s["ability"] not in held:
+                    held.add(s["ability"])
+                    got_a.add(s["ability"])
             elif op == "battle":
                 t = self.trainers.get(s["trainer"], {})
                 for f in t.get("reward_flags", []):
@@ -531,6 +547,10 @@ class Replay:
             if any(f in held for f in anyf):
                 out.append((gate, "engine:derive"))
                 held.add(gate)
+        for gate, prefix, need in DERIVED_COUNT:
+            if sum(1 for f in held if f.startswith(prefix) and f[len(prefix):].isdigit()) >= need:
+                out.append((gate, "engine:derive"))
+                held.add(gate)
         if all(c in held for c, _, _ in DERIVED_CROWNS):
             out.append(("flag:hub_unlocked", "engine:derive"))
         if all(f"flag:q_post_letter_{x}" in held for x in POST_LETTERS):
@@ -551,7 +571,7 @@ class Replay:
             if z.get("requires_ability") and z["requires_ability"] not in self.abilities:
                 continue
             r = z["rect"]
-            tile_bound = z.get("terrain") in ("tall_grass", "water")
+            tile_bound = z.get("terrain") in ("tall_grass", "water", "deep")
             for ty in range(r["ty"], r["ty"] + r["h"]):
                 for tx in range(r["tx"], r["tx"] + r["w"]):
                     if not self.reached(md.id, (tx, ty)):
@@ -634,6 +654,54 @@ class Replay:
 
 
 # ---- reporting -------------------------------------------------------------------
+def toggle_flags(scripts: Scripts, maps: dict[str, MapData]) -> dict[str, set[str]]:
+    """map id -> the TOGGLE flags its own content writes. A toggle is a flag some
+    script both sets true and clears (value:false) under a guard — the temp-copy
+    crank (content/regions/drownlight.ts crank()) / lever (oldseams.ts lever())
+    pattern; a transient clear with no guard (the `_tmp` copy wiping itself) does
+    not count, so the temp copy is never a toggle. The builders' own proofs
+    (build_drownlight_tower.py prove(), build_old_seams_ii.py) show every state of
+    these is reversible; this audit just stops reading the all-thrown end state
+    as the only one."""
+    sets_g: dict[str, set[str]] = defaultdict(set)    # script -> guarded sets
+    clears_g: dict[str, set[str]] = defaultdict(set)  # script -> guarded clears
+    runs: dict[str, set[str]] = defaultdict(set)
+    for ref, steps in scripts.scripts.items():
+        stack = list(steps)
+        while stack:
+            st = stack.pop()
+            op = st.get("op")
+            guarded = bool(st.get("if_flag") or st.get("unless_flag"))
+            if op == "setFlag" and guarded:
+                (clears_g if st.get("value", True) is False else sets_g)[ref].add(st["flag"])
+            elif op == "run":
+                runs[ref].add(st["ref"])
+            elif op == "choice":
+                for o in st.get("options", []):
+                    stack.extend(o.get("ops", []))
+
+    def written(ref: str, seen: set) -> tuple[set[str], set[str]]:
+        if ref in seen:
+            return set(), set()
+        seen.add(ref)
+        a, b = set(sets_g.get(ref, ())), set(clears_g.get(ref, ()))
+        for r in runs.get(ref, ()):
+            a2, b2 = written(r, seen)
+            a |= a2
+            b |= b2
+        return a, b
+
+    out: dict[str, set[str]] = defaultdict(set)
+    for mid, md in maps.items():
+        for n in md.npcs:
+            a, b = written(n.get("dialogue_ref") or "", set())
+            out[mid] |= a & b
+        for t in md.triggers:
+            a, b = written(t.get("ref") or "", set())
+            out[mid] |= a & b
+    return {m: f for m, f in out.items() if f}
+
+
 def all_content(maps: dict[str, MapData]):
     for mid, md in maps.items():
         for n in md.npcs:
@@ -748,17 +816,34 @@ def main() -> int:
         warns.append(f"ALLOW_UNREACHED_MAPS['{m}'] is reached now — drop the entry")
 
     # ---- content ------------------------------------------------------------------
-    fresh = Replay(world, graph, content, scripts, maps)
-    fresh.flags = set(full.flags)
-    fresh.abilities = set(full.granted_abilities)
-    st = graph["start_at"]
-    fresh.visit(graph["start_map"], st["tx"], st["ty"], True)
-    for ws in content["waystones"]:
-        if ws["visited_flag"] in fresh.flags and ws["map"] in maps:
-            land = fresh.landing(ws["map"], ws["tx"], ws["ty"])
-            if land:
-                fresh.visit(ws["map"], land[0], land[1], True)
-    fresh.drain()
+    def end_walk(drop: frozenset = frozenset()) -> Replay:
+        r = Replay(world, graph, content, scripts, maps)
+        r.flags = set(full.flags) - drop
+        r.abilities = set(full.granted_abilities)
+        st = graph["start_at"]
+        r.visit(graph["start_map"], st["tx"], st["ty"], True)
+        for ws in content["waystones"]:
+            if ws["visited_flag"] in r.flags and ws["map"] in maps:
+                land = r.landing(ws["map"], ws["tx"], ws["ty"])
+                if land:
+                    r.visit(ws["map"], land[0], land[1], True)
+        r.drain()
+        return r
+
+    fresh = end_walk()
+    toggles = toggle_flags(scripts, maps)
+    _walks: dict[frozenset, Replay] = {frozenset(): fresh}
+
+    def sealed_in_every_toggle_state(mid: str, item: dict, kind: str) -> bool:
+        held = sorted(toggles.get(mid, set()) & full.flags)
+        for k in range(1, len(held) + 1):
+            for drop in itertools.combinations(held, k):
+                key = frozenset(drop)
+                if key not in _walks:
+                    _walks[key] = end_walk(key)
+                if geo(_walks[key], mid, item, kind):
+                    return False
+        return True
 
     n_content = n_reached = 0
     dormant, superseded, dead_tiles, sealed_late = [], [], [], []
@@ -780,7 +865,8 @@ def main() -> int:
             n_reached += 1
             present = (npc_present(item, full.flags) if kind == "npc"
                        else trigger_live(item, full.flags))
-            if present and not geo(fresh, mid, item, kind) and k not in ALLOW_UNREACHED:
+            if present and not geo(fresh, mid, item, kind) and k not in ALLOW_UNREACHED \
+                    and sealed_in_every_toggle_state(mid, item, kind):
                 sealed_late.append(k)
             continue
         if mid not in full.first_wave_map:

@@ -1,0 +1,149 @@
+{
+  "id": 172,
+  "slug": "fathomote",
+  "name": "Fathomote",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "B",
+  "stats": {
+    "hp": 48,
+    "atk": 30,
+    "def": 42,
+    "spa": 80,
+    "spd": 50,
+    "spe": 80
+  },
+  "bst": 330,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 175,
+  "kindling": {
+    "into": 173,
+    "trigger": {
+      "kind": "level",
+      "level": 40
+    }
+  },
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 6,
+        "move": "spark_mote"
+      },
+      {
+        "level": 10,
+        "move": "drench_song"
+      },
+      {
+        "level": 16,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 22,
+        "move": "focus_mind"
+      },
+      {
+        "level": 28,
+        "move": "light_pulse"
+      },
+      {
+        "level": 34,
+        "move": "swift_step"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A lantern-fish fry no longer than a hand, with a little glowing lure on a stalk over its nose. Shoals of them drift under the Farlamp Isles at night like spilled stars, and the old keepers set small lamps by the water so the fry have something to swim towards.",
+    "category": "Lantern-Fry Kin",
+    "size_cm": 14,
+    "weight_kg": 0.4,
+    "habitat": "isles"
+  },
+  "encounters": [
+    {
+      "area": "undertide_i",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 61,
+      "max": 63
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 61,
+      "max": 63
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 64
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "farlamp_sound",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 62,
+      "max": 63
+    },
+    {
+      "area": "farlamp_shelfwater",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "farlamp_fogwall",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 64,
+      "max": 65
+    },
+    {
+      "area": "farlamp_gullwrack",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 64,
+      "max": 65
+    },
+    {
+      "area": "farlamp_kelpcrown",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 64,
+      "max": 65
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "A tiny round-bodied lantern-fish fry seen side-on, swimming upright: a big head with huge round dark eyes, a small smiling underbite, stubby frilled pectoral fins and a short fanned tail. A thin curved stalk rises from its brow and ends in a round glowing lure-bulb held out in front of its face. At 64px it reads as a chubby baby fish carrying its own little lamp.",
+    "palette": "Deep sea-blue body (#13205a) with a paler water-blue (#4fb4ff) belly and fin-frills; tiny diamond-cyan (#9fe7ff) freckle-spots along the flank; the lure-bulb a warm bone-gold (#f5f0e1) glow, the brightest pixel; soft ink (#1a1430) outlines.",
+    "direction": "Wide-eyed, curious and brave in a small way: a baby that swims out into the dark because its own light says it can. Cute and round, never toothy. Must read as the same line as Fathomere: same lure-stalk, same blue, same spot row."
+  },
+  "provenance_concept_id": "X-FATHOMOTE"
+}

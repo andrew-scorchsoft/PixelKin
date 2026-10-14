@@ -110,6 +110,146 @@
       "rarity": "common",
       "min": 57,
       "max": 64
+    },
+    {
+      "area": "rimeway_ascent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 39,
+      "max": 41
+    },
+    {
+      "area": "rimeway_ascent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "rimeway_fold",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 40,
+      "max": 41
+    },
+    {
+      "area": "rimeway_fold",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
+      "area": "rimeway_descent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 46,
+      "max": 47
+    },
+    {
+      "area": "rimeway_descent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 63
+    },
+    {
+      "area": "undertide_i",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 63
+    },
+    {
+      "area": "undertide_i",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 65
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 65
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 65
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 66
+    },
+    {
+      "area": "drownlight_f1",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 51,
+      "max": 52
+    },
+    {
+      "area": "drownlight_f2",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 51,
+      "max": 53
+    },
+    {
+      "area": "farlamp_fogwall",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 65,
+      "max": 67
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 49,
+      "max": 51
+    },
+    {
+      "area": "penumbra_underways",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 53,
+      "max": 55
+    },
+    {
+      "area": "penumbra_underways",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 59
     }
   ],
   "scripted": false,

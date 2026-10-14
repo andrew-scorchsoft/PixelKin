@@ -17,7 +17,7 @@ Wiring:
   quay `to_allotment(_e)` (17-18,0) -> HERE (9-10,14);  our `to_quay(_e)`
   (9-10,15) -> quay (17-18,1). Landings sit within 1 of the return warps.
   `to_wood(_e)` (9-10,0) -> wanderwood (13-14,22), gated on the word flag with
-  `blocked_ref: sign.wander_gap`; the wood's `to_allotment(_e)` lands on (9-10,1).
+  `blocked_ref: script.wander_gap_blocked` (Wanderer Hob); the wood's `to_allotment(_e)` lands on (9-10,1).
 
 Run:  python3 tools/maps/build_pearlmoor_allotment.py
 """
@@ -139,7 +139,7 @@ for x, sfx in ((9, ""), (10, "_e")):
                        "to_map": "pearlmoor_wanderwood", "to": {"tx": x + 4, "ty": 22},
                        "facing": "up", "transition": "fade",
                        "requires_flag": "flag:q_south_wander_word",
-                       "blocked_ref": "sign.wander_gap"})
+                       "blocked_ref": "script.wander_gap_blocked"})
 
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
@@ -153,6 +153,17 @@ mk.scatter_decor(deco, base, W, H, rng, density=0.08,
                  avoid=obj_cells | {(7, 8)} | {(x, y) for y in range(H) for x in range(W)
                                                if path[y * W + x] or tree[y * W + x]
                                                or 2 <= x <= 7 and 5 <= y <= 12})
+
+# ---- Wanderer Hob, waiting at the wood's mouth (2026-10 playtest: the gap said
+# "no" with nobody there to say "come back later", so the wood read as a dead end).
+# He stands beside the gap until the trees part — then he's gone in (his wood
+# placement takes over). Placed AFTER the scatter so the rng-rolled deco is
+# untouched; his tile is cleared of any deco under him.
+deco[3 * W + 8] = 0
+m["npcs"].append({"id": "hob_waiting", "at": {"tx": 8, "ty": 3}, "facing": "right",
+                  "sprite": "npc_man", "movement": "look_around",
+                  "dialogue_ref": "script.wander_hob_waiting",
+                  "hidden_when_flag": "flag:q_south_wander_open"})
 
 if __name__ == "__main__":
     ok = mk.finalize(m, scale=4)

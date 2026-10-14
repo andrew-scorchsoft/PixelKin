@@ -341,5 +341,23 @@
    "assets/trainers/player_indi.png"
   ],
   "done": true
+ },
+ "ottery": {
+  "kind": "unique",
+  "subject": "Grandmother Ottery Tallow, the old Lampwarden of the drowned town: a small round very old woman with a white bun and lamp-wick hairpin, round spectacles, a long ember-orange knitted shawl over a navy dress, green wellington boots; she holds up a little brass lamp-in-a-jar with a warm flame in one hand and plants the other fist on her hip, grinning, feisty and delighted, ready for a bout",
+  "references": [
+   "assets/trainers/ottery.png",
+   "assets/trainers/battle/brisa.png"
+  ],
+  "done": true
+ },
+ "shutterkeeper": {
+  "kind": "unique",
+  "subject": "MAUDRY KELL the Shutterkeeper (lane N2, the Drownlight): read her look from the hollowing_elder reference; a small, weathered, upright old lighthouse keeper in a long ash-grey keeper's coat and knitted grey shawl, a ring of iron shutter-keys at her belt, a lantern held low with its iron shutter closed and a thread of warm light at the seam; calm, sad, dignified, kind",
+  "references": [
+   "assets/trainers/hollowing_elder.png",
+   "assets/trainers/battle/acolyte.png"
+  ],
+  "done": true
  }
 }

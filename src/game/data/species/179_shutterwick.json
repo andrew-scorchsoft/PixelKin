@@ -1,0 +1,174 @@
+{
+  "id": 179,
+  "slug": "shutterwick",
+  "name": "Shutterwick",
+  "types": [
+    "Dark",
+    "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "D",
+  "stats": {
+    "hp": 84,
+    "atk": 84,
+    "def": 89,
+    "spa": 85,
+    "spd": 85,
+    "spe": 71
+  },
+  "bst": 498,
+  "ability": "mirrorlight",
+  "hidden_ability": "cinderveil",
+  "catchRate": 65,
+  "kindling": null,
+  "from": 178,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "shade_nip"
+      },
+      {
+        "level": 6,
+        "move": "ember_jab"
+      },
+      {
+        "level": 10,
+        "move": "scorch_veil"
+      },
+      {
+        "level": 15,
+        "move": "duskmaw"
+      },
+      {
+        "level": 20,
+        "move": "cinderclaw"
+      },
+      {
+        "level": 26,
+        "move": "hone"
+      },
+      {
+        "level": 32,
+        "move": "null_claw"
+      },
+      {
+        "level": 38,
+        "move": "flame_lash"
+      },
+      {
+        "level": 43,
+        "move": "blight_touch"
+      },
+      {
+        "level": 44,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 49,
+        "move": "shadow_rend"
+      },
+      {
+        "level": 54,
+        "move": "bulwark"
+      },
+      {
+        "level": 60,
+        "move": "prism_beam"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "When a Dousecap has put out a thousand flames it kindles into a Shutterwick, whose own lamp burns behind closed shutters in its chest. It keeps that light hidden and warm for the Hollowing, and opens a single slat only for someone lost in the dark.",
+    "category": "Shuttered Lantern Kin",
+    "size_cm": 150,
+    "weight_kg": 34,
+    "habitat": "north_hollow"
+  },
+  "encounters": [
+    {
+      "area": "drownlight_f1",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 50,
+      "max": 52
+    },
+    {
+      "area": "drownlight_f2",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 51,
+      "max": 53
+    },
+    {
+      "area": "drownlight_beacon",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 48,
+      "max": 50
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 50,
+      "max": 52
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 47,
+      "max": 49
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 54,
+      "max": 56
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 60
+    },
+    {
+      "area": "stillwater",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 49,
+      "max": 52
+    },
+    {
+      "area": "stillwater",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 56,
+      "max": 60
+    },
+    {
+      "area": "stillwater",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 55,
+      "max": 58
+    }
+  ],
+  "scripted": false,
+  "art": {
+    "silhouette": "A tall, gentle lantern-keeper kin, front three-quarter view, with a broad bell-shaped silhouette that widens to the ground: a body of soft charcoal-grey cloth like a long quilted cloak, and set into its chest a BIG square brass lantern whose four little wooden shutters are closed, with bright lines of warm gold light leaking out between the slats and spilling down the cloak. On its head sits a wide brass snuffer-cap with a little ring-handle on top. Under the brim its round charcoal face is clearly visible, the same face as Dousecap: large calm half-lidded eyes with a bone-white highlight and a small, kind, sad smile. Two long sleeves fold in front, cupping the lantern. At 64px it reads as a gentle keeper carrying a shuttered lamp inside itself.",
+    "palette": "Charcoal-grey cloak (#2a2633 with slate-violet folds); tarnished brass snuffer-cap and lantern frame (warm ochre-gold, umber shading); dark wood shutters; the light leaking through the slats a warm bone-gold (#f5f0e1) with a fire-amber (#ff8a3d) core, the brightest pixels; the eyes pale moon-white; ink (#1a1430) outlines.",
+    "direction": "Quiet, protective and sad-eyed: it believes the light is safest hidden. Tall and dignified but kind and round-faced, a keeper not a phantom: a visible soft face with real eyes, NOT a dark void with glowing dot eyes, never menacing, no teeth. Same brass snuffer-cap and charcoal as Dousecap, grown up; the leaking lantern-light is its signature."
+  },
+  "provenance_concept_id": "X-SHUTTERWICK"
+}

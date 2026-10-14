@@ -29,6 +29,23 @@ import { PAUL_DIALOGUE, PAUL_SCRIPTS } from './paul';
 import { JESTHOUSE_DIALOGUE, JESTHOUSE_SCRIPTS } from './jesthouse';
 // The inn folk (2026-10): Hesper the Echo-Reader (every inn) + Ottilie the Namewright.
 import { INNFOLK_DIALOGUE, INNFOLK_SCRIPTS } from './innfolk';
+// The Farlamp Isles (walkthrough/10 Part I) — Lane C1: the surface, Driftholm, the mainland hooks.
+import { FARLAMP_DIALOGUE, FARLAMP_SCRIPTS } from './farlamp';
+// Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay, the town under the bay.
+import { LOWTINDER_DIALOGUE, LOWTINDER_SCRIPTS } from './lowtinder';
+// Lane A (walkthrough/10 Part II): the Ashfall Shelf + Kiln Gully.
+import { ASHFALL_DIALOGUE, ASHFALL_SCRIPTS } from './ashfall';
+// The Farlamp Isles, lane C2 (2026-10): the Undertide + the Drowned Lamp.
+import { UNDERTIDE_DIALOGUE, UNDERTIDE_SCRIPTS } from './undertide';
+// The Lumenary sparring partners (2026-10 economy review).
+import { SPARRING_DIALOGUE, SPARRING_SCRIPTS } from '../sparring';
+// Lane N3 (walkthrough/11 Parts C + D): the Mourning Fields + the Penumbra Underways.
+import { MOURNFIELDS_DIALOGUE, MOURNFIELDS_SCRIPTS } from './mournfields';
+import { UNDERWAYS_DIALOGUE, UNDERWAYS_SCRIPTS } from './underways';
+// Lane N1 (11-the-hollowing-country.md Parts A + E): Stillwater + the late-north density.
+import { STILLWATER_DIALOGUE, STILLWATER_SCRIPTS } from './stillwater';
+// Lane N2 (walkthrough/11 Part B): the Drownlight, the first lamp the Hollowing put out.
+import { DROWNLIGHT_DIALOGUE, DROWNLIGHT_SCRIPTS } from './drownlight';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -48,6 +65,15 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...PAUL_SCRIPTS,
   ...JESTHOUSE_SCRIPTS,
   ...INNFOLK_SCRIPTS,
+  ...FARLAMP_SCRIPTS,
+  ...LOWTINDER_SCRIPTS, // Lane E
+  ...ASHFALL_SCRIPTS,
+  ...UNDERTIDE_SCRIPTS,
+  ...SPARRING_SCRIPTS,
+  ...MOURNFIELDS_SCRIPTS, // Lane N3
+  ...UNDERWAYS_SCRIPTS, // Lane N3
+  ...STILLWATER_SCRIPTS, // Lane N1
+  ...DROWNLIGHT_SCRIPTS, // Lane N2
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -68,4 +94,13 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...PAUL_DIALOGUE,
   ...JESTHOUSE_DIALOGUE,
   ...INNFOLK_DIALOGUE,
+  ...FARLAMP_DIALOGUE,
+  ...LOWTINDER_DIALOGUE, // Lane E
+  ...ASHFALL_DIALOGUE,
+  ...UNDERTIDE_DIALOGUE,
+  ...SPARRING_DIALOGUE,
+  ...MOURNFIELDS_DIALOGUE, // Lane N3
+  ...UNDERWAYS_DIALOGUE, // Lane N3
+  ...STILLWATER_DIALOGUE, // Lane N1
+  ...DROWNLIGHT_DIALOGUE, // Lane N2
 };

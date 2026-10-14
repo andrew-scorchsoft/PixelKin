@@ -65,7 +65,36 @@
     "weight_kg": 2.1,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "lowtinder",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 20,
+      "max": 21
+    },
+    {
+      "area": "lowtinder",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 20,
+      "max": 21
+    },
+    {
+      "area": "lowtinder_cellar",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 21,
+      "max": 22
+    },
+    {
+      "area": "lowtinder_cellar_b2",
+      "terrain": "cave",
+      "rarity": "rare",
+      "min": 22,
+      "max": 23
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Hovering humanoid silhouette ringed by a spinning debris-halo of cinders, orange core glowing at the heart, long wispy arms; dynamic at 48px.",

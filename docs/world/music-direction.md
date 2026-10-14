@@ -643,3 +643,79 @@ Classic specs: `assets/audio/midi/specs/<id>.json`; remaster cue sheets:
 (~5.8 s): short falling `noise` glides for the cable creak, a rising `pluck` arpeggio (the car
 climbing), a warm `strings` bed (G → C → G) and two soft bells as the car arrives. Lives in
 `music/` and plays through `musicSting`, exactly like `sting-hour`; classic-only.
+
+---
+
+## The Farlamp Isles — one sea-hymn, five rungs (2026-10)
+
+The post-game archipelago ([`walkthrough/10-the-farlamp-isles.md`](./walkthrough/10-the-farlamp-isles.md))
+is scored as a **cue family** (the `music-cue-family` skill) on the isles' OWN tune, not the Vesper
+motif: they were cut off for eleven winters, so they kept their own hymn. Driftholm's lamp-keepers
+sang it to the boats; you hear it first as one line over the sea, then in the town, broken in the
+caves, and finally in full when the Farlamp burns again.
+
+**The motif — the isles' sea-hymn** (D minor, 3/4, the Tide lilt). Bar 1 is the *rope-pull*: up to
+the tonic, down to the fifth below (D5 A4). Bar 2 is the *haul*: three rising steps (D E F). The
+16-bar hymn is two 8-bar lines that both open on that figure. The first line ends on the
+dominant (A), and the second line comes home through a harmonic-minor C♯. The bridge goes to the
+relative F major ("looking out to sea from the harbour wall").
+
+```
+| D5h A4q | D5 E5 F5 | E5h D5q | C5h. | F5h E5q | D5 C5 A4 | Bb4 A4 G4 | A4h.  |
+| D5h A4q | D5 E5 F5 | G5h F5q | E5h. | F5 E5 D5 | C5 A4 C5 | D5q. E5e C#5q | D5h A4q |
+```
+
+**The ladder**: two directions out from the anchor, darker and brighter, then the payoff.
+
+| Cue | Where | Transformation | Classic | Remaster |
+|---|---|---|---|---|
+| `driftholm` (anchor) | Driftholm in the long dark | The hymn played straight: minor, warm but lonely. Bells are lamps in windows at the phrase ends, a flute answers in the bridge, and surf breathes every 4 bars. No drums. | `snes`, 84 BPM 3/4, D minor, 32 bars / 68.6 s | **anchor** (unconditioned) → `motif-farlamp.json` |
+| `farlamp-sound` | Farlamp Sound, the Shelfwater, the Fogwall | **A lone line over the sea**: the hymn in D **Dorian** (B♮, the shanty colour), with four bars of open sea between its lines. The bass rocks like oars (dotted root, fifth, root), the noise surf rises and falls every two bars, and **one bell blinks every two bars: the far lamp**. The flute takes the bridge an octave down, like a voice from another boat. | `snes`, 80 BPM, 32 bars / 72 s | motif `high` |
+| `undertide` | Undertide I–IV | **Fragmented and low**: only the rope-pull and the haul survive, an octave down with long rests. The phrase sinks to a Phrygian E♭ instead of settling. `pulse12` drips echo fainter, and distant tide-bells ring over a held tide in the bass. | bare `gbc`, 84 BPM, 32 bars / 68.6 s | motif `medium` |
+| `driftholm-dawn` | Driftholm after `flag:isles_dawn` (`music_when`) | **Turned major**: the same notes with F→F♯, C→C♯, B♭→B, on brighter chords. The band fills out with eighth-note harp, a bell counter-line answering every phrase, a flute under the second line, a walking bass and a gentle festive kit. | `snes`, 92 BPM, D major, 32 bars / 62.6 s | motif `high` |
+| `farlamp-relit` | the relight at the Drowned Lamp | **The payoff, minor → major**: a play-once head (the first line in D minor, sung by a lone bell over harp, strings swelling in), then the hymn blooming in D major. The festival swell puts the bell on the tune an octave up, then the bridge, then the return. This is the Gleam cadence with no Gleam. | `snes` intro + loop stitched by `stitch_intro_loop.py` (`music-classic.json`: the intro plays once, 17.1 s; the body loops, 40 bars / 85.7 s) | motif `high` |
+
+**How the family is built.**
+- **Classic.** All five specs are composed from one note table, so the tune is literally shared:
+  `assets/audio/midi/specs/{driftholm,driftholm-dawn,farlamp-sound,undertide,farlamp-relit-intro,farlamp-relit-loop}.json`.
+- **Remasters.** `driftholm` is the unconditioned anchor (take `6Pi9Zbewo2cZ7X2E5uOx`, its Main Theme at
+  8.6–38.6 s, registered in `assets/audio/elevenlabs/motif-farlamp.json`). The other four condition on it
+  with `"motif": {"source": "farlamp"}`. Every remaster runs at 84 BPM, the anchor's grid, and gets
+  its tempo differences from feel.
+- **Briefs.** They describe the hymn as "the seafaring hymn tune" and never give it a title.
+- **Openings.**
+  - `driftholm`: surf, then a lone harp arpeggio and one bell (a lamp lit in a window).
+  - `farlamp-sound`: the oar stroke and a blinking bell.
+  - `undertide`: a bass drone and one drip.
+  - `driftholm-dawn`: a bright bell call over a harp run.
+  - `farlamp-relit`: a hushed minor bell, swelling into major.
+- **Checks.** All seams are ≤ 0.24, all five pass `dead_air.py`, and all sit at -15.5 LUFS.
+  `farlamp-sound` and `undertide` set `max_stall` (sea and cave hush).
+- **Battles.** None here. Farlume uses the Three Hours' `battle-hours`.
+
+## The Drownlight — one keeper's hymn, darker as you climb (2026-10)
+
+The Hollowing's first shuttered lamp ([`walkthrough/11-the-hollowing-country.md`](./walkthrough/11-the-hollowing-country.md)
+Part B, lane N2) is a **cue family** (the `music-cue-family` skill) on its own tune: the keeper's hymn.
+One direction to the top — each floor is colder and emptier than the one below — then the payoff.
+
+**The motif** (D minor, 3/4): the beam sweeping **down** the dark — a falling arpeggio, a sigh, a slow
+climb back to the leading tone. Deliberately unlike the Farlamp's rising rope-pull.
+
+```
+| A5 F5 D5 | E5h A4 | Bb4 C5 D5 | C#5h. | A5 F5 D5 | G5h Bb5 | A5 G5 E5 | F5h.  |
+| D6 C6 A5 | Bb5h G5 | A5 F5 D5 | E5h.  | F5 E5 D5 | Bb5h A5 | G5 E5 C#5 | D5h. |
+```
+
+| Cue | Where | Transformation | Classic | Remaster |
+|---|---|---|---|---|
+| `drownlight-f1` (anchor) | the Oil Stores | The hymn straight: flute lead, harp arpeggios, pad, walking bass, the lens clockwork ticking every beat. | `snes`, 76 BPM 3/4, D minor, 16 bars / 37.9 s | **anchor** (unconditioned) → `motif-drownlight.json` |
+| `drownlight-f2` | the Lens Gallery | Darkened to D **Phrygian** (E→E♭, no leading tone), an octave down on a hollow triangle; a glass bell echoes each phrase a bar late — the light leaking down the wells. Pedal-D bass, the tick every other beat. | `snes`, 76 BPM, 16 bars / 37.9 s | motif `high` |
+| `drownlight-lantern` | the Lantern Room (the Shutterkeeper) | **Fragments**: the first bar of each phrase on low strings, then silence where the rest should be, over a drone rocking between a bare fifth and a held minor second. One high bell every four bars: the thread of light at the shutters' seam. Ends on the dominant, unresolved. | `snes`, 66 BPM, 16 bars / 43.7 s | motif `medium` |
+| `drownlight-relit` | the relight + the foot afterwards (`music_when` `flag:drownlight_relit`) | **Turned major**: F→F♯, C→C♯, B♭→B on brighter chords; flute and bell doubled, strings, harp, a soft processional kit. The lamp beat with no Gleam. | `snes`, 84 BPM, D major, 16 bars / 34.3 s | motif `high` |
+
+Remasters: `drownlight-f1` is the unconditioned anchor (take `d9I5aE5h3fzG1TXLu1Or`, Main Theme at
+4.7–34.7 s); the other three condition on it with `"motif": {"source": "drownlight"}` on its 76 grid.
+Openings: a lone flute over a held harp chord (f1); a low string D and one far bell (f2); an organ
+drone with a single bell (lantern; its lead silence trimmed); a bright harp sweep and chime (relit).
+Seams 0.25–0.34, all pass `dead_air.py`, -15.5 LUFS. Battles here use `battle-nightfall` (classic-only).

@@ -219,6 +219,53 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // Sunvault Climb rebuild (S)
     { map_id: 'sunvault_climb_iii', region: 'west' }, // route: the Gilt Face (ladder pitches, the trestle over the gully)
     { map_id: 'sunvault_climb_iv', region: 'west' }, // route: the Sun Ledges (planks + ledges to the observatory hill)
+    // ---- THE FARLAMP ISLES (walkthrough/10 Part I, post-game) — Lane C1: the surface.
+    // Rowed from the Point's slip / the Wick-Run Foot once Ione's skiff is yours.
+    { map_id: 'farlamp_sound', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the deep under the lighthouse: Fathomote/Hermiwick, a boat-trainer, a Hearth Coal' },
+    { map_id: 'farlamp_shelfwater', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'reef flats + the sunken hull (a Hearth Coal), a boat-trainer' },
+    { map_id: 'farlamp_fogwall', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the far lamp; the fog turns you round without the fog-glass; Fogwisp' },
+    { map_id: 'farlamp_gullwrack', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'gull-cliffs, the keeper\'s bothy (rest), the Undertide I mouth' },
+    { map_id: 'farlamp_kelpcrown', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the keepers\' ruins (a 2,000w purse), kelp terraces, the Undertide II mouth' },
+    { map_id: 'driftholm', region: 'south', optional: true, unlocked_by_flag: 'flag:q_isles_fogglass', reward: 'the island town: inn, chandlery (Deep Charm), Elder Creel, Bram Fathom (ace 70), Letters Home' },
+    { map_id: 'driftholm_inn', region: 'south', optional: true }, // interior: the Lamplighters' Rest (rest point)
+    { map_id: 'driftholm_chandlery', region: 'south', optional: true }, // interior: Creel & Daughter (shop)
+    { map_id: 'driftholm_elder', region: 'south', optional: true }, // interior: Elder Nan Creel (the well-stair key)
+    { map_id: 'driftholm_boathouse', region: 'south', optional: true }, // interior: the boathouse (a cache)
+    { map_id: 'gullwrack_hut', region: 'south', optional: true }, // interior: the keeper's bothy (rest point)
+    // ---- Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay (optional, Tidecall) ----
+    { map_id: 'tinderwick_bay', region: 'south', optional: true, reward: 'the drowned roofs, two skerries, a Star-chart; the outer deep reef and the old Tinder Light (skiff)' },
+    { map_id: 'lowtinder', region: 'south', optional: true, reward: 'the drowned old town: Embrift (never wild before), Grandmother Tallow, the Bell Cellar' },
+    { map_id: 'lowtinder_lamphouse', region: 'south' }, // interior: Grandmother Ottery Tallow's dry upper floor (rest point)
+    { map_id: 'lowtinder_school', region: 'south' }, // interior: the old lamp-school
+    { map_id: 'lowtinder_school_garden', region: 'south', optional: true, reward: 'Mossmantle (never wild before) — Brightlight only' },
+    { map_id: 'lowtinder_cellar', region: 'south', optional: true, reward: 'the winch-key' },
+    { map_id: 'lowtinder_cellar_b2', region: 'south', optional: true, reward: 'the old town bell, a Lumen Drop, the climb up Tinderwick\'s well' },
+
+    // Lane A — the Ashfall Shelf (walkthrough/10 Part II): the main-path leg Scarp -> Ashfall -> Galehigh
+    { map_id: 'cinderwind_ashfall', region: 'north' }, // route: the slag-tip shelf, the haulers' camp (rest point)
+    { map_id: 'cinderwind_kiln', region: 'north', optional: true, reward: 'Kiln Gully: the Last Pane, a Beacon charge, the Star-chart: Shardstorm; Lumecite/Pyrolith/rare Prismara' },
+    // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide (portal caves under the isles)
+    { map_id: 'undertide_i', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the tide-race lesson: the keeper\'s first page, a Hearth Coal' },
+    { map_id: 'undertide_ii', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the FOG-GLASS (the Fogwall\'s buoy lane), a Lumen Drop, the second page' },
+    { map_id: 'undertide_iii', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the three-bell maze, the keeper\'s ledge (rest), Tide-bell Tuning (a Lumen Drop + the shortcut race)' },
+    { map_id: 'undertide_iv', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the Drowned Stair: a Lumen Drop, a Hearth Coal, the keeper\'s 2,000w purse, the last page' },
+    { map_id: 'farlamp_drowned', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the relight (the isles\' dawn) + FARLUME #177 (lv 68) + the store\'s Star-chart' },
+    // ---- Lane N3 (11-the-hollowing-country.md Parts C + D)
+    { map_id: 'mourning_fields', region: 'outer', optional: true, reward: 'the north loop (Coldfog I, Stillwater, the Rimeway); the field shrine; the sleepers wake at dawn' },
+    { map_id: 'penumbra_underways', region: 'central', optional: true, reward: 'the last road: the strongest Dark/Light beds, a Starglass Shard' },
+    { map_id: 'penumbra_underways_b1', region: 'central', optional: true, reward: 'the Last Watch (rest point), the view up the Spire\'s shaft, the last Lumen Drop' },
+    // ---- Lane N1 (11-the-hollowing-country.md Part A): Stillwater, the Hollowing's village
+    // (north of Coldfog Marches I; optional + late — Coldfog is reached at gleam:solar)
+    { map_id: 'stillwater', region: 'outer', optional: true, reward: 'the Hollowing as people: three side quests (A Light Left On, The Way Home, The Shutter-wall), the Shutter inn (rest), the dark-lamp maker\'s counter, the Hollowing family (#178-#180) wild' },
+    { map_id: 'stillwater_quiet_hall', region: 'outer', optional: true }, // interior: the meeting-house + the shutter-wall
+    { map_id: 'stillwater_shutter', region: 'outer', optional: true }, // interior: the inn (rest point)
+    { map_id: 'stillwater_lampmaker', region: 'outer', optional: true }, // interior: the dark-lamp maker (shop)
+    { map_id: 'stillwater_home_a', region: 'outer', optional: true }, // interior: Margery and Edwy's cottage
+    { map_id: 'stillwater_home_b', region: 'outer', optional: true }, // interior: Maren's house
+    // ---- Lane N2 (walkthrough/11 Part B): the Drownlight, above drownlight_beacon
+    { map_id: 'drownlight_f1', region: 'outer', optional: true, reward: 'the shutter-crank lesson; a Starglass Shard in the nook' }, // interior
+    { map_id: 'drownlight_f2', region: 'outer', optional: true, reward: 'the gallery ring of shutters; the watch-cot (rest); a Lumen Drop' }, // interior
+    { map_id: 'drownlight_lantern', region: 'outer', optional: true, reward: 'the Shutterkeeper; after the dawn, the relight + the Shutter Charm' }, // interior
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -295,8 +342,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_lumenary', via_warp: 'to_lumenary', bidirectional: true },
     { from_map: 'cinderhead_mine', to_map: 'cinderhead_deep', via_warp: 'to_deep', requires_ability: 'glimmerstep', bidirectional: true },
     // 2026-10: the Deep opens onto Cinderwind Scarp, the climb to the terraces
-    { from_map: 'cinderhead_deep', to_map: 'cinderwind_scarp', via_warp: 'to_terraces', bidirectional: true },
-    { from_map: 'cinderwind_scarp', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
+    { from_map: 'cinderhead_deep', to_map: 'cinderwind_scarp', via_warp: 'to_terraces', requires_flag: 'flag:scarp_climb_open', bidirectional: true }, // chained until Otho's Gleam
+    // Lane A (walkthrough/10 Part II): the Scarp's east cut is a ROCKFALL until the Galehigh
+    // haulers clear it (flag:scarp_short_open = scarp_rockfall_clear OR gleam:storm, FlagStore ANY_OF)
+    { from_map: 'cinderwind_scarp', to_map: 'galehigh_terraces', via_warp: 'to_terraces', requires_flag: 'flag:scarp_short_open', bidirectional: true },
     // Galehigh interiors (door warps, both ways) + the Kite-Rising Winch: the
     // skyloft is gated by the FESTIVAL flag (the earned loop, spine §5 shape #5)
     // — never by Updraft Kite (§0 rule 1; Updraft is Mira's reward).
@@ -442,6 +491,68 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunvault_climb_ii', to_map: 'sunvault_climb_iii', via_warp: 'to_climb_iii', bidirectional: true },
     { from_map: 'sunvault_climb_iii', to_map: 'sunvault_climb_iv', via_warp: 'to_climb_iv', bidirectional: true },
     { from_map: 'sunvault_climb_iv', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
+    // ---- THE FARLAMP ISLES (Lane C1): the launches, the sea seams, Driftholm's doors
+    // (the three cave mouths' edges are declared bidirectionally by Lane C2)
+    { from_map: 'pearlmoor_point', to_map: 'farlamp_sound', via_warp: 'to_sound_6', requires_flag: 'flag:q_isles_afloat', bidirectional: true },
+    { from_map: 'wickrun_foot', to_map: 'farlamp_shelfwater', via_warp: 'to_shelf_9', requires_flag: 'flag:q_isles_afloat', bidirectional: true },
+    { from_map: 'farlamp_sound', to_map: 'farlamp_shelfwater', via_warp: 'to_shelf_0', requires_ability: 'deepdive', bidirectional: true },
+    { from_map: 'farlamp_sound', to_map: 'farlamp_gullwrack', via_warp: 'to_gullwrack_0', requires_ability: 'deepdive', bidirectional: true },
+    { from_map: 'farlamp_shelfwater', to_map: 'farlamp_fogwall', via_warp: 'to_fogwall_0', requires_ability: 'deepdive', bidirectional: true },
+    { from_map: 'farlamp_shelfwater', to_map: 'farlamp_kelpcrown', via_warp: 'to_kelpcrown_0', requires_ability: 'deepdive', bidirectional: true },
+    { from_map: 'farlamp_gullwrack', to_map: 'farlamp_kelpcrown', via_warp: 'to_kelpcrown_0', requires_ability: 'deepdive', bidirectional: true },
+    { from_map: 'farlamp_fogwall', to_map: 'driftholm', via_warp: 'to_driftholm_16', requires_flag: 'flag:q_isles_fogglass', bidirectional: true },
+    { from_map: 'driftholm', to_map: 'driftholm_inn', via_warp: 'enter_inn_2', bidirectional: true },
+    { from_map: 'driftholm', to_map: 'driftholm_chandlery', via_warp: 'enter_chandlery', bidirectional: true },
+    { from_map: 'driftholm', to_map: 'driftholm_elder', via_warp: 'enter_elder', bidirectional: true },
+    { from_map: 'driftholm', to_map: 'driftholm_boathouse', via_warp: 'enter_boathouse_2', bidirectional: true },
+    { from_map: 'farlamp_gullwrack', to_map: 'gullwrack_hut', via_warp: 'to_hut', bidirectional: true },
+    // ---- Lane E (walkthrough/10 Part III): Tinderwick Bay + Lowtinder, the town under the bay
+    // home's south shore swims off its east columns into the bay (Tidecall); the bay's east
+    // edge swims into Lowtinder; the Bell Cellar is two floors under the lamp-house. The
+    // cellar's far end climbs Tinderwick's well (a one-way `travel`, not an edge).
+    { from_map: 'tinderwick', to_map: 'tinderwick_bay', via_warp: 'to_bay_21', requires_ability: 'tidecall', bidirectional: true },
+    { from_map: 'tinderwick_bay', to_map: 'lowtinder', via_warp: 'to_lowtinder_15', requires_ability: 'tidecall', bidirectional: true },
+    { from_map: 'lowtinder', to_map: 'lowtinder_lamphouse', via_warp: 'to_lamphouse', bidirectional: true },
+    { from_map: 'lowtinder', to_map: 'lowtinder_school', via_warp: 'to_school', bidirectional: true },
+    { from_map: 'lowtinder_school', to_map: 'lowtinder_school_garden', via_warp: 'to_garden', requires_flag: 'flag:lamplight_brightlight', bidirectional: true },
+    { from_map: 'lowtinder', to_map: 'lowtinder_cellar', via_warp: 'to_cellar', bidirectional: true },
+    { from_map: 'lowtinder_cellar', to_map: 'lowtinder_cellar_b2', via_warp: 'ladder_down', bidirectional: true },
+
+    // Lane A — the Ashfall Shelf (walkthrough/10 Part II)
+    { from_map: 'cinderwind_scarp', to_map: 'cinderwind_ashfall', via_warp: 'to_ashfall', bidirectional: true },
+    { from_map: 'cinderwind_ashfall', to_map: 'galehigh_terraces', via_warp: 'to_terraces', bidirectional: true },
+    { from_map: 'cinderwind_ashfall', to_map: 'windward_stair_i', via_warp: 'to_windward', requires_ability: 'updraft_kite', bidirectional: true },
+    { from_map: 'cinderwind_ashfall', to_map: 'cinderwind_kiln', via_warp: 'to_kiln', requires_ability: 'updraft_kite', bidirectional: true },
+    // ---- Lane C2: the Undertide. The cave side owns these surface links (C1's surface
+    // warps are the far ends; one bidirectional edge each, never a second reverse edge).
+    { from_map: 'undertide_i', to_map: 'farlamp_gullwrack', via_warp: 'to_gullwrack', bidirectional: true },
+    { from_map: 'undertide_ii', to_map: 'farlamp_kelpcrown', via_warp: 'to_kelpcrown', bidirectional: true },
+    { from_map: 'undertide_iii', to_map: 'driftholm', via_warp: 'to_driftholm', requires_flag: 'flag:q_isles_wellstair', bidirectional: true },
+    { from_map: 'undertide_i', to_map: 'undertide_ii', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'undertide_iii', to_map: 'undertide_iv', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'undertide_iv', to_map: 'farlamp_drowned', via_warp: 'ladder_down', bidirectional: true },
+    // ---- Lane N3: the Mourning Fields (the north loop) + the Penumbra Underways. The
+    // Fields own their three seams (Stillwater's and Coldfog I's sides are Lane N1's).
+    { from_map: 'mourning_fields', to_map: 'rimeway_descent', via_warp: 'to_rimeway', bidirectional: true },
+    { from_map: 'penumbra_ring', to_map: 'penumbra_underways', via_warp: 'to_underways_w', requires_flag: 'flag:hub_unlocked', requires_ability: 'starreach', bidirectional: true },
+    { from_map: 'penumbra_ring', to_map: 'penumbra_underways', via_warp: 'to_underways_e', requires_flag: 'flag:hub_unlocked', requires_ability: 'starreach', bidirectional: true },
+    { from_map: 'penumbra_underways', to_map: 'penumbra_underways_b1', via_warp: 'ladder_down_w', bidirectional: true },
+    { from_map: 'penumbra_underways', to_map: 'penumbra_underways_b1', via_warp: 'ladder_down_e', bidirectional: true },
+    // ---- Lane N1 (11 Part A/E): Stillwater + its seams. The Mourning Fields edges are
+    // declared HERE from this lane's side (Coldfog I east rows 11-14, Stillwater south
+    // cols 22-25) — Lane N3 owns mourning_fields' node and must not add reverse twins.
+    { from_map: 'coldfog_marches_i', to_map: 'stillwater', via_warp: 'to_stillwater_4', bidirectional: true },
+    { from_map: 'coldfog_marches_i', to_map: 'mourning_fields', via_warp: 'to_mourning_11', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'mourning_fields', via_warp: 'to_mourning_22', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'stillwater_quiet_hall', via_warp: 'enter_quiet_hall', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'stillwater_shutter', via_warp: 'enter_inn_2', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'stillwater_lampmaker', via_warp: 'enter_lampmaker_2', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'stillwater_home_a', via_warp: 'enter_home_a', bidirectional: true },
+    { from_map: 'stillwater', to_map: 'stillwater_home_b', via_warp: 'enter_home_b', bidirectional: true },
+    // ---- Lane N2: the Drownlight (door, then stairs; the upper floors want Emberward)
+    { from_map: 'drownlight_beacon', to_map: 'drownlight_f1', via_warp: 'to_tower_4', bidirectional: true },
+    { from_map: 'drownlight_f1', to_map: 'drownlight_f2', via_warp: 'up_stairs', requires_ability: 'emberward', bidirectional: true },
+    { from_map: 'drownlight_f2', to_map: 'drownlight_lantern', via_warp: 'up_stairs', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

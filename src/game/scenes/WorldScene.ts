@@ -679,6 +679,10 @@ export class WorldScene extends Phaser.Scene {
     'sunken_solarium_lumenary',
     'wickstead_school', // Master Mallow's lie-down in the lamp-school
     'wayward_arms', // the corner chair: a night talked away (content/regions/hotel.ts)
+    'driftholm_inn', // the Farlamp Isles (10)
+    'gullwrack_hut', // the keeper's hut on Gullwrack Isle (10)
+    'lowtinder_lamphouse', // Gran Tallow's fire under the bay (10 Part III)
+    'stillwater_shutter', // the Hollowing's inn (11 Part A)
   ]);
 
   /**
@@ -1295,6 +1299,18 @@ export class WorldScene extends Phaser.Scene {
     });
   }
 
+  /** A gated warp whose "not yet" is a script (someone there to say so, staged
+   *  on flags) plays it as a cutscene — the NPC `script.*` pattern. */
+  private async runBlockedScript(ref: string): Promise<void> {
+    const steps = getScript(ref);
+    if (!steps) return;
+    this.modal = true;
+    const completed = await this.playScene(steps);
+    if (completed) void this.persist();
+    this.modal = false;
+    this.refreshNpcs();
+  }
+
   private async runDialogue(ref: string | undefined): Promise<void> {
     this.modal = true;
     await new DialogueBox(this, this.sfx).run(getDialogue(ref));
@@ -1409,6 +1425,11 @@ export class WorldScene extends Phaser.Scene {
       onGiveMoney: (amount) => {
         this.money = Math.max(0, this.money + Math.floor(amount));
       },
+      // No mid-scene persist (like onGiveMoney): the scene's own end persists, so a
+      // crash can't save the ability without the step that follows it.
+      onGiveAbility: (ability) => {
+        this.abilities.add(ability);
+      },
       onPay: (amount) => {
         const cost = Math.max(0, Math.floor(amount));
         if (this.money < cost) return false;
@@ -1451,12 +1472,15 @@ export class WorldScene extends Phaser.Scene {
           inventory: this.inventory,
           dex_caught: [...this.dexCaught],
         });
+        const foe = `trainer:${trainer}`;
         if (result.outcome !== 'win') {
-          await this.blackout();
+          await this.blackout(foe);
           return false;
         }
+        this.clearLossStreak(foe);
         return true;
       },
+      cooldownRemaining: (name) => Math.max(0, (this.cooldowns[name] ?? 0) - this.battlesWon),
       legendaryState: (name, caughtFlag) => this.legendaryState(name, caughtFlag),
       startSetPieceBattle: async (
         kin: number,
@@ -1481,13 +1505,15 @@ export class WorldScene extends Phaser.Scene {
         // never flees on its own, so 'fled' is always the PLAYER bailing.
         switch (result.outcome) {
           case 'caught':
+            this.clearLossStreak(`kin:${kin}`);
             return 'caught';
           case 'win':
+            this.clearLossStreak(`kin:${kin}`);
             return 'koed';
           case 'fled':
             return 'fled';
           default:
-            await this.blackout(); // party wiped — recover, same as any lost wild fight
+            await this.blackout(`kin:${kin}`); // party wiped — recover, same as any lost wild fight
             return 'lost';
         }
       },
@@ -1687,7 +1713,9 @@ export class WorldScene extends Phaser.Scene {
     // First time a Lantern Gift carries you onto its gated ground, mark the
     // moment — the lamp raised, a wash of its light. Once per Gift.
     const gift = this.collision.gateAt(tx, ty);
-    if (gift && this.abilities.has(gift) && !this.flags.get(`flag:gift_first_${gift}`)) {
+    // deepdive isn't a Lantern Gift (the Farlamp skiff): no raise-lamp flourish —
+    // it would stand the player up on open sea and swallow this step's checks.
+    if (gift && gift !== 'deepdive' && this.abilities.has(gift) && !this.flags.get(`flag:gift_first_${gift}`)) {
       this.flags.set(`flag:gift_first_${gift}`, true);
       void this.playGiftFlourish(gift);
       return;
@@ -1747,7 +1775,9 @@ export class WorldScene extends Phaser.Scene {
       inventory: this.inventory,
       dex_caught: [...this.dexCaught],
     }).then((result) => {
-      if (result.outcome === 'lose') void this.blackout();
+      const foe = `wild:${this.map.def.id}`;
+      if (result.outcome === 'lose') void this.blackout(foe);
+      else if (result.outcome === 'win' || result.outcome === 'caught') this.clearLossStreak(foe);
     });
   }
 
@@ -1914,9 +1944,32 @@ export class WorldScene extends Phaser.Scene {
     this.modal = false;
   }
 
+  /**
+   * The repeat-loss streak (2026-10 economy review): how many times in a row
+   * the SAME foe — `trainer:<id>`, `kin:<species>` (a set-piece) or
+   * `wild:<map>` — has beaten you. Kept in the persisted `cooldowns` record
+   * under a `loss:` key (no new save field to thread); only one foe is tracked.
+   */
+  private lossStreakFor(foe: string): number {
+    return this.cooldowns[`loss:${foe}`] ?? 0;
+  }
+
+  private bumpLossStreak(foe: string): number {
+    const n = this.lossStreakFor(foe) + 1;
+    for (const k of Object.keys(this.cooldowns)) if (k.startsWith('loss:')) delete this.cooldowns[k];
+    this.cooldowns[`loss:${foe}`] = n;
+    return n;
+  }
+
+  /** Beating the foe that kept beating you ends the streak. */
+  private clearLossStreak(foe: string): void {
+    delete this.cooldowns[`loss:${foe}`];
+  }
+
   /** Defeat recovery: revive the party and wake at the last hearth you rested
-   *  by — the nearest inn / home / camp — or the start town if you never have. */
-  private async blackout(): Promise<void> {
+   *  by — the nearest inn / home / camp — or the start town if you never have.
+   *  `foe` names what won, for the forgiving repeat-loss tithe. */
+  private async blackout(foe = 'unknown'): Promise<void> {
     this.modal = true;
     this.healParty();
     // Cannot-die mode (Settings): the lamp flares back right here — no tithe,
@@ -1939,13 +1992,26 @@ export class WorldScene extends Phaser.Scene {
       this.modal = false;
       return;
     }
-    // The kind light keeps a small tithe of wicks (10%) — losing costs, gently.
-    const tithe = faintTithe(this.money);
+    // The kind light keeps a small tithe of wicks — 10%, halving each time the
+    // SAME foe beats you again, nothing from the fourth, and never below the
+    // hearth floor (content/economy.ts). Losing costs, gently; it never rinses.
+    const streak = this.bumpLossStreak(foe);
+    const tithe = faintTithe(this.money, streak, this.flags.countHeld('gleam:'));
     this.money -= tithe;
     void this.sfx.playVariant('world-heal', ['a', 'b']);
+    const titheLine =
+      tithe > 0
+        ? streak > 1
+          ? `The kind light knows a hard fight when it sees one. It asked only ${tithe} wicks this time.`
+          : `You left ${tithe} wicks in thanks, as the custom asks.`
+        : streak > 1
+          ? 'The kind light asked for nothing this time. Try again — it believes you can.'
+          : this.money > 0
+            ? 'The kind light left your purse alone. You will need those wicks.'
+            : '';
     await new DialogueBox(this, this.sfx).run([
       { text: 'Your lamp guttered low... but a kind light carried you to the last hearth you rested by.' },
-      ...(tithe > 0 ? [{ text: `You left ${tithe} wicks in thanks, as the custom asks.` }] : []),
+      ...(titheLine ? [{ text: titheLine }] : []),
     ]);
     const home = this.respawn ?? {
       map: VESPERHOLM_GRAPH.start_map,
@@ -2020,7 +2086,8 @@ export class WorldScene extends Phaser.Scene {
       // answers — its own line if it has one, else a generic "it's locked" — so a
       // walk-in (or the instinctive Confirm press) is never met with silence.
       // Other gated warps only hint on an active interact.
-      if (warp.blocked_ref) await this.runDialogue(warp.blocked_ref);
+      if (warp.blocked_ref?.startsWith('script.')) await this.runBlockedScript(warp.blocked_ref);
+      else if (warp.blocked_ref) await this.runDialogue(warp.blocked_ref);
       else if (warp.transition === 'door') await this.showLockedDoor();
       else if (warp.trigger === 'interact') await this.showHint();
       return;
@@ -2146,7 +2213,17 @@ export class WorldScene extends Phaser.Scene {
     // Ride maps (the Wick-Run): holding the rented runner, you ride it.
     this.player.setRiding(this.isRiding());
     const wasSwimming = this.player.isSwimming;
-    this.player.setSwimming(this.map.hasTerrainAt(this.player.tx, this.player.ty, 'water'));
+    // Deep water is rowed in the Farlamp skiff (10 §2); the shallows are swum.
+    // ORDER MATTERS: each setter swaps the walk-sheet, so drop the old state
+    // before taking the new one (shallow->deep must not end on the walk sheet).
+    const deep = this.map.hasTerrainAt(this.player.tx, this.player.ty, 'deep');
+    if (deep) {
+      this.player.setSwimming(false);
+      this.player.setBoating(true);
+    } else {
+      this.player.setBoating(false);
+      this.player.setSwimming(this.map.hasTerrainAt(this.player.tx, this.player.ty, 'water'));
+    }
     // A small splash as the lamp carries you onto (or off) open water — only on
     // a free step, so a warp/cutscene landing in the water stays quiet.
     if (this.player.isSwimming !== wasSwimming && !this.modal) void this.sfx.play('world-splash');

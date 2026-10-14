@@ -78,11 +78,11 @@ PLACEMENTS: dict[str, dict] = {
             },
         },
         "day": {
-            "crossing_a": T((140, 22, 58, 65), (133, 24, 55, 62), (134, 20, 56, 63), (139, 14, 56, 63), (136, 12, 55, 61), (137, 8, 56, 62)),
-            "bed_a": T((140, 22, 58, 65), (133, 24, 55, 62), (134, 20, 56, 63), (139, 14, 56, 63), (136, 12, 55, 61), (137, 8, 56, 62)),
-            "bed_b": T((140, 22, 58, 65), (133, 24, 55, 62), (134, 20, 56, 63), (139, 14, 56, 63), (136, 12, 55, 61), (137, 8, 56, 62)),
-            "bed_c": T((140, 22, 58, 65), (133, 24, 55, 62), (134, 20, 56, 63), (139, 14, 56, 63), (136, 12, 55, 61), (137, 8, 56, 62)),
-            "gold_a": T((140, 50, 59, 65), (133, 30, 56, 62), (134, 20, 57, 63)),
+            "crossing_a": T((140, 26, 58, 65), (135, 26, 55, 62), (138, 16, 56, 62), (142, 12, 56, 62), (180, 12, 55, 60), (113, 8, 56, 62)),
+            "bed_a": T((140, 26, 58, 65), (135, 26, 55, 62), (138, 16, 56, 62), (142, 12, 56, 62), (180, 12, 55, 60), (113, 8, 56, 62)),
+            "bed_b": T((140, 26, 58, 65), (135, 26, 55, 62), (138, 16, 56, 62), (142, 12, 56, 62), (180, 12, 55, 60), (113, 8, 56, 62)),
+            "bed_c": T((140, 26, 58, 65), (135, 26, 55, 62), (138, 16, 56, 62), (142, 12, 56, 62), (180, 12, 55, 60), (113, 8, 56, 62)),
+            "gold_a": T((140, 48, 59, 65), (135, 30, 56, 62), (138, 14, 56, 62), (116, 8, 58, 63)),  # the half-lit + Auravane, its curio
         },
         "objects": [
             # dawn: the relit lanterns (swap pair with dead_lantern_*)
@@ -102,11 +102,11 @@ PLACEMENTS: dict[str, dict] = {
             },
         },
         "day": {
-            "crossing_a": T((140, 20, 60, 65), (139, 22, 57, 64), (134, 20, 57, 64), (133, 12, 56, 63), (137, 10, 57, 63), (142, 8, 58, 64), (141, 8, 57, 63)),
-            "bed_a": T((140, 20, 60, 65), (139, 22, 57, 64), (134, 20, 57, 64), (133, 12, 56, 63), (137, 10, 57, 63), (142, 8, 58, 64), (141, 8, 57, 63)),
-            "bed_b": T((140, 20, 60, 65), (139, 22, 57, 64), (134, 20, 57, 64), (133, 12, 56, 63), (137, 10, 57, 63), (142, 8, 58, 64), (141, 8, 57, 63)),
-            "bed_c": T((140, 20, 60, 65), (139, 22, 57, 64), (134, 20, 57, 64), (133, 12, 56, 63), (137, 10, 57, 63), (142, 8, 58, 64), (141, 8, 57, 63)),
-            "bed_d": T((140, 20, 60, 65), (139, 22, 57, 64), (134, 20, 57, 64), (133, 12, 56, 63), (137, 10, 57, 63), (142, 8, 58, 64), (141, 8, 57, 63)),
+            "crossing_a": T((140, 24, 60, 65), (135, 24, 57, 64), (138, 18, 57, 63), (142, 16, 58, 64), (113, 10, 57, 63), (180, 8, 57, 62)),
+            "bed_a": T((140, 24, 60, 65), (135, 24, 57, 64), (138, 18, 57, 63), (142, 16, 58, 64), (113, 10, 57, 63), (180, 8, 57, 62)),
+            "bed_b": T((140, 24, 60, 65), (135, 24, 57, 64), (138, 18, 57, 63), (142, 16, 58, 64), (113, 10, 57, 63), (180, 8, 57, 62)),
+            "bed_c": T((140, 24, 60, 65), (135, 24, 57, 64), (138, 18, 57, 63), (142, 16, 58, 64), (113, 10, 57, 63), (180, 8, 57, 62)),
+            "bed_d": T((140, 24, 60, 65), (135, 24, 57, 64), (138, 18, 57, 63), (142, 16, 58, 64), (113, 10, 57, 63), (180, 8, 57, 62)),
         },
         "objects": [
             # dawn: the relit lanterns (swap pair with dead_lantern_*)
@@ -248,7 +248,7 @@ PLACEMENTS: dict[str, dict] = {
             },
         },
         "day": {
-            "fringe_a": T((56, 28, 56, 62), (67, 28, 56, 63), (38, 22, 56, 63), (62, 14, 56, 62), (66, 8, 58, 65), (65, 12, 56, 63)),
+            "fringe_a": T((56, 28, 56, 62), (67, 28, 56, 63), (38, 22, 56, 63), (62, 14, 56, 62), (68, 8, 58, 65), (65, 12, 56, 63)),  # FC3: Fernlance (was Lumournis, now Fields-only)
         },
         "objects": [
             # The kitchens: Marisol's stall (chile strings, the comal) + her pozole pot
@@ -512,3 +512,117 @@ for _mid, (_inn, _x, _y) in _HESPER_SEATS.items():
 PLACEMENTS.setdefault("wickstead_school", {}).setdefault("npcs", []).append(
     {"id": "namewright", "at": {"tx": 3, "ty": 2}, "facing": "down", "sprite": "npc_old_man",
      "movement": "static", "dialogue_ref": "script.namewright"})
+
+# THE FARLAMP ISLES (walkthrough/10 Part I, Lane C1): the five DRIFTLETTERS — bottles
+# washed up on five shores (Ione Fathom names them). Each is an item-cache glint
+# on foot ground at the waterline; its pickup script (content/regions/farlamp.ts)
+# sets `flag:driftletter_N` (three of them DERIVE flag:driftletters_3 in FlagStore).
+_DRIFTLETTERS = {
+    1: ("dimglass_coast", 13, 14),       # the Dimglass strand, south of Pearlmoor
+    2: ("gullcry_rock", 11, 7),          # Gullcry Rock's high stone
+    3: ("wickrun_foot", 23, 24),         # the beach at the Wick-Run's foot
+    4: ("mirelight_glassmere", 12, 19),  # the Glassmere shallows
+    5: ("drownlight_beacon", 4, 11),     # the shingle under the Drownlight Beacon
+}
+for _n, (_mid, _x, _y) in _DRIFTLETTERS.items():
+    PLACEMENTS.setdefault(_mid, {}).setdefault("npcs", []).append(
+        {"id": f"driftletter_{_n}", "at": {"tx": _x, "ty": _y}, "facing": "down",
+         "sprite": "item_cache", "movement": "static",
+         "dialogue_ref": f"script.pickup_driftletter_{_n}",
+         "hidden_when_flag": f"flag:driftletter_{_n}"})
+# Lane E (walkthrough/10 Part III — the DEEP BACKTRACK): skiff-only buoy-caches on
+# existing deep water. Each sits on a deep tile whose every neighbour is deep (or
+# the map edge), so no Tidecall swimmer can face it — only the Farlamp skiff
+# (`deepdive`) rows up to it. A lit channel-buoy (non-solid marker) hangs one
+# tile north so it is SEEN from the shallows long before it's reachable. The
+# cache stands on water by design: listed in audit_npc_footing.ALLOW. Contents
+# are mirrored in tools/balance/progression.mjs (the Vigils leg's valuables).
+# (The fifth, Tinderwick Bay's reef skerry, lives in build_tinderwick_bay.py.)
+_DEEP_CACHES = {
+    "gullcry_rock": ("gullcry_deep", 15, 6),
+    "pearlmoor_quay": ("pearlmoor_deep", 1, 22),
+    "dimglass_coast_ii": ("dimglass_deep", 16, 26),
+    "vigil_hearthfall": ("hearthfall_deep", 22, 12),
+}
+for _mid, (_cid, _x, _y) in _DEEP_CACHES.items():
+    _spec = PLACEMENTS.setdefault(_mid, {})
+    _spec.setdefault("objects", []).append(
+        {"id": f"buoy_{_cid}", "sprite": "markers_sea_buoy", "at": {"tx": _x, "ty": _y - 1},
+         "w": 1, "h": 1, "solid": False, "bob": False})
+    _spec.setdefault("npcs", []).append(
+        {"id": f"cache_{_cid}", "at": {"tx": _x, "ty": _y}, "facing": "down", "sprite": "item_cache",
+         "movement": "static", "dialogue_ref": f"script.pickup_{_cid}",
+         "hidden_when_flag": f"flag:picked_{_cid}"})
+# ---- Lane A (walkthrough/10 Part II, 2026-10): the Ashfall Shelf + Kiln Gully day-forms.
+# After the dawn the ash-grass greens at the tips: Stonebark's line wakes as Rootwarden,
+# and the storm-birds come down off Windward. Mirrored in build_species.py
+# (ASHFALL_DAY_ENCOUNTERS). Zone ids are the builders' zone ids.
+_ASH_DAY = T((46, 30, 56, 61), (49, 25, 56, 61), (90, 20, 57, 62), (102, 15, 57, 62), (64, 10, 58, 62))
+PLACEMENTS["cinderwind_ashfall"] = {"day": {z: _ASH_DAY for z in (
+    "ashfall_green_a", "ashfall_green_b", "ashfall_green_c", "ashfall_ash_a", "ashfall_ash_b")}}
+_KILN_DAY = T((37, 25, 57, 63), (69, 25, 56, 62), (55, 20, 57, 63), (43, 20, 56, 62), (52, 10, 58, 63))
+PLACEMENTS["cinderwind_kiln"] = {"day": {z: _KILN_DAY for z in ("kiln_hall", "kiln_rooms")}}
+
+# ---- The Lumenary sparring partners (2026-10 economy review, content/sparring.ts):
+# a hall apprentice who spars for a keeper-class purse once that hall's Gleam is
+# relit (repeatable: the `spar` op rests them for 3 won battles). Off the aisle,
+# beside the door side; tiles proven 4-way open and clear of warps/triggers/NPCs.
+_SPAR_POSTS = {
+    "tinderwick_lumenary": ("tinderwick", "gleam:ember", 3, 8),
+    "pearlmoor_lumenary": ("pearlmoor", "gleam:tide", 3, 8),
+    "lowleaf_lumenary": ("lowleaf", "gleam:verdant", 13, 7),
+    "cinderhead_lumenary": ("cinderhead", "gleam:stone", 4, 9),
+    "galehigh_lumenary": ("galehigh", "gleam:storm", 3, 8),
+    "pale_vault_lumenary": ("pale_vault", "gleam:frost", 3, 8),
+    "sunken_solarium_lumenary": ("sunken_solarium", "gleam:solar", 4, 6),
+    "nightreach_lumenary": ("nightreach", "gleam:lunar", 3, 7),
+}
+for _mid, (_hall, _gleam, _x, _y) in _SPAR_POSTS.items():
+    PLACEMENTS.setdefault(_mid, {}).setdefault("npcs", []).append(
+        {"id": "hall_sparrer", "at": {"tx": _x, "ty": _y}, "facing": "right" if _x < 8 else "left",
+         "sprite": "npc_man" if _hall in ("pearlmoor", "cinderhead", "sunken_solarium") else "npc_woman",
+         "movement": "static", "requires_flag": _gleam, "dialogue_ref": f"script.spar_{_hall}"})
+
+# Andrew's egg nudge (2026-10, owner): leaving Pearlmoor for the fen with the Tide
+# Gleam but the egg unfound, Andrew runs over once and spells out the next step
+# (script.egg_nudge_fen). (26,12) is the quay's one-tile choke in front of the
+# fen exit, so it can't be walked round.
+PLACEMENTS["pearlmoor_quay"].setdefault("triggers", []).append(
+    {"id": "egg_nudge_fen", "kind": "cutscene", "at": {"tx": 26, "ty": 12}, "activation": "step_on",
+     "ref": "script.egg_nudge_fen", "requires_flag": "gleam:tide", "hidden_when_flag": "flag:egg_nudge_seen"})
+# ---- Lane N1 (walkthrough/11 Part A + E, 2026-10): the Hollowing's Country.
+# Tessaly's homecoming at Pale Vault ("The Way Home": flag-staged, she arrives only
+# once you've walked her through both Coldfog maps); the Nightreach lane's two
+# lamplighters (they point the curious north, through Coldfog, to Stillwater); and
+# a talkable climber on each of Sunvault Climb II-IV. Tiles proven foot-standable
+# and clear of warps/triggers/NPCs (audit_npc_footing).
+_N1_NPCS = {
+    "pale_vault_glacier": [
+        {"id": "tessaly_home", "at": {"tx": 6, "ty": 22}, "facing": "down", "sprite": "fen_folk",
+         "movement": "static", "dialogue_ref": "script.still_tessaly_home",
+         "requires_flag": "flag:q_still_tessaly_fog2", "hidden_when_flag": "flag:q_still_tessaly_done"},
+        {"id": "tessaly_after", "at": {"tx": 6, "ty": 22}, "facing": "down", "sprite": "fen_folk",
+         "movement": "look_around", "dialogue_ref": "script.still_tessaly_after",
+         "requires_flag": "flag:q_still_tessaly_done"},
+    ],
+    "lanternway_nightreach": [
+        {"id": "lane_lamplighter_a", "at": {"tx": 6, "ty": 8}, "facing": "right", "sprite": "lamplighter",
+         "movement": "static", "dialogue_ref": "script.nightlane_lamplighter_a"},
+        {"id": "lane_lamplighter_b", "at": {"tx": 16, "ty": 10}, "facing": "left", "sprite": "npc_woman",
+         "movement": "look_around", "dialogue_ref": "script.nightlane_lamplighter_b"},
+    ],
+    "sunvault_climb_ii": [
+        {"id": "climber_ii", "at": {"tx": 6, "ty": 26}, "facing": "right", "sprite": "pass_walker",
+         "movement": "look_around", "dialogue_ref": "script.sunvault_climber_ii"},
+    ],
+    "sunvault_climb_iii": [
+        {"id": "climber_iii", "at": {"tx": 24, "ty": 22}, "facing": "left", "sprite": "kite_weaver",
+         "movement": "look_around", "dialogue_ref": "script.sunvault_climber_iii"},
+    ],
+    "sunvault_climb_iv": [
+        {"id": "climber_iv", "at": {"tx": 10, "ty": 31}, "facing": "up", "sprite": "frost_herder",
+         "movement": "look_around", "dialogue_ref": "script.sunvault_climber_iv"},
+    ],
+}
+for _mid, _npcs in _N1_NPCS.items():
+    PLACEMENTS.setdefault(_mid, {}).setdefault("npcs", []).extend(_npcs)

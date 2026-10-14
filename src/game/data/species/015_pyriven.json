@@ -75,6 +75,20 @@
       "rarity": "uncommon",
       "min": 51,
       "max": 53
+    },
+    {
+      "area": "cinderwind_kiln",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 34,
+      "max": 35
+    },
+    {
+      "area": "penumbra_underways",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 53,
+      "max": 55
     }
   ],
   "scripted": false,

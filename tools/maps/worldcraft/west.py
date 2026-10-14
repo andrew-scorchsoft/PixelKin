@@ -127,7 +127,21 @@ PLACEMENTS: dict[str, dict] = {
     # ---- the Coldfog detour — drained, misted, birdless; the streak falls often
     "coldfog_marches_i": {"ambience": dict(COLDFOG)},
     "coldfog_marches_ii": {"ambience": dict(COLDFOG)},
-    "drownlight_beacon": {"ambience": dict(COLDFOG)},
+    # lane N2: once the Drownlight is relit (post-dawn) the fog thins, the beam
+    # pools round the lamp room and the buoys' own light wakes (their lit sprite's
+    # LIGHT_SOURCES row) — walkthrough/11 Part B
+    "drownlight_beacon": {"ambience": {**COLDFOG, "when": [{"flag": "flag:drownlight_relit", "ambience": {
+        "particles": [particles("motes", 0.5)],
+        "mist": {"color": "#d8d6cc", "alpha": 0.16, "speed": 4},
+        "tint": {"color": "#ffcf7a", "alpha": 0.07},
+        "starfall": {"min_s": 25, "max_s": 50},
+        "light_sources_extra": [{"at": {"tx": 5, "ty": 1}, "radius": 44, "color": "#ffe2a0"}],
+        # fix pass B: the relit beam SWEEPS the dead shallows, seen from the foot —
+        # from the lamp room out over the south water, west buoy to east buoy
+        "beams": [{"from": {"tx": 4.5, "ty": 1.4}, "a": {"tx": 0.5, "ty": 13.5},
+                   "b": {"tx": 15, "ty": 14.5}, "period_s": 10, "width": 3.4,
+                   "color": "#ffe2a0"}],
+    }}]}},
     "hollowfen_stillworks": {
         "ambience": {"particles": [particles("dust", 0.35)],
                      "tint": {"color": "#202430", "alpha": 0.12}},

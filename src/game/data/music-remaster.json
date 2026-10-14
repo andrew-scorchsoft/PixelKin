@@ -7,6 +7,12 @@
    "where": "The Tinderwick Beacon — all three floors of the wick-key ascent to the lantern room",
    "mood": "The Beacon Stair — a bass that climbs a step every bar, a determined call, brass like banked embers and a bell glinting from the lamp far above."
   },
+  "bell-cellar": {
+   "loop_start": 7.988,
+   "duration": 91.977,
+   "where": "The Bell Cellar (the flooded cellars and the drowned belfry pit under Lowtinder's lamp-house, where the old town bell lies in black water; a rope climbs the old shaft to Tinderwick's well)",
+   "mood": "A flooded stone cellar under the sea: dripping water, black still pools, and somewhere a huge old bell humming when the tide turns. Hushed, patient and a little sad, never horror."
+  },
   "cinderhead-mine-a": {
    "loop_start": 12.492,
    "duration": 102.766,
@@ -24,6 +30,12 @@
    "duration": 97.332,
    "where": "Cinderhead Deep (the three descent galleries to the old crew's vigil-lamp)",
    "mood": "The deep galleries where dense crystal turns the dark luminous — a sparkle-led descent, minor warming to its relative major."
+  },
+  "cinderwind-ashfall": {
+   "loop_start": 11.981,
+   "duration": 101.329,
+   "where": "The Ashfall Shelf (cinderwind_ashfall): the main-path route between Cinderwind Scarp and Galehigh — a high grey shelf of century-old slag tips, ash-grass in the wind, the haulers' camp brazier, the old kiln stack on the cliff",
+   "mood": "Daylight after three caves: wide, windswept and a little melancholy, warmed by a brazier; grey ash-grass, coal-smoke and open sky, the climb nearly done."
   },
   "coldfog-marches-a": {
    "loop_start": 7.221,
@@ -67,6 +79,42 @@
    "where": "Tideglass Cavern & Gallery, the Sounding Cave on the coast road, and the Lanternway Under-Lane",
    "mood": "Buoy-light drift — a becalmed, glittering sea-cave; the coast road's tune reduced to a glint over dripping water."
   },
+  "driftholm": {
+   "loop_start": 10.733,
+   "duration": 105.168,
+   "where": "Driftholm, the island town of the Farlamp Isles, cut off in the long dark for eleven winters",
+   "mood": "A sea-town hymn in the long dark: warm but lonely, small lamps kept alone in the windows."
+  },
+  "driftholm-dawn": {
+   "loop_start": 10.1,
+   "duration": 103.537,
+   "where": "Driftholm after the isles' dawn: the fog lifted, boats out, the town awake in daylight",
+   "mood": "The same island hymn turned major and full: a town that has its morning back."
+  },
+  "drownlight-f1": {
+   "loop_start": 5.689,
+   "duration": 81.215,
+   "where": "The Drownlight, floor 1 — the Oil Stores (the north coast's shuttered lighthouse, climbed in the dark)",
+   "mood": "The Keeper's Hymn — a slow, tended sea-hymn in a cold stone tower: flute over harp, a clockwork ticking somewhere in the walls."
+  },
+  "drownlight-f2": {
+   "loop_start": 6.385,
+   "duration": 77.244,
+   "where": "The Drownlight, floor 2 — the Lens Gallery (a ring of rooms where the shuttered lamp's light leaks down the wells)",
+   "mood": "The Keeper's Hymn, darkened — carried low on a hollow ocarina while glass bells echo it a bar behind, like light leaking down a shaft."
+  },
+  "drownlight-lantern": {
+   "loop_start": 3.533,
+   "duration": 81.599,
+   "where": "The Drownlight's lantern room — the Shutterkeeper beside the banked, shuttered lamp",
+   "mood": "The Keeper's Hymn in pieces — a solo cello remembering the tune phrase by phrase over a held organ drone, one high bell like the thread of light at the shutters' seam."
+  },
+  "drownlight-relit": {
+   "loop_start": 5.248,
+   "duration": 82.965,
+   "where": "The Drownlight relit (after the dawn) — its lantern room and its foot, the beam out over the coast and the buoys waking",
+   "mood": "The Keeper's Hymn turned major — the lamp turning again: flute and bells over swelling strings and harp, warm and grateful."
+  },
   "duskapple-orchard": {
    "loop_start": 6.989,
    "duration": 96.34,
@@ -78,6 +126,18 @@
    "duration": 104.516,
    "where": "The ending credits roll",
    "mood": "The Road Remembered: a warm medley walking back down the whole journey in memory, every road leading home to the hometown theme in daylight."
+  },
+  "farlamp-relit": {
+   "loop_start": 10.943,
+   "duration": 103.916,
+   "where": "The Drowned Lamp, the moment the Farlamp burns again and the Farlamp Isles get their own dawn",
+   "mood": "The relight: the isles' hymn heard in the dark's minor, then blooming into warm major as the fog lifts."
+  },
+  "farlamp-sound": {
+   "loop_start": 7.293,
+   "duration": 101.729,
+   "where": "Farlamp Sound, the Shelfwater and the Fogwall: rowing a small lamp-boat over the open deep sea towards a far blinking lamp",
+   "mood": "Rowing on a long swell in the fog: the isles' hymn as a lone line over the sea."
   },
   "galehigh-terraces-a": {
    "loop_start": 7.755,
@@ -175,6 +235,12 @@
    "where": "Glowmoss Deep (and its B1F), the Spore Grotto and the Grovefall vigil site",
    "mood": "The glowing-dark deep forest — a glassy bell melody whose echoes answer across the black, sparse and cathedral-like, with a drained grey shadow in it."
   },
+  "lowtinder": {
+   "loop_start": 9.288,
+   "duration": 93.309,
+   "where": "Lowtinder and Tinderwick Bay (the drowned old Tinderwick under the bay, swum to with Tidecall; half-sunk roofs, a cold bell-tower, one warm window: Gran Tallow's lamp-house) + the lamp-school's moss-garden",
+   "mood": "The hometown lullaby, drowned: the same tune heard from under forty years of quiet sea. Cosy-melancholy, tender, a little haunted but never frightening; a music-box in an upstairs window."
+  },
   "lumenary-hall": {
    "loop_start": 6.757,
    "duration": 96.131,
@@ -186,6 +252,12 @@
    "duration": 100.18,
    "where": "The Mirelights (the Glassmere: a drowned causeway-field of wandering false blue lights over a still mere)",
    "mood": "Eerie but tender: false blue lights drifting over still water, the echoes of a lost kin-light that once led travellers home."
+  },
+  "mourning-fields": {
+   "loop_start": 3.971,
+   "duration": 67.527,
+   "where": "The Mourning Fields — the fallow farmland north of Coldfog where the Hollowing put the field-kin to sleep under grey blankets",
+   "mood": "Hush — a farm lullaby slowed to a whisper over fields of sleeping kin; tender, grey, almost home."
   },
   "nightreach-observatory-a": {
    "loop_start": 8.684,
@@ -295,6 +367,12 @@
    "where": "Penumbra Ring + Starwell (the last dark before the Umbral Spire)",
    "mood": "Wall of Ink: the last dark, crossed on starlight; a held breath, your heartbeat and one lonely lamp-note, hope leaking in at the edges."
   },
+  "penumbra-underways": {
+   "loop_start": 8.963,
+   "duration": 86.152,
+   "where": "The Penumbra Underways — the two cave floors under the Penumbra Ring where the Hollowing's last watch keeps its fire beneath the Spire's roots",
+   "mood": "The last road — a heartbeat in the dark under the Ring, a lone faltering melody, and starlight glinting down a shaft from far above."
+  },
   "rimeway": {
    "loop_start": 9.915,
    "duration": 96.967,
@@ -324,6 +402,12 @@
    "duration": 74.762,
    "where": "Every shop — the Tinderwick General Store, the Pearlmoor Chandlery, the Galehigh Kite-Maker's and every counter after",
    "mood": "The Counter Bell — a bouncy little shop tune with a doorbell for a hook; browse as long as you like."
+  },
+  "stillwater": {
+   "loop_start": 8.615,
+   "duration": 95.556,
+   "where": "Stillwater, the Hollowing's village north of the Coldfog marshes: shuttered lamps, soft voices, kin asleep under grey blankets",
+   "mood": "A hush-hymn: a music-box with a felt damper, sung softly by tired, kind people who believe the dark is mercy."
   },
   "sting-hour": {
    "loop_start": null,
@@ -402,6 +486,12 @@
    "duration": 73.796,
    "where": "Umbral Spire summit, the Keystar relight cutscene",
    "mood": "First True Dawn: the Keystar catches and the whole sky lights; the hometown motif stated whole in radiant major, triumphant with a tear in it."
+  },
+  "undertide": {
+   "loop_start": 7.407,
+   "duration": 96.522,
+   "where": "The Undertide, the sea-caves under the Farlamp Isles: dark tidal channels, dripping water, tide-bells ringing far away",
+   "mood": "A sea-cave in the deep: drips, distant bells, the isles' hymn broken into low fragments."
   },
   "vesper-crossroads-a": {
    "loop_start": 4.174,

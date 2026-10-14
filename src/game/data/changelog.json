@@ -2,6 +2,28 @@
   "_note": "The player-facing changelog: the in-game \"the world has changed\" notice (content/whatsnew.ts) AND the website changelog page (web/site.mjs) both read this. Newest first. NO SPOILERS for the hidden real-people content - see whatsnew.ts.",
   "entries": [
     {
+      "version": "1.32",
+      "date": "2026-10-14",
+      "notes": [
+        "North of the Coldfog Marches lies Stillwater, the village where the Hollowing live: shuttered lamps, sleeping kin and kind, tired people. Three of them have something to ask of you.",
+        "The Drownlight, the north coast's dark lighthouse, can be climbed at last. Swing the shutter-cranks to turn its glare aside, hear its keeper out, and after the dawn, light it again.",
+        "The Mourning Fields join Coldfog, Stillwater and the Rimeway into one loop, with a field shrine, sleeping kin under wool quilts and a moth that comes to no other field.",
+        "Once all eight Gleams are lit, look below the Penumbra Ring: the Underways hold the Hollowing's last watch, a fire to rest at, and a view up the Spire's shaft.",
+        "Three new kin keep the dark gently: Dousecap, who kindles into Shutterwick, and Lullwing. pixelk.in now has a Wayfarer's Guide, an old-style walkthrough for when you're stuck."
+      ]
+    },
+    {
+      "version": "1.31",
+      "date": "2026-10-14",
+      "notes": [
+        "Look out to sea from Tinderwick's beach: the roofs of the old town still show above the water. Once you can call the tides, swim down to Lowtinder, the town that went under the bay, and bring its bell home.",
+        "A new stretch of road between Cinderhead and Galehigh: the Ashfall Shelf, with a haulers' camp to rest at and a cold old kiln worth coming back for once you can ride the updrafts.",
+        "After the dawn, the fog off the south coast is still there. Bottles have been washing up on five shores for years. Collect a few, and someone at Lightkeeper's Point may find you a boat.",
+        "Losing a battle is gentler: the kind light asks less each time the same foe beats you, never takes more than a modest sum, and always leaves you enough for a balm or two.",
+        "Each Lumenary now has an apprentice who'll spar with you for wicks once you've earned that hall's Gleam, and the Wick-Run pays a little for every fast run, not just the first."
+      ]
+    },
+    {
       "version": "1.30",
       "date": "2026-10-13",
       "notes": [

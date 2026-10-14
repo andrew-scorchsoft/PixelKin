@@ -69,13 +69,6 @@
   },
   "encounters": [
     {
-      "area": "coldfog_marches_i",
-      "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 47,
-      "max": 48
-    },
-    {
       "area": "vigil_murkfall",
       "terrain": "tall_grass",
       "rarity": "uncommon",
@@ -83,10 +76,80 @@
       "max": 68
     },
     {
+      "area": "rimeway_descent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 46,
+      "max": 48
+    },
+    {
+      "area": "rimeway_descent",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 63
+    },
+    {
+      "area": "mourning_fields",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 61
+    },
+    {
+      "area": "penumbra_underways",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 54,
+      "max": 55
+    },
+    {
+      "area": "penumbra_underways",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 56,
+      "max": 59
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 57,
+      "max": 60
+    },
+    {
+      "area": "stillwater",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 58,
+      "max": 62
+    },
+    {
+      "area": "stillwater",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 55,
+      "max": 58
+    },
+    {
+      "area": "coldfog_marches_i",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 47,
+      "max": 48
+    },
+    {
       "area": "coldfog_marches_i",
       "terrain": "tall_grass",
       "rarity": "common",
       "min": 58,
+      "max": 65
+    },
+    {
+      "area": "coldfog_marches_i",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 59,
       "max": 65
     },
     {

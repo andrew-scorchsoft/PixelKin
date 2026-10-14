@@ -643,6 +643,29 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'He tips an imaginary cap, steps round you, and is away up the boards at a pace no eighty-something has any business keeping.' },
     { op: 'setFlag', flag: 'flag:q_south_wander' },
   ],
+  // Wanderer Hob waits beside the wood's mouth until the trees part (2026-10
+  // playtest: the gap said "no" and nobody said "come back later", so the wood
+  // read as a dead end and was easy to forget). He names the CURRENT next step,
+  // staged like the gate note, and the first meeting opens a journal entry so
+  // the wood stays on the player's list until they can get in.
+  'script.wander_hob_waiting': [
+    { op: 'say', unless_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Don\'t bother pushing. I\'ve tried. These trees don\'t open for just anybody — only for whoever the old man sends up.' },
+    { op: 'say', unless_flag: 'gleam:tide', speaker: 'WANDERER HOB', text: 'He keeps a dark lamp at the far end of the breakwater, and the breakwater\'s chained until you\'ve done right by the Lumenary. Win your Tide Gleam from Reyl Wash first.' },
+    { op: 'say', if_flag: 'gleam:tide', unless_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Got your Tide, have you? Then he\'s your next stop: out past the bell, at the dark end of the breakwater. Get to know him. He doesn\'t send just anybody.' },
+    { op: 'say', unless_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Come back when he\'s sent you. I\'ll be here. I\'m not lost, mind. I\'m WAITING. There\'s a difference.' },
+    { op: 'say', if_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'He\'s sent you! I can tell. You\'ve got the look of someone who\'s been given half a sentence.' },
+    { op: 'say', if_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Tell the stone the rest of it. Then we can both go in.' },
+    { op: 'setFlag', flag: 'flag:wander_wood_seen' },
+  ],
+  // Walking into the closed gap: the trees answer, then Hob does.
+  'script.wander_gap_blocked': [
+    { op: 'narrate', text: 'The trees here stand shoulder to shoulder. They lean, very slightly, as if waiting to be told something.' },
+    { op: 'emote', actor: 'hob_waiting', emote: 'alert' },
+    { op: 'face', actor: 'hob_waiting', facing: 'up' },
+    { op: 'run', ref: 'script.wander_hob_waiting' },
+    // step back off the gap so sidling along it doesn't replay the scene
+    { op: 'move', actor: 'player', to: { tx: 10, ty: 2 } },
+  ],
   // The waystone at the wood's mouth (pearlmoor_allotment). Readable any time —
   // before the quest it's a tease; once Paul has sent you, it asks for the word.
   'script.wander_stone': [
@@ -4866,7 +4889,7 @@ export const SCRIPTS: ScriptRegistry = {
 
   // --- Vigil IV — Sunfall ---------------------------------------------------
   'script.vigil_sunfall': [
-    { op: 'say', speaker: 'DAME SOLENNE', text: 'I kept the last warm day for forty years, and now the mornings come free. Indulge an old keeper — one encore, full light.' },
+    { op: 'say', speaker: 'DAME SOLENNE', text: 'I taught a whole valley to bow to a sun that never came. Now it takes its own bow every morning, and I find I am jealous of its timing. Indulge an old keeper — one encore, full light.' },
     { op: 'battle', trainer: 'vigilant_solenne' },
     { op: 'say', speaker: 'DAME SOLENNE', text: 'Curtain. ...Do you know, I don\'t mourn the last warm day any more. There will be others. Take the figure — it\'s the sun\'s whole bow.' },
     { op: 'giveItem', item: 'starfall_shard' },
@@ -5161,13 +5184,16 @@ export const SCRIPTS: ScriptRegistry = {
       op: 'say', if_flag: 'gleam:tide', unless_flag: 'gleam:verdant', speaker: 'ANDREW',
       text: 'Sable Quill keeps the Verdant, at Lowleaf Hollow. Not there yet? East out of Pearlmoor on the fen road — Tidecall walks you over the deep channels that stopped you before — and Lowleaf\'s at the far end.',
     },
+    // Lane E (walkthrough/10 Part III): the Tide stage also tips the home secret —
+    // a nested run so its own guard (not met Gran Tallow yet) stacks on the stage's.
+    { op: 'run', ref: 'script.andrew_hint_lowtinder', if_flag: 'gleam:tide', unless_flag: 'gleam:verdant' },
     {
       op: 'say', if_flag: 'gleam:verdant', unless_flag: 'gleam:stone', speaker: 'ANDREW',
       text: 'Otho Grist keeps the Stone, in the headframe hall at Cinderhead Mine — talk to him before you go wandering his galleries. Not there yet? Through the deep wood behind Lowleaf; Glimmerstep opens its dark. Honest word: he WILL flatten you, so come back a few levels heavier.',
     },
     {
       op: 'say', if_flag: 'gleam:stone', unless_flag: 'gleam:storm', speaker: 'ANDREW',
-      text: 'Mira Vael keeps the Storm, up over the Galehigh Terraces — all wind and washing-lines. Ask the town about the Kite-Rising. Not there yet? Back through the mine, out the Deep\'s far door and up Cinderwind Scarp.',
+      text: 'Mira Vael keeps the Storm, up over the Galehigh Terraces — all wind and washing-lines. Ask the town about the Kite-Rising. Not there yet? Back through the mine, out the Deep\'s far door, up Cinderwind Scarp and over the Ashfall Shelf.',
     },
     {
       op: 'say', if_flag: 'gleam:storm', unless_flag: 'gleam:frost', speaker: 'ANDREW',
@@ -5183,18 +5209,53 @@ export const SCRIPTS: ScriptRegistry = {
     },
 
     // --- The Crown, the Spire, and after. -------------------------------------
-    {
-      op: 'say', if_flag: 'gleam:lunar', unless_flag: 'flag:keystar_relit', speaker: 'ANDREW',
-      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. The Spire\'s up the mountain road, north from the Vesper Crossroads — car, waystone or boots if you\'re not there already. It\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
-    },
+    // (one stage: the line + a P.S. for the optional last road under the Ring, Lane FD)
+    { op: 'run', ref: 'script.andrew_hint_crown', if_flag: 'gleam:lunar', unless_flag: 'flag:keystar_relit' },
     {
       op: 'say', if_flag: 'flag:keystar_relit', unless_flag: 'flag:dawn', speaker: 'ANDREW',
       text: 'The Keystar\'s lit. Whatever\'s coming next is coming on its own — stand still and let it.',
     },
     {
-      op: 'say', if_flag: 'flag:dawn', speaker: 'ANDREW',
+      op: 'say', if_flag: 'flag:dawn', unless_flag: 'flag:q_isles', speaker: 'ANDREW',
       text: 'Next? Nothing. Nothing at all, {name}. Look UP. Then, if you\'re not there already, walk down to Dawnstead and see the valley with the morning on it — and the great glass at Nightreach still has a few fallen stars to read, they say.',
     },
+    // --- The Farlamp Isles (walkthrough/10 Part I, optional post-game): once Ione
+    // has asked for the prow-lamp, the chain answers "where next?" for the isles.
+    {
+      op: 'say', if_flag: 'flag:q_isles', unless_flag: 'flag:q_isles_prow_lit', speaker: 'ANDREW',
+      text: 'Ione\'s prow-lamp wants lighting from the Star-tender\'s own lamp. Fenn\'s down at Dawnstead, on the front. Off you go.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_isles_prow_lit', unless_flag: 'flag:q_isles_afloat', speaker: 'ANDREW',
+      text: 'Lamp lit? Then back to Ione on Lightkeeper\'s Point, west of Pearlmoor. That boat of hers has been waiting eleven winters for you.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_isles_afloat', unless_flag: 'flag:q_isles_fogglass', speaker: 'ANDREW',
+      text: 'Out in the skiff, are you? South across the Sound, west to the Fogwall. Nobody gets through that fog without the old keepers\' glass, and the old keepers kept their things in the sea-caves under Gullwrack and Kelpcrown.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_isles_fogglass', unless_flag: 'flag:q_isles_driftholm', speaker: 'ANDREW',
+      text: 'The glass reads the buoys through the fog. Follow the lit ones south out of the Fogwall, and you\'ll come to a town that hasn\'t seen a boat in eleven winters.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_isles_driftholm', unless_flag: 'flag:isles_dawn', speaker: 'ANDREW',
+      text: 'Driftholm\'s elder, Nan Creel, keeps the key to the well-stair in the square. It goes down under the sea, all the way out to where the Farlamp drowned. Light it, {name}.',
+    },
+    {
+      op: 'say', if_flag: 'flag:isles_dawn', speaker: 'ANDREW',
+      text: 'The Farlamp\'s burning and the isles have their morning. Next? Nothing. Go and give Bram Fathom a battle on Driftholm\'s quay. He\'s been waiting longer than any of us.',
+    },
+  ],
+
+  // The Crown stage of `script.andrew_hint`: the Spire, then a P.S. (Lane FD,
+  // walkthrough/11 Part D) for the optional last road under the Ring once the hub
+  // is open. The P.S. lives in script.underways_hint (regions/underways.ts).
+  'script.andrew_hint_crown': [
+    {
+      op: 'say', speaker: 'ANDREW',
+      text: 'Eight. The Crown\'s whole, and the Penumbra\'s parted for you. The Spire\'s up the mountain road, north from the Vesper Crossroads — car, waystone or boots if you\'re not there already. It\'s been waiting the whole time, and it isn\'t a patient sort of waiting.',
+    },
+    { op: 'run', ref: 'script.underways_hint', if_flag: 'flag:hub_unlocked' },
   ],
 
   // The Ember → Tide leg of `script.andrew_hint`, latest stage first: each
@@ -5287,6 +5348,56 @@ export const SCRIPTS: ScriptRegistry = {
   //   F  on the last one                           (q_south_wander → _done)
   //   G  found them all                            (q_south_wander_done)
   // ---------------------------------------------------------------------------
+  // Leaving Pearlmoor for the fen with the Tide Gleam but no egg (owner, 2026-10):
+  // Andrew runs over ONCE and spells out exactly where it is from where you stand —
+  // gym first, then the harbour; or straight to the harbour; or back to the lamp.
+  // A step_on tile in front of the fen exit (the quay's one-tile choke, (26,12);
+  // tools/maps/hand_placed_data.py). Never says what the egg is.
+  'script.egg_nudge_fen': [
+    { op: 'run', ref: 'script.egg_nudge_body', unless_flag: 'flag:chickenpig_caught' },
+    { op: 'setFlag', flag: 'flag:egg_nudge_seen' },
+  ],
+  'script.egg_nudge_body': [
+    { op: 'emote', actor: 'andrew_road', emote: 'alert' },
+    { op: 'say', speaker: 'ANDREW', text: '{name}! Hang on! Wait up!' },
+    // one straight leg per move (the cutscene walk is greedy x-then-y; route
+    // computed on the real collision model from his fence at (10,17))
+    { op: 'move', actor: 'andrew_road', to: { tx: 21, ty: 17 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 21, ty: 16 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 22, ty: 16 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 22, ty: 13 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 23, ty: 13 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 23, ty: 12 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 25, ty: 12 }, speed: 2 },
+    { op: 'face', actor: 'andrew_road', facing: 'right' },
+    { op: 'face', actor: 'player', facing: 'left' },
+    { op: 'say', speaker: 'ANDREW', text: 'Are you sure you want to head out this way? You\'ve not found the easter egg yet, and it\'s back the other way. Right here in Pearlmoor.' },
+    {
+      op: 'say', unless_flag: 'flag:q_south_booji', speaker: 'ANDREW',
+      text: 'Here\'s how. First, the Lifting House at the very top of the quay, the gym. Ask the lifters about the old man they\'re always on about. Ask ALL of them.',
+    },
+    {
+      op: 'say', unless_flag: 'flag:q_south_booji', speaker: 'ANDREW',
+      text: 'Then down to the harbour: through the moor-gate at the south end of the quay, out along the breakwater, past the bell, right to where the boards give up.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_south_booji', unless_flag: 'flag:q_south_booji_met', speaker: 'ANDREW',
+      text: 'You\'ve had the lifters\' stories already, so go straight down to the harbour. Through the moor-gate at the south end of the quay, along the breakwater, past the bell, right out where the boards give up. He\'ll be there.',
+    },
+    {
+      op: 'say', if_flag: 'flag:q_south_booji_met', speaker: 'ANDREW',
+      text: 'You\'ve met him, so you\'re close. Go back down the breakwater to his dark lamp. Something\'s asleep at the foot of it. Ask him to wake it.',
+    },
+    { op: 'say', speaker: 'ANDREW', text: 'The fen\'ll keep. It\'s been wet for years. Or go on, and ask me about THE EASTER EGG on any fence when you\'re ready.' },
+    { op: 'move', actor: 'andrew_road', to: { tx: 23, ty: 12 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 23, ty: 13 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 22, ty: 13 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 22, ty: 16 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 21, ty: 16 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 21, ty: 17 }, speed: 2 },
+    { op: 'move', actor: 'andrew_road', to: { tx: 10, ty: 17 }, speed: 2 },
+    { op: 'face', actor: 'andrew_road', facing: 'down' },
+  ],
   'script.andrew_egg': [
     // A
     {

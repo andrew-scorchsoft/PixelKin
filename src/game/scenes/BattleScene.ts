@@ -600,7 +600,7 @@ export class BattleScene extends Phaser.Scene {
         await this.msg.show("This one won't be caught. It has to be faced.");
         return null;
       }
-      this.consumeItem(choice);
+      if (!def.reusable) this.consumeItem(choice);
       return this.engine.catchWithBonus(choice, this.effectiveCatchBonus(def));
     }
 
@@ -1222,7 +1222,8 @@ function battleItemNote(def: ItemDef | undefined): string {
   if (def.category === 'charge' && def.catch_bonus) {
     if (def.catch_bonus >= 255) return 'One throw. The kin always comes.';
     const odds = `catch odds x${def.catch_bonus}`;
-    return def.condition ? `One throw: ${odds} ${conditionNote(def.condition)}, else x1.` : `One throw: ${odds}.`;
+    const lead = def.reusable ? 'Never spent' : 'One throw';
+    return def.condition ? `${lead}: ${odds} ${conditionNote(def.condition)}, else x1.` : `${lead}: ${odds}.`;
   }
   return def.desc;
 }

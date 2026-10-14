@@ -330,7 +330,11 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // unhinged per floor); the halls carry wild encounters (the climb's grind bed).
   pearlmoor_point: {
     json: 'assets/maps/pearlmoor_point.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      // the Farlamp's blink on the horizon (walkthrough/10 Part I)
+      farlamp_set: 'assets/tilesets/farlamp_set.webp',
+    },
     kind: 'route',
     music: 'assets/audio/music/pearlmoor-quay-b.mp3',
     battle_backdrops: [
@@ -1014,6 +1018,8 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     tilesets: {
       vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
       coldfog_set: 'assets/tilesets/coldfog_set.webp',
+      // the dead pools' full `murkpool` family (lobed blobs, 2026-10 r2 review)
+      stillwater_set: 'assets/tilesets/stillwater_set.webp',
     },
     kind: 'route',
     music: 'assets/audio/music/coldfog-marches-a.mp3',
@@ -1043,6 +1049,8 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     },
     kind: 'route',
     music: 'assets/audio/music/coldfog-marches-a.mp3',
+    // Lane N2: once the Drownlight is relit (post-dawn), its foot plays the relit cue
+    music_when: [{ flag: 'flag:drownlight_relit', music: 'assets/audio/music/drownlight-relit.mp3' }],
     battle_backdrops: [
       'assets/backgrounds/battle/coldfog-marches-a.webp',
       'assets/backgrounds/battle/coldfog-marches-b.webp',
@@ -1487,6 +1495,335 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'route',
     music: 'assets/audio/music/sunvault-climb-b.mp3',
     battle_backdrops: ['assets/backgrounds/battle/sunvault-climb-a.webp', 'assets/backgrounds/battle/sunvault-climb-b.webp'],
+  },  // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide + the Drowned Lamp —
+  // portal caves under the isles on the undertide_set accent kit (surge, shallows, tide-races).
+  undertide_i: {
+    json: 'assets/maps/undertide_i.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  undertide_ii: {
+    json: 'assets/maps/undertide_ii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  undertide_iii: {
+    json: 'assets/maps/undertide_iii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  undertide_iv: {
+    json: 'assets/maps/undertide_iv.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  farlamp_drowned: {
+    json: 'assets/maps/farlamp_drowned.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    music: 'assets/audio/music/undertide.mp3',
+    // the relight (I6): once the Farlamp burns again, its room plays the relit cue
+    music_when: [{ flag: 'flag:isles_dawn', music: 'assets/audio/music/farlamp-relit.mp3' }],
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-drowned-a.webp'],
+  },
+  // ---- Lane A — the Ashfall Shelf (walkthrough/10 Part II, 2026-10) ----
+  // The main-path leg between Cinderwind Scarp and Galehigh: daylight after three caves.
+  cinderwind_ashfall: {
+    json: 'assets/maps/cinderwind_ashfall.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the haulers' old ore track (dressing)
+    },
+    kind: 'route',
+    music: 'assets/audio/music/cinderwind-ashfall.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/ashfall-a.webp'],
+  },
+  // Kiln Gully: the cold lamp-glass kiln up the old stack's thermal (Updraft Kite).
+  cinderwind_kiln: {
+    json: 'assets/maps/cinderwind_kiln.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/cinderhead-mine-b.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/kiln-a.webp'],
+  },
+  // ---- THE FARLAMP ISLES (walkthrough/10 Part I, post-game) — Lane C1: the sea,
+  // the two wild isles, Driftholm + its interiors (builders: build_farlamp_isles.py,
+  // build_driftholm.py, build_farlamp_interiors.py). Sea maps are rowed (deepwater_set).
+  farlamp_sound: {
+    json: 'assets/maps/farlamp_sound.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/farlamp-sound.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-sea-a.webp'],
+  },
+  farlamp_shelfwater: {
+    json: 'assets/maps/farlamp_shelfwater.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/farlamp-sound.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-sea-a.webp'],
+  },
+  farlamp_fogwall: {
+    json: 'assets/maps/farlamp_fogwall.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      farlamp_set: 'assets/tilesets/farlamp_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/farlamp-sound.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-sea-a.webp'],
+  },
+  farlamp_gullwrack: {
+    json: 'assets/maps/farlamp_gullwrack.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/farlamp-sound.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-isle-a.webp'],
+  },
+  farlamp_kelpcrown: {
+    json: 'assets/maps/farlamp_kelpcrown.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/farlamp-sound.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-isle-a.webp'],
+  },
+  driftholm: {
+    json: 'assets/maps/driftholm.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'town',
+    music: 'assets/audio/music/driftholm.mp3',
+    // the isles' dawn turns the minor-mode hymn major (Lane D's cue)
+    music_when: [{ flag: 'flag:isles_dawn', music: 'assets/audio/music/driftholm-dawn.mp3' }],
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-isle-a.webp'],
+  },
+  driftholm_inn: {
+    json: 'assets/maps/driftholm_inn.json',
+    tilesets: { interior_sea_set: 'assets/tilesets/interior_sea_set.webp' }, // the isles' sea-washed kit
+    kind: 'interior',
+    music: 'assets/audio/music/inn-rest.mp3',
+  },
+  driftholm_chandlery: {
+    json: 'assets/maps/driftholm_chandlery.json',
+    tilesets: { interior_sea_set: 'assets/tilesets/interior_sea_set.webp' }, // the isles' sea-washed kit
+    kind: 'interior',
+    music: 'assets/audio/music/shop-counter.mp3',
+  },
+  driftholm_elder: {
+    json: 'assets/maps/driftholm_elder.json',
+    tilesets: { interior_sea_set: 'assets/tilesets/interior_sea_set.webp' }, // the isles' sea-washed kit
+    kind: 'interior',
+    music: 'assets/audio/music/interior-lamplit.mp3',
+  },
+  driftholm_boathouse: {
+    json: 'assets/maps/driftholm_boathouse.json',
+    tilesets: { interior_sea_set: 'assets/tilesets/interior_sea_set.webp' }, // the isles' sea-washed kit
+    kind: 'interior',
+    music: 'assets/audio/music/interior-hush.mp3',
+  },
+  gullwrack_hut: {
+    json: 'assets/maps/gullwrack_hut.json',
+    tilesets: { interior_sea_set: 'assets/tilesets/interior_sea_set.webp' }, // the isles' sea-washed kit
+    kind: 'interior',
+    music: 'assets/audio/music/interior-hush.mp3',
+  },
+  // ---- Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay ----------------------
+  // The drowned old town under the bay — Tidecall-swum from home's south shore. The bay's
+  // outer reef is DEEP (deepwater_set; rowed in the Farlamp skiff). Both outdoor maps and
+  // the moss-garden play the drowned Tinderwick theme (`lowtinder`); the cellars play
+  // `bell-cellar`. The reef battle (Grandmother Tallow) uses her trainer music.
+  tinderwick_bay: {
+    json: 'assets/maps/tinderwick_bay.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/lowtinder.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/lowtinder-a.webp', 'assets/backgrounds/battle/pearlmoor-quay-a.webp'],
+  },
+  lowtinder: {
+    json: 'assets/maps/lowtinder.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/lowtinder.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/lowtinder-a.webp'],
+  },
+  lowtinder_lamphouse: {
+    json: 'assets/maps/lowtinder_lamphouse.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-hearth.mp3',
+  },
+  lowtinder_school: {
+    json: 'assets/maps/lowtinder_school.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-study.mp3',
+  },
+  lowtinder_school_garden: {
+    json: 'assets/maps/lowtinder_school_garden.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/lowtinder.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/bell-cellar-a.webp'],
+  },
+  lowtinder_cellar: {
+    json: 'assets/maps/lowtinder_cellar.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/bell-cellar.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/bell-cellar-a.webp'],
+  },
+  lowtinder_cellar_b2: {
+    json: 'assets/maps/lowtinder_cellar_b2.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/bell-cellar.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/bell-cellar-a.webp'],
+  },
+  // ---- Lane N3 — the Hollowing's Country (walkthrough/11 Parts C + D, 2026-10) ----
+  // The Mourning Fields: the fallow fields the Hollowing quieted; closes the north loop.
+  mourning_fields: {
+    json: 'assets/maps/mourning_fields.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/mourning-fields.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/mourning-fields-a.webp'],
+  },
+  // The Penumbra Underways: two portal floors under the Ring (the last road, optional).
+  penumbra_underways: {
+    json: 'assets/maps/penumbra_underways.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/penumbra-underways.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/underways-a.webp'],
+  },
+  penumbra_underways_b1: {
+    json: 'assets/maps/penumbra_underways_b1.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/penumbra-underways.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/underways-a.webp'],
+  },
+  // ---- Lane N1 (walkthrough/11 Part A): Stillwater, the Hollowing's village ----
+  // North of Coldfog Marches I. Its lanes are `flagway` (stillwater_set: flagstones
+  // drawn over blight), its crags the Coldfog `fogcrag`. The hush-hymn `stillwater`
+  // plays town-wide; indoors the stock set (inn-rest / shop-counter / interior-hush /
+  // interior-unease). Rooms use the shutter-grey kit (build_stillwater_interior_set.py).
+  stillwater: {
+    json: 'assets/maps/stillwater.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      coldfog_set: 'assets/tilesets/coldfog_set.webp',
+      stillwater_set: 'assets/tilesets/stillwater_set.webp',
+    },
+    kind: 'town',
+    music: 'assets/audio/music/stillwater.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/stillwater-a.webp'],
+  },
+  stillwater_quiet_hall: {
+    json: 'assets/maps/stillwater_quiet_hall.json',
+    tilesets: { interior_shutter_set: 'assets/tilesets/interior_shutter_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-hush.mp3',
+  },
+  stillwater_shutter: {
+    json: 'assets/maps/stillwater_shutter.json',
+    tilesets: { interior_shutter_set: 'assets/tilesets/interior_shutter_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/inn-rest.mp3',
+  },
+  stillwater_lampmaker: {
+    json: 'assets/maps/stillwater_lampmaker.json',
+    tilesets: { interior_shutter_set: 'assets/tilesets/interior_shutter_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/shop-counter.mp3',
+  },
+  stillwater_home_a: {
+    json: 'assets/maps/stillwater_home_a.json',
+    tilesets: { interior_shutter_set: 'assets/tilesets/interior_shutter_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-hush.mp3',
+  },
+  stillwater_home_b: {
+    json: 'assets/maps/stillwater_home_b.json',
+    tilesets: { interior_shutter_set: 'assets/tilesets/interior_shutter_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-unease.mp3',
+  },
+  // ---- Lane N2 (walkthrough/11 Part B): THE DROWNLIGHT — the tower above
+  // drownlight_beacon (builder: build_drownlight_tower.py). One cue family, darker
+  // as you climb (drownlight-f1 / -f2 / -lantern); the relit cue once flag:drownlight_relit.
+  drownlight_f1: {
+    json: 'assets/maps/drownlight_f1.json',
+    tilesets: { drownlight_f1_set: 'assets/tilesets/drownlight_f1_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/drownlight-f1.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/drownlight-a.webp'],
+  },
+  drownlight_f2: {
+    json: 'assets/maps/drownlight_f2.json',
+    tilesets: { drownlight_f2_set: 'assets/tilesets/drownlight_f2_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/drownlight-f2.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/drownlight-a.webp'],
+  },
+  drownlight_lantern: {
+    json: 'assets/maps/drownlight_lantern.json',
+    tilesets: { drownlight_lantern_set: 'assets/tilesets/drownlight_lantern_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/drownlight-lantern.mp3',
+    music_when: [{ flag: 'flag:drownlight_relit', music: 'assets/audio/music/drownlight-relit.mp3' }],
+    battle_backdrops: ['assets/backgrounds/battle/drownlight-lantern-a.webp'],
   },
 };
 

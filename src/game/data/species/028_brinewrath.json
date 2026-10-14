@@ -63,7 +63,92 @@
     "weight_kg": 52,
     "habitat": "south"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "undertide_i",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 62,
+      "max": 63
+    },
+    {
+      "area": "undertide_i",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 63,
+      "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 64
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 65
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 63,
+      "max": 65
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 64,
+      "max": 66
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 64,
+      "max": 66
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 65,
+      "max": 67
+    },
+    {
+      "area": "farlamp_sound",
+      "terrain": "water",
+      "rarity": "uncommon",
+      "min": 63,
+      "max": 65
+    },
+    {
+      "area": "farlamp_shelfwater",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 64,
+      "max": 66
+    },
+    {
+      "area": "farlamp_gullwrack",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 64,
+      "max": 66
+    },
+    {
+      "area": "tinderwick_bay",
+      "terrain": "deep",
+      "rarity": "common",
+      "min": 58,
+      "max": 61
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Streamlined low-slung body, swept-back shell ridges like breaking waves, twin luminous teal eye-stalks, long trailing fin-limbs. Seafoam-blue and deep indigo palette, white crest markings.",

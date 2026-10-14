@@ -470,7 +470,8 @@ class MapModel:
 
 
 ALL_ABILITIES = ("tidecall", "glimmerstep", "updraft_kite",
-                 "emberward", "sunsketch", "starreach")
+                 "emberward", "sunsketch", "starreach",
+                 "deepdive")   # not a Gift: the Farlamp skiff (10 §2), via giveAbility
 
 
 # ---- graph.ts parser ----------------------------------------------------------

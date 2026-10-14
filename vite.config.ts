@@ -18,6 +18,9 @@ export default defineConfig({
   server: {
     host: true,
     port: 5173,
+    // Agent worktrees are whole repo copies: watching them exhausts the OS
+    // watcher limit (ENOSPC) and kills the dev server / shot harness.
+    watch: { ignored: ['**/.claude/worktrees/**', '**/release/**', '**/dist/**'] },
   },
   build: {
     outDir: 'dist',

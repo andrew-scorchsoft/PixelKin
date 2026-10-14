@@ -97,16 +97,30 @@
     {
       "area": "rimeway_ascent",
       "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 40,
+      "rarity": "uncommon",
+      "min": 39,
       "max": 41
     },
     {
       "area": "rimeway_ascent",
       "terrain": "tall_grass",
-      "rarity": "rare",
-      "min": 58,
-      "max": 64
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 63
+    },
+    {
+      "area": "rimeway_fold",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 40,
+      "max": 42
+    },
+    {
+      "area": "rimeway_fold",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 63
     },
     {
       "area": "rimeway_descent",
@@ -121,6 +135,13 @@
       "rarity": "uncommon",
       "min": 58,
       "max": 64
+    },
+    {
+      "area": "farlamp_fogwall",
+      "terrain": "water",
+      "rarity": "rare",
+      "min": 64,
+      "max": 67
     }
   ],
   "scripted": false,

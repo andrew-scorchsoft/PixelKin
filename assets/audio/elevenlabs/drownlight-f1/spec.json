@@ -1,0 +1,71 @@
+{
+ "id": "drownlight-f1",
+ "kind": "loop",
+ "where": "The Drownlight, floor 1 — the Oil Stores (the north coast's shuttered lighthouse, climbed in the dark)",
+ "mood": "The Keeper's Hymn — a slow, tended sea-hymn in a cold stone tower: flute over harp, a clockwork ticking somewhere in the walls.",
+ "bpm": 76,
+ "beats_per_bar": 3,
+ "motif": null,
+ "_note": "Lane N2. The Drownlight family ANCHOR (music-cue-family skill): matches the classic drownlight-f1 (76 BPM, 3/4, D minor). The motif is a lamp's beam swinging out and back: up a fourth, lift to the third, fall home. Opening shape: a lone flute breathing the first phrase over a held harp chord (a cave-like 'lone instrument breathing in', never a stall). Never name the tune in a brief.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "76 BPM",
+  "D minor",
+  "3/4 waltz-time hymn",
+  "airy sampled flute carrying a slow sea-hymn melody",
+  "harp arpeggios rising and falling like a turning lens",
+  "warm sampled string pad underneath",
+  "a soft clockwork tick on every beat from a small woodblock",
+  "melancholy, tended, patient, cold stone and lamp-oil",
+  "strong singable melody, instantly hummable and pleasant on repeat",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "singing",
+  "EDM",
+  "four-on-the-floor kick",
+  "heavy drums",
+  "electric guitar",
+  "heavy sub bass",
+  "fade out",
+  "ending",
+  "horror",
+  "silence"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a lone flute breathes the hymn's first rising phrase over one held harp chord, the clockwork tick starting under it}",
+   "styles": ["lone instrument opening", "gentle"]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the keeper's hymn on flute: up a fourth, a lift to the minor third, then a slow fall home, over rolling harp arpeggios and a string pad}",
+   "styles": ["main theme", "memorable hook", "waltz time"]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the hymn again, a glass bell doubling the flute an octave up, a low cello line answering each phrase}",
+   "styles": ["counter-melody", "fuller"]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast in F major: the harp alone with the strings, warmer, like lamplight remembered, the clockwork ticking on}",
+   "styles": ["contrasting section", "relative major"],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the hymn returns on flute in D minor, the last bar lifting straight back into the top of the theme}",
+   "styles": ["main theme returns", "seamless loop back to the start of the theme"]
+  }
+ ]
+}

@@ -154,6 +154,18 @@
       "h": 1,
       "solid": false,
       "bob": false
+    },
+    {
+      "id": "buoy_hearthfall_deep",
+      "sprite": "markers_sea_buoy",
+      "at": {
+        "tx": 22,
+        "ty": 11
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
     }
   ],
   "warps": [
@@ -333,6 +345,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_vigil_hearth_glass",
       "hidden_when_flag": "flag:picked_vigil_hearth_glass"
+    },
+    {
+      "id": "cache_hearthfall_deep",
+      "at": {
+        "tx": 22,
+        "ty": 12
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_hearthfall_deep",
+      "hidden_when_flag": "flag:picked_hearthfall_deep"
     }
   ],
   "gates": [

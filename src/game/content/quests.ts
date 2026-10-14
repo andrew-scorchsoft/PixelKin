@@ -113,6 +113,17 @@ export const QUESTS: QuestRegistry = [
     done_flag: 'flag:q_south_booji_done',
   },
   {
+    // A teaser, not S5 itself: the closed wood above the allotments, logged the
+    // first time Wanderer Hob says "come back later" (it was easy to forget).
+    id: 's5_wood_that_waits',
+    name: 'The Wood That Waits',
+    region: 'south',
+    giver: 'Wanderer Hob, at the wood above the Hillside Allotments',
+    blurb: 'An old wood above the Hillside Allotments won\'t let anyone in. Hob says the trees open for whoever the old man at the dark end of the breakwater sends.',
+    start_flag: 'flag:wander_wood_seen',
+    done_flag: 'flag:q_south_wander_open',
+  },
+  {
     id: 's5_not_all_who_wander',
     name: 'Not All Who Wander',
     region: 'south',
@@ -301,7 +312,7 @@ export const QUESTS: QuestRegistry = [
     name: 'The Day-form Survey',
     region: 'central',
     giver: 'Fenn',
-    blurb: 'Show Fenn three day-forms — the early kin of the valleys, woken sun-changed by the relit sky — for his field-journal.',
+    blurb: 'Walk Dawnstead\'s sunlit verge and find Fenn three signs of the day-forms the relit sky has woken — a wing-scale, a moult, a warm burrow — for his field-journal.',
     start_flag: 'flag:q_post_survey',
     stage_flags: ['flag:q_post_survey_1', 'flag:q_post_survey_2', 'flag:q_post_survey_3'],
     done_flag: 'flag:q_post_survey_done',
@@ -408,6 +419,147 @@ export const QUESTS: QuestRegistry = [
       'flag:works_found_brann',
     ],
     done_flag: 'flag:q_works_done',
+  },
+  // ---- THE FARLAMP ISLES (walkthrough/10 Part I) — Lane C1 ----
+  // The main chain, from the first look south: the journal counts the five
+  // driftletters (the panel's clarity fix) and its blurb names their shores.
+  {
+    id: 'the_farlamp',
+    name: 'The Farlamp',
+    region: 'south',
+    giver: 'Ione Fathom, boatwright',
+    blurb: 'A lamp blinks inside the fog south of Lightkeeper\'s Point, where the Farlamp drowned eleven winters ago. Letters wash up on five shores: the Dimglass strand, Gullcry Rock, the Wick-Run\'s beach, the Glassmere shallows and the Drownlight shingle. Bring Ione three, after the dawn.',
+    start_flag: 'flag:isles_rumour',
+    count_prefix: 'flag:driftletter_',
+    count_total: 5,
+    done_flag: 'flag:q_isles_done',
+  },
+  {
+    id: 'letters_home',
+    name: 'Letters Home',
+    region: 'south',
+    giver: 'the folk of Driftholm',
+    blurb: 'Driftholm threw its letters into the sea for eleven winters. Bring each driftletter back to the one who wrote it: Marra by the kelp-racks, Lorne at the lamp-stone, Maudie the schoolteacher, Hesk the net-mender, and Elder Creel.',
+    start_flag: 'flag:q_isles_driftholm',
+    count_prefix: 'flag:isles_letter_home_',
+    count_total: 5,
+    done_flag: 'flag:q_isles_letters_done',
+  },
+  // ---- Lane E (walkthrough/10 Part III): Lowtinder, the town under the bay ----
+  {
+    id: 'lowtinder_bell',
+    name: 'The Town Bell',
+    region: 'south',
+    giver: 'Gran Tallow, Lowtinder',
+    blurb: 'Old Tinderwick\'s bell lies in the belfry pit under Gran Tallow\'s cellar. The winch-key is somewhere in the stores — she put it somewhere safe, then forgot where safe was.',
+    start_flag: 'flag:q_lowtinder',
+    stage_flags: ['flag:lowtinder_winch_key', 'flag:q_lowtinder_bell'],
+    done_flag: 'flag:q_lowtinder_bell_home',
+  },
+  {
+    id: 'lowtinder_light',
+    name: 'The Old Tinder Light',
+    region: 'south',
+    giver: 'Gran Tallow, Lowtinder',
+    blurb: 'Gran Tallow kept the Tinder Light on the outer reef for thirty-one years. Nobody\'s boat crosses the deep — but she would give her teeth to see it once more.',
+    start_flag: 'flag:q_lowtinder_light',
+    stage_flags: ['flag:lowtinder_reef_rowed'],
+    done_flag: 'flag:lowtinder_grandmother_beaten',
+  },
+  // Lane A — the Ashfall Shelf (walkthrough/10 Part II): the Kilnwright kiln's last pane
+  {
+    id: 'north_last_pane',
+    name: 'The Last Pane',
+    region: 'north',
+    giver: 'Oda Kilnwright',
+    blurb: 'The Kilnwright kiln went cold with one pane still on its drying rack. Ride the old stack\'s thermal up to Kiln Gully, and carry the glass to the blind lamp by Galehigh\'s kite-stall.',
+    start_flag: 'flag:q_north_pane_hook',
+    stage_flags: ['flag:q_north_pane'],
+    done_flag: 'flag:q_north_pane_done',
+  },
+  // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide's two side quests.
+  // Keeper Edda Marrow's four logbook pages (Undertide I-IV) tell the night the deep
+  // came up; the fourth opens the Drowned Lamp's store (its Star-chart is the close).
+  {
+    id: 'isles_keepers_log',
+    name: 'The Keeper\'s Log',
+    region: 'outer',
+    giver: 'Keeper Edda Marrow',
+    blurb: 'Four pages of the Farlamp\'s last log, left in sea-chests down the Undertide. Read them all and the keeper will tell you where she left the things that mattered.',
+    start_flag: 'flag:isles_log_begun',
+    stage_flags: ['flag:isles_log_1', 'flag:isles_log_2', 'flag:isles_log_3', 'flag:isles_log_4'],
+    done_flag: 'flag:picked_farlamp_store_chart',
+  },
+  // The Bell Galleries' three bells, rung in the old order (Deep, Shoal, Harbour):
+  // the bell-ringers' tin (a Lumen Drop) and the shortcut race home to the well-stair.
+  {
+    id: 'isles_bell_tuning',
+    name: 'Tide-bell Tuning',
+    region: 'outer',
+    giver: 'Driftholm\'s bell-ringers',
+    blurb: 'The Undertide\'s bells were hung to tell the tide\'s order. Ring the Bell Galleries\' three the old way, with nothing between, and hear them come true.',
+    start_flag: 'flag:undertide_bells_heard',
+    stage_flags: ['flag:isles_log_3', 'flag:picked_undertide_tuned'],
+    done_flag: 'flag:q_isles_bells_tuned',
+  },
+  // ---- Lane N1 (walkthrough/11 Part A): Stillwater, the Hollowing's village ----
+  {
+    id: 'still_candle',
+    name: 'A Light Left On',
+    region: 'outer',
+    giver: 'Linnet, Stillwater',
+    blurb: 'Linnet keeps one forbidden candle in a jar. Hide it in the old willow by the still water, or show it to her mother, Maren.',
+    start_flag: 'flag:q_still_candle',
+    stage_flags: ['flag:q_still_candle_hidden', 'flag:q_still_candle_shown'],
+    done_flag: 'flag:q_still_candle_done',
+  },
+  {
+    id: 'still_way_home',
+    name: 'The Way Home',
+    region: 'outer',
+    giver: 'Tessaly, Stillwater',
+    blurb: 'Tessaly wants to go home to Pale Vault but can\'t face the fog alone. Walk ahead with your lamp through both Coldfog marshes and meet her at home.',
+    start_flag: 'flag:q_still_tessaly',
+    stage_flags: ['flag:q_still_tessaly_fog1', 'flag:q_still_tessaly_fog2'],
+    done_flag: 'flag:q_still_tessaly_done',
+  },
+  {
+    id: 'still_shutter_wall',
+    name: 'The Shutter-wall',
+    region: 'outer',
+    giver: 'Keeper Wenna, the Quiet Hall',
+    blurb: 'The Quiet Hall keeps the names of the lamps the Hollowing put out. Find three of them still standing: the Wayfare Lamp in the near fog, the Market Lamp in the deep fog, the First Lamp across the still water.',
+    start_flag: 'flag:q_still_wall',
+    stage_flags: ['flag:q_still_lamp_1', 'flag:q_still_lamp_2', 'flag:q_still_lamp_3'],
+    done_flag: 'flag:q_still_wall_done',
+  },
+  // ---- Lane N2 (walkthrough/11 Part B): the Drownlight — the first lamp the
+  // Hollowing put out. Climb it in the dark, hear the Shutterkeeper out; after the
+  // dawn, relight it (flags: content/regions/drownlight.ts).
+  {
+    id: 'north_drownlight',
+    name: 'The Drownlight',
+    region: 'outer',
+    giver: 'Maudry Kell, the Shutterkeeper',
+    blurb: 'The north coast\'s lighthouse, shuttered fourteen winters ago by its own keeper. Climb it past the leaking light-wells and hear her out; she will not light it while the sky is dark.',
+    start_flag: 'flag:drownlight_entered',
+    stage_flags: ['flag:drownlight_keeper_beaten', 'flag:dawn'],
+    done_flag: 'flag:drownlight_relit',
+  },
+  // ---- Lane N3 / fix FD (walkthrough/11 Part D): the Penumbra Underways. Opens at
+  // the first word of it (Andrew's P.S., the Ring's light-well, a mouth's "not yet",
+  // or any watcher); kept once Old Clemency has heard you met all three watchers
+  // (flags: content/regions/underways.ts).
+  {
+    id: 'central_last_watch',
+    name: 'The Last Watch',
+    region: 'central',
+    giver: 'Old Clemency, at the watch-fire',
+    blurb: 'Under the Penumbra Ring the Hollowing keep a last watch and a fire. Go down the old stair, let each watcher try you, and sit by the fire before the climb.',
+    start_flag: 'flag:q_underways',
+    stage_flags: ['flag:underways_watch_a_beaten', 'flag:underways_watchfire_rested',
+      'flag:underways_watch_b_beaten', 'flag:underways_watch_c_beaten'],
+    done_flag: 'flag:underways_watch_kept',
   },
 ];
 

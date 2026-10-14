@@ -23,7 +23,9 @@ Three signature touches (§8):
      stored daylight: a fading goldgrass pocket whose bed carries the lone
      Light-kin exception (Wisprestored, weight 5 — atlas §4: Light-kin
      thinned/absent in drained areas; the row's habitat demands a coldfog
-     placement, so it survives ONLY here, barely).
+     placement, so it survives ONLY here, barely). Its curio (2026-10 r3):
+     a rare #116 Auravane, the Solarium's sun-vine, rooted in the spill — its
+     only bed north of the Sunvault — and a survey-peg sign saying why.
   3. THE BRAVEST VIEWPOINT (NE bluff) — X3 "Charting the Dark"'s optional
      third star-reading: a survey cairn on a scree-lipped bluff over the deep
      fog. The §11 elevation accent, the §3a r1 loop (climb the long way west,
@@ -46,7 +48,7 @@ and sets flag:q_west_chart_3 (the OPTIONAL "bravest" leg — W4's done-stage
 must not hard-require _3, or must call it out; hooks list this leg as
 optional). Mirrors sunvault_climb_ii's chart_sunvault trigger verbatim.
 
-NO TRAINERS (deliberate §11 r7 deviation, documented): the walkthrough's
+(SUPERSEDED 2026-10 by walkthrough/11 Part E: two Hollowing acolytes now keep this road — see the density block below.) NO TRAINERS (deliberate §11 r7 deviation, documented): the walkthrough's
 Coldfog hooks name zero trainers — nobody keeps a road through a drained
 land; the dread register would not survive a cheery route battle. The
 mandatory blight-bed crossing (rows 12-13, full corridor) keeps the route
@@ -104,6 +106,11 @@ owed: list[str] = []
 # with BLIGHT-context rims — the shared `cliff` would ring teal-green here
 COLDFOG_REF = mk.register_tileset(
     "coldfog_set", index=mk.REPO / "assets/tilesets/coldfog/coldfog_set.index.json")
+# (2026-10, r2 review) the dead pools' FULL family `murkpool` (inner corners + nubs,
+# so a pool can be a lobed blob) lives in stillwater_set — the coldfog_set is shared
+# by seven maps and is not grown for one
+STILL_REF = mk.register_tileset(
+    "stillwater_set", index=mk.REPO / "assets/tilesets/stillwater/stillwater_set.index.json")
 
 # ---- terrain presence grids --------------------------------------------------------
 cliff = mk.make_grid(W, H)      # the map-edge walls + the bluff
@@ -137,6 +144,17 @@ for (x, y) in [(8, 27), (9, 27), (8, 28), (9, 28), (8, 29), (9, 29)]:
 for y in (4, 5):
     for x in (0, 1, 2, 3):
         cliff[y * W + x] = 0
+# THE HOLLOWING'S COUNTRY (walkthrough/11 Part E, 2026-10): the old road north
+# was never lost — it was LED. The north gap opens at cols 4-7 (world x 52-55) up
+# to Stillwater, the Hollowing's village; the east flank opens at rows 11-14
+# (world y -450..-447) onto the Mourning Fields (Lane N3's map: the engine no-ops
+# those warps until it lands). Both seams are this lane's (N1) per the contract.
+for y in range(0, 4):
+    for x in (4, 5, 6, 7):
+        cliff[y * W + x] = 0
+for y in range(11, 15):
+    for x in (16, 17, 18, 19):
+        cliff[y * W + x] = 0
 
 # THE BLUFF (NE) — X3's bravest viewpoint: cliff rim, scree ledge lip, west climb
 BLUFF = pt.Area(11, 3, 17, 9)
@@ -146,17 +164,28 @@ pt.terrace(cliff, deco, W, H, BLUFF, gap=(5, 6), gap_side="left", rng=rng)
 pt.ledge_run(deco, W, H, BLUFF.y1, BLUFF.x0 + 2, BLUFF.x1 - 2, rng, family="scree")
 
 # ---- the dead shallows (murk — water-over-blight, NO life, NO zone) ----------------
-mk.blob(murk, W, H, 5.0, 18.5, 3.0, 2.2)               # west pool
-mk.blob(murk, W, H, 2.9, 20.4, 1.2, 0.8)               #  (R10: ragged lobes — never a
-mk.blob(murk, W, H, 7.0, 16.6, 1.0, 0.7)               #   ruled box, audit_visual)
-mk.blob(murk, W, H, 14.5, 17.5, 2.8, 1.9)              # east pool (the islet cache)
-mk.blob(murk, W, H, 12.4, 18.7, 0.9, 0.7)
-mk.blob(murk, W, H, 4.5, 8.5, 2.6, 2.0)                # north-west pool
-mk.blob(murk, W, H, 6.6, 9.8, 1.1, 0.7)
-mk.blob(murk, W, H, 12.5, 22.5, 1.7, 1.2)              # fringe-line pool
-# the islet (dry ground under the valuable cache — priced on Tidecall)
-for (x, y) in [(14, 17), (15, 17)]:
-    murk[y * W + x] = 0
+# 2026-10 (r2 review): the four pools are drawn row by row as LOBED blobs — no edge
+# runs straight for long, every pool has a bay or a spit — and painted with the full
+# `murkpool` family (stillwater_set), whose inner corners let the outline bite in.
+POOLS = {
+    # north-west pool: a round pond with an east lobe
+    7: [(3, 5)], 8: [(2, 6)], 9: [(2, 7)], 10: [(3, 6)],
+    # west pool: a round pond with a west lobe; the east pool rings ONE stone islet
+    16: [(5, 7), (13, 16)],
+    17: [(4, 7), (12, 14), (16, 17)],
+    18: [(3, 7), (12, 17)],
+    19: [(3, 7), (13, 16)],
+    20: [(2, 6)],
+    21: [(3, 5)],
+    # the fringe-line pool, leaning west
+    22: [(12, 14)], 23: [(11, 13)],
+}
+for y, spans in POOLS.items():
+    for (x0, x1) in spans:
+        for x in range(x0, x1 + 1):
+            murk[y * W + x] = 1
+# the islet (dry ground under the valuable cache — priced on Tidecall) is the
+# single (15,17) cell the east pool's rows leave
 
 # ---- the lane: fringe only (it ENDS at the blight line — touch #1) ------------------
 mk.vline(path, W, H, 8, 23, 29)
@@ -182,6 +211,13 @@ gold = mk.make_grid(W, H)
 mk.blob(gold, W, H, 16.5, 19.0, 2.4, 1.9)
 mk.blob(gold, W, H, 17.5, 21.0, 1.5, 1.2)
 mk.blob(goldtuft, W, H, 16.5, 19.0, 1.4, 1.0)
+# 2026-10 (r3 review: "make the gold pocket a curio worth the detour") — the bed
+# was one cell; it now runs down the patch's dry south lobe (five cells, off the
+# named lamp's foot), and it keeps its OWN rare: see TABLE_GOLD + the sign below.
+for (x, y) in [(17, 20), (15, 21), (16, 21), (17, 21)]:
+    goldtuft[y * W + x] = 1
+    gold[y * W + x] = 1
+blighttuft[21 * W + 14] = 0     # the curio sign's cell (placed below) stays clear
 
 # ---- the blight mask: everything north of the living fringe -------------------------
 blight = mk.make_grid(W, H)
@@ -226,8 +262,8 @@ terrain_layers = [
      "set": "vesper_overworld_set", "depth": 0, "data": blighttuft},
     {"name": "t_goldtuft", "role": "terrain", "terrain": "goldtuft",
      "set": "vesper_overworld_set", "depth": 0, "data": goldtuft},
-    {"name": "t_murk", "role": "terrain", "terrain": "murk",
-     "set": "vesper_overworld_set", "depth": 0, "data": murk},
+    {"name": "t_murk", "role": "terrain", "terrain": "murkpool",
+     "set": "stillwater_set", "depth": 0, "data": murk},
     {"name": "t_fogcrag", "role": "terrain", "terrain": "fogcrag",
      "set": "coldfog_set", "depth": 0, "data": cliff},
     {"name": "t_tree", "role": "terrain", "terrain": "tree",
@@ -237,7 +273,7 @@ terrain_layers = [
 m: dict = {
     "id": "coldfog_marches_i", "display_name": "Coldfog Marches",
     "width": W, "height": H, "tile_width": 16, "tile_height": 16, "kind": "route",
-    "tilesets": [mk.shared_tileset_ref(), COLDFOG_REF],
+    "tilesets": [mk.shared_tileset_ref(), COLDFOG_REF, STILL_REF],
     "objects": [], "warps": [], "triggers": [], "encounters": [], "npcs": [],
     "gates": [],
     "music": "assets/audio/music/coldfog-marches-a.mp3",
@@ -269,6 +305,16 @@ m["warps"] += [
      "requires_ability": "emberward",
      "blocked_ref": "sign.coldfog_beacon", "transition": "fade"},
 ]
+
+# ---- the Hollowing's Country seams (walkthrough/11 build contract) ------------------
+for x in (4, 5, 6, 7):
+    m["warps"].append({"id": f"to_stillwater_{x}", "at": {"tx": x, "ty": 0},
+                       "trigger": "step_on", "to_map": "stillwater",
+                       "to": {"tx": x, "ty": 28}, "facing": "up", "transition": "fade"})
+for y in (11, 12, 13, 14):
+    m["warps"].append({"id": f"to_mourning_{y}", "at": {"tx": W - 1, "ty": y},
+                       "trigger": "step_on", "to_map": "mourning_fields",
+                       "to": {"tx": 1, "ty": y}, "facing": "right", "transition": "fade"})
 
 # ---- the road that forgets: dark reed-lanterns remember the lane --------------------
 for n, (x, y) in enumerate([(7, 20), (10, 16), (7, 10), (10, 5)]):
@@ -341,15 +387,51 @@ owed += ["script.chart_coldfog (X3 leg 3, OPTIONAL/bravest — a star-reading "
 # Posted at the deep-fog boundary — the last living voice before the works'
 # drained country; his line is the B4 entry-tone (grief dressed as mercy).
 m["npcs"].append(
-    {"id": "marsh_hermit", "at": {"tx": 6, "ty": 3}, "facing": "right",
+    {"id": "marsh_hermit", "at": {"tx": 9, "ty": 3}, "facing": "left",
      "sprite": "npc_old_man", "movement": "static",
      "dialogue_ref": "npc.coldfog_marsh_hermit"})
 owed += ["npc.coldfog_marsh_hermit (hooks ref VERBATIM — the 'kindest thing' "
          "line; zero humour)"]
 
+# ---- the Hollowing's Country density (walkthrough/11 Part E) ------------------------
+# Two acolytes keep the road north (sight trainers, keeper class — they ask first,
+# in their scripts); a Stillwater trader at the north gap (the marsh has no rest,
+# so she sells what the road needs); an elegiac fen-walker on the living fringe;
+# the first of the Shutter-wall's three cold lamps; Tessaly's first escort stop;
+# and a Lamplight-STARLIGHT secret: the one nook bright enough lamplight can find.
+owed += pt.trainer_beat(m, tid="coldfog_acolyte_north", at=(10, 8), facing="down",
+                        sight=4, sprite="hollowing_acolyte")
+owed += pt.trainer_beat(m, tid="coldfog_acolyte_east", at=(16, 14), facing="left",
+                        sight=4, sprite="hollowing_elder")
+m["npcs"] += [
+    {"id": "still_trader", "at": {"tx": 10, "ty": 3}, "facing": "left",
+     "sprite": "market_trader", "movement": "static",
+     "dialogue_ref": "script.still_trader"},
+    {"id": "fen_walker", "at": {"tx": 8, "ty": 24}, "facing": "down",
+     "sprite": "pass_walker", "movement": "wander", "wander_radius": 2,
+     "dialogue_ref": "script.coldfog_fen_walker"},
+    {"id": "tessaly_fog1", "at": {"tx": 7, "ty": 22}, "facing": "down",
+     "sprite": "fen_folk", "movement": "static", "dialogue_ref": "script.still_tessaly_fog1",
+     "requires_flag": "flag:q_still_tessaly", "hidden_when_flag": "flag:q_still_tessaly_fog1"},
+    {"id": "cache_coldfog_starlight", "at": {"tx": 2, "ty": 19}, "facing": "down",
+     "sprite": "item_cache", "movement": "static",
+     "dialogue_ref": "script.pickup_coldfog_starlight",
+     "requires_flag": "flag:lamplight_starlight",
+     "hidden_when_flag": "flag:picked_coldfog_starlight"},
+]
+m["objects"].append(
+    {"id": "named_lamp_1", "sprite": "coldfog_doused_lamp", "at": {"tx": 16, "ty": 18},
+     "w": 1, "h": 3, "overhang": 2, "walk_under": True})
+m["triggers"].append(
+    {"id": "named_lamp_1_read", "kind": "script", "at": {"tx": 15, "ty": 20},
+     "activation": "interact", "ref": "script.still_coldlamp_1"})
+owed += ["script.still_trader", "script.coldfog_fen_walker", "script.still_tessaly_fog1",
+         "script.pickup_coldfog_starlight", "script.still_coldlamp_1"]
+
 # ---- signs --------------------------------------------------------------------------
 owed += pt.sign(m, deco, W, sid="coldfog_marches", at=(10, 24))   # the blight line
 owed += pt.sign(m, deco, W, sid="coldfog_boundary", at=(10, 25))
+owed += pt.sign(m, deco, W, sid="coldfog_gold", at=(14, 21))     # the gold pocket's curio
 owed += pt.sign(m, deco, W, sid="coldfog_beacon", at=(2, 3))      # the beacon spur's why (west gap)  # the sincere gate (down to the deep marsh)
 # (sign.coldfog_boundary doubles as the to_marsh_ii warps' blocked_ref)
 
@@ -359,18 +441,29 @@ owed += pt.cache(m, cid="coldfog_murk_pearl", at=(15, 17))    # valuable, the de
                                                               # (Tidecall-priced, §3a r4)
 
 # ---- encounters (band 46-48; murk carries NOTHING — the water is dead) --------------
+# 2026-10 (Part A review): at 46+ every line wears its KINDLED form (Mothdim/
+# Nullmoth -> Voidmantle, Flutterwane/Wispwane -> Liminalux, Cindersob -> Embergone);
+# 2026-10 (r2 review): the lv 17-21 base-form pocket read as a bug in a lv 46 map;
+# the gold patch is now the half-lit bed (Liminalux + the lone Light exception) and
+# the young moths live where the Hollowing's drain is young too: Glowmoss Deep's
+# drained chamber (build_glowmoss_deep.py `drained_woken`, band 18-21).
 TABLE_I = [
-    {"kin_id": 136, "weight": 30, "min_level": 46, "max_level": 48},  # Mothdim
-    {"kin_id": 133, "weight": 26, "min_level": 46, "max_level": 48},  # Flutterwane
-    {"kin_id": 137, "weight": 20, "min_level": 47, "max_level": 48},  # Nullmoth
-    {"kin_id": 134, "weight": 12, "min_level": 47, "max_level": 48},  # Wispwane
-    {"kin_id": 141, "weight": 12, "min_level": 46, "max_level": 48},  # Cindersob
+    {"kin_id": 138, "weight": 30, "min_level": 46, "max_level": 48},  # Voidmantle
+    {"kin_id": 135, "weight": 26, "min_level": 46, "max_level": 48},  # Liminalux
+    {"kin_id": 113, "weight": 16, "min_level": 47, "max_level": 48},  # Omenire
+    {"kin_id": 142, "weight": 14, "min_level": 46, "max_level": 48},  # Embergone
+    {"kin_id": 180, "weight": 14, "min_level": 46, "max_level": 48},  # Lullwing, down from the village
 ]
 TABLE_GOLD = [
-    {"kin_id": 136, "weight": 38, "min_level": 46, "max_level": 47},  # Mothdim
-    {"kin_id": 133, "weight": 37, "min_level": 46, "max_level": 48},  # Flutterwane
-    {"kin_id": 140, "weight": 5, "min_level": 47, "max_level": 48},   # Wisprestored —
+    # the one patch the fog never drained: the half-lit gather at its edge
+    {"kin_id": 135, "weight": 56, "min_level": 46, "max_level": 48},  # Liminalux (Dark/Light)
+    {"kin_id": 138, "weight": 28, "min_level": 46, "max_level": 48},  # Voidmantle
+    {"kin_id": 140, "weight": 8, "min_level": 47, "max_level": 48},   # Wisprestored —
     # the LONE Light exception (w<=5): the Solarium's dying echo, only here
+    # 2026-10 (r3): the patch's CURIO — #116 Auravane, the Solarium's own solar-vine
+    # sovereign, rooted where the spill of stored daylight soaked in. Its only bed
+    # north of the Sunvault (the sign by the patch says why it's here at all).
+    {"kin_id": 116, "weight": 8, "min_level": 46, "max_level": 48},   # Auravane (rare)
 ]
 band_grid = mk.make_grid(W, H)
 patch_grid = mk.make_grid(W, H)

@@ -7,10 +7,13 @@ from collections import defaultdict
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sp = json.load(open(os.path.join(ROOT, "src", "game", "data", "species.json")))["species"]
 by_id = {s["id"]: s for s in sp}
-REGION = ["south", "east", "north", "west", "outer", "central", "post"]
+REGION = ["south", "east", "north", "west", "outer", "central", "post", "jesthouse", "isles", "north_hollow"]
 RNAME = {"south":"South — Tinderwick / coast (Ember, Tide)","east":"East — Lowleaf & Cinderhead (Verdant, Stone)",
          "north":"North — Galehigh & Pale Vault (Storm, Frost)","west":"West — Solarium & Nightreach (Solar, Lunar)",
-         "outer":"Outer — Coldfog Marches (Dark)","central":"Central — Umbral Spire (legendaries)","post":"Post-game — Dawnstead"}
+         "outer":"Outer — Coldfog Marches (Dark)","central":"Central — Umbral Spire (legendaries)","post":"Post-game — Dawnstead",
+         "jesthouse":"The Old Light — the jest-house clowns (Pearlmoor Point)",
+         "isles":"Post-game — the Farlamp Isles (beyond the Fogwall)",
+         "north_hollow":"Late game — the Hollowing's Country (Stillwater, the Mourning Fields, Drownlight)"}
 
 out = [f"# PixelKin — The Dex ({len(sp)})\n",
        "> Generated from `src/game/data/species.json` by `tools/balance/gen_docs.py`. "

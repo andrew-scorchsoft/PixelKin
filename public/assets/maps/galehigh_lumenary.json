@@ -649,6 +649,18 @@
       "movement": "look_around",
       "dialogue_ref": "npc.galehigh_hall_festival",
       "requires_flag": "gleam:storm"
+    },
+    {
+      "id": "hall_sparrer",
+      "at": {
+        "tx": 3,
+        "ty": 8
+      },
+      "facing": "right",
+      "sprite": "npc_woman",
+      "movement": "static",
+      "requires_flag": "gleam:storm",
+      "dialogue_ref": "script.spar_galehigh"
     }
   ],
   "gates": [],
