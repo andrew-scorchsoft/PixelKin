@@ -13,7 +13,7 @@ slide, ride, climb and switch your way across.
 | Place | Opens from | When | Wild levels | The big prize |
 |-------|-----------|------|-------------|---------------|
 | The Wick-Run | Sunvault Climb (top) | After the Solar Gleam | 46–50 | Rook's ribbon, run prizes, Chandrek |
-| The Rimeway | Pale Vault Glacier | As soon as you reach the Vault | 39–42 | The Frostglass Lens, Vaultclaw |
+| The Rimeway | Pale Vault Glacier | As soon as you reach the Vault | 39–42 (the descent 46–48) | The Frostglass Lens, Vaultclaw |
 | The Mirelights | Saltreach Fen (east edge) | Once you hold the Frostglass Lens | 38–43 | **Lanthorne** (lv 45) |
 | The Old Seams | Cinderhead Mine | After the Stone Gleam | 27–33 | **Emberroot** (lv 46) |
 
@@ -97,7 +97,25 @@ quick road between the Coldfog and Pale Vault. The descent's north road also cli
 the Mourning Fields (see [[the-hollowings-country|The Hollowing's Country]]). Hale, the last rime-tender, keeps one lamp
 burning at the Fold.
 
-**Vaultclaw** (Frost/Stone) lives only on the Fold.
+### The Rimeway's wild kin
+
+Nothing young lives up here. The high road's grass holds **final forms only**, kin with no kindling
+left in them, so every catch on the Rimeway is already all it will ever be.
+
+| Where | Wild kin (before the dawn) | Levels |
+|-------|----------------------------|--------|
+| The ascent (Pale Vault side) | Vortexlope, Glacitern, Stillwarden, Prismantus, Frigalance, Crystalune; very rarely **Vaultclaw** | 39–41 |
+| The Fold | **Vaultclaw** (common), Glacitern, Vortexlope, Stillwarden, Frigalance, Prismantus | 40–42 |
+| The descent (Coldfog side) | Liminalux, Voidmantle, Wisprestored, Lullwing, Stillwarden, Embergone, Glacitern | 46–48 |
+
+After the dawn the same kin stay, stronger: 56–65 on the ascent, 56–63 on the Fold and 56–64 on
+the descent.
+
+**Vaultclaw** (Frost/Stone) is at home on the Fold, where it's the commonest kin; on the ascent it
+turns up only very rarely.
+
+Looking for **Wispwane**? It isn't wild anywhere. Catch a young **Flutterwane** in Glowmoss Deep's
+relit grey chamber (see [[the-east|Chapter 3]]) and it kindles into Wispwane at level 22.
 
 ## The Mirelights
 

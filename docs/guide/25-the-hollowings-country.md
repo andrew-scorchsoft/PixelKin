@@ -74,8 +74,12 @@ talk to.
 | Marsh | Wild kin (before the dawn) | Levels |
 |-------|----------------------------|--------|
 | Near marsh | Voidmantle, Liminalux, Embergone, **Lullwing**, and a Lunar/Dark kin | 46–48 |
-| Near marsh, the small golden patch (east edge) | Liminalux (common), Voidmantle; rarely **Wisprestored** | 46–48 |
+| Near marsh, the small golden patch (east edge) | Liminalux (common), Voidmantle; rarely **Wisprestored** and **Auravane** | 46–48 |
 | Deep marsh | Voidmantle, Liminalux, Embergone, Lullwing, and a Lunar/Dark kin | 48–50 |
+
+**The golden patch.** A survey peg stands by the gold grass on the near marsh's east edge. Read
+it: the Solarium's light once came this far down the old water, and some of it soaked in. That's
+why a rare **Auravane** (Verdant/Solar) roots here some nights, the only one in the fog.
 
 Looking for a young **Mothdim** or **Flutterwane**? They don't live up here. Their only
 wild home is the grey chamber in Glowmoss Deep, once you've relit its lantern (see
@@ -106,6 +110,12 @@ at the end of the jetty, watching the water, **Corwen** the doubter (who dreams 
 **Nell** on the shore walk, **Odo** sweeping the lanes, **Hallam** at the well, and **Rosalind**
 among the names in the hall.
 
+**Two short cuts.** Not every lane here was ruled by a surveyor. The **Willow Path** is a worn
+diagonal from the west end of the shore walk up to the old willow by the water. The **Back Walk**
+bows up between the two homes in the south and joins their door lanes: it's the villagers' own
+way between the Coldfog gate (south-west) and the Mourning Fields gate (south-east), and it keeps
+off the grey meadow, so nothing wild jumps you on it.
+
 **A waystone.** Stillwater has a waystone by the Quiet Hall. Once you've been here, it's on the
 **TRAVEL** list, so the long fog road only has to be walked once.
 
@@ -121,7 +131,7 @@ TALK**, and talking is a perfectly good answer.
 |---------|-------|------|------:|
 | Hollowing Acolyte Gethin | The square | Lullwing 49, Voidmantle 49, and a Lunar/Dark kin 50 (ace) | 1,000 |
 | Hollowing Acolyte Vesna | The square, east | Nightwraith 50, Shutterwick 50, Liminalux 51 | 1,020 |
-| Hollowing Lamplighter Grisel | By the willow, north-west | Lullwing 50, Shutterwick 51, Embergone 51, Voidmantle 52 | 1,040 |
+| Hollowing Lamplighter Grisel | On the mere shore, by the first shore lamp (west end) | Lullwing 50, Shutterwick 51, Embergone 51, Voidmantle 52 | 1,040 |
 
 ### "A Light Left On"
 
@@ -233,6 +243,13 @@ and **Tussock**, the field-tender's own old Hushvole, asleep alone under the bes
 Fields. Let him sleep: he was the first she tucked in, and the hardest. After the dawn he's up
 and nosing through the stubble, his blanket folded (badly) beside him.
 
+**Lumournis.** Read the marker stone all the way down. Someone has scratched a note asking you to
+let the Brook Piece's long grass be: a big green moth with leaf wings comes down to it some nights
+to sit up with Tussock, and it never goes to any other field. That's **Lumournis** (Verdant/Light),
+and this patch of long grass is its **only wild home** anywhere in Vesperholm. Before the dawn
+it's rare (51–52); after the dawn it's an uncommon find (59–62), and if you've met Tussock the
+field-tender will tell you it's still there. Lullwing, Mycelarch, Crystalune and a Lunar/Dark kin share the grass with it.
+
 | Trainer | Where | Team | Purse |
 |---------|-------|------|------:|
 | Hollowing Acolyte Ines | The head of the stair | A Lunar/Dark kin 48, Lullwing 49, Stillwarden 50 | 1,000 |
@@ -242,6 +259,7 @@ and nosing through the stubble, his blanket folded (badly) beside him.
 |-------|----------------------------|--------|
 | The fields and crossings | Voidmantle, a Lunar/Dark kin, Stillwarden, Crystalune, Lullwing, **Mycelarch**, Embergone; rarely Liminalux and Shutterwick | 48–52 |
 | The low verge, just inside the north road from Stillwater | **Dousecap** (common), Lullwing, Shutterwick | Dousecap 42–44, Lullwing 46–48, Shutterwick 47–49 |
+| The Brook Piece's long grass | Lullwing (common), Mycelarch, Crystalune, a Lunar/Dark kin; rarely **Lumournis** | 48–52 (Lumournis 51–52) |
 
 The verge is a deliberately gentle bed: the place to catch a young Dousecap before it kindles.
 
@@ -419,12 +437,12 @@ of it opens **"The Last Watch"** in your JOURNAL.
 It's a loop of two floors. You go in by the **west** stair and come out by the **east** stair,
 back into the Ring. It never connects to the Spire.
 
-1. **The west galleries.** Odalie stands just below the stair, watching the cut south. East of
+1. **The west galleries.** Odalie, grey-haired in a long watch coat, stands just below the stair, watching the cut south. East of
    her first gallery is a **side bay** with a **Starglass Shard** behind its glow-moss. The bay's
    rubble lip is a **one-way drop** into the old cistern hall below: handy on the way down, but
    you can't climb back up it (the way back up is Odalie's cut). From the cistern hall, take the
    **west ladder** down.
-2. **The Last Watch.** Bran holds the narrow way into the watch. **Old Clemency** tends the
+2. **The Last Watch.** Bran, in the grey hood, holds the narrow way into the watch. **Old Clemency** tends the
    **watch-fire**: a free rest, and a rest point. North of the fire, a round pit gives the **view up
    the Spire's shaft**, all the way to a point of pale light at the top. (There's no way up it.)
 3. **The Warm Stones.** The south-east pocket, with two ways in. Walk south from the fire along
@@ -435,7 +453,7 @@ back into the Ring. It never connects to the Spire.
    The Warm Stones also have their own wild bed (below): the only place to find **Embralux** before
    the dawn, and the only place in the world where **JesterFull** turns up wild. Old Clemency
    mentions both, and a chalked stone by the bed has advice for the jester.
-4. **The east galleries.** Climb the east ladder. Hesk stands the last post before the stair back
+4. **The east galleries.** Climb the east ladder. Hesk, hooded and carrying a lantern, stands the last post before the stair back
    up to the Ring.
 
 ### "The Last Watch"
@@ -469,7 +487,8 @@ levelling for Warden Còr (see [[the-spire|Chapter 6]]).
 
 The north doesn't throw open every shutter at once. It's quieter than that.
 
-- **Stillwater.** Two of the shore lamps stand open and lit. In Maren's house, the upstairs
+- **Stillwater.** Two of the shore lamps stand open and lit, and their light lies on the still
+  water. The punt by the jetty has its prow-lamp unhooded and burning. In Maren's house, the upstairs
   shutter is open, with a lamp in the window and a child at it. The mist thins, and everybody has
   something new to say (Elder Ashe has news of the Warden). The screens come off the hearths,
   Margery and Edwy's stove is opened up, and Keeper Wenna starts taking the shutter-wall down,
@@ -480,17 +499,19 @@ The north doesn't throw open every shutter at once. It's quieter than that.
   gives you **3 more Lullwool Charms**.
 - **The Drownlight** can be relit (above), and its buoys wake when it is.
 - **The Underways.** The watch-lamps and the cold braziers are lit, the sleeping kin are awake,
-  and the Spire's shaft is full of morning. Old Clemency has a cup of tea for you.
+  and the Spire's shaft is full of morning: pale light falls all the way down it onto the lower
+  floor, pools in the shaft chamber and spills down toward the watch-fire. Old Clemency has a cup of tea for you.
 - **The wild kin change.** The kindled and day forms lead:
 
 | Where | Wild kin after the dawn | Levels |
 |-------|-------------------------|--------|
 | Near marsh | Wisprestored, Liminalux, Voidmantle, Embergone, Lullwing, a Lunar/Dark kin | 55–65 |
-| Near marsh, the golden patch | **Wisprestored** (now the common one, 59–65), Liminalux, Voidmantle | 56–65 |
+| Near marsh, the golden patch | **Wisprestored** (now the common one, 59–65), Liminalux, Voidmantle; rarely **Auravane** (58–63) | 56–65 |
 | Deep marsh | Wisprestored, Liminalux, Voidmantle, Embergone, a Lunar/Dark kin, Lullwing | 57–65 |
 | Stillwater's meadows | **Shutterwick**, **Lullwing**, Wisprestored, Liminalux, Embergone | 55–62 |
 | The lamp-maker's yard | Dousecap (still 42–44), plus Shutterwick and Wisprestored (55–58) | 42–58 |
-| The Mourning Fields (every bed, the verge too) | Lunvane, Mycelarch, Crystalune, Lunarbel, Wisprestored, Glimscout; rarely **Dawnwatcher** | 56–62 |
+| The Mourning Fields (the other beds, the verge too) | Lunvane, Mycelarch, Crystalune, Lunarbel, Wisprestored, Glimscout; rarely **Dawnwatcher** | 56–62 |
+| The Brook Piece's long grass | Lunvane, Mycelarch, Lunarbel, Glimscout, and **Lumournis** (uncommon, 59–62) | 56–62 |
 | The Underways, upper galleries | Liminalux, Lunarbel, Wisprestored, Stillwarden, Prismara | 56–59 |
 | The Underways, upper glow-moss | Lumenmoss, Lunvane, Prismara, Dawnwatcher | 56–59 |
 | The Underways, lower galleries | Liminalux, Wisprestored, Prismara, Lunarbel; rarely Embralux | 57–60 |

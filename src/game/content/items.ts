@@ -859,7 +859,7 @@ export const ITEMS: ItemRegistry = {
     category: 'key',
   },
   // "The Way Home": Tessaly's own old shop-lamp — ONE, given once (a four-map
-  // escort pays), a REUSABLE keepsake (the throw never spends it): ×3.0 on a kin
+  // escort pays), a REUSABLE keepsake (the throw never spends it): ×2.0 on a kin
   // worn below a quarter of its health — a lamp to bring the lost home. Distinct
   // from the Fields' doze charms by design. Never sold.
   tessalys_lamp: {
