@@ -12,11 +12,11 @@
     "hp": 99,
     "atk": 42,
     "def": 70,
-    "spa": 112,
+    "spa": 100,
     "spd": 90,
     "spe": 85
   },
-  "bst": 498,
+  "bst": 486,
   "ability": "nullheart",
   "hidden_ability": "thickcoat",
   "catchRate": 57,

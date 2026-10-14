@@ -1,0 +1,95 @@
+{
+  "id": 173,
+  "slug": "fathomere",
+  "name": "Fathomere",
+  "types": [
+    "Tide",
+    "Light"
+  ],
+  "role": "Special Sweeper",
+  "tier": "D",
+  "stats": {
+    "hp": 70,
+    "atk": 47,
+    "def": 60,
+    "spa": 127,
+    "spd": 70,
+    "spe": 124
+  },
+  "bst": 498,
+  "ability": "tidecaller",
+  "hidden_ability": "brisk",
+  "catchRate": 65,
+  "kindling": null,
+  "from": 172,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "mist_spray"
+      },
+      {
+        "level": 6,
+        "move": "spark_mote"
+      },
+      {
+        "level": 10,
+        "move": "drench_song"
+      },
+      {
+        "level": 16,
+        "move": "tide_pulse"
+      },
+      {
+        "level": 22,
+        "move": "focus_mind"
+      },
+      {
+        "level": 28,
+        "move": "light_pulse"
+      },
+      {
+        "level": 34,
+        "move": "swift_step"
+      },
+      {
+        "level": 40,
+        "move": "deepsurge"
+      },
+      {
+        "level": 46,
+        "move": "lightspire"
+      },
+      {
+        "level": 52,
+        "move": "mist_screen"
+      },
+      {
+        "level": 58,
+        "move": "maelstrom"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A grown lantern-fish whose lure lights a whole fathom of sea. Fishers lost in the Fogwall used to follow a Fathomere's glow down the buoy lanes, and Driftholm says it still swims the old route home every night, in case anyone is out there.",
+    "category": "Lantern-Fish Kin",
+    "size_cm": 180,
+    "weight_kg": 62,
+    "habitat": "isles"
+  },
+  "encounters": [],
+  "scripted": false,
+  "art": {
+    "silhouette": "A long, graceful deep-sea lantern-fish seen side-on: a sleek tapering body with a row of small glowing spots along each flank, broad ribbon-like fins that trail like a veil, large calm eyes and a gentle closed mouth. A tall arching lure-stalk curves forward over its head and ends in a bright glass-like lamp-bulb. At 64px it reads as an elegant fish carrying a lantern before it.",
+    "palette": "Midnight body (#13205a deepening to #0b1026 along the back) with a water-blue (#4fb4ff) belly and translucent sea-blue fin-veils; the flank spot-row in diamond-cyan (#9fe7ff); the lure-bulb a warm bone-gold (#f5f0e1) lamp with a soft amber core, the brightest pixel; ink (#1a1430) outlines.",
+    "direction": "Calm, steady, a guide: the fry grown up into the light it once swam towards. Elegant and deep, never menacing, no teeth showing. Same lure-stalk, same spot row and same blues as Fathomote, now long and graceful."
+  },
+  "provenance_concept_id": "X-FATHOMERE"
+}

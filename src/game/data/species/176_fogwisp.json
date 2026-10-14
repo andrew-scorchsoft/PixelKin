@@ -1,0 +1,91 @@
+{
+  "id": 176,
+  "slug": "fogwisp",
+  "name": "Fogwisp",
+  "types": [
+    "Frost",
+    "Dark"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "stats": {
+    "hp": 67,
+    "atk": 59,
+    "def": 75,
+    "spa": 59,
+    "spd": 75,
+    "spe": 83
+  },
+  "bst": 418,
+  "ability": "coldblood",
+  "hidden_ability": "forager",
+  "catchRate": 120,
+  "kindling": null,
+  "from": null,
+  "stage": 1,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "snow_veil"
+      },
+      {
+        "level": 7,
+        "move": "gloom_spit"
+      },
+      {
+        "level": 12,
+        "move": "blight_touch"
+      },
+      {
+        "level": 18,
+        "move": "glacier_beam"
+      },
+      {
+        "level": 24,
+        "move": "hollow_pulse"
+      },
+      {
+        "level": 30,
+        "move": "focus_mind"
+      },
+      {
+        "level": 36,
+        "move": "chill_mist"
+      },
+      {
+        "level": 42,
+        "move": "whiteout"
+      },
+      {
+        "level": 48,
+        "move": "mist_screen"
+      },
+      {
+        "level": 54,
+        "move": "gloomswell"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "A moth made of sea-fog, drawn to lamps it can never reach. Where Fogwisps settle the air turns cold and grey, and lights seem farther away than they are. Driftholm keepers don't chase them off: a Fogwisp is only lonely, they say, and lonely things go where the light is.",
+    "category": "Sea-Fog Moth Kin",
+    "size_cm": 50,
+    "weight_kg": 0.3,
+    "habitat": "isles"
+  },
+  "encounters": [],
+  "scripted": false,
+  "art": {
+    "silhouette": "A soft, round-bodied moth that seems made of fog, front view with wings spread: a fluffy pale body, big feathery antennae, two pairs of wide frayed wings whose edges dissolve into curling wisps of mist, and two large dark gentle eyes. Little curls of fog trail off the wingtips. At 64px it reads as a fluffy misty moth drifting in the dark.",
+    "palette": "Fog-white and pale grey body and wings shading to a cool grey-violet; a faint frost-blue sheen (#9fe7ff) along the wing veins; dusky violet-grey eye-spots on the hind wings; the eyes deep night (#0b1026) with one bone (#f5f0e1) highlight each; ink (#1a1430) outlines kept soft.",
+    "direction": "Eerie-cosy: quiet, wistful, soft as breath on a window. A little sad, never sinister, no fangs, no skulls."
+  },
+  "provenance_concept_id": "X-FOGWISP"
+}

@@ -1,0 +1,103 @@
+{
+  "id": 175,
+  "slug": "beaconclaw",
+  "name": "Beaconclaw",
+  "types": [
+    "Stone",
+    "Light"
+  ],
+  "role": "Physical Wall",
+  "tier": "D",
+  "stats": {
+    "hp": 95,
+    "atk": 95,
+    "def": 120,
+    "spa": 40,
+    "spd": 80,
+    "spe": 68
+  },
+  "bst": 498,
+  "ability": "lumenward",
+  "hidden_ability": "stonehide",
+  "catchRate": 65,
+  "kindling": null,
+  "from": 174,
+  "stage": 2,
+  "learnset": {
+    "levelup": [
+      {
+        "level": 1,
+        "move": "quick_jab"
+      },
+      {
+        "level": 1,
+        "move": "pebble_toss"
+      },
+      {
+        "level": 6,
+        "move": "brine_flick"
+      },
+      {
+        "level": 10,
+        "move": "stone_wall"
+      },
+      {
+        "level": 14,
+        "move": "gritfist"
+      },
+      {
+        "level": 19,
+        "move": "tidewhip"
+      },
+      {
+        "level": 24,
+        "move": "guard_up"
+      },
+      {
+        "level": 29,
+        "move": "rock_hurl"
+      },
+      {
+        "level": 35,
+        "move": "wave_crash"
+      },
+      {
+        "level": 40,
+        "move": "bulwark"
+      },
+      {
+        "level": 42,
+        "move": "radiant_strike"
+      },
+      {
+        "level": 47,
+        "move": "boulder_smash"
+      },
+      {
+        "level": 53,
+        "move": "dazzle_flash"
+      },
+      {
+        "level": 59,
+        "move": "prism_beam"
+      }
+    ],
+    "kindling": [],
+    "tutor": []
+  },
+  "dex": {
+    "entry": "When a Hermiwick finally finds a whole glass, it kindles into a Beaconclaw and the lamp on its back lights for the first time. It stands on the reef at the tide's edge and turns slowly all night, sweeping its beam across the water like a lighthouse with legs.",
+    "category": "Lighthouse Crab Kin",
+    "size_cm": 160,
+    "weight_kg": 210,
+    "habitat": "isles"
+  },
+  "encounters": [],
+  "scripted": false,
+  "art": {
+    "silhouette": "A big armoured crab built like a small lighthouse, three-quarter view: a broad stone-plated body on thick jointed legs, one huge rounded claw raised like a shield, stalked eyes. On its back stands a tall, whole lantern tower: a brass lantern room with clean glass panes and a bright lamp shining inside, under a little conical roof, with soft beams of light fanning out. At 64px it reads as a crab wearing a lit lighthouse.",
+    "palette": "Pebble-grey and slate shell-plates with sandy-cream undersides and coral-orange claw tips (Hermiwick's colours, bigger and bolder); the lantern room in polished brass with clear glass; the lamp a warm bone-gold (#f5f0e1) with a fire-amber (#ff8a3d) core, the brightest pixel; a white-and-red banded stripe on the tower base; ink (#1a1430) outlines.",
+    "direction": "Proud, protective and patient: the little crab grown into a lighthouse. Solid and kind, a guardian of the reef. Same crab, same brass lantern as Hermiwick, now whole and lit."
+  },
+  "provenance_concept_id": "X-BEACONCLAW"
+}

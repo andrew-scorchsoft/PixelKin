@@ -1,9 +1,9 @@
-# PixelKin — The Dex (171)
+# PixelKin — The Dex (177)
 
 > Generated from `src/game/data/species.json` by `tools/balance/gen_docs.py`. Every entry is original (VISION.md). Lines show kindling chains (→).
 
-- **Total:** 171  |  **Tiers:** A:35 B:21 C:40 D:50 E:21 F:4
-- **Primary types:** Ember:18  Tide:20  Verdant:20  Stone:17  Storm:17  Frost:15  Solar:17  Lunar:15  Light:20  Dark:12
+- **Total:** 177  |  **Tiers:** A:35 B:23 C:41 D:52 E:21 F:5
+- **Primary types:** Ember:18  Tide:23  Verdant:20  Stone:19  Storm:17  Frost:16  Solar:17  Lunar:15  Light:20  Dark:12
 
 
 ## South — Tinderwick / coast (Ember, Tide)
@@ -179,7 +179,7 @@
 |:--:|--:|------|-------|:--:|------|--:|---------|--:|-----|-----------|
 | <img src="../../public/assets/sprites/creatures/133_flutterwane/battle_front.webp" width="48" alt="Flutterwane"> | 133 | **Flutterwane** | Dark/Light | A | Utility / Speedster | 312 | → Wispwane (L22) | 210 | 12cm/0.2kg | A tiny will-o'-wisp no bigger than a fist, its glow cycling between warm amber and drain… |
 | <img src="../../public/assets/sprites/creatures/134_wispwane/battle_front.webp" width="48" alt="Wispwane"> | 134 | **Wispwane** | Dark/Light | C | Disruptor / Status | 418 | → Liminalux (L38) | 112 | 45cm/1.4kg | A wisp caught between the Skyweave and the Hollowing — half its body radiates pale golde… |
-| <img src="../../public/assets/sprites/creatures/135_liminalux/battle_front.webp" width="48" alt="Liminalux"> | 135 | **Liminalux** | Dark/Light | D | Special Tank | 498 | (from Wispwane) | 57 | 70cm/9.5kg | The resolved form of a wisp that survived the Hollowing's full pull and did not fall ent… |
+| <img src="../../public/assets/sprites/creatures/135_liminalux/battle_front.webp" width="48" alt="Liminalux"> | 135 | **Liminalux** | Dark/Light | D | Special Tank | 486 | (from Wispwane) | 57 | 70cm/9.5kg | The resolved form of a wisp that survived the Hollowing's full pull and did not fall ent… |
 | <img src="../../public/assets/sprites/creatures/136_mothdim/battle_front.webp" width="48" alt="Mothdim"> | 136 | **Mothdim** | Dark | A | Utility / Speedster | 312 | → Nullmoth (L20) | 210 | 8cm/0.1kg | A small grey moth whose wing-eyes were once luminous but are now flat and lightless — as… |
 | <img src="../../public/assets/sprites/creatures/137_nullmoth/battle_front.webp" width="48" alt="Nullmoth"> | 137 | **Nullmoth** | Dark | C | Disruptor / Status | 418 | → Voidmantle (L36) | 120 | 22cm/0.8kg | A palm-sized moth draped in velvet-grey wings that shed fine null-dust — a powder that d… |
 | <img src="../../public/assets/sprites/creatures/138_voidmantle/battle_front.webp" width="48" alt="Voidmantle"> | 138 | **Voidmantle** | Dark | D | Disruptor / Status | 498 | (from Nullmoth) | 57 | 95cm/6.2kg | A large, crepuscular moth whose wingspan fills a doorway. Its wings are so saturated wit… |
@@ -206,3 +206,24 @@
 | Art | # | Name | Types | Tier | Role | BST | Kindles | Catch | Size | Dex entry |
 |:--:|--:|------|-------|:--:|------|--:|---------|--:|-----|-----------|
 | <img src="../../public/assets/sprites/creatures/151_dawnbrael/battle_front.webp" width="48" alt="Dawnbrael"> | 151 | **Dawnbrael** | Solar/Light | F | Physical Sweeper | 642 |  | 6 | 280cm/340kg | The Dawn Legendary — the kin that was always there, sleeping beneath Dawnstead in a seal… |
+
+## The Old Light — the jest-house clowns (Pearlmoor Point)
+
+| Art | # | Name | Types | Tier | Role | BST | Kindles | Catch | Size | Dex entry |
+|:--:|--:|------|-------|:--:|------|--:|---------|--:|-----|-----------|
+| <img src="../../public/assets/sprites/creatures/167_jesterhalf/battle_front.webp" width="48" alt="JesterHalf"> | 167 | **JesterHalf** | Light/Dark | A | Balanced / Pivot | 312 | → JesterFull (L24) | 210 | 40cm/4.2kg | A little two-faced tumbler that lives in the Old Light's halls. One half of it is bright… |
+| <img src="../../public/assets/sprites/creatures/168_jesterfull/battle_front.webp" width="48" alt="JesterFull"> | 168 | **JesterFull** | Light/Dark | D | Balanced / Pivot | 498 | (from JesterHalf) | 57 | 150cm/38kg | When a JesterHalf finally finishes a joke, its two halves stop arguing and it kindles wh… |
+| <img src="../../public/assets/sprites/creatures/169_the_smiler/battle_front.webp" width="48" alt="The Smiler"> | 169 | **The Smiler** | Light | A | Utility / Speedster | 312 | → The Exciter (L22) | 210 | 35cm/1.1kg | A round, beaming little kin that cannot stop smiling, even in its sleep. It drifts after… |
+| <img src="../../public/assets/sprites/creatures/170_the_exciter/battle_front.webp" width="48" alt="The Exciter"> | 170 | **The Exciter** | Light/Storm | D | Utility / Speedster | 498 | (from The Smiler) | 57 | 90cm/14kg | A Smiler that got far too excited. Its smile has gone off like a firework: it fizzes, cr… |
+| <img src="../../public/assets/sprites/creatures/171_mcclownface/battle_front.webp" width="48" alt="McClownface"> | 171 | **McClownface** | Tide/Light | B | Physical Bruiser | 350 |  | 175 | 95cm/48kg | A stout, bumbling clown kin that carries its own water in a flower on its chest and squi… |
+
+## Post-game — the Farlamp Isles (beyond the Fogwall)
+
+| Art | # | Name | Types | Tier | Role | BST | Kindles | Catch | Size | Dex entry |
+|:--:|--:|------|-------|:--:|------|--:|---------|--:|-----|-----------|
+| <img src="../../public/assets/sprites/creatures/172_fathomote/battle_front.webp" width="48" alt="Fathomote"> | 172 | **Fathomote** | Tide/Light | B | Special Sweeper | 330 | → Fathomere (L40) | 175 | 14cm/0.4kg | A lantern-fish fry no longer than a hand, with a little glowing lure on a stalk over its… |
+| <img src="../../public/assets/sprites/creatures/173_fathomere/battle_front.webp" width="48" alt="Fathomere"> | 173 | **Fathomere** | Tide/Light | D | Special Sweeper | 498 | (from Fathomote) | 65 | 180cm/62kg | A grown lantern-fish whose lure lights a whole fathom of sea. Fishers lost in the Fogwal… |
+| <img src="../../public/assets/sprites/creatures/174_hermiwick/battle_front.webp" width="48" alt="Hermiwick"> | 174 | **Hermiwick** | Stone/Tide | B | Physical Wall | 336 | → Beaconclaw (L42) | 175 | 30cm/7.5kg | A small hermit crab that has made its home in the broken glass of a drowned lamp. It pol… |
+| <img src="../../public/assets/sprites/creatures/175_beaconclaw/battle_front.webp" width="48" alt="Beaconclaw"> | 175 | **Beaconclaw** | Stone/Light | D | Physical Wall | 498 | (from Hermiwick) | 65 | 160cm/210kg | When a Hermiwick finally finds a whole glass, it kindles into a Beaconclaw and the lamp … |
+| <img src="../../public/assets/sprites/creatures/176_fogwisp/battle_front.webp" width="48" alt="Fogwisp"> | 176 | **Fogwisp** | Frost/Dark | C | Disruptor / Status | 418 |  | 120 | 50cm/0.3kg | A moth made of sea-fog, drawn to lamps it can never reach. Where Fogwisps settle the air… |
+| <img src="../../public/assets/sprites/creatures/177_farlume/battle_front.webp" width="48" alt="Farlume"> | 177 | **Farlume** | Tide/Light | F | Special Tank | 642 |  | 6 | 1200cm/880kg | The Farlamp's own keeper-kin, the light that lived inside Vesperholm's outermost sea-lam… |
