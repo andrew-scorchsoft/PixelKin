@@ -232,6 +232,6 @@
 
 | Art | # | Name | Types | Tier | Role | BST | Kindles | Catch | Size | Dex entry |
 |:--:|--:|------|-------|:--:|------|--:|---------|--:|-----|-----------|
-|  | 178 | **Dousecap** | Dark/Ember | B | Balanced / Pivot | 350 | → Shutterwick (L44) | 175 | 22cm/1.1kg | A little brass snuffer-cap of a kin that hops from wick to wick at bedtime and sits on e… |
-|  | 179 | **Shutterwick** | Dark/Light | D | Balanced / Pivot | 498 | (from Dousecap) | 65 | 150cm/34kg | When a Dousecap has put out a thousand flames it kindles into a Shutterwick, whose own l… |
-|  | 180 | **Lullwing** | Dark/Lunar | C | Disruptor / Status | 418 |  | 120 | 40cm/0.6kg | A grey moth that drifts over sleeping kin and fans their dreams with dusty wings, so the… |
+| <img src="../../public/assets/sprites/creatures/178_dousecap/battle_front.webp" width="48" alt="Dousecap"> | 178 | **Dousecap** | Dark/Ember | B | Balanced / Pivot | 350 | → Shutterwick (L44) | 175 | 22cm/1.1kg | A little brass snuffer-cap of a kin that hops from wick to wick at bedtime and sits on e… |
+| <img src="../../public/assets/sprites/creatures/179_shutterwick/battle_front.webp" width="48" alt="Shutterwick"> | 179 | **Shutterwick** | Dark/Light | D | Balanced / Pivot | 498 | (from Dousecap) | 65 | 150cm/34kg | When a Dousecap has put out a thousand flames it kindles into a Shutterwick, whose own l… |
+| <img src="../../public/assets/sprites/creatures/180_lullwing/battle_front.webp" width="48" alt="Lullwing"> | 180 | **Lullwing** | Dark/Lunar | C | Disruptor / Status | 418 |  | 120 | 40cm/0.6kg | A grey moth that drifts over sleeping kin and fans their dreams with dusty wings, so the… |

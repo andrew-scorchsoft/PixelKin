@@ -20549,7 +20549,15 @@
     "weight_kg": 34,
     "habitat": "north_hollow"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 50,
+     "max": 52
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A tall, gentle lantern-keeper kin, front three-quarter view, with a broad bell-shaped silhouette that widens to the ground: a body of soft charcoal-grey cloth like a long quilted cloak, and set into its chest a BIG square brass lantern whose four little wooden shutters are closed, with bright lines of warm gold light leaking out between the slats and spilling down the cloak. On its head sits a wide brass snuffer-cap with a little ring-handle on top. Under the brim its round charcoal face is clearly visible, the same face as Dousecap: large calm half-lidded eyes with a bone-white highlight and a small, kind, sad smile. Two long sleeves fold in front, cupping the lantern. At 64px it reads as a gentle keeper carrying a shuttered lamp inside itself.",
@@ -20636,7 +20644,15 @@
     "weight_kg": 0.6,
     "habitat": "north_hollow"
    },
-   "encounters": [],
+   "encounters": [
+    {
+     "area": "mourning_fields",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 48,
+     "max": 51
+    }
+   ],
    "scripted": false,
    "art": {
     "silhouette": "A soft, plump moth seen from the front with its wings spread: a round furry body, feathery drooping antennae, big heavy-lidded sleepy eyes, tiny tucked legs, and broad rounded wings patterned with pale crescent-moon eye-spots. A gentle haze of silver dream-dust sifts down from the wing edges in little sparkles. At 64px it reads as a sleepy grey moth scattering moon-dust.",
