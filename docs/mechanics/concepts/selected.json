@@ -4947,5 +4947,80 @@
   "hook": "Ancient, faithful and grieving, then hopeful: a keeper that never stopped tending its lamp. Majestic and gentle, the drowned light's guardian, never a monster.",
   "dex_id": 177,
   "line_primary_type": "Tide"
+ },
+ {
+  "concept_id": "X-DOUSECAP",
+  "name": "Dousecap",
+  "types": [
+   "Dark",
+   "Ember"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "B",
+  "region": "north_hollow",
+  "rarity": "common",
+  "line": {
+   "shape": "two-stage",
+   "stage": 1,
+   "kindles_into": "X-SHUTTERWICK",
+   "kindle_trigger": "level 44"
+  },
+  "concept": "A little kin shaped like a brass snuffer-cap, that hops from wick to wick at bedtime and settles over each flame until it goes out. The Hollowing of Stillwater keep them as household kin; a Dousecap on the windowsill means the house has gone to sleep.",
+  "visual": "A small round kin shaped like a candle-snuffer's bell cap: a tarnished-brass cone for a body and hat in one, tipped with a tiny curl of smoke, with a soft charcoal face peeping from under the brim, two sleepy round eyes and stubby little feet. A faint ember glows under the rim where it last sat on a flame. At 64px it reads as a tiny sleepy brass cap on legs.",
+  "size_cm": 22,
+  "weight_kg": 1.1,
+  "hook": "Drowsy, dutiful and sweet: a tidy little kin that puts the lights to bed. Cosy-melancholy, never spooky.",
+  "dex_id": 178,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "X-SHUTTERWICK",
+  "name": "Shutterwick",
+  "types": [
+   "Dark",
+   "Light"
+  ],
+  "role": "Balanced / Pivot",
+  "tier": "D",
+  "region": "north_hollow",
+  "rarity": "uncommon",
+  "line": {
+   "shape": "two-stage",
+   "stage": 2,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "When a Dousecap has put out a thousand flames it kindles into a Shutterwick, a lantern-keeper whose own lamp burns behind closed shutters. It keeps that light for the Hollowing, hidden and warm, and opens a single slat only for someone lost in the dark.",
+  "visual": "A tall, gentle lantern-keeper kin: a body of charcoal-grey cloth like a long quilted cloak, with a big square brass lantern set into its chest whose four little wooden shutters are closed, warm gold light leaking between the slats. A wide brass snuffer-cap sits on its head, and under the brim its round charcoal face, Dousecap's face grown up, looks out with calm half-lidded eyes. Its long sleeves fold in front, cupping the lamp. at 64px it reads as a keeper carrying a shuttered lamp inside itself.",
+  "size_cm": 150,
+  "weight_kg": 34,
+  "hook": "Quiet, protective and sad-eyed: it believes the light is safest hidden. Kind, never menacing.",
+  "dex_id": 179,
+  "line_primary_type": "Dark"
+ },
+ {
+  "concept_id": "X-LULLWING",
+  "name": "Lullwing",
+  "types": [
+   "Dark",
+   "Lunar"
+  ],
+  "role": "Disruptor / Status",
+  "tier": "C",
+  "region": "north_hollow",
+  "rarity": "uncommon",
+  "line": {
+   "shape": "single",
+   "stage": 1,
+   "kindles_into": null,
+   "kindle_trigger": null
+  },
+  "concept": "A grey moth that drifts over sleeping kin and fans their dreams with dusty wings, so that they sleep on and on. The Hollowing call it a mercy: in Stillwater the Lullwings settle on every hearth-warm heap of dozing kin and hum to them until a morning that never comes.",
+  "visual": "A soft, plump moth in dove-grey and dusk-lilac, front view with wings spread: a round furry body, feathery drooping antennae, heavy-lidded sleepy eyes, and broad rounded wings patterned with pale crescent-moon eye-spots. A gentle haze of silver dream-dust sifts from the wing edges. At 64px it reads as a sleepy grey moth scattering moon-dust.",
+  "size_cm": 40,
+  "weight_kg": 0.6,
+  "hook": "Hushing, tender and a little lonely: it only wants everyone to rest. Soft and drowsy, never sinister.",
+  "dex_id": 180,
+  "line_primary_type": "Dark"
  }
 ]

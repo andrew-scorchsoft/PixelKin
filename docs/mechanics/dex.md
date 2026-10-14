@@ -1,9 +1,9 @@
-# PixelKin — The Dex (177)
+# PixelKin — The Dex (180)
 
 > Generated from `src/game/data/species.json` by `tools/balance/gen_docs.py`. Every entry is original (VISION.md). Lines show kindling chains (→).
 
-- **Total:** 177  |  **Tiers:** A:35 B:23 C:41 D:52 E:21 F:5
-- **Primary types:** Ember:18  Tide:23  Verdant:20  Stone:19  Storm:17  Frost:16  Solar:17  Lunar:15  Light:20  Dark:12
+- **Total:** 180  |  **Tiers:** A:35 B:24 C:42 D:53 E:21 F:5
+- **Primary types:** Ember:18  Tide:23  Verdant:20  Stone:19  Storm:17  Frost:16  Solar:17  Lunar:15  Light:20  Dark:15
 
 
 ## South — Tinderwick / coast (Ember, Tide)
@@ -196,7 +196,7 @@
 
 | Art | # | Name | Types | Tier | Role | BST | Kindles | Catch | Size | Dex entry |
 |:--:|--:|------|-------|:--:|------|--:|---------|--:|-----|-----------|
-| <img src="../../public/assets/sprites/creatures/147_skyweavelet/battle_front.webp" width="48" alt="Skyweavelet"> | 147 | **Skyweavelet** | Light | B | Utility / Speedster | 350 |  | 175 | 20cm/0.02kg | A mote of the Skyweave itself given semi-sapient form — a thread-sprite that weaves smal… |
+| <img src="../../public/assets/sprites/creatures/147_skyweavelet/battle_front.webp" width="48" alt="Skyweavelet"> | 147 | **Skyweavelet** | Light | B | Utility / Speedster | 368 |  | 175 | 20cm/0.02kg | A mote of the Skyweave itself given semi-sapient form — a thread-sprite that weaves smal… |
 | <img src="../../public/assets/sprites/creatures/148_lampling/battle_front.webp" width="48" alt="Lampling"> | 148 | **Lampling** | Light | C | Special Wall | 418 |  | 112 | 42cm/3.8kg | The beloved mascot of Vesper Crossroads — a sentient vesperlamp kin that has been glowin… |
 | <img src="../../public/assets/sprites/creatures/149_keylumen/battle_front.webp" width="48" alt="Keylumen"> | 149 | **Keylumen** | Light | F | Balanced / Pivot | 642 |  | 6 | 300cm/240kg | The Keystar-kin. At the heart of the Umbral Spire, sealed within the Ninth Lantern, rest… |
 | <img src="../../public/assets/sprites/creatures/150_nullmajor/battle_front.webp" width="48" alt="Nullmajor"> | 150 | **Nullmajor** | Dark | F | Special Sweeper | 642 |  | 6 | 450cm/240kg | Warden Còr's drained final-boss kin — the embodiment of the Great Null, the shape that a… |
@@ -227,3 +227,11 @@
 | <img src="../../public/assets/sprites/creatures/175_beaconclaw/battle_front.webp" width="48" alt="Beaconclaw"> | 175 | **Beaconclaw** | Stone/Light | D | Physical Wall | 498 | (from Hermiwick) | 65 | 160cm/210kg | When a Hermiwick finally finds a whole glass, it kindles into a Beaconclaw and the lamp … |
 | <img src="../../public/assets/sprites/creatures/176_fogwisp/battle_front.webp" width="48" alt="Fogwisp"> | 176 | **Fogwisp** | Frost/Dark | C | Disruptor / Status | 418 |  | 120 | 50cm/0.3kg | A moth made of sea-fog, drawn to lamps it can never reach. Where Fogwisps settle the air… |
 | <img src="../../public/assets/sprites/creatures/177_farlume/battle_front.webp" width="48" alt="Farlume"> | 177 | **Farlume** | Tide/Light | F | Special Tank | 642 |  | 6 | 1200cm/880kg | The Farlamp's own keeper-kin, the light that lived inside Vesperholm's outermost sea-lam… |
+
+## Late game — the Hollowing's Country (Stillwater, the Mourning Fields, Drownlight)
+
+| Art | # | Name | Types | Tier | Role | BST | Kindles | Catch | Size | Dex entry |
+|:--:|--:|------|-------|:--:|------|--:|---------|--:|-----|-----------|
+|  | 178 | **Dousecap** | Dark/Ember | B | Balanced / Pivot | 350 | → Shutterwick (L44) | 175 | 22cm/1.1kg | A little brass snuffer-cap of a kin that hops from wick to wick at bedtime and sits on e… |
+|  | 179 | **Shutterwick** | Dark/Light | D | Balanced / Pivot | 498 | (from Dousecap) | 65 | 150cm/34kg | When a Dousecap has put out a thousand flames it kindles into a Shutterwick, whose own l… |
+|  | 180 | **Lullwing** | Dark/Lunar | C | Disruptor / Status | 418 |  | 120 | 40cm/0.6kg | A grey moth that drifts over sleeping kin and fans their dreams with dusty wings, so the… |

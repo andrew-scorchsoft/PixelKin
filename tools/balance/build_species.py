@@ -177,9 +177,13 @@ REGION_AREA = {
     # own map tables (mirrored into EXTRA_ENCOUNTERS by the map work), so
     # MAP_TABLE_ONLY_REGIONS below suppresses the generated default row.
     "isles": ("farlamp_sound", (58, 66)),
+    # Lane N4 (the Hollowing's Country, #178-180): the Hollowing family lives
+    # ONLY in Stillwater / the Mourning Fields / Drownlight tables (mirrored
+    # into EXTRA_ENCOUNTERS by the map lanes) — table-only like the isles.
+    "north_hollow": ("stillwater", (46, 56)),
 }
-MAP_TABLE_ONLY_REGIONS = {"isles"}
-TERRAIN = {"isles":"water","jesthouse":"cave","south":"tall_grass","east":"cave","north":"tall_grass","west":"water","outer":"tall_grass","central":"cave","post":"tall_grass"}
+MAP_TABLE_ONLY_REGIONS = {"isles", "north_hollow"}
+TERRAIN = {"north_hollow":"tall_grass","isles":"water","jesthouse":"cave","south":"tall_grass","east":"cave","north":"tall_grass","west":"water","outer":"tall_grass","central":"cave","post":"tall_grass"}
 
 def encounters(region, rarity, tier, stage, scripted):
     area, (blo, bhi) = REGION_AREA.get(region, ("dimglass_coast", (3, 12)))
@@ -1593,6 +1597,71 @@ CANON = {
             "silhouette": "A great, serene sea-serpent coiled upright around itself like the spiral stair of a lighthouse: a long body of deep sea-blue scales banded with pale stone-white rings, broad translucent fin-sails along its back, and a noble head crowned with a lantern room of brass and glass in which a steady flame burns. Light spills from the lantern down its coils. At 64px it reads as a living lighthouse coiled out of the sea.",
             "palette": "Deep sea-blue (#13205a) scales with water-blue (#4fb4ff) highlights and bone-white (#f5f0e1) stone bands; translucent diamond-cyan (#9fe7ff) fin-sails; the lantern crown in warm brass; the flame a white-gold, the brightest pixel; ink (#1a1430) outlines.",
             "direction": "Ancient, faithful and grieving, then hopeful: a keeper that never stopped tending its lamp. Majestic and gentle, calm eyes, the drowned light's guardian, never a monster.",
+        },
+    },
+    # #147 Skyweavelet / #148 Lampling (2026-10, with the Hollowing kin): both
+    # are pre-existing Light edge cases (~-16/-17pp from their tier means) and
+    # three new Dark kin — Dark hits Light x2 — tipped them over the 18pp gate
+    # at seeds 4/6/7. Minimal in-band trims, the Liminalux precedent:
+    # Skyweavelet 350->368 (B band 320-375, same speedster shape), Lampling
+    # same 418 with 8 spd moved into spa so its spark actually lands.
+    "skyweavelet": {
+        "stats": {"hp": 58, "atk": 50, "def": 55, "spa": 58, "spd": 55, "spe": 92},
+    },
+    "lampling": {
+        "stats": {"hp": 84, "atk": 30, "def": 71, "spa": 67, "spd": 95, "spe": 71},
+    },
+    # ---- Lane N4: the Hollowing family (#178-180) — docs/world/walkthrough/
+    # 11-the-hollowing-country.md §F. Late and optional: met wild at lv 46-56
+    # in Stillwater, the Mourning Fields and Drownlight, so every kit is
+    # pinned to climb past the generator's early stop (a wild lv-50 kin must
+    # not carry a lv-20 kit). Stats trust make_stats unless the sim objects.
+    # No signature moves (the shared pool, the Wild Ways pattern).
+    "dousecap": {
+        # a snuffer eats flame: Ember moves heal it; nullheart = nothing wakes it
+        "ability": "cinderveil", "hidden_ability": "nullheart",
+        "entry": "A little brass snuffer-cap of a kin that hops from wick to wick at bedtime and sits on each flame until it goes out. In Stillwater a Dousecap on the windowsill means the house has gone to sleep, and nobody minds the dark there.",
+        "category": "Snuffer-Cap Kin",
+        # kindles at lv 44; met at 46+ knowing hone/null_claw/flame_lash/blight_touch
+        "levelup": [(1, "quick_jab"), (1, "shade_nip"), (6, "ember_jab"), (10, "scorch_veil"),
+                    (15, "duskmaw"), (20, "cinderclaw"), (26, "hone"), (32, "null_claw"),
+                    (38, "flame_lash"), (43, "blight_touch")],
+        "art": {
+            "silhouette": "A small round kin shaped like a candle-snuffer's bell cap, front three-quarter view: a tarnished-brass cone that is body and hat in one, its tip curling up into a tiny wisp of grey smoke, a soft charcoal-grey face peeping out from under the wide brim with two big sleepy half-closed eyes and a small content smile, and two stubby charcoal feet. A faint warm ember-glow shows under the rim where it last sat on a flame. At 64px it reads as a tiny sleepy brass cap on little legs.",
+            "palette": "Tarnished brass cone (warm ochre-gold with darker umber shading and one pale highlight streak); charcoal-grey face and feet (#2a2633); the eyes deep night (#0b1026) with one bone (#f5f0e1) highlight each; a soft fire-amber (#ff8a3d) ember glow under the rim, the brightest pixel; the smoke-curl pale grey; ink (#1a1430) outlines.",
+            "direction": "Drowsy, dutiful and sweet: a tidy little kin that puts the lights to bed. Cosy-melancholy, round and huggable, never spooky. Must read as the same line as Shutterwick: same brass snuffer-cap, same charcoal, same sleepy eyes.",
+        },
+    },
+    "shutterwick": {
+        "ability": "mirrorlight", "hidden_ability": "cinderveil",
+        "entry": "When a Dousecap has put out a thousand flames it kindles into a Shutterwick, whose own lamp burns behind closed shutters in its chest. It keeps that light hidden and warm for the Hollowing, and opens a single slat only for someone lost in the dark.",
+        "category": "Shuttered Lantern Kin",
+        # kindled at 44; met at 50-56 knowing blight_touch/radiant_strike/
+        # shadow_rend/bulwark (the shutters), later prism_beam
+        "levelup": [(1, "quick_jab"), (1, "shade_nip"), (6, "ember_jab"), (10, "scorch_veil"),
+                    (15, "duskmaw"), (20, "cinderclaw"), (26, "hone"), (32, "null_claw"),
+                    (38, "flame_lash"), (43, "blight_touch"), (44, "radiant_strike"),
+                    (49, "shadow_rend"), (54, "bulwark"), (60, "prism_beam")],
+        "art": {
+            "silhouette": "A tall, gentle lantern-keeper kin, front three-quarter view, with a broad bell-shaped silhouette that widens to the ground: a body of soft charcoal-grey cloth like a long quilted cloak, and set into its chest a BIG square brass lantern whose four little wooden shutters are closed, with bright lines of warm gold light leaking out between the slats and spilling down the cloak. On its head sits a wide brass snuffer-cap with a little ring-handle on top. Under the brim its round charcoal face is clearly visible, the same face as Dousecap: large calm half-lidded eyes with a bone-white highlight and a small, kind, sad smile. Two long sleeves fold in front, cupping the lantern. At 64px it reads as a gentle keeper carrying a shuttered lamp inside itself.",
+            "palette": "Charcoal-grey cloak (#2a2633 with slate-violet folds); tarnished brass snuffer-cap and lantern frame (warm ochre-gold, umber shading); dark wood shutters; the light leaking through the slats a warm bone-gold (#f5f0e1) with a fire-amber (#ff8a3d) core, the brightest pixels; the eyes pale moon-white; ink (#1a1430) outlines.",
+            "direction": "Quiet, protective and sad-eyed: it believes the light is safest hidden. Tall and dignified but kind and round-faced, a keeper not a phantom: a visible soft face with real eyes, NOT a dark void with glowing dot eyes, never menacing, no teeth. Same brass snuffer-cap and charcoal as Dousecap, grown up; the leaking lantern-light is its signature.",
+        },
+    },
+    "lullwing": {
+        # dream-dust dims the foe's aim; nightsight = a night-flyer
+        "ability": "mistveil", "hidden_ability": "nightsight",
+        "entry": "A grey moth that drifts over sleeping kin and fans their dreams with dusty wings, so they sleep on and on. The Hollowing call it a mercy. In Stillwater the Lullwings settle on every hearth-warm heap of dozing kin and hum to them until a morning that never comes.",
+        "category": "Dream-Moth Kin",
+        # met at 46-51 knowing moonbeam/mend/lull/gloomswell; 52+ trades
+        # moonbeam for moonflood
+        "levelup": [(1, "quick_jab"), (1, "gloom_spit"), (6, "dream_wisp"), (12, "veil_up"),
+                    (18, "hollow_pulse"), (24, "moonbeam"), (36, "mend"), (41, "lull"),
+                    (46, "gloomswell"), (52, "moonflood")],
+        "art": {
+            "silhouette": "A soft, plump moth seen from the front with its wings spread: a round furry body, feathery drooping antennae, big heavy-lidded sleepy eyes, tiny tucked legs, and broad rounded wings patterned with pale crescent-moon eye-spots. A gentle haze of silver dream-dust sifts down from the wing edges in little sparkles. At 64px it reads as a sleepy grey moth scattering moon-dust.",
+            "palette": "Dove-grey furry body and wings shading to dusk-lilac (#6b5a8e) at the wing edges; pale moon-silver (#d8d4ec) crescent eye-spots; the dream-dust silver-white specks; the eyes deep night (#0b1026), half-lidded, one bone (#f5f0e1) highlight each; ink (#1a1430) outlines kept soft.",
+            "direction": "Hushing, tender and a little lonely: it only wants everyone to rest. Soft, round and drowsy, a lullaby with wings, never sinister, no skulls, no fangs. Distinct from the sea-fog moth (Fogwisp): warmer grey-lilac, rounder, moon-marked, sleepy.",
         },
     },
 }
