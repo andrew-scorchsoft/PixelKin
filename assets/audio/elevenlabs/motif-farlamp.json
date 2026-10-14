@@ -1,0 +1,5 @@
+{
+ "song_id": "6Pi9Zbewo2cZ7X2E5uOx",
+ "range": {"start_ms": 8600, "end_ms": 38600},
+ "note": "THE FARLAMP ISLES FAMILY MOTIF (the isles' sea-hymn): the driftholm remaster's stored take (unconditioned anchor, 84 BPM, 3/4, D minor hymn); range = its Main Theme after the 4-bar intro (30 s API cap). farlamp-sound, driftholm-dawn, undertide and farlamp-relit condition on this via \"motif\": {\"source\": \"farlamp\"} (music-cue-family skill). Re-upload public/assets/audio/music/remaster/driftholm.mp3 via generate_music.py --upload if the stored song is ever dropped."
+}

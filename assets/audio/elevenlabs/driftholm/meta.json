@@ -1,0 +1,17 @@
+{
+ "id": "driftholm",
+ "kind": "loop",
+ "where": "Driftholm, the island town of the Farlamp Isles, cut off in the long dark for eleven winters",
+ "mood": "A sea-town hymn in the long dark: warm but lonely, small lamps kept alone in the windows.",
+ "duration": 105.168,
+ "loop_start": 10.733,
+ "seam": 0.232,
+ "bpm_est": 83.4,
+ "song_id": "6Pi9Zbewo2cZ7X2E5uOx",
+ "raw_ms": 99000,
+ "motif": null,
+ "lufs": -15.5,
+ "edits": [
+  "trimmed 1.690s of head"
+ ]
+}

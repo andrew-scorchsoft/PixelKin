@@ -1,0 +1,94 @@
+{
+ "id": "farlamp-sound",
+ "kind": "loop",
+ "where": "Farlamp Sound, the Shelfwater and the Fogwall: rowing a small lamp-boat over the open deep sea towards a far blinking lamp",
+ "mood": "Rowing on a long swell in the fog: the isles' hymn as a lone line over the sea.",
+ "bpm": 84,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "high",
+  "source": "farlamp"
+ },
+ "_motif_note": "Conditioned high on motif-farlamp.json: the sea rung of the family, the hymn as a lone line.",
+ "max_stall": 4.0,
+ "_stall_note": "open sea between phrases: a held hush of surf is part of the cue",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "84 BPM",
+  "3/4 time, a slow rocking rowing pulse like oars on a long swell",
+  "D Dorian",
+  "a lone soft pulse-wave lead playing a slow seafaring hymn tune with space between phrases",
+  "a gently rocking plucked bass like oar strokes",
+  "rising and falling surf washes",
+  "one soft glass bell blinking every two bars like a far lighthouse",
+  "a very soft sampled string pad",
+  "a distant flute",
+  "lonely, wide open sea at dusk in the fog, steady and hopeful",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "busy drums",
+  "horror",
+  "dense arrangement",
+  "cheerful"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{surf rises and falls, the bass begins its rocking oar stroke, and a single far bell blinks}",
+   "styles": [
+    "a lone instrument breathing in",
+    "open sea"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 12,
+   "text": "{the hymn tune as a lone pulse-wave line over the rocking oars in D Dorian, long held notes, the far bell blinking every two bars}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "lonely sea"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 12,
+   "text": "{the tune again, a distant flute answering from far across the water, the strings breathing in under the swell}",
+   "styles": [
+    "flute echo",
+    "slightly fuller"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: the fog thickens, the line drifts into F major and back, the bell blinking closer}",
+   "styles": [
+    "contrasting section",
+    "mist"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 12,
+   "text": "{the lone tune returns over the oars; the last bar rocks straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

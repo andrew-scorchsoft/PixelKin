@@ -1,0 +1,96 @@
+{
+ "id": "driftholm-dawn",
+ "kind": "loop",
+ "where": "Driftholm after the isles' dawn: the fog lifted, boats out, the town awake in daylight",
+ "mood": "The same island hymn turned major and full: a town that has its morning back.",
+ "bpm": 84,
+ "beats_per_bar": 3,
+ "motif": {
+  "strength": "high",
+  "source": "farlamp"
+ },
+ "_motif_note": "Conditioned high on the isles' own motif (motif-farlamp.json): the same hymn as driftholm, turned major. 84 BPM = the anchor's grid.",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "84 BPM",
+  "3/4 time, a lilting rocking pulse",
+  "D major, bright and warm",
+  "a warm pulse-wave lead singing the seafaring hymn tune in a major key",
+  "full sampled string chords",
+  "rolling plucked harp arpeggios",
+  "glass bells and celesta answering every phrase",
+  "a flute counter-melody",
+  "a walking plucked bass",
+  "gentle festive drums with soft snare and tambourine",
+  "joyful, warm and grateful, a harbour town in morning sunlight",
+  "strong singable melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "dark",
+  "minor key gloom",
+  "aggressive",
+  "fast battle drums"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 4,
+   "text": "{a bright bell call and a harp run open straight onto D major, the drums tapping in on the last bar}",
+   "styles": [
+    "a bold call over a pickup",
+    "morning"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 12,
+   "text": "{the hymn tune sung out in D major on the warm lead, full string chords and rolling harp beneath}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "joyful"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 12,
+   "text": "{the hymn again, fuller, the bells singing a counter-line and the flute weaving under it, gentle festive drums}",
+   "styles": [
+    "bell counter-melody",
+    "festive",
+    "fuller arrangement"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 8,
+   "text": "{contrast: a tender turn to B minor and G major, the melody lower and grateful, remembering the long dark, then lifting on an A major chord}",
+   "styles": [
+    "contrasting section",
+    "tender",
+    "grateful"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 12,
+   "text": "{the hymn returns in full radiant D major; the last bar leads straight back into the theme}",
+   "styles": [
+    "main theme returns",
+    "radiant",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

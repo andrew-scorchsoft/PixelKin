@@ -251,6 +251,11 @@
       "width": 128,
       "height": 128
     },
+    "player_indi_skiff": {
+      "path": "assets/sprites/trainers/player_indi_skiff.webp",
+      "width": 128,
+      "height": 128
+    },
     "player_indi_swim": {
       "path": "assets/sprites/trainers/player_indi_swim.webp",
       "width": 128,

@@ -1,0 +1,17 @@
+{
+ "id": "farlamp-sound",
+ "kind": "loop",
+ "where": "Farlamp Sound, the Shelfwater and the Fogwall: rowing a small lamp-boat over the open deep sea towards a far blinking lamp",
+ "mood": "Rowing on a long swell in the fog: the isles' hymn as a lone line over the sea.",
+ "duration": 101.729,
+ "loop_start": 7.293,
+ "seam": 0.122,
+ "bpm_est": 83.4,
+ "song_id": "kWJqKCF86CYoAONFm9no",
+ "raw_ms": 99000,
+ "motif": "high",
+ "lufs": -15.4,
+ "edits": [
+  "trimmed 2.250s of head"
+ ]
+}
