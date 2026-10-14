@@ -92,18 +92,25 @@ m["warps"] += [
 ]
 
 # the hall: the cold beehive furnace is the focal point, top-centre
-obj("kiln_furnace", "ashfall_kiln_furnace", (9, 2), 4, 3, overhang=1)
+# (fourth pass) the furnace is COLD until you take the Last Pane — then it wakes
+# (a same-footprint flag swap; script.kiln_last_pane stages the beat)
+obj("kiln_furnace_cold", "ashfall_kiln_furnace_cold", (9, 2), 4, 3, overhang=1,
+    hidden_when_flag="flag:q_north_pane")
+obj("kiln_furnace", "ashfall_kiln_furnace", (9, 2), 4, 3, overhang=1,
+    requires_flag="flag:q_north_pane")
 obj("rack_w", "ashfall_glass_rack", (3, 3), 3, 2)        # the alcove's screen
 obj("rack_e", "ashfall_glass_rack", (14, 2), 3, 2)
 obj("cullet_w", "ashfall_glass_cullet", (4, 7), 2, 2)
 obj("cullet_e", "ashfall_glass_cullet", (15, 7), 2, 2)
-obj("store_crates", "ashfall_slag_heap_b", (1, 14), 2, 2)
+obj("store_crates", "ashfall_glass_crates", (1, 14), 2, 2)      # the glass store
+obj("store_bin", "ashfall_cullet_bin", (3, 14), 2, 2)
 obj("store_cart", "cinderhead_ore_cart", (3, 12), 2, 2, overhang=1)
 # the hall's centre: a cullet-and-crystal island you walk round (the furnace's apron)
 obj("hall_crystal", "cinderhead_crystal_cluster", (11, 6), 2, 2, overhang=1)
 obj("hall_cullet", "ashfall_glass_cullet", (9, 6), 2, 2)
 obj("hall_slag", "ashfall_slag_heap_b", (6, 5), 2, 2)
 obj("loft_rack", "ashfall_glass_rack", (18, 11), 3, 2)
+obj("loft_moulds", "ashfall_pane_moulds", (18, 14), 2, 2)          # where the panes were cast
 # THE LAST PANE on the loft's drying rack (seen across the loft; gone once taken)
 obj("last_pane", "ashfall_pane_frame", (20, 13), 1, 2, solid=False,
     hidden_when_flag="flag:q_north_pane")
@@ -124,7 +131,7 @@ owed += pt.cache(m, cid="kiln_chart", at=(1, 4))         # the alcove: Shardstor
 
 for (x, y, n) in [(3, 5, "boulder"), (3, 2, "boulder"), (17, 6, "boulder"), (9, 14, "g_pebble"),
                   (12, 15, "g_pebble"), (7, 8, "g_pebble"), (13, 7, "glowshroom_a"),
-                  (5, 12, "g_pebble"), (16, 14, "boulder"), (8, 4, "glowshroom_b")]:
+                  (5, 12, "g_pebble"), (16, 15, "g_pebble"), (8, 4, "glowshroom_b")]:
     put(x, y, n)
 
 TABLE = [

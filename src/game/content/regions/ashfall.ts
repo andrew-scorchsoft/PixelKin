@@ -84,6 +84,7 @@ export const ASHFALL_SCRIPTS: ScriptRegistry = {
   ],
   'script.oda_has_pane': [
     { op: 'say', speaker: 'ODA KILNWRIGHT', text: 'Oh. Oh, look at it. Father always said the last one out of a kiln is the warmest.' },
+    { op: 'say', speaker: 'ODA KILNWRIGHT', text: 'And the stack is smoking again. I saw it from here. You woke the old girl up, didn\'t you? Oh, she was only sleeping.' },
     { op: 'say', speaker: 'ODA KILNWRIGHT', text: 'Don\'t give it to me, dear. I\'d only keep it in a drawer. Take it to the kite-stall lamp in Galehigh and let it do its job.' },
   ],
   'script.oda_after': [
@@ -128,6 +129,14 @@ export const ASHFALL_SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'kiln_pane' },
     { op: 'narrate', text: 'You got THE LAST PANE!' },
     { op: 'setFlag', flag: PANE },
+    // the "oh!" beat: lifting the last pane off the rack, the cold furnace wakes
+    { op: 'shake', ms: 300, intensity: 0.004 },
+    { op: 'cameraFocus', to: { tx: 10, ty: 3 }, ms: 700 },
+    { op: 'sfx', key: 'world-lantern-light' },
+    { op: 'flashColor', color: '#ff8a3a', ms: 500 },
+    { op: 'narrate', text: 'Behind you, eleven winters of banked coal catch. One by one the furnace\'s glory-holes open orange, and warm light runs across the hall.' },
+    { op: 'narrate', text: 'It knew the last pane was going home.' },
+    { op: 'cameraReset', ms: 600 },
     { op: 'narrate', text: 'Galehigh\'s kite-stall lamp stands blind for want of glass. This would fit it.', unless_flag: HOOK },
     { op: 'narrate', text: 'Oda said the blind lamp by Galehigh\'s kite-stall. It\'s a short glide away now.', if_flag: HOOK },
   ],

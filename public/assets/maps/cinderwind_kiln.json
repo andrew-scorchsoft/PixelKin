@@ -750,7 +750,7 @@
         0,
         0,
         0,
-        124,
+        0,
         0,
         0,
         0,
@@ -772,7 +772,7 @@
         0,
         0,
         0,
-        0,
+        5,
         0,
         0,
         0,
@@ -1230,6 +1230,18 @@
   ],
   "objects": [
     {
+      "id": "kiln_furnace_cold",
+      "sprite": "ashfall_kiln_furnace_cold",
+      "at": {
+        "tx": 9,
+        "ty": 2
+      },
+      "w": 4,
+      "h": 3,
+      "overhang": 1,
+      "hidden_when_flag": "flag:q_north_pane"
+    },
+    {
       "id": "kiln_furnace",
       "sprite": "ashfall_kiln_furnace",
       "at": {
@@ -1238,7 +1250,8 @@
       },
       "w": 4,
       "h": 3,
-      "overhang": 1
+      "overhang": 1,
+      "requires_flag": "flag:q_north_pane"
     },
     {
       "id": "rack_w",
@@ -1282,9 +1295,19 @@
     },
     {
       "id": "store_crates",
-      "sprite": "ashfall_slag_heap_b",
+      "sprite": "ashfall_glass_crates",
       "at": {
         "tx": 1,
+        "ty": 14
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "store_bin",
+      "sprite": "ashfall_cullet_bin",
+      "at": {
+        "tx": 3,
         "ty": 14
       },
       "w": 2,
@@ -1340,6 +1363,16 @@
         "ty": 11
       },
       "w": 3,
+      "h": 2
+    },
+    {
+      "id": "loft_moulds",
+      "sprite": "ashfall_pane_moulds",
+      "at": {
+        "tx": 18,
+        "ty": 14
+      },
+      "w": 2,
       "h": 2
     },
     {

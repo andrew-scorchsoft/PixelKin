@@ -528,6 +528,12 @@ Ashfall Shelf (30–33) → Galehigh**, with Mira's recommended party raised 28 
   hall, reached by a crawl from the store) holding the Shardstorm chart. Its signature rare is
   **Scorchwing** (lv 34–35): the only pre-dawn wild one, since its other placement is the post-dawn
   Hearthfall vigil. The gate-shelf tin now holds a Beacon charge.
+- **Fourth pass (2026-10, review 2).** The basin/gate divider is a boulder ridge (alternating rock
+  and slag clusters), not a tree strip; crest wood now caps the north lip (rows 0–1) and the east
+  drop (x 22–23), with a crown tree on its edge. In Kiln Gully the furnace is **cold until you take
+  the Last Pane**: lifting it off the rack wakes the furnace (a same-footprint swap
+  `ashfall_kiln_furnace_cold` → `ashfall_kiln_furnace` on `flag:q_north_pane`, with a camera beat and
+  a flash). The store and loft carry glass crates, a cullet bin and the pane moulds.
 - **The haulers clear it.** Galehigh's new upper-west landing (rows 7–8, a throat at x=2)
   carries a step_on band, `script.ashfall_rockfall_promise`, setting
   `flag:scarp_rockfall_clear`. Mira's hook (`script.mira_quest`) also rides row 12 under the

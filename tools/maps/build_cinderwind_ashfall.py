@@ -88,6 +88,19 @@ for x in range(W - 3, W):                                 # the gate shelf's sou
     cliff[(H - 1) * W + x] = 1
     tree[(H - 1) * W + x] = 0
 
+# (fourth pass) CREST WOOD on the north lip (rows 0-1, over the mountain face's row-2
+# FACE) and down the east drop (x 22-23, rows 9-24 + the gate shelf's south lip), the
+# same wood as the south edge — the flat wall-top mass read as a blank.
+for y in (0, 1):
+    for x in range(W):
+        cliff[y * W + x] = 0
+        tree[y * W + x] = 1
+for y in list(range(9, 25)) + [H - 1]:
+    for x in (W - 2, W - 1):
+        if cliff[y * W + x]:
+            cliff[y * W + x] = 0
+            tree[y * W + x] = 1
+
 # ---- the shelf band (rows 13-14) ----------------------------------------------------
 mk.rect(cliff, W, H, 2, 13, 21, 14)
 CUT_X = 3                                                # the slag cut — the climb (1 wide, far WEST)
@@ -108,7 +121,8 @@ pt.ledge_run(deco, W, H, 13, NOOK[0], NOOK[1], rng)      # shelf -> nook (one wa
 # strip of the crest wood (tree terrain), and the inner bank is a TERRACE BANK — one
 # long south ledge (hop down, never climb) with its one walk-up gap at x 7-8. The
 # nook's own drop is that same bank's east end.
-mk.rect(tree, W, H, 13, 15, 14, 26)                      # the divider: a strip of the crest wood
+# (fourth pass) the divider is a BOULDER RIDGE of rock + slag clusters (objects,
+# below) — the old 2-wide tree strip autotiled into a dark trench of nubs.
 BANK = [x for x in range(2, 13) if x not in (7, 8)]      # the terrace bank (row 21), gap at 7-8
 for x in BANK:
     deco[21 * W + x] = rng.choice([gid("grass_ledge_s"), gid("grass_ledge_s_v1")])
@@ -241,17 +255,10 @@ m["triggers"].append({"id": "windward_vista", "kind": "cutscene", "at": {"tx": 2
                       "activation": "interact", "ref": "script.ashfall_vista"})
 owed.append("script.ashfall_vista")
 # dressing the outer crags (cliff tops; solid anyway) so the rock mass isn't a blank
-obj("crag_slag_n", "ashfall_slag_heap", (5, 0), 3, 2)
-obj("crag_rocks_n", "ashfall_rockfall_b", (12, 0), 2, 2)
 obj("crag_rocks_w", "ashfall_rockfall_b", (0, 17), 2, 2)
 obj("crag_slag_w", "ashfall_slag_heap_b", (0, 23), 2, 2)
-obj("crag_rocks_e", "ashfall_rockfall_b", (22, 15), 2, 2)
-obj("crag_slag_e", "ashfall_slag_heap_b", (22, 20), 2, 2)
-obj("crag_slag_n2", "ashfall_slag_heap_b", (16, 0), 2, 2)
-obj("crag_rocks_ne", "ashfall_rockfall_b", (21, 0), 2, 2)
 obj("crag_rocks_w2", "ashfall_rockfall_b", (0, 4), 2, 2)
 obj("crag_slag_w2", "ashfall_slag_heap_b", (0, 10), 2, 2)
-obj("crag_rocks_e2", "ashfall_rockfall_b", (22, 10), 2, 2)
 
 # ---- the slag nook (the ash-buried cache) -----------------------------------------------
 # its west side: a rubble ridge (three rock clusters, rows 15-20), not a wall
@@ -264,9 +271,11 @@ deco[18 * W + 11] = gid("boulder")      # a slag lump in the nook (one column st
 # ---- the basins + the gate shelf ---------------------------------------------------------
 obj("basin_slag", "ashfall_slag_heap", (8, 25), 3, 2)
 obj("basin_tree", "tinderwick_tree", (2, 22), 3, 4, overhang=3, walk_under=True)
-# crown trees breaking the crest-wood divider strip
-obj("divider_tree_n", "tinderwick_tree", (13, 15), 3, 4, overhang=3, walk_under=True)
-obj("divider_tree_s", "tinderwick_tree", (12, 22), 3, 4, overhang=3, walk_under=True)
+obj("east_wood_tree", "tinderwick_tree", (21, 11), 3, 4, overhang=3, walk_under=True)  # the east crest wood's edge
+# the basin/gate divider: a boulder ridge (alternating rock and slag clusters)
+for _i, _y in enumerate(range(15, 27, 2)):
+    obj(f"divider_ridge_{_i}", "ashfall_rockfall_b" if _i % 2 == 0 else "ashfall_slag_heap_b",
+        (13, _y), 2, 2)
 obj("upper_rocks", "ashfall_rockfall_b", (5, 18), 2, 2)
 obj("basin_lamp", "tinderwick_lamp_post", (9, 22), 1, 3, overhang=2, walk_under=True)
 obj("gate_slag", "ashfall_slag_heap", (15, 23), 3, 2)
