@@ -31,6 +31,8 @@ import { JESTHOUSE_DIALOGUE, JESTHOUSE_SCRIPTS } from './jesthouse';
 import { INNFOLK_DIALOGUE, INNFOLK_SCRIPTS } from './innfolk';
 // The Farlamp Isles (walkthrough/10 Part I) — Lane C1: the surface, Driftholm, the mainland hooks.
 import { FARLAMP_DIALOGUE, FARLAMP_SCRIPTS } from './farlamp';
+// Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay, the town under the bay.
+import { LOWTINDER_DIALOGUE, LOWTINDER_SCRIPTS } from './lowtinder';
 // Lane A (walkthrough/10 Part II): the Ashfall Shelf + Kiln Gully.
 import { ASHFALL_DIALOGUE, ASHFALL_SCRIPTS } from './ashfall';
 // The Farlamp Isles, lane C2 (2026-10): the Undertide + the Drowned Lamp.
@@ -57,6 +59,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...JESTHOUSE_SCRIPTS,
   ...INNFOLK_SCRIPTS,
   ...FARLAMP_SCRIPTS,
+  ...LOWTINDER_SCRIPTS, // Lane E
   ...ASHFALL_SCRIPTS,
   ...UNDERTIDE_SCRIPTS,
   ...SPARRING_SCRIPTS,
@@ -81,6 +84,7 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...JESTHOUSE_DIALOGUE,
   ...INNFOLK_DIALOGUE,
   ...FARLAMP_DIALOGUE,
+  ...LOWTINDER_DIALOGUE, // Lane E
   ...ASHFALL_DIALOGUE,
   ...UNDERTIDE_DIALOGUE,
   ...SPARRING_DIALOGUE,

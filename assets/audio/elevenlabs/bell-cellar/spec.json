@@ -1,0 +1,93 @@
+{
+ "id": "bell-cellar",
+ "kind": "loop",
+ "where": "The Bell Cellar (the flooded cellars and the drowned belfry pit under Lowtinder's lamp-house, where the old town bell lies in black water; a rope climbs the old shaft to Tinderwick's well)",
+ "mood": "A flooded stone cellar under the sea: dripping water, black still pools, and somewhere a huge old bell humming when the tide turns. Hushed, patient and a little sad, never horror.",
+ "bpm": 90,
+ "beats_per_bar": 4,
+ "motif": {
+  "strength": "low"
+ },
+ "_motif_note": "Low strength, the cave treatment (old-seams' precedent): the first notes of the lullaby, tolled slowly like a bell under water.",
+ "max_stall": 4.0,
+ "_stall_note": "deliberately sparse cave: the silences between the tolls are part of the cue (dead_air.py allows up to max_stall)",
+ "core_styles": [
+  "16-bit console RPG soundtrack from the mid-1990s",
+  "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+  "90 BPM, very slow and spacious",
+  "A minor",
+  "a low hollow wavetable drone",
+  "a deep bronze bell tolling a slow four-note phrase",
+  "sparse high triangle plinks like water dripping into still pools",
+  "a soft pulse-wave echo answering from far away",
+  "flooded stone cellar in the dark, ancient and quiet",
+  "echoing cave reverb",
+  "strong slow melody",
+  "authentic 16-bit game music sound",
+  "instrumental"
+ ],
+ "negative_styles": [
+  "vocals",
+  "EDM",
+  "four-on-the-floor kick",
+  "sidechain pumping",
+  "electric guitar",
+  "fade out",
+  "ritardando",
+  "cheerful",
+  "upbeat",
+  "busy drums",
+  "horror",
+  "jump scare",
+  "epic orchestral"
+ ],
+ "sections": [
+  {
+   "name": "Intro",
+   "bars": 2,
+   "text": "{a lone drip echoes in the dark, then the low drone breathes in beneath it}",
+   "styles": [
+    "a lone instrument breathing in",
+    "flooded cellar"
+   ]
+  },
+  {
+   "name": "Main Theme",
+   "bars": 8,
+   "text": "{the bell tolls a slow four-note phrase, one note every two beats, over the low drone; drips fall in the silences}",
+   "styles": [
+    "main theme",
+    "memorable hook",
+    "sparse and echoing"
+   ]
+  },
+  {
+   "name": "Main Theme Reprise",
+   "bars": 8,
+   "text": "{the toll again, now answered by a soft far-off pulse-wave echo of the phrase, the drone a little warmer}",
+   "styles": [
+    "call and response",
+    "slightly fuller"
+   ]
+  },
+  {
+   "name": "Bridge",
+   "bars": 6,
+   "text": "{contrast: the drone sinks lower, a slow rising figure climbs as if up a long shaft toward faint light, then settles}",
+   "styles": [
+    "rising toward light",
+    "contrasting section"
+   ],
+   "adherence": "medium"
+  },
+  {
+   "name": "Main Theme Return",
+   "bars": 8,
+   "text": "{the bell's four-note toll returns over the drone and drips; the last bar leads straight back into the main theme}",
+   "styles": [
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ]
+  }
+ ]
+}

@@ -68,7 +68,9 @@ PLACEMENTS: dict[str, dict] = {
             "sound_bed": SURF,
         },
         "objects": [
-            prop("wc_well", "tinderwick_well", (17, 10), 2, 3, overhang=1, walk_under=True),
+            # (Lane E, 2026-10: the well `wc_well` moved into build_tinderwick.py —
+            # it is now the old well the Bell Cellar climbs out of, with an
+            # interact trigger on it, which a world-craft prop may not carry.)
             prop("wc_notice", "tinderwick_notice_board", (10, 4), 2, 2, overhang=1),
             prop("wc_woodpile", "tinderwick_woodpile", (10, 17), 2, 1),
             prop("wc_rowboat", "pearlmoor_rowboat", (6, 20), 2, 2),

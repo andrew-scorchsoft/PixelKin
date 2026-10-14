@@ -1629,6 +1629,89 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-nightfall',
     ai: 'smart',
   },
+  // ---- Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay ------------------
+  // Optional mid-game beds (Tidecall, 17-23) + Gran Tallow's post-game reef bout.
+  // Payouts = class rate x ace (10-economy §4), mirrored in progression.mjs BUILT_PAYOUTS.
+  bay_diver: {
+    id: 'bay_diver',
+    name: 'SKERRY',
+    title: 'Lamp-diver',
+    party: [
+      { species_id: 26, level: 17 }, // Brinelet — Tide
+      { species_id: 23, level: 18 }, // Glintfin — Tide/Light
+      { species_id: 31, level: 19 }, // Lumpin — Tide/Light (ace)
+    ],
+    payout: 304, // route 16 × ace 19
+    music: 'battle-emberfall',
+  },
+  bay_nethand: {
+    id: 'bay_nethand',
+    name: 'CORRA',
+    title: 'Net-hand',
+    party: [
+      { species_id: 20, level: 18 }, // Tidmote — Tide/Light
+      { species_id: 27, level: 19 }, // Brineroll — Tide
+      { species_id: 24, level: 20 }, // Shimmral — Tide/Light (ace)
+    ],
+    payout: 320, // route 16 × ace 20
+    music: 'battle-emberfall',
+  },
+  lt_mudlark: {
+    id: 'lt_mudlark',
+    name: 'PIP',
+    title: 'Eel-catcher',
+    party: [
+      { species_id: 13, level: 19 }, // Ashlette — Ember
+      { species_id: 26, level: 19 }, // Brinelet — Tide
+      { species_id: 11, level: 20 }, // Tallowcrest — Ember (ace)
+    ],
+    payout: 320, // route 16 × ace 20
+    music: 'battle-emberfall',
+  },
+  lt_lampwright: {
+    id: 'lt_lampwright',
+    name: 'HOLLIS',
+    title: 'Lampwright',
+    party: [
+      { species_id: 16, level: 19 }, // Wickmoth — Ember
+      { species_id: 5, level: 20 }, // Wicklit — Light/Ember
+      { species_id: 14, level: 21 }, // Embrift — Ember (ace)
+    ],
+    payout: 420, // keeper 20 × ace 21
+    music: 'battle-emberfall',
+  },
+  lt_cellar_keeper: {
+    id: 'lt_cellar_keeper',
+    name: 'OLD WICKMAN',
+    title: 'Wick-tender',
+    party: [
+      { species_id: 41, level: 20 }, // Scorchite — Ember
+      { species_id: 42, level: 21 }, // Coalump — Ember
+      { species_id: 6, level: 22 }, // Wickmere — Light/Ember (ace)
+    ],
+    payout: 440, // keeper 20 × ace 22
+    music: 'battle-emberfall',
+  },
+  // Gran Tallow (post-game, rematchable): Lowtinder's last Lampwarden, on her reef by
+  // the old Tinder Light. Ember lamps + forty years of sea; warden-class pay.
+  lowtinder_ottery: {
+    id: 'lowtinder_ottery',
+    name: 'GRAN TALLOW',
+    title: 'Lampwarden',
+    party: [
+      { species_id: 12, level: 63 }, // Chandrek — Ember/Light
+      { species_id: 17, level: 64 }, // Scorchwing — Ember
+      { species_id: 25, level: 64 }, // Prismare — Tide/Light
+      { species_id: 7, level: 64 }, // Wicklord — Light/Ember
+      { species_id: 33, level: 65 }, // Embralux — Ember/Light
+      { species_id: 34, level: 66 }, // Tideveil — Tide/Light (ace: forty years under the sea)
+    ],
+    intro_ref: 'trainer.lowtinder_ottery.intro',
+    defeat_ref: 'trainer.lowtinder_ottery.defeat',
+    payout: 3960, // warden 60 × ace 66
+    music: 'battle-emberfall',
+    ai: 'smart',
+  },
   // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide's divers + the
   // Farlamp's second keeper (post-game, 61-66; route 16 / keeper 20 × ace).
   undertide_diver_ness: {
@@ -2078,6 +2161,13 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.startender_fenn.defeat': [
     { speaker: 'STAR-TENDER FENN', text: 'Kept. Every lamp of it, kept.' },
+  ],
+  // ---- Lane E (walkthrough/10 Part III): Gran Tallow on her reef ----
+  'trainer.lowtinder_ottery.intro': [
+    { speaker: 'GRAN TALLOW', text: 'Lampwarden of the low town, forty years on shift. Show me the light that woke the whole sky, duckling.' },
+  ],
+  'trainer.lowtinder_ottery.defeat': [
+    { speaker: 'GRAN TALLOW', text: 'Outshone! By a Wayfarer in a borrowed boat. Oh, I haven\'t had this much fun since the water came up.' },
   ],
 };
 

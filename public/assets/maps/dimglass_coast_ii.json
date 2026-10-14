@@ -1850,6 +1850,18 @@
       "solid": false
     },
     {
+      "id": "buoy_dimglass_deep",
+      "sprite": "markers_sea_buoy",
+      "at": {
+        "tx": 16,
+        "ty": 25
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
+    },
+    {
       "id": "wc_rowboat",
       "sprite": "pearlmoor_rowboat",
       "at": {
@@ -2611,6 +2623,18 @@
       "sprite": "npc_old_woman",
       "movement": "look_around",
       "dialogue_ref": "script.worry_gilly"
+    },
+    {
+      "id": "cache_dimglass_deep",
+      "at": {
+        "tx": 16,
+        "ty": 26
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_dimglass_deep",
+      "hidden_when_flag": "flag:picked_dimglass_deep"
     },
     {
       "id": "oldlight_hint_road",

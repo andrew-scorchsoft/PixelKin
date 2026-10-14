@@ -1250,6 +1250,37 @@ for _area, _rows_ in FARLAMP_TABLES.items():
             "rarity": "common" if _w >= 30 else "uncommon" if _w >= 15 else "rare",
             "min": _lo, "max": _hi})
 
+# ---- Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay -----------------
+# MIRROR of the built in-map zone tables (build_tinderwick_bay.py, build_lowtinder.py,
+# build_lowtinder_cellar.py, build_lowtinder_interiors.py — the maps are the truth):
+# (area, terrain, [(slug, weight, lo, hi)]). Embrift (#14) and Mossmantle (#39) are
+# wild here and nowhere else; the reef is the post-game deep (rowed, `deep`).
+LOWTINDER_TABLES = [
+    ("tinderwick_bay", "water", [("brinelet", 30, 17, 19), ("glintfin", 25, 17, 19), ("brineroll", 20, 18, 20),
+                                 ("shimmral", 15, 18, 20), ("tidmaren", 6, 19, 20)]),
+    ("tinderwick_bay", "tall_grass", [("tidmote", 40, 17, 19), ("brinelet", 30, 17, 18), ("lumpin", 20, 18, 19),
+                                      ("ashlette", 10, 18, 19)]),
+    ("tinderwick_bay", "deep", [("brinewrath", 28, 58, 61), ("prismare", 20, 58, 61), ("tidwraith", 20, 58, 61),
+                                ("fathomote", 15, 58, 60), ("hermiwick", 12, 58, 60), ("glostrael", 5, 60, 62)]),
+    ("lowtinder", "tall_grass", [("ashlette", 30, 18, 20), ("wickmoth", 25, 18, 20), ("tidmote", 20, 18, 20),
+                                 ("brinelet", 15, 18, 19), ("embrift", 7, 20, 21)]),
+    ("lowtinder", "water", [("brinelet", 35, 18, 20), ("tidmote", 30, 18, 20), ("glintfin", 25, 18, 20),
+                            ("embrift", 5, 20, 21)]),
+    ("lowtinder_cellar", "cave", [("tidmote", 30, 19, 21), ("ashlette", 25, 19, 22), ("scorchite", 20, 20, 22),
+                                  ("lumpin", 18, 20, 22), ("embrift", 5, 21, 22)]),
+    ("lowtinder_cellar_b2", "cave", [("ashlette", 25, 20, 23), ("scorchite", 25, 20, 23), ("lumpin", 20, 21, 23),
+                                     ("brineroll", 20, 21, 23), ("embrift", 8, 22, 23)]),
+    ("lowtinder_school_garden", "tall_grass", [("mossmantle", 40, 24, 27), ("wicklit", 35, 24, 26),
+                                               ("tidmote", 25, 24, 26)]),
+]
+for _area, _terrain, _rows_ in LOWTINDER_TABLES:
+    for _slug, _w, _lo, _hi in _rows_:
+        EXTRA_ENCOUNTERS.setdefault(_slug, []).append({
+            "area": _area, "terrain": _terrain,
+            "rarity": _mire_rarity(_w), "min": _lo, "max": _hi})
+CURATED_AREAS |= {"tinderwick_bay", "lowtinder", "lowtinder_cellar", "lowtinder_cellar_b2",
+                  "lowtinder_school_garden", "lowtinder_lamphouse", "lowtinder_school"}
+
 # Kin that are FIXED quest catches (a legendaryBattle set-piece), even though
 # tier/rarity alone wouldn't mark them scripted. #148 Lampling is C1
 # "Lampling's Trail" at the Vesper Crossroads — its old umbral_spire row was a

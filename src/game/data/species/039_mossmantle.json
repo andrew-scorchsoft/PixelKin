@@ -70,7 +70,15 @@
     "weight_kg": 14,
     "habitat": "east"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "lowtinder_school_garden",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 24,
+      "max": 27
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "Short bipedal figure draped in a thick cape of glowing green moss-fronds; a wooden face-plate with amber eyes showing through the moss hood; stubby arms ending in leaf-fans; a round body hidden under the living mantle; warm and eerie at 32px.",

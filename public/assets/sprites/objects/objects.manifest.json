@@ -1484,6 +1484,111 @@
       "tw": 2,
       "th": 2
     },
+    "lowtinder_bell_frame": {
+      "path": "assets/sprites/objects/lowtinder_bell_frame.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "lowtinder_bell_hung": {
+      "path": "assets/sprites/objects/lowtinder_bell_hung.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "lowtinder_bell_raised": {
+      "path": "assets/sprites/objects/lowtinder_bell_raised.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "lowtinder_bell_sunk": {
+      "path": "assets/sprites/objects/lowtinder_bell_sunk.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "lowtinder_bell_winch": {
+      "path": "assets/sprites/objects/lowtinder_bell_winch.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "lowtinder_belltower": {
+      "path": "assets/sprites/objects/lowtinder_belltower.webp",
+      "width": 32,
+      "height": 64,
+      "tw": 2,
+      "th": 4
+    },
+    "lowtinder_garden_door": {
+      "path": "assets/sprites/objects/lowtinder_garden_door.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "lowtinder_lamphouse": {
+      "path": "assets/sprites/objects/lowtinder_lamphouse.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "lowtinder_lampschool": {
+      "path": "assets/sprites/objects/lowtinder_lampschool.webp",
+      "width": 112,
+      "height": 64,
+      "tw": 7,
+      "th": 4
+    },
+    "lowtinder_old_cottage": {
+      "path": "assets/sprites/objects/lowtinder_old_cottage.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "lowtinder_roof_ridge": {
+      "path": "assets/sprites/objects/lowtinder_roof_ridge.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "lowtinder_roof_ridge_b": {
+      "path": "assets/sprites/objects/lowtinder_roof_ridge_b.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "lowtinder_sunk_cottage": {
+      "path": "assets/sprites/objects/lowtinder_sunk_cottage.webp",
+      "width": 80,
+      "height": 80,
+      "tw": 5,
+      "th": 5
+    },
+    "lowtinder_sunk_shop": {
+      "path": "assets/sprites/objects/lowtinder_sunk_shop.webp",
+      "width": 80,
+      "height": 64,
+      "tw": 5,
+      "th": 4
+    },
+    "lowtinder_tinder_light": {
+      "path": "assets/sprites/objects/lowtinder_tinder_light.webp",
+      "width": 64,
+      "height": 112,
+      "tw": 4,
+      "th": 7
+    },
     "markers_cave_mouth": {
       "path": "assets/sprites/objects/markers_cave_mouth.webp",
       "width": 16,

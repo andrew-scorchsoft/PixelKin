@@ -96,6 +96,9 @@ const TREND_SKIP_AREAS = new Set([
   'old_seams_i', 'old_seams_ii', 'old_seams_iii', // the Old Seams (D)
   // the Farlamp Isles (walkthrough/10 Part I, optional post-game — Lane C1)
   'farlamp_sound', 'farlamp_shelfwater', 'farlamp_fogwall', 'farlamp_gullwrack', 'farlamp_kelpcrown',
+  // Lane E (10 Part III): Lowtinder & Tinderwick Bay — optional, Tidecall-opened
+  // mid-game beds (17-27) + the post-game deep reef (58-62); off the journey.
+  'tinderwick_bay', 'lowtinder', 'lowtinder_cellar', 'lowtinder_cellar_b2', 'lowtinder_school_garden',
   'cinderwind_kiln', // Lane A: Kiln Gully — optional, behind the Updraft vent (post-Mira)
   // Lane C2 — the Farlamp Isles' Undertide (post-game, optional, lv 61-66)
   'undertide_i', 'undertide_ii', 'undertide_iii', 'undertide_iv',
@@ -238,7 +241,10 @@ const JOURNEY = [
       T('Osprey (plank-courier)', 'route', [K(17, 31), K(18, 60)]),
       T('Tarn (reed-lamplighter)', 'route', [K(17, 31), K(18, 59)]),
     ],
-    income: { quests: 200, valuables: 600, finds: 600 }, // + the fen west-bank wick-purse (300)
+    // Lane E (10 Part III): Lowtinder opens with Tidecall, right here — quests +=
+    // "The Town Bell"'s fair-chest (1,500, script.tinderwick_bell_ceremony);
+    // finds += the flooded-yard jar (400) + the lamp-school's fee-tin (600).
+    income: { quests: 1700, valuables: 600, finds: 1600 }, // + the fen west-bank wick-purse (300)
     spend: { tallow_balm: 3 },
     checkpoint: { name: 'Lowleaf arrival', rec: 18 },
   },
@@ -459,9 +465,13 @@ const JOURNEY = [
       T('Warden Mer (Round)', 'vigilant', [K(68, 135), K(68, 138), K(68, 85), K(69, 140), K(69, 145), K(69, 146)]),
       T('Star-tender Fenn', 'cor', [K(68, 9), K(68, 107), K(68, 125), K(69, 87), K(69, 131), K(70, 129)]),
     ],
+    // Lane E (10 Part III): + the deep backtrack's skiff-only buoy-caches — the
+    // Pearlmoor Starglass (1,500) + the Dimglass Moth-amber (600) = +2,100 valuables.
     // Lane C2: + the Undertide keeper's purse (2,000w, undertide_iv's west nook) —
     // the post-game's only modelled leg, so the isles' found money lands here.
-    income: { quests: 0, valuables: 9000, finds: 7000 }, // Starglass caches + the storm-tithe + the keeper's purse; payouts come from the trainer loop
+    // Lane E (10 Part III): + the deep backtrack's skiff-only buoy-caches — the
+    // Pearlmoor Starglass (1,500) + the Dimglass Moth-amber (600) = +2,100 valuables.
+    income: { quests: 0, valuables: 11100, finds: 7000 }, // Starglass caches + the storm-tithe + the keeper's purse; payouts come from the trainer loop
     spend: { bright_balm: 4 },
     checkpoint: { name: 'The Last Lesson (Fenn)', rec: 67, ace: 70 },
   },
@@ -582,6 +592,13 @@ const BUILT_PAYOUTS = {
   bram_fathom_rematch: ['vigilant', 72, 5760],
   mire_lampdiver: ['route', 42, 672], // the Glassmere
   mire_acolyte: ['route', 43, 688], // the drowned chapel
+  // Lane E (10 Part III): Lowtinder & Tinderwick Bay — optional, BUILT_PAYOUTS-only
+  bay_diver: ['route', 19, 304],
+  bay_nethand: ['route', 20, 320],
+  lt_mudlark: ['route', 20, 320],
+  lt_lampwright: ['keeper', 21, 420],
+  lt_cellar_keeper: ['keeper', 22, 440],
+  lowtinder_ottery: ['warden', 66, 3960], // Gran Tallow's reef bout (post-game, rematchable)
   // Lane C2 — the Farlamp Isles' Undertide (post-game)
   undertide_diver_ness: ['route', 62, 992],
   undertide_diver_corin: ['route', 63, 1008],

@@ -1666,6 +1666,61 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/interior-hush.mp3',
   },
+  // ---- Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay ----------------------
+  // The drowned old town under the bay — Tidecall-swum from home's south shore. The bay's
+  // outer reef is DEEP (deepwater_set; rowed in the Farlamp skiff). Both outdoor maps and
+  // the moss-garden play the drowned Tinderwick theme (`lowtinder`); the cellars play
+  // `bell-cellar`. The reef battle (Grandmother Tallow) uses her trainer music.
+  tinderwick_bay: {
+    json: 'assets/maps/tinderwick_bay.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      deepwater_set: 'assets/tilesets/deepwater_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/lowtinder.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/lowtinder-a.webp', 'assets/backgrounds/battle/pearlmoor-quay-a.webp'],
+  },
+  lowtinder: {
+    json: 'assets/maps/lowtinder.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/lowtinder.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/lowtinder-a.webp'],
+  },
+  lowtinder_lamphouse: {
+    json: 'assets/maps/lowtinder_lamphouse.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-hearth.mp3',
+  },
+  lowtinder_school: {
+    json: 'assets/maps/lowtinder_school.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-study.mp3',
+  },
+  lowtinder_school_garden: {
+    json: 'assets/maps/lowtinder_school_garden.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/lowtinder.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/bell-cellar-a.webp'],
+  },
+  lowtinder_cellar: {
+    json: 'assets/maps/lowtinder_cellar.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/bell-cellar.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/bell-cellar-a.webp'],
+  },
+  lowtinder_cellar_b2: {
+    json: 'assets/maps/lowtinder_cellar_b2.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'cave',
+    music: 'assets/audio/music/bell-cellar.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/bell-cellar-a.webp'],
+  },
 };
 
 /**

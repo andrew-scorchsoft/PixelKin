@@ -232,6 +232,14 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'driftholm_elder', region: 'south', optional: true }, // interior: Elder Nan Creel (the well-stair key)
     { map_id: 'driftholm_boathouse', region: 'south', optional: true }, // interior: the boathouse (a cache)
     { map_id: 'gullwrack_hut', region: 'south', optional: true }, // interior: the keeper's bothy (rest point)
+    // ---- Lane E (walkthrough/10 Part III): Lowtinder & Tinderwick Bay (optional, Tidecall) ----
+    { map_id: 'tinderwick_bay', region: 'south', optional: true, reward: 'the drowned roofs, two skerries, a Star-chart; the outer deep reef and the old Tinder Light (skiff)' },
+    { map_id: 'lowtinder', region: 'south', optional: true, reward: 'the drowned old town: Embrift (never wild before), Grandmother Tallow, the Bell Cellar' },
+    { map_id: 'lowtinder_lamphouse', region: 'south' }, // interior: Grandmother Ottery Tallow's dry upper floor (rest point)
+    { map_id: 'lowtinder_school', region: 'south' }, // interior: the old lamp-school
+    { map_id: 'lowtinder_school_garden', region: 'south', optional: true, reward: 'Mossmantle (never wild before) — Brightlight only' },
+    { map_id: 'lowtinder_cellar', region: 'south', optional: true, reward: 'the winch-key' },
+    { map_id: 'lowtinder_cellar_b2', region: 'south', optional: true, reward: 'the old town bell, a Lumen Drop, the climb up Tinderwick\'s well' },
 
     // Lane A — the Ashfall Shelf (walkthrough/10 Part II): the main-path leg Scarp -> Ashfall -> Galehigh
     { map_id: 'cinderwind_ashfall', region: 'north' }, // route: the slag-tip shelf, the haulers' camp (rest point)
@@ -482,6 +490,17 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'driftholm', to_map: 'driftholm_elder', via_warp: 'enter_elder', bidirectional: true },
     { from_map: 'driftholm', to_map: 'driftholm_boathouse', via_warp: 'enter_boathouse_2', bidirectional: true },
     { from_map: 'farlamp_gullwrack', to_map: 'gullwrack_hut', via_warp: 'to_hut', bidirectional: true },
+    // ---- Lane E (walkthrough/10 Part III): Tinderwick Bay + Lowtinder, the town under the bay
+    // home's south shore swims off its east columns into the bay (Tidecall); the bay's east
+    // edge swims into Lowtinder; the Bell Cellar is two floors under the lamp-house. The
+    // cellar's far end climbs Tinderwick's well (a one-way `travel`, not an edge).
+    { from_map: 'tinderwick', to_map: 'tinderwick_bay', via_warp: 'to_bay_21', requires_ability: 'tidecall', bidirectional: true },
+    { from_map: 'tinderwick_bay', to_map: 'lowtinder', via_warp: 'to_lowtinder_6', requires_ability: 'tidecall', bidirectional: true },
+    { from_map: 'lowtinder', to_map: 'lowtinder_lamphouse', via_warp: 'to_lamphouse', bidirectional: true },
+    { from_map: 'lowtinder', to_map: 'lowtinder_school', via_warp: 'to_school', bidirectional: true },
+    { from_map: 'lowtinder_school', to_map: 'lowtinder_school_garden', via_warp: 'to_garden', requires_flag: 'flag:lamplight_brightlight', bidirectional: true },
+    { from_map: 'lowtinder', to_map: 'lowtinder_cellar', via_warp: 'to_cellar', bidirectional: true },
+    { from_map: 'lowtinder_cellar', to_map: 'lowtinder_cellar_b2', via_warp: 'ladder_down', bidirectional: true },
 
     // Lane A — the Ashfall Shelf (walkthrough/10 Part II)
     { from_map: 'cinderwind_scarp', to_map: 'cinderwind_ashfall', via_warp: 'to_ashfall', bidirectional: true },

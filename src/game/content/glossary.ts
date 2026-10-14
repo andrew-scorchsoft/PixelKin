@@ -459,6 +459,13 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'The island town of lamp-keepers and kelp-farmers beyond the Fogwall. For eleven winters it kept small lamps alone, waiting for a boat.',
     unlock_flag: 'flag:q_isles_driftholm',
   },
+  // Lane E (walkthrough/10 Part III) — the town under the bay
+  {
+    id: 'lowtinder',
+    term: 'Lowtinder',
+    desc: 'Old Tinderwick, the shore town that went under the bay the winter the water rose, forty years ago. The town moved up the bluff. Gran Tallow, its last Lampwarden, did not — she says it is not drowned, only having a lie-in.',
+    unlock_flag: 'flag:q_lowtinder',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */

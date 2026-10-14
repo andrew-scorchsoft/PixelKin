@@ -1,7 +1,7 @@
 {
   "box": {
     "width": 220,
-    "height": 465
+    "height": 490
   },
   "nodes": [
     {
@@ -83,6 +83,22 @@
       "kind": "landmark",
       "region": "south",
       "name": "Wayward Rise"
+    },
+    {
+      "id": "tinderwick_bay",
+      "x": 86,
+      "y": 482,
+      "kind": "route",
+      "region": "south",
+      "name": "Tinderwick Bay"
+    },
+    {
+      "id": "lowtinder",
+      "x": 112,
+      "y": 482,
+      "kind": "town",
+      "region": "south",
+      "name": "Lowtinder"
     },
     {
       "id": "dawnstead",
@@ -626,6 +642,16 @@
       "kind": "gate"
     },
     {
+      "a": "tinderwick",
+      "b": "tinderwick_bay",
+      "kind": "gate"
+    },
+    {
+      "a": "tinderwick_bay",
+      "b": "lowtinder",
+      "kind": "gate"
+    },
+    {
       "a": "pearlmoor_quay",
       "b": "pearlmoor_breakwater",
       "kind": "gate"
@@ -1077,6 +1103,12 @@
     "lowleaf_bower": "lowleaf_hollow",
     "lowleaf_hollow": "lowleaf_hollow",
     "lowleaf_lumenary": "lowleaf_hollow",
+    "lowtinder": "lowtinder",
+    "lowtinder_cellar": "lowtinder",
+    "lowtinder_cellar_b2": "lowtinder",
+    "lowtinder_lamphouse": "lowtinder",
+    "lowtinder_school": "lowtinder",
+    "lowtinder_school_garden": "lowtinder",
     "mirelight_chapel": "mirelight_chapel",
     "mirelight_glassmere": "mirelight_glassmere",
     "mirelight_landing": "mirelight_landing",
@@ -1135,6 +1167,7 @@
     "tideglass_cavern": "tideglass_cavern",
     "tideglass_gallery": "tideglass_cavern",
     "tinderwick": "tinderwick",
+    "tinderwick_bay": "tinderwick_bay",
     "tinderwick_beacon_i": "tinderwick",
     "tinderwick_beacon_ii": "tinderwick",
     "tinderwick_beacon_top": "tinderwick",

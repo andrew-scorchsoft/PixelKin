@@ -341,5 +341,14 @@
    "assets/trainers/player_indi.png"
   ],
   "done": true
+ },
+ "ottery": {
+  "kind": "unique",
+  "subject": "Grandmother Ottery Tallow, the old Lampwarden of the drowned town: a small round very old woman with a white bun and lamp-wick hairpin, round spectacles, a long ember-orange knitted shawl over a navy dress, green wellington boots; she holds up a little brass lamp-in-a-jar with a warm flame in one hand and plants the other fist on her hip, grinning, feisty and delighted, ready for a bout",
+  "references": [
+   "assets/trainers/ottery.png",
+   "assets/trainers/battle/brisa.png"
+  ],
+  "done": true
  }
 }

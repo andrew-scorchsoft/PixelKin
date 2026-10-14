@@ -1,0 +1,43 @@
+{
+  "title": "The Bell Cellar",
+  "_note": "Sparse cave cue for the Bell Cellar (the deep-cave rule: bare 4 voices, rendered in the snes register for its slow tempo and reverb). A low wave drone on A, a slow tolling bell that spells the first four notes of the Lantern Lullaby (G-C-D-E, here E-A-B-C in A minor) one note every two bars like a bell under water, single triangle drips, and a sparse pulse12 echo of the lullaby's turn. 66 BPM, 16-bar loop.",
+  "era": "snes",
+  "tempo": 66,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "A minor",
+  "tracks": [
+    {
+      "name": "drone",
+      "voice": "wave",
+      "octave": 2,
+      "gain": 0.55,
+      "notes": "A2w | A2w | F2w | F2w | A2w | A2w | E2w | E2w | A2w | A2w | F2w | F2w | D2w | D2w | E2w | E2w"
+    },
+    {
+      "name": "toll",
+      "voice": "pulse50",
+      "octave": 4,
+      "gain": 0.5,
+      "notes": "E4h rh | rw | A4h rh | rw | B4h rh | rw | C5h rh | rw | E4h rh | rw | A4h rh | rw | C5h rh | rw | B4h. rq | rw"
+    },
+    {
+      "name": "drips",
+      "voice": "triangle",
+      "octave": 5,
+      "gain": 0.35,
+      "notes": "rh re E6e rq | rw | rq A5e re rh | rw | rh rq C6e re | rw | re B5e rq rh | rw | rh re E6e rq | rw | rq G5e re rh | rw | rh rq A5e re | rw | re E5e rq rh | rw"
+    },
+    {
+      "name": "echo",
+      "voice": "pulse12",
+      "octave": 4,
+      "gain": 0.3,
+      "notes": "rw | rh A4q C5q | rw | rh B4q A4q | rw | rh G4q A4q | rw | rw | rw | rh A4q C5q | rw | rh D5q C5q | rw | rh B4q G4q | rw | rw"
+    }
+  ]
+}

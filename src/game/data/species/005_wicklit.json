@@ -101,6 +101,13 @@
       "rarity": "uncommon",
       "min": 56,
       "max": 60
+    },
+    {
+      "area": "lowtinder_school_garden",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 24,
+      "max": 26
     }
   ],
   "scripted": false,

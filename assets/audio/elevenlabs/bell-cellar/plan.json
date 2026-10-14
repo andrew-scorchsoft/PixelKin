@@ -1,0 +1,198 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a lone drip echoes in the dark, then the low drone breathes in beneath it}",
+   "duration_ms": 5333,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM, very slow and spacious",
+    "A minor",
+    "a low hollow wavetable drone",
+    "a deep bronze bell tolling a slow four-note phrase",
+    "sparse high triangle plinks like water dripping into still pools",
+    "a soft pulse-wave echo answering from far away",
+    "flooded stone cellar in the dark, ancient and quiet",
+    "echoing cave reverb",
+    "strong slow melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "a lone instrument breathing in",
+    "flooded cellar"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "busy drums",
+    "horror",
+    "jump scare",
+    "epic orchestral"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "TOREmIgiwF3GKpN7UkLA",
+    "range": {
+     "start_ms": 10668,
+     "end_ms": 40668
+    }
+   },
+   "condition_strength": "low"
+  },
+  {
+   "text": "[Main Theme]\n{the bell tolls a slow four-note phrase, one note every two beats, over the low drone; drips fall in the silences}",
+   "duration_ms": 21333,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM, very slow and spacious",
+    "A minor",
+    "a low hollow wavetable drone",
+    "a deep bronze bell tolling a slow four-note phrase",
+    "sparse high triangle plinks like water dripping into still pools",
+    "a soft pulse-wave echo answering from far away",
+    "flooded stone cellar in the dark, ancient and quiet",
+    "echoing cave reverb",
+    "strong slow melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme",
+    "memorable hook",
+    "sparse and echoing"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "busy drums",
+    "horror",
+    "jump scare",
+    "epic orchestral"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the toll again, now answered by a soft far-off pulse-wave echo of the phrase, the drone a little warmer}",
+   "duration_ms": 21333,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM, very slow and spacious",
+    "A minor",
+    "a low hollow wavetable drone",
+    "a deep bronze bell tolling a slow four-note phrase",
+    "sparse high triangle plinks like water dripping into still pools",
+    "a soft pulse-wave echo answering from far away",
+    "flooded stone cellar in the dark, ancient and quiet",
+    "echoing cave reverb",
+    "strong slow melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "call and response",
+    "slightly fuller"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "busy drums",
+    "horror",
+    "jump scare",
+    "epic orchestral"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: the drone sinks lower, a slow rising figure climbs as if up a long shaft toward faint light, then settles}",
+   "duration_ms": 16000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM, very slow and spacious",
+    "A minor",
+    "a low hollow wavetable drone",
+    "a deep bronze bell tolling a slow four-note phrase",
+    "sparse high triangle plinks like water dripping into still pools",
+    "a soft pulse-wave echo answering from far away",
+    "flooded stone cellar in the dark, ancient and quiet",
+    "echoing cave reverb",
+    "strong slow melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "rising toward light",
+    "contrasting section"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "busy drums",
+    "horror",
+    "jump scare",
+    "epic orchestral"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the bell's four-note toll returns over the drone and drips; the last bar leads straight back into the main theme}",
+   "duration_ms": 21333,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "90 BPM, very slow and spacious",
+    "A minor",
+    "a low hollow wavetable drone",
+    "a deep bronze bell tolling a slow four-note phrase",
+    "sparse high triangle plinks like water dripping into still pools",
+    "a soft pulse-wave echo answering from far away",
+    "flooded stone cellar in the dark, ancient and quiet",
+    "echoing cave reverb",
+    "strong slow melody",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "cheerful",
+    "upbeat",
+    "busy drums",
+    "horror",
+    "jump scare",
+    "epic orchestral"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

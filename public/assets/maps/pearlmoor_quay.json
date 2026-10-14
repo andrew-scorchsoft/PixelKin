@@ -2277,6 +2277,18 @@
       "bob": false
     },
     {
+      "id": "buoy_pearlmoor_deep",
+      "sprite": "markers_sea_buoy",
+      "at": {
+        "tx": 1,
+        "ty": 21
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
+    },
+    {
       "id": "wc_fishstall",
       "sprite": "pearlmoor_fish_stall",
       "at": {
@@ -3312,6 +3324,18 @@
       "sprite": "andrew_quay",
       "movement": "look_around",
       "dialogue_ref": "script.andrew_road"
+    },
+    {
+      "id": "cache_pearlmoor_deep",
+      "at": {
+        "tx": 1,
+        "ty": 22
+      },
+      "facing": "down",
+      "sprite": "item_cache",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_pearlmoor_deep",
+      "hidden_when_flag": "flag:picked_pearlmoor_deep"
     },
     {
       "id": "oldlight_hint_beach",

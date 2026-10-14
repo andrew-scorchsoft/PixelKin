@@ -530,6 +530,29 @@ for _n, (_mid, _x, _y) in _DRIFTLETTERS.items():
          "sprite": "item_cache", "movement": "static",
          "dialogue_ref": f"script.pickup_driftletter_{_n}",
          "hidden_when_flag": f"flag:driftletter_{_n}"})
+# Lane E (walkthrough/10 Part III — the DEEP BACKTRACK): skiff-only buoy-caches on
+# existing deep water. Each sits on a deep tile whose every neighbour is deep (or
+# the map edge), so no Tidecall swimmer can face it — only the Farlamp skiff
+# (`deepdive`) rows up to it. A lit channel-buoy (non-solid marker) hangs one
+# tile north so it is SEEN from the shallows long before it's reachable. The
+# cache stands on water by design: listed in audit_npc_footing.ALLOW. Contents
+# are mirrored in tools/balance/progression.mjs (the Vigils leg's valuables).
+# (The fifth, Tinderwick Bay's reef skerry, lives in build_tinderwick_bay.py.)
+_DEEP_CACHES = {
+    "gullcry_rock": ("gullcry_deep", 15, 6),
+    "pearlmoor_quay": ("pearlmoor_deep", 1, 22),
+    "dimglass_coast_ii": ("dimglass_deep", 16, 26),
+    "vigil_hearthfall": ("hearthfall_deep", 22, 12),
+}
+for _mid, (_cid, _x, _y) in _DEEP_CACHES.items():
+    _spec = PLACEMENTS.setdefault(_mid, {})
+    _spec.setdefault("objects", []).append(
+        {"id": f"buoy_{_cid}", "sprite": "markers_sea_buoy", "at": {"tx": _x, "ty": _y - 1},
+         "w": 1, "h": 1, "solid": False, "bob": False})
+    _spec.setdefault("npcs", []).append(
+        {"id": f"cache_{_cid}", "at": {"tx": _x, "ty": _y}, "facing": "down", "sprite": "item_cache",
+         "movement": "static", "dialogue_ref": f"script.pickup_{_cid}",
+         "hidden_when_flag": f"flag:picked_{_cid}"})
 # ---- Lane A (walkthrough/10 Part II, 2026-10): the Ashfall Shelf + Kiln Gully day-forms.
 # After the dawn the ash-grass greens at the tips: Stonebark's line wakes as Rootwarden,
 # and the storm-birds come down off Windward. Mirrored in build_species.py
