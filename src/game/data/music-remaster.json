@@ -67,6 +67,18 @@
    "where": "Tideglass Cavern & Gallery, the Sounding Cave on the coast road, and the Lanternway Under-Lane",
    "mood": "Buoy-light drift — a becalmed, glittering sea-cave; the coast road's tune reduced to a glint over dripping water."
   },
+  "driftholm": {
+   "loop_start": 10.733,
+   "duration": 105.168,
+   "where": "Driftholm, the island town of the Farlamp Isles, cut off in the long dark for eleven winters",
+   "mood": "A sea-town hymn in the long dark: warm but lonely, small lamps kept alone in the windows."
+  },
+  "driftholm-dawn": {
+   "loop_start": 10.1,
+   "duration": 103.537,
+   "where": "Driftholm after the isles' dawn: the fog lifted, boats out, the town awake in daylight",
+   "mood": "The same island hymn turned major and full: a town that has its morning back."
+  },
   "duskapple-orchard": {
    "loop_start": 6.989,
    "duration": 96.34,
@@ -78,6 +90,18 @@
    "duration": 104.516,
    "where": "The ending credits roll",
    "mood": "The Road Remembered: a warm medley walking back down the whole journey in memory, every road leading home to the hometown theme in daylight."
+  },
+  "farlamp-relit": {
+   "loop_start": 10.943,
+   "duration": 103.916,
+   "where": "The Drowned Lamp, the moment the Farlamp burns again and the Farlamp Isles get their own dawn",
+   "mood": "The relight: the isles' hymn heard in the dark's minor, then blooming into warm major as the fog lifts."
+  },
+  "farlamp-sound": {
+   "loop_start": 7.293,
+   "duration": 101.729,
+   "where": "Farlamp Sound, the Shelfwater and the Fogwall: rowing a small lamp-boat over the open deep sea towards a far blinking lamp",
+   "mood": "Rowing on a long swell in the fog: the isles' hymn as a lone line over the sea."
   },
   "galehigh-terraces-a": {
    "loop_start": 7.755,
@@ -402,6 +426,12 @@
    "duration": 73.796,
    "where": "Umbral Spire summit, the Keystar relight cutscene",
    "mood": "First True Dawn: the Keystar catches and the whole sky lights; the hometown motif stated whole in radiant major, triumphant with a tear in it."
+  },
+  "undertide": {
+   "loop_start": 7.407,
+   "duration": 96.522,
+   "where": "The Undertide, the sea-caves under the Farlamp Isles: dark tidal channels, dripping water, tide-bells ringing far away",
+   "mood": "A sea-cave in the deep: drips, distant bells, the isles' hymn broken into low fragments."
   },
   "vesper-crossroads-a": {
    "loop_start": 4.174,

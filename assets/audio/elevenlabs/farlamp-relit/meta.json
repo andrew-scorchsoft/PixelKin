@@ -1,0 +1,17 @@
+{
+ "id": "farlamp-relit",
+ "kind": "loop",
+ "where": "The Drowned Lamp, the moment the Farlamp burns again and the Farlamp Isles get their own dawn",
+ "mood": "The relight: the isles' hymn heard in the dark's minor, then blooming into warm major as the fog lifts.",
+ "duration": 103.916,
+ "loop_start": 10.943,
+ "seam": 0.161,
+ "bpm_est": 83.4,
+ "song_id": "NnNYCVgRHpb5J6pFm03X",
+ "raw_ms": 97500,
+ "motif": "high",
+ "lufs": -15.5,
+ "edits": [
+  "trimmed 0.690s of head"
+ ]
+}

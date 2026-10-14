@@ -1,0 +1,64 @@
+{
+  "title": "PixelKin - Driftholm (SNES register)",
+  "_note": "Driftholm, the island town of the Farlamp Isles (10-the-farlamp-isles.md), in the long dark: eleven winters cut off by the Fogwall, keeping small lamps alone. THE ANCHOR of the Farlamp family: the isles' sea-hymn played straight - a minor-mode hymn, warm but lonely. 84 BPM, 3/4 (the Tide lilt), D minor with a harmonic-minor C# leading home. Motif = bars 1-2: the rope-pull (D5 up, A4 down) then the three-step haul D-E-F. Form A (16) B (8, relative F major: looking out to sea) A2 (the second line again, 8) = 32 bars, 68.6 s; the last bar's A4 pickup leads back to bar 1's D. SNES enrichment: pulse25 lead, strings pad (real chords), pluck harp quarter-arps, sparse bell = lamps in windows at phrase ends, flute answers in B only, tri_bass root (+fifth), a soft noise breath of surf every 4 bars. No drums - a hymn. Original (VISION.md).",
+  "era": "snes",
+  "tempo": 84,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.9,
+      "notes": "D5h A4q | D5q E5q F5q | E5h D5q | C5h. | F5h E5q | D5q C5q A4q | Bb4q A4q G4q | A4h. | D5h A4q | D5q E5q F5q | G5h F5q | E5h. | F5q E5q D5q | C5q A4q C5q | D5q. E5e C#5q | D5h A4q | C5h F5q | A5h G5q | F5q E5q D5q | C5h. | A4h D5q | F5h E5q | D5q C5q Bb4q | A4h. | D5h A4q | D5q E5q F5q | G5h F5q | E5h. | F5q E5q D5q | C5q A4q C5q | D5q. E5e C#5q | D5h A4q"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.26,
+      "notes": "D3+F3+A3h.@56 | Bb2+D3+F3h.@56 | C3+E3+G3h.@56 | F3+A3+C4h.@56 | Bb2+D3+F3h.@56 | F3+A3+C4h.@56 | G3+Bb3+D4h.@56 | A2+C#3+E3h.@56 | D3+F3+A3h.@56 | Bb2+D3+F3h.@56 | G3+Bb3+D4h.@56 | C3+E3+G3h.@56 | D3+F3+A3h.@56 | F3+A3+C4h.@56 | A2+C#3+E3h.@56 | D3+F3+A3h.@56 | F3+A3+C4h.@64 | F3+A3+C4h.@64 | Bb2+D3+F3h.@64 | C3+E3+G3h.@64 | D3+F3+A3h.@64 | A2+C3+E3h.@64 | G3+Bb3+D4h.@64 | A2+C#3+E3h.@64 | D3+F3+A3h.@64 | Bb2+D3+F3h.@64 | G3+Bb3+D4h.@64 | C3+E3+G3h.@64 | D3+F3+A3h.@64 | F3+A3+C4h.@64 | A2+C#3+E3h.@64 | D3+F3+A3h.@64"
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.32,
+      "notes": "D3q A3q F3q | Bb3q F4q D4q | C4q G4q E4q | F3q C4q A3q | Bb3q F4q D4q | F3q C4q A3q | G3q D4q Bb3q | A3q E4q C#4q | D3q A3q F3q | Bb3q F4q D4q | G3q D4q Bb3q | C4q G4q E4q | D3q A3q F3q | F3q C4q A3q | A3q E4q C#4q | D3q A3q F3q | F3q C4q A3q | F3q C4q A3q | Bb3q F4q D4q | C4q G4q E4q | D3q A3q F3q | A3q E4q C4q | G3q D4q Bb3q | A3q E4q C#4q | D3q A3q F3q | Bb3q F4q D4q | G3q D4q Bb3q | C4q G4q E4q | D3q A3q F3q | F3q C4q A3q | A3q E4q C#4q | D3q A3q F3q"
+    },
+    {
+      "name": "flute",
+      "voice": "flute",
+      "octave": 5,
+      "gain": 0.4,
+      "notes": "rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rq A5q. G5e | rh. | rq G5q. E5e | rh. | rq A5h | rq G5q F5q | E5h. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh."
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.3,
+      "notes": "rh. | rh. | rh. | rh C6e@58 F5e@40 | rh. | rh. | rh. | rh E6e@58 A5e@40 | rh. | rh. | rh. | rh G6e@58 C6e@40 | rh. | rh. | rh. | rh A5e@58 D5e@40 | rh. | rh. | rh. | rh G6e@58 C6e@40 | rh. | rh. | rh. | rh E6e@58 A5e@40 | rh. | rh. | rh. | rh G6e@58 C6e@40 | rh. | rh. | rh. | rh A5e@58 D5e@40"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.8,
+      "notes": "D2h. | Bb1h F2q | C2h. | F2h C3q | Bb1h. | F2h C3q | G2h. | A2h E3q | D2h. | Bb1h F2q | G2h. | C2h G2q | D2h. | F2h C3q | A2h. | D2h A2q | F2h. | F2h C3q | Bb1h. | C2h G2q | D2h. | A2h E3q | G2h. | A2h E3q | D2h. | Bb1h F2q | G2h. | C2h G2q | D2h. | F2h C3q | A2h. | D2h A2q"
+    },
+    {
+      "name": "surf",
+      "voice": "noise",
+      "octave": 4,
+      "gain": 0.1,
+      "notes": "rh. | rq G4~C4h@50 | rh. | rh. | rh. | rq G4~C4h@50 | rh. | rh. | rh. | rq G4~C4h@50 | rh. | rh. | rh. | rq G4~C4h@50 | rh. | rh. | rh. | rq G4~C4h@50 | rh. | rh. | rh. | rq G4~C4h@50 | rh. | rh. | rh. | rq G4~C4h@50 | rh. | rh. | rh. | rq G4~C4h@50 | rh. | rh."
+    }
+  ]
+}

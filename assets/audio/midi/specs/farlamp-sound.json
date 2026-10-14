@@ -1,0 +1,57 @@
+{
+  "title": "PixelKin - Farlamp Sound (SNES register)",
+  "_note": "Farlamp Sound / the Shelfwater / the Fogwall: rowing the Farlamp skiff over the open deep on a long swell, the far lamp blinking in the fog. The Farlamp family's sea rung: the isles' hymn as a LONE line over the sea, in D Dorian (B natural - the shanty colour), with four bars of open sea between its two lines. 80 BPM, 3/4. The bass rocks like oars (dotted root, fifth, root); the noise surf rises and falls on every two bars (the swell); the bell is the far lamp blinking - one A5 every two bars, never moving; a very soft strings bed; the flute takes the bridge line an octave down, as if heard from another boat. 32 bars, 72 s. Loops on the sea bars (no cadence to trip on). Original (VISION.md).",
+  "era": "snes",
+  "tempo": 80,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D Dorian",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.85,
+      "notes": "D5h A4q | D5q E5q F5q | E5h D5q | C5h. | F5h E5q | D5q C5q A4q | B4q A4q G4q | A4h. | rh. | rh. | rh. | rh. | D5h A4q | D5q E5q F5q | G5h F5q | E5h. | F5q E5q D5q | C5q A4q C5q | D5q. E5e C#5q | D5h A4q | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh."
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.2,
+      "notes": "D3+F3+A3h.@50 | D3+F3+A3h.@50 | C3+E3+G3h.@50 | F3+A3+C4h.@50 | F3+A3+C4h.@50 | F3+A3+C4h.@50 | G3+B3+D4h.@50 | A2+C3+E3h.@50 | D3+F3+A3h.@50 | C3+E3+G3h.@50 | D3+F3+A3h.@50 | A2+C3+E3h.@50 | D3+F3+A3h.@50 | D3+F3+A3h.@50 | G3+B3+D4h.@50 | C3+E3+G3h.@50 | D3+F3+A3h.@50 | A2+C3+E3h.@50 | A2+C#3+E3h.@50 | D3+F3+A3h.@50 | F3+A3+C4h.@50 | C3+E3+G3h.@50 | G3+B3+D4h.@50 | D3+F3+A3h.@50 | Bb2+D3+F3h.@50 | F3+A3+C4h.@50 | G3+B3+D4h.@50 | A2+C#3+E3h.@50 | D3+F3+A3h.@50 | C3+E3+G3h.@50 | D3+F3+A3h.@50 | A2+C#3+E3h.@50"
+    },
+    {
+      "name": "flute",
+      "voice": "flute",
+      "octave": 5,
+      "gain": 0.38,
+      "notes": "rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rq A4q. G4e | rh. | rq E5h | rh. | rh. | rh. | rh. | rh. | rh. | rh. | rh. | C5h F5q | A5h G5q | F5q E5q D5q | C5h. | A4h D5q | F5h E5q | D5q C5q B4q | A4h. | rh. | rh. | rh. | rh."
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.26,
+      "notes": "A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh. | A5e@62 re rh | rh."
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.8,
+      "notes": "D2q.@84 A2e@56 D2q@64 | D2q.@84 A2e@56 D2q@64 | C2q.@84 G2e@56 C2q@64 | F2q.@84 C3e@56 F2q@64 | F2q.@84 C3e@56 F2q@64 | F2q.@84 C3e@56 F2q@64 | G2q.@84 D3e@56 G2q@64 | A2q.@84 E3e@56 A2q@64 | D2q.@84 A2e@56 D2q@64 | C2q.@84 G2e@56 C2q@64 | D2q.@84 A2e@56 D2q@64 | A2q.@84 E3e@56 A2q@64 | D2q.@84 A2e@56 D2q@64 | D2q.@84 A2e@56 D2q@64 | G2q.@84 D3e@56 G2q@64 | C2q.@84 G2e@56 C2q@64 | D2q.@84 A2e@56 D2q@64 | A2q.@84 E3e@56 A2q@64 | A2q.@84 E3e@56 A2q@64 | D2q.@84 A2e@56 D2q@64 | F2q.@84 C3e@56 F2q@64 | C2q.@84 G2e@56 C2q@64 | G2q.@84 D3e@56 G2q@64 | D2q.@84 A2e@56 D2q@64 | Bb1q.@84 F2e@56 Bb1q@64 | F2q.@84 C3e@56 F2q@64 | G2q.@84 D3e@56 G2q@64 | A2q.@84 E3e@56 A2q@64 | D2q.@84 A2e@56 D2q@64 | C2q.@84 G2e@56 C2q@64 | D2q.@84 A2e@56 D2q@64 | A2q.@84 E3e@56 A2q@64"
+    },
+    {
+      "name": "surf",
+      "voice": "noise",
+      "octave": 4,
+      "gain": 0.14,
+      "notes": "C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40 | C4~G4h.@46 | G4~C4h.@40"
+    }
+  ]
+}

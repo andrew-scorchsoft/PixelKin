@@ -1,0 +1,56 @@
+{
+  "title": "PixelKin - The Farlamp Relit (body, major)",
+  "_note": "Looping body of farlamp-relit: the isles' dawn. The hymn blooms in D major (the same tune as driftholm, turned major): first line + second line on the warm lead over swelling strings and harp; then the second line again as a festival swell with the bell singing the tune an octave up and a gentle kit; a tender bridge (the relative turn); the second line returns in full and its A pickup leads back round. 84 BPM, 3/4, 40 bars, 85.7 s. The Gleam cadence (minor -> major) without a Gleam. Original (VISION.md).",
+  "era": "snes",
+  "tempo": 84,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.9,
+      "notes": "D5h A4q | D5q E5q F#5q | E5h D5q | C#5h. | F#5h E5q | D5q C#5q A4q | B4q A4q G4q | A4h. | D5h A4q | D5q E5q F#5q | G5h F#5q | E5h. | F#5q E5q D5q | C#5q A4q C#5q | D5q. E5e C#5q | D5h A4q | D5h A4q | D5q E5q F#5q | G5h F#5q | E5h. | F#5q E5q D5q | C#5q A4q C#5q | D5q. E5e C#5q | D5h A4q | C#5h F#5q | A5h G5q | F#5q E5q D5q | C#5h. | A4h D5q | F#5h E5q | D5q C#5q B4q | A4h. | D5h A4q | D5q E5q F#5q | G5h F#5q | E5h. | F#5q E5q D5q | C#5q A4q C#5q | D5q. E5e C#5q | D5h A4q"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.3,
+      "notes": "D3+F#3+A3h.@72 | G3+B3+D4h.@72 | A2+C#3+E3h.@72 | F#3+A3+C#4h.@72 | B2+D3+F#3h.@72 | F#3+A3+C#4h.@72 | G3+B3+D4h.@72 | A2+C#3+E3h.@72 | D3+F#3+A3h.@72 | G3+B3+D4h.@72 | E3+G3+B3h.@72 | A2+C#3+E3h.@72 | D3+F#3+A3h.@72 | F#3+A3+C#4h.@72 | A2+C#3+E3h.@72 | D3+F#3+A3h.@72 | D3+F#3+A3h.@72 | G3+B3+D4h.@72 | E3+G3+B3h.@72 | A2+C#3+E3h.@72 | D3+F#3+A3h.@72 | F#3+A3+C#4h.@72 | A2+C#3+E3h.@72 | D3+F#3+A3h.@72 | F#3+A3+C#4h.@72 | D3+F#3+A3h.@72 | B2+D3+F#3h.@72 | A2+C#3+E3h.@72 | D3+F#3+A3h.@72 | B2+D3+F#3h.@72 | G3+B3+D4h.@72 | A2+C#3+E3h.@72 | D3+F#3+A3h.@72 | G3+B3+D4h.@72 | E3+G3+B3h.@72 | A2+C#3+E3h.@72 | D3+F#3+A3h.@72 | F#3+A3+C#4h.@72 | A2+C#3+E3h.@72 | D3+F#3+A3h.@72"
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.3,
+      "notes": "D3e A3e F#3e D4e F#3e A3e | G3e D4e B3e G4e B3e D4e | A3e E4e C#4e A4e C#4e E4e | F#3e C#4e A3e F#4e A3e C#4e | B3e F#4e D4e B4e D4e F#4e | F#3e C#4e A3e F#4e A3e C#4e | G3e D4e B3e G4e B3e D4e | A3e E4e C#4e A4e C#4e E4e | D3e A3e F#3e D4e F#3e A3e | G3e D4e B3e G4e B3e D4e | E3e B3e G3e E4e G3e B3e | A3e E4e C#4e A4e C#4e E4e | D3e A3e F#3e D4e F#3e A3e | F#3e C#4e A3e F#4e A3e C#4e | A3e E4e C#4e A4e C#4e E4e | D3e A3e F#3e D4e F#3e A3e | D3e A3e F#3e D4e F#3e A3e | G3e D4e B3e G4e B3e D4e | E3e B3e G3e E4e G3e B3e | A3e E4e C#4e A4e C#4e E4e | D3e A3e F#3e D4e F#3e A3e | F#3e C#4e A3e F#4e A3e C#4e | A3e E4e C#4e A4e C#4e E4e | D3e A3e F#3e D4e F#3e A3e | F#3e C#4e A3e F#4e A3e C#4e | D3e A3e F#3e D4e F#3e A3e | B3e F#4e D4e B4e D4e F#4e | A3e E4e C#4e A4e C#4e E4e | D3e A3e F#3e D4e F#3e A3e | B3e F#4e D4e B4e D4e F#4e | G3e D4e B3e G4e B3e D4e | A3e E4e C#4e A4e C#4e E4e | D3e A3e F#3e D4e F#3e A3e | G3e D4e B3e G4e B3e D4e | E3e B3e G3e E4e G3e B3e | A3e E4e C#4e A4e C#4e E4e | D3e A3e F#3e D4e F#3e A3e | F#3e C#4e A3e F#4e A3e C#4e | A3e E4e C#4e A4e C#4e E4e | D3e A3e F#3e D4e F#3e A3e"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 6,
+      "gain": 0.3,
+      "notes": "rh. | rh. | rh. | rq C#6q@60 F#6q@50 | rh. | rh. | rh. | rq E6q@60 A6q@50 | rh. | rh. | rh. | rq E6q@60 A6q@50 | rh. | rh. | rh. | rq A5q@60 D6q@50 | D6h A5q | D6q E6q F#6q | G6h F#6q | E6h. | F#6q E6q D6q | C#6q A5q C#6q | D6q. E6e C#6q | D6h A5q | rh. | rh. | rh. | rq E6q@60 A6q@50 | rh. | rh. | rh. | rq E6q@60 A6q@50 | rh. | rh. | rh. | rq E6q@60 A6q@50 | rh. | rh. | rh. | rq A5q@60 D6q@50"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.8,
+      "notes": "D2h A2q | G2h D3q | A2h E3q | F#2h C#3q | B1h F#2q | F#2h C#3q | G2h D3q | A2h E3q | D2h A2q | G2h D3q | E2h B2q | A2h E3q | D2h A2q | F#2h C#3q | A2h E3q | D2h A2q | D2h A2q | G2h D3q | E2h B2q | A2h E3q | D2h A2q | F#2h C#3q | A2h E3q | D2h A2q | F#2h C#3q | D2h A2q | B1h F#2q | A2h E3q | D2h A2q | B1h F#2q | G2h D3q | A2h E3q | D2h A2q | G2h D3q | E2h B2q | A2h E3q | D2h A2q | F#2h C#3q | A2h E3q | D2h A2q"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "gain": 0.48,
+      "notes": "q crash@60 rq rq | rh. | q kick@50 rq rq | rh. | q kick@50 rq rq | rh. | q kick@50 rq rq | rh. | q kick@50 rq rq | rh. | q kick@50 rq rq | rh. | q kick@50 rq rq | rh. | q kick@50 rq rq | rh. | q crash+kick@72 hat@40 snare@52 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@64 tom@56 tom@62 | q crash+kick@72 hat@40 snare@52 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@64 tom@56 tom@62 | q crash+kick@72 hat@40 snare@52 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@60 hat@40 snare@48 | q kick@64 tom@56 tom@62"
+    }
+  ]
+}

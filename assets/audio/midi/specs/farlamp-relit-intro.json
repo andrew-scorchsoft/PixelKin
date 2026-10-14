@@ -1,0 +1,43 @@
+{
+  "title": "PixelKin - The Farlamp Relit (intro, minor)",
+  "_note": "Play-once head of farlamp-relit: the hymn's first line in D minor, hushed - a lone bell carries the tune over a soft harp and a low held bass; the strings swell in on the last two bars into the light. 84 BPM, 3/4, 8 bars. Stitched to farlamp-relit-loop.",
+  "era": "snes",
+  "tempo": 84,
+  "time_signature": [
+    3,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "D minor",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.5,
+      "notes": "D5h A4q | D5q E5q F5q | E5h D5q | C5h. | F5h E5q | D5q C5q A4q | Bb4q A4q G4q | A4h A4q"
+    },
+    {
+      "name": "harmony",
+      "voice": "pluck",
+      "octave": 3,
+      "gain": 0.3,
+      "notes": "D3q@60 A3q@60 F3q@60 | Bb3q@60 F4q@60 D4q@60 | C4q@60 G4q@60 E4q@60 | F3q@60 C4q@60 A3q@60 | Bb3q@60 F4q@60 D4q@60 | F3q@60 C4q@60 A3q@60 | G3q@60 D4q@60 Bb3q@60 | A3q@60 E4q@60 C#4q@60"
+    },
+    {
+      "name": "pad",
+      "voice": "strings",
+      "octave": 3,
+      "gain": 0.26,
+      "notes": "rh. | rh. | rh. | rh. | rh. | rh. | G3+Bb3+D4h.@56 | A2+C#3+E3h.@82"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.7,
+      "notes": "D2h.@60 | Bb1h.@60 | C2h.@60 | F2h.@60 | Bb1h.@60 | F2h.@60 | G2h.@60 | A2h.@60"
+    }
+  ]
+}

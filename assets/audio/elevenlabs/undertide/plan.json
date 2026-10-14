@@ -1,0 +1,193 @@
+{
+ "chunks": [
+  {
+   "text": "[Intro]\n{a deep bass drone, then a single water drip and its fainter echo}",
+   "duration_ms": 6429,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "84 BPM",
+    "3/4 time, slow and spacious",
+    "D minor with a dark Phrygian E flat",
+    "a low hollow pulse-wave lead playing short broken fragments of a seafaring hymn, long rests between",
+    "high plinking water-drip notes with fainter echoes",
+    "distant soft tide-bells ringing in the dark",
+    "a deep held bass drone like the tide",
+    "far soft tom hits",
+    "mysterious, deep, dark and still, a sea-cave under the waves",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "a lone instrument breathing in",
+    "cave"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "jump scare",
+    "cheerful",
+    "dense arrangement",
+    "busy drums"
+   ],
+   "context_adherence": "high",
+   "conditioning_ref": {
+    "song_id": "6Pi9Zbewo2cZ7X2E5uOx",
+    "range": {
+     "start_ms": 8600,
+     "end_ms": 38600
+    }
+   },
+   "condition_strength": "medium"
+  },
+  {
+   "text": "[Main Theme]\n{low broken fragments of the hymn tune on a hollow pulse-wave lead, three notes then a pause, drips plinking around them, a far tide-bell}",
+   "duration_ms": 25714,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "84 BPM",
+    "3/4 time, slow and spacious",
+    "D minor with a dark Phrygian E flat",
+    "a low hollow pulse-wave lead playing short broken fragments of a seafaring hymn, long rests between",
+    "high plinking water-drip notes with fainter echoes",
+    "distant soft tide-bells ringing in the dark",
+    "a deep held bass drone like the tide",
+    "far soft tom hits",
+    "mysterious, deep, dark and still, a sea-cave under the waves",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme",
+    "sparse",
+    "mysterious"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "jump scare",
+    "cheerful",
+    "dense arrangement",
+    "busy drums"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Main Theme Reprise]\n{the fragments again, a little longer, tide-bells answering from deeper in the cave, a soft tom far away}",
+   "duration_ms": 25714,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "84 BPM",
+    "3/4 time, slow and spacious",
+    "D minor with a dark Phrygian E flat",
+    "a low hollow pulse-wave lead playing short broken fragments of a seafaring hymn, long rests between",
+    "high plinking water-drip notes with fainter echoes",
+    "distant soft tide-bells ringing in the dark",
+    "a deep held bass drone like the tide",
+    "far soft tom hits",
+    "mysterious, deep, dark and still, a sea-cave under the waves",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "distant bells",
+    "deep"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "jump scare",
+    "cheerful",
+    "dense arrangement",
+    "busy drums"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "text": "[Bridge]\n{contrast: the bass leans to a dark E flat, the drips quicken like a tide-race running, then still}",
+   "duration_ms": 17143,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "84 BPM",
+    "3/4 time, slow and spacious",
+    "D minor with a dark Phrygian E flat",
+    "a low hollow pulse-wave lead playing short broken fragments of a seafaring hymn, long rests between",
+    "high plinking water-drip notes with fainter echoes",
+    "distant soft tide-bells ringing in the dark",
+    "a deep held bass drone like the tide",
+    "far soft tom hits",
+    "mysterious, deep, dark and still, a sea-cave under the waves",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "contrasting section",
+    "tension"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "jump scare",
+    "cheerful",
+    "dense arrangement",
+    "busy drums"
+   ],
+   "context_adherence": "medium"
+  },
+  {
+   "text": "[Main Theme Return]\n{the broken hymn fragments return low and still; the last bar drips straight back into the theme}",
+   "duration_ms": 25714,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "84 BPM",
+    "3/4 time, slow and spacious",
+    "D minor with a dark Phrygian E flat",
+    "a low hollow pulse-wave lead playing short broken fragments of a seafaring hymn, long rests between",
+    "high plinking water-drip notes with fainter echoes",
+    "distant soft tide-bells ringing in the dark",
+    "a deep held bass drone like the tide",
+    "far soft tom hits",
+    "mysterious, deep, dark and still, a sea-cave under the waves",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "main theme returns",
+    "seamless loop back to the start of the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "EDM",
+    "four-on-the-floor kick",
+    "sidechain pumping",
+    "electric guitar",
+    "fade out",
+    "ritardando",
+    "horror",
+    "jump scare",
+    "cheerful",
+    "dense arrangement",
+    "busy drums"
+   ],
+   "context_adherence": "high"
+  }
+ ]
+}

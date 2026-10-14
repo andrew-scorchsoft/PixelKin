@@ -1,0 +1,47 @@
+{
+ "chunks": [
+  {
+   "song_id": "y2ppXGIEZmlb99W8vJ1b",
+   "range": {
+    "start_ms": 71500,
+    "end_ms": 91500
+   }
+  },
+  {
+   "text": "[Turnaround]\n{a short turnaround that leads smoothly straight back into the main theme, same tempo and key}",
+   "duration_ms": 4000,
+   "positive_styles": [
+    "16-bit console RPG soundtrack from the mid-1990s",
+    "retro sampled-chip instruments with the warm echo of a 16-bit sound chip",
+    "84 BPM",
+    "3/4 time, slow and spacious",
+    "D minor with a dark Phrygian E flat",
+    "a low hollow pulse-wave lead playing short broken fragments of a seafaring hymn, long rests between",
+    "high plinking water-drip notes with fainter echoes",
+    "distant soft tide-bells ringing in the dark",
+    "a deep held bass drone like the tide",
+    "far soft tom hits",
+    "mysterious, deep, dark and still, a sea-cave under the waves",
+    "authentic 16-bit game music sound",
+    "instrumental",
+    "seamless transition back to the theme"
+   ],
+   "negative_styles": [
+    "vocals",
+    "ending",
+    "fade out",
+    "silence",
+    "ritardando",
+    "final cadence"
+   ],
+   "context_adherence": "high"
+  },
+  {
+   "song_id": "y2ppXGIEZmlb99W8vJ1b",
+   "range": {
+    "start_ms": 6429,
+    "end_ms": 16429
+   }
+  }
+ ]
+}
