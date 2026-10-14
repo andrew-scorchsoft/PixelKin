@@ -1547,8 +1547,22 @@
       "tw": 2,
       "th": 2
     },
+    "lowtinder_bell_ropes": {
+      "path": "assets/sprites/objects/lowtinder_bell_ropes.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "lowtinder_bell_sunk": {
       "path": "assets/sprites/objects/lowtinder_bell_sunk.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "lowtinder_bell_wheel": {
+      "path": "assets/sprites/objects/lowtinder_bell_wheel.webp",
       "width": 32,
       "height": 32,
       "tw": 2,
@@ -1631,6 +1645,27 @@
       "tw": 4,
       "th": 2
     },
+    "lowtinder_ruts": {
+      "path": "assets/sprites/objects/lowtinder_ruts.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "lowtinder_shells_a": {
+      "path": "assets/sprites/objects/lowtinder_shells_a.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "lowtinder_shells_b": {
+      "path": "assets/sprites/objects/lowtinder_shells_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
     "lowtinder_sunk_cottage": {
       "path": "assets/sprites/objects/lowtinder_sunk_cottage.webp",
       "width": 80,
@@ -1651,6 +1686,34 @@
       "height": 112,
       "tw": 4,
       "th": 7
+    },
+    "lowtinder_wet_a": {
+      "path": "assets/sprites/objects/lowtinder_wet_a.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "lowtinder_wet_b": {
+      "path": "assets/sprites/objects/lowtinder_wet_b.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "lowtinder_wrack_a": {
+      "path": "assets/sprites/objects/lowtinder_wrack_a.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "lowtinder_wrack_b": {
+      "path": "assets/sprites/objects/lowtinder_wrack_b.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
     },
     "markers_cave_mouth": {
       "path": "assets/sprites/objects/markers_cave_mouth.webp",

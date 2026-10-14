@@ -113,8 +113,12 @@ def build_b1() -> dict:
     # ways round the loop — the vault passage (x 10-12) and the low passage
     # (x 13-15) — so either way to the ladder crosses the cellar's kin.
     moss = mk.make_grid(W, H)
-    mk.rect(moss, W, H, 10, 5, 12, 6)
-    mk.rect(moss, W, H, 13, 14, 15, 15)
+    # (blobs, not rects — review 2026-10 — each still spans its passage's full
+    #  cross-section at its middle column, so the band can't be skirted)
+    mk.blob(moss, W, H, 11.0, 5.5, 1.9, 1.5)
+    mk.blob(moss, W, H, 12.2, 6.4, 1.0, 0.8)
+    mk.blob(moss, W, H, 14.0, 14.6, 1.9, 1.4)
+    mk.blob(moss, W, H, 15.4, 13.8, 1.0, 0.9)
     mk.blob(moss, W, H, 9.0, 13.0, 1.6, 1.0)
     for i in range(W * H):
         if not floor[i] or murk[i]:
@@ -161,7 +165,18 @@ def build_b1() -> dict:
         # the flood's leavings: a shelf of drowned stores, a sunk ore-cart in the
         # winter store's black water, drowned barrels, and the floor's puddles
         {"id": "shelf", "sprite": "interior_shelf", "at": {"tx": 5, "ty": 3}, "w": 2, "h": 3},
-        {"id": "sunk_cart", "sprite": "cinderhead_ore_cart", "at": {"tx": 5, "ty": 14}, "w": 2, "h": 2},
+        {"id": "sunk_boat", "sprite": "pearlmoor_rowboat", "at": {"tx": 5, "ty": 14}, "w": 2, "h": 2},
+        # the west + south halves' flood-wrack (review 2026-10: still sparse)
+        {"id": "w_driftwood", "sprite": "pearlmoor_driftwood", "at": {"tx": 9, "ty": 16}, "w": 2, "h": 1},
+        {"id": "w_pots", "sprite": "pearlmoor_crab_pots", "at": {"tx": 11, "ty": 14}, "w": 1, "h": 1},
+        {"id": "w_crates", "sprite": "pearlmoor_fish_crates", "at": {"tx": 1, "ty": 6}, "w": 1, "h": 1},
+        {"id": "w_wrack_1", "sprite": "lowtinder_wrack_a", "at": {"tx": 3, "ty": 13}, "w": 2, "h": 1, "solid": False},
+        {"id": "w_wrack_2", "sprite": "lowtinder_wrack_b", "at": {"tx": 7, "ty": 12}, "w": 2, "h": 1, "solid": False},
+        {"id": "w_shells", "sprite": "lowtinder_shells_a", "at": {"tx": 10, "ty": 12}, "w": 1, "h": 1, "solid": False},
+        {"id": "w_wet_1", "sprite": "lowtinder_wet_a", "at": {"tx": 7, "ty": 15}, "w": 2, "h": 2, "solid": False},
+        {"id": "w_wet_2", "sprite": "lowtinder_wet_b", "at": {"tx": 1, "ty": 4}, "w": 2, "h": 2, "solid": False},
+        {"id": "s_wrack", "sprite": "lowtinder_wrack_a", "at": {"tx": 15, "ty": 15}, "w": 2, "h": 1, "solid": False},
+        {"id": "s_wet", "sprite": "lowtinder_wet_a", "at": {"tx": 18, "ty": 13}, "w": 2, "h": 2, "solid": False},
         {"id": "drowned_barrels", "sprite": "interior_barrels", "at": {"tx": 3, "ty": 16}, "w": 2, "h": 1},
         {"id": "vault_barrels", "sprite": "interior_barrels", "at": {"tx": 21, "ty": 16}, "w": 2, "h": 1},
         {"id": "puddle_1", "sprite": "lowtinder_puddle_b", "at": {"tx": 15, "ty": 6}, "w": 1, "h": 1, "solid": False},
@@ -256,7 +271,8 @@ def build_b2() -> dict:
     ]
     deco = mk.make_grid(W, H)
     deco[LADDER_UP[1] * W + LADDER_UP[0]] = gid("cave_ladder_up")
-    for (x, y) in [(6, 13), (17, 6), (20, 11), (4, 16), (12, 19), (9, 2), (21, 16), (14, 8)]:
+    for (x, y) in [(6, 13), (17, 6), (20, 11), (4, 16), (12, 19), (9, 2), (21, 16), (14, 8),
+                   (6, 6), (5, 11), (17, 12), (10, 6), (19, 6), (4, 18), (13, 17)]:   # belfry rubble
         if floor[y * W + x] and not murk[y * W + x]:
             deco[y * W + x] = gid("boulder")
     for (x, y, n) in [(16, 3, "glowshroom_a"), (5, 7, "glowshroom_b"), (19, 14, "glowshroom_a"),
@@ -283,6 +299,18 @@ def build_b2() -> dict:
         {"id": "pit_posts_w", "sprite": "saltreach_mooring_posts", "at": {"tx": 6, "ty": 9}, "w": 1, "h": 2},
         {"id": "pit_posts_e", "sprite": "saltreach_mooring_posts", "at": {"tx": 17, "ty": 11}, "w": 1, "h": 2},
         {"id": "anchor", "sprite": "pearlmoor_anchor", "at": {"tx": 15, "ty": 18}, "w": 2, "h": 2},
+        # the belfry's wreckage (review 2026-10: B2 sparse): the broken bell-wheel, the
+        # fallen bell-ropes, puddles and wrack (lowtinderforge.py decals)
+        {"id": "bell_wheel", "sprite": "lowtinder_bell_wheel", "at": {"tx": 15, "ty": 6}, "w": 2, "h": 2},
+        {"id": "ropes_a", "sprite": "lowtinder_bell_ropes", "at": {"tx": 7, "ty": 6}, "w": 2, "h": 1, "solid": False},
+        {"id": "ropes_b", "sprite": "lowtinder_bell_ropes", "at": {"tx": 18, "ty": 14}, "w": 2, "h": 1, "solid": False},
+        {"id": "ropes_c", "sprite": "lowtinder_bell_ropes", "at": {"tx": 9, "ty": 18}, "w": 2, "h": 1, "solid": False},
+        {"id": "b2_puddle_1", "sprite": "lowtinder_puddle_a", "at": {"tx": 3, "ty": 4}, "w": 2, "h": 1, "solid": False},
+        {"id": "b2_puddle_2", "sprite": "lowtinder_puddle_b", "at": {"tx": 20, "ty": 14}, "w": 1, "h": 1, "solid": False},
+        {"id": "b2_puddle_3", "sprite": "lowtinder_puddle_c", "at": {"tx": 11, "ty": 17}, "w": 2, "h": 1, "solid": False},
+        {"id": "b2_wrack", "sprite": "lowtinder_wrack_b", "at": {"tx": 16, "ty": 16}, "w": 2, "h": 1, "solid": False},
+        {"id": "b2_shells", "sprite": "lowtinder_shells_b", "at": {"tx": 5, "ty": 15}, "w": 1, "h": 1, "solid": False},
+        {"id": "b2_barrels", "sprite": "interior_barrels", "at": {"tx": 5, "ty": 1}, "w": 2, "h": 1},
     ]
     warps = [
         {"id": "ladder_up", "at": {"tx": LADDER_UP[0], "ty": LADDER_UP[1]}, "trigger": "step_on",

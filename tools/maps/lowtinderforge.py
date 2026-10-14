@@ -636,6 +636,159 @@ def puddle(w: int, h: int, seed: str) -> Image.Image:
     return im
 
 
+def ragged_weed(im: Image.Image, line: int, seed: str) -> None:
+    """The weed on a tall drowned thing (review 2026-10: tide_stain's solid band
+    read as a pasted green rectangle on the tower): a FEATHERED waterline that
+    wanders a few pixels column to column, the stone below only gently greened
+    (stronger toward the foot), ragged weed STRANDS of every length hanging from
+    the line — fronds, not a curtain — and sparse barnacle clusters."""
+    R = rng(seed)
+    px = im.load()
+    W, H = im.size
+    wl = []
+    off = 0
+    for x in range(W):
+        off = max(-3, min(3, off + R.choice((-1, 0, 0, 0, 1))))
+        wl.append(line + off)
+    for x in range(W):
+        for y in range(max(0, wl[x] - 3), H):
+            r, g, b, a = px[x, y]
+            if a == 0:
+                continue
+            if y < wl[x]:                                 # the feather above the line
+                t = 0.12 * (3 - (wl[x] - y)) / 3
+            else:
+                t = 0.22 + 0.33 * min(1.0, (y - wl[x]) / 30)
+            px[x, y] = (*mix((r, g, b), STAIN, t), a)
+    for x in range(W):                                    # fronds
+        if px[x, min(H - 1, wl[x])][3] == 0 or R.random() > 0.42:
+            continue
+        n = R.choice((2, 3, 4, 5, 6, 8, 11, 14))
+        col = R.choice(WEED)
+        sway = 0
+        for k in range(n):
+            y = wl[x] + k
+            if R.random() < 0.25:
+                sway = max(-1, min(1, sway + R.choice((-1, 1))))
+            xx = x + sway
+            if 0 <= xx < W and y < H and px[xx, y][3] > 0:
+                c = col if k < n - 1 else WEED[2]         # a lighter tip
+                px[xx, y] = (*c, 255)
+    for _ in range(int(W * (H - line) * 0.004)):          # sparse barnacle clusters
+        cx, cy = R.randrange(W), R.randrange(min(H - 1, line + 8), H)
+        for (dx, dy) in ((0, 0), (1, 0), (0, 1)):
+            x, y = cx + dx, cy + dy
+            if 0 <= x < W and 0 <= y < H and px[x, y][3] > 0:
+                px[x, y] = (*R.choice(BARNACLE), 255)
+
+
+def decal_wet(seed: str) -> Image.Image:
+    """Wet sand: an irregular translucent dark patch where the tide just left."""
+    R = rng(seed)
+    im = Image.new("RGBA", (32, 32), (0, 0, 0, 0))
+    px = im.load()
+    blobs = [(R.uniform(10, 22), R.uniform(10, 22), R.uniform(6, 11), R.uniform(5, 9)) for _ in range(4)]
+    for y in range(32):
+        for x in range(32):
+            v = max((1 - (((x - bx) / rx) ** 2 + ((y - by) / ry) ** 2)) for (bx, by, rx, ry) in blobs)
+            if v > 0:
+                a = int(min(1.0, v * 2.2) * 70 * (0.8 + 0.2 * R.random()))
+                px[x, y] = (30, 44, 52, a)
+    return im
+
+
+def decal_wrack(seed: str) -> Image.Image:
+    """A strand-line of wrack: a wavy line of kelp and weed with shells caught in it."""
+    R = rng(seed)
+    im = Image.new("RGBA", (32, 16), (0, 0, 0, 0))
+    px = im.load()
+    y = 8.0
+    for x in range(1, 31):
+        y = max(4, min(11, y + R.choice((-0.6, 0, 0, 0.6))))
+        for k in (0, 1):
+            col = WEED[R.randrange(3)] if R.random() < 0.85 else (88, 70, 44)
+            px[x, int(y) + k] = (*col, 255)
+        if R.random() < 0.18:                             # a shell or pebble caught in it
+            px[x, int(y) - 1] = (*(R.choice(((222, 214, 196), (232, 196, 176), (180, 176, 168)))), 255)
+        if R.random() < 0.12 and int(y) + 2 < 16:         # a frond trailing toward the sea
+            px[x, int(y) + 2] = (*WEED[2], 200)
+    return im
+
+
+def decal_shells(seed: str) -> Image.Image:
+    """Stranded shells, a starfish and a bit of crab-pot cord."""
+    R = rng(seed)
+    im = Image.new("RGBA", (16, 16), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    for _ in range(4):
+        x, y = R.randrange(2, 13), R.randrange(3, 13)
+        c = R.choice(((226, 218, 200), (236, 200, 180), (200, 196, 186)))
+        d.ellipse([x, y, x + 2, y + 1], fill=c, outline=(120, 110, 96))
+    sx, sy = R.randrange(4, 10), R.randrange(4, 10)        # a starfish
+    for (dx, dy) in ((0, -2), (2, -1), (1, 2), (-1, 2), (-2, -1), (0, 0), (0, -1), (1, 0), (-1, 0), (0, 1)):
+        im.putpixel((sx + dx, sy + dy), (214, 110, 72, 255))
+    return im
+
+
+def decal_ruts(seed: str) -> Image.Image:
+    """Two old cart ruts in the street, full of standing seawater."""
+    R = rng(seed)
+    im = Image.new("RGBA", (32, 16), (0, 0, 0, 0))
+    px = im.load()
+    for ry in (4, 10):
+        for x in range(1, 31):
+            y = ry + (1 if (x // 7) % 2 and R.random() < 0.5 else 0)
+            px[x, y] = (40, 46, 44, 160)                   # the groove's wet lip
+            px[x, y + 1] = (*WATER_MID, 220)               # the water in it
+            if R.random() < 0.15:
+                px[x, y + 1] = (*WATER_HI, 230)
+    return im
+
+
+def bell_wheel() -> Image.Image:
+    """The belfry's broken bell-wheel: a big timber wheel, half its spokes gone,
+    lying askew, a frayed rope still wound round the rim. 32x32."""
+    R = rng("bellwheel")
+    im = Image.new("RGBA", (32, 32), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.ellipse([3, 26, 29, 31], fill=(16, 20, 26, 140))
+    d.ellipse([3, 6, 29, 28], outline=TIMBER[0], width=3)
+    d.arc([4, 7, 28, 27], 200, 330, fill=TIMBER[3])
+    cx, cy = 16, 17
+    import math
+    for k, ang in enumerate(range(0, 360, 45)):
+        if k in (2, 5, 6):
+            continue                                      # broken spokes
+        a = math.radians(ang)
+        d.line([(cx, cy), (cx + 11 * math.cos(a), cy + 10 * math.sin(a))], fill=TIMBER[1], width=2)
+    d.ellipse([13, 14, 19, 20], fill=TIMBER[2], outline=INK)
+    # a gap in the rim
+    d.line([(26, 12), (28, 18)], fill=(0, 0, 0, 0), width=3)
+    for t in range(0, 360, 20):                           # rope round the rim
+        a = math.radians(t)
+        x, y = cx + 13 * math.cos(a), cy + 11 * math.sin(a)
+        if R.random() < 0.7:
+            im.putpixel((int(x), int(y)), (186, 160, 110, 255))
+    return im
+
+
+def bell_ropes() -> Image.Image:
+    """Fallen bell-ropes: a coil and a long frayed tail across the flags. 32x16."""
+    R = rng("bellropes")
+    im = Image.new("RGBA", (32, 16), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.ellipse([3, 4, 15, 13], outline=(150, 128, 92), width=2)
+    d.ellipse([6, 6, 12, 11], outline=(186, 160, 110))
+    y = 9.0
+    for x in range(14, 31):
+        y = max(5, min(12, y + R.choice((-0.5, 0, 0.5))))
+        im.putpixel((x, int(y)), (170, 146, 102, 255))
+        im.putpixel((x, int(y) + 1), (120, 100, 70, 255))
+    for k in range(3):                                    # the frayed end
+        im.putpixel((30, int(y) - 1 + k), (200, 184, 140, 255))
+    return im
+
+
 def tinder_light() -> Image.Image:
     """The old Tinder Light on its reef: the beacon tower, cold and cracked,
     barnacled from the waterline up; the gallery rail broken, no flame."""
@@ -661,7 +814,7 @@ def tinder_light() -> Image.Image:
             if px[x, y][3] and R.random() < 0.35:
                 px[x, y] = (0, 0, 0, 0)
     moss(im, 0, 20, "tlm", 0.12)
-    tide_stain(im, 70, "tinderl", weed=0.18, barn=0.07, amount=0.5)
+    ragged_weed(im, 74, "tinderl")
     d = ImageDraw.Draw(im)
     # a rock footing where the tower meets its islet (it stands on the reef)
     for (cx, cy, r) in ((10, 106, 6), (22, 108, 5), (40, 107, 6), (53, 105, 5), (31, 109, 4)):
@@ -687,6 +840,15 @@ PIECES = {
     "bell_winch": bell_winch,
     "garden_door": garden_door,
     "puddle_a": lambda: puddle(32, 16, "puddle_a"),
+    "wet_a": lambda: decal_wet("wet_a"),
+    "wet_b": lambda: decal_wet("wet_b"),
+    "wrack_a": lambda: decal_wrack("wrack_a"),
+    "wrack_b": lambda: decal_wrack("wrack_b"),
+    "shells_a": lambda: decal_shells("shells_a"),
+    "shells_b": lambda: decal_shells("shells_b"),
+    "ruts": lambda: decal_ruts("ruts"),
+    "bell_wheel": bell_wheel,
+    "bell_ropes": bell_ropes,
     "puddle_b": lambda: puddle(16, 16, "puddle_b"),
     "puddle_c": lambda: puddle(32, 16, "puddle_c"),
 }

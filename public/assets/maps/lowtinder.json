@@ -2625,6 +2625,248 @@
       "solid": false
     },
     {
+      "id": "wet_1",
+      "sprite": "lowtinder_wet_a",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "wet_2",
+      "sprite": "lowtinder_wet_b",
+      "at": {
+        "tx": 8,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "wet_3",
+      "sprite": "lowtinder_wet_a",
+      "at": {
+        "tx": 14,
+        "ty": 9
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "wet_4",
+      "sprite": "lowtinder_wet_b",
+      "at": {
+        "tx": 20,
+        "ty": 17
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "wet_5",
+      "sprite": "lowtinder_wet_a",
+      "at": {
+        "tx": 9,
+        "ty": 19
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "wet_6",
+      "sprite": "lowtinder_wet_b",
+      "at": {
+        "tx": 14,
+        "ty": 21
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "wet_7",
+      "sprite": "lowtinder_wet_a",
+      "at": {
+        "tx": 22,
+        "ty": 13
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "wet_8",
+      "sprite": "lowtinder_wet_b",
+      "at": {
+        "tx": 3,
+        "ty": 3
+      },
+      "w": 2,
+      "h": 2,
+      "solid": false
+    },
+    {
+      "id": "wrack_1",
+      "sprite": "lowtinder_wrack_a",
+      "at": {
+        "tx": 3,
+        "ty": 14
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wrack_2",
+      "sprite": "lowtinder_wrack_b",
+      "at": {
+        "tx": 12,
+        "ty": 19
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wrack_3",
+      "sprite": "lowtinder_wrack_a",
+      "at": {
+        "tx": 21,
+        "ty": 18
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wrack_4",
+      "sprite": "lowtinder_wrack_b",
+      "at": {
+        "tx": 6,
+        "ty": 22
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wrack_5",
+      "sprite": "lowtinder_wrack_a",
+      "at": {
+        "tx": 15,
+        "ty": 23
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "wrack_6",
+      "sprite": "lowtinder_wrack_b",
+      "at": {
+        "tx": 18,
+        "ty": 10
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "shells_1",
+      "sprite": "lowtinder_shells_a",
+      "at": {
+        "tx": 8,
+        "ty": 21
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "shells_2",
+      "sprite": "lowtinder_shells_b",
+      "at": {
+        "tx": 13,
+        "ty": 10
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "shells_3",
+      "sprite": "lowtinder_shells_a",
+      "at": {
+        "tx": 22,
+        "ty": 20
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "shells_4",
+      "sprite": "lowtinder_shells_b",
+      "at": {
+        "tx": 3,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "ruts_1",
+      "sprite": "lowtinder_ruts",
+      "at": {
+        "tx": 9,
+        "ty": 12
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "ruts_2",
+      "sprite": "lowtinder_ruts",
+      "at": {
+        "tx": 18,
+        "ty": 13
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "ruts_3",
+      "sprite": "lowtinder_ruts",
+      "at": {
+        "tx": 12,
+        "ty": 7
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "ruts_4",
+      "sprite": "lowtinder_ruts",
+      "at": {
+        "tx": 19,
+        "ty": 16
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
       "id": "cellar_steps",
       "sprite": "markers_steps_s",
       "at": {
