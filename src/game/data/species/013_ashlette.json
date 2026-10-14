@@ -75,34 +75,6 @@
       "rarity": "uncommon",
       "min": 56,
       "max": 62
-    },
-    {
-      "area": "tinderwick_bay",
-      "terrain": "tall_grass",
-      "rarity": "uncommon",
-      "min": 18,
-      "max": 19
-    },
-    {
-      "area": "lowtinder",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 18,
-      "max": 20
-    },
-    {
-      "area": "lowtinder_cellar",
-      "terrain": "cave",
-      "rarity": "common",
-      "min": 19,
-      "max": 22
-    },
-    {
-      "area": "lowtinder_cellar_b2",
-      "terrain": "cave",
-      "rarity": "common",
-      "min": 20,
-      "max": 23
     }
   ],
   "scripted": false,

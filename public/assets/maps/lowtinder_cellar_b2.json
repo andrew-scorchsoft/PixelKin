@@ -1806,13 +1806,13 @@
       "encounter_rate": 0.07,
       "table": [
         {
-          "kin_id": 13,
+          "kin_id": 42,
           "weight": 25,
           "min_level": 20,
           "max_level": 23
         },
         {
-          "kin_id": 41,
+          "kin_id": 11,
           "weight": 25,
           "min_level": 20,
           "max_level": 23
@@ -1821,7 +1821,7 @@
           "kin_id": 31,
           "weight": 20,
           "min_level": 21,
-          "max_level": 23
+          "max_level": 22
         },
         {
           "kin_id": 27,

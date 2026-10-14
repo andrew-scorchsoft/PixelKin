@@ -139,8 +139,8 @@
         158,
         158,
         156,
-        309,
-        311,
+        157,
+        157,
         166,
         171,
         165,
@@ -153,18 +153,18 @@
         157,
         156,
         156,
-        157,
-        156,
-        158,
-        156,
-        156,
+        176,
+        177,
+        177,
         156,
         156,
         156,
         156,
         156,
-        312,
-        313,
+        156,
+        156,
+        156,
+        159,
         156,
         163,
         165,
@@ -177,18 +177,18 @@
         156,
         156,
         158,
+        178,
+        178,
+        178,
+        156,
+        156,
+        156,
+        156,
         157,
-        157,
         156,
         156,
         156,
         156,
-        156,
-        157,
-        156,
-        156,
-        314,
-        316,
         160,
         169,
         165,
@@ -320,7 +320,7 @@
         159,
         157,
         158,
-        158,
+        178,
         156,
         156,
         157,
@@ -344,8 +344,8 @@
         310,
         310,
         311,
-        156,
-        156,
+        178,
+        176,
         157,
         159,
         166,
@@ -372,9 +372,9 @@
         156,
         156,
         159,
-        156,
-        157,
-        156,
+        177,
+        177,
+        177,
         158,
         158,
         156,
@@ -396,9 +396,9 @@
         156,
         158,
         159,
-        156,
-        158,
-        156,
+        178,
+        177,
+        177,
         156,
         159,
         159,
@@ -755,8 +755,8 @@
         0,
         0,
         0,
-        0,
-        0,
+        276,
+        277,
         0,
         0,
         0,
@@ -1586,6 +1586,123 @@
       "h": 2
     },
     {
+      "id": "shelf",
+      "sprite": "interior_shelf",
+      "at": {
+        "tx": 5,
+        "ty": 3
+      },
+      "w": 2,
+      "h": 3
+    },
+    {
+      "id": "sunk_cart",
+      "sprite": "cinderhead_ore_cart",
+      "at": {
+        "tx": 5,
+        "ty": 14
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "drowned_barrels",
+      "sprite": "interior_barrels",
+      "at": {
+        "tx": 3,
+        "ty": 16
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "vault_barrels",
+      "sprite": "interior_barrels",
+      "at": {
+        "tx": 21,
+        "ty": 16
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "puddle_1",
+      "sprite": "lowtinder_puddle_b",
+      "at": {
+        "tx": 15,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_2",
+      "sprite": "lowtinder_puddle_a",
+      "at": {
+        "tx": 17,
+        "ty": 15
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_3",
+      "sprite": "lowtinder_puddle_c",
+      "at": {
+        "tx": 2,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_4",
+      "sprite": "lowtinder_puddle_b",
+      "at": {
+        "tx": 19,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_5",
+      "sprite": "lowtinder_puddle_a",
+      "at": {
+        "tx": 19,
+        "ty": 4
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_6",
+      "sprite": "lowtinder_puddle_c",
+      "at": {
+        "tx": 19,
+        "ty": 12
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_7",
+      "sprite": "lowtinder_puddle_b",
+      "at": {
+        "tx": 16,
+        "ty": 4
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
       "id": "cellar_up",
       "sprite": "markers_steps_n",
       "at": {
@@ -1644,6 +1761,49 @@
   ],
   "encounters": [
     {
+      "id": "cellar_b1_moss",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 7,
+        "ty": 4,
+        "w": 10,
+        "h": 13
+      },
+      "encounter_rate": 0.12,
+      "table": [
+        {
+          "kin_id": 21,
+          "weight": 30,
+          "min_level": 19,
+          "max_level": 21
+        },
+        {
+          "kin_id": 42,
+          "weight": 25,
+          "min_level": 19,
+          "max_level": 22
+        },
+        {
+          "kin_id": 11,
+          "weight": 20,
+          "min_level": 20,
+          "max_level": 22
+        },
+        {
+          "kin_id": 31,
+          "weight": 18,
+          "min_level": 20,
+          "max_level": 22
+        },
+        {
+          "kin_id": 14,
+          "weight": 5,
+          "min_level": 21,
+          "max_level": 22
+        }
+      ]
+    },
+    {
       "id": "cellar_b1",
       "terrain": "cave",
       "rect": {
@@ -1655,19 +1815,19 @@
       "encounter_rate": 0.07,
       "table": [
         {
-          "kin_id": 20,
+          "kin_id": 21,
           "weight": 30,
           "min_level": 19,
           "max_level": 21
         },
         {
-          "kin_id": 13,
+          "kin_id": 42,
           "weight": 25,
           "min_level": 19,
           "max_level": 22
         },
         {
-          "kin_id": 41,
+          "kin_id": 11,
           "weight": 20,
           "min_level": 20,
           "max_level": 22

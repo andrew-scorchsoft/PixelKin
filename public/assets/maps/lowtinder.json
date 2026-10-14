@@ -2420,7 +2420,7 @@
       "sprite": "saltreach_punt",
       "at": {
         "tx": 0,
-        "ty": 15
+        "ty": 21
       },
       "w": 2,
       "h": 3
@@ -2537,6 +2537,94 @@
       "overhang": 1
     },
     {
+      "id": "puddle_1",
+      "sprite": "lowtinder_puddle_a",
+      "at": {
+        "tx": 6,
+        "ty": 12
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_2",
+      "sprite": "lowtinder_puddle_c",
+      "at": {
+        "tx": 13,
+        "ty": 13
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_3",
+      "sprite": "lowtinder_puddle_b",
+      "at": {
+        "tx": 20,
+        "ty": 12
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_4",
+      "sprite": "lowtinder_puddle_a",
+      "at": {
+        "tx": 16,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_5",
+      "sprite": "lowtinder_puddle_b",
+      "at": {
+        "tx": 10,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_6",
+      "sprite": "lowtinder_puddle_c",
+      "at": {
+        "tx": 18,
+        "ty": 22
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_7",
+      "sprite": "lowtinder_puddle_b",
+      "at": {
+        "tx": 4,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "puddle_8",
+      "sprite": "lowtinder_puddle_a",
+      "at": {
+        "tx": 4,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 1,
+      "solid": false
+    },
+    {
       "id": "cellar_steps",
       "sprite": "markers_steps_s",
       "at": {
@@ -2551,121 +2639,31 @@
   ],
   "warps": [
     {
-      "id": "to_bay_6",
+      "id": "to_bay_15",
       "at": {
         "tx": 0,
-        "ty": 6
+        "ty": 15
       },
       "trigger": "step_on",
       "to_map": "tinderwick_bay",
       "to": {
         "tx": 27,
-        "ty": 6
+        "ty": 15
       },
       "facing": "left",
       "transition": "fade"
     },
     {
-      "id": "to_bay_7",
+      "id": "to_bay_16",
       "at": {
         "tx": 0,
-        "ty": 7
+        "ty": 16
       },
       "trigger": "step_on",
       "to_map": "tinderwick_bay",
       "to": {
         "tx": 27,
-        "ty": 7
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_bay_8",
-      "at": {
-        "tx": 0,
-        "ty": 8
-      },
-      "trigger": "step_on",
-      "to_map": "tinderwick_bay",
-      "to": {
-        "tx": 27,
-        "ty": 8
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_bay_9",
-      "at": {
-        "tx": 0,
-        "ty": 9
-      },
-      "trigger": "step_on",
-      "to_map": "tinderwick_bay",
-      "to": {
-        "tx": 27,
-        "ty": 9
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_bay_10",
-      "at": {
-        "tx": 0,
-        "ty": 10
-      },
-      "trigger": "step_on",
-      "to_map": "tinderwick_bay",
-      "to": {
-        "tx": 27,
-        "ty": 10
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_bay_11",
-      "at": {
-        "tx": 0,
-        "ty": 11
-      },
-      "trigger": "step_on",
-      "to_map": "tinderwick_bay",
-      "to": {
-        "tx": 27,
-        "ty": 11
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_bay_12",
-      "at": {
-        "tx": 0,
-        "ty": 12
-      },
-      "trigger": "step_on",
-      "to_map": "tinderwick_bay",
-      "to": {
-        "tx": 27,
-        "ty": 12
-      },
-      "facing": "left",
-      "transition": "fade"
-    },
-    {
-      "id": "to_bay_13",
-      "at": {
-        "tx": 0,
-        "ty": 13
-      },
-      "trigger": "step_on",
-      "to_map": "tinderwick_bay",
-      "to": {
-        "tx": 27,
-        "ty": 13
+        "ty": 16
       },
       "facing": "left",
       "transition": "fade"
@@ -2761,28 +2759,28 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 13,
+          "kin_id": 11,
           "weight": 30,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 16,
+          "kin_id": 42,
           "weight": 25,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 20,
+          "kin_id": 21,
           "weight": 20,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 26,
+          "kin_id": 16,
           "weight": 15,
-          "min_level": 18,
-          "max_level": 19
+          "min_level": 17,
+          "max_level": 18
         },
         {
           "kin_id": 14,
@@ -2804,28 +2802,28 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 13,
+          "kin_id": 11,
           "weight": 30,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 16,
+          "kin_id": 42,
           "weight": 25,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 20,
+          "kin_id": 21,
           "weight": 20,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 26,
+          "kin_id": 16,
           "weight": 15,
-          "min_level": 18,
-          "max_level": 19
+          "min_level": 17,
+          "max_level": 18
         },
         {
           "kin_id": 14,
@@ -2847,28 +2845,28 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 13,
+          "kin_id": 11,
           "weight": 30,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 16,
+          "kin_id": 42,
           "weight": 25,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 20,
+          "kin_id": 21,
           "weight": 20,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 26,
+          "kin_id": 16,
           "weight": 15,
-          "min_level": 18,
-          "max_level": 19
+          "min_level": 17,
+          "max_level": 18
         },
         {
           "kin_id": 14,
@@ -2890,28 +2888,28 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 13,
+          "kin_id": 11,
           "weight": 30,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 16,
+          "kin_id": 42,
           "weight": 25,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 20,
+          "kin_id": 21,
           "weight": 20,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 26,
+          "kin_id": 16,
           "weight": 15,
-          "min_level": 18,
-          "max_level": 19
+          "min_level": 17,
+          "max_level": 18
         },
         {
           "kin_id": 14,
@@ -2934,19 +2932,19 @@
       "requires_ability": "tidecall",
       "table": [
         {
-          "kin_id": 26,
+          "kin_id": 27,
           "weight": 35,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 20,
+          "kin_id": 21,
           "weight": 30,
           "min_level": 18,
           "max_level": 20
         },
         {
-          "kin_id": 23,
+          "kin_id": 24,
           "weight": 25,
           "min_level": 18,
           "max_level": 20
@@ -3061,25 +3059,25 @@
       "dialogue_ref": "script.lowtinder_tidewife"
     },
     {
-      "id": "amb_ashlette",
+      "id": "amb_tallowcrest",
       "at": {
         "tx": 21,
         "ty": 15
       },
       "facing": "down",
-      "sprite": "kin_13_overworld",
+      "sprite": "kin_11_overworld",
       "movement": "wander",
       "ambient": true,
       "wander_radius": 1
     },
     {
-      "id": "amb_tidmote",
+      "id": "amb_tidmaren",
       "at": {
         "tx": 5,
         "ty": 22
       },
       "facing": "down",
-      "sprite": "kin_20_overworld",
+      "sprite": "kin_21_overworld",
       "movement": "wander",
       "ambient": true,
       "wander_radius": 1

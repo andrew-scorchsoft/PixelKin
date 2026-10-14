@@ -632,7 +632,7 @@
       "trigger": "step_on",
       "to_map": "lowtinder_school_garden",
       "to": {
-        "tx": 6,
+        "tx": 8,
         "ty": 8
       },
       "facing": "up",

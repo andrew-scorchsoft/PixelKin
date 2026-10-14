@@ -98,34 +98,57 @@ def darken_windows(im: Image.Image, seed: str, keep_rows: range | None = None) -
 
 def tide_stain(im: Image.Image, line: int, seed: str, *, weed: float = 0.07,
                barn: float = 0.03, amount: float = 0.45) -> None:
-    """Everything below `line` darkens toward the drowned green (a high-water
-    mark you can read: a crisp darker band at the line itself), with weed
-    strands hanging from the line and barnacle specks below it."""
+    """Everything below `line` sinks toward the drowned green, and the HIGH-WATER
+    MARK reads at a glance (review 2026-10: the first pass read as a dry seaside
+    village): a crisp two-row band of dark weed-green at the line with a pale salt
+    rim above it, curtains of weed hanging off it, barnacle CLUSTERS crusting the
+    lower walls, and green drip-streaks running down from the mark."""
     R = rng(seed)
     px = im.load()
     W, H = im.size
+    amount = min(0.8, amount * 1.35)
     for y in range(max(0, line), H):
-        depth = min(1.0, (y - line + 2) / 18)
+        depth = min(1.0, (y - line + 2) / 14)
         for x in range(W):
             r, g, b, a = px[x, y]
             if a == 0:
                 continue
-            t = amount * (0.55 + 0.45 * depth)
-            if y in (line, line + 1):
-                t = min(0.85, t + 0.25)          # the tide-mark itself
+            t = amount * (0.6 + 0.4 * depth)
             c = mix((r, g, b), STAIN, t)
-            if R.random() < barn * depth:
-                c = R.choice(BARNACLE)
             px[x, y] = (*c, a)
-    # weed strands hanging off the tide-mark
+    # the mark itself: salt rim (line-1), weed band (line, line+1)
     for x in range(W):
-        if R.random() < weed and px[x, min(H - 1, line)][3] > 0:
-            n = R.randint(2, 6)
+        if line - 1 >= 0 and px[x, line - 1][3] > 0 and R.random() < 0.75:
+            r, g, b, a = px[x, line - 1]
+            px[x, line - 1] = (*mix((r, g, b), (196, 206, 190), 0.45), a)
+        for y in (line, line + 1):
+            if 0 <= y < H and px[x, y][3] > 0:
+                px[x, y] = (*WEED[0 if (x + y) % 3 else 1], px[x, y][3])
+    # weed curtains + drip streaks hanging off the mark
+    for x in range(W):
+        if px[x, min(H - 1, line)][3] == 0:
+            continue
+        if R.random() < weed * 1.6:
+            n = R.randint(3, 8)
             col = R.choice(WEED)
             for k in range(n):
-                y = line + k
+                y = line + 2 + k
                 if y < H and px[x, y][3] > 0:
                     px[x, y] = (*col, 255)
+        elif R.random() < 0.10:
+            for k in range(R.randint(3, 9)):
+                y = line + 2 + k
+                if y < H and px[x, y][3] > 0:
+                    r, g, b, a = px[x, y]
+                    px[x, y] = (*mix((r, g, b), WEED[1], 0.5), a)
+    # barnacle clusters, thicker toward the bottom
+    for _ in range(int(W * max(1, H - line) * barn * 0.6)):
+        cx = R.randrange(W)
+        cy = R.randrange(max(0, line + 3), H) if H > line + 3 else H - 1
+        for (dx, dy) in ((0, 0), (1, 0), (0, 1), (-1, 0), (1, 1)):
+            x, y = cx + dx, cy + dy
+            if 0 <= x < W and 0 <= y < H and px[x, y][3] > 0 and R.random() < 0.8:
+                px[x, y] = (*R.choice(BARNACLE), 255)
 
 
 def moss(im: Image.Image, y0: int, y1: int, seed: str, density: float = 0.05) -> None:
@@ -194,11 +217,13 @@ def ripple_ring(out: Image.Image, top: int, x0: int, x1: int, seed: str) -> None
 
 # ---------------------------------------------------------------------------- pieces
 def emerge(crop: Image.Image, line: int, seed: str, gable: int = 7) -> Image.Image:
-    """A roof coming up out of the sea: below the waterline the sprite is GONE
-    (the map's own animated water shows through, never a static water box), and
-    toward each end the waterline climbs (the gable ends dip under), so the
-    visible slates make a ridge-shaped island, not a rectangle. A broken foam
-    lip hugs the silhouette where it meets the water, with a ripple below."""
+    """A roof (or a house) coming up out of the sea: below the waterline the
+    sprite is GONE (the map's own animated water shows through), toward each end
+    the waterline climbs (the gable ends dip under), and the water LAPS at it —
+    a wet dark band just above the cut, a broken foam collar that wraps a couple
+    of pixels past the silhouette on both sides, and two ripple rings spreading
+    below into the transparent margin. (Review 2026-10: without the collar and
+    rings the ridges read as stone boxes floating on the water.)"""
     R = rng(seed)
     W, H = crop.size
     out = crop.copy()
@@ -210,38 +235,101 @@ def emerge(crop: Image.Image, line: int, seed: str, gable: int = 7) -> Image.Ima
     for x in range(W):
         for y in range(cut[x], H):
             px[x, y] = (0, 0, 0, 0)
-    for x in range(W):
-        y = cut[x]
-        if 0 < y < H and crop.getpixel((x, y - 1))[3] > 0:
-            if R.random() < 0.85:
-                px[x, y] = (*FOAM, 230)
-            if y + 1 < H and R.random() < 0.5:
-                px[x, y + 1] = (*WATER_HI, 170)
-    for k in range(2):                                   # a ripple dash below
+    xs = [x for x in range(W) if 0 < cut[x] < H and crop.getpixel((x, cut[x] - 1))[3] > 0]
+    if not xs:
+        return out
+    x0, x1 = min(xs), max(xs)
+    for x in xs:                                         # the wet band above the cut
+        for k in (1, 2):
+            y = cut[x] - k
+            if y >= 0 and px[x, y][3] > 0:
+                r, g, b, a = px[x, y]
+                px[x, y] = (*mix((r, g, b), (24, 44, 52), 0.55 if k == 1 else 0.3), a)
+    for x in range(max(0, x0 - 3), min(W, x1 + 4)):     # the foam collar
+        y = cut[min(max(x, x0), x1)]
+        if 0 <= y < H and R.random() < 0.9:
+            px[x, y] = (*FOAM, 235)
+        if 0 <= y + 1 < H and R.random() < 0.55:
+            px[x, y + 1] = (*WATER_HI, 190)
+    for k, (pad, alpha) in enumerate(((5, 150), (8, 95))):   # ripple rings below
         y = line + 3 + 3 * k
-        if y < H:
-            x0 = R.randrange(4, max(5, W - 14))
-            for x in range(x0, x0 + R.randint(5, 10)):
-                if x < W:
-                    px[x, y] = (*WATER_HI, 150)
+        if y >= H:
+            break
+        for x in range(max(0, x0 - pad), min(W, x1 + pad + 1)):
+            if (x + k * 3) % 5 != 0 and R.random() < 0.8:
+                px[x, y] = (*WATER_HI, alpha)
     return out
 
 
+SLATE = [(30, 40, 58), (44, 58, 80), (60, 78, 104), (84, 106, 136)]
+
+
+def drowned_roof(W: int, seed: str, *, chimney: int | None, dormer: int | None,
+                 waterline: int = 22) -> Image.Image:
+    """A drowned house's ROOF, drawn so it reads as a roof at a glance (review
+    2026-10: the cropped roof read as a stone box): a light ridge-cap along the
+    top, the front slope laid in horizontal COURSES of slates (staggered joints,
+    lit from the left), hipped ends sloping down into the sea, a brick chimney
+    and/or a dark dormer window, moss in the courses — then the sea laps it
+    (emerge: wet band, foam collar, ripple rings)."""
+    R = rng(seed)
+    H = 32
+    im = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    px = im.load()
+    top = 7
+    for y in range(top, H):
+        inset = max(0, 9 - (y - top)) + 4            # hipped ends: wider as it goes down
+        for x in range(inset, W - inset):
+            course = (y - top) // 3
+            joint = ((x + (course % 2) * 3) % 6 == 0)
+            shade = 2 if x < W * 0.4 else 1
+            c = SLATE[shade]
+            if (y - top) % 3 == 0:
+                c = SLATE[0]                          # the course shadow line
+            elif joint:
+                c = SLATE[0]
+            elif (y - top) % 3 == 1 and x < W * 0.4:
+                c = SLATE[3] if R.random() < 0.25 else c
+            px[x, y] = (*c, 255)
+        # outline the hipped ends
+        if inset < W - inset:
+            px[inset, y] = (*INK, 255)
+            px[W - 1 - inset, y] = (*INK, 255)
+    for x in range(13, W - 13):                       # the ridge-cap
+        px[x, top] = (*SLATE[3], 255)
+        px[x, top - 1] = (*INK, 255)
+    if dormer is not None:                            # a dark dormer window in the slope
+        dx = dormer
+        for y in range(top + 3, top + 10):
+            for x in range(dx, dx + 9):
+                edge = x in (dx, dx + 8) or y == top + 3
+                px[x, y] = (*(INK if edge else (38, 44, 50)), 255)
+        for x in range(dx + 2, dx + 7):
+            px[x, top + 5] = (*GLASS[2], 255)
+        for x in range(dx - 1, dx + 10):              # its little roof
+            px[x, top + 2] = (*SLATE[2], 255)
+    if chimney is not None:                           # the chimney stack, weed-streaked
+        cx = chimney
+        for y in range(0, top + 4):
+            for x in range(cx, cx + 6):
+                c = (92, 58, 48) if (y // 2 + x // 3) % 2 else (112, 72, 58)
+                if x in (cx, cx + 5):
+                    c = INK
+                px[x, y] = (*c, 255)
+        for x in range(cx, cx + 6):
+            px[x, 0] = (*INK, 255)
+            px[x, 1] = (50, 40, 36, 255)
+    moss(im, top, H, seed + "m", 0.2)
+    tide_stain(im, waterline - 5, seed + "t", weed=0.25, barn=0.1, amount=0.45)
+    return emerge(im, waterline, seed + "e", gable=0)
+
+
 def roof_ridge() -> Image.Image:
-    """The cottage roof's top: the ridge + chimney, the sea at its upper slates."""
-    src = load("tinderwick", "cottage")
-    crop = src.crop((16, 0, 64, 32))            # 48x32
-    moss(crop, 0, 26, "ridge_moss", 0.12)
-    tide_stain(crop, 18, "ridge_t", weed=0.15, barn=0.05, amount=0.4)
-    return emerge(crop, 24, "ridge")
+    return drowned_roof(48, "ridge", chimney=31, dormer=None)
 
 
 def roof_ridge_b() -> Image.Image:
-    src = load("tinderwick", "shop")
-    crop = src.crop((8, 0, 72, 32))             # the store's long roof, 64x32
-    moss(crop, 0, 26, "ridgeb_moss", 0.12)
-    tide_stain(crop, 17, "ridgeb_t", weed=0.15, barn=0.05, amount=0.4)
-    return emerge(crop, 23, "ridgeb", gable=9)
+    return drowned_roof(64, "ridgeb", chimney=11, dormer=36)
 
 
 def belltower() -> Image.Image:
@@ -515,6 +603,39 @@ def garden_door() -> Image.Image:
     return im
 
 
+def puddle(w: int, h: int, seed: str) -> Image.Image:
+    """A tide-puddle left on the cobbles: an irregular sheet of still water with
+    a dark wet rim, a sky reflection streak and a weed fleck. Non-solid decal."""
+    R = rng(seed)
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    px = im.load()
+    cx, cy = (w - 1) / 2, (h - 1) / 2 + 1
+    rx, ry = w / 2 - 2, h / 2 - 3
+    blobs = [(cx + R.uniform(-rx / 3, rx / 3), cy + R.uniform(-1, 1), rx * R.uniform(0.6, 0.85),
+              ry * R.uniform(0.7, 1.0)) for _ in range(3)]
+    for y in range(h):
+        for x in range(w):
+            inside = any(((x - bx) / brx) ** 2 + ((y - by) / bry) ** 2 <= 1 for (bx, by, brx, bry) in blobs)
+            if inside:
+                px[x, y] = (*WATER_MID, 215)
+    for y in range(h):                                   # the wet rim
+        for x in range(w):
+            if px[x, y][3] == 0 and any(0 <= x + dx < w and 0 <= y + dy < h and px[x + dx, y + dy][3] == 215
+                                        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+                px[x, y] = (40, 46, 44, 140)
+    ys = [y for y in range(h) for x in range(w) if px[x, y][3] == 215]
+    if ys:
+        y = min(ys) + 1
+        for x in range(int(cx - rx / 2), int(cx + rx / 3)):
+            if 0 <= x < w and px[x, y][3] == 215:
+                px[x, y] = (*WATER_HI, 230)
+        y = max(ys) - 1
+        for x in range(int(cx), int(cx + rx / 2)):
+            if 0 <= x < w and px[x, y][3] == 215:
+                px[x, y] = (*FOAM, 160)
+    return im
+
+
 def tinder_light() -> Image.Image:
     """The old Tinder Light on its reef: the beacon tower, cold and cracked,
     barnacled from the waterline up; the gallery rail broken, no flame."""
@@ -565,6 +686,9 @@ PIECES = {
     "tinder_light": tinder_light,
     "bell_winch": bell_winch,
     "garden_door": garden_door,
+    "puddle_a": lambda: puddle(32, 16, "puddle_a"),
+    "puddle_b": lambda: puddle(16, 16, "puddle_b"),
+    "puddle_c": lambda: puddle(32, 16, "puddle_c"),
 }
 
 

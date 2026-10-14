@@ -1554,6 +1554,27 @@
       "tw": 5,
       "th": 5
     },
+    "lowtinder_puddle_a": {
+      "path": "assets/sprites/objects/lowtinder_puddle_a.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "lowtinder_puddle_b": {
+      "path": "assets/sprites/objects/lowtinder_puddle_b.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "lowtinder_puddle_c": {
+      "path": "assets/sprites/objects/lowtinder_puddle_c.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "lowtinder_roof_ridge": {
       "path": "assets/sprites/objects/lowtinder_roof_ridge.webp",
       "width": 48,

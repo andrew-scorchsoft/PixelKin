@@ -346,14 +346,14 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
     dawn: [{ text: '"Hhhmm!" The ash-grass on its back has gone a little green at the tips.' }],
   },
   // --- Lane E (10 Part III): Lowtinder, the town under the bay ----------------
-  13: { // Ashlette — warms itself in the drowned hearths (Lowtinder)
+  11: { // Tallowcrest — warms itself in the drowned hearths (Lowtinder)
     lines: [
       { text: '"Fff." It sits in an old fireplace that has not had a fire in forty years, and glows, so now it has one.', react: 'hop' },
       { text: '"Tsss." A drop of sea lands on its back and steams. It looks offended at the whole ocean.' },
     ],
     dawn: [{ text: '"Fff-fff!" It basks in a square of real sunlight on the old cobbles, belly-up.' }],
   },
-  20: { // Tidmote — the tide-pool glimmer (Lowtinder, the bay)
+  21: { // Tidmaren — the tide-pool glimmer (Lowtinder, the bay)
     lines: [
       { text: '"Plip." It bobs in a puddle that used to be somebody\'s kitchen, and blinks a little light at you.', react: 'hop' },
       { text: '"Plip-plip." It drifts round your boots like you are a rock worth circling.' },

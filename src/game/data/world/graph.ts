@@ -495,7 +495,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // edge swims into Lowtinder; the Bell Cellar is two floors under the lamp-house. The
     // cellar's far end climbs Tinderwick's well (a one-way `travel`, not an edge).
     { from_map: 'tinderwick', to_map: 'tinderwick_bay', via_warp: 'to_bay_21', requires_ability: 'tidecall', bidirectional: true },
-    { from_map: 'tinderwick_bay', to_map: 'lowtinder', via_warp: 'to_lowtinder_6', requires_ability: 'tidecall', bidirectional: true },
+    { from_map: 'tinderwick_bay', to_map: 'lowtinder', via_warp: 'to_lowtinder_15', requires_ability: 'tidecall', bidirectional: true },
     { from_map: 'lowtinder', to_map: 'lowtinder_lamphouse', via_warp: 'to_lamphouse', bidirectional: true },
     { from_map: 'lowtinder', to_map: 'lowtinder_school', via_warp: 'to_school', bidirectional: true },
     { from_map: 'lowtinder_school', to_map: 'lowtinder_school_garden', via_warp: 'to_garden', requires_flag: 'flag:lamplight_brightlight', bidirectional: true },

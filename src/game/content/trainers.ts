@@ -1637,8 +1637,8 @@ export const TRAINERS: TrainerRegistry = {
     name: 'SKERRY',
     title: 'Lamp-diver',
     party: [
-      { species_id: 26, level: 17 }, // Brinelet — Tide
-      { species_id: 23, level: 18 }, // Glintfin — Tide/Light
+      { species_id: 27, level: 17 }, // Brineroll — Tide
+      { species_id: 24, level: 18 }, // Shimmral — Tide/Light
       { species_id: 31, level: 19 }, // Lumpin — Tide/Light (ace)
     ],
     payout: 304, // route 16 × ace 19
@@ -1649,7 +1649,7 @@ export const TRAINERS: TrainerRegistry = {
     name: 'CORRA',
     title: 'Net-hand',
     party: [
-      { species_id: 20, level: 18 }, // Tidmote — Tide/Light
+      { species_id: 21, level: 18 }, // Tidmaren — Tide/Light
       { species_id: 27, level: 19 }, // Brineroll — Tide
       { species_id: 24, level: 20 }, // Shimmral — Tide/Light (ace)
     ],
@@ -1661,8 +1661,8 @@ export const TRAINERS: TrainerRegistry = {
     name: 'PIP',
     title: 'Eel-catcher',
     party: [
-      { species_id: 13, level: 19 }, // Ashlette — Ember
-      { species_id: 26, level: 19 }, // Brinelet — Tide
+      { species_id: 14, level: 19 }, // Embrift — Ember
+      { species_id: 27, level: 19 }, // Brineroll — Tide
       { species_id: 11, level: 20 }, // Tallowcrest — Ember (ace)
     ],
     payout: 320, // route 16 × ace 20
@@ -1673,8 +1673,8 @@ export const TRAINERS: TrainerRegistry = {
     name: 'HOLLIS',
     title: 'Lampwright',
     party: [
-      { species_id: 16, level: 19 }, // Wickmoth — Ember
-      { species_id: 5, level: 20 }, // Wicklit — Light/Ember
+      { species_id: 16, level: 18 }, // Wickmoth — Ember
+      { species_id: 6, level: 20 }, // Wickmere — Light/Ember
       { species_id: 14, level: 21 }, // Embrift — Ember (ace)
     ],
     payout: 420, // keeper 20 × ace 21
@@ -1685,7 +1685,7 @@ export const TRAINERS: TrainerRegistry = {
     name: 'OLD WICKMAN',
     title: 'Wick-tender',
     party: [
-      { species_id: 41, level: 20 }, // Scorchite — Ember
+      { species_id: 11, level: 20 }, // Tallowcrest — Ember
       { species_id: 42, level: 21 }, // Coalump — Ember
       { species_id: 6, level: 22 }, // Wickmere — Light/Ember (ace)
     ],
