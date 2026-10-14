@@ -546,6 +546,21 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:drownlight_keeper_beaten', 'flag:dawn'],
     done_flag: 'flag:drownlight_relit',
   },
+  // ---- Lane N3 / fix FD (walkthrough/11 Part D): the Penumbra Underways. Opens at
+  // the first word of it (Andrew's P.S., the Ring's light-well, a mouth's "not yet",
+  // or any watcher); kept once Old Clemency has heard you met all three watchers
+  // (flags: content/regions/underways.ts).
+  {
+    id: 'central_last_watch',
+    name: 'The Last Watch',
+    region: 'central',
+    giver: 'Old Clemency, at the watch-fire',
+    blurb: 'Under the Penumbra Ring the Hollowing keep a last watch and a fire. Go down the old stair, let each watcher try you, and sit by the fire before the climb.',
+    start_flag: 'flag:q_underways',
+    stage_flags: ['flag:underways_watch_a_beaten', 'flag:underways_watchfire_rested',
+      'flag:underways_watch_b_beaten', 'flag:underways_watch_c_beaten'],
+    done_flag: 'flag:underways_watch_kept',
+  },
 ];
 
 /** Lookup by id. */

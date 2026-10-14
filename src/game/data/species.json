@@ -4118,6 +4118,27 @@
      "rarity": "very_rare",
      "min": 60,
      "max": 60
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 55,
+     "max": 56
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "cave",
+     "rarity": "rare",
+     "min": 59,
+     "max": 60
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 60
     }
    ],
    "scripted": true,
@@ -4547,11 +4568,46 @@
      "max": 66
     },
     {
+     "area": "penumbra_underways",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 59
+    },
+    {
+     "area": "penumbra_underways",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 59
+    },
+    {
      "area": "penumbra_underways_b1",
      "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 55,
      "max": 56
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 57,
+     "max": 60
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 60
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 60
     }
    ],
    "scripted": true,
@@ -4854,11 +4910,39 @@
      "max": 55
     },
     {
+     "area": "penumbra_underways",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 59
+    },
+    {
      "area": "penumbra_underways_b1",
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 54,
      "max": 56
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 54,
+     "max": 56
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 60
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -10212,6 +10296,13 @@
      "rarity": "uncommon",
      "min": 53,
      "max": 55
+    },
+    {
+     "area": "penumbra_underways",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 59
     }
    ],
    "scripted": false,
@@ -12674,11 +12765,25 @@
      "max": 55
     },
     {
+     "area": "penumbra_underways",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 56,
+     "max": 59
+    },
+    {
      "area": "penumbra_underways_b1",
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 54,
      "max": 56
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 57,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -15234,11 +15339,25 @@
      "max": 54
     },
     {
+     "area": "penumbra_underways",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 59
+    },
+    {
      "area": "penumbra_underways_b1",
      "terrain": "tall_grass",
      "rarity": "common",
      "min": 54,
      "max": 56
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 60
     }
    ],
    "scripted": false,
@@ -15436,11 +15555,25 @@
      "max": 62
     },
     {
+     "area": "penumbra_underways",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 59
+    },
+    {
      "area": "penumbra_underways_b1",
      "terrain": "tall_grass",
      "rarity": "rare",
      "min": 56,
      "max": 56
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 60
     }
    ],
    "scripted": true,
@@ -16070,6 +16203,13 @@
      "max": 55
     },
     {
+     "area": "penumbra_underways",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 56,
+     "max": 59
+    },
+    {
      "area": "penumbra_underways_b1",
      "terrain": "cave",
      "rarity": "common",
@@ -16082,6 +16222,20 @@
      "rarity": "uncommon",
      "min": 54,
      "max": 56
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 54,
+     "max": 56
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 57,
+     "max": 60
     },
     {
      "area": "stillwater",
@@ -16765,6 +16919,20 @@
      "rarity": "uncommon",
      "min": 54,
      "max": 55
+    },
+    {
+     "area": "penumbra_underways",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 56,
+     "max": 59
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 57,
+     "max": 60
     },
     {
      "area": "stillwater",
@@ -20706,6 +20874,20 @@
      "max": 52
     },
     {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 54,
+     "max": 56
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 60
+    },
+    {
      "area": "stillwater",
      "terrain": "tall_grass",
      "rarity": "common",
@@ -20827,6 +21009,13 @@
      "rarity": "uncommon",
      "min": 48,
      "max": 51
+    },
+    {
+     "area": "penumbra_underways_b1",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 54,
+     "max": 56
     },
     {
      "area": "stillwater",

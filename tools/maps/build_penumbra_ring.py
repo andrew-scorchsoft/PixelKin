@@ -235,7 +235,7 @@ m["warps"] += [
 
 # THE UNDERWAYS (Lane N3): the last road, under the Ring — gated hub + Starreach
 UNDERWAYS_GATE = {"requires_flag": "flag:hub_unlocked", "requires_ability": "starreach",
-                  "blocked_ref": "npc.underways_mouth_shut"}
+                  "blocked_ref": "script.underways_mouth_shut"}
 for n, ((x, y), (tx, ty)) in enumerate(zip(UNDERWAYS_W, [(3, 2), (4, 2)])):
     m["warps"].append({"id": "to_underways_w" + ("_e" if n else ""), "at": {"tx": x, "ty": y},
                        "trigger": "step_on", "to_map": "penumbra_underways",
@@ -246,7 +246,7 @@ for n, ((x, y), (tx, ty)) in enumerate(zip(UNDERWAYS_E, [(26, 2), (27, 2)])):
                        "trigger": "step_on", "to_map": "penumbra_underways",
                        "to": {"tx": tx, "ty": ty}, "facing": "down", "transition": "fade",
                        **UNDERWAYS_GATE})
-owed += ["npc.underways_mouth_shut (content/regions/underways.ts)"]
+owed += ["script.underways_mouth_shut (content/regions/underways.ts)"]
 # the watch's hooded lamp on the west strip, its slit of light turned toward the SW
 # mouth (the breadcrumb, and the strip's read)
 m["objects"].append({"id": "underways_watch_lamp", "sprite": "underways_watch_lamp",
@@ -259,6 +259,17 @@ m["triggers"].append({"id": "underways_watch_lamp_read", "kind": "dialogue",
                       "at": {"tx": 2, "ty": 24}, "activation": "interact",
                       "ref": "npc.underways_ring_lamp"})
 owed += ["npc.underways_ring_lamp"]
+# THE LIGHT-WELL (review FD 2026-10-14, "seen before reached"): an iron grate flush in
+# the south strip's floor, between the two mouths and off the crossing; looking down it
+# you see the Underways first: the Crown's pale column and the watch's small fire.
+# Walk-over (solid:false), so it changes no route; read from any side.
+m["objects"].append({"id": "underways_lightwell", "sprite": "underways_ring_lightwell",
+                     "at": {"tx": 9, "ty": 30}, "w": 2, "h": 2, "solid": False})
+for (lx, ly) in ((9, 30), (10, 30), (9, 31), (10, 31)):
+    m["triggers"].append({"id": f"underways_lightwell_{lx}_{ly}", "kind": "cutscene",
+                          "at": {"tx": lx, "ty": ly}, "activation": "interact",
+                          "ref": "script.underways_lightwell"})
+owed += ["script.underways_lightwell"]
 
 # ---- THE SPIRE, SEEN BEFORE WALKED (touch #1) -----------------------------------------
 # The silhouette mass rides the north rim; its bottom row is the gate row

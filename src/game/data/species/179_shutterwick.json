@@ -108,6 +108,20 @@
       "max": 52
     },
     {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 54,
+      "max": 56
+    },
+    {
+      "area": "penumbra_underways_b1",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 57,
+      "max": 60
+    },
+    {
       "area": "stillwater",
       "terrain": "tall_grass",
       "rarity": "common",

@@ -142,10 +142,25 @@ It never connects to the Spire itself. You come back out into the Ring.
 **Built (Lane N3):** `tools/maps/build_penumbra_underways.py` (+ two mouths in
 `build_penumbra_ring.py`); scripts in `content/regions/underways.ts`. A loop: in by the Ring's
 SW mouth (4–5,32), down the west galleries (Odalie, ace 54; a Starglass Shard), down to B1,
-the Last Watch (Bran, ace 55; Old Maudry; the watch-fire rest point; the view up the Spire's
+the Last Watch (Bran, ace 55; Old Clemency; the watch-fire rest point; the view up the Spire's
 shaft, a solid prop), and up through the east galleries (Hesk, ace 56) to the SE mouth
 (22–23,32). Both mouths stand on islets in the starlit dark and are gated `flag:hub_unlocked`
 + `starreach`. The last Lumen Drop is in B1's south-east pocket (the slump drops into it).
+
+**Review fix FD (2026-10-14).** The watch-fire's keeper is **Old Clemency**, who taught Còr his
+letters (she was "Old Maudry"; the name belongs to Maudry Kell, the Drownlight's Shutterkeeper,
+who met Còr as a stranger). Both floors are re-carved as organic chambers with 1-wide chokes and
+dressed in the watch's own drawn kit (`tools/maps/underwaysforge.py`: bedrolls, a map table, a
+watch-bell, ration crates, a kettle shelf, a watch-rota, fallen Spire masonry, root curtains). F1's
+side bay ends in a rubble lip that drops one-way into the cistern hall, so the walk back is by
+Odalie's cut. B1's south-east pocket is **the Warm Stones**: its own bed (Shutterwick #179,
+Lullwing, Lumenmoss, Liminalux and a rare **Embralux #33**, the only pre-dawn Embralux ground),
+signed and mentioned by Clemency. Every zone has a post-dawn `_day` twin (56–60). Signposts: Andrew's
+Crown-stage hint adds a P.S. once `flag:hub_unlocked`; the mouths' "not yet" is a script; and the
+Ring's south strip has an iron **light-well** (9–10,30–31) looking down on the shaft's pale column and
+the watch's fire, seen before reached. Any of these opens the JOURNAL's **The Last Watch**
+(`flag:q_underways`, kept at `flag:underways_watch_kept` once Clemency hears you met all three
+watchers) and the LORE entry "the Last Watch".
 
 ## E · Density on the existing late maps
 
