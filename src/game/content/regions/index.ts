@@ -29,6 +29,8 @@ import { PAUL_DIALOGUE, PAUL_SCRIPTS } from './paul';
 import { JESTHOUSE_DIALOGUE, JESTHOUSE_SCRIPTS } from './jesthouse';
 // The inn folk (2026-10): Hesper the Echo-Reader (every inn) + Ottilie the Namewright.
 import { INNFOLK_DIALOGUE, INNFOLK_SCRIPTS } from './innfolk';
+// The Farlamp Isles, lane C2 (2026-10): the Undertide + the Drowned Lamp.
+import { UNDERTIDE_DIALOGUE, UNDERTIDE_SCRIPTS } from './undertide';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -48,6 +50,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...PAUL_SCRIPTS,
   ...JESTHOUSE_SCRIPTS,
   ...INNFOLK_SCRIPTS,
+  ...UNDERTIDE_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -68,4 +71,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...PAUL_DIALOGUE,
   ...JESTHOUSE_DIALOGUE,
   ...INNFOLK_DIALOGUE,
+  ...UNDERTIDE_DIALOGUE,
 };

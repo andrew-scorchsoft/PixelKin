@@ -219,6 +219,12 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // Sunvault Climb rebuild (S)
     { map_id: 'sunvault_climb_iii', region: 'west' }, // route: the Gilt Face (ladder pitches, the trestle over the gully)
     { map_id: 'sunvault_climb_iv', region: 'west' }, // route: the Sun Ledges (planks + ledges to the observatory hill)
+    // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide (portal caves under the isles)
+    { map_id: 'undertide_i', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the tide-race lesson: the keeper\'s first page, a Hearth Coal' },
+    { map_id: 'undertide_ii', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_afloat', reward: 'the FOG-GLASS (the Fogwall\'s buoy lane), a Lumen Drop, the second page' },
+    { map_id: 'undertide_iii', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the three-bell maze, the keeper\'s ledge (rest), Tide-bell Tuning (a Lumen Drop + the shortcut race)' },
+    { map_id: 'undertide_iv', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the Drowned Stair: a Lumen Drop, a Hearth Coal, the keeper\'s 2,000w purse, the last page' },
+    { map_id: 'farlamp_drowned', region: 'outer', optional: true, unlocked_by_flag: 'flag:q_isles_wellstair', reward: 'the relight (the isles\' dawn) + FARLUME #177 (lv 68) + the store\'s Star-chart' },
   ],
   edges: [
     // ---- Tinderwick interiors (door warps, both ways) --------------------------------
@@ -442,6 +448,14 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'sunvault_climb_ii', to_map: 'sunvault_climb_iii', via_warp: 'to_climb_iii', bidirectional: true },
     { from_map: 'sunvault_climb_iii', to_map: 'sunvault_climb_iv', via_warp: 'to_climb_iv', bidirectional: true },
     { from_map: 'sunvault_climb_iv', to_map: 'nightreach_observatory', via_warp: 'to_observatory', bidirectional: true },
+    // ---- Lane C2: the Undertide. The cave side owns these surface links (C1's surface
+    // warps are the far ends; one bidirectional edge each, never a second reverse edge).
+    { from_map: 'undertide_i', to_map: 'farlamp_gullwrack', via_warp: 'to_gullwrack', bidirectional: true },
+    { from_map: 'undertide_ii', to_map: 'farlamp_kelpcrown', via_warp: 'to_kelpcrown', bidirectional: true },
+    { from_map: 'undertide_iii', to_map: 'driftholm', via_warp: 'to_driftholm', requires_flag: 'flag:q_isles_wellstair', bidirectional: true },
+    { from_map: 'undertide_i', to_map: 'undertide_ii', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'undertide_iii', to_map: 'undertide_iv', via_warp: 'ladder_down', bidirectional: true },
+    { from_map: 'undertide_iv', to_map: 'farlamp_drowned', via_warp: 'ladder_down', bidirectional: true },
   ],
   hub: {
     map_id: 'vesper_crossroads',

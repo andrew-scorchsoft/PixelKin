@@ -80,7 +80,36 @@
     "weight_kg": 0.3,
     "habitat": "isles"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "undertide_i",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 61,
+      "max": 63
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 62,
+      "max": 64
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 62,
+      "max": 65
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 63,
+      "max": 66
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "A soft, round-bodied moth that seems made of fog, front view with wings spread: a fluffy pale body, big feathery antennae, two pairs of wide frayed wings whose edges dissolve into curling wisps of mist, and two large dark gentle eyes. Little curls of fog trail off the wingtips. At 64px it reads as a fluffy misty moth drifting in the dark.",

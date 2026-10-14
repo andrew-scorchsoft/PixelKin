@@ -1487,6 +1487,63 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'route',
     music: 'assets/audio/music/sunvault-climb-b.mp3',
     battle_backdrops: ['assets/backgrounds/battle/sunvault-climb-a.webp', 'assets/backgrounds/battle/sunvault-climb-b.webp'],
+  },  // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide + the Drowned Lamp —
+  // portal caves under the isles on the undertide_set accent kit (surge, shallows, tide-races).
+  undertide_i: {
+    json: 'assets/maps/undertide_i.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  undertide_ii: {
+    json: 'assets/maps/undertide_ii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  undertide_iii: {
+    json: 'assets/maps/undertide_iii.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  undertide_iv: {
+    json: 'assets/maps/undertide_iv.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    dark: true,
+    music: 'assets/audio/music/undertide.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/undertide-a.webp'],
+  },
+  farlamp_drowned: {
+    json: 'assets/maps/farlamp_drowned.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      undertide_set: 'assets/tilesets/undertide_set.webp',
+    },
+    kind: 'cave',
+    music: 'assets/audio/music/undertide.mp3',
+    // the relight (I6): once the Farlamp burns again, its room plays the relit cue
+    music_when: [{ flag: 'flag:isles_dawn', music: 'assets/audio/music/farlamp-relit.mp3' }],
+    battle_backdrops: ['assets/backgrounds/battle/farlamp-drowned-a.webp'],
   },
 };
 

@@ -74,7 +74,36 @@
     "weight_kg": 0.4,
     "habitat": "isles"
   },
-  "encounters": [],
+  "encounters": [
+    {
+      "area": "undertide_i",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 61,
+      "max": 63
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 61,
+      "max": 63
+    },
+    {
+      "area": "undertide_iii",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 62,
+      "max": 64
+    },
+    {
+      "area": "undertide_iv",
+      "terrain": "water",
+      "rarity": "common",
+      "min": 63,
+      "max": 65
+    }
+  ],
   "scripted": false,
   "art": {
     "silhouette": "A tiny round-bodied lantern-fish fry seen side-on, swimming upright: a big head with huge round dark eyes, a small smiling underbite, stubby frilled pectoral fins and a short fanned tail. A thin curved stalk rises from its brow and ends in a round glowing lure-bulb held out in front of its face. At 64px it reads as a chubby baby fish carrying its own little lamp.",

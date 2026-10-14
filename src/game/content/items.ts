@@ -749,6 +749,26 @@ export const ITEMS: ItemRegistry = {
     desc: 'A field-journal page in Fenn\'s careful hand: three day-forms, inked in morning light, and a note — "brighter lamps will show us more."',
     category: 'key',
   },
+  // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide.
+  // I4 — the old keeper's lens from the Kelp Vaults' island; reading the Fogwall's
+  // buoy lane by it is what lets the skiff through to Driftholm (`flag:q_isles_fogglass`,
+  // set by the same pickup). A keepsake once the isles are lit.
+  fog_glass: {
+    id: 'fog_glass',
+    name: 'Fog-glass',
+    desc: 'Keeper Marrow\'s lens in a brass ring. Through it, fog goes thin and the buoys read true.',
+    category: 'key',
+  },
+  // The Drowned Lamp's store (the Keeper's Log's reward): the Tide end-tier chart,
+  // found-first like Tremor Quake (chart_end tier, 10-economy §6).
+  chart_maelstrom: {
+    id: 'chart_maelstrom',
+    name: 'Star-chart: Maelstrom',
+    desc: 'The Farlamp\'s own sea-chart, the whirl the boats were taught to steer round. Teaches a willing kin MAELSTROM (Tide). One study burns it out.',
+    category: 'chart',
+    teach_move: 'maelstrom',
+    price: 4000,
+  },
 };
 
 export function getItem(id: string): ItemDef | undefined {

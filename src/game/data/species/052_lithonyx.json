@@ -95,6 +95,20 @@
       "rarity": "uncommon",
       "min": 58,
       "max": 63
+    },
+    {
+      "area": "undertide_i",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 62,
+      "max": 63
+    },
+    {
+      "area": "undertide_ii",
+      "terrain": "cave",
+      "rarity": "uncommon",
+      "min": 62,
+      "max": 63
     }
   ],
   "scripted": false,
