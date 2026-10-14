@@ -286,7 +286,7 @@ export const STILLWATER_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'TESSALY', text: 'This was my own lamp, the one I hung in the shop window so the lost could find the door. I want you to carry it now. Hold it up to a kin that\'s worn to its last scrap of strength and it won\'t frighten it. It\'ll call it home. And it never burns down. It brought me home, didn\'t it?' },
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'tessalys_lamp', count: 1 },
-    { op: 'say', text: 'You got TESSALY\'S LAMP! It burns threefold on a kin below a quarter of its health, and it is never spent.' },
+    { op: 'say', text: 'You got TESSALY\'S LAMP! It burns twice as bright on a kin below a quarter of its health, and it is never spent.' },
     { op: 'setFlag', flag: TESS_DONE },
   ],
   'script.still_tessaly_after': [

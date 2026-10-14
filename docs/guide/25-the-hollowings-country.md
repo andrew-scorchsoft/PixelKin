@@ -145,7 +145,7 @@ time she reaches the edge of the village her feet stop. Agree to walk ahead with
 3. Meet her **at home in Pale Vault**, on the west side of the glacier town.
 
 Reward: **Tessaly's Lamp**, the lamp she hung in her shop window so the lost could find the door.
-It's a keepsake charge: it burns at **×3.0 on a kin below a quarter of its health** (an ordinary
+It's a keepsake charge: it burns at **×2.0 on a kin below a quarter of its health** (an ordinary
 lamp on a healthier one), and it's **never spent**, so you keep it after every throw. Wear a kin
 down into the red, then raise it.
 
@@ -396,7 +396,7 @@ you'll open it up. (Say "Not yet" and she'll wait.) Together you lean on the gre
 coldfog, and every buoy down the coast wakes in answer.
 
 She gives you the **Shutter Charm**: the first shutter's own latch, which she worked off the night
-she bolted it and has carried ever since. It's a keepsake charge that burns at **×2.5 on Dark-type
+she bolted it and has carried ever since. It's a keepsake charge that burns at **×2.0 on Dark-type
 kin** (an ordinary lamp on anything else), and it's **never spent**: you keep it after every throw.
 It isn't sold anywhere, so this one is the only one.
 

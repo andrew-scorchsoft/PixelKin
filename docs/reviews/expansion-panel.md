@@ -633,3 +633,137 @@ the reward design also still carry the issues listed above.
 | 2026-10-14 | Hollowing's Country: Drownlight | fix pass, independent r2 | 83.3 | relight fixed, beam seen; F1 base forms 14–30 lv over kindling |
 | 2026-10-14 | Hollowing's Country: Mourning Fields | fix pass, independent r2 | 79.0 | lobed plots; ruled crossing band; Lullwool duplicates Tessaly's Lamp |
 | 2026-10-14 | Hollowing's Country: Underways | fix pass, independent r2 | 80.3 | blob floors, signposted, Voidburst chart; thin bays, no unique kin |
+
+## Plan 4 — third independent review (after the second fix round)
+
+A third reviewer, who hadn't seen the fix lanes' self-scores, checked the second fix round on
+2026-10-14 (commits `04d184fe` reusable charges, `28b4f091` B, `53016e5b` D, `fd51f080` C,
+`5bb265c5` A). Evidence: renders (`render_map.py`, scale 2, plus 4× crops) of Coldfog I,
+Stillwater, the Quiet Hall, home A, Drownlight F1, the Fields, both Underways floors and
+Glowmoss Deep; 27 in-game shots (`shoot.mjs --batch`): both Coldfog I pools at dusk and dawn,
+the mere at dusk and dawn, Stillwater's west flank, home A at dusk and dawn, the Quiet Hall,
+F1's south hall, the Fields' crossing, the shrine at dusk and dawn, the Brook Piece, the B1
+fire with the watch kept (dusk and dawn), the Warm Stones, B1's west bay, F1 west, the Glowmoss
+drained chamber, a JesterFull battle in the Warm Stones, a Mothdim battle in Glowmoss Deep, and
+the LAMP list holding Tessaly's Lamp and the Shutter Charm. The four region files and the
+`items.ts`, `BattleScene` (charge) and `EncounterSystem` code were read, and every wild table
+in the region (plus Glowmoss Deep and the Rimeway descent) was dumped against its kindle level.
+Gates: `audit_visual --all` 75 maps, 0 FAIL, 0 warn; `audit_journey` PASS (40/40 golden, 0
+failures); `check_content` exit 0, no E-lines; `validate.mjs` 180 species, 0 errors;
+`progression.mjs` PASS; `tsc` clean; `audit_flow` 0 FAIL on all eight maps (Glowmoss Deep keeps
+an older design warning); `audit_warps` PASS; `audit_npc_footing` 0 FAIL; `render_walkable`
+0 real issues on the six outdoor and cave maps; `check_rebuild` 168/168 maps reproduce.
+
+### Did the second review's lift list land?
+
+| Part | Item | Status |
+|---|---|---|
+| B | F1 base forms → finals | **Done.** F1 rolls Shutterwick, Voidmantle, Lullwing, Stillwarden and Liminalux at 50–52, as does the foot's tuft bed. Odell, Prue and Hask's teams were moved up to match. |
+| B | Shutter Charm reusable | **Done.** There's ONE, it's `reusable`, ×2.5 on Dark kin. The BAG note reads "Never spent". |
+| B | Dress F1's south hall | **Done.** Barrels, oil cans, sandbags, crates and rope, with read lines. |
+| D | Fill B1 and F1's thin bays | **Done.** Seven new drawn watch props. B1's south spur now joins on foot, so the Warm Stones are a loop rather than a drop. |
+| D | Something unique on the Warm Stones | **Partly.** JesterFull's only *wild* bed is here (rare, 55–56 / dawn 58–60), and Clemency and the sign foreshadow it ("If the jester comes, CLAP"). But JesterFull is also JesterHalf (common in the Old Light) kindled at lv 24, so it's only soft-unique. |
+| D | Keeping the watch changes the world | **Done.** Clemency rings the bell, the `_after` posts empty, and Odalie, Bran and Hesk sit at her fire with dusk and dawn lines. Shot and confirmed. |
+| A | Tessaly's Lamp ≠ Lullwool | **Done.** It's now a reusable keepsake, ×3.0 below 25% HP (see the balance note under the bug list). |
+| A | Crag S-face and mere notches | **Mostly.** The north rim is a real two-tile `fogface` cliff (lit lip, streaked face, toe, shadow), and the mere now has a stone islet and a reed spit. The west and east flanks still show one-tile face stubs on flat slate. |
+| A | Blob the murk pools; drop the lv 17–21 pocket | **Done.** There's a new `murkpool` family. Coldfog I loads `stillwater_set` (first_gid 403, tile_count 81, registered in `maps.ts`) and renders correctly **in game**. The gold pocket now rolls band finals. |
+| A | Home A stove; the Quiet Hall's lower half | **Done.** `stove_banked` pre-dawn swaps to an open stove at dawn, and the hall gains back benches, a lectern, shutter-boxes and sprig baskets. |
+| C | Blob the crossing band; round the plot corners | **Done.** Both edges wave in 2–3-column runs, the band is still mandatory, and the plots step with rounded convex corners. |
+| C | Replace the duplicate charge | **Done, differently.** The Lullwool Charm stays (doze ×3.0, ×5), and it's now the only doze charge. The Harvest Knot became a real toggle (×0.25, the strongest damper, key and never sold). |
+| C | A second dawn change at the shrine | **Done.** `field_shrine_lit` burns all five candles, the narration reads the five names plus "Morning.", and there's the tender's harvest-home line. **Bonus:** the Brook Piece, a bramble nook you see from the Rimeway road, holding Tussock (dusk and dawn twins), a marker stone and a Hearth Coal. |
+| — | Mothdim/Flutterwane re-homed | **Done.** Glowmoss Deep's `drained_woken` zone (`flag:met_hollowing`, cave, rate 0.06) rolls Mothdim 18–19 and Flutterwane 20–21, both under their kindle levels. Shot and battled in game. |
+
+### Bugs and new problems
+
+No blocking bugs. Every new mechanic works as specified.
+
+- **(Note, harness only) Coldfog I bounces a no-Gift save to Tinderwick.** That's
+  `WorldScene.STRANDED_WITHOUT` (`coldfog_marches_i: 'emberward'`), working by design. With
+  `--abilities emberward` the map loads and the `murkpool` tiles draw correctly. It's not a game bug,
+  but anyone shooting Coldfog I must pass emberward.
+- **Balance: two permanent charges outclass the bought ones for the rest of the game.**
+  Tessaly's Lamp (×3.0 below 25% HP, reusable) beats the Beacon Charge (×2.5, 600w) in the
+  standard catch, the one where you whittle the foe down first. In that same case it also beats the
+  post-game Deep Charm (×3.0, 900w). The Shutter Charm adds a free ×2.5 at any HP against
+  Dark kin, which is most of the north. `progression.mjs` doesn't model charge spend, so it
+  can't see the lost wick sink. This is a design risk, not a bug (*Priya:* "a keepsake should
+  be a little worse than the shop's best, not better forever").
+- **The Rimeway descent still sits base forms 10–40 levels past kindling.** It's the Fields
+  loop's south road. Mothdim rolls 46–47 / 56–62 (it kindles at 20), Wispwane 46–47 / 56–62 (38) and Nullmoth 46–48 / 57–63 (36). This
+  is the finding fixed on F1 and on Coldfog, left on the loop's own return road. Its maps belong
+  to the Wild Ways, but a player walking the Plan 4 loop meets it.
+- **Three identical sheets at the fire.** Odalie, Bran and Hesk all wear `hollowing_acolyte`
+  on one screen, against the regional-cast rule that no screen shows the same sheet twice.
+- **Dialogue echo at dawn.** Clemency's and Bran's dawn lines both open with "He came
+  down, after. … Sat right …".
+- **Nits.** The Glowmoss builder and `build_species.py` comments say the moths come "after the relight",
+  but the gate is the *drain* beat (`flag:met_hollowing`). The species mirror lists only
+  Mothdim/Flutterwane, though the zone also rolls #38 and #67 (the existing pattern). The
+  field-tender's knot line ("she sees it on your lamp") fires once the knot is *picked*, hung
+  or not. And the Stillwater mere at dawn reads almost the same as at dusk (the lamps are lit,
+  but the water and sky are unchanged).
+
+### Scores
+
+| # | Dimension (wt) | A · Stillwater + Coldfog | B · Drownlight | C · Mourning Fields | D · Underways |
+|---|---|--:|--:|--:|--:|
+| 1 | Exploration (15) | 8.5: a real north cliff face, the mere's islet and spit, the hall's lower half, lobed murk pools; the W/E flanks are still flat slate with face stubs | 8.5: the south hall is dressed now; the lighthouse kit was already good | 8.5: the Brook Piece (seen from the road, reached the long way, with a named sleeper) and a waved crossing | 8.5: dressed halls and bays, and the Warm Stones as a loop |
+| 2 | Navigation (15) | 7: unchanged; the square is still a cross-and-ring template | 8.5: unchanged, and good | 8.5 | 8.5: the B1 spur closes the Warm Stones loop |
+| 3 | Reward (15) | 8: Tessaly's Lamp is now its own thing, a reusable keepsake, but it's over-strong (see the balance note) | 8.5: one reusable Shutter Charm is a better capstone than three throws | 8: a working Harvest Knot (×0.25), Lullwool now unique, the Drop and a coal | 8: the Voidburst chart, JesterFull's bed, the gathering, Drop/coal/Shard |
+| 4 | Story (10) | 9 | 9.5 | 9: Tussock, the five names, "Morning." | 9: the gathering lands; the dawn lines echo |
+| 5 | Return (10) | 9 | 9.5 | 9: the shrine lit, Tussock awake, the tender's harvest-home | 8.5: the watch at the fire at dawn; B1 itself looks the same at dawn |
+| 6 | Pacing (10) | 8.5: the lv 17–21 cliff is gone, acolytes 47–50 | 8.5: F1 at band | 8: 46–52; the loop's Rimeway road still has base forms 10–40 lv past kindling | 9 |
+| 7 | Creature (10) | 7.5: finals at band and the Dousecap yard, but the same five-kin Hollowing mix as every part | 7.5: base forms gone; the tower's tables are the region's shared finals (+ Prismantus on F2), so nothing is tower-only | 7.5: the #178 verge and #179/#180; nothing Fields-only | 7.5: JesterFull's only wild bed (soft-unique) + Embralux |
+| 8 | Clarity (5) | 9 | 8.5 | 8.5 | 9 |
+| 9 | Originality (5) | 9 | 9 | 9 | 9: "If the jester comes, CLAP." |
+| 10 | Cost (5) | 8 | 8.5 | 8 | 8 |
+| | **Total** | **82.3** | **86.3** | **83.8** | **84.5** |
+
+(Totals: A 822.5/10 → 82.3; B 862.5/10 → 86.3; C 837.5/10 → 83.8; D 845/10 → 84.5.)
+
+**Verdict: B clears the bar (86.3). D (84.5) and C (83.8) are just under, and A (82.3) is
+the furthest off.** Since review 2, A has moved +3.0, B +3.0, C +4.8 and D +4.2, and no
+dimension is under 6. The second round did what it was asked to do, and did it cleanly (all
+gates green, 168/168 maps reproduce). What's left is small: template residue in Stillwater's
+layout, a shared creature mix across all four parts, the Rimeway's base forms on the loop's
+own road, and a few polish nits.
+
+### What would still clear 85 (smallest changes)
+
+**D · Underways (84.5; +0.5 needed)**
+1. `tools/maps/build_penumbra_underways.py`: give Odalie, Bran and Hesk three distinct
+   regional-cast sheets at the fire (and on their posts), and rewrite Bran's dawn line so it
+   doesn't echo Clemency's "He came down, after". That's Originality and Story +0.5.
+2. Or: a visible dawn on B1. Swap the `cold_brazier` → `brazier_lit` twin and spread a light pool
+   from the shaft at `flag:dawn`, so the floor itself says morning. That's Return 8.5 → 9.
+
+**C · Mourning Fields (83.8; +1.2 needed)**
+1. `tools/balance/build_species.py` (the Rimeway descent rows): replace Mothdim, Wispwane and
+   Nullmoth with Voidmantle, Liminalux and Lullwing (or move them under kindle), and mirror the change in the
+   map. The loop's return road then matches the rest of the region. That's Pacing 8 → 8.5.
+2. Give the Fields one bed of its own: a rare Fields-only roll in the Brook Piece (or in the
+   Harvest-Knot top field), or Dawnwatcher moved off the Underways so the Fields' dawn rare is the
+   only one. That's Creature 7.5 → 8.5.
+
+**A · Stillwater + Coldfog (82.3; +2.7 needed)**
+1. `tools/maps/build_stillwater.py`: run the `fogface` rim down the west and east flanks, or
+   swap the one-tile face stubs for N/W/E rim transitions (level-design §11 r8). Then break the
+   cross-and-ring square with one off-axis element: a diagonal lane to the mere, or a green that
+   cuts a corner of the ring. That's Exploration 8.5 → 9 and Navigation 7 → 8 (+2.25).
+2. `content/items.ts` `tessalys_lamp`: drop it to ×2.0 (or `hp_below 0.15`) so the keepsake
+   sits under the Beacon Charge instead of replacing it for the rest of the game. Reward holds at 8,
+   and the economy keeps its late sink.
+3. Coldfog I's gold pocket: make it a curio worth the detour. The lone Wisprestored could be a
+   region-only rare there, with a sign. That's Creature 7.5 → 8 (+0.5).
+
+**B · Drownlight (86.3): clears.** Optional polish: one tower-only roll on F2 (Prismantus is
+the nearest thing to one).
+
+### Score history (append)
+
+| Date | Plan | Stage | Total | Notes |
+|---|---|---|--:|---|
+| 2026-10-14 | Hollowing's Country: Stillwater + Coldfog | 2nd fix round, independent r3 | 82.3 | north cliff, lobed pools, keepsake lamp (over-strong); flank stubs, template square |
+| 2026-10-14 | Hollowing's Country: Drownlight | 2nd fix round, independent r3 | **86.3** | finals at band, one reusable Shutter Charm, dressed hall: clears |
+| 2026-10-14 | Hollowing's Country: Mourning Fields | 2nd fix round, independent r3 | 83.8 | Brook Piece, knot toggle, five candles; Rimeway base forms, no Fields-only kin |
+| 2026-10-14 | Hollowing's Country: Underways | 2nd fix round, independent r3 | 84.5 | watch gathers, JesterFull bed, loop; same sheet ×3, dawn echo |

@@ -81,7 +81,7 @@ the shutter-grey kit `build_stillwater_interior_set.py`, the `flagway` lane fami
 - **Quests:** *A Light Left On* (`flag:q_still_candle*` — Linnet's candle to the willow hollow or
   to Maren; a Starglass Shard either way); *The Way Home* (`flag:q_still_tessaly*` — she waits
   in Coldfog I, then Coldfog II, then home at Pale Vault `pale_vault_glacier` (6,22) via
-  `hand_placed_data.py`; reward: **Tessaly's Lamp**, ONE reusable keepsake charge, ×3.0 on a
+  `hand_placed_data.py`; reward: **Tessaly's Lamp**, ONE reusable keepsake charge, ×2.0 on a
   kin below 25% HP); *The Shutter-wall* (`flag:q_still_wall`, three cold lamps: Coldfog I `named_lamp_1`,
   Coldfog II `named_lamp_2`, Stillwater's far shore; a Lumen Drop + 1,500w; Wenna names
   whichever lamps are still missing).
@@ -126,7 +126,7 @@ for after the dawn. **After the dawn** you can relight it (a lamp beat, minor �
 once she has told her tale (the lamp waits on `flag:drownlight_keeper_beaten`); the coast's buoys
 wake and the beam sweeps the shallows from the foot (Ambience `when` + `beams`). Rewards: a Lumen
 Drop, a Starglass Shard, and the **Shutter Charm**: the first shutter's own latch, ONE per game
-and REUSABLE (`reusable: true`, never spent), a conditional charge ×2.5 on Dark-type kin; no price.
+and REUSABLE (`reusable: true`, never spent), a conditional charge ×2.0 on Dark-type kin; no price.
 
 ## C · The Mourning Fields — the loop
 

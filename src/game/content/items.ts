@@ -865,9 +865,9 @@ export const ITEMS: ItemRegistry = {
   tessalys_lamp: {
     id: 'tessalys_lamp',
     name: 'Tessaly\'s Lamp',
-    desc: 'The Pale Vault shop-lamp Tessaly carried home. Raised to a kin worn to its last quarter it calls it home threefold, and it never burns down. A lamp to bring the lost home.',
+    desc: 'The Pale Vault shop-lamp Tessaly carried home. Raised to a kin worn to its last quarter it calls it home twice over, and it never burns down. A lamp to bring the lost home.',
     category: 'charge',
-    catch_bonus: 3.0,
+    catch_bonus: 2.0,
     condition: { kind: 'hp_below', ratio: 0.25 },
     reusable: true,
   },
@@ -882,7 +882,7 @@ export const ITEMS: ItemRegistry = {
     name: 'Shutter Charm',
     desc: 'The first shutter\'s own latch, warm from the relit lamp. Raised toward a Dark-hearted kin its throw burns gentle and sure; toward any other it is only a lamp. A keepsake: never spent.',
     category: 'charge',
-    catch_bonus: 2.5,
+    catch_bonus: 2.0, // reusable, so a notch under the Beacon's ×2.5 (third Plan-4 review)
     reusable: true,
     condition: { kind: 'defender_type', types: ['Dark'] },
   },
