@@ -82,6 +82,13 @@
       "max": 35
     },
     {
+      "area": "cinderwind_kiln",
+      "terrain": "cave",
+      "rarity": "common",
+      "min": 56,
+      "max": 62
+    },
+    {
       "area": "old_seams_i",
       "terrain": "cave",
       "rarity": "common",

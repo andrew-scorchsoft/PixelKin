@@ -10,7 +10,7 @@
  *                               the DERIVED flag:scarp_short_open (= this OR gleam:storm).
  *   flag:ashfall_camp_rested    the first night at the haulers' brazier (longer narration)
  *   flag:ashfall_picker_beaten / flag:ashfall_galewatch_beaten
- *   flag:picked_ashfall_nook / _ashfall_tin / _kiln_beacon / _kiln_chart
+ *   flag:picked_ashfall_nook / _ashfall_tin / _ashfall_lunchtin / _kiln_beacon / _kiln_chart
  *   flag:q_north_pane_hook      Oda Kilnwright tells you about the last pane (JOURNAL start)
  *   flag:q_north_pane           the pane taken from Kiln Gully's drying loft
  *   flag:q_north_pane_done      the pane set in the kite-stall lamp at Galehigh
@@ -96,6 +96,12 @@ export const ASHFALL_SCRIPTS: ScriptRegistry = {
     { op: 'say', text: 'Something glints under a crust of old ash. You dig it out with your fingers: a STARGLASS SHARD, still faintly warm. Found it!' },
     { op: 'setFlag', flag: 'flag:picked_ashfall_nook' },
   ],
+  'script.pickup_ashfall_lunchtin': [
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'hearth_coal', count: 1 },
+    { op: 'say', text: 'Wedged between the slag and the rocks: a hauler\'s lunch-tin, long forgotten. The bread is past saving, but packed in ash at the bottom, still faintly warm, is a HEARTH COAL!' },
+    { op: 'setFlag', flag: 'flag:picked_ashfall_lunchtin' },
+  ],
   'script.pickup_ashfall_tin': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'glow_charge', count: 2 },
@@ -172,6 +178,10 @@ export const ASHFALL_DIALOGUE: DialogueRegistry = {
   'sign.cinderwind_ashfall': [
     { text: 'THE ASHFALL SHELF\nSOUTH: Cinderwind Scarp and the mine. EAST, over the tips: Galehigh\'s top road.' },
     { text: 'Burnt into the board underneath: "A hundred years of slag went over this edge. Mind where you dig. Mind more what you find."' },
+  ],
+  'sign.ashfall_century': [
+    { text: 'A tipping-stone at the end of the old ore track, notched in hundreds of rows of five. A notch for every cart of slag that went over the edge.' },
+    { text: 'The last row stops halfway. Under it, scratched deeper: "LAMPS OUT. CARTS STOPPED. THE GRASS CAN HAVE IT NOW."' },
   ],
   'sign.ashfall_gate': [
     { text: 'GALEHIGH TERRACES, EAST.\nThe kite-wrights ask that you leave the ash on THIS side of the gate.' },

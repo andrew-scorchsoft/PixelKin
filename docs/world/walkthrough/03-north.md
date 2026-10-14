@@ -509,6 +509,15 @@ Ashfall Shelf (30–33) → Galehigh**, with Mira's recommended party raised 28 
   walled pocket (a Starglass Shard under the ash), and a second ledge drops you out into the
   basin. Wild 30–33: Gravelo, Sparkrat, Flintbeak, Galefox, Pyrolith and **Stonebark** (#63, its
   first wild placement, ~5%).
+- **Second pass (2026-10).** The shelf is threaded, not open: three lanes across the west ash
+  (the camp; two slag-and-rock ridges; the haulers' old ore track with a stranded cart and the
+  **century stone**), a walled west pocket seen from the cut head and reached round by the camp
+  (a hauler's lunch-tin: a Hearth Coal), a charred tree east of the crossing, and dressed crags.
+  The basin is now two tiers joined by one gap, so the way UP folds (in, east, up, back west to
+  the cut at x=3) and the nook drop skips the fold on the way DOWN (53 vs 43 steps). Stonebark
+  grazes as greetable ambient colour on the gate shelf beside the descent lane. **Day-forms:**
+  after `flag:dawn` the beds run Voltcrag/Gravelo/Strikeaven/Tempestail and the woken
+  **Rootwarden** (lv 56–62); Kiln Gully runs Prismara/Riddlestone/Ferrolith/Pyrolith/Lithonyx.
 - **The haulers clear it.** Galehigh's new upper-west landing (rows 7–8, a throat at x=2)
   carries a step_on band, `script.ashfall_rockfall_promise`, setting
   `flag:scarp_rockfall_clear`. Mira's hook (`script.mira_quest`) also rides row 12 under the

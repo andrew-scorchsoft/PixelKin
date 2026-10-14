@@ -111,6 +111,13 @@
       "max": 33
     },
     {
+      "area": "cinderwind_ashfall",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 56,
+      "max": 61
+    },
+    {
       "area": "old_seams_i",
       "terrain": "cave",
       "rarity": "uncommon",

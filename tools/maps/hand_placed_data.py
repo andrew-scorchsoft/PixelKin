@@ -512,3 +512,13 @@ for _mid, (_inn, _x, _y) in _HESPER_SEATS.items():
 PLACEMENTS.setdefault("wickstead_school", {}).setdefault("npcs", []).append(
     {"id": "namewright", "at": {"tx": 3, "ty": 2}, "facing": "down", "sprite": "npc_old_man",
      "movement": "static", "dialogue_ref": "script.namewright"})
+
+# ---- Lane A (walkthrough/10 Part II, 2026-10): the Ashfall Shelf + Kiln Gully day-forms.
+# After the dawn the ash-grass greens at the tips: Stonebark's line wakes as Rootwarden,
+# and the storm-birds come down off Windward. Mirrored in build_species.py
+# (ASHFALL_DAY_ENCOUNTERS). Zone ids are the builders' zone ids.
+_ASH_DAY = T((46, 30, 56, 61), (49, 25, 56, 61), (90, 20, 57, 62), (102, 15, 57, 62), (64, 10, 58, 62))
+PLACEMENTS["cinderwind_ashfall"] = {"day": {z: _ASH_DAY for z in (
+    "ashfall_green_a", "ashfall_green_b", "ashfall_green_c", "ashfall_ash_a", "ashfall_ash_b")}}
+_KILN_DAY = T((37, 25, 57, 63), (69, 25, 56, 62), (55, 20, 57, 63), (43, 20, 56, 62), (52, 10, 58, 63))
+PLACEMENTS["cinderwind_kiln"] = {"day": {z: _KILN_DAY for z in ("kiln_hall", "kiln_rooms")}}

@@ -1492,7 +1492,10 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
   // The main-path leg between Cinderwind Scarp and Galehigh: daylight after three caves.
   cinderwind_ashfall: {
     json: 'assets/maps/cinderwind_ashfall.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',   // the haulers' old ore track (dressing)
+    },
     kind: 'route',
     music: 'assets/audio/music/cinderwind-ashfall.mp3',
     battle_backdrops: ['assets/backgrounds/battle/ashfall-a.webp'],

@@ -4062,6 +4062,13 @@
      "max": 35
     },
     {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
      "area": "old_seams_iii",
      "terrain": "cave",
      "rarity": "very_rare",
@@ -4653,6 +4660,13 @@
      "max": 35
     },
     {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
+    },
+    {
      "area": "old_seams_ii",
      "terrain": "cave",
      "rarity": "uncommon",
@@ -5017,6 +5031,13 @@
      "rarity": "very_rare",
      "min": 30,
      "max": 30
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 61
     }
    ],
    "scripted": false,
@@ -5333,6 +5354,13 @@
      "max": 33
     },
     {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 61
+    },
+    {
      "area": "old_seams_i",
      "terrain": "cave",
      "rarity": "uncommon",
@@ -5597,6 +5625,13 @@
     "habitat": "east"
    },
    "encounters": [
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 63
+    },
     {
      "area": "old_seams_ii",
      "terrain": "cave",
@@ -5939,6 +5974,13 @@
     "habitat": "east"
    },
    "encounters": [
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
     {
      "area": "old_seams_ii",
      "terrain": "cave",
@@ -6912,6 +6954,13 @@
      "rarity": "uncommon",
      "min": 60,
      "max": 62
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 58,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -7418,6 +7467,13 @@
      "rarity": "common",
      "min": 33,
      "max": 35
+    },
+    {
+     "area": "cinderwind_kiln",
+     "terrain": "cave",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
     },
     {
      "area": "old_seams_i",
@@ -9939,6 +9995,13 @@
      "rarity": "common",
      "min": 60,
      "max": 65
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -11131,6 +11194,13 @@
      "rarity": "uncommon",
      "min": 62,
      "max": 64
+    },
+    {
+     "area": "cinderwind_ashfall",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 62
     }
    ],
    "scripted": false,

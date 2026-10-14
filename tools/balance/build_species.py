@@ -799,6 +799,21 @@ ASHFALL_ENCOUNTERS = {
 }
 for _slug, _rows_ in ASHFALL_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+# ...and their post-dawn DAY-FORM twins (tools/maps/hand_placed_data.py, the R4 pattern)
+ASHFALL_DAY_ENCOUNTERS = {
+    "voltcrag":    _rows("cinderwind_ashfall", [(56, 61, "common")]),
+    "gravelo":     _rows("cinderwind_ashfall", [(56, 61, "common")]),
+    "strikeaven":  _rows("cinderwind_ashfall", [(57, 62, "common")]),
+    "tempestail":  _rows("cinderwind_ashfall", [(57, 62, "uncommon")]),
+    "rootwarden":  _rows("cinderwind_ashfall", [(58, 62, "uncommon")]),
+    "prismara":    _cave("cinderwind_kiln", [(57, 63, "common")]),
+    "riddlestone": _cave("cinderwind_kiln", [(56, 62, "common")]),
+    "ferrolith":   _cave("cinderwind_kiln", [(57, 63, "common")]),
+    "pyrolith":    _cave("cinderwind_kiln", [(56, 62, "common")]),
+    "lithonyx":    _cave("cinderwind_kiln", [(58, 63, "uncommon")]),
+}
+for _slug, _rows_ in ASHFALL_DAY_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
 # The Wild Ways — Sunvault Climb rebuild (S, 09-the-wild-ways §2 S, 2026-10): the
 # Gilt Face + the Sun Ledges' BUILT in-map tables (tools/maps/build_sunvault_climb_iii/_iv.py),
