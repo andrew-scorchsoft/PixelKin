@@ -190,11 +190,12 @@ export const ITEMS: ItemRegistry = {
     desc: 'A hand-inked folio of impossible grinning figures, drawn before the Dusk by folk who drew the world odder to tell it true. Paul chose it for you. It does not explain itself.',
     category: 'key',
   },
-  // Paul's painted milagro cards (content/regions/paul.ts, script.paul_milagro_cards)
+  // The Booji-Wooji Man's milagro cards (content/milagros.ts): Paul's box. The cards
+  // you collect are browsed from the pause menu (MILAGROS), not from here.
   milagro_cards: {
     id: 'milagro_cards',
     name: 'Milagro Cards',
-    desc: 'Paul\'s painted cards, after the little tin charms they hang up in the sun country: a heart, a lamp, a walker, a bird-pig, and one dark card with a flame. DESASOSIEGO.',
+    desc: 'A little box painted with suns, moons and eyes, from Paul. The Booji-Wooji Man left his cards lying about for strangers to find; folk all over Vesperholm have one. Your collection: START > MILAGROS.',
     category: 'key',
   },
   paul_cup: {

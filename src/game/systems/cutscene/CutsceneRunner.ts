@@ -13,6 +13,8 @@ import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
 import { Menu } from '@game/ui/Menu';
 import { NameEntry } from '@game/ui/NameEntry';
+import { MilagroView } from '@game/ui/MilagroView';
+import { MILAGROS, milagroFlag } from '@game/content/milagros';
 import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox, clearCinematicFx } from '@game/ui/Transitions';
 import { hex } from '@game/ui/theme';
 import { getDialogue } from '@game/content/dialogue';
@@ -357,6 +359,14 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       const speciesId = await new StarterSelect(scene, ctx.sfx).run();
       ctx.onGiveStarter(speciesId);
       void ctx.sfx.play('dex-register');
+      return true;
+    }
+    case 'milagroCard': {
+      const card = MILAGROS.find((c) => c.id === step.card);
+      if (!card) return true;
+      ctx.flags.set(milagroFlag(card.id), true);
+      void ctx.sfx.play('world-keyitem');
+      await new MilagroView(scene, ctx.sfx).reveal(card);
       return true;
     }
     case 'giveKin': {

@@ -28,6 +28,7 @@
  * player re-enters at (4,6) facing right. Never progression: nothing here gates.
  */
 import type { CutsceneStep, DialogueRegistry, ScriptRegistry } from '../types';
+import { MILAGRO_PACK_FLAG } from '../milagros';
 
 const CP = 'flag:chickenpig_caught';
 const SCENE = 'flag:paul_lottie_scene'; // the first after-catch shriek has happened
@@ -147,7 +148,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'He came home with a tin cup and a grin and won\'t say where he got either. Whatever you did up that wood, thank you. He\'s been humming.' },
     { op: 'say', speaker: 'ROSE', text: 'If you go up to his shirts: the NEVER rail is mine and Lottie\'s doing. He wore ASK ME ABOUT MY KNEES to a christening. Somebody asked.' },
     { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'He\'s planning a festival again, too. The Festival of the Imagined. The programmes are upstairs. Everyone on the bill is somebody out of a story, which does keep the catering simple.' },
-    { op: 'say', if_flag: 'flag:q_south_wander_done', unless_flag: 'flag:paul_milagro_given', speaker: 'ROSE', text: 'And if he\'s in a good mood, ask him about his cards. The painted ones. He pretends he doesn\'t want to show you.' },
+    { op: 'say', unless_flag: MILAGRO_PACK_FLAG, speaker: 'ROSE', text: 'And if he\'s in a good mood, ask him about the cards. The painted ones, out at his lamp. He pretends he doesn\'t want to show you.' },
     { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'And that poster by the fire is a JOKE. Probably. I stopped asking around the time I learned to make tea.' },
     { op: 'setFlag', flag: 'flag:paul_rose_met' },
   ],
@@ -186,30 +187,28 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:paul_festival_written' },
   ],
 
-  // ---- the milagro cards ----------------------------------------------------------------
-  // Paul's lamp menu, once the cup's yours: he deals them (the key item, once).
+  // ---- the milagro cards (content/milagros.ts) -----------------------------------------
+  // Paul's lamp menu, once you've met him: the BOX, its lore card, and the first card.
+  // Every other card is out in the world with somebody (WorldScene.maybeGiveMilagro).
   'script.paul_milagro_cards': [
-    { op: 'say', speaker: 'PAUL', text: 'My cards? Ha. Somebody\'s been talking. ...Rose. It\'s always Rose.' },
-    { op: 'say', speaker: 'PAUL', text: 'In the sun country, over the western sea, folk hang little tin charms in the chapels — a tin heart, a tin leg, a tin eye — for whatever wants mending. Milagros, they call them. Small miracles.' },
-    { op: 'say', speaker: 'PAUL', text: 'I can\'t work tin. So I paint them. Here — I\'ll deal you a hand.' },
-    { op: 'narrate', text: 'THE HEART. A red heart with a crack mended in gold thread. For anything that\'s broken and taking its time.' },
-    { op: 'narrate', text: 'THE LAMP. A lamp in a window. For whoever leaves one on for somebody.' },
-    { op: 'narrate', text: 'THE WALKER. A little figure on a long road, not lost. You recognise the hat.' },
-    { op: 'narrate', text: 'THE BIRD-PIG. Painted this year, by request. The request was in crayon.' },
-    { op: 'narrate', text: 'And the last card, painted almost black, with one small restless flame in the middle. Lettered along the bottom: DESASOSIEGO.' },
-    { op: 'say', speaker: 'PAUL', text: 'That one\'s the oldest. It\'s their word for it — the unease that won\'t let you sit still until you\'ve made something. Gets in at night. Paces the kitchen.' },
-    { op: 'say', speaker: 'PAUL', text: 'Folk think it\'s a sickness. It isn\'t. It\'s the cure, turning up early. Every card I ever painted, that\'s who painted it. I just held the brush.' },
-    { op: 'giveItem', unless_flag: 'flag:paul_milagro_given', item: 'milagro_cards', count: 1 },
-    { op: 'say', unless_flag: 'flag:paul_milagro_given', text: 'Paul squares the cards and presses them into your hand. Received the MILAGRO CARDS!' },
-    { op: 'say', unless_flag: 'flag:paul_milagro_given', speaker: 'PAUL', text: 'Keep them. When the itch comes for you — and it will, you\'ve the look — don\'t fight it. Make something. Then come and show me.' },
-    { op: 'say', if_flag: 'flag:paul_milagro_given', speaker: 'PAUL', text: 'You\'ve already got a hand. Use it. That\'s the only rule.' },
-    { op: 'setFlag', flag: 'flag:paul_milagro_given' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Cards? Ha. Somebody\'s been talking. ...Rose. It\'s always Rose.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'In the sun country, over the western sea, folk hang little tin charms in the chapels for whatever wants mending. A tin heart. A tin leg. Milagros, they call them. Small miracles.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Somebody painted a whole deck of them, once. I came by a box. Don\'t ask me how. ...Here. It\'s yours.' },
+    { op: 'giveItem', unless_flag: MILAGRO_PACK_FLAG, item: 'milagro_cards', count: 1 },
+    { op: 'say', unless_flag: MILAGRO_PACK_FLAG, text: 'He puts a little card box in your hands, covered in painted suns and moons and eyes. Received the MILAGRO CARDS!' },
+    { op: 'narrate', unless_flag: MILAGRO_PACK_FLAG, text: 'Inside: one card, and a little printed slip.' },
+    { op: 'narrate', unless_flag: MILAGRO_PACK_FLAG, text: '"The Milagro Cards you now hold were made by a somewhat mysterious figure known as the Booji-Wooji Man..."' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Read the slip later. The short of it: he left them lying about. Tea-houses, the Lantern-cars, bookshops. So the rest of that deck\'s out there, with whoever found it.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Talk to folk. Somebody always has a card they don\'t know what to do with. That\'s rather the point of them.' },
+    { op: 'setFlag', unless_flag: MILAGRO_PACK_FLAG, flag: MILAGRO_PACK_FLAG },
+    { op: 'milagroCard', unless_flag: 'milagro:desasosiego', card: 'desasosiego' },
+    { op: 'say', speaker: 'PAUL', if_flag: 'milagro:desasosiego', text: 'That one\'s the oldest. The itch to make something. When it comes for you, and it will, you\'ve the look, don\'t fight it. Make the thing. Then come and show me.' },
   ],
   // The framed set on the kitchen wall.
   'script.paul_milagro_wall': [
-    { op: 'narrate', text: 'Three painted cards pinned in a little frame: a cracked heart mended in gold, a lamp in a window, and a dark card with one small flame.' },
+    { op: 'narrate', text: 'Three painted cards pinned in a little frame: a red heart bound in blue thorns, a spotted fish, and a dark card with one small flame.' },
     { op: 'narrate', text: 'Under the dark one, a label in Paul\'s loopy hand: "DESASOSIEGO. the itch to make a thing. do not scratch. MAKE THE THING."' },
-    { op: 'narrate', unless_flag: 'flag:paul_milagro_given', text: 'There are pinholes for more. Wherever the rest of the set is, it\'s probably in his coat pocket.' },
+    { op: 'narrate', unless_flag: MILAGRO_PACK_FLAG, text: 'There are pinholes for many more. Wherever the rest of the deck went, it went a long way.' },
   ],
 
   // ---- the three rails ------------------------------------------------------------------

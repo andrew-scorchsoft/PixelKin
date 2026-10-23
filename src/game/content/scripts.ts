@@ -608,10 +608,9 @@ export const SCRIPTS: ScriptRegistry = {
         },
         // S7 "Just One More Cup": once the cup's yours, Paul tells you about the fair
         // (his own story — content/regions/brewfair.ts retells it)
-        // his milagro cards (content/regions/paul.ts) — dealt once the cup's yours
+        // the Booji-Wooji Man's milagro cards (content/milagros.ts): the box, any visit after the first
         {
           label: 'Your cards?',
-          if_flag: 'flag:q_south_wander_done',
           ops: [{ op: 'run', ref: 'script.paul_milagro_cards' }],
         },
         {

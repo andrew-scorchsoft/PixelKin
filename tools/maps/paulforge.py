@@ -659,17 +659,17 @@ def festival_lectern():
 
 
 def milagro_cards():
-    """Wall-hung: three of Paul's painted milagro cards pinned in a frame —
-    the heart, the lamp, and the dark one with the little flame (desasosiego)."""
+    """Wall-hung: three of the painted milagro cards pinned in a frame — the red
+    heart, the spotted fish, and the dark one with the flame (desasosiego)."""
     a = frame(1, back="u")
-    for i, (bg, ink) in enumerate((("P", "r"), ("P", "G"), ("V", "f"))):
+    for i, (bg, ink) in enumerate((("c", "r"), ("m", "B"), ("V", "f"))):
         x = 2 + i * 4
         rect(a, x, 4, x + 3, 11, "k"); rect(a, x, 4, x + 2, 10, bg)
         px(a, x + 1, 3, "x")                                    # the pin
         if i == 0:
             stamp(a, ["r.r", "rrr", ".r."], x, 6)
-        elif i == 1:
-            stamp(a, [".G.", "GyG", ".G."], x, 6)
+        elif i == 1:                                            # the spotted fish
+            stamp(a, ["BB.", "BnB", "BB."], x, 6)
         else:
             stamp(a, [".f.", "fFf", ".f."], x, 6)
     return img(a)

@@ -1520,6 +1520,13 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **A map that stacks a new accent set must list it in `world/maps.ts` `tilesets` too** — no CI gate
   catches a missing one; the map just fails to load in-game (Coldfog I + `stillwater_set`'s `murkpool`,
   2026-10). Concave pools need a FULL family (inner corners): the shared `murk` is a 9-slice.
+- **The Booji-Wooji Man's MILAGRO CARDS (2026-10) are Paul content — hidden like the rest.** 54 cards in
+  `content/milagros.ts` (phrase, invented story, `giver` = map:npc). Paul's lamp menu "Your cards?" gives the box
+  (`flag:milagro_pack`, lore card, the DESASOSIEGO card); after that, each giver NPC hands over their card the first
+  time you finish talking to them (`WorldScene.maybeGiveMilagro` — no map edits). `{op:'milagroCard', card}` banks
+  `milagro:<id>` + plays `ui/MilagroView` (reveal; also the pause menu's MILAGROS pack). Art: photo crops in
+  `assets/milagros/refs/` → `tools/assets/gen_milagros.py` (OpenAI edit, briefs.json overrides the subjects that can't
+  ship as photographed) → `--pack` to `public/assets/milagros/`. A new giver must be a permanent, talkable NPC.
 - **One-way exits are `travel`, not warps** (Lowtinder's well climb into Tinderwick): audit_warps
   rejects a warp with no return; a scripted `travel` is the legal one-way door.
 
