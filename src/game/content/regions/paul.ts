@@ -193,7 +193,8 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   'script.paul_milagro_cards': [
     { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Cards? Ha. Somebody\'s been talking. ...Rose. It\'s always Rose.' },
     { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'In the sun country, over the western sea, folk hang little tin charms in the chapels for whatever wants mending. A tin heart. A tin leg. Milagros, they call them. Small miracles.' },
-    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Somebody painted a whole deck of them, once. I came by a box. Don\'t ask me how. ...Here. It\'s yours.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Somebody painted a whole deck of them, once, and left them lying about. If a stranger\'s handed you a little painted card on your travels, now you know where it came from. Roughly.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'I came by the box. Don\'t ask me how. ...Here. It\'s yours. Every deck wants somewhere to come home to.' },
     { op: 'giveItem', unless_flag: MILAGRO_PACK_FLAG, item: 'milagro_cards', count: 1 },
     { op: 'say', unless_flag: MILAGRO_PACK_FLAG, text: 'He puts a little card box in your hands, covered in painted suns and moons and eyes. Received the MILAGRO CARDS!' },
     { op: 'narrate', unless_flag: MILAGRO_PACK_FLAG, text: 'Inside: one card, and a little printed slip.' },

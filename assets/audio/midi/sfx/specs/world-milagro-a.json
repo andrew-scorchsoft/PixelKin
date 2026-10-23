@@ -1,0 +1,22 @@
+{
+  "title": "PixelKin - A Milagro Card (the reveal)",
+  "_note": "One-shot, ~4.5 s: the moment a Booji-Wooji Man milagro card turns over in your hands. A little music box: a lilting 3/4 figure that climbs like a held breath (E-G-B... up to the high E), a tender suspension on the A-minor turn, and a warm landing on C major with a bell shimmer. Cherished, not triumphant: quieter and rounder than the Gleam/kindle fanfares, the feel of being handed something precious.",
+  "era": "snes",
+  "tempo": 96,
+  "time_signature": [3, 4],
+  "ppq": 480,
+  "loop": false,
+  "key": "C major",
+  "tracks": [
+    {"name": "musicbox", "voice": "bell", "octave": 5, "gain": 0.85,
+     "notes": "E5e G5e B5e E6e D6e B5e | C6e A5e F5e A5e C6e E6e | D6e B5e G5e B5e D6e F6e | E6h. "},
+    {"name": "pluck", "voice": "pluck", "octave": 4, "gain": 0.55,
+     "notes": "C4q E4q G4q | F4q A4q C5q | G4q B4q D5q | C5h. "},
+    {"name": "pad", "voice": "pad", "octave": 3, "gain": 0.4,
+     "notes": "C3+E3+G3h. | F3+A3+C4h. | G3+B3+D4h. | C3+E3+G3+C4h. "},
+    {"name": "bass", "voice": "tri_bass", "octave": 2, "gain": 0.7,
+     "notes": "C2h. | F2h. | G2h. | C2h. "},
+    {"name": "sparkle", "voice": "bell", "octave": 7, "gain": 0.4,
+     "notes": "rh. | rh. | rh. | G6s C7s E7s G7s rq. "}
+  ]
+}

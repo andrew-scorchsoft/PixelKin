@@ -364,9 +364,14 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
     case 'milagroCard': {
       const card = MILAGROS.find((c) => c.id === step.card);
       if (!card) return true;
+      const first = ctx.flags.countHeld('milagro:') === 0;
       ctx.flags.set(milagroFlag(card.id), true);
-      void ctx.sfx.play('world-keyitem');
-      await new MilagroView(scene, ctx.sfx).reveal(card);
+      await new MilagroView(scene, ctx.sfx).reveal(card, {
+        number: MILAGROS.indexOf(card) + 1,
+        total: MILAGROS.length,
+        first,
+        music: ctx.music,
+      });
       return true;
     }
     case 'giveKin': {

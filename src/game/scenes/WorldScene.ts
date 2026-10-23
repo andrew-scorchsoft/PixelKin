@@ -1284,19 +1284,19 @@ export class WorldScene extends Phaser.Scene {
   }
 
   /**
-   * The Booji-Wooji Man's milagro cards (content/milagros.ts): once Paul has given
-   * you the box, whoever was left a card hands it over the first time you finish
-   * talking to them. Never mid-scene: only after their own talk, on the same map.
+   * The Booji-Wooji Man's milagro cards (content/milagros.ts): whoever was left a
+   * card hands it over the first time you finish talking to them, from the very
+   * first hours (Paul's box explains them later). Never mid-scene: only after
+   * their own talk, on the same map.
    */
   private async maybeGiveMilagro(npc: Npc): Promise<void> {
-    if (!this.flags.get(MILAGRO_PACK_FLAG) || !this.npcs.includes(npc)) return;
+    if (!this.npcs.includes(npc)) return;
     const card = MILAGROS_BY_GIVER.get(`${this.map.def.id}:${npc.id}`);
     if (!card || this.flags.get(milagroFlag(card.id))) return;
     this.modal = true;
     npc.facePoint(this.player.tx, this.player.ty);
     const completed = await this.playScene([
-      { op: 'narrate', text: 'Before you go, they hold something out: a little painted card, worn soft at the corners.' },
-      { op: 'say', text: card.found },
+      ...(card.found ?? []).map((text): CutsceneStep => ({ op: 'say', text })),
       { op: 'milagroCard', card: card.id },
     ]);
     if (completed) void this.persist();
@@ -2550,7 +2550,7 @@ export class WorldScene extends Phaser.Scene {
         { label: 'LORE', value: 'lore' },
         { label: 'CHARTS', value: 'charts' },
         // Paul's milagro cards, once he's given you the box (content/milagros.ts)
-        ...(this.flags.get(MILAGRO_PACK_FLAG) ? [{ label: 'MILAGROS', value: 'milagros' }] : []),
+        ...(this.flags.countHeld('milagro:') > 0 ? [{ label: 'MILAGROS', value: 'milagros' }] : []),
         { label: 'SAVE', value: 'save' },
         { label: 'SETTINGS', value: 'settings' },
       ];
@@ -2600,7 +2600,10 @@ export class WorldScene extends Phaser.Scene {
       } else if (choice === 'charts') {
         await new ChartsMenu(this, (flag) => this.flags.get(flag), this.sfx).run();
       } else if (choice === 'milagros') {
-        await new MilagroView(this, this.sfx).gallery((id) => this.flags.get(milagroFlag(id)));
+        await new MilagroView(this, this.sfx).gallery(
+          (id) => this.flags.get(milagroFlag(id)),
+          this.flags.get(MILAGRO_PACK_FLAG),
+        );
       } else if (choice === 'save') {
         await this.persist();
         void this.sfx.playVariant('ui-save', ['a', 'b']);

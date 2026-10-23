@@ -1,10 +1,11 @@
 {
- "_doc": "The Booji-Wooji Man milagro cards (Paul's painted cards). refs/<slug>.jpg = the photo crop (rotated portrait); `text` = the border lettering; `subject` = an override when the photographed subject can't ship as-is (see tools/assets/gen_milagros.py). Content + stories: src/game/content/milagros.ts.",
+ "_doc": "The Booji-Wooji Man milagro cards (Paul's painted cards). refs/<slug>.jpg = the photo crop (rotated portrait); `text` = the border lettering; `subject` = an override when the photographed subject can't ship as-is (see tools/assets/gen_milagros.py). Content + stories: src/game/content/milagros.ts. `photo` = the master is the flattened photo itself (tools/assets/milagro_photo.py: the model refused these). `altered` = a note baked onto the SERVED card at --pack (and shown in-game): the subject differs from Paul's original.",
  "cards": [
   {
    "slug": "dogtag",
    "text": "I WONDER AT WHAT POINT THE FORM OF MY LIFE BECAME ITS CONTENT DOUBLING BACK ON ITSELF?",
-   "subject": "the same pale blue-green metal dog tag, but engraved only with small abstract squiggles and dots, no letters, numbers, names or addresses on the tag itself"
+   "subject": "the same pale blue-green metal dog tag, but engraved only with small abstract squiggles and dots, no letters, numbers, names or addresses on the tag itself",
+   "altered": "THIS CARD HAS BEEN ALTERED FROM THE ORIGINAL"
   },
   {
    "slug": "fish",
@@ -17,7 +18,8 @@
   {
    "slug": "shadowdoll",
    "text": "I MAY NOT BE THE CENTRE OF THE UNIVERSE BUT I'M WITHIN WALKING DISTANCE OF IT",
-   "subject": "a small round friendly shadow-sprite drawn as a solid deep indigo-blue silhouette of a chubby little figure with stubby arms out, the face only two plain white dot eyes with no mouth and no lips, a single curl on top of its head, like a cut-paper shadow puppet"
+   "subject": "a small round friendly shadow-sprite drawn as a solid deep indigo-blue silhouette of a chubby little figure with stubby arms out, the face only two plain white dot eyes with no mouth and no lips, a single curl on top of its head, like a cut-paper shadow puppet",
+   "altered": "THIS CARD HAS BEEN ALTERED FROM THE ORIGINAL"
   },
   {
    "slug": "dancer",
@@ -31,12 +33,13 @@
    "slug": "barkingman",
    "text": "CAN YOU HEAR THE DOGS BARKING?",
    "ref": "nonsense",
-   "subject": "a cheerful old man in a green coat and a blue woolly hat, head tilted, one hand cupped to his big ear as if listening, on a warm orange painted background; the border pattern is blue half-circles"
+   "subject": "a cheerful old man in a green coat and a blue woolly hat, head tilted, one hand cupped to his big ear as if listening, on a warm orange painted background; the border pattern is blue half-circles",
+   "altered": "THIS CARD HAS BEEN ALTERED: THE AI WOULDN'T GENERATE THE ORIGINAL"
   },
   {
    "slug": "taxi",
    "text": "CATCH A RIDE ON THE VOODOO TAXI",
-   "subject": "a round blue enamel taxi token, like an old coin-sized fare token, with a small painted star in its middle (no letters on it)"
+   "photo": true
   },
   {
    "slug": "cowboy",
@@ -93,7 +96,8 @@
   {
    "slug": "bather",
    "text": "THIS MAY BE A DENIAL OF ACCESS SITUATION",
-   "subject": "the same plump cheerful woman floating on her back, arms out, but wearing an old-fashioned one-piece striped bathing costume that covers her fully"
+   "subject": "the same plump cheerful woman floating on her back, arms out, but wearing an old-fashioned one-piece striped bathing costume that covers her fully",
+   "altered": "THIS CARD HAS BEEN ALTERED FROM THE ORIGINAL"
   },
   {
    "slug": "fool",
@@ -109,9 +113,8 @@
   },
   {
    "slug": "skin",
-   "text": "SHAKE OFF THE DAY AND DANCE AROUND IN YOUR BONES",
-   "ref": "bones",
-   "subject": "a cheerful cartoon skeleton in a striped woven poncho and a red brimmed hat, mid-dance with one boot kicked up, on a warm peach painted background; the border pattern is little purple footprints"
+   "text": "IT AIN'T NO SIN TO TAKE OFF YOUR SKIN AND DANCE AROUND IN YOUR BONES",
+   "photo": true
   },
   {
    "slug": "crow",
@@ -148,8 +151,7 @@
   {
    "slug": "blissful",
    "text": "A BLISSFUL MIND",
-   "subject": "a small chubby doll-like figure in a simple yellow smock dress, pale blue wings, a black bob of hair, eyes half-closed and smiling, hands folded, on a lilac painted background; the border pattern is blue teardrops",
-   "ref": "cherub"
+   "photo": true
   },
   {
    "slug": "puppets",
@@ -158,8 +160,7 @@
   {
    "slug": "truthlie",
    "text": "SOMETIMES I TELL THE TRUTH AND SOMETIMES I LIE",
-   "ref": "dragonfly",
-   "subject": "a round, laughing, smiling bald figure sitting cross-legged in a dark red robe that covers his body, a string of beads round his neck, on a pale yellow-green painted background; the border pattern is little blue diamonds"
+   "photo": true
   },
   {
    "slug": "poetic",
@@ -169,7 +170,8 @@
    "slug": "pedal",
    "text": "JUST SHUT UP AND PEDAL",
    "subject": "a cheerful round-eared brown bear cub in a red-and-yellow jumper riding a red tricycle with a big front wheel, on a pale green painted background; the border pattern is little spoked wheels",
-   "ref": "cat"
+   "ref": "cat",
+   "altered": "THIS CARD HAS BEEN ALTERED: THE AI WOULDN'T GENERATE THE ORIGINAL"
   },
   {
    "slug": "dragonfly",
@@ -210,8 +212,7 @@
   {
    "slug": "loon",
    "text": "SYNCOPATED, AGITATED, PURPLE MOON, WHITE LOON",
-   "subject": "a red-painted wooden dancer figure in a red tunic and red trousers, stamping one foot mid-dance and holding up a tall green reed, wearing a wide round straw sun-hat, standing on a little green base, on a pale yellow-green painted background, with a small purple moon and a white long-necked water-bird in the corner; the border pattern is white bars. Nothing on the head but the straw hat.",
-   "ref": "monkey"
+   "photo": true
   },
   {
    "slug": "pyramid",

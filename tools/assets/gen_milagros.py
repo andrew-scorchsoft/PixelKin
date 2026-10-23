@@ -43,6 +43,8 @@ def jobs() -> list[tuple[str, str, Path]]:
     data = json.loads((SRC / "briefs.json").read_text())
     out = []
     for c in data["cards"]:
+        if c.get("photo"):
+            continue   # the master is the flattened photo (milagro_photo.py)
         subject = f" Subject: {c['subject']}." if c.get("subject") else ""
         same = "" if c.get("subject") else ", the same subject and pose"
         prompt = CARD_PROMPT.format(same=same, subject=subject, text=c["text"])
@@ -63,12 +65,43 @@ def generate(slug: str, prompt: str, ref: Path) -> str:
     return f"  {'drew' if dest.exists() else 'FAILED'} {slug}" + ("" if dest.exists() else f"\n{r.stderr[-400:]}")
 
 
+def altered_note(im: Image.Image, note: str) -> Image.Image:
+    """Bake the 'this card has been altered' note onto the served card: a small
+    white label over the bottom border, in plain capitals."""
+    from PIL import ImageDraw, ImageFont
+    try:
+        font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 13)
+    except OSError:
+        font = ImageFont.load_default()
+    d = ImageDraw.Draw(im)
+    words, lines, cur = note.split(), [], ""
+    for w in words:
+        trial = f"{cur} {w}".strip()
+        if d.textlength(trial, font=font) > im.width - 56:
+            lines.append(cur)
+            cur = w
+        else:
+            cur = trial
+    lines.append(cur)
+    lh = 16
+    h = lh * len(lines) + 8
+    top = im.height - h - 14
+    d.rounded_rectangle([18, top, im.width - 18, top + h], radius=6, fill=(255, 255, 255), outline=(20, 20, 30), width=2)
+    for i, line in enumerate(lines):
+        d.text((im.width / 2, top + 4 + i * lh), line, font=font, fill=(20, 20, 30), anchor="ma")
+    return im
+
+
 def pack() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
+    data = json.loads((SRC / "briefs.json").read_text())
+    notes = {c["slug"]: c["altered"] for c in data["cards"] if c.get("altered")}
     for p in sorted(SRC.glob("*.webp")):
         im = Image.open(p).convert("RGB").resize(SERVED, Image.LANCZOS)
+        if p.stem in notes:
+            im = altered_note(im, notes[p.stem])
         im.save(OUT / f"{p.stem}.webp", quality=88)
-        print(f"  packed {p.stem}")
+        print(f"  packed {p.stem}" + ("  (altered note)" if p.stem in notes else ""))
 
 
 def main() -> None:
