@@ -21,6 +21,13 @@ north of the glade lamp, and the trees give out onto a lamplit green.
   * the PUB GARDEN on the east lawn: festoon lanterns over two plank tables,
     a fenced flower garden; the WELL, woodpile and apple crates in the yard
     below the two houses; a lily-dark pond in the south-west.
+  * THE WAKEFUL FAIR (2026-10, S7 "Just One More Cup"): a great red-and-cream
+    striped marquee (`brewfair_marquee`, drawn 7x5, brewforge.py) on the south-east
+    lawn, its flap door (14, 18) -> wakeful_fair (15, 19). The flap only lets you
+    in with a cup of your own (`flag:q_south_wander_done` — Paul's Tin Cup, S5's
+    reward); before that the DOORMAN beside it (18, 18 — off the one-row lane under the tent) says so
+    (script.brewfair_doorman, content/regions/brewfair.ts). A short lane runs from
+    the flap east to the wood's lane.
   * the lane: up from the wood's mouth (19-20, 21), bending west to the door,
     lamp-posted and signed.
 
@@ -81,6 +88,8 @@ m: dict = {
         "mist": {"color": "#a8c8b0", "alpha": 0.05, "speed": 3},
         # the hotel's lit windows pool warm light on the green
         "light_sources_extra": [
+            # the marquee's open flap spills warm light onto the lawn
+            {"at": {"tx": 14, "ty": 19}, "radius": 2, "color": "#ffb060"},
             {"at": {"tx": 9, "ty": 8}, "radius": 2, "color": "#ffc070"},
             {"at": {"tx": 14, "ty": 8}, "radius": 2, "color": "#ffc070"},
             {"at": {"tx": 18, "ty": 6}, "radius": 2, "color": "#ffb060"},
@@ -128,7 +137,28 @@ def lane(points):
 
 
 # up from the wood's mouth, bending west to the hotel's apron
-lane([(19, H - 1), (19, 13), (12, 13), (12, 11)])
+lane([(19, H - 1), (19, 12), (12, 12), (12, 11)])
+
+# THE WAKEFUL FAIR (S7): the marquee on the south-east lawn; its flap door opens
+# only for someone who brings their own cup (Paul's Tin Cup, flag:q_south_wander_done)
+FAIR_AT = (11, 14)
+fair_approach = pt.building(m, path, W, H, oid="fair", sprite="brewfair_marquee",
+                            at=FAIR_AT, overhang=3, door_col=3, to_map="wakeful_fair",
+                            to=(15, 19), apron_rows=1)
+assert fair_approach == (14, 19), fair_approach
+flap = next(w for w in m["warps"] if w["id"] == "enter_fair")
+flap["requires_flag"] = "flag:q_south_wander_done"
+flap["blocked_ref"] = "script.brewfair_doorman"
+lane([(14, 19), (19, 19)])                                # the flap's lane to the wood's
+m["npcs"].append({"id": "fair_doorman", "sprite": "innkeeper", "at": {"tx": 18, "ty": 18},
+                  "facing": "left", "movement": "static",
+                  "dialogue_ref": "script.brewfair_doorman"})
+m["triggers"] += [
+    {"id": "fair_poster", "kind": "sign", "at": {"tx": 12, "ty": 18},
+     "activation": "interact", "ref": "sign.brewfair_poster"},
+    {"id": "fair_poster_b", "kind": "sign", "at": {"tx": 16, "ty": 18},
+     "activation": "interact", "ref": "sign.brewfair_poster"},
+]
 
 # the dark pond in the south-west hollow (pond = Tidecall water: a look, not a road)
 mk.blob(pond, W, H, 5.0, 17.0, 3.0, 1.8)
@@ -157,13 +187,11 @@ deco = mk.make_grid(W, H)
 
 # ---- objects: crown trees, lamps, the pub garden, the well --------------------------
 for oid, sprite, at in [
-    ("tree_w", "tinderwick_tree", (9, 15)),
     ("tree_ne", "tinderwick_tree", (19, 1)),
     ("tree_e", "tinderwick_tree_c", (21, 9)),
-    ("tree_s", "tinderwick_tree_b", (12, 16)),
 ]:
     pt.crown_tree(m, oid=oid, sprite=sprite, at=at)
-for oid, at in [("lamp_door", (7, 6)), ("lamp_bend", (17, 10)), ("lamp_mouth", (21, 17))]:
+for oid, at in [("lamp_door", (7, 6)), ("lamp_bend", (17, 9)), ("lamp_mouth", (21, 17))]:
     m["objects"].append({"id": oid, "sprite": "tinderwick_lamp_post",
                          "at": {"tx": at[0], "ty": at[1]}, "w": 1, "h": 3, "overhang": 2,
                          "walk_under": True})
@@ -172,8 +200,6 @@ m["objects"] += [
     {"id": "festoon", "sprite": "pearlmoor_lantern_string", "at": {"tx": 17, "ty": 4},
      "w": 3, "h": 2, "overhang": 1, "walk_under": True},
     {"id": "garden_table_a", "sprite": "wayward_garden_table", "at": {"tx": 16, "ty": 6},
-     "w": 3, "h": 2},
-    {"id": "garden_table_b", "sprite": "wayward_garden_table", "at": {"tx": 15, "ty": 16},
      "w": 3, "h": 2},
     # the yard below the two houses: the well, the woodpile, apple crates
     {"id": "well", "sprite": "tinderwick_well", "at": {"tx": 8, "ty": 12},

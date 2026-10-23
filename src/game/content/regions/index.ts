@@ -46,6 +46,8 @@ import { UNDERWAYS_DIALOGUE, UNDERWAYS_SCRIPTS } from './underways';
 import { STILLWATER_DIALOGUE, STILLWATER_SCRIPTS } from './stillwater';
 // Lane N2 (walkthrough/11 Part B): the Drownlight, the first lamp the Hollowing put out.
 import { DROWNLIGHT_DIALOGUE, DROWNLIGHT_SCRIPTS } from './drownlight';
+// S7 "Just One More Cup" (2026-10): the Wakeful Fair, the coffee festival on Wayward Rise.
+import { BREWFAIR_DIALOGUE, BREWFAIR_SCRIPTS } from './brewfair';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -74,6 +76,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...UNDERWAYS_SCRIPTS, // Lane N3
   ...STILLWATER_SCRIPTS, // Lane N1
   ...DROWNLIGHT_SCRIPTS, // Lane N2
+  ...BREWFAIR_SCRIPTS, // S7
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -103,4 +106,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...UNDERWAYS_DIALOGUE, // Lane N3
   ...STILLWATER_DIALOGUE, // Lane N1
   ...DROWNLIGHT_DIALOGUE, // Lane N2
+  ...BREWFAIR_DIALOGUE, // S7
 };

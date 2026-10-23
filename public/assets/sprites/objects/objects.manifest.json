@@ -119,6 +119,342 @@
       "tw": 2,
       "th": 2
     },
+    "brewfair_aboard": {
+      "path": "assets/sprites/objects/brewfair_aboard.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "brewfair_banner_coldbrew": {
+      "path": "assets/sprites/objects/brewfair_banner_coldbrew.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_banner_dawn": {
+      "path": "assets/sprites/objects/brewfair_banner_dawn.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_banner_decaf": {
+      "path": "assets/sprites/objects/brewfair_banner_decaf.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_banner_ember": {
+      "path": "assets/sprites/objects/brewfair_banner_ember.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_banner_frost": {
+      "path": "assets/sprites/objects/brewfair_banner_frost.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_banner_latte": {
+      "path": "assets/sprites/objects/brewfair_banner_latte.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_banner_midnight": {
+      "path": "assets/sprites/objects/brewfair_banner_midnight.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_banner_mushroom": {
+      "path": "assets/sprites/objects/brewfair_banner_mushroom.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_banner_pourover": {
+      "path": "assets/sprites/objects/brewfair_banner_pourover.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_banner_press": {
+      "path": "assets/sprites/objects/brewfair_banner_press.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_banner_sandpot": {
+      "path": "assets/sprites/objects/brewfair_banner_sandpot.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_banner_siphon": {
+      "path": "assets/sprites/objects/brewfair_banner_siphon.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_bean": {
+      "path": "assets/sprites/objects/brewfair_bean.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "brewfair_bean_sacks": {
+      "path": "assets/sprites/objects/brewfair_bean_sacks.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "brewfair_bottomless": {
+      "path": "assets/sprites/objects/brewfair_bottomless.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "brewfair_bunting": {
+      "path": "assets/sprites/objects/brewfair_bunting.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_cot": {
+      "path": "assets/sprites/objects/brewfair_cot.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "brewfair_cup_tower": {
+      "path": "assets/sprites/objects/brewfair_cup_tower.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "brewfair_cupping_table": {
+      "path": "assets/sprites/objects/brewfair_cupping_table.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_dream_door": {
+      "path": "assets/sprites/objects/brewfair_dream_door.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "brewfair_grand_urn": {
+      "path": "assets/sprites/objects/brewfair_grand_urn.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "brewfair_grand_urn_awake": {
+      "path": "assets/sprites/objects/brewfair_grand_urn_awake.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
+    "brewfair_marquee": {
+      "path": "assets/sprites/objects/brewfair_marquee.webp",
+      "width": 112,
+      "height": 80,
+      "tw": 7,
+      "th": 5
+    },
+    "brewfair_plaque": {
+      "path": "assets/sprites/objects/brewfair_plaque.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "brewfair_roaster": {
+      "path": "assets/sprites/objects/brewfair_roaster.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "brewfair_rope_post": {
+      "path": "assets/sprites/objects/brewfair_rope_post.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "brewfair_spoon": {
+      "path": "assets/sprites/objects/brewfair_spoon.webp",
+      "width": 48,
+      "height": 16,
+      "tw": 3,
+      "th": 1
+    },
+    "brewfair_stage": {
+      "path": "assets/sprites/objects/brewfair_stage.webp",
+      "width": 64,
+      "height": 32,
+      "tw": 4,
+      "th": 2
+    },
+    "brewfair_stall_coldbrew": {
+      "path": "assets/sprites/objects/brewfair_stall_coldbrew.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_dawn": {
+      "path": "assets/sprites/objects/brewfair_stall_dawn.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_decaf": {
+      "path": "assets/sprites/objects/brewfair_stall_decaf.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_ember": {
+      "path": "assets/sprites/objects/brewfair_stall_ember.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_frost": {
+      "path": "assets/sprites/objects/brewfair_stall_frost.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_latte": {
+      "path": "assets/sprites/objects/brewfair_stall_latte.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_midnight": {
+      "path": "assets/sprites/objects/brewfair_stall_midnight.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_mushroom": {
+      "path": "assets/sprites/objects/brewfair_stall_mushroom.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_nothing": {
+      "path": "assets/sprites/objects/brewfair_stall_nothing.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_pourover": {
+      "path": "assets/sprites/objects/brewfair_stall_pourover.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_press": {
+      "path": "assets/sprites/objects/brewfair_stall_press.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_sandpot": {
+      "path": "assets/sprites/objects/brewfair_stall_sandpot.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_stall_siphon": {
+      "path": "assets/sprites/objects/brewfair_stall_siphon.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "brewfair_sugar_cube": {
+      "path": "assets/sprites/objects/brewfair_sugar_cube.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "brewfair_teacup": {
+      "path": "assets/sprites/objects/brewfair_teacup.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "brewfair_tent_pole": {
+      "path": "assets/sprites/objects/brewfair_tent_pole.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "brewfair_trophy": {
+      "path": "assets/sprites/objects/brewfair_trophy.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "brewfair_urn_puddle": {
+      "path": "assets/sprites/objects/brewfair_urn_puddle.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "brewfair_water_table": {
+      "path": "assets/sprites/objects/brewfair_water_table.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "cinderhead_crystal_cluster": {
       "path": "assets/sprites/objects/cinderhead_crystal_cluster.webp",
       "width": 32,

@@ -33,7 +33,8 @@ export const GUIDE_SECTIONS = [
 
 /** Never on the public site (owner's rule — the people it was built for read it). */
 const FORBIDDEN = [/booji/i, /chicken-?pig/i, /\bpaul\b/i, /lifting house/i, /wayward/i, /lottie/i,
-    /omenire/i, /wanderwood/i, /\baldous\b/i, /\bWink's\b/, /tin rower/i, /reckoning works/i];
+    /omenire/i, /wanderwood/i, /\baldous\b/i, /\bWink's\b/, /tin rower/i, /reckoning works/i,
+    /wakeful fair/i, /tasting card/i, /bottomless cup/i];
 
 function frontMatter(src, file) {
     const m = /^---\n([\s\S]*?)\n---\n?/.exec(src);

@@ -54,6 +54,7 @@ dex-side mirrors are the species lane's remaining bookkeeping.)
 | Pearlmoor Quay (Tide · Reyl · Tidecall) | `pearlmoor_quay` + inn/shop/lumenary/breakwater | ✅ | `build_pearlmoor*.py` |
 | Lightkeeper's Point + the Old Light (R9 — the Causeway Bell's middle leg) | `pearlmoor_point`, `pearlmoor_oldlight_1..6/_top` | ✅ | `build_pearlmoor_point.py`, `build_pearlmoor_oldlight.py` |
 | Gullcry Rock (Tidecall spur) | `gullcry_rock` | ✅ | `build_gullcry.py` |
+| The Wakeful Fair (S7 — the coffee festival on Wayward Rise; post-S5) | `wakeful_fair`, `wakeful_fair_loft`, `wakeful_fair_dream` | ✅ | `build_wakeful_fair.py` |
 
 Festivals: Lantern-fair, Tide-blessing. Arcs delivered: A1/A2 (Wren), B1 (`dusk_begins`), C1/C2 (Fenn).
 

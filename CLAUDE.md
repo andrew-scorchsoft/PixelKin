@@ -1427,6 +1427,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **Older sprites carried a magenta chroma-key halo; `tools/assets/defringe.py` fixes MASTERS
   losslessly** (drops faint alpha, re-inks near-magenta edge px; design pinks with r>>b kept), then
   re-pack. New gpt-image-2.5 art has native alpha — never run it on those (it eats real lavenders).
+- **The Wakeful Fair (S7, 2026-10) is Paul content — hidden like the rest.** The coffee marquee on
+  Wayward Rise (`content/regions/brewfair.ts`, `build_wakeful_fair.py`, `brewforge.py`): samples are
+  numbered `flag:brewcup_<n>`/`flag:brew_stamp_<n>`, the stage is FlagStore COUNT_AT_LEAST
+  (perky 3 / buzzing 7 / seeing 12), doors key on the ANY_OF `brew_was_*` (they stay open after the
+  wake clears the cups). Never in the changelog/guide/music page. A map's `ambience.when` and
+  `music_when` now re-resolve after every scene (`WorldScene.refreshStoryState`), not only on entry.
 - **The Senna thread is dosed; her NAME is post-dawn only.** North (Fenn: "three of us on that
   ladder"), West (Nessa), the summit (Còr knows the Starlamp's brass) all leave her unnamed;
   `cor_resolution`/the Last Lesson say it. The cinder law + timeline (the Long Dusk = 11 winters)

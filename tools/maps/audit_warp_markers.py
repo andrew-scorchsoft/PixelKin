@@ -57,6 +57,8 @@ MARKER_SPRITES = {
     "galehigh_winch",                                 # the Skyloft winch
     "old_seams_headframe",                            # a pit-head over its shaft
     "windward_updraft",                               # the kite thermal you ride
+    "brewfair_urn_puddle",                            # the Wakeful Fair: the swirl into the cup
+    "brewfair_dream_door",                            # ...and the lone door back out of it
 }
 MARKER_PREFIX = ("markers_",)
 

@@ -403,6 +403,49 @@ export const TRAINERS: TrainerRegistry = {
     music: 'battle-emberfall',
   },
 
+  // S7 "Just One More Cup" — the Wakeful Fair (content/regions/brewfair.ts):
+  // three OPTIONAL, talked-to bouts at the fair (BUILT_PAYOUTS-only, like Paul's).
+  // Levels sit just above the Wanderwood's 14-17 band (S5 is the way in).
+  brewfair_fern: {
+    id: 'brewfair_fern',
+    name: 'FERN',
+    title: 'Latte Artist',
+    party: [
+      { species_id: 86, level: 17 }, // Prismcub — Light/Frost (draws in the foam)
+      { species_id: 38, level: 18 }, // Mossglow — Light/Verdant (it's always a leaf)
+    ],
+    intro_ref: 'trainer.brewfair_fern.intro',
+    defeat_ref: 'trainer.brewfair_fern.defeat',
+    payout: 288, // route 16 × ace 18
+  },
+  brewfair_slurrington: {
+    id: 'brewfair_slurrington',
+    name: 'SLURRINGTON',
+    title: 'Cupper',
+    party: [
+      { species_id: 56, level: 18 }, // Sporeling — Verdant (the earthy note)
+      { species_id: 59, level: 18 }, // Dewling — Verdant/Tide (the bright note)
+      { species_id: 27, level: 19 }, // Brineroll — Tide (the long finish)
+    ],
+    intro_ref: 'trainer.brewfair_slurrington.intro',
+    defeat_ref: 'trainer.brewfair_slurrington.defeat',
+    payout: 304, // route 16 × ace 19
+  },
+  brewfair_ottoline: {
+    id: 'brewfair_ottoline',
+    name: 'OTTOLINE CREMA',
+    title: 'Head Barista',
+    party: [
+      { species_id: 41, level: 19 }, // Scorchite — Ember (the roast)
+      { species_id: 97, level: 19 }, // Thrumvane — Storm (the buzz)
+      { species_id: 42, level: 21 }, // Coalump — Ember (seven years of dark roast)
+    ],
+    intro_ref: 'trainer.brewfair_ottoline.intro',
+    defeat_ref: 'trainer.brewfair_ottoline.defeat',
+    payout: 420, // keeper 20 × ace 21 (the fair's champion)
+    ai: 'smart',
+  },
+
   // Route trainers on the new Pearlmoor <-> Crossroads route (Wrackline Path /
   // Lanternfall Road) — sight beats in the corridor chokes, route class.
   wrackline_drifter: {
@@ -2065,6 +2108,24 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.breakwater_paul.intro': [
     { speaker: 'PAUL', text: 'On purpose. Remember that part.' },
+  ],
+  'trainer.brewfair_fern.intro': [
+    { speaker: 'FERN', text: 'Art is a battle! Battle is art! I\'ve been waiting ALL day to say that to someone.' },
+  ],
+  'trainer.brewfair_fern.defeat': [
+    { speaker: 'FERN', text: 'That was a leaf. I lost to a leaf. It was a beautiful leaf.' },
+  ],
+  'trainer.brewfair_slurrington.intro': [
+    { speaker: 'SLURRINGTON', text: 'A cupping is a contest of palates. And, occasionally, of kin. SLURRRP.' },
+  ],
+  'trainer.brewfair_slurrington.defeat': [
+    { speaker: 'SLURRINGTON', text: 'Notes of defeat. A long, bitter finish. Medium body. Mine.' },
+  ],
+  'trainer.brewfair_ottoline.intro': [
+    { speaker: 'OTTOLINE', text: 'Seven years champion. Nerve, Wayfarer. Show me nerve.' },
+  ],
+  'trainer.brewfair_ottoline.defeat': [
+    { speaker: 'OTTOLINE', text: '...That was nerve. That was a frankly alarming amount of nerve. How many have you had?' },
   ],
   'trainer.breakwater_paul.defeat': [
     { speaker: 'PAUL', text: '...Set down soft as a loaf. Sid will be unbearable.' },

@@ -196,6 +196,39 @@ export const ITEMS: ItemRegistry = {
     desc: 'A dented tin cup, still warm. The cup of something, at last. The night: pending.',
     category: 'key',
   },
+  // S7 "Just One More Cup" (content/regions/brewfair.ts): the Wakeful Fair's
+  // tasting card (Marigold's welcome), the decaf (Dennis), and the full card's
+  // prize — the Wakeful Flask, the one toggle that RAISES the wild encounter rate
+  // (a booster: it applies only while no damper is on — EncounterSystem).
+  tasting_card: {
+    id: 'tasting_card',
+    name: 'Tasting Card',
+    desc: 'The Wakeful Fair\'s tasting card. Sixteen squares for sixteen stalls, and a seventeenth that just says DECAF?',
+    category: 'key',
+  },
+  decaf_cup: {
+    id: 'decaf_cup',
+    name: 'Cup of Decaf',
+    desc: 'Dennis\'s decaf, poured with enormous care. Restores some health. Nothing at all happens to your heart.',
+    category: 'medicine',
+    heal: 30,
+  },
+  wakeful_flask: {
+    id: 'wakeful_flask',
+    name: 'Wakeful Flask',
+    desc: 'The fair\'s own flask. Open it and you fizz so loud the wild kin come to see what all the buzzing is.',
+    category: 'key',
+    toggle_flag: 'flag:wakeful_flask_open',
+    encounter_factor: 1.5,
+    toggle_text: {
+      on: 'OPEN',
+      off: 'CAPPED',
+      on_note: '(Open — wild kin come to see what the buzzing is.)',
+      off_note: '(Capped — the wilds go about their business.)',
+      turn_on: 'You uncap the flask and take a sip. You start to hum. Somewhere in the grass, something hears you.',
+      turn_off: 'You screw the cap back on. The hum dies down to a mutter. The wilds lose interest.',
+    },
+  },
   // Paul's House (2026-10): Lottie's keepsake, after the Chickenpig meets her.
   lottie_drawing: {
     id: 'lottie_drawing',

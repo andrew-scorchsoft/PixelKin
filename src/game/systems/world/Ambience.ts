@@ -196,6 +196,8 @@ const KINDS: Record<AmbienceParticleKind, KindSpec> = {
   leaves: { base: 8, colors: [0xd98a3a, 0xb8642e, 0x7bbf5a], fall: true, vx: [-4, 4], vy: [8, 14], sway: 10, life: [10, 14], size: [2, 1] },
   starglint: { base: 10, colors: [0xfff3c0, 0xcfe0ff], vx: [0, 0], vy: [0, 0], life: [0.8, 1.4], glint: true },
   dust: { base: 12, colors: [0xe8dcc0, 0xcdbf9e], vx: [-1.5, 1.5], vy: [-1, 1], sway: 1, life: [4, 8], alpha: 0.5 },
+  steam: { base: 14, colors: [0xf2ece0, 0xe0d6c4, 0xffffff], vx: [-1.5, 1.5], vy: [-9, -4], sway: 4, life: [2, 4], size: [2, 2], alpha: 0.45 },
+  confetti: { base: 18, colors: [0xff6a8a, 0xffd04a, 0x6ad0ff, 0x9aff6a, 0xd08aff], fall: true, vx: [-6, 6], vy: [7, 13], sway: 8, life: [8, 12], size: [2, 1], flicker: true },
 };
 
 interface Particle {

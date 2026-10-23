@@ -312,6 +312,43 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/interior-sunny.mp3',
   },
+  // S7 "Just One More Cup" (2026-10): THE WAKEFUL FAIR — the coffee festival in the
+  // striped marquee on Wayward Rise (build_wakeful_fair.py, content/regions/brewfair.ts).
+  // The marquee's music + mood follow the cup count (brew_perky / _buzzing / _seeing,
+  // FlagStore COUNT_AT_LEAST), and settle once you've slept it off (q_south_brew_done).
+  wakeful_fair: {
+    json: 'assets/maps/wakeful_fair.json',
+    tilesets: { brewfair_set: 'assets/tilesets/brewfair_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/wakeful-fair.mp3',
+    music_when: [
+      { flag: 'flag:q_south_brew_done', music: 'assets/audio/music/wakeful-fair.mp3' },
+      { flag: 'flag:brew_seeing', music: 'assets/audio/music/wakeful-fair-trip.mp3' },
+      { flag: 'flag:brew_buzzing', music: 'assets/audio/music/wakeful-fair-buzz.mp3' },
+    ],
+    battle_backdrops: ['assets/backgrounds/battle/wakeful-fair-a.webp'],
+  },
+  wakeful_fair_loft: {
+    json: 'assets/maps/wakeful_fair_loft.json',
+    tilesets: { brewfair_set: 'assets/tilesets/brewfair_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/wakeful-fair.mp3',
+    music_when: [
+      { flag: 'flag:q_south_brew_done', music: 'assets/audio/music/wakeful-fair.mp3' },
+      { flag: 'flag:brew_seeing', music: 'assets/audio/music/wakeful-fair-trip.mp3' },
+      { flag: 'flag:brew_buzzing', music: 'assets/audio/music/wakeful-fair-buzz.mp3' },
+    ],
+    battle_backdrops: ['assets/backgrounds/battle/wakeful-fair-a.webp'],
+  },
+  // the hallucination: the bottom of the cup (a caramel slick to the Bottomless Cup)
+  wakeful_fair_dream: {
+    json: 'assets/maps/wakeful_fair_dream.json',
+    tilesets: { brewdream_set: 'assets/tilesets/brewdream_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/wakeful-fair-dream.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/wakeful-fair-dream.webp'],
+    battle_music: 'battle-wakeful-buzz',
+  },
   pearlmoor_lumenary: {
     json: 'assets/maps/pearlmoor_lumenary.json',
     tilesets: { interior_stone_set: 'assets/tilesets/interior_stone_set.webp' },

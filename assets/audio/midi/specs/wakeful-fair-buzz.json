@@ -1,0 +1,64 @@
+{
+  "title": "PixelKin - The Wakeful Fair (Buzzing)",
+  "_note": "Seven cups in: the same tune at 144 with the heart going. Lead doubled an octave up on a thin pulse12, hats in sixteenths, the bass in eighths, a twitchy trill at the end of every fourth bar. Same 16 bars, same seam.",
+  "era": "snes",
+  "tempo": 144,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.92,
+      "notes": "C5e A4e C5e F5e E5q C5q | D5e C5e Bb4e A4e G4h | A4e F4e A4e D5e C5q A4q | Bb4e C5e D5e Bb4e F5h | C5e A4e C5e F5e A5q G5e F5e | E5e D5e C5e Bb4e G4q C5q | D5e Bb4e D5e F5e E5e D5e C5e Bb4e | A4q C5q F5h | F5q. D5e Bb4q D5q | C5q. A4e F4q A4q | Bb4e A4e Bb4e D5e G5q F5q | E5e D5e C5e D5e E5h | F5q. E5e D5q A4q | Bb4e C5e D5e F5e Bb5q A5q | G5e F5e E5e D5e B4q D5q | C5e E5e G5e Bb5e C6q rq"
+    },
+    {
+      "name": "double",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.32,
+      "notes": "C6e A5e C6e F6e E6q C6q | D6e C6e Bb5e A5e G5h | A5e F5e A5e D6e C6q A5q | Bb5e C6e D6e Bb5e F6h | C6e A5e C6e F6e A6q G6e F6e | E6e D6e C6e Bb5e G5q C6q | D6e Bb5e D6e F6e E6e D6e C6e Bb5e | A5q C6q F6h | F6q. D6e Bb5q D6q | C6q. A5e F5q A5q | Bb5e A5e Bb5e D6e G6q F6q | E6e D6e C6e D6e E6h | F6q. E6e D6q A5q | Bb5e C6e D6e F6e Bb6q A6q | G6e F6e E6e D6e B5q D6q | C6e E6e G6e Bb6e C7q rq"
+    },
+    {
+      "name": "arp",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.38,
+      "notes": "F4e A4e C4e F5e A4e C4e A4e F4e | C4e E4e G4e C5e E4e G4e E4e C4e | D4e F4e A4e D5e F4e A4e F4e D4e | Bb4e D4e F4e Bb5e D4e F4e D4e Bb4e | F4e A4e C4e F5e A4e C4e A4e F4e | C4e E4e Bb4e C5e E4e Bb4e E4e C4e | Bb4e D4e F4e Bb5e D4e F4e D4e Bb4e | F4e A4e C4e F5e A4e C4e A4e F4e | Bb4e D4e F4e Bb5e D4e F4e D4e Bb4e | F4e A4e C4e F5e A4e C4e A4e F4e | G4e Bb4e D4e G5e Bb4e D4e Bb4e G4e | C4e E4e G4e C5e E4e G4e E4e C4e | D4e F4e A4e D5e F4e A4e F4e D4e | Bb4e D4e F4e Bb5e D4e F4e D4e Bb4e | G4e B4e D4e G5e B4e D4e B4e G4e | C4e E4e Bb4e C5e E4e Bb4e E4e C4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.85,
+      "notes": "F2e F2e C3e C3e F2e F2e C3e C3e | C2e C2e G2e G2e C2e C2e G2e G2e | D2e D2e A2e A2e D2e D2e A2e A2e | Bb1e Bb1e F2e F2e Bb1e Bb1e F2e F2e | F2e F2e C3e C3e F2e F2e C3e C3e | C2e C2e G2e G2e C2e C2e Bb1e Bb1e | Bb1e Bb1e F2e F2e C2e C2e G2e G2e | F2e F2e C3e C3e F2e F2e E2e E2e | Bb1e Bb1e F2e F2e Bb1e Bb1e F2e F2e | F2e F2e C3e C3e F2e F2e C3e C3e | G2e G2e D3e D3e G2e G2e D3e D3e | C2e C2e G2e G2e C2e C2e G2e G2e | D2e D2e A2e A2e D2e D2e A2e A2e | Bb1e Bb1e F2e F2e Bb1e Bb1e F2e F2e | G2e G2e D3e D3e G2e G2e B2e B2e | C2e C2e E2e E2e G2e G2e Bb2e Bb2e"
+    },
+    {
+      "name": "pah",
+      "voice": "organ",
+      "octave": 3,
+      "gain": 0.24,
+      "notes": "re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 | re C3+E3+G3e@80 re C3+E3+G3e@80 re C3+E3+G3e@80 re C3+E3+G3e@80 | re D3+F3+A3e@80 re D3+F3+A3e@80 re D3+F3+A3e@80 re D3+F3+A3e@80 | re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 | re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 | re C3+E3+Bb3e@80 re C3+E3+Bb3e@80 re C3+E3+Bb3e@80 re C3+E3+Bb3e@80 | re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 | re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 | re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 | re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 | re G3+Bb3+D3e@80 re G3+Bb3+D3e@80 re G3+Bb3+D3e@80 re G3+Bb3+D3e@80 | re C3+E3+G3e@80 re C3+E3+G3e@80 re C3+E3+G3e@80 re C3+E3+G3e@80 | re D3+F3+A3e@80 re D3+F3+A3e@80 re D3+F3+A3e@80 re D3+F3+A3e@80 | re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 | re G3+B3+D3e@80 re G3+B3+D3e@80 re G3+B3+D3e@80 re G3+B3+D3e@80 | re C3+E3+Bb3e@80 re C3+E3+Bb3e@80 re C3+E3+Bb3e@80 re C3+E3+Bb3e@80"
+    },
+    {
+      "name": "trill",
+      "voice": "pulse12",
+      "octave": 6,
+      "gain": 0.4,
+      "notes": "rw | rw | rw | rh. C6s@70 D6s@60 C6s@70 D6s@60 | rw | rw | rw | rh. C6s@70 D6s@60 C6s@70 D6s@60 | rw | rw | rw | rh. C6s@70 D6s@60 C6s@70 D6s@60 | rw | rw | rw | rh. C6s@70 D6s@60 C6s@70 D6s@60"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "octave": 4,
+      "gain": 0.55,
+      "notes": "s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat | s kick+hat hat hat hat snare+hat hat hat hat kick+hat hat kick hat snare+hat hat hat ohat"
+    }
+  ]
+}

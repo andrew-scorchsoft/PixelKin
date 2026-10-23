@@ -516,6 +516,9 @@ const BUILT_PAYOUTS = {
   oldlight_critic: ['route', 14, 224],
   oldlight_headliners: ['keeper', 15, 300], // R11 the Old Light's top-floor boss (mandatory, before Tam's card)
   breakwater_paul: ['route', 15, 240], // S4 optional side-quest bout (the Lifting House)
+  brewfair_fern: ['route', 18, 288], // S7 the Wakeful Fair's optional bouts (talked-to)
+  brewfair_slurrington: ['route', 19, 304],
+  brewfair_ottoline: ['keeper', 21, 420], // the fair's Head Barista (the Golden Cup)
   wrackline_drifter: ['route', 18, 288], // Pearlmoor<->Crossroads route (Wrackline Path)
   lanternfall_warden: ['route', 20, 320], // Pearlmoor<->Crossroads route (Lanternfall Road)
 

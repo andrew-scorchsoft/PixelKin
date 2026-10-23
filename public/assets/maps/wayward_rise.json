@@ -41,16 +41,15 @@
       "overhang": 5
     },
     {
-      "id": "tree_w",
-      "sprite": "tinderwick_tree",
+      "id": "fair",
+      "sprite": "brewfair_marquee",
       "at": {
-        "tx": 9,
-        "ty": 15
+        "tx": 11,
+        "ty": 14
       },
-      "w": 3,
-      "h": 4,
-      "overhang": 3,
-      "walk_under": true
+      "w": 7,
+      "h": 5,
+      "overhang": 3
     },
     {
       "id": "tree_ne",
@@ -77,18 +76,6 @@
       "walk_under": true
     },
     {
-      "id": "tree_s",
-      "sprite": "tinderwick_tree",
-      "at": {
-        "tx": 12,
-        "ty": 16
-      },
-      "w": 3,
-      "h": 4,
-      "overhang": 3,
-      "walk_under": true
-    },
-    {
       "id": "lamp_door",
       "sprite": "tinderwick_lamp_post",
       "at": {
@@ -105,7 +92,7 @@
       "sprite": "tinderwick_lamp_post",
       "at": {
         "tx": 17,
-        "ty": 10
+        "ty": 9
       },
       "w": 1,
       "h": 3,
@@ -142,16 +129,6 @@
       "at": {
         "tx": 16,
         "ty": 6
-      },
-      "w": 3,
-      "h": 2
-    },
-    {
-      "id": "garden_table_b",
-      "sprite": "wayward_garden_table",
-      "at": {
-        "tx": 15,
-        "ty": 16
       },
       "w": 3,
       "h": 2
@@ -256,6 +233,23 @@
       "transition": "door"
     },
     {
+      "id": "enter_fair",
+      "at": {
+        "tx": 14,
+        "ty": 18
+      },
+      "trigger": "step_on",
+      "to_map": "wakeful_fair",
+      "to": {
+        "tx": 15,
+        "ty": 19
+      },
+      "facing": "up",
+      "transition": "door",
+      "requires_flag": "flag:q_south_wander_done",
+      "blocked_ref": "script.brewfair_doorman"
+    },
+    {
       "id": "to_wood",
       "at": {
         "tx": 19,
@@ -288,6 +282,26 @@
   ],
   "triggers": [
     {
+      "id": "fair_poster",
+      "kind": "sign",
+      "at": {
+        "tx": 12,
+        "ty": 18
+      },
+      "activation": "interact",
+      "ref": "sign.brewfair_poster"
+    },
+    {
+      "id": "fair_poster_b",
+      "kind": "sign",
+      "at": {
+        "tx": 16,
+        "ty": 18
+      },
+      "activation": "interact",
+      "ref": "sign.brewfair_poster"
+    },
+    {
       "id": "paul_bike",
       "kind": "sign",
       "at": {
@@ -319,7 +333,19 @@
     }
   ],
   "encounters": [],
-  "npcs": [],
+  "npcs": [
+    {
+      "id": "fair_doorman",
+      "sprite": "innkeeper",
+      "at": {
+        "tx": 18,
+        "ty": 18
+      },
+      "facing": "left",
+      "movement": "static",
+      "dialogue_ref": "script.brewfair_doorman"
+    }
+  ],
   "gates": [],
   "music": "assets/audio/music/lowleaf-hollow-b.mp3",
   "ambience": {
@@ -339,6 +365,14 @@
       "speed": 3
     },
     "light_sources_extra": [
+      {
+        "at": {
+          "tx": 14,
+          "ty": 19
+        },
+        "radius": 2,
+        "color": "#ffb060"
+      },
       {
         "at": {
           "tx": 9,
@@ -680,14 +714,14 @@
         1,
         1,
         13,
-        18,
-        3,
-        2,
-        1,
-        1,
-        1,
-        1,
-        1,
+        101,
+        10,
+        11,
+        10,
+        11,
+        11,
+        11,
+        12,
         1,
         49,
         52,
@@ -703,15 +737,15 @@
         1,
         1,
         2,
-        14,
-        101,
-        11,
-        11,
-        11,
-        11,
-        11,
-        10,
-        24,
+        20,
+        22,
+        22,
+        22,
+        21,
+        22,
+        22,
+        103,
+        23,
         43,
         108,
         50,
@@ -727,14 +761,14 @@
         4,
         1,
         2,
-        20,
-        22,
-        21,
-        21,
-        21,
-        21,
-        21,
-        19,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        2,
+        25,
         192,
         108,
         52,
@@ -846,15 +880,15 @@
         3,
         4,
         1,
-        1,
-        1,
-        2,
-        4,
-        3,
-        4,
-        1,
-        2,
-        13,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        24,
+        100,
         19,
         4,
         49,
@@ -1281,33 +1315,33 @@
         0,
         0,
         0,
-        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,
         0,
         0,
         8,
-        0,
-        0,
-        0,
-        126,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0,
         0,
         0,
@@ -1319,7 +1353,6 @@
         117,
         0,
         0,
-        7,
         0,
         0,
         0,
@@ -1332,36 +1365,13 @@
         0,
         0,
         0,
+        8,
         0,
         0,
         0,
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        6,
         0,
         0,
         0,
@@ -1381,7 +1391,31 @@
         0,
         126,
         0,
-        124,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        0,
+        0,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
         0,
         0,
         0,

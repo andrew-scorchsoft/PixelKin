@@ -133,6 +133,30 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:q_south_wander_word', 'flag:q_south_wander_lamp'],
     done_flag: 'flag:q_south_wander_done',
   },
+  // S7 "Just One More Cup" — the Wakeful Fair (content/regions/brewfair.ts). The
+  // stages are the doors the caffeine opens (ANY_OF flags, so they never un-tick
+  // when the wake clears the cups) and the trip's end; the card is its own count.
+  {
+    id: 's7_just_one_more_cup',
+    name: 'Just One More Cup',
+    region: 'south',
+    giver: 'Marigold, at the Wakeful Fair\'s ticket table',
+    blurb: 'Every stall at the coffee fair on Wayward Rise pours a free sample. You only came for one cup. The urn in the middle of the marquee is looking at you.',
+    start_flag: 'flag:brew_has_card',
+    stage_flags: ['flag:brew_was_perky', 'flag:brew_was_buzzing', 'flag:brew_seen_seeing'],
+    done_flag: 'flag:q_south_brew_done',
+  },
+  {
+    id: 's7_tasting_card',
+    name: 'The Tasting Card',
+    region: 'south',
+    giver: 'Marigold, at the Wakeful Fair\'s ticket table',
+    blurb: 'A stamp from every stall at the Wakeful Fair — upstairs, behind the queue, even the one that isn\'t there. And the decaf. Somebody has to.',
+    start_flag: 'flag:brew_has_card',
+    count_prefix: 'flag:brew_stamp_',
+    count_total: 17,
+    done_flag: 'flag:brew_card_prize',
+  },
   {
     id: 's6_tin_rower',
     name: 'The Tin Rower',

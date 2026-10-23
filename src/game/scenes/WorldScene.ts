@@ -192,6 +192,11 @@ export class WorldScene extends Phaser.Scene {
   /** The map's ambient kit (particles, starfall, light pools, shadows, legs-in-grass,
    *  ambient kin…) — systems/world/Ambience.ts. Rebuilt per map. */
   private ambience?: Ambience;
+  /** Which `ambience.when` rule the live Ambience was built with (-1 = the base
+   *  block) and which story-state music url `playMapMusic` last resolved — so
+   *  `refreshStoryState` only rebuilds/crossfades when a flag actually flipped them. */
+  private ambienceRule = -1;
+  private mapMusicUrl?: string;
   /** look_around NPCs currently glancing at a nearby player (enter-range edge). */
   private nearbyLookers = new Set<Npc>();
 
@@ -429,6 +434,7 @@ export class WorldScene extends Phaser.Scene {
   private playMapMusic(): void {
     if (!this.map) return;
     const music = resolveMapMusic(this.map.def.id, this.map.def.music, (f) => this.flags.get(f));
+    this.mapMusicUrl = music;
     if (!music) return;
     const key = music.split('/').pop()?.replace(/\.[a-z0-9]+$/i, '') ?? 'map-music';
     if (this.music.playingKey) void this.music.crossfade(key, music, 650, { resume: true });
@@ -897,6 +903,7 @@ export class WorldScene extends Phaser.Scene {
    */
   private buildAmbience(): void {
     const none = new Set<AbilityId>();
+    this.ambienceRule = this.currentAmbienceRule();
     this.ambience = new Ambience(this, this.map, {
       flag: (f) => this.flags.get(f),
       walkable: (tx, ty) => this.map.inBounds(tx, ty) && !this.collision.isBlocked(tx, ty, none),
@@ -1024,6 +1031,32 @@ export class WorldScene extends Phaser.Scene {
     this.ambience?.refreshLights();
   }
 
+  /** Index of the first `ambience.when` rule whose flag is held (-1 = none). */
+  private currentAmbienceRule(): number {
+    return this.map.def.ambience?.when?.findIndex((w) => this.flags.get(w.flag)) ?? -1;
+  }
+
+  /**
+   * Story-state colour re-checked after a scene, not only on map entry (2026-10,
+   * the Wakeful Fair: one cup too many and the marquee should start to swim at
+   * once, not on your next visit). Rebuilds the Ambience only when a different
+   * `ambience.when` rule now applies, and crossfades only when `music_when`
+   * resolves to a different loop than the one last chosen — a map whose story
+   * state didn't change is untouched, so a scene's own music is never cut.
+   */
+  private refreshStoryState(): void {
+    if (!this.map || this.staging) return;
+    if (this.map.def.ambience?.when && this.currentAmbienceRule() !== this.ambienceRule) {
+      this.ambience?.destroy();
+      this.ambience = undefined;
+      this.buildAmbience();
+    }
+    if (MAP_REGISTRY[this.map.def.id]?.music_when) {
+      const music = resolveMapMusic(this.map.def.id, this.map.def.music, (f) => this.flags.get(f));
+      if (music !== this.mapMusicUrl) this.playMapMusic();
+    }
+  }
+
   /** Re-evaluate flag-conditional NPCs after flags change (a picked-up item
    *  cache vanishes immediately; a festival crowd appears without a re-entry). */
   private refreshNpcs(): void {
@@ -1047,6 +1080,7 @@ export class WorldScene extends Phaser.Scene {
       this.npcs.push(npc);
       this.attachNpcAmbience(npc);
     }
+    this.refreshStoryState();
   }
 
   private npcAt(tx: number, ty: number): Npc | undefined {

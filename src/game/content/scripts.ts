@@ -606,6 +606,13 @@ export const SCRIPTS: ScriptRegistry = {
           unless_flag: 'flag:q_south_wander',
           ops: [{ op: 'run', ref: 'script.wander_paul_hint' }],
         },
+        // S7 "Just One More Cup": once the cup's yours, Paul tells you about the fair
+        // (his own story — content/regions/brewfair.ts retells it)
+        {
+          label: 'Too much coffee?',
+          if_flag: 'flag:q_south_wander_done',
+          ops: [{ op: 'run', ref: 'script.brew_paul_story' }],
+        },
         {
           label: 'Step away',
           ops: [{ op: 'say', speaker: 'PAUL', text: 'Aye. The dark keeps the bench warm. Mind how you go.' }],

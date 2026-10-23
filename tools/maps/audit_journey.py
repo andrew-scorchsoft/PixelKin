@@ -160,11 +160,17 @@ DERIVED_ANY = [
     ("flag:q_south_rope_or_later", ["flag:q_south_has_rope", "gleam:tide"]),
     ("flag:skyloft_open", ["flag:q_north_kite_blessed", "gleam:storm"]),
     ("flag:undercroft_open", ["flag:q_north_aurora_oil", "gleam:frost"]),
+    ("flag:brew_was_perky", ["flag:brew_perky"]),
+    ("flag:brew_was_buzzing", ["flag:brew_buzzing"]),
     ("flag:scarp_short_open", ["flag:scarp_rockfall_clear", "gleam:storm"]),
     ("flag:scarp_climb_open", ["gleam:stone", "gleam:storm"]),
 ]
 # FlagStore COUNT_AT_LEAST (mirrored): N held flags with a prefix derive a flag
-DERIVED_COUNT = [("flag:driftletters_3", "flag:driftletter_", 3)]
+DERIVED_COUNT = [("flag:driftletters_3", "flag:driftletter_", 3),
+                 ("flag:brew_perky", "flag:brewcup_", 3),
+                 ("flag:brew_buzzing", "flag:brewcup_", 7),
+                 ("flag:brew_seeing", "flag:brewcup_", 12),
+                 ("flag:brew_card_full", "flag:brew_stamp_", 17)]
 LAMPLIGHT = [("flag:lamplight_warmlight", 2), ("flag:lamplight_brightlight", 4),
              ("flag:lamplight_starlight", 6), ("flag:lamplight_radiant", 8)]
 POST_LETTERS = ["wren", "fenn", "tinderwick", "pearlmoor", "lowleaf", "cinderhead",

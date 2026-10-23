@@ -34,12 +34,18 @@ const ENCOUNTER_TOGGLES: ReadonlyArray<readonly [WorldFlag, number]> = Object.va
   .map((d) => [d.toggle_flag as WorldFlag, d.encounter_factor as number] as const);
 
 /** The per-step rate multiplier from toggle items currently switched on: the
- *  LOWEST factor among them (two dampers never stack past the stronger one);
- *  1 when none is on. */
+ *  LOWEST damper among them (two dampers never stack past the stronger one).
+ *  A booster (factor > 1 — the Wakeful Flask) only applies while no damper is
+ *  on, and boosters don't stack either (the strongest one). 1 when none is on. */
 export function encounterRateFactor(hasFlag: (flag: WorldFlag) => boolean): number {
-  let factor = 1;
-  for (const [flag, f] of ENCOUNTER_TOGGLES) if (hasFlag(flag) && f < factor) factor = f;
-  return factor;
+  let damp = 1;
+  let boost = 1;
+  for (const [flag, f] of ENCOUNTER_TOGGLES) {
+    if (!hasFlag(flag)) continue;
+    if (f < damp) damp = f;
+    if (f > boost) boost = f;
+  }
+  return damp < 1 ? damp : boost;
 }
 
 /** Guaranteed encounter-free steps after a wild encounter fires. The per-step
