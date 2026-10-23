@@ -42,12 +42,12 @@ const BACK_ART = 'assets/milagros/back.webp';
 /** Warm candle-gold for the glow and sparkles (world-feel colour, like Ambience's). */
 const GLOW = 0xffa63a;
 const SPARK = [0xfff6d0, 0xffd27a, 0xffffff, 0xffb35c];
-const UNFOUND =
-  'Still out there somewhere: left on a seat, tucked in a book, under somebody\'s teacup. Whoever finds it will hand it on.';
+/** A missing card's page: where to look, then a little colour. */
+const unfound = (hint: string): string =>
+  `WHERE TO LOOK: ${hint} Somebody there was left this card, on a seat or in a book or under a teacup, and will hand it on.`;
 const NO_BOX =
   'Little painted cards with a phrase lettered round the border, and no name on any of them. Somebody, somewhere, must know where they come from.';
 const ALTERED = ' (This card has been altered from the original.)';
-const FIRST_TIP = ' Keep it safe: your cards are under START > MILAGROS.';
 
 interface Page {
   art: string;
@@ -104,7 +104,7 @@ export class MilagroView {
     this.heading = this.add(makeText(scene, COL_X, 6, '', theme.text.accent), 3);
     this.sub = this.add(makeText(scene, COL_X, 15, '', theme.text.dim), 3);
     this.title = this.add(makeText(scene, COL_X, 18, '', theme.text.accent), 3);
-    this.title.setWordWrapWidth(COL_W);
+    this.title.setWordWrapWidth(COL_W).setLineSpacing(1);
     this.story = this.add(makeText(scene, COL_X, 0, '', theme.text.narrate), 3);
     this.story.setWordWrapWidth(COL_W).setLineSpacing(LINE_H - 8);
     this.hint = this.add(makeText(scene, GAME_WIDTH - 6, GAME_HEIGHT - 11, '', theme.text.dim).setOrigin(1, 0), 3);
@@ -180,7 +180,7 @@ export class MilagroView {
       heading: opts.first ? 'YOUR FIRST CARD' : 'A MILAGRO CARD',
       sub: `No. ${opts.number} of ${opts.total}`,
       title: card.title,
-      story: card.story + (card.altered ? ALTERED : '') + (opts.first ? FIRST_TIP : ''),
+      story: card.story + (card.altered ? ALTERED : ''),
     }, false);
     await this.tween({ targets: words, alpha: 1, duration: 350 });
     this.scene.tweens.add({ targets: this.glow, alpha: { from: 0.45, to: 0.25 }, duration: 1400, yoyo: true, repeat: -1 });
@@ -257,7 +257,7 @@ export class MilagroView {
   private cardPage(card: MilagroCard, found: boolean, heading: string): Page {
     return found
       ? { art: milagroArt(card.id), heading, title: card.title, story: card.story + (card.altered ? ALTERED : '') }
-      : { art: BACK_ART, heading, title: '? ? ?', story: UNFOUND };
+      : { art: BACK_ART, heading, title: '? ? ?', story: unfound(card.hint) };
   }
 
   // ---------------------------------------------------------------------------

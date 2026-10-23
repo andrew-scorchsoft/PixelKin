@@ -5,8 +5,9 @@
  * served from public/assets/milagros/<id>.webp).
  *
  * How they reach you: the Booji-Wooji Man left his cards lying about for strangers to
- * find, so 53 people across Vesperholm each hold one (`giver`, from the first hours on:
- * Tinderwick, the orchard, the coast road, Pearlmoor, the Old Light, the fen) and hand
+ * find, so 53 people across Vesperholm each hold one (`giver`). ~40 sit on the South path
+ * (Tinderwick, the orchard, the coast road, Pearlmoor, the Old Light, the Lifting House,
+ * the Wanderwood, Wayward Rise, Paul's house, the fair) and the rest in the wider world and hand
  * it over the first time you finish talking to them (WorldScene.maybeGiveMilagro). Each
  * giver is someone whose world the card belongs to, and shares something Paul would
  * enjoy as they do (a cup, a song, a bun, a good story). The card plays a small reveal
@@ -26,6 +27,8 @@ export interface MilagroCard {
   title: string;
   /** Who has it: the NPC placement id on that map. */
   giver?: { map: string; npc: string };
+  /** Where to look, shown against the card's back in the pack until it's found. */
+  hint: string;
   /** What the giver says as they hand it over (one box each). */
   found?: string[];
   /** The art differs from Paul's original (baked note on the card + a line in the viewer). */
@@ -58,6 +61,7 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'desasosiego',
     title: 'DESASOSIEGO',
+    hint: 'Pearlmoor: someone at the dark lamp at the very end of the breakwater.',
     story:
       'The oldest card in the box, and the only one with no picture of a thing: just a small flame that will not ' +
       'sit still. It is the word for the restless unease that paces the kitchen at night until you get up and ' +
@@ -68,6 +72,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'dogtag',
     title: 'I WONDER AT WHAT POINT THE FORM OF MY LIFE BECAME ITS CONTENT, DOUBLING BACK ON ITSELF?',
     giver: { map: 'tinderwick', npc: 'lt_old_fisher' },
+    hint: 'Tinderwick: the old fisher who remembers the drowned village.',
     found: [
       '"Came up in my net off the drowned roofs, tied to a cork. Pretty, but it\'s no use to a fish."',
       '"The old village had a man who wore one of these his whole life. Best fish stew on the coast. I still ' +
@@ -84,6 +89,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'fish',
     title: 'DON\'T GET TOO CLOSE',
     giver: { map: 'gullwrack_hut', npc: 'hut_keeper' },
+    hint: 'Gullwrack Rock: whoever keeps the bothy.',
     found: [
       '"Washed up in a bottle, eleventh winter in a row something has. This time a spotted fish that says keep ' +
         'back."',
@@ -99,6 +105,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'spool',
     title: 'FEAR SELLS',
     giver: { map: 'stillwater_lampmaker', npc: 'lampmaker' },
+    hint: 'Stillwater: the lampmaker of the quiet village.',
     found: [
       '"Found it wedged in my thread-drawer. I don\'t sell fear. Shutters, mostly. ...Same thing, some days."',
     ],
@@ -110,9 +117,12 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'shadowdoll',
     title: 'I MAY NOT BE THE CENTRE OF THE UNIVERSE, BUT I\'M WITHIN WALKING DISTANCE OF IT',
-    giver: { map: 'galehigh_home', npc: 'home_kid_lit' },
+    giver: { map: 'tinderwick_shop', npc: 'shopkeeper' },
+    hint: 'Tinderwick: the shopkeeper.',
     found: [
-      '"It was under my pillow! I think it walked there. Do you want it? It\'s very small but it\'s very sure."',
+      '"Found this under the counter when I swept up. A little shadow with button eyes. It\'s been sat there like ' +
+        'it owned the place."',
+      '"Take it, and a barley-sugar from the jar. On the house. Shadows like company."',
     ],
     altered: true,
     story:
@@ -124,6 +134,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'dancer',
     title: 'I\'VE HAD A HOLE IN MY HEART FOR SO LONG!',
     giver: { map: 'pearlmoor_point', npc: 'ione' },
+    hint: 'Lightkeeper\'s Point: the lightkeeper at the Point.',
     found: [
       '"Off the island boat, years back. The dancer who\'d sailed every port of the Farlamp run left it on the ' +
         'rail."',
@@ -138,6 +149,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'whistle',
     title: 'A SCREAM OF MUTENESS',
     giver: { map: 'stillwater_quiet_hall', npc: 'hall_keeper' },
+    hint: 'Stillwater: the keeper of the quiet hall.',
     found: [
       'They hold it out without a word, finger to their lips. The quiet hall keeps its quiet.',
     ],
@@ -148,10 +160,13 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'barkingman',
     title: 'CAN YOU HEAR THE DOGS BARKING?',
-    giver: { map: 'hushfrost_pass_ii', npc: 'caretaker_after' },
+    giver: { map: 'dimglass_coast', npc: 'egg_walker' },
+    hint: 'Dimglass Coast: a walker with a sandwich.',
     found: [
-      '"Left on the hut table, weighed down with a stone. The dogs up here bark at it. Take it before they eat ' +
-        'it."',
+      '"Funny old card. A fellow in a green coat, hand to his ear. I hear dogs barking on this coast that aren\'t ' +
+        'there."',
+      '"Somebody left it on the bench where I eat my sandwiches. Cheese and pickle. Want half? You can have the ' +
+        'card AND half."',
     ],
     altered: true,
     story:
@@ -163,6 +178,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'taxi',
     title: 'CATCH A RIDE ON THE VOODOO TAXI',
     giver: { map: 'dimglass_coast_ii', npc: 'oldlight_hint_road' },
+    hint: 'Dimglass Coast: a road-joker heading for the Point.',
     found: [
       '"Three clockwork lamplighters walk into a cab— no, listen. This was on the cab seat. Blue token, stamped ' +
         'OP."',
@@ -178,6 +194,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'cowboy',
     title: 'CUIDA TUS DIENTES COMO TUS ARMAS',
     giver: { map: 'lowleaf_hollow', npc: 'marisol' },
+    hint: 'Lowleaf Hollow: the cook from the sunny country.',
     found: [
       'Marisol: "Cuida tus dientes como tus armas. Look after your teeth like your weapons! My grandmother said ' +
         'it every night."',
@@ -192,11 +209,13 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'pig',
     title: 'GLOSSOLALIA',
-    giver: { map: 'duskapple_orchard', npc: 'tamsin' },
+    giver: { map: 'paul_house_3', npc: 'lottie' },
+    hint: 'A crooked house up past the wood, in the attic: a girl who loves pigs (and chickens, separately).',
     found: [
-      '"The windfall pig was rooting under the old tree and turned THIS up with the apples. A golden pig, ' +
-        'preaching."',
-      '"The real pig only ever wanted an apple, too. Take one for yourself. Duskapples are best eaten walking."',
+      'Lottie: "LOOK. A GOLDEN PIG. It says GLOSSOLALIA, which Grandad says is when you talk and talk and nobody ' +
+        'understands. That\'s ME."',
+      '"You can have it, because you\'re my friend. I\'ve drawn you a pig as well. It\'s on the back of the toast. ' +
+        'Eat round it."',
     ],
     story:
       'A golden pig that speaks in tongues: whole sermons of grunts that sound, if you are tired enough, like ' +
@@ -205,9 +224,12 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'stringy',
     title: 'ART IN THE SERVICE OF DEGENERATE DISCOURSE',
-    giver: { map: 'sunken_solarium_lumenary', npc: 'prompter_lit' },
+    giver: { map: 'pearlmoor_oldlight_2', npc: 'late_b' },
+    hint: 'The Old Light: another latecomer to the show.',
     found: [
-      '"Pinned to the back of the stage curtain. The critics hated the play. The card was the best part."',
+      '"Pinned to the back of a stage flat. The critics called the show degenerate. The show called the critics ' +
+        'worse. Lovely night."',
+      '"Take the card. Take a custard pie too, they\'re for throwing but they\'re also very nice."',
     ],
     story:
       'A tangle of golden string that started out as a beast and argued itself into a knot. It was painted for a ' +
@@ -217,9 +239,12 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'wetnumbers',
     title: 'MY ROOM SMELLS OF WET NUMBERS',
-    giver: { map: 'reckoning_works', npc: 'ketterly' },
+    giver: { map: 'pearlmoor_shop', npc: 'chandler' },
+    hint: 'Pearlmoor Chandlery: the chandler.',
     found: [
-      '"It was in a ledger, page four hundred. Everyone who opens that ledger has the same complaint."',
+      '"Tucked in my stock-book, damp as the harbour. MY ROOM SMELLS OF WET NUMBERS. So does my shop, after a ' +
+        'sea-fog."',
+      '"I\'ve added it up twice and it still comes out as yours. Have a tin of the good mints with it."',
     ],
     story:
       'A clerk who kept the accounts of a damp office for thirty years, until the sums soaked into the walls. On ' +
@@ -229,10 +254,12 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'bottle',
     title: 'FALL INTO THE NIGHT SKY AND CHASE AFTER KOKOPELLI',
-    giver: { map: 'nightreach_observatory', npc: 'fenn_after' },
+    giver: { map: 'pearlmoor_wanderwood_far', npc: 'wander_mags' },
+    hint: 'Beyond the old wood: whoever keeps the bar beyond the wood.',
     found: [
-      'Fenn: "Found it pressed in a star-atlas. Somebody marked the constellation of the flute-player. Good ' +
-        'company."',
+      'Mags: "A customer left this on the bar with a note: FOR THE NEXT ONE WHO WANDERS IN. That\'s you, love."',
+      '"A blue bottle full of night. Chase it if you like. Or sit and have a glass of something warm first. I ' +
+        'recommend the second."',
     ],
     story:
       'A blue bottle that holds a little of the night, stoppered. Uncork it and lie down on the grass, and you ' +
@@ -243,6 +270,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'eyemask',
     title: 'EMPIRE OF THE EYE',
     giver: { map: 'saltreach_fen_i', npc: 'ansel' },
+    hint: 'Saltreach Fen: the ferryman of the blue lights.',
     found: [
       '"Left on the ferry\'s little stage between crossings. Every passenger thinks they\'re the one being ' +
         'watched."',
@@ -257,6 +285,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'sarabanda',
     title: 'YO SOY SARABANDA',
     giver: { map: 'lowleaf_hollow', npc: 'bloom_piper_lit' },
+    hint: 'Lowleaf Hollow: a piper (once the Verdant\'s relit).',
     found: [
       '"I play this one as a tune. It doesn\'t mind. It says its own name over and over, like a drum."',
     ],
@@ -269,6 +298,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'redheart',
     title: 'THE LAST RED LIGHT OF GOD',
     giver: { map: 'tinderwick_house', npc: 'house_parent_after' },
+    hint: 'Tinderwick, at home: the apprentice\'s own home.',
     found: [
       '"I found this in the lamp-cupboard, behind the spare wicks. Somebody\'s little painting of a heart on ' +
         'fire."',
@@ -283,9 +313,12 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'stick',
     title: 'TERMS OF REFERENCE CHALLENGED',
-    giver: { map: 'windward_stair_ii', npc: 'crag_tender_rounds' },
+    giver: { map: 'duskapple_orchard', npc: 'tamsin' },
+    hint: 'Duskapple Orchard: someone pruning the orchard.',
     found: [
-      '"Wedged in the rope-rail. A stick, painted on a card. Up here that counts as philosophy."',
+      '"A crooked stick, painted on a card. I found it hooked on the old tree while I was pruning. Terms of ' +
+        'reference challenged, it says."',
+      '"The tree challenged mine years ago. Take the card, and an apple. Duskapples are best eaten walking."',
     ],
     story:
       'A crooked stick, the kind a walker picks up and keeps for one hill. It was asked to be a measuring rod ' +
@@ -294,9 +327,11 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'fogbird',
     title: 'WHY NOT WHIP THE FOG?',
-    giver: { map: 'coldfog_marches_i', npc: 'marsh_hermit' },
+    giver: { map: 'dimglass_coast', npc: 'egg_netmender' },
+    hint: 'Dimglass Coast: a netmender out on the flats.',
     found: [
-      '"The fog brought it. Fog brings all sorts. Mostly regret. This was a nice change."',
+      '"Out on the flats, the fog came in so thick I could have whipped it. Next morning, this was in my nets."',
+      '"Fat orange bird, grinning. I laughed so hard I dropped my flask. Tea everywhere. Worth it. Here."',
     ],
     story:
       'A fat orange bird with a green-scaled belly and a grin, who got so tired of the marsh fog that it beat it ' +
@@ -306,9 +341,12 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'monkey',
     title: 'SUMMONING THE SPIRIT IN THE CAULDRON WITH A BALINESE FROG DANCE',
-    giver: { map: 'lowleaf_bower', npc: 'bloom_guest_lit' },
+    giver: { map: 'wakeful_fair', npc: 'goer_a' },
+    hint: 'A striped tent up on the hill: a fair-goer near the sugar bowl.',
     found: [
-      '"It fell out of a recipe book. The recipe was for soup. I think the card is the better recipe."',
+      '"Summoning the spirit in the cauldron! That\'s exactly what it\'s like in here. A monkey dancing round the ' +
+        'coffee urn."',
+      '"Found it in the sugar bowl. Take it. Take a sugar lump. Take three, you\'ll need them."',
     ],
     story:
       'A long green monkey dancing the frog dance from an island far over the sea: knees out, hands wide, round ' +
@@ -319,6 +357,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'bat',
     title: 'SNORT POPCORN',
     giver: { map: 'tinderwick', npc: 'fair_piper' },
+    hint: 'Tinderwick: the fair\'s piper (once the Ember\'s relit).',
     found: [
       '"Fell out of the popcorn barrel at the fair! A little bat that laughs through its nose. I\'ve played it a ' +
         'jig. It approved."',
@@ -331,9 +370,13 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'goat',
     title: 'I WANT TO CREATE MY OWN LANGUAGE BASED ON REAL THINGS',
-    giver: { map: 'wickstead_school', npc: 'teacher_types' },
+    giver: { map: 'pearlmoor_allotment', npc: 'anth_done' },
+    hint: 'Hillside Allotments: the allotment\'s other half.',
     found: [
-      '"A pupil handed it in as homework. It was, I have to say, the best homework I\'ve had."',
+      'Anth: "A goat that makes its own language out of real things. Rod and I have spoken nothing but marrows ' +
+        'for forty years."',
+      '"It turned up in the seed tin. Have it, and a jar of my chutney. That\'s marrow too. Everything here is ' +
+        'marrow."',
     ],
     story:
       'A yellow goat that decided words were too slippery, and made a language out of things instead: a stone ' +
@@ -342,9 +385,11 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'bather',
     title: 'THIS MAY BE A DENIAL OF ACCESS SITUATION',
-    giver: { map: 'tinderwick_bay', npc: 'bay_diver_after' },
+    giver: { map: 'pearlmoor_inn', npc: 'fisher_lit' },
+    hint: 'Pearlmoor Quayside Inn: a fisher at the inn (once the Tide\'s relit).',
     found: [
-      '"Floated by me in the bay. I followed it for a while. It knew where it was going better than I did."',
+      '"Floated up to my boat in a bottle, off the warm bit of the bay. A lady who won\'t come out of the water."',
+      '"Can\'t say I blame her. Sit down, the chowder\'s on. This card\'s been the talk of the bar all week."',
     ],
     altered: true,
     story:
@@ -355,6 +400,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'fool',
     title: 'NO HARM IN AN ALLOWED FOOL',
     giver: { map: 'pearlmoor_oldlight_1', npc: 'mime' },
+    hint: 'The Old Light: a performer who never says a word.',
     found: [
       'The mime opens an invisible box, takes out a very visible card, and bows. Then he mimes eating an ' +
         'enormous sandwich, and offers you half.',
@@ -368,6 +414,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'bones',
     title: 'ANGEL BONE\'S CONNECTED TO THE GOD BONE, GOD BONE\'S CONNECTED TO THE BONE BONE, AND THE BONE BONE\'S CONNECTED TO THE HAM BONE',
     giver: { map: 'pale_vault_undercroft', npc: 'undercroft_ward_a_after' },
+    hint: 'Pale Vault Undercroft: a ward under the vault (after a bout).',
     found: [
       '"It was in the bone-crypt, singing. Well. It LOOKED like it was singing."',
     ],
@@ -380,6 +427,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'laughter',
     title: 'I FOUND MY RELIGION AND ITS PRAYER IS LAUGHTER',
     giver: { map: 'pearlmoor_oldlight_top', npc: 'moll_after' },
+    hint: 'The Old Light: Tam\'s old stage partner, at the very top.',
     found: [
       'Moll: "Tam had this in his greasepaint box for years. He\'d want it walking about. He\'d want you laughing. ' +
         'Go on."',
@@ -392,9 +440,13 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'skin',
     title: 'IT AIN\'T NO SIN TO TAKE OFF YOUR SKIN AND DANCE AROUND IN YOUR BONES',
-    giver: { map: 'mourning_fields', npc: 'mournfields_ines_after' },
+    giver: { map: 'pearlmoor_wanderwood', npc: 'hob_done' },
+    hint: 'The old wood behind the quay: the wanderer who is NOT lost.',
     found: [
-      '"It was on a grave out here, propped like a letter. The fields are glad of a dancer."',
+      'Hob: "Found it on a root in the glade the night the lamp caught. A skeleton dancing in his poncho. I ' +
+        'danced too. Don\'t tell anyone."',
+      '"I\'m not lost, mind. I\'m dancing. There\'s a difference. Here: card, and a handful of the wood\'s ' +
+        'blackberries."',
     ],
     story:
       'A skeleton in a striped poncho and a red hat, one boot raised, a little bottle in his hand. On the night ' +
@@ -405,6 +457,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'crow',
     title: 'THE WORLD SEEMS TO BE SINKING INTO DUST',
     giver: { map: 'saltreach_fen_i', npc: 'peril_fen_leaver' },
+    hint: 'Saltreach Fen: someone packing up to leave the fen.',
     found: [
       '"A crow dropped it on my cart this morning as I loaded up. The world seems to be sinking into dust, eh? ' +
         'Crows know."',
@@ -419,6 +472,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'nonsense',
     title: 'TRY TO MASTER NONSENSE',
     giver: { map: 'wickstead_green', npc: 'teacher_wicks' },
+    hint: 'Wickstead Green: a teacher at the school.',
     found: [
       '"Our curriculum, in one card. Somebody left it in the staff room. Very cheeky. Very correct."',
     ],
@@ -430,6 +484,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'edges',
     title: 'IT\'S THE PEOPLE ON THE EDGES WHO CAPTURE THE TRUTH',
     giver: { map: 'wrackline_path', npc: 'wrackline_drifter_after' },
+    hint: 'Wrackline Path: a drifter on the wrack (after a bout).',
     found: [
       '"Found it on the very edge of the wrack. Where else? The best things wash up on the edges."',
       '"There\'s a song about that, the drifters\' one. Low and slow. I\'ll sing you a verse if you sit."',
@@ -442,6 +497,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'cherub',
     title: 'YOU ALWAYS HAVE THE RIGHT TO REMAIN A MYSTERY',
     giver: { map: 'tinderwick', npc: 'fair_kid' },
+    hint: 'Tinderwick: a lantern-mad child at the fair.',
     found: [
       '"It was tangled in the fair bunting! A baby angel with a heart on a string. I asked it what it was for. ' +
         'It didn\'t say."',
@@ -457,6 +513,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'lies',
     title: 'TELL ME SOME LIES',
     giver: { map: 'pearlmoor_oldlight_2', npc: 'late_a' },
+    hint: 'The Old Light: a latecomer to the show.',
     found: [
       '"I found this in the tower, honest. ...I didn\'t. I made it. ...I didn\'t do that either."',
       '"Tell you what, it\'s yours if you tell me a good lie back. ...Too slow! Have it anyway."',
@@ -469,6 +526,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'cat',
     title: 'THE APOCALYPSE HAPPENED YESTERDAY',
     giver: { map: 'tinderwick', npc: 'peril_neighbour' },
+    hint: 'Tinderwick: a worried neighbour.',
     found: [
       '"Funny thing. The night that star went out over the sea, this was pushed under my door. A black cat that ' +
         'couldn\'t care less."',
@@ -484,6 +542,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'delirium',
     title: 'THE CODE OF DELIRIUM PROVES TO HAVE AN EXTRAORDINARY FLUIDITY',
     giver: { map: 'pearlmoor_quay', npc: 'oldlight_hint_luddite' },
+    hint: 'Pearlmoor Quay: someone suspicious of the thinking machine.',
     found: [
       '"Came out of that thinking machine up the Old Light, they say. Printed on its paper. A code of delirium."',
       '"Machines writing poems. I ask you. ...It\'s quite a good poem. Don\'t tell anyone I said so."',
@@ -497,6 +556,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'nun',
     title: 'IF THERE IS A GOD THEN I HAVE A FEW QUESTIONS TO ASK HIM',
     giver: { map: 'stillwater', npc: 'wall_elder' },
+    hint: 'Stillwater: an elder by the village wall.',
     found: [
       '"I keep it in my prayer-book. I keep a lot of questions in there. This one has the best manners."',
     ],
@@ -507,10 +567,12 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'blissful',
     title: 'A BLISSFUL MIND',
-    giver: { map: 'lowleaf_lumenary', npc: 'sable_after' },
+    giver: { map: 'wakeful_fair', npc: 'dennis' },
+    hint: 'A striped tent up on the hill: the calmest man at the fair.',
     found: [
-      'Sable: "Somebody left it on the bloom-altar. I don\'t know whose mind it was. They should come back for ' +
-        'it."',
+      'Dennis: "A blissful mind. Found it under my cup. It\'s the decaf, you see. Nobody believes me. Look how ' +
+        'calm I am."',
+      '"Have the card. Have a cup of decaf. Have a little sit-down. ...Bliss."',
     ],
     story:
       'A small winged figure with her hands folded and her eyes half closed, entirely content. She has no plans ' +
@@ -520,6 +582,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'puppets',
     title: 'RAISED BY PUPPETS AND LOST IN A WORLD OF GHOSTS',
     giver: { map: 'pearlmoor_oldlight_3', npc: 'punch_tuesday' },
+    hint: 'The Old Light: the puppet booth.',
     found: [
       '"From the puppet booth. That\'s the way to do it. ...Sorry. Reflex."',
       '"There\'s sausages backstage if you want one. There are always sausages. Nobody knows why."',
@@ -532,9 +595,13 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'truthlie',
     title: 'SOMETIMES I TELL THE TRUTH AND SOMETIMES I LIE',
-    giver: { map: 'galehigh_inn', npc: 'guest_lit' },
+    giver: { map: 'pearlmoor_lifting_house', npc: 'abdul_after' },
+    hint: 'The building at the top of the quay: a lifter with four true stories.',
     found: [
-      '"Won it at cards. Or I found it. One of those. You\'ll never know, will you?"',
+      'Abdul: "Four stories, all true. This card makes it five, and I can\'t vouch for that one. Somebody left it ' +
+        'in the chalk bucket."',
+      '"Sometimes I tell the truth and sometimes I lie. Well. I\'ll tell you the truth about the protein ' +
+        'flapjacks: they\'re delicious. Have one."',
     ],
     story:
       'A round, laughing, beaded figure who answers every question with perfect calm, and only half the answers ' +
@@ -544,6 +611,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'poetic',
     title: 'SOMETIMES DOING SOMETHING POETIC CAN BECOME POLITICAL AND SOMETIMES DOING SOMETHING POLITICAL CAN BECOME POETIC',
     giver: { map: 'stillwater_home_b', npc: 'maren' },
+    hint: 'Stillwater: someone behind a shutter.',
     found: [
       '"I found it tucked into a shutter. It made me open the shutter. I think that was the idea."',
     ],
@@ -554,9 +622,13 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'pedal',
     title: 'JUST SHUT UP AND PEDAL',
-    giver: { map: 'wickrun_crest', npc: 'runner_kid' },
+    giver: { map: 'pearlmoor_lifting_house', npc: 'andy_after' },
+    hint: 'The building at the top of the quay: the runner who never gets off the treadmill.',
     found: [
-      '"I found it on the downhill! It was going faster than me! ...You can have it. I need both hands."',
+      'Andy, still running: "JUST SHUT UP AND PEDAL. Found it tucked in the treadmill\'s cup-holder. Best advice ' +
+        'I\'ve ever had."',
+      '"Take it! I can\'t, I\'m mid-mile. There\'s banana bread on the side. Have some. Have mine. I\'m going to ' +
+        'need it afterwards."',
     ],
     altered: true,
     story:
@@ -567,6 +639,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'dragonfly',
     title: 'HOODOO VOODOO',
     giver: { map: 'saltreach_fen_i', npc: 'fen_warden' },
+    hint: 'Saltreach Fen: the fen\'s warden.',
     found: [
       '"Dragonfly charm. Fen wives hang them over doors to stitch up bad luck. Somebody hung this one over MY ' +
         'door."',
@@ -581,6 +654,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'diver',
     title: 'HE\'S A CLOSET CHARISMATIC',
     giver: { map: 'undertide_iv', npc: 'undertide_diver_ondine' },
+    hint: 'The Undertide: the Drowned Stair: a diver in the deepest tide-race.',
     found: [
       'Ondine: "Down in the deep a diver left this in a bottle. Sweetest man. Wouldn\'t say boo to a crab."',
     ],
@@ -591,9 +665,13 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'notgood',
     title: 'I\'M JUST NOT GOOD WITH PEOPLE I KNOW',
-    giver: { map: 'pale_vault_inn', npc: 'guest_lit' },
+    giver: { map: 'pearlmoor_lifting_house_b1', npc: 'sid_after' },
+    hint: 'The building at the top of the quay: Weights: a lifter downstairs.',
     found: [
-      '"A stranger gave me this. Lovely conversation. Never seen them again. That\'s the best kind."',
+      'Sid: "A devil who\'s lovely to strangers and can\'t talk to his own family. I felt seen. I felt attacked. I ' +
+        'felt both."',
+      '"Found it in my kit bag. You\'re a stranger, so I can manage this: here. Have a sip of my squash, it\'s ' +
+        'blackcurrant."',
     ],
     story:
       'A horned red devil, very polite to strangers, warm with shopkeepers, charming on long coach journeys. At ' +
@@ -604,6 +682,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'shrimp',
     title: 'I LIKE STORIES ABOUT SHRIMP',
     giver: { map: 'pearlmoor_quay', npc: 'blessing_elder' },
+    hint: 'Pearlmoor Quay: the elder who blesses the boats.',
     found: [
       '"Blessing the boats, I found this in the bait-tin. I LIKE STORIES ABOUT SHRIMP. Well, so do I."',
       '"Here\'s one: my grandad\'s boat once caught a shrimp that ate a lamp-wick and glowed a week. Paid for the ' +
@@ -617,6 +696,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'seahorse',
     title: 'I WILL BE RARE FOR THOSE WHO CARE',
     giver: { map: 'driftholm_elder', npc: 'nan_creel' },
+    hint: 'Driftholm: the islands\' oldest grandmother.',
     found: [
       'Nan Creel: "My mother gave me this, and hers gave it her. Now it\'s you. Don\'t lose it, petal."',
     ],
@@ -628,6 +708,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'moths',
     title: 'CHAPEL OF MOTHS',
     giver: { map: 'mirelight_landing', npc: 'nell' },
+    hint: 'The Mirelights: someone at the ferry landing.',
     found: [
       '"Found it in the ferry chapel, under a candle. The moths were all over it. They\'ve good taste."',
     ],
@@ -639,6 +720,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'failure',
     title: 'A FAITH IN FAILURE',
     giver: { map: 'penumbra_underways_b1', npc: 'clemency' },
+    hint: 'Under the Penumbra Ring: an old woman keeping the last watch.',
     found: [
       'Clemency: "I have failed at almost everything down here, child. This card kept me company through all of ' +
         'it."',
@@ -650,9 +732,12 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'rooster',
     title: 'AIN\'T NOBODY\'S BUSINESS IF YOU DO',
-    giver: { map: 'galehigh_lumenary', npc: 'hall_festival' },
+    giver: { map: 'pearlmoor_lifting_house_b1', npc: 'rod' },
+    hint: 'The building at the top of the quay: Weights: the strongest seventy-two-year-old on the coast.',
     found: [
-      '"Festival bunting had this pegged on it. Bright little bird. Doesn\'t care who\'s looking."',
+      'Rod: "AIN\'T NOBODY\'S BUSINESS IF YOU DO! A rooster that struts where he likes. That\'s me, that is. Found ' +
+        'it in the marrow bed."',
+      '"Take it home and pin it up, and take a leek too. Biggest on the coast. Don\'t tell Anth I gave it away."',
     ],
     story:
       'A black painted rooster with hearts on his breast and a red comb like a flag. He crows when he likes, ' +
@@ -662,6 +747,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'seal',
     title: 'THE CARPET IS PURRING',
     giver: { map: 'dimglass_coast_ii', npc: 'cockler' },
+    hint: 'Dimglass Coast: the cockler who keeps a fire for travellers.',
     found: [
       '"A seal hauled out by my fire last night and lay on this like a rug. Purring, I swear it. Seals don\'t ' +
         'purr. This one did."',
@@ -674,9 +760,11 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'loon',
     title: 'SYNCOPATED, AGITATED, PURPLE MOON, WHITE LOON',
-    giver: { map: 'lanternway_nightreach', npc: 'lane_lamplighter_a' },
+    giver: { map: 'wayward_arms', npc: 'stranger' },
+    hint: 'An inn up on the hill past the wood: a well-dressed stranger.',
     found: [
-      '"Hung on a lamp-post like a ticket. It had a rhythm to it. I\'ve been humming it for weeks."',
+      '"Somebody left it propped on the piano. Syncopated, agitated. A song that never quite lands on the beat."',
+      '"Best kind. Keep it. And pour yourself one: the bar\'s open, we\'ve been told we can help ourselves."',
     ],
     story:
       'A red dancer in a feathered crown, stamping out a tune that never quite lands on the beat, under a purple ' +
@@ -686,6 +774,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'pyramid',
     title: 'SOMETIMES THE TONGUE IS TIRED',
     giver: { map: 'duskapple_orchard', npc: 'percy' },
+    hint: 'Duskapple Orchard: the man with the moka pot.',
     found: [
       '"Found it under a saucer at the stand. Somebody had three cups, tasted every one out loud, then went ' +
         'quiet and left this."',
@@ -702,9 +791,13 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'obsession',
     title: 'MEMORY AND OBSESSION',
-    giver: { map: 'pale_vault_home', npc: 'home_elder_lit' },
+    giver: { map: 'paul_house_1', npc: 'rose' },
+    hint: 'A crooked house up past the wood: someone minding the kettle.',
     found: [
-      '"Kept it in the button tin for years. Couldn\'t stop looking at it. Better you take it now."',
+      'Rose: "Dad keeps this one in the button tin. Memory and obsession. He\'d say that\'s the whole house in ' +
+        'three words."',
+      '"He\'d want you to have it, I think. He\'d never say so. Here: and a cup of red-bush, the kettle\'s just ' +
+        'boiled."',
     ],
     story:
       'A tin heart under a crown, pricked all over with little holes from being pinned and unpinned. A woman ' +
@@ -714,9 +807,13 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'brujas',
     title: 'NOCHE DE BRUJAS',
-    giver: { map: 'rimeway_fold', npc: 'tender_hale' },
+    giver: { map: 'wakeful_fair_loft', npc: 'ottoline' },
+    hint: 'A striped tent up on the hill, upstairs: the champion brewer, upstairs.',
     found: [
-      '"Found it in the snow by the Rime Gate on the longest night. The witches must\'ve dropped it."',
+      'Ottoline: "Noche de brujas. The witches\' night. I brewed my champion cup on a night like that, under a ' +
+        'moon like a peach."',
+      '"A competitor slipped this into my apron. Sabotage or a love letter, I\'ve never decided. Yours now. And a ' +
+        'taste of the champion\'s cup."',
     ],
     story:
       'The witches\' night: one night a year, when the moon comes up warm as a peach and every old woman in the ' +
@@ -727,6 +824,7 @@ export const MILAGROS: MilagroCard[] = [
     id: 'transition',
     title: 'REMEMBER I NEED SOME SPIRITUAL TRANSITION TIME, THAT\'S WHY I HAVE SO MUCH TROUBLE LEAVING THE HOUSE',
     giver: { map: 'crossroads_inn', npc: 'hesper' },
+    hint: 'Vesper Crossroads Inn: Hesper, at the crossroads inn.',
     found: [
       'Hesper: "A guest left it on her pillow. She took three hours to leave this inn, and she was right to. ' +
         'Some leavings need tea first."',

@@ -372,6 +372,13 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
         first,
         music: ctx.music,
       });
+      if (first) {
+        // the first card: say plainly where they live from now on
+        await new DialogueBox(scene, ctx.sfx).run([
+          { text: `A card to keep. You can look at it again any time, along with every other milagro card you find: press START and choose MILAGROS.` },
+          { text: `There are ${MILAGROS.length} of them, and folk all over Vesperholm have been left one. Talk to people. Somebody always has a card they don't know what to do with.` },
+        ]);
+      }
       return true;
     }
     case 'giveKin': {
