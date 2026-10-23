@@ -434,6 +434,12 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A tall, crooked house beside the Wayward Arms, three floors of evidence about one man, none of which agrees: tickets from the maple country and the cape country, a museum of t-shirts, a WANTED poster he swears is a joke. He is never in. His granddaughter Lottie usually is.',
     unlock_flag: 'flag:paul_house_seen',
   },
+  {
+    id: 'wakeful_fair',
+    term: 'the Wakeful Fair',
+    desc: 'Once a year the brewers of every valley pitch a striped marquee on Wayward Rise and pour free samples for anyone who brings a cup. In a land where the night never ends, everybody is tired, so it is very popular. Pace yourself. Nobody does.',
+    unlock_flag: 'flag:brew_has_card',
+  },
   // ---- THE FARLAMP ISLES (walkthrough/10 Part I) — Lane C1 ----
   {
     id: 'the_farlamp',

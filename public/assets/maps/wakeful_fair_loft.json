@@ -1,0 +1,1032 @@
+{
+  "id": "wakeful_fair_loft",
+  "display_name": "The Roasters' Loft",
+  "width": 20,
+  "height": 13,
+  "tile_width": 16,
+  "tile_height": 16,
+  "kind": "interior",
+  "tilesets": [
+    {
+      "name": "brewfair_set",
+      "image": "assets/tilesets/brewfair_set.webp",
+      "tile_width": 16,
+      "tile_height": 16,
+      "first_gid": 1,
+      "columns": 8,
+      "tile_count": 55
+    }
+  ],
+  "layers": [
+    {
+      "name": "base",
+      "role": "base",
+      "depth": 0,
+      "data": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "walls",
+      "role": "deco",
+      "depth": 5,
+      "data": [
+        18,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        22,
+        8,
+        4,
+        4,
+        5,
+        4,
+        4,
+        4,
+        5,
+        4,
+        4,
+        4,
+        5,
+        4,
+        4,
+        4,
+        5,
+        4,
+        4,
+        4,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        15,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        16
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "stall_frost",
+      "sprite": "brewfair_stall_frost",
+      "at": {
+        "tx": 4,
+        "ty": 3
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "stall_dawn",
+      "sprite": "brewfair_stall_dawn",
+      "at": {
+        "tx": 8,
+        "ty": 3
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "stall_midnight",
+      "sprite": "brewfair_stall_midnight",
+      "at": {
+        "tx": 12,
+        "ty": 3
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "banner_frost",
+      "sprite": "brewfair_banner_frost",
+      "at": {
+        "tx": 4,
+        "ty": 1
+      },
+      "w": 3,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "banner_dawn",
+      "sprite": "brewfair_banner_dawn",
+      "at": {
+        "tx": 8,
+        "ty": 1
+      },
+      "w": 3,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "banner_midnight",
+      "sprite": "brewfair_banner_midnight",
+      "at": {
+        "tx": 12,
+        "ty": 1
+      },
+      "w": 3,
+      "h": 1,
+      "solid": false
+    },
+    {
+      "id": "roaster",
+      "sprite": "brewfair_roaster",
+      "at": {
+        "tx": 16,
+        "ty": 2
+      },
+      "w": 3,
+      "h": 3,
+      "overhang": 1
+    },
+    {
+      "id": "loft_sacks",
+      "sprite": "brewfair_bean_sacks",
+      "at": {
+        "tx": 16,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "cupping",
+      "sprite": "brewfair_cupping_table",
+      "at": {
+        "tx": 3,
+        "ty": 7
+      },
+      "w": 3,
+      "h": 2
+    },
+    {
+      "id": "stage",
+      "sprite": "brewfair_stage",
+      "at": {
+        "tx": 10,
+        "ty": 7
+      },
+      "w": 4,
+      "h": 2
+    },
+    {
+      "id": "trophy",
+      "sprite": "brewfair_trophy",
+      "at": {
+        "tx": 14,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "loft_pole",
+      "sprite": "brewfair_tent_pole",
+      "at": {
+        "tx": 8,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "loft_cups",
+      "sprite": "brewfair_cup_tower",
+      "at": {
+        "tx": 1,
+        "ty": 9
+      },
+      "w": 1,
+      "h": 2
+    },
+    {
+      "id": "stairs_down_sprite",
+      "sprite": "interior_stairs_down",
+      "at": {
+        "tx": 1,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    }
+  ],
+  "warps": [
+    {
+      "id": "down_stairs",
+      "at": {
+        "tx": 1,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "wakeful_fair",
+      "to": {
+        "tx": 1,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade"
+    }
+  ],
+  "triggers": [
+    {
+      "id": "roaster",
+      "kind": "sign",
+      "at": {
+        "tx": 17,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "sign.brewfair_roaster"
+    },
+    {
+      "id": "trophy",
+      "kind": "sign",
+      "at": {
+        "tx": 14,
+        "ty": 8
+      },
+      "activation": "interact",
+      "ref": "sign.brewfair_trophy"
+    }
+  ],
+  "encounters": [],
+  "npcs": [
+    {
+      "id": "rime",
+      "sprite": "frost_herder",
+      "at": {
+        "tx": 5,
+        "ty": 2
+      },
+      "facing": "down",
+      "movement": "static",
+      "dialogue_ref": "script.brew_frost",
+      "hidden_when_flag": "flag:brew_seeing"
+    },
+    {
+      "id": "rime_trip",
+      "sprite": "kin_77_overworld",
+      "at": {
+        "tx": 5,
+        "ty": 2
+      },
+      "facing": "down",
+      "movement": "static",
+      "dialogue_ref": "script.brew_frost",
+      "requires_flag": "flag:brew_seeing"
+    },
+    {
+      "id": "solveig",
+      "sprite": "sun_keeper",
+      "at": {
+        "tx": 9,
+        "ty": 2
+      },
+      "facing": "down",
+      "movement": "static",
+      "dialogue_ref": "script.brew_dawn",
+      "hidden_when_flag": "flag:brew_seeing"
+    },
+    {
+      "id": "solveig_trip",
+      "sprite": "kin_117_overworld",
+      "at": {
+        "tx": 9,
+        "ty": 2
+      },
+      "facing": "down",
+      "movement": "static",
+      "dialogue_ref": "script.brew_dawn",
+      "requires_flag": "flag:brew_seeing"
+    },
+    {
+      "id": "vesper",
+      "sprite": "hollowing_acolyte",
+      "at": {
+        "tx": 13,
+        "ty": 2
+      },
+      "facing": "down",
+      "movement": "static",
+      "dialogue_ref": "script.brew_midnight",
+      "hidden_when_flag": "flag:brew_seeing"
+    },
+    {
+      "id": "vesper_trip",
+      "sprite": "kin_105_overworld",
+      "at": {
+        "tx": 13,
+        "ty": 2
+      },
+      "facing": "down",
+      "movement": "static",
+      "dialogue_ref": "script.brew_midnight",
+      "requires_flag": "flag:brew_seeing"
+    },
+    {
+      "id": "slurrington",
+      "sprite": "old_salt",
+      "at": {
+        "tx": 6,
+        "ty": 8
+      },
+      "facing": "left",
+      "movement": "static",
+      "dialogue_ref": "script.brew_cupping",
+      "hidden_when_flag": "flag:brew_seeing"
+    },
+    {
+      "id": "slurrington_trip",
+      "sprite": "kin_59_overworld",
+      "at": {
+        "tx": 6,
+        "ty": 8
+      },
+      "facing": "left",
+      "movement": "static",
+      "dialogue_ref": "script.brew_cupping",
+      "requires_flag": "flag:brew_seeing"
+    },
+    {
+      "id": "ottoline",
+      "sprite": "npc_woman",
+      "at": {
+        "tx": 12,
+        "ty": 9
+      },
+      "facing": "down",
+      "movement": "static",
+      "dialogue_ref": "script.brew_champion"
+    },
+    {
+      "id": "fred",
+      "sprite": "road_courier",
+      "at": {
+        "tx": 18,
+        "ty": 10
+      },
+      "facing": "left",
+      "movement": "static",
+      "dialogue_ref": "script.brew_hawker_fred",
+      "sight_range": 8,
+      "defeated_flag": "flag:brew_fred_poured",
+      "hidden_when_flag": "flag:brew_fred_poured"
+    },
+    {
+      "id": "fred_after",
+      "sprite": "road_courier",
+      "at": {
+        "tx": 18,
+        "ty": 10
+      },
+      "facing": "left",
+      "movement": "static",
+      "dialogue_ref": "script.brew_hawker_fred_after",
+      "requires_flag": "flag:brew_fred_poured"
+    },
+    {
+      "id": "goer_g",
+      "sprite": "miner_man",
+      "at": {
+        "tx": 16,
+        "ty": 8
+      },
+      "facing": "left",
+      "movement": "static",
+      "dialogue_ref": "npc.brewfair_goer_g"
+    },
+    {
+      "id": "goer_h",
+      "sprite": "npc_old_woman",
+      "at": {
+        "tx": 2,
+        "ty": 11
+      },
+      "facing": "up",
+      "movement": "static",
+      "dialogue_ref": "npc.brewfair_goer_h"
+    },
+    {
+      "id": "cache_loft",
+      "sprite": "item_cache",
+      "at": {
+        "tx": 18,
+        "ty": 11
+      },
+      "facing": "down",
+      "movement": "static",
+      "dialogue_ref": "script.pickup_brew_loft",
+      "hidden_when_flag": "flag:picked_brew_loft"
+    }
+  ],
+  "gates": [],
+  "music": "assets/audio/music/wakeful-fair.mp3",
+  "ambience": {
+    "particles": [
+      {
+        "kind": "steam",
+        "density": 0.8
+      },
+      {
+        "kind": "dust",
+        "density": 0.4
+      }
+    ],
+    "light_sources_extra": [
+      {
+        "at": {
+          "tx": 17,
+          "ty": 4
+        },
+        "radius": 2,
+        "color": "#ff8a3d"
+      }
+    ],
+    "starfall": false,
+    "when": [
+      {
+        "flag": "flag:q_south_brew_done",
+        "ambience": {
+          "particles": [
+            {
+              "kind": "steam",
+              "density": 0.6
+            },
+            {
+              "kind": "dust",
+              "density": 0.3
+            }
+          ],
+          "starfall": false
+        }
+      },
+      {
+        "flag": "flag:brew_seeing",
+        "ambience": {
+          "particles": [
+            {
+              "kind": "confetti",
+              "density": 1.0
+            },
+            {
+              "kind": "spores",
+              "density": 0.8
+            },
+            {
+              "kind": "starglint",
+              "density": 0.8
+            }
+          ],
+          "tint": {
+            "color": "#c050ff",
+            "alpha": 0.16
+          },
+          "mist": {
+            "color": "#ff8ad8",
+            "alpha": 0.1,
+            "speed": 14
+          },
+          "starfall": false
+        }
+      },
+      {
+        "flag": "flag:brew_buzzing",
+        "ambience": {
+          "particles": [
+            {
+              "kind": "steam",
+              "density": 1.0
+            },
+            {
+              "kind": "glowmotes",
+              "density": 0.7
+            },
+            {
+              "kind": "confetti",
+              "density": 0.35
+            }
+          ],
+          "tint": {
+            "color": "#ffb040",
+            "alpha": 0.08
+          },
+          "mist": {
+            "color": "#f0dcb8",
+            "alpha": 0.06,
+            "speed": 8
+          },
+          "starfall": false
+        }
+      },
+      {
+        "flag": "flag:brew_perky",
+        "ambience": {
+          "particles": [
+            {
+              "kind": "steam",
+              "density": 0.9
+            },
+            {
+              "kind": "glowmotes",
+              "density": 0.35
+            }
+          ],
+          "starfall": false
+        }
+      }
+    ]
+  }
+}

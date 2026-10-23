@@ -704,6 +704,36 @@ netmender's keeping.
      (`flag:q_south_jest_done`) Wink says it once: *"Tam Wash. I think I knew. I just liked not
      knowing."* `script.reyl_tin_rower` (Reyl recognising the T., +1 Lumen Drop, once) is ready to
      `run` from Reyl's post-Tide talk.
+   - **S7 "Just One More Cup"** — **[BUILT 2026-10]** Paul's third story, retold for the player:
+     he once went to a coffee festival for one cup, every stall had a free sample, he couldn't say
+     no, and by the end he was very nearly hallucinating. **Where:** THE WAKEFUL FAIR, a striped
+     marquee (`brewfair_marquee`, drawn 7×5) on Wayward Rise's south-east lawn — so it is past the
+     Wanderwood by construction. **Gate:** the flap wants a cup of your own: Paul's Tin Cup
+     (`flag:q_south_wander_done`); before that the doorman (`script.brewfair_doorman`, also the
+     flap's `blocked_ref`) points you at the old man in the wood. Paul's lamp menu gains **"Too much
+     coffee?"** (`script.brew_paul_story`) once the cup is yours — his own telling. **The loop:**
+     Marigold's welcome band hands over the **Tasting Card** (key); sixteen samples — fourteen
+     stalls + two sight-"trainer" hawkers who won't take no (every choice drinks) — each set
+     `flag:brew_stamp_<n>` + `flag:brewcup_<n>`; Dennis's DECAF stamps #17 with no caffeine.
+     FlagStore COUNT_AT_LEAST derives the stage: **PERKY 3** (talk fast enough to pass the TRADE
+     ONLY steward → the Roasters' Loft; `flag:brew_was_perky`), **BUZZING 7** (vibrate THROUGH the
+     Siphon Lab's queue; the Stall That Isn't There appears, non-solid; `flag:brew_was_buzzing`),
+     **SEEING 12** (the Grand Urn wakes and sings, every brewer becomes a kin, the puddle at the
+     urn's foot opens). The marquee's ambience + music follow live (`ambience.when` /
+     `music_when`, re-read after each scene by `WorldScene.refreshStoryState`). **The trip:**
+     `wakeful_fair_dream`, the bottom of the cup — a caramel-slick ice puzzle (17 presses, proven
+     trap-free by the builder) to the Bottomless Cup, where **THE BUZZ** (Thrumble #98 lv 20,
+     `bossBattle`, `battle-wakeful-buzz`) won't let you rest; then a Snoozlet, sleep, and a
+     `travel` to the Quiet Tent, where the medic clears every cup + stage flag, sets
+     `flag:q_south_brew_done` and points at the plaque: **P., tin cup, twenty-three samples**
+     (there are sixteen stalls). Reward: 2 Lumen Drops (+ Percy's Moka Cup, Dennis's decaf, the
+     caches). The full card → Marigold's **Wakeful Flask** (toggle key item, encounters ×1.5 — the
+     first BOOSTER; it yields to any damper). Optional bouts: Fern (Latte Artist), Slurrington
+     (Cupper), Ottoline Crema (Head Barista, the Golden Cup). Content `content/regions/brewfair.ts`;
+     builders `build_wakeful_fair.py` (three maps) + `build_wayward_rise.py`; art `brewforge.py` +
+     `build_brewfair_sets.py`; music `wakeful-fair` / `-buzz` / `-trip` / `-dream` +
+     `battle-wakeful-buzz` (one tune, chip, classic-only). Hidden content: never in the changelog,
+     the guide (FORBIDDEN) or the site's music page (`build_music_data.mjs` HIDDEN).
    - **The Worry Club** — **[BUILT R9]** five townsfolk frantic that {name} will never find the
      easter egg, each ONE NPC + ONE staged script (`script.worry_*`, the andrew_egg if/unless
      chain): PRE (before `flag:chickenpig_caught` — fretting + a real main-path tip; before

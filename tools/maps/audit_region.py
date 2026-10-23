@@ -107,6 +107,11 @@ GRANTS["vigil_stormfall"] = ["flag:vigil_3_kept", "flag:vigil_reading_4"]
 GRANTS["vigil_sunfall"] = ["flag:vigil_4_kept", "flag:vigil_reading_5"]
 GRANTS["vigil_murkfall"] = ["flag:vigil_5_kept"]
 # ---- THE WILD WAYS (09-the-wild-ways.md, 2026-10) — one line per area lane
+# S7 "Just One More Cup" (the Wakeful Fair): the flap wants Paul's Tin Cup (S5's glade,
+# flag:q_south_wander_done); the cup's puddle opens on the caffeine (flag:brew_seeing,
+# derived from the fair's own samples — credited to the marquee itself)
+GRANTS.setdefault("pearlmoor_wanderwood", []).append("flag:q_south_wander_done")
+GRANTS["wakeful_fair"] = ["flag:brew_seeing"]
 GRANTS["wickrun_crest"] = ["flag:wickrun_riding", "flag:tallow_lift_freed"]   # Pell's rental, the brake
 # the Rimeway (C): the Fold's frozen falls give the clear-ice core; Isel (Pale Vault) cuts the
 # Frostglass Lens from it; the Rime Gate is lifted from the Descent (the marsh side)

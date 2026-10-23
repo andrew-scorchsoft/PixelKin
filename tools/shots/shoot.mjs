@@ -43,6 +43,10 @@ world options:
   --greet <placement_id>        step beside that AMBIENT kin (wherever it grazed to),
                                 face it and press Confirm — shoots the greeting
                                 (cry + kinchatter line) mid-dialogue
+  --script <script.ref>         play that cutscene script in the world (World.playScene);
+                                --confirms N then pages on, 1.4s apart (battles too)
+  --dump-flags <prefix>         after the shot, print every held world flag with that
+                                prefix (e.g. "flag:brew") — check a scene's outcome
   --keep-hud                    don't wait for the area-name banner / SAVED glyph
                                 to fade (default waits)
   --version-from <v>            write an older save last_version (e.g. 1.0, or ""
@@ -123,6 +127,8 @@ function normaliseSpec(raw, index = 0) {
     keys: s.keys ? String(s.keys).split(',').map((k) => k.trim()).filter(Boolean) : [],
     battleKeys: s['battle-keys'] ? String(s['battle-keys']).split(',').map((k) => k.trim()).filter(Boolean) : [],
     greet: s.greet,
+    script: s.script !== undefined ? String(s.script) : undefined,
+    dumpFlags: s['dump-flags'] ?? s.dumpFlags,
     versionFrom:
       s['version-from'] !== undefined || s.versionFrom !== undefined
         ? String(s['version-from'] ?? s.versionFrom)
@@ -483,6 +489,16 @@ async function shoot(page, url, shot) {
         await page.waitForTimeout(1400);
         await tap(page, 'z');
       }
+    } else if (shot.script) {
+      await page.evaluate((ref) => {
+        const w = window.__pixelkin.scene.getScene('World');
+        w.modal = true;
+        void w.playScene([{ op: 'run', ref }]).finally(() => { w.modal = false; w.refreshNpcs(); });
+      }, shot.script);
+      for (let i = 0; i < shot.confirms; i++) {
+        await page.waitForTimeout(1400);
+        await tap(page, 'z');
+      }
     } else if (shot.trainer) {
       await page.evaluate((id) => {
         const w = window.__pixelkin.scene.getScene('World');
@@ -544,6 +560,14 @@ async function shoot(page, url, shot) {
           return `${w.map.def.id} (${w.player.tx},${w.player.ty}) ${w.player.facing}`;
         })
       : 'title';
+  if (shot.dumpFlags && shot.scene === 'world') {
+    const held = await page.evaluate((pre) => {
+      const w = window.__pixelkin.scene.getScene('World');
+      const f = w.flags.flags ?? {};
+      return Object.keys(f).filter((k) => f[k] === true && k.startsWith(pre)).sort();
+    }, String(shot.dumpFlags));
+    console.log(`  flags ${shot.dumpFlags}*: ${held.join(' ') || '(none)'}`);
+  }
   return info;
 }
 

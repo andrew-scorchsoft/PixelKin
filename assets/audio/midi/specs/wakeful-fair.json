@@ -1,0 +1,57 @@
+{
+  "title": "PixelKin - The Wakeful Fair",
+  "_note": "The coffee festival in the striped marquee on Wayward Rise (S7). A jaunty fairground two-step in F: a hummable pulse25 tune (AB, 16 bars), oom-pah tri_bass, an organ 'pah' on every offbeat like a fairground band, a pluck arpeggio, a bell every other bar. Bar 16 runs C7 up to the top C and walks the bass G-Bb back into bar 1's F. The family's anchor: -buzz / -trip / -dream / battle-wakeful-buzz all play THIS tune.",
+  "era": "snes",
+  "tempo": 116,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "pulse25",
+      "octave": 4,
+      "gain": 0.95,
+      "notes": "C5e A4e C5e F5e E5q C5q | D5e C5e Bb4e A4e G4h | A4e F4e A4e D5e C5q A4q | Bb4e C5e D5e Bb4e F5h | C5e A4e C5e F5e A5q G5e F5e | E5e D5e C5e Bb4e G4q C5q | D5e Bb4e D5e F5e E5e D5e C5e Bb4e | A4q C5q F5h | F5q. D5e Bb4q D5q | C5q. A4e F4q A4q | Bb4e A4e Bb4e D5e G5q F5q | E5e D5e C5e D5e E5h | F5q. E5e D5q A4q | Bb4e C5e D5e F5e Bb5q A5q | G5e F5e E5e D5e B4q D5q | C5e E5e G5e Bb5e C6q rq"
+    },
+    {
+      "name": "arp",
+      "voice": "pluck",
+      "octave": 4,
+      "gain": 0.42,
+      "notes": "F4e A4e C4e F5e A4e C4e A4e F4e | C4e E4e G4e C5e E4e G4e E4e C4e | D4e F4e A4e D5e F4e A4e F4e D4e | Bb4e D4e F4e Bb5e D4e F4e D4e Bb4e | F4e A4e C4e F5e A4e C4e A4e F4e | C4e E4e Bb4e C5e E4e Bb4e E4e C4e | Bb4e D4e F4e Bb5e D4e F4e D4e Bb4e | F4e A4e C4e F5e A4e C4e A4e F4e | Bb4e D4e F4e Bb5e D4e F4e D4e Bb4e | F4e A4e C4e F5e A4e C4e A4e F4e | G4e Bb4e D4e G5e Bb4e D4e Bb4e G4e | C4e E4e G4e C5e E4e G4e E4e C4e | D4e F4e A4e D5e F4e A4e F4e D4e | Bb4e D4e F4e Bb5e D4e F4e D4e Bb4e | G4e B4e D4e G5e B4e D4e B4e G4e | C4e E4e Bb4e C5e E4e Bb4e E4e C4e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.9,
+      "notes": "F2q C3q F2q C3q | C2q G2q C2q G2q | D2q A2q D2q A2q | Bb1q F2q Bb1q F2q | F2q C3q F2q C3q | C2q G2q C2q Bb1q | Bb1q F2q C2q G2q | F2q C3q F2q E2q | Bb1q F2q Bb1q F2q | F2q C3q F2q C3q | G2q D3q G2q D3q | C2q G2q C2q G2q | D2q A2q D2q A2q | Bb1q F2q Bb1q F2q | G2q D3q G2q B2q | C2q E2q G2q Bb2q"
+    },
+    {
+      "name": "pah",
+      "voice": "organ",
+      "octave": 3,
+      "gain": 0.28,
+      "notes": "re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 | re C3+E3+G3e@80 re C3+E3+G3e@80 re C3+E3+G3e@80 re C3+E3+G3e@80 | re D3+F3+A3e@80 re D3+F3+A3e@80 re D3+F3+A3e@80 re D3+F3+A3e@80 | re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 | re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 | re C3+E3+Bb3e@80 re C3+E3+Bb3e@80 re C3+E3+Bb3e@80 re C3+E3+Bb3e@80 | re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 | re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 | re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 | re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 re F3+A3+C3e@80 | re G3+Bb3+D3e@80 re G3+Bb3+D3e@80 re G3+Bb3+D3e@80 re G3+Bb3+D3e@80 | re C3+E3+G3e@80 re C3+E3+G3e@80 re C3+E3+G3e@80 re C3+E3+G3e@80 | re D3+F3+A3e@80 re D3+F3+A3e@80 re D3+F3+A3e@80 re D3+F3+A3e@80 | re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 re Bb3+D3+F3e@80 | re G3+B3+D3e@80 re G3+B3+D3e@80 re G3+B3+D3e@80 re G3+B3+D3e@80 | re C3+E3+Bb3e@80 re C3+E3+Bb3e@80 re C3+E3+Bb3e@80 re C3+E3+Bb3e@80"
+    },
+    {
+      "name": "bell",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.35,
+      "notes": "F5h@70 rh | rw | D5h@70 rh | rw | F5h@70 rh | rw | Bb5h@70 rh | rw | Bb5h@70 rh | rw | G5h@70 rh | rw | D5h@70 rh | rw | G5h@70 rh | rw"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "octave": 4,
+      "gain": 0.55,
+      "notes": "e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat | e kick+hat hat snare+hat hat kick+hat hat snare+hat hat"
+    }
+  ]
+}

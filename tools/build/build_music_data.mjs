@@ -37,6 +37,11 @@ const GROUPS = [
     ['Story & fanfares', ['title', 'coldopen', 'gleam-', 'sting-']],
 ];
 
+/** Cues that belong to the hidden real-people content (the Wakeful Fair is Paul's
+ *  story) — the game plays them, the website never lists them (CLAUDE.md: the site
+ *  and changelog must never spoil it). */
+const HIDDEN = ['wakeful-fair', 'battle-wakeful'];
+
 /** Friendly names for cues that aren't a single place. */
 const CUE_NAMES = {
     'title': 'Title screen',
@@ -115,6 +120,7 @@ const groups = GROUPS.map(([title]) => ({ title, tracks: [] }));
 for (const file of readdirSync(MUSIC).filter((f) => f.endsWith('.mp3')).sort()) {
     const id = file.replace(/\.mp3$/, '');
     if (!new RegExp(`['/]${id}(\\.mp3)?'`).test(srcText)) continue; // unused variant
+    if (HIDDEN.some((p) => id.startsWith(p))) continue; // hidden content: never on the site
     const gi = GROUPS.findIndex(([, pre]) => pre.some((p) => id.startsWith(p)));
     const r = remaster[id];
     const places = [...(placesByTrack[id] ?? [])];

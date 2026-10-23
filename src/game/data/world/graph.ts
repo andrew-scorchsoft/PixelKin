@@ -109,6 +109,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'paul_house_1', region: 'south', optional: true, reward: 'Paul\'s house: three floors of travel, t-shirts and a WANTED poster — and Lottie, who loves the Chickenpig' }, // interior: the kitchen-hall
     { map_id: 'paul_house_2', region: 'south', optional: true }, // interior: the T-shirt museum
     { map_id: 'paul_house_3', region: 'south', optional: true }, // interior: Lottie's attic
+    { map_id: 'wakeful_fair', region: 'south', optional: true, reward: 'S7: the Wakeful Fair — sixteen free samples, one Grand Urn, and a record nobody can beat' }, // interior: the marquee on Wayward Rise
+    { map_id: 'wakeful_fair_loft', region: 'south', optional: true }, // interior: the Roasters' Loft (trade only, until you talk fast enough)
+    { map_id: 'wakeful_fair_dream', region: 'south', optional: true }, // interior: the bottom of the cup (the hallucination)
     // ---- East: Saltreach Fen (2 segments) -> Lowleaf forest -> Cinderhead cave -------
     { map_id: 'saltreach_fen_i', region: 'east' }, // route: open marsh
     { map_id: 'saltreach_fen_ii', region: 'east' }, // route: deep channels
@@ -307,6 +310,11 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'wayward_rise', to_map: 'paul_house_1', via_warp: 'enter_paul_house', bidirectional: true },
     { from_map: 'paul_house_1', to_map: 'paul_house_2', via_warp: 'up_stairs', bidirectional: true },
     { from_map: 'paul_house_2', to_map: 'paul_house_3', via_warp: 'up_stairs', bidirectional: true },
+    // S7: the Wakeful Fair — the flap wants a cup of your own (Paul's Tin Cup, S5);
+    // the loft and the cup open on the caffeine (FlagStore ANY_OF / COUNT_AT_LEAST)
+    { from_map: 'wayward_rise', to_map: 'wakeful_fair', via_warp: 'enter_fair', requires_flag: 'flag:q_south_wander_done', bidirectional: true },
+    { from_map: 'wakeful_fair', to_map: 'wakeful_fair_loft', via_warp: 'up_stairs', bidirectional: true },
+    { from_map: 'wakeful_fair', to_map: 'wakeful_fair_dream', via_warp: 'into_the_cup', requires_flag: 'flag:brew_seeing', bidirectional: true },
     // R9 "The Old Light": the west beach runs out to Lightkeeper's Point; Reyl's
     // hook (flag:q_south_bell) opens the tower door; each floor's up-stair waits on
     // its riddle (flag:oldlight_N_solved); the top's slide drops back to the Point

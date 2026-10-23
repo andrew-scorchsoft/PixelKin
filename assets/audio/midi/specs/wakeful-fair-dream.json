@@ -1,0 +1,50 @@
+{
+  "title": "PixelKin - The Bottom of the Cup",
+  "_note": "The hallucination's floor: the Wakeful Fair tune slowed to 84 and dreamt \u2014 a flute carrying the melody over warm sustained pads, a bell music-box arpeggio, no drums but a soft tom heartbeat on 1 and 3 that never quite stops. Woozy, sweet, a little sleepy (the Snoozlet is coming).",
+  "era": "snes",
+  "tempo": 84,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "flute",
+      "octave": 4,
+      "gain": 0.8,
+      "notes": "C5e A4e C5e F5e E5q C5q | D5e C5e Bb4e A4e G4h | A4e F4e A4e D5e C5q A4q | Bb4e C5e D5e Bb4e F5h | C5e A4e C5e F5e A5q G5e F5e | E5e D5e C5e Bb4e G4q C5q | D5e Bb4e D5e F5e E5e D5e C5e Bb4e | A4q C5q F5h | F5q. D5e Bb4q D5q | C5q. A4e F4q A4q | Bb4e A4e Bb4e D5e G5q F5q | E5e D5e C5e D5e E5h | F5q. E5e D5q A4q | Bb4e C5e D5e F5e Bb5q A5q | G5e F5e E5e D5e B4q D5q | C5e E5e G5e Bb5e C6q rq"
+    },
+    {
+      "name": "pad",
+      "voice": "pad",
+      "octave": 3,
+      "gain": 0.4,
+      "notes": "F3+A3+C4w@70 | C3+E3+G4w@70 | D3+F3+A4w@70 | Bb3+D3+F4w@70 | F3+A3+C4w@70 | C3+E3+Bb4w@70 | Bb3+D3+F4w@70 | F3+A3+C4w@70 | Bb3+D3+F4w@70 | F3+A3+C4w@70 | G3+Bb3+D4w@70 | C3+E3+G4w@70 | D3+F3+A4w@70 | Bb3+D3+F4w@70 | G3+B3+D4w@70 | C3+E3+Bb4w@70"
+    },
+    {
+      "name": "box",
+      "voice": "bell",
+      "octave": 5,
+      "gain": 0.22,
+      "notes": "F5e A5e C5e F6e A5e C5e A5e F5e | C5e E5e G5e C6e E5e G5e E5e C5e | D5e F5e A5e D6e F5e A5e F5e D5e | Bb5e D5e F5e Bb6e D5e F5e D5e Bb5e | F5e A5e C5e F6e A5e C5e A5e F5e | C5e E5e Bb5e C6e E5e Bb5e E5e C5e | Bb5e D5e F5e Bb6e D5e F5e D5e Bb5e | F5e A5e C5e F6e A5e C5e A5e F5e | Bb5e D5e F5e Bb6e D5e F5e D5e Bb5e | F5e A5e C5e F6e A5e C5e A5e F5e | G5e Bb5e D5e G6e Bb5e D5e Bb5e G5e | C5e E5e G5e C6e E5e G5e E5e C5e | D5e F5e A5e D6e F5e A5e F5e D5e | Bb5e D5e F5e Bb6e D5e F5e D5e Bb5e | G5e B5e D5e G6e B5e D5e B5e G5e | C5e E5e Bb5e C6e E5e Bb5e E5e C5e"
+    },
+    {
+      "name": "bass",
+      "voice": "tri_bass",
+      "octave": 2,
+      "gain": 0.7,
+      "notes": "F2h F2h | C2h C2h | D2h D2h | Bb1h Bb1h | F2h F2h | C2h C2h | Bb1h Bb1h | F2h F2h | Bb1h Bb1h | F2h F2h | G2h G2h | C2h C2h | D2h D2h | Bb1h Bb1h | G2h G2h | C2h C2h"
+    },
+    {
+      "name": "heart",
+      "voice": "drums",
+      "octave": 4,
+      "gain": 0.35,
+      "notes": "q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq | q tom rq tom@70 rq"
+    }
+  ]
+}

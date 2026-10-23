@@ -69,11 +69,23 @@ const ANY_OF: [WorldFlag, WorldFlag[]][] = [
   ['flag:scarp_short_open', ['flag:scarp_rockfall_clear', 'gleam:storm']],
   // the climb out of Cinderhead Deep waits on Otho (or you're already past Mira)
   ['flag:scarp_climb_open', ['gleam:stone', 'gleam:storm']],
+  // the Wakeful Fair (S7): what the caffeine opened stays open after you've slept
+  // it off (the wake clears the cup + stage flags; these don't follow them down)
+  ['flag:brew_was_perky', ['flag:brew_perky']], // the Roasters' Loft stair
+  ['flag:brew_was_buzzing', ['flag:brew_buzzing']], // the Siphon Lab queue + the Stall That Isn't There
 ];
 
 /** "N of these prefix flags" — e.g. three of the five driftletters (10 §3). */
 const COUNT_AT_LEAST: { flag: WorldFlag; prefix: string; min: number }[] = [
   { flag: 'flag:driftletters_3', prefix: 'flag:driftletter_', min: 3 },
+  // The Wakeful Fair (S7): every sample is a numbered `flag:brewcup_<n>`, and how
+  // many you've had is how strange the marquee gets (content/regions/brewfair.ts).
+  // The trip scene clears the cups AND these three when you wake up.
+  { flag: 'flag:brew_perky', prefix: 'flag:brewcup_', min: 3 },
+  { flag: 'flag:brew_buzzing', prefix: 'flag:brewcup_', min: 7 },
+  { flag: 'flag:brew_seeing', prefix: 'flag:brewcup_', min: 12 },
+  // ...and every stall's stamp on the tasting card (the cups + the decaf).
+  { flag: 'flag:brew_card_full', prefix: 'flag:brew_stamp_', min: 17 },
 ];
 
 export class FlagStore {
@@ -118,15 +130,17 @@ export class FlagStore {
     if (CROWNS.every(([crown]) => this.flags[crown] === true)) {
       this.flags[HUB_FLAG] = true;
     }
-    for (const [gate, any] of ANY_OF) {
-      if (any.some((f) => this.flags[f] === true)) this.flags[gate] = true;
-    }
     for (const { flag, prefix, min } of COUNT_AT_LEAST) {
       // numbered flags only (`<prefix><n>`), so a later `<prefix>something` can't inflate it
       const n = Object.keys(this.flags).filter(
         (k) => this.flags[k] === true && k.startsWith(prefix) && /^\d+$/.test(k.slice(prefix.length)),
       ).length;
       if (n >= min) this.flags[flag] = true;
+    }
+    // ANY_OF after the counts, so a gate keyed on a counted flag (the Wakeful Fair's
+    // brew_was_perky <- brew_perky) opens on the same write that crossed the count
+    for (const [gate, any] of ANY_OF) {
+      if (any.some((f) => this.flags[f] === true)) this.flags[gate] = true;
     }
     if (POST_LETTER_FLAGS.every((f) => this.flags[f] === true)) {
       this.flags[POST_LETTERS_ALL] = true;

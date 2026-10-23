@@ -192,7 +192,9 @@ export type AmbienceParticleKind =
   | 'motes' // drifting cold motes (Coldfog)
   | 'leaves'
   | 'starglint'
-  | 'dust'; // dust motes in still air (the Old Light's window shafts)
+  | 'dust' // dust motes in still air (the Old Light's window shafts)
+  | 'steam' // rising wisps off a hundred cups (the Wakeful Fair)
+  | 'confetti'; // bright falling flecks — a fair in full swing (or a hallucination)
 
 /** One particle emitter. Every emitter shares ONE global cap (~40 alive). */
 export interface AmbienceParticles {

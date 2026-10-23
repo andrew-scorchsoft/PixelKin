@@ -1,0 +1,50 @@
+{
+  "title": "PixelKin - Battle: The Buzz",
+  "_note": "The boss at the bottom of the cup (THE BUZZ, your own heartbeat with wings): the Wakeful Fair tune turned into a breakneck F-dorian fight at 176 \u2014 saw lead, eighth-note bass, brass stabs on 2 and 4, a pulse12 buzzing tremolo, four-on-the-floor kick. Classic-only like every battle cue.",
+  "era": "snes",
+  "tempo": 176,
+  "time_signature": [
+    4,
+    4
+  ],
+  "ppq": 480,
+  "loop": true,
+  "key": "F major",
+  "tracks": [
+    {
+      "name": "lead",
+      "voice": "saw",
+      "octave": 4,
+      "gain": 0.7,
+      "notes": "C5e Ab4e C5e F5e Eb5q C5q | D5e C5e Bb4e Ab4e G4h | Ab4e F4e Ab4e D5e C5q Ab4q | Bb4e C5e D5e Bb4e F5h | C5e Ab4e C5e F5e Ab5q G5e F5e | Eb5e D5e C5e Bb4e G4q C5q | D5e Bb4e D5e F5e Eb5e D5e C5e Bb4e | Ab4q C5q F5h | F5q. D5e Bb4q D5q | C5q. Ab4e F4q Ab4q | Bb4e Ab4e Bb4e D5e G5q F5q | Eb5e D5e C5e D5e Eb5h | F5q. Eb5e D5q Ab4q | Bb4e C5e D5e F5e Bb5q Ab5q | G5e F5e Eb5e D5e B4q D5q | C5e Eb5e G5e Bb5e C6q rq"
+    },
+    {
+      "name": "buzz",
+      "voice": "pulse12",
+      "octave": 5,
+      "gain": 0.22,
+      "notes": "F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s | C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s | D5s F5s D5s F5s D5s F5s D5s F5s D5s F5s D5s F5s D5s F5s D5s F5s | Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s | F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s | C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s | Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s | F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s | Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s | F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s F5s Ab5s | G5s Bb5s G5s Bb5s G5s Bb5s G5s Bb5s G5s Bb5s G5s Bb5s G5s Bb5s G5s Bb5s | C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s | D5s F5s D5s F5s D5s F5s D5s F5s D5s F5s D5s F5s D5s F5s D5s F5s | Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s Bb5s D5s | G5s Bb5s G5s Bb5s G5s Bb5s G5s Bb5s G5s Bb5s G5s Bb5s G5s Bb5s G5s Bb5s | C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s C5s Eb5s"
+    },
+    {
+      "name": "bass",
+      "voice": "bass",
+      "octave": 2,
+      "gain": 0.85,
+      "notes": "F2e F2e C3e C3e F2e F2e C3e C3e | C2e C2e G2e G2e C2e C2e G2e G2e | D2e D2e Ab2e Ab2e D2e D2e Ab2e Ab2e | Bb1e Bb1e F2e F2e Bb1e Bb1e F2e F2e | F2e F2e C3e C3e F2e F2e C3e C3e | C2e C2e G2e G2e C2e C2e Bb1e Bb1e | Bb1e Bb1e F2e F2e C2e C2e G2e G2e | F2e F2e C3e C3e F2e F2e Eb2e Eb2e | Bb1e Bb1e F2e F2e Bb1e Bb1e F2e F2e | F2e F2e C3e C3e F2e F2e C3e C3e | G2e G2e D3e D3e G2e G2e D3e D3e | C2e C2e G2e G2e C2e C2e G2e G2e | D2e D2e Ab2e Ab2e D2e D2e Ab2e Ab2e | Bb1e Bb1e F2e F2e Bb1e Bb1e F2e F2e | G2e G2e D3e D3e G2e G2e B2e B2e | C2e C2e Eb2e Eb2e G2e G2e Bb2e Bb2e"
+    },
+    {
+      "name": "stabs",
+      "voice": "brass",
+      "octave": 3,
+      "gain": 0.4,
+      "notes": "rq F3+Ab3+C4e@96 re rq F3+Ab3+C4e@96 re | rq C3+Eb3+G4e@96 re rq C3+Eb3+G4e@96 re | rq D3+F3+Ab4e@96 re rq D3+F3+Ab4e@96 re | rq Bb3+D3+F4e@96 re rq Bb3+D3+F4e@96 re | rq F3+Ab3+C4e@96 re rq F3+Ab3+C4e@96 re | rq C3+Eb3+G4e@96 re rq C3+Eb3+G4e@96 re | rq Bb3+D3+F4e@96 re rq Bb3+D3+F4e@96 re | rq F3+Ab3+C4e@96 re rq F3+Ab3+C4e@96 re | rq Bb3+D3+F4e@96 re rq Bb3+D3+F4e@96 re | rq F3+Ab3+C4e@96 re rq F3+Ab3+C4e@96 re | rq G3+Bb3+D4e@96 re rq G3+Bb3+D4e@96 re | rq C3+Eb3+G4e@96 re rq C3+Eb3+G4e@96 re | rq D3+F3+Ab4e@96 re rq D3+F3+Ab4e@96 re | rq Bb3+D3+F4e@96 re rq Bb3+D3+F4e@96 re | rq G3+Bb3+D4e@96 re rq G3+Bb3+D4e@96 re | rq C3+Eb3+G4e@96 re rq C3+Eb3+G4e@96 re"
+    },
+    {
+      "name": "drums",
+      "voice": "drums",
+      "octave": 4,
+      "gain": 0.6,
+      "notes": "e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat | e kick+hat hat kick+snare+hat hat kick+hat hat kick+snare+hat ohat"
+    }
+  ]
+}

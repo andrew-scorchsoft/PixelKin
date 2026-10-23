@@ -2,6 +2,13 @@
   "_note": "The player-facing changelog: the in-game \"the world has changed\" notice (content/whatsnew.ts) AND the website changelog page (web/site.mjs) both read this. Newest first. NO SPOILERS for the hidden real-people content - see whatsnew.ts.",
   "entries": [
     {
+      "version": "1.34",
+      "date": "2026-10-23",
+      "notes": [
+        "A place's music and mood can now change the moment the story moves on while you're standing in it, instead of waiting until the next time you walk in."
+      ]
+    },
+    {
       "version": "1.33",
       "date": "2026-10-14",
       "notes": [
