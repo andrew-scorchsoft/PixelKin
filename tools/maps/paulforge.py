@@ -637,6 +637,44 @@ def rack_never():
     return crowned(a, "NEVER!", "r", "n", post="S")
 
 
+# ---- the FESTIVAL OF THE IMAGINED programmes + the MILAGRO cards (2026-10) ----
+def festival_lectern():
+    """1x2 (overhang 1): a little lectern with an open programme and a stack of
+    red-and-black covers, the festival's loud circus letters suggested in pixels."""
+    a = canvas(1, 2)
+    # the open programme on the slope (top tile, the overhang)
+    rect(a, 1, 6, 14, 15, "k")
+    rect(a, 2, 7, 7, 14, "P"); rect(a, 8, 7, 13, 14, "p")
+    for yy in (9, 11, 13):
+        a[yy, 3:7] = rgba(PAL["s"])
+    rect(a, 9, 8, 12, 11, "f"); rect(a, 9, 12, 12, 13, "b")   # the picture page
+    a[7, 7:9] = rgba(PAL["q"])
+    # the lectern's post + the stack of covers at its foot
+    rect(a, 7, 16, 8, 26, "W"); a[16:27, 7] = rgba(PAL["O"])
+    rect(a, 3, 27, 12, 29, "w"); a[27, 3:13] = rgba(PAL["W"])
+    for i, yy in enumerate((23, 25)):                        # covers stacked on the base
+        rect(a, 2 + i, yy, 6 + i, yy + 1, "k"); px(a, 3 + i, yy, "r"); px(a, 5 + i, yy, "r")
+    contact(a, 2, 13, 30)
+    return img(a)
+
+
+def milagro_cards():
+    """Wall-hung: three of Paul's painted milagro cards pinned in a frame —
+    the heart, the lamp, and the dark one with the little flame (desasosiego)."""
+    a = frame(1, back="u")
+    for i, (bg, ink) in enumerate((("P", "r"), ("P", "G"), ("V", "f"))):
+        x = 2 + i * 4
+        rect(a, x, 4, x + 3, 11, "k"); rect(a, x, 4, x + 2, 10, bg)
+        px(a, x + 1, 3, "x")                                    # the pin
+        if i == 0:
+            stamp(a, ["r.r", "rrr", ".r."], x, 6)
+        elif i == 1:
+            stamp(a, [".G.", "GyG", ".G."], x, 6)
+        else:
+            stamp(a, [".f.", "fFf", ".f."], x, 6)
+    return img(a)
+
+
 def coat_stand():
     """1x2 coat stand: a plaid lumber-jacket and a bobble hat (maple country)."""
     a = canvas(1, 2)
@@ -904,7 +942,8 @@ PIECES = {
     "drawing_bike": drawing_bike, "drawing_sea": drawing_sea,
     # free-standing
     "shirt_rack": shirt_rack, "rack_out": rack_out, "rack_in": rack_in,
-    "rack_never": rack_never, "coat_stand": coat_stand, "antelope": antelope,
+    "rack_never": rack_never, "festival_lectern": festival_lectern,
+    "milagro_cards": milagro_cards, "coat_stand": coat_stand, "antelope": antelope,
     "tea_bench": tea_bench, "gym_kit": gym_kit, "trunk": trunk, "globe": globe,
     "rugby_stand": rugby_stand, "syrup_table": syrup_table, "plush": plush,
 }

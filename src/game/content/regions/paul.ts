@@ -71,6 +71,55 @@ const railMenu = (seen: string, shirts: ReturnType<typeof shirtPick>[]): Cutscen
   { op: 'run', ref: 'script.paul_rails_all' },
 ];
 
+/**
+ * THE FESTIVAL OF THE IMAGINED (2026-10, after Paul's own booklet). A programme
+ * you page through on the museum lectern: imagined people from Vesperholm's
+ * old tales meet "in conversation". Every name is ORIGINAL (VISION.md); the
+ * last page asks who YOU would invite, as a typed answer that is never stored.
+ */
+const FEST_PAGES: string[][] = [
+  [
+    'A hand-printed programme. The cover is all loud red-and-black circus letters over a jumble of half-words in soft colours:',
+    'FESTIVAL OF THE IMAGINED.',
+  ],
+  [
+    'WELCOME to the first Festival of the Imagined, to be held on the twenty-ninth of the short month — a day that only turns up one winter in four, so we thought it could spare us an evening.',
+    'There will be people in conversation, pictures on the walls, and a night of lantern-shows. This is only the first, so we have not tried to do everything. We hope you leave imagining what might come next.',
+  ],
+  [
+    'THE LAMPLIGHTER\'S DAUGHTER AND THE GIRL WHO FELL UP THE WELL, IN CONVERSATION.',
+    'They have written to each other for years but never met. Both grew up to be nursery stories and both went to great lengths to live quietly anyway. They will talk about growing older, the end of childhood, and whether you can lose the knack of imagining. (You can\'t. Probably.)',
+  ],
+  [
+    'THE LONG-ROAD DRIFTER AND THE MAN WHO WALKED OUT OF THE MAP, IN CONVERSATION.',
+    'Two men who have wandered every dust road, crossroads inn and shuttered car-station in the old songs. They will talk about wanting things, being afraid of things, and the strange comfort of the road. Drinks will be served. It will go late.',
+  ],
+  [
+    'THE SORTING-OFFICE POET AND THE WOMAN WHO HEARD THE POST-HORN, IN CONVERSATION.',
+    'A pair of outsiders: one sorts letters by night and writes on the backs of them; one keeps finding a muffled horn drawn in the margins of everything. Topics: how to live in a world that has stopped making sense. They have asked for a dance floor, and intend to use it.',
+  ],
+  [
+    'THREE ARTISTS IN CONVERSATION: ART?',
+    'A painter who sleeps under his own canvases, a sculptor of hanging things, and an old woman who has drawn the same harbour every morning for sixty years.',
+    'They have asked to begin from one word, sent in by post with no name on it: DESASOSIEGO. The itch that won\'t let you sit still until you\'ve made something. Should be quite an evening.',
+  ],
+  [
+    'TICKETS. There is no charge. Write to us and tell us your name, and why you want to come. One event each — if you and a friend want the same evening, you each write your own letter. Your ticket will come back by return of post.',
+  ],
+];
+
+/** One page: its text, then turn on or close (a choice so a reader can stop any time). */
+const festPage = (i: number): CutsceneStep[] => [
+  ...FEST_PAGES[i].map((text): CutsceneStep => ({ op: 'narrate', text })),
+  {
+    op: 'choice',
+    options: [
+      { label: 'Turn the page', ops: [{ op: 'run', ref: i + 1 < FEST_PAGES.length ? `script.paul_festival_${i + 1}` : 'script.paul_festival_last' }] },
+      { label: 'Close it', ops: [] },
+    ],
+  },
+];
+
 export const PAUL_SCRIPTS: ScriptRegistry = {
   // ---- the house ------------------------------------------------------------------------
   'script.paul_house_welcome': [
@@ -97,6 +146,8 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'say', if_flag: CP, unless_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'Is that a FEATHER on your sleeve? Green, curly... Oh, Lottie is going to lose her mind. Go on up. I\'ll stay here and hold the teapot steady.' },
     { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'He came home with a tin cup and a grin and won\'t say where he got either. Whatever you did up that wood, thank you. He\'s been humming.' },
     { op: 'say', speaker: 'ROSE', text: 'If you go up to his shirts: the NEVER rail is mine and Lottie\'s doing. He wore ASK ME ABOUT MY KNEES to a christening. Somebody asked.' },
+    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'He\'s planning a festival again, too. The Festival of the Imagined. The programmes are upstairs. Everyone on the bill is somebody out of a story, which does keep the catering simple.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', unless_flag: 'flag:paul_milagro_given', speaker: 'ROSE', text: 'And if he\'s in a good mood, ask him about his cards. The painted ones. He pretends he doesn\'t want to show you.' },
     { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'And that poster by the fire is a JOKE. Probably. I stopped asking around the time I learned to make tea.' },
     { op: 'setFlag', flag: 'flag:paul_rose_met' },
   ],
@@ -107,6 +158,58 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'THE MUSEUM OF T-SHIRTS. ADMISSION: ONE STORY. PLEASE DO NOT TOUCH THE EXHIBITS. (LOTTIE MAY TOUCH THE EXHIBITS.)' },
     { op: 'narrate', text: 'Underneath, smaller: THE WORKING RAILS — OUT. IN. NEVER. (THE THIRD ONE IS NOT A CHALLENGE.)' },
     { op: 'setFlag', flag: 'flag:paul_museum_seen' },
+  ],
+
+  // ---- the Festival of the Imagined (the museum lectern) ---------------------------------
+  'script.paul_festival': festPage(0),
+  ...Object.fromEntries(FEST_PAGES.slice(1).map((_, k) => [`script.paul_festival_${k + 1}`, festPage(k + 1)])),
+  'script.paul_festival_last': [
+    { op: 'narrate', text: 'The last page is almost empty. In the middle, in the same careful print:' },
+    { op: 'narrate', text: 'AND — WHO WILL WE SEE IN YOUR FESTIVAL OF THE IMAGINED?' },
+    { op: 'narrate', if_flag: 'flag:paul_festival_written', text: 'Underneath, in your own hand, is the name you wrote last time. There\'s room for another.' },
+    {
+      op: 'askName',
+      title: 'WHO WILL YOU INVITE?',
+      fallback: '...',
+      store: false,
+      matches: [
+        { value: 'PAUL', flag: 'flag:paul_festival_paul' },
+        { value: 'ROSE', flag: 'flag:paul_festival_family' },
+        { value: 'LOTTIE', flag: 'flag:paul_festival_family' },
+      ],
+    },
+    { op: 'narrate', unless_flag: 'flag:paul_festival_paul', text: 'You write the name on the last page, small and neat. Somewhere in the house a floorboard creaks, as if the room has started setting out another chair.' },
+    { op: 'narrate', if_flag: 'flag:paul_festival_paul', text: 'You write PAUL on the last page. It looks right there. You suspect he\'d grumble, go red, and then turn up an hour early to help with the chairs.' },
+    { op: 'narrate', if_flag: 'flag:paul_festival_family', text: 'Next to your name, in crayon, somebody has already added: "AND THE BIRD-PIG."' },
+    { op: 'setFlag', flag: 'flag:paul_festival_paul', value: false },
+    { op: 'setFlag', flag: 'flag:paul_festival_family', value: false },
+    { op: 'setFlag', flag: 'flag:paul_festival_written' },
+  ],
+
+  // ---- the milagro cards ----------------------------------------------------------------
+  // Paul's lamp menu, once the cup's yours: he deals them (the key item, once).
+  'script.paul_milagro_cards': [
+    { op: 'say', speaker: 'PAUL', text: 'My cards? Ha. Somebody\'s been talking. ...Rose. It\'s always Rose.' },
+    { op: 'say', speaker: 'PAUL', text: 'In the sun country, over the western sea, folk hang little tin charms in the chapels — a tin heart, a tin leg, a tin eye — for whatever wants mending. Milagros, they call them. Small miracles.' },
+    { op: 'say', speaker: 'PAUL', text: 'I can\'t work tin. So I paint them. Here — I\'ll deal you a hand.' },
+    { op: 'narrate', text: 'THE HEART. A red heart with a crack mended in gold thread. For anything that\'s broken and taking its time.' },
+    { op: 'narrate', text: 'THE LAMP. A lamp in a window. For whoever leaves one on for somebody.' },
+    { op: 'narrate', text: 'THE WALKER. A little figure on a long road, not lost. You recognise the hat.' },
+    { op: 'narrate', text: 'THE BIRD-PIG. Painted this year, by request. The request was in crayon.' },
+    { op: 'narrate', text: 'And the last card, painted almost black, with one small restless flame in the middle. Lettered along the bottom: DESASOSIEGO.' },
+    { op: 'say', speaker: 'PAUL', text: 'That one\'s the oldest. It\'s their word for it — the unease that won\'t let you sit still until you\'ve made something. Gets in at night. Paces the kitchen.' },
+    { op: 'say', speaker: 'PAUL', text: 'Folk think it\'s a sickness. It isn\'t. It\'s the cure, turning up early. Every card I ever painted, that\'s who painted it. I just held the brush.' },
+    { op: 'giveItem', unless_flag: 'flag:paul_milagro_given', item: 'milagro_cards', count: 1 },
+    { op: 'say', unless_flag: 'flag:paul_milagro_given', text: 'Paul squares the cards and presses them into your hand. Received the MILAGRO CARDS!' },
+    { op: 'say', unless_flag: 'flag:paul_milagro_given', speaker: 'PAUL', text: 'Keep them. When the itch comes for you — and it will, you\'ve the look — don\'t fight it. Make something. Then come and show me.' },
+    { op: 'say', if_flag: 'flag:paul_milagro_given', speaker: 'PAUL', text: 'You\'ve already got a hand. Use it. That\'s the only rule.' },
+    { op: 'setFlag', flag: 'flag:paul_milagro_given' },
+  ],
+  // The framed set on the kitchen wall.
+  'script.paul_milagro_wall': [
+    { op: 'narrate', text: 'Three painted cards pinned in a little frame: a cracked heart mended in gold, a lamp in a window, and a dark card with one small flame.' },
+    { op: 'narrate', text: 'Under the dark one, a label in Paul\'s loopy hand: "DESASOSIEGO. the itch to make a thing. do not scratch. MAKE THE THING."' },
+    { op: 'narrate', unless_flag: 'flag:paul_milagro_given', text: 'There are pinholes for more. Wherever the rest of the set is, it\'s probably in his coat pocket.' },
   ],
 
   // ---- the three rails ------------------------------------------------------------------

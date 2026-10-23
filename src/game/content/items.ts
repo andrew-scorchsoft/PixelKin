@@ -190,6 +190,13 @@ export const ITEMS: ItemRegistry = {
     desc: 'A hand-inked folio of impossible grinning figures, drawn before the Dusk by folk who drew the world odder to tell it true. Paul chose it for you. It does not explain itself.',
     category: 'key',
   },
+  // Paul's painted milagro cards (content/regions/paul.ts, script.paul_milagro_cards)
+  milagro_cards: {
+    id: 'milagro_cards',
+    name: 'Milagro Cards',
+    desc: 'Paul\'s painted cards, after the little tin charms they hang up in the sun country: a heart, a lamp, a walker, a bird-pig, and one dark card with a flame. DESASOSIEGO.',
+    category: 'key',
+  },
   paul_cup: {
     id: 'paul_cup',
     name: 'Paul\'s Tin Cup',

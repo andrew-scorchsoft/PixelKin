@@ -3136,6 +3136,13 @@
       "tw": 1,
       "th": 1
     },
+    "paul_festival_lectern": {
+      "path": "assets/sprites/objects/paul_festival_lectern.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
     "paul_globe": {
       "path": "assets/sprites/objects/paul_globe.webp",
       "width": 16,
@@ -3156,6 +3163,13 @@
       "height": 112,
       "tw": 5,
       "th": 7
+    },
+    "paul_milagro_cards": {
+      "path": "assets/sprites/objects/paul_milagro_cards.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
     },
     "paul_paddle": {
       "path": "assets/sprites/objects/paul_paddle.webp",

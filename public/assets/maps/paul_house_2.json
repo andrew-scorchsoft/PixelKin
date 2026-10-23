@@ -568,6 +568,18 @@
       "walk_under": true
     },
     {
+      "id": "festival",
+      "sprite": "paul_festival_lectern",
+      "at": {
+        "tx": 14,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
       "id": "folded_table",
       "sprite": "interior_table",
       "at": {
@@ -929,6 +941,16 @@
       },
       "activation": "interact",
       "ref": "script.paul_rail_never"
+    },
+    {
+      "id": "festival",
+      "kind": "cutscene",
+      "at": {
+        "tx": 14,
+        "ty": 7
+      },
+      "activation": "interact",
+      "ref": "script.paul_festival"
     },
     {
       "id": "folded",

@@ -460,6 +460,17 @@
       "solid": false
     },
     {
+      "id": "milagro_cards",
+      "sprite": "paul_milagro_cards",
+      "at": {
+        "tx": 6,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
       "id": "hearth",
       "sprite": "interior_hearth",
       "at": {
@@ -717,6 +728,16 @@
       },
       "activation": "interact",
       "ref": "sign.paul_wanted"
+    },
+    {
+      "id": "milagro_cards",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "script.paul_milagro_wall"
     },
     {
       "id": "pinboard_a",

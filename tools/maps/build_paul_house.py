@@ -110,6 +110,7 @@ def ground() -> dict:
     place(objects, "plant", 4, 9, oid="kitchen_plant")
     # the wall: WANTED, the hearth (focal), the sunny cape, the pin-board
     hang(objects, "wanted", "wanted", 5)
+    hang(objects, "milagro_cards", "milagro_cards", 6)    # his painted milagro cards
     wall_mount(objects, "hearth", 7)               # cols 7-9, rows 1-3
     hang(objects, "painting_cape_day", "painting_cape_day", 10, w=2)
     hang(objects, "pinboard", "pinboard", 12, w=2)
@@ -140,6 +141,8 @@ def ground() -> dict:
     triggers.append({"id": "note", "kind": "cutscene", "at": {"tx": 2, "ty": 6},
                      "activation": "interact", "ref": "script.paul_note"})
     sign(triggers, "wanted", 5, 1, "sign.paul_wanted")
+    triggers.append({"id": "milagro_cards", "kind": "cutscene", "at": {"tx": 6, "ty": 1},
+                     "activation": "interact", "ref": "script.paul_milagro_wall"})
     sign(triggers, "pinboard_a", 12, 1, "sign.paul_pinboard")
     sign(triggers, "pinboard_b", 13, 1, "sign.paul_pinboard")
     sign(triggers, "cape_a", 10, 1, "sign.paul_cape_day")
@@ -187,6 +190,11 @@ def middle() -> dict:
         stand(objects, f"rack_{rid}", f"rack_{rid}", x, 2, 3, 3, overhang=1, walk_under=True)
         triggers.append({"id": f"rack_{rid}", "kind": "cutscene", "at": {"tx": x + 1, "ty": 4},
                          "activation": "interact", "ref": f"script.paul_rail_{rid}"})
+    # the FESTIVAL OF THE IMAGINED: a lectern of hand-printed programmes in the
+    # maple corner (script.paul_festival pages through one)
+    stand(objects, "festival", "festival_lectern", 14, 6, 1, 2, overhang=1, walk_under=True)
+    triggers.append({"id": "festival", "kind": "cutscene", "at": {"tx": 14, "ty": 7},
+                     "activation": "interact", "ref": "script.paul_festival"})
     # the display table: the folded ones, too precious to hang
     place(objects, "table", 14, 3, oid="folded_table")
     sign(triggers, "folded", 14, 4, "sign.paul_folded")
