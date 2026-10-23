@@ -26,7 +26,7 @@ partner floor's own return stair (roomkit.finish dresses both with stair sprites
        the bike helmet + gym bag by the door, the carved antelope, Paul's chair by
        the fire. Wall: the pin-board of tickets, the WANTED poster, the sunny cape
        painting. Up-stair NE (14,2). Doormat (8,10) -> wayward_rise.
-  1  paul_house_2  18x11  THE T-SHIRT MUSEUM  focal: the shirt rack (centre)
+  1  paul_house_2  18x11  THE T-SHIRT MUSEUM  focal: the three rails (OUT / IN / NEVER)
        the north wall is shirts in frames (each a tiny story) between the maple
        country's snowy-lake painting, antlers and painted paddle; a partition_h
        makes the CAPE CORNER (south-west: protea, beadwork, the hooped jersey,
@@ -174,15 +174,16 @@ def middle() -> dict:
         sign(triggers, f"antlers_{x}", x, 1, "sign.paul_antlers")
     for x in (13, 14):
         sign(triggers, f"paddle_{x}", x, 1, "sign.paul_paddle")
-    # the centrepiece: the museum's working rail (focal, centre of the north room)
-    stand(objects, "rack", "shirt_rack", 6, 3, 3, 2)
-    sign(triggers, "rack", 7, 4, "sign.paul_rack")
-    stand(objects, "rack_b", "shirt_rack", 2, 3, 3, 2)
-    sign(triggers, "rack_b", 3, 4, "sign.paul_rack_b")
+    # the centrepiece: THREE RAILS, one per category of shirt — OUT (safe to be
+    # seen in), IN (house only) and NEVER (roped off). Each wears its category
+    # board on the bar (the overhang row) and runs a "hold one up" menu.
+    for rid, x in (("out", 2), ("in", 6), ("never", 11)):
+        stand(objects, f"rack_{rid}", f"rack_{rid}", x, 2, 3, 3, overhang=1, walk_under=True)
+        triggers.append({"id": f"rack_{rid}", "kind": "cutscene", "at": {"tx": x + 1, "ty": 4},
+                         "activation": "interact", "ref": f"script.paul_rail_{rid}"})
     # the display table: the folded ones, too precious to hang
-    place(objects, "table", 11, 3, oid="folded_table")
-    sign(triggers, "folded", 11, 4, "sign.paul_folded")
-    place(objects, "stool", 13, 3, oid="museum_stool")
+    place(objects, "table", 14, 3, oid="folded_table")
+    sign(triggers, "folded", 14, 4, "sign.paul_folded")
     # the CAPE CORNER (south-west): a partition_h with a door gap at col 5
     face = partition_h(base, over, W, 7, 1, 9, doors=(5,))
     hang(objects, "protea", "painting_protea", 1, ty=face)

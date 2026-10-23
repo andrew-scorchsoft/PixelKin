@@ -54,6 +54,23 @@ const BACK_IN: CutsceneStep[] = [
   { op: 'setFlag', flag: OUT, value: false },
 ];
 
+/**
+ * THE THREE RAILS (2026-10). Every shirt Paul owns is OUT (safe to be seen in),
+ * IN (house only) or NEVER (not to be worn at all, roped off). Each rail is a
+ * "hold one up" menu, so it rewards coming back; looking through all three
+ * turns up a note in the last pocket (once).
+ */
+const RAIL_FLAGS = ['flag:paul_rail_out', 'flag:paul_rail_in', 'flag:paul_rail_never'];
+const shirtPick = (label: string, ...lines: string[]) => ({
+  label,
+  ops: lines.map((text): CutsceneStep => ({ op: 'narrate', text })),
+});
+const railMenu = (seen: string, shirts: ReturnType<typeof shirtPick>[]): CutsceneStep[] => [
+  { op: 'setFlag', flag: seen },
+  { op: 'choice', prompt: 'Hold one up?', options: [...shirts, { label: 'Leave them', ops: [] }] },
+  { op: 'run', ref: 'script.paul_rails_all' },
+];
+
 export const PAUL_SCRIPTS: ScriptRegistry = {
   // ---- the house ------------------------------------------------------------------------
   'script.paul_house_welcome': [
@@ -72,7 +89,57 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   'script.paul_museum': [
     { op: 'narrate', text: 'A hand-lettered placard at the top of the stairs:' },
     { op: 'narrate', text: 'THE MUSEUM OF T-SHIRTS. ADMISSION: ONE STORY. PLEASE DO NOT TOUCH THE EXHIBITS. (LOTTIE MAY TOUCH THE EXHIBITS.)' },
+    { op: 'narrate', text: 'Underneath, smaller: THE WORKING RAILS — OUT. IN. NEVER. (THE THIRD ONE IS NOT A CHALLENGE.)' },
     { op: 'setFlag', flag: 'flag:paul_museum_seen' },
+  ],
+
+  // ---- the three rails ------------------------------------------------------------------
+  'script.paul_rail_out': [
+    { op: 'narrate', text: 'A tidy rail under a green board: OUT. Pressed, buttoned, collared. A card in Paul\'s loopy hand: "SAFE TO BE SEEN IN. LOTTIE HAS APPROVED EACH ONE IN WRITING."' },
+    ...railMenu(RAIL_FLAGS[0], [
+      shirtPick('The navy one', 'Plain navy, two buttons, not a crease on it. The card: "for the bank and the barber. same shirt for thirty years. neither of them has noticed."'),
+      shirtPick('The white one', 'Crisp white, with a tiny lighthouse stitched over the pocket. The card: "lottie ironed this one. it is now a slightly different shape. still wearing it."'),
+      shirtPick('The mustard one', 'Mustard yellow with a proper collar. The card: "collars mean you can be trusted with a ladder. that\'s the rule. i didn\'t make it. (i made it.)"'),
+    ]),
+  ],
+  'script.paul_rail_in': [
+    { op: 'narrate', text: 'A worn wooden rail under an amber board: IN. Faded, baggy, much-loved. A pair of slippers waits underneath. The card: "HOUSE ONLY. THE DOOR IS A BORDER."' },
+    ...railMenu(RAIL_FLAGS[1], [
+      shirtPick('The holey one', 'Grey, and more hole than shirt. The card: "do not mend. the hole is load-bearing."'),
+      shirtPick('The stripy one', 'Blue-and-white stripes, soft as a cloud, very clearly half of a pair of pyjamas. The card: "the bottoms are on a beach in the cape country. long story. good beach."'),
+      shirtPick('The pink one', 'A big pink one that reaches the knees. The card: "it\'s a nightshirt now. dignity is optional indoors."'),
+      shirtPick('The painty one', 'Grey, splattered yellow, red and green. The card: "painted the kitchen in this. then the chair. then, briefly, me."'),
+    ]),
+  ],
+  'script.paul_rail_never': [
+    { op: 'narrate', text: 'An iron rail under a red board: NEVER! A velvet rope hangs across the front, padlocked to the post. Tucked into the padlock, a card in Lottie\'s crayon:' },
+    { op: 'narrate', text: '"GRANDAD THESE ARE BANNED. NOT OUTSIDE. NOT INSIDE. NOT EVER. — LOTTIE (IN CHARGE)"' },
+    { op: 'narrate', unless_flag: RAIL_FLAGS[2], text: 'The rope is only padlocked at one end. You lift it, very carefully, and duck under.' },
+    { op: 'emote', unless_flag: RAIL_FLAGS[2], actor: 'player', emote: 'sweat' },
+    ...railMenu(RAIL_FLAGS[2], [
+      shirtPick('The lime one', 'Lime green with yellow zigzags, and in enormous letters: ASK ME ABOUT MY KNEES. Paul\'s card: "nobody asks. everybody is told."'),
+      shirtPick('The pink one', 'Hot pink, with a beaming cartoon bun: CERTIFIED BUN INSPECTOR. Lottie\'s crayon underneath: "CONFISKATED. EVIDENSE."'),
+      shirtPick('The black one', 'Black, with one word in tall white letters: NO. Paul\'s card: "wore it to a wedding. the vicar asked me a question. i didn\'t even have to answer."'),
+      shirtPick('The orange one', 'Bright orange and completely plain. You turn it round. On the back: I\'M NOT LOST, I\'M WANDERING. Paul\'s card: "banned for being too true. i appealed. i lost."'),
+    ]),
+  ],
+  // Looked through all three rails: a note in the last pocket (once).
+  'script.paul_rails_all': [
+    { op: 'run', if_flag: RAIL_FLAGS[0], ref: 'script.paul_rails_all_2' },
+  ],
+  'script.paul_rails_all_2': [
+    { op: 'run', if_flag: RAIL_FLAGS[1], ref: 'script.paul_rails_all_3' },
+  ],
+  'script.paul_rails_all_3': [
+    { op: 'run', if_flag: RAIL_FLAGS[2], unless_flag: 'flag:paul_rails_note', ref: 'script.paul_rails_note' },
+  ],
+  'script.paul_rails_note': [
+    { op: 'narrate', text: 'As you hang the shirt back, something crackles in its pocket: a folded note.' },
+    { op: 'narrate', text: '"IF YOU\'RE READING THIS YOU\'VE BEEN THROUGH ALL THREE RAILS. THAT MAKES YOU A CURATOR. CURATORS GET PAID. — p."' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'glow_charge', count: 1 },
+    { op: 'narrate', text: 'Folded inside is a GLOW CHARGE. Received a GLOW CHARGE!' },
+    { op: 'setFlag', flag: 'flag:paul_rails_note' },
   ],
 
   // ---- Lottie ---------------------------------------------------------------------------
@@ -315,13 +382,7 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
     { text: 'A canoe paddle, its blade painted red and cream. The card reads:' },
     { text: '"from a lake in the maple country. the canoe is still out there. probably upside down."' },
   ],
-  'sign.paul_rack': [
-    { text: 'A rail of t-shirts: every colour, every size, every one of them his. Some name places. Some name things that don\'t make sense anymore. One just says NO.' },
-  ],
-  'sign.paul_rack_b': [
-    { text: 'More shirts. A card on the rail says OVERFLOW. Another card under it says OVERFLOW OVERFLOW.' },
-  ],
-  'sign.paul_folded': [
+      'sign.paul_folded': [
     { text: 'Folded shirts under the candle, too precious to hang: the very first one, one with a hole shaped like a coastline, and one signed by an entire ferry crew.' },
   ],
   'sign.paul_protea': [

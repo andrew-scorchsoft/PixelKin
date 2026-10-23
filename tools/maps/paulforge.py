@@ -517,6 +517,126 @@ def shirt_rack():
     return img(a)
 
 
+# ---- THE THREE RAILS (2026-10): every shirt Paul owns is OUT, IN or NEVER ------
+# Each rail wears a colour-coded card hung from its bar (green OUT / amber IN /
+# red NEVER) so the three read apart at a glance and invite a closer look; the
+# NEVER rail is roped off and padlocked, which is exactly why you'll touch it.
+GLYPH = {
+    "O": ["###", "#.#", "#.#", "#.#", "###"],
+    "U": ["#.#", "#.#", "#.#", "#.#", "###"],
+    "T": ["###", ".#.", ".#.", ".#.", ".#."],
+    "I": ["###", ".#.", ".#.", ".#.", "###"],
+    "N": ["#..#", "##.#", "#.##", "#..#", "#..#"],
+    "E": ["###", "#..", "##.", "#..", "###"],
+    "V": ["#.#", "#.#", "#.#", "#.#", ".#."],
+    "R": ["##.", "#.#", "##.", "#.#", "#.#"],
+    "!": ["#", "#", "#", ".", "#"],
+}
+
+
+def word(a, text: str, ox: int, oy: int, ch: str) -> None:
+    x = ox
+    for c in text:
+        g = GLYPH[c]
+        stamp(a, [r.replace("#", ch) for r in g], x, oy)
+        x += len(g[0]) + 1
+
+
+def word_w(text: str) -> int:
+    return sum(len(GLYPH[c][0]) + 1 for c in text) - 1
+
+
+def crowned(a, text: str, paper: str, ink: str, *, post: str = "G") -> Image.Image:
+    """Lift a 3x2 rail onto a 3x3 canvas with its category board standing on
+    the bar (the top row is the object's overhang, drawn over the floor behind)."""
+    out = canvas(3, 3)
+    out[16:, :] = a
+    w = word_w(text) + 6
+    x0 = 24 - w // 2
+    for x in (x0 + 3, x0 + w - 4):                           # two little posts
+        rect(out, x, 13, x, 17, post)
+    rect(out, x0, 2, x0 + w - 1, 13, "k")
+    rect(out, x0 + 1, 3, x0 + w - 2, 12, paper)
+    out[3, x0 + 1:x0 + w - 1] = rgba(PAL["P"])               # a lit top edge
+    word(out, text, x0 + 3, 5, ink)
+    return img(out)
+
+
+def rail(a, *, post="W", lit="O", bar="G", bar_lit="y") -> None:
+    rect(a, 2, 3, 3, 28, post); rect(a, 44, 3, 45, 28, post)
+    a[3:29, 2] = rgba(PAL[lit]); a[3:29, 44] = rgba(PAL[lit])
+    rect(a, 1, 2, 46, 3, bar); a[2, 1:47] = rgba(PAL[bar_lit]); a[4, 2:46] = rgba(PAL["k"])
+    rect(a, 0, 28, 6, 29, "w"); rect(a, 41, 28, 47, 29, "w")
+    a[28, 0:7] = rgba(PAL[post]); a[28, 41:48] = rgba(PAL[post])
+    contact(a, 0, 6, 30); contact(a, 41, 47, 30)
+
+
+def hung_shirt(a, x, body, dark, *, long=True, rows=None):
+    px(a, x + 4, 5, "x"); px(a, x + 4, 6, "x")
+    rows = rows or [r.replace("S", body).replace("d", dark) for r in SHIRT]
+    if long:
+        rows = rows[:4] + rows[4:7] + rows[4:7] + rows[7:]
+    stamp(a, rows, x, 7)
+
+
+def rack_out():
+    """OUT: neat, bright, collared — safe to be seen in. Green card."""
+    a = canvas(3, 2)
+    rail(a)
+    for i, (body, dark) in enumerate([("b", "B"), ("n", "q"), ("z", "u"), ("t", "T")]):
+        x = 5 + i * 10
+        hung_shirt(a, x, body, dark)
+        px(a, x + 4, 8, "k"); px(a, x + 5, 8, "k")          # a proper collar
+        for yy in (11, 14, 17):                               # buttons
+            px(a, x + 4, yy, dark)
+    return crowned(a, "OUT", "l", "E")
+
+
+def rack_in():
+    """IN: faded, baggy, holey — house only. A worn wooden rail, slippers under. Amber card."""
+    a = canvas(3, 2)
+    rail(a, post="w", lit="W", bar="W", bar_lit="O")
+    cols = [("q", "U"), ("c", "b"), ("m", "M"), ("s", "S")]
+    for i, (body, dark) in enumerate(cols):
+        x = 5 + i * 10
+        hung_shirt(a, x, body, dark)
+        if i == 0:                                            # the load-bearing hole
+            a[13, x + 4] = rgba(PAL["w"]); a[13, x + 5] = rgba(PAL["w"]); a[14, x + 5] = rgba(PAL["w"])
+        if i == 1:                                            # pyjama stripes
+            for yy in range(9, 19, 3):
+                for xx in range(x + 2, x + 8):
+                    if a[yy, xx, 3]:
+                        a[yy, xx] = rgba(PAL["n"])
+        if i == 3:                                            # paint splats
+            px(a, x + 3, 12, "z"); px(a, x + 6, 15, "r"); px(a, x + 5, 10, "e")
+    # a pair of slippers under the rail
+    stamp(a, ["MMMm.MMMm", "MMMM.MMMM"], 19, 25)
+    return crowned(a, "IN", "F", "U", post="W")
+
+
+def rack_never():
+    """NEVER: loud, lurid, banned — roped off and padlocked. Red card."""
+    a = canvas(3, 2)
+    rail(a, post="S", lit="s", bar="S", bar_lit="s")
+    cols = [("l", "E"), ("m", "M"), ("x", "k"), ("f", "R")]
+    for i, (body, dark) in enumerate(cols):
+        x = 5 + i * 10
+        hung_shirt(a, x, body, dark)
+    word(a, "NO", 26, 14, "n")                                # the one that just says NO
+    for yy in range(10, 19, 2):                               # zigzags on the lime one
+        px(a, 7 + (yy // 2) % 3, yy, "z"); px(a, 10 - (yy // 2) % 3, yy + 1, "z")
+    stamp(a, [".zz.", "zffz", ".zz."], 18, 12)                # a cheese-bun on the pink one
+    # the velvet rope across the front, slung between brass posts
+    for x in (0, 47):
+        rect(a, x, 18, x, 27, "G"); px(a, x, 17, "y")
+    for x in range(1, 47):
+        sag = 20 + int(3 * (1 - ((x - 24) / 23) ** 2))
+        px(a, x, sag, "r"); px(a, x, sag + 1, "R")
+    # the padlock where the rope meets the rail post
+    stamp(a, [".kk.", "k..k", "GGGG", "GkGG", "GGGG"], 41, 20)
+    return crowned(a, "NEVER!", "r", "n", post="S")
+
+
 def coat_stand():
     """1x2 coat stand: a plaid lumber-jacket and a bobble hat (maple country)."""
     a = canvas(1, 2)
@@ -783,7 +903,8 @@ PIECES = {
     "cp_drawing_c": cp_drawing_c, "cp_drawing_d": cp_drawing_d,
     "drawing_bike": drawing_bike, "drawing_sea": drawing_sea,
     # free-standing
-    "shirt_rack": shirt_rack, "coat_stand": coat_stand, "antelope": antelope,
+    "shirt_rack": shirt_rack, "rack_out": rack_out, "rack_in": rack_in,
+    "rack_never": rack_never, "coat_stand": coat_stand, "antelope": antelope,
     "tea_bench": tea_bench, "gym_kit": gym_kit, "trunk": trunk, "globe": globe,
     "rugby_stand": rugby_stand, "syrup_table": syrup_table, "plush": plush,
 }
