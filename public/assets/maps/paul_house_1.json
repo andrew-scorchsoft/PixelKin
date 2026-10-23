@@ -810,7 +810,19 @@
     }
   ],
   "encounters": [],
-  "npcs": [],
+  "npcs": [
+    {
+      "id": "rose",
+      "at": {
+        "tx": 3,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "paul_rose",
+      "movement": "static",
+      "dialogue_ref": "script.paul_rose"
+    }
+  ],
   "gates": [],
   "music": "assets/audio/music/interior-sunny.mp3"
 }

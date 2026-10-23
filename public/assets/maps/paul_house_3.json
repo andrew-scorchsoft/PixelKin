@@ -406,7 +406,6 @@
       },
       "w": 1,
       "h": 1,
-      "solid": false,
       "requires_flag": "flag:chickenpig_caught"
     },
     {

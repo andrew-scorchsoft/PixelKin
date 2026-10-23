@@ -25,7 +25,8 @@ partner floor's own return stair (roomkit.finish dresses both with stair sprites
        red-bush, Paul's NOTE on the table) behind a partition; east: the hall —
        the bike helmet + gym bag by the door, the carved antelope, Paul's chair by
        the fire. Wall: the pin-board of tickets, the WANTED poster, the sunny cape
-       painting. Up-stair NE (14,2). Doormat (8,10) -> wayward_rise.
+       painting. ROSE, Paul's daughter, minds the kettle (script.paul_rose).
+       Up-stair NE (14,2). Doormat (8,10) -> wayward_rise.
   1  paul_house_2  18x11  THE T-SHIRT MUSEUM  focal: the three rails (OUT / IN / NEVER)
        the north wall is shirts in frames (each a tiny story) between the maple
        country's snowy-lake painting, antlers and painted paddle; a partition_h
@@ -131,6 +132,11 @@ def ground() -> dict:
         triggers.append({"id": f"welcome_{x}", "kind": "cutscene", "at": {"tx": x, "ty": 8},
                          "activation": "step_on", "ref": "script.paul_house_welcome",
                          "hidden_when_flag": "flag:paul_house_seen"})
+    # ROSE, Paul's daughter, at the kettle (script.paul_rose). Generic woman's
+    # sheet via the `paul_rose` sprite key (Npc.ts) until she has her own.
+    npcs.append({"id": "rose", "at": {"tx": 3, "ty": 4}, "facing": "down",
+                 "sprite": "paul_rose", "movement": "static",
+                 "dialogue_ref": "script.paul_rose"})
     triggers.append({"id": "note", "kind": "cutscene", "at": {"tx": 2, "ty": 6},
                      "activation": "interact", "ref": "script.paul_note"})
     sign(triggers, "wanted", 5, 1, "sign.paul_wanted")
@@ -258,7 +264,8 @@ def attic() -> dict:
     place(objects, "crates", 1, 7, oid="toy_crates")
     sign(triggers, "toys", 1, 7, "sign.paul_lottie_toys")
     place(objects, "rug", 4, 6, oid="attic_rug", solid=False)
-    stand(objects, "plush", "plush", 7, 8, 1, 1, solid=False, requires_flag=CP)
+    # solid, so you walk UP to it and press A rather than over it
+    stand(objects, "plush", "plush", 7, 8, 1, 1, requires_flag=CP)
     sign(triggers, "plush", 7, 8, "sign.paul_plush", requires_flag=CP)
     place(objects, "plant", 10, 2, oid="attic_plant")
     npcs.append({"id": "lottie", "at": {"tx": 5, "ty": 5}, "facing": "down",

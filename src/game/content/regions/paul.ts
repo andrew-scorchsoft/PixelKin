@@ -85,6 +85,22 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'narrate', if_flag: 'flag:q_south_wander_done', text: '"GONE TO KEEP THE DARK COMPANY. LOTTIE\'S UPSTAIRS — SHE\'LL SHOW YOU EVERYTHING WHETHER YOU LIKE IT OR NOT. KETTLE\'S YOURS. — p."' },
     { op: 'narrate', text: 'Under it, in different ink: "P.S. if anyone from a bureau asks, I am a retired cheese-bun inspector!!!!!!"' },
   ],
+  // ---- Rose --------------------------------------------------------------------------
+  // Paul's daughter, minding the kettle in the kitchen (paul_house_1). Exactly one
+  // story-stage line plays (before the bird-pig / after it / after the cup), then
+  // the standing patter. Warm; she never says what her dad IS either.
+  'script.paul_rose': [
+    { op: 'face', actor: 'rose', facing: 'down' },
+    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'Oh! Hello. You\'ll be another of Dad\'s strays. I\'m Rose. He\'s out walking. He\'s always out walking.' },
+    { op: 'say', if_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'Back again? Kettle\'s on. It\'s always on. Dad says a cold kettle is how a house forgets you.' },
+    { op: 'say', unless_flag: CP, speaker: 'ROSE', text: 'Lottie\'s up in the attic, drawing chickens. And pigs. She keeps asking me which one would win. I keep saying "a nap".' },
+    { op: 'say', if_flag: CP, unless_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'Is that a FEATHER on your sleeve? Green, curly... Oh, Lottie is going to lose her mind. Go on up. I\'ll stay here and hold the teapot steady.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'He came home with a tin cup and a grin and won\'t say where he got either. Whatever you did up that wood, thank you. He\'s been humming.' },
+    { op: 'say', speaker: 'ROSE', text: 'If you go up to his shirts: the NEVER rail is mine and Lottie\'s doing. He wore ASK ME ABOUT MY KNEES to a christening. Somebody asked.' },
+    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'And that poster by the fire is a JOKE. Probably. I stopped asking around the time I learned to make tea.' },
+    { op: 'setFlag', flag: 'flag:paul_rose_met' },
+  ],
+
   // The museum placard at the top of the stairs (once).
   'script.paul_museum': [
     { op: 'narrate', text: 'A hand-lettered placard at the top of the stairs:' },
