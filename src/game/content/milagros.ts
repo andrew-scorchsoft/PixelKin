@@ -25,6 +25,9 @@ export interface MilagroCard {
   id: string;
   /** The phrase lettered round the card's border. */
   title: string;
+  /** Found LYING in the world instead (an item-cache-style pickup placed by
+   *  tools/maps/hand_placed_data.py _MILAGRO_LYING on that map): what you see. */
+  lying?: { map: string; where: string };
   /** Who has it: the NPC placement id on that map. */
   giver?: { map: string; npc: string };
   /** Where to look, shown against the card's back in the pack until it's found. */
@@ -38,6 +41,9 @@ export interface MilagroCard {
 }
 
 export const MILAGRO_PACK_FLAG = 'flag:milagro_pack';
+/** The story card (the printed lore slip), found lying by the Crossroads waystone or in Paul's box. */
+export const MILAGRO_LORE_FLAG = 'flag:milagro_lore';
+export const MILAGRO_LORE_TITLE = 'BOOJI-WOOJI MAN MILAGRO CARDS';
 export const milagroFlag = (id: string): string => `milagro:${id}`;
 export const milagroArt = (id: string): string => `assets/milagros/${id}.webp`;
 
@@ -103,12 +109,9 @@ export const MILAGROS: MilagroCard[] = [
   },
   {
     id: 'spool',
+    lying: { map: 'dimglass_coast', where: 'Snagged at the foot of a lamp-post, flapping in the sea wind, is a little painted card. You catch it before the gulls do.' },
+    hint: 'Dimglass Coast: lying under a lamp-post on the shore road.',
     title: 'FEAR SELLS',
-    giver: { map: 'stillwater_lampmaker', npc: 'lampmaker' },
-    hint: 'Stillwater: the lampmaker of the quiet village.',
-    found: [
-      '"Found it wedged in my thread-drawer. I don\'t sell fear. Shutters, mostly. ...Same thing, some days."',
-    ],
     story:
       'An empty cotton spool. All the thread has been sold off, yard by yard, to people frightened of coming ' +
       'undone. The peddler did very well. The spool kept the hole in the middle, which was the only part worth ' +
@@ -147,12 +150,9 @@ export const MILAGROS: MilagroCard[] = [
   },
   {
     id: 'whistle',
+    lying: { map: 'tinderwick', where: 'Tucked against the foot of the shop wall, out of the wind, is a little painted card. Whoever left it didn\'t say a word about it.' },
+    hint: 'Tinderwick: lying against the shop wall.',
     title: 'A SCREAM OF MUTENESS',
-    giver: { map: 'stillwater_quiet_hall', npc: 'hall_keeper' },
-    hint: 'Stillwater: the keeper of the quiet hall.',
-    found: [
-      'They hold it out without a word, finger to their lips. The quiet hall keeps its quiet.',
-    ],
     story:
       'A clay whistle, green as pond-weed, that no one has ever managed to blow a note from. You put your whole ' +
       'chest into it and nothing comes out, and that nothing is the loudest thing you have ever heard.',
@@ -176,15 +176,9 @@ export const MILAGROS: MilagroCard[] = [
   },
   {
     id: 'taxi',
+    lying: { map: 'lanternway_tinderwick', where: 'At the foot of a lamp-post, face down in the verge like a dropped fare, is a little painted card. Somebody got off here in a hurry.' },
+    hint: 'The lamp-lane out of Tinderwick: lying under a lamp-post.',
     title: 'CATCH A RIDE ON THE VOODOO TAXI',
-    giver: { map: 'dimglass_coast_ii', npc: 'oldlight_hint_road' },
-    hint: 'Dimglass Coast: a road-joker heading for the Point.',
-    found: [
-      '"Three clockwork lamplighters walk into a cab— no, listen. This was on the cab seat. Blue token, stamped ' +
-        'OP."',
-      '"I asked the driver what it\'s for. He said: the ride\'s free, the stories cost extra. Best bargain I ever ' +
-        'got."',
-    ],
     story:
       'A round blue token stamped OP: the fare for a cab that only runs after midnight. You get in, it does not ' +
       'ask where you are going, and it takes you somewhere better. The driver tells stories the whole way. ' +
@@ -223,14 +217,9 @@ export const MILAGROS: MilagroCard[] = [
   },
   {
     id: 'stringy',
+    lying: { map: 'pearlmoor_oldlight_5', where: 'Slipped behind the joke lectern, as if it fell out of somebody\'s act mid-routine, is a little painted card. The critic\'s pencil notes on the back just say: "NO."' },
+    hint: 'The Old Light: lying by the joke lectern.',
     title: 'ART IN THE SERVICE OF DEGENERATE DISCOURSE',
-    giver: { map: 'pearlmoor_oldlight_2', npc: 'late_b' },
-    hint: 'The Old Light: another latecomer to the show.',
-    found: [
-      '"Pinned to the back of a stage flat. The critics called the show degenerate. The show called the critics ' +
-        'worse. Lovely night."',
-      '"Take the card. Take a custard pie too, they\'re for throwing but they\'re also very nice."',
-    ],
     story:
       'A tangle of golden string that started out as a beast and argued itself into a knot. It was painted for a ' +
       'gallery that called it rude, and so it went happily and rudely on its way, being argued about in ' +
@@ -253,14 +242,9 @@ export const MILAGROS: MilagroCard[] = [
   },
   {
     id: 'bottle',
+    lying: { map: 'pearlmoor_wanderwood', where: 'Tucked between two roots, where a wanderer might sit to rest, is a little painted card, propped up as if it\'s waiting for someone.' },
+    hint: 'The old wood behind the quay: lying among the roots.',
     title: 'FALL INTO THE NIGHT SKY AND CHASE AFTER KOKOPELLI',
-    giver: { map: 'pearlmoor_wanderwood_far', npc: 'wander_mags' },
-    hint: 'Beyond the old wood: whoever keeps the bar beyond the wood.',
-    found: [
-      'Mags: "A customer left this on the bar with a note: FOR THE NEXT ONE WHO WANDERS IN. That\'s you, love."',
-      '"A blue bottle full of night. Chase it if you like. Or sit and have a glass of something warm first. I ' +
-        'recommend the second."',
-    ],
     story:
       'A blue bottle that holds a little of the night, stoppered. Uncork it and lie down on the grass, and you ' +
       'fall upward after the hunched flute-player who walks the sky playing everything into spring. You will not ' +
@@ -283,12 +267,9 @@ export const MILAGROS: MilagroCard[] = [
   },
   {
     id: 'sarabanda',
+    lying: { map: 'lowleaf_hollow', where: 'On the warm bricks by the kiln, where the potters sit, someone has left a little painted card. A brass face stares up at you and says its own name.' },
+    hint: 'Lowleaf Hollow: lying by the old kiln.',
     title: 'YO SOY SARABANDA',
-    giver: { map: 'lowleaf_hollow', npc: 'bloom_piper_lit' },
-    hint: 'Lowleaf Hollow: a piper (once the Verdant\'s relit).',
-    found: [
-      '"I play this one as a tune. It doesn\'t mind. It says its own name over and over, like a drum."',
-    ],
     story:
       '"I am Sarabanda." A round brass face, all spirals, that announces itself to anyone who will listen and ' +
       'many who will not. It is a dance, and a spirit, and a very stubborn piece of metal, and it would like you ' +
@@ -312,27 +293,18 @@ export const MILAGROS: MilagroCard[] = [
   },
   {
     id: 'stick',
+    lying: { map: 'duskapple_orchard', where: 'Wedged in the spokes of the travelling players\' cart, as if somebody tried to stop the wheel with it, is a little painted card.' },
+    hint: 'Duskapple Orchard: lying by the travelling players\' cart.',
     title: 'TERMS OF REFERENCE CHALLENGED',
-    giver: { map: 'duskapple_orchard', npc: 'tamsin' },
-    hint: 'Duskapple Orchard: someone pruning the orchard.',
-    found: [
-      '"A crooked stick, painted on a card. I found it hooked on the old tree while I was pruning. Terms of ' +
-        'reference challenged, it says."',
-      '"The tree challenged mine years ago. Take the card, and an apple. Duskapples are best eaten walking."',
-    ],
     story:
       'A crooked stick, the kind a walker picks up and keeps for one hill. It was asked to be a measuring rod ' +
       'and refused on the grounds that nothing is straight. The committee is still meeting.',
   },
   {
     id: 'fogbird',
+    lying: { map: 'dimglass_coast_ii', where: 'At the foot of a lamp-post, damp with sea-fog, a corner of yellow card catches your lamp. You peel it off the stone.' },
+    hint: 'Dimglass Coast, the flats road: lying under a lamp-post.',
     title: 'WHY NOT WHIP THE FOG?',
-    giver: { map: 'dimglass_coast', npc: 'egg_netmender' },
-    hint: 'Dimglass Coast: a netmender out on the flats.',
-    found: [
-      '"Out on the flats, the fog came in so thick I could have whipped it. Next morning, this was in my nets."',
-      '"Fat orange bird, grinning. I laughed so hard I dropped my flask. Tea everywhere. Worth it. Here."',
-    ],
     story:
       'A fat orange bird with a green-scaled belly and a grin, who got so tired of the marsh fog that it beat it ' +
       'with its wings like cream until the fog went stiff and stood up in peaks. The marsh folk ate it with ' +
@@ -412,12 +384,9 @@ export const MILAGROS: MilagroCard[] = [
   },
   {
     id: 'bones',
+    lying: { map: 'pale_vault_undercroft', where: 'Under a lit bracket in the cold, where the bones are kept, a little painted card lies face up as if somebody had been reading it to them.' },
+    hint: 'Pale Vault Undercroft: lying under a lit bracket.',
     title: 'ANGEL BONE\'S CONNECTED TO THE GOD BONE, GOD BONE\'S CONNECTED TO THE BONE BONE, AND THE BONE BONE\'S CONNECTED TO THE HAM BONE',
-    giver: { map: 'pale_vault_undercroft', npc: 'undercroft_ward_a_after' },
-    hint: 'Pale Vault Undercroft: a ward under the vault (after a bout).',
-    found: [
-      '"It was in the bone-crypt, singing. Well. It LOOKED like it was singing."',
-    ],
     story:
       'A pair of golden legs from an old song about how everything is joined to everything else, sung by people ' +
       'putting a skeleton back together after a dance went on too long. It gets less holy the further down you ' +
@@ -482,13 +451,9 @@ export const MILAGROS: MilagroCard[] = [
   },
   {
     id: 'edges',
+    lying: { map: 'wrackline_path', where: 'Right at the very edge of the wrack, tangled with weed and a bit of rope, is a little painted card. The best things wash up on the edges.' },
+    hint: 'Wrackline Path: lying in the wrack by the driftwood.',
     title: 'IT\'S THE PEOPLE ON THE EDGES WHO CAPTURE THE TRUTH',
-    giver: { map: 'wrackline_path', npc: 'wrackline_drifter_after' },
-    hint: 'Wrackline Path: a drifter on the wrack (after a bout).',
-    found: [
-      '"Found it on the very edge of the wrack. Where else? The best things wash up on the edges."',
-      '"There\'s a song about that, the drifters\' one. Low and slow. I\'ll sing you a verse if you sit."',
-    ],
     story:
       'A player in shirt number double-nought who never got picked, never got the ball, and stood at the ' +
       'touchline every match for twenty years. He is the only one who saw what really happened in all of them.',
@@ -706,12 +671,9 @@ export const MILAGROS: MilagroCard[] = [
   },
   {
     id: 'moths',
+    lying: { map: 'pearlmoor_quay', where: 'Under a quay lamp, where the moths gather thickest, a little painted card lies face up. Three moths are sitting on it, reading.' },
+    hint: 'Pearlmoor Quay: lying under a lamp-post by the water.',
     title: 'CHAPEL OF MOTHS',
-    giver: { map: 'mirelight_landing', npc: 'nell' },
-    hint: 'The Mirelights: someone at the ferry landing.',
-    found: [
-      '"Found it in the ferry chapel, under a candle. The moths were all over it. They\'ve good taste."',
-    ],
     story:
       'A blue painted skull with flowered cheeks, sitting in a little chapel where one candle burns all night. ' +
       'The moths come to it like a congregation. They are not afraid of the flame. They are devoted to it.',
@@ -841,3 +803,6 @@ export const MILAGROS: MilagroCard[] = [
 export const MILAGROS_BY_GIVER = new Map(
   MILAGROS.filter((c) => c.giver).map((c) => [`${c.giver!.map}:${c.giver!.npc}`, c] as const),
 );
+
+/** The pickup script for a card found lying in the world (or the lore slip). */
+export const milagroLyingScript = (id: string): string => `script.milagro_lying_${id}`;

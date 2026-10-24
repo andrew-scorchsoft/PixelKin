@@ -522,6 +522,18 @@
       "dialogue_ref": "script.andrew_wood"
     },
     {
+      "id": "milagro_bottle",
+      "at": {
+        "tx": 2,
+        "ty": 16
+      },
+      "facing": "down",
+      "sprite": "milagro_card",
+      "movement": "static",
+      "dialogue_ref": "script.milagro_lying_bottle",
+      "hidden_when_flag": "milagro:bottle"
+    },
+    {
       "id": "amb_sporeling",
       "at": {
         "tx": 20,

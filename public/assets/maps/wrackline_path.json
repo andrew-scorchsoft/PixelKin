@@ -1662,6 +1662,18 @@
       "requires_flag": "flag:wrackline_drifter_beaten"
     },
     {
+      "id": "milagro_edges",
+      "at": {
+        "tx": 2,
+        "ty": 21
+      },
+      "facing": "down",
+      "sprite": "milagro_card",
+      "movement": "static",
+      "dialogue_ref": "script.milagro_lying_edges",
+      "hidden_when_flag": "milagro:edges"
+    },
+    {
       "id": "amb_lumpin",
       "at": {
         "tx": 11,

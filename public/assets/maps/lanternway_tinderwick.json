@@ -1525,6 +1525,18 @@
       "hidden_when_flag": "flag:has_starter"
     },
     {
+      "id": "milagro_taxi",
+      "at": {
+        "tx": 4,
+        "ty": 13
+      },
+      "facing": "down",
+      "sprite": "milagro_card",
+      "movement": "static",
+      "dialogue_ref": "script.milagro_lying_taxi",
+      "hidden_when_flag": "milagro:taxi"
+    },
+    {
       "id": "amb_wickmoth",
       "at": {
         "tx": 4,

@@ -3070,6 +3070,18 @@
       "hidden_when_flag": "flag:driftletter_1"
     },
     {
+      "id": "milagro_spool",
+      "at": {
+        "tx": 12,
+        "ty": 26
+      },
+      "facing": "down",
+      "sprite": "milagro_card",
+      "movement": "static",
+      "dialogue_ref": "script.milagro_lying_spool",
+      "hidden_when_flag": "milagro:spool"
+    },
+    {
       "id": "amb_brinelet",
       "at": {
         "tx": 12,

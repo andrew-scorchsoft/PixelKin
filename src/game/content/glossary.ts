@@ -511,7 +511,7 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     id: 'milagro_cards',
     term: 'Milagro Cards',
     desc: 'Small painted cards made by the somewhat mysterious Booji-Wooji Man, after the tin charms of the sun country that folk hang up for whatever wants mending. He left them lying about in tea-houses and on the Lantern-cars for strangers to find, so half of Vesperholm has one. Draw one at random when you need a sign.',
-    unlock_flag: 'flag:milagro_pack',
+    unlock_flag: 'flag:milagro_lore',
   },
   {
     id: 'desasosiego',

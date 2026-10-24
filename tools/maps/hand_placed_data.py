@@ -626,3 +626,31 @@ _N1_NPCS = {
 }
 for _mid, _npcs in _N1_NPCS.items():
     PLACEMENTS.setdefault(_mid, {}).setdefault("npcs", []).extend(_npcs)
+
+# THE MILAGRO CARDS found LYING about (2026-10, content/milagros.ts `lying`): the
+# Booji-Wooji Man asks that his cards be left lying about, and some were. Each is a
+# little glinting card on foot ground by a prop (`sprite: milagro_card`, drawn in
+# Npc.ts), its pickup `script.milagro_lying_<id>` (content/regions/paul.ts) gone once
+# `milagro:<id>` is held. `lore` is the printed story slip at the Crossroads
+# fingerpost, which you pass in the first minutes.
+_MILAGRO_LYING = {
+    "lore": ("vesper_crossroads", 9, 12, "flag:milagro_lore"),
+    "stick": ("duskapple_orchard", 18, 12, None),
+    "fogbird": ("dimglass_coast_ii", 7, 6, None),
+    "taxi": ("lanternway_tinderwick", 4, 13, None),
+    "stringy": ("pearlmoor_oldlight_5", 11, 11, None),
+    "bottle": ("pearlmoor_wanderwood", 2, 16, None),
+    "edges": ("wrackline_path", 2, 21, None),
+    "sarabanda": ("lowleaf_hollow", 21, 11, None),
+    "bones": ("pale_vault_undercroft", 3, 12, None),
+    # the very first hours (owner: plenty to find on the way to the easter egg)
+    "whistle": ("tinderwick", 5, 17, None),
+    "spool": ("dimglass_coast", 12, 26, None),
+    "moths": ("pearlmoor_quay", 6, 14, None),
+}
+for _cid, (_mid, _x, _y, _flag) in _MILAGRO_LYING.items():
+    PLACEMENTS.setdefault(_mid, {}).setdefault("npcs", []).append(
+        {"id": f"milagro_{_cid}", "at": {"tx": _x, "ty": _y}, "facing": "down",
+         "sprite": "milagro_card", "movement": "static",
+         "dialogue_ref": f"script.milagro_lying_{_cid}",
+         "hidden_when_flag": _flag or f"milagro:{_cid}"})

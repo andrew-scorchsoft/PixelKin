@@ -28,7 +28,7 @@
  * player re-enters at (4,6) facing right. Never progression: nothing here gates.
  */
 import type { CutsceneStep, DialogueRegistry, ScriptRegistry } from '../types';
-import { MILAGRO_PACK_FLAG } from '../milagros';
+import { MILAGROS, MILAGRO_LORE_FLAG, MILAGRO_PACK_FLAG, milagroLyingScript } from '../milagros';
 
 const CP = 'flag:chickenpig_caught';
 const SCENE = 'flag:paul_lottie_scene'; // the first after-catch shriek has happened
@@ -121,7 +121,27 @@ const festPage = (i: number): CutsceneStep[] => [
   },
 ];
 
+/** The milagro cards found LYING in the world (content/milagros.ts `lying`), and the
+ *  lore slip by the Crossroads fingerpost. Each pickup: what you see, then the card. */
+const MILAGRO_LYING_SCRIPTS: ScriptRegistry = {
+  ...Object.fromEntries(
+    MILAGROS.filter((c) => c.lying).map((c) => [
+      milagroLyingScript(c.id),
+      [
+        { op: 'narrate', text: c.lying!.where },
+        { op: 'milagroCard', card: c.id },
+      ] satisfies CutsceneStep[],
+    ]),
+  ),
+  [milagroLyingScript('lore')]: [
+    { op: 'narrate', text: 'Tucked into the foot of the fingerpost, out of the wind, is a little printed slip with a yellow border, the kind that comes in a box of something.' },
+    { op: 'narrate', text: 'Somebody has written on the back, in pencil: "READ ME. THEN KEEP AN EYE OUT."' },
+    { op: 'milagroCard', card: 'lore' },
+  ],
+};
+
 export const PAUL_SCRIPTS: ScriptRegistry = {
+  ...MILAGRO_LYING_SCRIPTS,
   // ---- the house ------------------------------------------------------------------------
   'script.paul_house_welcome': [
     { op: 'narrate', text: 'The door isn\'t locked. It doesn\'t look as if it has ever been locked. It doesn\'t look as if it has ever been entirely SHUT.' },
@@ -202,6 +222,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Read the slip later. The short of it: he left them lying about. Tea-houses, the Lantern-cars, bookshops. So the rest of that deck\'s out there, with whoever found it.' },
     { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Talk to folk. Somebody always has a card they don\'t know what to do with. That\'s rather the point of them.' },
     { op: 'setFlag', unless_flag: MILAGRO_PACK_FLAG, flag: MILAGRO_PACK_FLAG },
+    { op: 'setFlag', flag: MILAGRO_LORE_FLAG },
     { op: 'milagroCard', unless_flag: 'milagro:desasosiego', card: 'desasosiego' },
     { op: 'say', speaker: 'PAUL', if_flag: 'milagro:desasosiego', text: 'That one\'s the oldest. The itch to make something. When it comes for you, and it will, you\'ve the look, don\'t fight it. Make the thing. Then come and show me.' },
   ],

@@ -526,6 +526,18 @@
       "dialogue_ref": "script.moka_percy"
     },
     {
+      "id": "milagro_stick",
+      "at": {
+        "tx": 18,
+        "ty": 12
+      },
+      "facing": "down",
+      "sprite": "milagro_card",
+      "movement": "static",
+      "dialogue_ref": "script.milagro_lying_stick",
+      "hidden_when_flag": "milagro:stick"
+    },
+    {
       "id": "amb_glimflit",
       "at": {
         "tx": 16,

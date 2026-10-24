@@ -251,6 +251,60 @@ export function ensureItemCacheSprite(scene: Phaser.Scene, key: string): void {
   for (let i = 0; i < 4; i++) canvas.add(i, 0, i * size, 0, size, size);
 }
 
+/**
+ * A milagro card lying on the ground (content/milagros.ts `lying`): a little
+ * yellow-bordered painted card, tipped at an angle on its shadow, with a glint
+ * walking round its edge so it reads as a find. Same 4-frame shape as the parcel.
+ */
+const LYING_CARD = [
+  '................',
+  '................',
+  '................',
+  '................',
+  '................',
+  '................',
+  '.......oo.......',
+  '.....ooyyoo.....',
+  '...ooyybbyyo....',
+  '..oyybbrbbyyo...',
+  '..oyybrrrbyyo...',
+  '...oyybbbyyoo...',
+  '....oyyyyoo.....',
+  '.....oooo,,.....',
+  '....,,,,,,,.....',
+  '................',
+];
+const LYING_CARD_INK: Record<string, string> = {
+  o: '#2a1a14', // ink outline
+  y: '#f0c838', // the yellow border
+  b: '#3a6ab0', // the painted panel
+  r: '#e8323c', // the little painted heart
+  ',': 'rgba(0,0,0,0.35)', // contact shadow
+};
+const LYING_CARD_GLINT: [number, number][] = [[7, 6], [11, 9], [8, 12], [3, 9]];
+
+export function ensureLyingCardSprite(scene: Phaser.Scene, key: string): void {
+  if (scene.textures.exists(key)) return;
+  const size = 16;
+  const canvas = scene.textures.createCanvas(key, size * 4, size);
+  const ctx = canvas?.getContext();
+  if (!ctx || !canvas) return;
+  for (let i = 0; i < 4; i++) {
+    const ox = i * size;
+    LYING_CARD.forEach((row, y) => [...row].forEach((c, x) => {
+      const ink = LYING_CARD_INK[c];
+      if (!ink) return;
+      ctx.fillStyle = ink;
+      ctx.fillRect(ox + x, y, 1, 1);
+    }));
+    const [gx, gy] = LYING_CARD_GLINT[i];
+    ctx.fillStyle = '#fff6c8';
+    ctx.fillRect(ox + gx, gy, 1, 1);
+  }
+  canvas.refresh();
+  for (let i = 0; i < 4; i++) canvas.add(i, 0, i * size, 0, size, size);
+}
+
 export class Npc extends Actor {
   private timer = 0;
   private patrolIndex = 0;
@@ -281,6 +335,10 @@ export class Npc extends Actor {
     if (placement.sprite === 'item_cache') {
       ensureItemCacheSprite(scene, 'npc_item_cache');
       return ['npc_item_cache'];
+    }
+    if (placement.sprite === 'milagro_card') {
+      ensureLyingCardSprite(scene, 'npc_milagro_card');
+      return ['npc_milagro_card'];
     }
     const kinId = creatureKinId(placement.sprite);
     if (kinId !== null) {

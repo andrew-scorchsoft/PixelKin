@@ -22,7 +22,7 @@ import { theme, hex } from './theme';
 import { makeText } from './Text';
 import { loadImage } from '@game/systems/sprites/loadImage';
 import { InputController, InputAction } from '@game/systems/input/InputController';
-import { MILAGROS, MILAGRO_LORE, milagroArt, type MilagroCard } from '@game/content/milagros';
+import { MILAGROS, MILAGRO_LORE, MILAGRO_LORE_TITLE, milagroArt, type MilagroCard } from '@game/content/milagros';
 import type { Sfx } from '@game/systems/audio/Sfx';
 import type { MusicDirector } from '@game/systems/audio/MusicDirector';
 
@@ -39,6 +39,7 @@ const LINE_H = 9;
 const TEXT_BOTTOM = GAME_HEIGHT - 16;
 const BOX_ART = 'assets/milagros/box.webp';
 const BACK_ART = 'assets/milagros/back.webp';
+const LORE_ART = 'assets/milagros/lore.webp';
 /** Warm candle-gold for the glow and sparkles (world-feel colour, like Ambience's). */
 const GLOW = 0xffa63a;
 const SPARK = [0xfff6d0, 0xffd27a, 0xffffff, 0xffb35c];
@@ -65,6 +66,8 @@ export interface RevealOptions {
   first: boolean;
   /** Ducked under the chime, if given. */
   music?: MusicDirector;
+  /** The printed lore slip, not a numbered card. */
+  lore?: boolean;
 }
 
 export class MilagroView {
@@ -123,7 +126,9 @@ export class MilagroView {
 
   /** One card, given: the ceremony, then its phrase and story; resolves when read. */
   async reveal(card: MilagroCard, opts: RevealOptions): Promise<void> {
-    const front = milagroArt(card.id);
+    const front = opts.lore ? LORE_ART : milagroArt(card.id);
+    const captionText = opts.lore ? 'THE STORY OF THE CARDS' : opts.first ? 'YOUR FIRST MILAGRO CARD' : 'A MILAGRO CARD';
+    const numberText = opts.lore ? 'A printed slip, from a box of cards' : `No. ${opts.number} of ${opts.total}`;
     const [hasBack, hasFront] = await Promise.all([this.ensure(BACK_ART), this.ensure(front)]);
     const words = [this.heading, this.sub, this.title, this.story, this.hint];
     for (const w of words) w.setAlpha(0);
@@ -158,12 +163,12 @@ export class MilagroView {
       duration: 900, yoyo: true, repeat: -1, ease: 'Sine.inOut',
     });
     const caption = this.add(
-      makeText(this.scene, STAGE.x, 4, opts.first ? 'YOUR FIRST MILAGRO CARD' : 'A MILAGRO CARD', theme.text.accent)
+      makeText(this.scene, STAGE.x, 4, captionText, theme.text.accent)
         .setOrigin(0.5, 0).setAlpha(0),
       3,
     );
     const number = this.add(
-      makeText(this.scene, STAGE.x, GAME_HEIGHT - 11, `No. ${opts.number} of ${opts.total}`, theme.text.dim)
+      makeText(this.scene, STAGE.x, GAME_HEIGHT - 11, numberText, theme.text.dim)
         .setOrigin(0.5, 0).setAlpha(0),
       3,
     );
@@ -177,8 +182,8 @@ export class MilagroView {
     await this.tween({ targets: this.img, x: REST.x, y: REST.y, scaleX: full, scaleY: full, duration: 500, ease: 'Cubic.inOut' });
     this.show({
       art: front,
-      heading: opts.first ? 'YOUR FIRST CARD' : 'A MILAGRO CARD',
-      sub: `No. ${opts.number} of ${opts.total}`,
+      heading: opts.lore ? 'THE STORY SLIP' : opts.first ? 'YOUR FIRST CARD' : 'A MILAGRO CARD',
+      sub: opts.lore ? undefined : `No. ${opts.number} of ${opts.total}`,
       title: card.title,
       story: card.story + (card.altered ? ALTERED : ''),
     }, false);
@@ -223,13 +228,14 @@ export class MilagroView {
   // ---------------------------------------------------------------------------
 
   /** The pack: the box, then every card; resolves on B. */
-  async gallery(has: (id: string) => boolean, hasBox: boolean): Promise<void> {
+  async gallery(has: (id: string) => boolean, hasBox: boolean, hasLore = hasBox): Promise<void> {
     const total = MILAGROS.length;
     const held = MILAGROS.filter((c) => has(c.id)).length;
     this.glow.setAlpha(0.3).setScale(0.9);
     const deck: Page[] = [
-      hasBox
-        ? { art: BOX_ART, heading: `MILAGROS  ${held}/${total}`, title: 'BOOJI-WOOJI MAN MILAGRO CARDS', story: MILAGRO_LORE }
+      // page 0: the box once Paul's given it, else the lore slip if you found it, else a tease
+      hasBox || hasLore
+        ? { art: hasBox ? BOX_ART : LORE_ART, heading: `MILAGROS  ${held}/${total}`, title: MILAGRO_LORE_TITLE, story: MILAGRO_LORE }
         : { art: BACK_ART, heading: `MILAGROS  ${held}/${total}`, title: 'PAINTED CARDS', story: NO_BOX },
       ...MILAGROS.map((c, i) => this.cardPage(c, has(c.id), `CARD ${i + 1}/${total}`)),
     ];
