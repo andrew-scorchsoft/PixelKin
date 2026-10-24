@@ -139,6 +139,12 @@ type CutsceneStepBase =
   // full, and registers in the dex. Unlike giveStarter there is no chooser.
   | { op: 'giveKin'; kin: number; level: number }
   /**
+   * Hand the player one of the Booji-Wooji Man's milagro cards (content/milagros.ts):
+   * banks `milagro:<card>` and plays the card's reveal (its art, phrase and story).
+   * Re-giving a held card just shows it again.
+   */
+  | { op: 'milagroCard'; card: string }
+  /**
    * Ask the player to type a name (ui/NameEntry) and remember it on the save.
    * The typed name is available to every later line as the token `{name}`.
    *

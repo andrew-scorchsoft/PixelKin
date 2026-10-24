@@ -13,6 +13,8 @@ import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
 import { Menu } from '@game/ui/Menu';
 import { NameEntry } from '@game/ui/NameEntry';
+import { MilagroView } from '@game/ui/MilagroView';
+import { MILAGROS, milagroFlag } from '@game/content/milagros';
 import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox, clearCinematicFx } from '@game/ui/Transitions';
 import { hex } from '@game/ui/theme';
 import { getDialogue } from '@game/content/dialogue';
@@ -357,6 +359,26 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       const speciesId = await new StarterSelect(scene, ctx.sfx).run();
       ctx.onGiveStarter(speciesId);
       void ctx.sfx.play('dex-register');
+      return true;
+    }
+    case 'milagroCard': {
+      const card = MILAGROS.find((c) => c.id === step.card);
+      if (!card) return true;
+      const first = ctx.flags.countHeld('milagro:') === 0;
+      ctx.flags.set(milagroFlag(card.id), true);
+      await new MilagroView(scene, ctx.sfx).reveal(card, {
+        number: MILAGROS.indexOf(card) + 1,
+        total: MILAGROS.length,
+        first,
+        music: ctx.music,
+      });
+      if (first) {
+        // the first card: say plainly where they live from now on
+        await new DialogueBox(scene, ctx.sfx).run([
+          { text: `A card to keep. You can look at it again any time, along with every other milagro card you find: press START and choose MILAGROS.` },
+          { text: `There are ${MILAGROS.length} of them, and folk all over Vesperholm have been left one. Talk to people. Somebody always has a card they don't know what to do with.` },
+        ]);
+      }
       return true;
     }
     case 'giveKin': {

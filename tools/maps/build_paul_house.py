@@ -25,8 +25,9 @@ partner floor's own return stair (roomkit.finish dresses both with stair sprites
        red-bush, Paul's NOTE on the table) behind a partition; east: the hall —
        the bike helmet + gym bag by the door, the carved antelope, Paul's chair by
        the fire. Wall: the pin-board of tickets, the WANTED poster, the sunny cape
-       painting. Up-stair NE (14,2). Doormat (8,10) -> wayward_rise.
-  1  paul_house_2  18x11  THE T-SHIRT MUSEUM  focal: the shirt rack (centre)
+       painting. ROSE, Paul's daughter, minds the kettle (script.paul_rose).
+       Up-stair NE (14,2). Doormat (8,10) -> wayward_rise.
+  1  paul_house_2  18x11  THE T-SHIRT MUSEUM  focal: the three rails (OUT / IN / NEVER)
        the north wall is shirts in frames (each a tiny story) between the maple
        country's snowy-lake painting, antlers and painted paddle; a partition_h
        makes the CAPE CORNER (south-west: protea, beadwork, the hooped jersey,
@@ -109,6 +110,7 @@ def ground() -> dict:
     place(objects, "plant", 4, 9, oid="kitchen_plant")
     # the wall: WANTED, the hearth (focal), the sunny cape, the pin-board
     hang(objects, "wanted", "wanted", 5)
+    hang(objects, "milagro_cards", "milagro_cards", 6)    # his painted milagro cards
     wall_mount(objects, "hearth", 7)               # cols 7-9, rows 1-3
     hang(objects, "painting_cape_day", "painting_cape_day", 10, w=2)
     hang(objects, "pinboard", "pinboard", 12, w=2)
@@ -131,9 +133,16 @@ def ground() -> dict:
         triggers.append({"id": f"welcome_{x}", "kind": "cutscene", "at": {"tx": x, "ty": 8},
                          "activation": "step_on", "ref": "script.paul_house_welcome",
                          "hidden_when_flag": "flag:paul_house_seen"})
+    # ROSE, Paul's daughter, at the kettle (script.paul_rose). Generic woman's
+    # sheet via the `paul_rose` sprite key (Npc.ts) until she has her own.
+    npcs.append({"id": "rose", "at": {"tx": 3, "ty": 4}, "facing": "down",
+                 "sprite": "paul_rose", "movement": "static",
+                 "dialogue_ref": "script.paul_rose"})
     triggers.append({"id": "note", "kind": "cutscene", "at": {"tx": 2, "ty": 6},
                      "activation": "interact", "ref": "script.paul_note"})
     sign(triggers, "wanted", 5, 1, "sign.paul_wanted")
+    triggers.append({"id": "milagro_cards", "kind": "cutscene", "at": {"tx": 6, "ty": 1},
+                     "activation": "interact", "ref": "script.paul_milagro_wall"})
     sign(triggers, "pinboard_a", 12, 1, "sign.paul_pinboard")
     sign(triggers, "pinboard_b", 13, 1, "sign.paul_pinboard")
     sign(triggers, "cape_a", 10, 1, "sign.paul_cape_day")
@@ -174,15 +183,21 @@ def middle() -> dict:
         sign(triggers, f"antlers_{x}", x, 1, "sign.paul_antlers")
     for x in (13, 14):
         sign(triggers, f"paddle_{x}", x, 1, "sign.paul_paddle")
-    # the centrepiece: the museum's working rail (focal, centre of the north room)
-    stand(objects, "rack", "shirt_rack", 6, 3, 3, 2)
-    sign(triggers, "rack", 7, 4, "sign.paul_rack")
-    stand(objects, "rack_b", "shirt_rack", 2, 3, 3, 2)
-    sign(triggers, "rack_b", 3, 4, "sign.paul_rack_b")
+    # the centrepiece: THREE RAILS, one per category of shirt — OUT (safe to be
+    # seen in), IN (house only) and NEVER (roped off). Each wears its category
+    # board on the bar (the overhang row) and runs a "hold one up" menu.
+    for rid, x in (("out", 2), ("in", 6), ("never", 11)):
+        stand(objects, f"rack_{rid}", f"rack_{rid}", x, 2, 3, 3, overhang=1, walk_under=True)
+        triggers.append({"id": f"rack_{rid}", "kind": "cutscene", "at": {"tx": x + 1, "ty": 4},
+                         "activation": "interact", "ref": f"script.paul_rail_{rid}"})
+    # the FESTIVAL OF THE IMAGINED: a lectern of hand-printed programmes in the
+    # maple corner (script.paul_festival pages through one)
+    stand(objects, "festival", "festival_lectern", 14, 6, 1, 2, overhang=1, walk_under=True)
+    triggers.append({"id": "festival", "kind": "cutscene", "at": {"tx": 14, "ty": 7},
+                     "activation": "interact", "ref": "script.paul_festival"})
     # the display table: the folded ones, too precious to hang
-    place(objects, "table", 11, 3, oid="folded_table")
-    sign(triggers, "folded", 11, 4, "sign.paul_folded")
-    place(objects, "stool", 13, 3, oid="museum_stool")
+    place(objects, "table", 14, 3, oid="folded_table")
+    sign(triggers, "folded", 14, 4, "sign.paul_folded")
     # the CAPE CORNER (south-west): a partition_h with a door gap at col 5
     face = partition_h(base, over, W, 7, 1, 9, doors=(5,))
     hang(objects, "protea", "painting_protea", 1, ty=face)
@@ -257,7 +272,8 @@ def attic() -> dict:
     place(objects, "crates", 1, 7, oid="toy_crates")
     sign(triggers, "toys", 1, 7, "sign.paul_lottie_toys")
     place(objects, "rug", 4, 6, oid="attic_rug", solid=False)
-    stand(objects, "plush", "plush", 7, 8, 1, 1, solid=False, requires_flag=CP)
+    # solid, so you walk UP to it and press A rather than over it
+    stand(objects, "plush", "plush", 7, 8, 1, 1, requires_flag=CP)
     sign(triggers, "plush", 7, 8, "sign.paul_plush", requires_flag=CP)
     place(objects, "plant", 10, 2, oid="attic_plant")
     npcs.append({"id": "lottie", "at": {"tx": 5, "ty": 5}, "facing": "down",

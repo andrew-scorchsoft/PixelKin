@@ -90,6 +90,8 @@ const SPRITE_SHEETS: Record<string, string> = {
   npc_parent: 'npc_parent',
   npc_boy: 'npc_boy',
   npc_girl: 'npc_girl',
+  // Rose, Paul's daughter (paul_house_1) — the generic sheet until she has her own.
+  paul_rose: 'npc_woman',
   // 'npc_child' is the long-standing generic-kid key; point it at the boy sheet.
   npc_child: 'npc_boy',
   // The REGIONAL CAST (2026-10): townsfolk dressed for where they live, so a

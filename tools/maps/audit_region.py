@@ -61,8 +61,8 @@ GRANTS: dict[str, list[str]] = {
     "pearlmoor_oldlight_5": ["flag:oldlight_5_solved"],
     "pearlmoor_oldlight_top": ["flag:q_south_jest_done", "flag:q_south_has_rope"],
     "pearlmoor_quay": [],
-    # +flag:q_south_wander_word: S5 — Paul (at the dark lamp, post-S4) sends you
-    # up the hill; the waystone's typed word parts the trees into the wood.
+    # +flag:q_south_wander_word: S5 — once you've beaten Paul (at the dark lamp,
+    # post-S4) the waystone up the hill takes the typed word and parts the trees.
     "pearlmoor_breakwater": ["flag:q_south_bell_rung", "flag:q_south_wander_word"],
     "pearlmoor_lumenary": ["flag:q_south_bell", "tidecall", "gleam:tide", "flag:crown_south"],
     # +flag:q_east_georgina: the hollow neighbour points the way to Georgina's

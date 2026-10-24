@@ -259,6 +259,9 @@ async function analyse(root, tag) {
         case 'pay':
           S(s.flag, ref);
           break;
+        case 'milagroCard': // banks milagro:<card> (content/milagros.ts)
+          S(`milagro:${s.card}`, ref);
+          break;
         case 'timer': // a run clock's `stop` sets each beaten tier's flag (the Wick-Run)
           for (const t of s.tiers ?? []) (S(t.flag, ref), S(t.flag + '_now', ref));
           break;

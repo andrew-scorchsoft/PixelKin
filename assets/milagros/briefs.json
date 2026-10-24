@@ -1,0 +1,250 @@
+{
+ "_doc": "The Booji-Wooji Man milagro cards (Paul's painted cards). refs/<slug>.jpg = the photo crop (rotated portrait); `text` = the border lettering; `subject` = an override when the photographed subject can't ship as-is (see tools/assets/gen_milagros.py). Content + stories: src/game/content/milagros.ts. `photo` = the master is the flattened photo itself (tools/assets/milagro_photo.py: the model refused these). `altered` = a note baked onto the SERVED card at --pack (and shown in-game): the subject differs from Paul's original.",
+ "cards": [
+  {
+   "slug": "dogtag",
+   "text": "I WONDER AT WHAT POINT THE FORM OF MY LIFE BECAME ITS CONTENT DOUBLING BACK ON ITSELF?",
+   "subject": "the same pale blue-green metal dog tag, but engraved only with small abstract squiggles and dots, no letters, numbers, names or addresses on the tag itself",
+   "altered": "THIS CARD HAS BEEN ALTERED FROM THE ORIGINAL"
+  },
+  {
+   "slug": "fish",
+   "text": "DON'T GET TOO CLOSE"
+  },
+  {
+   "slug": "spool",
+   "text": "FEAR SELLS"
+  },
+  {
+   "slug": "shadowdoll",
+   "text": "I MAY NOT BE THE CENTRE OF THE UNIVERSE BUT I'M WITHIN WALKING DISTANCE OF IT",
+   "subject": "a small round friendly shadow-sprite drawn as a solid deep indigo-blue silhouette of a chubby little figure with stubby arms out, the face only two plain white dot eyes with no mouth and no lips, a single curl on top of its head, like a cut-paper shadow puppet",
+   "altered": "THIS CARD HAS BEEN ALTERED FROM THE ORIGINAL"
+  },
+  {
+   "slug": "dancer",
+   "text": "I'VE HAD A HOLE IN MY HEART FOR SO LONG!"
+  },
+  {
+   "slug": "whistle",
+   "text": "A SCREAM OF MUTENESS"
+  },
+  {
+   "slug": "barkingman",
+   "text": "CAN YOU HEAR THE DOGS BARKING?",
+   "ref": "nonsense",
+   "subject": "a cheerful old man in a green coat and a blue woolly hat, head tilted, one hand cupped to his big ear as if listening, on a warm orange painted background; the border pattern is blue half-circles",
+   "altered": "THIS CARD HAS BEEN ALTERED: THE AI WOULDN'T GENERATE THE ORIGINAL"
+  },
+  {
+   "slug": "taxi",
+   "text": "CATCH A RIDE ON THE VOODOO TAXI",
+   "photo": true
+  },
+  {
+   "slug": "cowboy",
+   "text": "CUIDA TUS DIENTES COMO TUS ARMAS"
+  },
+  {
+   "slug": "pig",
+   "text": "GLOSSOLALIA"
+  },
+  {
+   "slug": "stringy",
+   "text": "ART IN THE SERVICE OF DEGENERATE DISCOURSE"
+  },
+  {
+   "slug": "wetnumbers",
+   "text": "MY ROOM SMELLS OF WET NUMBERS"
+  },
+  {
+   "slug": "bottle",
+   "text": "FALL INTO THE NIGHT SKY AND CHASE AFTER KOKOPELLI"
+  },
+  {
+   "slug": "eyemask",
+   "text": "EMPIRE OF THE EYE"
+  },
+  {
+   "slug": "sarabanda",
+   "text": "YO SOY SARABANDA"
+  },
+  {
+   "slug": "redheart",
+   "text": "THE LAST RED LIGHT OF GOD"
+  },
+  {
+   "slug": "stick",
+   "text": "TERMS OF REFERENCE CHALLENGED"
+  },
+  {
+   "slug": "fogbird",
+   "text": "WHY NOT WHIP THE FOG?"
+  },
+  {
+   "slug": "monkey",
+   "text": "SUMMONING THE SPIRIT IN THE CAULDRON WITH A BALINESE FROG DANCE"
+  },
+  {
+   "slug": "bat",
+   "text": "SNORT POPCORN"
+  },
+  {
+   "slug": "goat",
+   "text": "I WANT TO CREATE MY OWN LANGUAGE BASED ON REAL THINGS"
+  },
+  {
+   "slug": "bather",
+   "text": "THIS MAY BE A DENIAL OF ACCESS SITUATION",
+   "subject": "the same plump cheerful woman floating on her back, arms out, but wearing an old-fashioned one-piece striped bathing costume that covers her fully",
+   "altered": "THIS CARD HAS BEEN ALTERED FROM THE ORIGINAL"
+  },
+  {
+   "slug": "fool",
+   "text": "NO HARM IN AN ALLOWED FOOL"
+  },
+  {
+   "slug": "bones",
+   "text": "ANGEL BONE'S CONNECTED TO THE GOD BONE, GOD BONE'S CONNECTED TO THE BONE BONE, AND THE BONE BONE'S CONNECTED TO THE HAM BONE"
+  },
+  {
+   "slug": "laughter",
+   "text": "I FOUND MY RELIGION AND ITS PRAYER IS LAUGHTER"
+  },
+  {
+   "slug": "skin",
+   "text": "IT AIN'T NO SIN TO TAKE OFF YOUR SKIN AND DANCE AROUND IN YOUR BONES",
+   "photo": true
+  },
+  {
+   "slug": "crow",
+   "text": "THE WORLD SEEMS TO BE SINKING INTO DUST"
+  },
+  {
+   "slug": "nonsense",
+   "text": "TRY TO MASTER NONSENSE"
+  },
+  {
+   "slug": "edges",
+   "text": "IT'S THE PEOPLE ON THE EDGES WHO CAPTURE THE TRUTH"
+  },
+  {
+   "slug": "cherub",
+   "text": "YOU ALWAYS HAVE THE RIGHT TO REMAIN A MYSTERY"
+  },
+  {
+   "slug": "lies",
+   "text": "TELL ME SOME LIES"
+  },
+  {
+   "slug": "cat",
+   "text": "THE APOCALYPSE HAPPENED YESTERDAY"
+  },
+  {
+   "slug": "delirium",
+   "text": "THE CODE OF DELIRIUM PROVES TO HAVE AN EXTRAORDINARY FLUIDITY"
+  },
+  {
+   "slug": "nun",
+   "text": "IF THERE IS A GOD THEN I HAVE A FEW QUESTIONS TO ASK HIM"
+  },
+  {
+   "slug": "blissful",
+   "text": "A BLISSFUL MIND",
+   "photo": true
+  },
+  {
+   "slug": "puppets",
+   "text": "RAISED BY PUPPETS AND LOST IN A WORLD OF GHOSTS"
+  },
+  {
+   "slug": "truthlie",
+   "text": "SOMETIMES I TELL THE TRUTH AND SOMETIMES I LIE",
+   "photo": true
+  },
+  {
+   "slug": "poetic",
+   "text": "SOMETIMES DOING SOMETHING POETIC CAN BECOME POLITICAL AND SOMETIMES DOING SOMETHING POLITICAL CAN BECOME POETIC"
+  },
+  {
+   "slug": "pedal",
+   "text": "JUST SHUT UP AND PEDAL",
+   "subject": "a cheerful round-eared brown bear cub in a red-and-yellow jumper riding a red tricycle with a big front wheel, on a pale green painted background; the border pattern is little spoked wheels",
+   "ref": "cat",
+   "altered": "THIS CARD HAS BEEN ALTERED: THE AI WOULDN'T GENERATE THE ORIGINAL"
+  },
+  {
+   "slug": "dragonfly",
+   "text": "HOODOO VOODOO"
+  },
+  {
+   "slug": "diver",
+   "text": "HE'S A CLOSET CHARISMATIC"
+  },
+  {
+   "slug": "notgood",
+   "text": "I'M JUST NOT GOOD WITH PEOPLE I KNOW"
+  },
+  {
+   "slug": "shrimp",
+   "text": "I LIKE STORIES ABOUT SHRIMP"
+  },
+  {
+   "slug": "seahorse",
+   "text": "I WILL BE RARE FOR THOSE WHO CARE"
+  },
+  {
+   "slug": "moths",
+   "text": "CHAPEL OF MOTHS"
+  },
+  {
+   "slug": "failure",
+   "text": "A FAITH IN FAILURE"
+  },
+  {
+   "slug": "rooster",
+   "text": "AIN'T NOBODY'S BUSINESS IF YOU DO"
+  },
+  {
+   "slug": "seal",
+   "text": "THE CARPET IS PURRING"
+  },
+  {
+   "slug": "loon",
+   "text": "SYNCOPATED, AGITATED, PURPLE MOON, WHITE LOON",
+   "photo": true
+  },
+  {
+   "slug": "pyramid",
+   "text": "SOMETIMES THE TONGUE IS TIRED"
+  },
+  {
+   "slug": "obsession",
+   "text": "MEMORY AND OBSESSION"
+  },
+  {
+   "slug": "brujas",
+   "text": "NOCHE DE BRUJAS"
+  },
+  {
+   "slug": "transition",
+   "text": "REMEMBER I NEED SOME SPIRITUAL TRANSITION TIME THAT'S WHY I HAVE SO MUCH TROUBLE LEAVING THE HOUSE"
+  },
+  {
+   "slug": "desasosiego",
+   "text": "DESASOSIEGO",
+   "ref": "redheart",
+   "subject": "a NEW card in exactly this style: on a deep midnight-blue painted panel, one small restless orange flame with a tiny paintbrush-shaped wick, flickering, little stars of yellow around it; the yellow border patterned with small red flames"
+  }
+ ],
+ "extras": [
+  {
+   "slug": "back",
+   "prompt": "Recreate this card BACK as a clean flat front-on scan, portrait orientation: white card covered in the same hand-drawn colourful folk symbols (suns, moons, spirals, eyes, stars, crosses, little figures), thick black outlines, coloured-pencil texture. Neutral white balance, no table, no shadows, no perspective. No words."
+  },
+  {
+   "slug": "box",
+   "prompt": "Recreate this card BOX lid as a clean flat front-on scan, portrait orientation: white lid covered in the same hand-drawn colourful folk symbols, a central sky-blue panel with a yellow inner border, and on it in hand-lettered yellow capitals: BOOJI WOOJI MAN MILAGRO CARDS. Neutral white balance, no table, no shadows, no perspective."
+  }
+ ]
+}

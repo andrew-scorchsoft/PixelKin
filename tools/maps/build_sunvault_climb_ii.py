@@ -142,7 +142,7 @@ m["triggers"].append({
     "requires_flag": "flag:q_west_chart", "sets_flags": ["flag:q_west_chart_1"],
     "hidden_when_flag": "flag:q_west_chart_1"})
 m["objects"].append({"id": "lookout_dial", "sprite": "sunvault_sundial_fallen",
-                     "at": {"tx": 13, "ty": 2}, "w": 3, "h": 2, "solid": False})
+                     "at": {"tx": 13, "ty": 2}, "w": 3, "h": 2})
 for n, (x, y) in enumerate([(12, 3), (16, 2), (18, 4), (26, 7), (10, 2), (8, 6), (3, 4)]):
     m["objects"].append({"id": f"starglint_{n}", "sprite": rng.choice(
         ["sunvault_sunmote_a", "sunvault_sunmote_b"]),

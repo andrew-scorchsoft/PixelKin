@@ -608,6 +608,11 @@ export const SCRIPTS: ScriptRegistry = {
         },
         // S7 "Just One More Cup": once the cup's yours, Paul tells you about the fair
         // (his own story — content/regions/brewfair.ts retells it)
+        // the Booji-Wooji Man's milagro cards (content/milagros.ts): the box, any visit after the first
+        {
+          label: 'Your cards?',
+          ops: [{ op: 'run', ref: 'script.paul_milagro_cards' }],
+        },
         {
           label: 'Too much coffee?',
           if_flag: 'flag:q_south_wander_done',
@@ -644,8 +649,9 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PAUL', text: 'Lost? Never. Wandered? Every chance I get. Here — you\'ll know this one. Everyone does.' },
     { op: 'say', speaker: 'PAUL', text: '"Not all those who wander are..."' },
     { op: 'narrate', text: 'He stops. He waits. He very obviously isn\'t going to finish it.' },
-    { op: 'say', speaker: 'PAUL', text: 'Ha. No — don\'t tell ME. Tell the stone. Up the hill behind the quay, past Rod\'s allotment, there\'s an old wood with a waystone at its mouth. It\'s been waiting on that last word longer than I\'ve been old.' },
-    { op: 'say', speaker: 'PAUL', text: 'Say it right and the trees will let you by. Bring the bird-pig. I\'ll see you in the middle.' },
+    { op: 'say', unless_flag: 'flag:q_south_wander_open', speaker: 'PAUL', text: 'Ha. No — don\'t tell ME. Tell the stone. Up the hill behind the quay, past Rod\'s allotment, there\'s an old wood with a waystone at its mouth. It\'s been waiting on that last word longer than I\'ve been old.' },
+    { op: 'say', unless_flag: 'flag:q_south_wander_open', speaker: 'PAUL', text: 'Say it right and the trees will let you by. Bring the bird-pig. I\'ll see you in the middle.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_open', speaker: 'PAUL', text: 'Ha. You\'ve told the stone already, haven\'t you? I can see it on you. Then the trees know your face. Bring the bird-pig. I\'ll see you in the middle.' },
     { op: 'sfx', key: 'world-door-open' },
     { op: 'narrate', text: 'He tips an imaginary cap, steps round you, and is away up the boards at a pace no eighty-something has any business keeping.' },
     { op: 'setFlag', flag: 'flag:q_south_wander' },
@@ -656,12 +662,12 @@ export const SCRIPTS: ScriptRegistry = {
   // staged like the gate note, and the first meeting opens a journal entry so
   // the wood stays on the player's list until they can get in.
   'script.wander_hob_waiting': [
-    { op: 'say', unless_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Don\'t bother pushing. I\'ve tried. These trees don\'t open for just anybody — only for whoever the old man sends up.' },
+    { op: 'say', unless_flag: 'flag:q_south_booji_met', speaker: 'WANDERER HOB', text: 'Don\'t bother pushing. I\'ve tried. These trees don\'t open for just anybody — only for whoever the old man sends up.' },
     { op: 'say', unless_flag: 'gleam:tide', speaker: 'WANDERER HOB', text: 'He keeps a dark lamp at the far end of the breakwater, and the breakwater\'s chained until you\'ve done right by the Lumenary. Win your Tide Gleam from Reyl Wash first.' },
-    { op: 'say', if_flag: 'gleam:tide', unless_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Got your Tide, have you? Then he\'s your next stop: out past the bell, at the dark end of the breakwater. Get to know him. He doesn\'t send just anybody.' },
-    { op: 'say', unless_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Come back when he\'s sent you. I\'ll be here. I\'m not lost, mind. I\'m WAITING. There\'s a difference.' },
-    { op: 'say', if_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'He\'s sent you! I can tell. You\'ve got the look of someone who\'s been given half a sentence.' },
-    { op: 'say', if_flag: 'flag:q_south_wander', speaker: 'WANDERER HOB', text: 'Tell the stone the rest of it. Then we can both go in.' },
+    { op: 'say', if_flag: 'gleam:tide', unless_flag: 'flag:q_south_booji_met', speaker: 'WANDERER HOB', text: 'Got your Tide, have you? Then he\'s your next stop: out past the bell, at the dark end of the breakwater. Give him a bout. He doesn\'t send just anybody.' },
+    { op: 'say', unless_flag: 'flag:q_south_booji_met', speaker: 'WANDERER HOB', text: 'Come back once you\'ve gone a round with him. I\'ll be here. I\'m not lost, mind. I\'m WAITING. There\'s a difference.' },
+    { op: 'say', if_flag: 'flag:q_south_booji_met', speaker: 'WANDERER HOB', text: 'He\'s sent you! I can tell. You\'ve got the look of someone who\'s been given half a sentence.' },
+    { op: 'say', if_flag: 'flag:q_south_booji_met', speaker: 'WANDERER HOB', text: 'Tell the stone the rest of it. Then we can both go in.' },
     { op: 'setFlag', flag: 'flag:wander_wood_seen' },
   ],
   // Walking into the closed gap: the trees answer, then Hob does.
@@ -678,14 +684,14 @@ export const SCRIPTS: ScriptRegistry = {
   'script.wander_stone': [
     { op: 'narrate', text: 'An old waystone, furred with lichen. Words are cut deep into its face, as if somebody wanted them to outlast the person who cut them:' },
     { op: 'narrate', text: 'NOT ALL THOSE WHO WANDER ARE ____' },
-    { op: 'narrate', unless_flag: 'flag:q_south_wander', text: 'The last word has been worn away by a great many hands. Behind the stone, the trees stand very close together, as if waiting.' },
+    { op: 'narrate', unless_flag: 'flag:q_south_booji_met', text: 'The last word has been worn away by a great many hands. Behind the stone, the trees stand very close together, as if waiting.' },
     // (2026-10) what opens it, as a pointer not an answer: the one who walks here
-    { op: 'narrate', unless_flag: 'flag:q_south_wander', text: 'Somebody must still know the end of the line — somebody who walks these trees often. On the quay they say an old man keeps a dark lamp out at the very end of the breakwater, and comes up this way of an evening.' },
+    { op: 'narrate', unless_flag: 'flag:q_south_booji_met', text: 'Somebody must still know the end of the line — somebody who walks these trees often. On the quay they say an old man keeps a dark lamp out at the very end of the breakwater, and comes up this way of an evening.' },
     { op: 'narrate', if_flag: 'flag:q_south_wander_open', text: 'The trees behind the stone stand apart now. The path through them is open.' },
-    { op: 'narrate', if_flag: 'flag:q_south_wander', unless_flag: 'flag:q_south_wander_word', text: 'The last word is worn smooth. Paul said to tell the stone. You put your hand to it.' },
+    { op: 'narrate', if_flag: 'flag:q_south_booji_met', unless_flag: 'flag:q_south_wander_word', text: 'The last word is worn smooth. You think of Paul at his dark lamp, and the old line about wanderers he told you of. You put your hand to the stone.' },
     {
       op: 'askName',
-      if_flag: 'flag:q_south_wander',
+      if_flag: 'flag:q_south_booji_met',
       unless_flag: 'flag:q_south_wander_word',
       title: 'THE LAST WORD',
       fallback: '...',
@@ -694,11 +700,19 @@ export const SCRIPTS: ScriptRegistry = {
     },
     // Wrong word: gentle, retryable forever (the step guards key off the flag the
     // askName match would have set, so exactly one tail plays).
-    { op: 'narrate', if_flag: 'flag:q_south_wander', unless_flag: 'flag:q_south_wander_word', text: 'Nothing. The stone is patient. It has been patient for a very long time. (Paul started the line for you. How does it end?)' },
+    { op: 'narrate', if_flag: 'flag:q_south_booji_met', unless_flag: 'flag:q_south_wander_word', text: 'Nothing. The stone is patient. It has been patient for a very long time. (Paul said the last word was the one thing he\'s never been.)' },
     // Right word, first time: the trees part (once — re-reads take the
     // "stand apart now" line above instead).
     { op: 'run', if_flag: 'flag:q_south_wander_word', unless_flag: 'flag:q_south_wander_open', ref: 'script.wander_trees_part' },
     { op: 'setFlag', if_flag: 'flag:q_south_wander_word', flag: 'flag:q_south_wander_open' },
+    // (2026-10) beating Paul is enough to try the word; nobody has to have asked
+    // him "Ever get lost?" first. With the bird-pig along, the stone starts S5
+    // too (Paul moves up to the glade). Without it, Paul stays at his lamp so the
+    // Chickenpig catch is never stranded, and his "Ever get lost?" starts S5.
+    { op: 'run', if_flag: 'flag:q_south_wander_word', unless_flag: 'flag:q_south_wander', ref: 'script.wander_stone_start' },
+  ],
+  'script.wander_stone_start': [
+    { op: 'setFlag', if_flag: 'flag:chickenpig_caught', flag: 'flag:q_south_wander' },
   ],
   // The trees part — split out so it plays once, right after the right word.
   'script.wander_trees_part': [

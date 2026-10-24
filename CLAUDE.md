@@ -1520,6 +1520,17 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **A map that stacks a new accent set must list it in `world/maps.ts` `tilesets` too** — no CI gate
   catches a missing one; the map just fails to load in-game (Coldfog I + `stillwater_set`'s `murkpool`,
   2026-10). Concave pools need a FULL family (inner corners): the shared `murk` is a 9-slice.
+- **The Booji-Wooji Man's MILAGRO CARDS (2026-10) are Paul content — hidden like the rest.** 54 cards in
+  `content/milagros.ts` (phrase, invented story, `giver` = map:npc whose world the card belongs to, `found` lines,
+  `hint` shown on the missing card in the pack — never name Paul's places in a hint). Collectable FROM THE FIRST HOURS,
+  and DENSE on Paul's own route (~40 givers from Tinderwick to the Rise; the rest in the wider world); givers must
+  not carry `hidden_when_flag` (a staged NPC would strand its card); each giver hands theirs over the first time you
+  finish talking to them (`WorldScene.maybeGiveMilagro` — no map edits). Paul's "Your cards?" gives the BOX
+  (`flag:milagro_pack`: the lore card + DESASOSIEGO). `{op:'milagroCard', card}` banks `milagro:<id>` and plays the
+  `ui/MilagroView` reveal ceremony (flip + `world-milagro` chime); the pack is START > MILAGROS once any card is held.
+  Art: photo crops `assets/milagros/refs/` → `tools/assets/gen_milagros.py` (OpenAI edit; `photo` cards come straight
+  from the photo via `milagro_photo.py`; `altered` cards get a baked disclaimer at `--pack`). New givers must be
+  permanent, talkable NPCs.
 - **One-way exits are `travel`, not warps** (Lowtinder's well climb into Tinderwick): audit_warps
   rejects a warp with no return; a scripted `travel` is the legal one-way door.
 

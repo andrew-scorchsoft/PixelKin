@@ -23,6 +23,8 @@ import { SettingsMenu } from '@game/ui/SettingsMenu';
 import { GlossaryMenu } from '@game/ui/GlossaryMenu';
 import { RegisterMenu } from '@game/ui/RegisterMenu';
 import { GleamsMenu } from '@game/ui/GleamsMenu';
+import { MilagroView } from '@game/ui/MilagroView';
+import { MILAGROS_BY_GIVER, MILAGRO_PACK_FLAG, milagroFlag } from '@game/content/milagros';
 import { ChartsMenu } from '@game/ui/ChartsMenu';
 import { JournalMenu } from '@game/ui/JournalMenu';
 import { TravelMenu } from '@game/ui/TravelMenu';
@@ -1236,11 +1238,13 @@ export class WorldScene extends Phaser.Scene {
           this.modal = false;
           this.turnBackToPost(npc);
           this.refreshNpcs();
+          await this.maybeGiveMilagro(npc);
         }
         return;
       }
       await this.runDialogue(npc.dialogueRef);
       this.turnBackToPost(npc);
+      await this.maybeGiveMilagro(npc);
       return;
     }
 
@@ -1277,6 +1281,27 @@ export class WorldScene extends Phaser.Scene {
         (w.trigger === 'interact' || w.transition === 'door'),
     );
     if (warp) await this.executeWarp(warp);
+  }
+
+  /**
+   * The Booji-Wooji Man's milagro cards (content/milagros.ts): whoever was left a
+   * card hands it over the first time you finish talking to them, from the very
+   * first hours (Paul's box explains them later). Never mid-scene: only after
+   * their own talk, on the same map.
+   */
+  private async maybeGiveMilagro(npc: Npc): Promise<void> {
+    if (!this.npcs.includes(npc)) return;
+    const card = MILAGROS_BY_GIVER.get(`${this.map.def.id}:${npc.id}`);
+    if (!card || this.flags.get(milagroFlag(card.id))) return;
+    this.modal = true;
+    npc.facePoint(this.player.tx, this.player.ty);
+    const completed = await this.playScene([
+      ...(card.found ?? []).map((text): CutsceneStep => ({ op: 'say', text })),
+      { op: 'milagroCard', card: card.id },
+    ]);
+    if (completed) void this.persist();
+    this.modal = false;
+    this.turnBackToPost(npc);
   }
 
   /**
@@ -2524,6 +2549,8 @@ export class WorldScene extends Phaser.Scene {
         { label: 'ITEMS', value: 'items' },
         { label: 'LORE', value: 'lore' },
         { label: 'CHARTS', value: 'charts' },
+        // Paul's milagro cards, once he's given you the box (content/milagros.ts)
+        ...(this.flags.countHeld('milagro:') > 0 ? [{ label: 'MILAGROS', value: 'milagros' }] : []),
         { label: 'SAVE', value: 'save' },
         { label: 'SETTINGS', value: 'settings' },
       ];
@@ -2572,6 +2599,11 @@ export class WorldScene extends Phaser.Scene {
         await new GlossaryMenu(this, (flag) => this.flags.get(flag), this.sfx).run();
       } else if (choice === 'charts') {
         await new ChartsMenu(this, (flag) => this.flags.get(flag), this.sfx).run();
+      } else if (choice === 'milagros') {
+        await new MilagroView(this, this.sfx).gallery(
+          (id) => this.flags.get(milagroFlag(id)),
+          this.flags.get(MILAGRO_PACK_FLAG),
+        );
       } else if (choice === 'save') {
         await this.persist();
         void this.sfx.playVariant('ui-save', ['a', 'b']);

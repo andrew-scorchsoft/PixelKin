@@ -618,7 +618,11 @@ netmender's keeping.
      Lumenary and the Lifting House) → **`pearlmoor_allotment`** (Rod & Anth's plot; Anth's three
      stages; a potting-bench cache; the lichened **waystone**) → the waystone asks for the last
      word (`script.wander_stone`, `askName store:false`) — typing **LOST** sets
-     `flag:q_south_wander_word` and parts the trees (wrong words get a patient, retryable line) →
+     `flag:q_south_wander_word` and parts the trees (wrong words get a patient, retryable line).
+     The stone takes the word as soon as you've beaten Paul (`flag:q_south_booji_met`); you
+     don't have to ask "Ever get lost?" first (playtest 2026-10). With the Chickenpig already
+     caught, the word also starts S5 (`flag:q_south_wander`, via `script.wander_stone_start`);
+     without it, Paul stays at his lamp so the catch can't be stranded →
      **`pearlmoor_wanderwood`** (two arms wind round a central mass to the glade — the
      "Coming Round" theme as a map; four carved story trees = Abdul's "four stories, all true";
      Wanderer Hob, who is NOT lost; a cache on the dead-end "short cut"; tall grass lv 14-17 — the

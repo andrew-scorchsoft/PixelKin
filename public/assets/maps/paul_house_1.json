@@ -460,6 +460,17 @@
       "solid": false
     },
     {
+      "id": "milagro_cards",
+      "sprite": "paul_milagro_cards",
+      "at": {
+        "tx": 6,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
+    },
+    {
       "id": "hearth",
       "sprite": "interior_hearth",
       "at": {
@@ -719,6 +730,16 @@
       "ref": "sign.paul_wanted"
     },
     {
+      "id": "milagro_cards",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "script.paul_milagro_wall"
+    },
+    {
       "id": "pinboard_a",
       "kind": "sign",
       "at": {
@@ -810,7 +831,19 @@
     }
   ],
   "encounters": [],
-  "npcs": [],
+  "npcs": [
+    {
+      "id": "rose",
+      "at": {
+        "tx": 3,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "paul_rose",
+      "movement": "static",
+      "dialogue_ref": "script.paul_rose"
+    }
+  ],
   "gates": [],
   "music": "assets/audio/music/interior-sunny.mp3"
 }

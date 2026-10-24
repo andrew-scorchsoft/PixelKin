@@ -28,6 +28,7 @@
  * player re-enters at (4,6) facing right. Never progression: nothing here gates.
  */
 import type { CutsceneStep, DialogueRegistry, ScriptRegistry } from '../types';
+import { MILAGRO_PACK_FLAG } from '../milagros';
 
 const CP = 'flag:chickenpig_caught';
 const SCENE = 'flag:paul_lottie_scene'; // the first after-catch shriek has happened
@@ -54,6 +55,72 @@ const BACK_IN: CutsceneStep[] = [
   { op: 'setFlag', flag: OUT, value: false },
 ];
 
+/**
+ * THE THREE RAILS (2026-10). Every shirt Paul owns is OUT (safe to be seen in),
+ * IN (house only) or NEVER (not to be worn at all, roped off). Each rail is a
+ * "hold one up" menu, so it rewards coming back; looking through all three
+ * turns up a note in the last pocket (once).
+ */
+const RAIL_FLAGS = ['flag:paul_rail_out', 'flag:paul_rail_in', 'flag:paul_rail_never'];
+const shirtPick = (label: string, ...lines: string[]) => ({
+  label,
+  ops: lines.map((text): CutsceneStep => ({ op: 'narrate', text })),
+});
+const railMenu = (seen: string, shirts: ReturnType<typeof shirtPick>[]): CutsceneStep[] => [
+  { op: 'setFlag', flag: seen },
+  { op: 'choice', prompt: 'Hold one up?', options: [...shirts, { label: 'Leave them', ops: [] }] },
+  { op: 'run', ref: 'script.paul_rails_all' },
+];
+
+/**
+ * THE FESTIVAL OF THE IMAGINED (2026-10, after Paul's own booklet). A programme
+ * you page through on the museum lectern: imagined people from Vesperholm's
+ * old tales meet "in conversation". Every name is ORIGINAL (VISION.md); the
+ * last page asks who YOU would invite, as a typed answer that is never stored.
+ */
+const FEST_PAGES: string[][] = [
+  [
+    'A hand-printed programme. The cover is all loud red-and-black circus letters over a jumble of half-words in soft colours:',
+    'FESTIVAL OF THE IMAGINED.',
+  ],
+  [
+    'WELCOME to the first Festival of the Imagined, to be held on the twenty-ninth of the short month — a day that only turns up one winter in four, so we thought it could spare us an evening.',
+    'There will be people in conversation, pictures on the walls, and a night of lantern-shows. This is only the first, so we have not tried to do everything. We hope you leave imagining what might come next.',
+  ],
+  [
+    'THE LAMPLIGHTER\'S DAUGHTER AND THE GIRL WHO FELL UP THE WELL, IN CONVERSATION.',
+    'They have written to each other for years but never met. Both grew up to be nursery stories and both went to great lengths to live quietly anyway. They will talk about growing older, the end of childhood, and whether you can lose the knack of imagining. (You can\'t. Probably.)',
+  ],
+  [
+    'THE LONG-ROAD DRIFTER AND THE MAN WHO WALKED OUT OF THE MAP, IN CONVERSATION.',
+    'Two men who have wandered every dust road, crossroads inn and shuttered car-station in the old songs. They will talk about wanting things, being afraid of things, and the strange comfort of the road. Drinks will be served. It will go late.',
+  ],
+  [
+    'THE SORTING-OFFICE POET AND THE WOMAN WHO HEARD THE POST-HORN, IN CONVERSATION.',
+    'A pair of outsiders: one sorts letters by night and writes on the backs of them; one keeps finding a muffled horn drawn in the margins of everything. Topics: how to live in a world that has stopped making sense. They have asked for a dance floor, and intend to use it.',
+  ],
+  [
+    'THREE ARTISTS IN CONVERSATION: ART?',
+    'A painter who sleeps under his own canvases, a sculptor of hanging things, and an old woman who has drawn the same harbour every morning for sixty years.',
+    'They have asked to begin from one word, sent in by post with no name on it: DESASOSIEGO. The itch that won\'t let you sit still until you\'ve made something. Should be quite an evening.',
+  ],
+  [
+    'TICKETS. There is no charge. Write to us and tell us your name, and why you want to come. One event each — if you and a friend want the same evening, you each write your own letter. Your ticket will come back by return of post.',
+  ],
+];
+
+/** One page: its text, then turn on or close (a choice so a reader can stop any time). */
+const festPage = (i: number): CutsceneStep[] => [
+  ...FEST_PAGES[i].map((text): CutsceneStep => ({ op: 'narrate', text })),
+  {
+    op: 'choice',
+    options: [
+      { label: 'Turn the page', ops: [{ op: 'run', ref: i + 1 < FEST_PAGES.length ? `script.paul_festival_${i + 1}` : 'script.paul_festival_last' }] },
+      { label: 'Close it', ops: [] },
+    ],
+  },
+];
+
 export const PAUL_SCRIPTS: ScriptRegistry = {
   // ---- the house ------------------------------------------------------------------------
   'script.paul_house_welcome': [
@@ -68,11 +135,130 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'narrate', if_flag: 'flag:q_south_wander_done', text: '"GONE TO KEEP THE DARK COMPANY. LOTTIE\'S UPSTAIRS — SHE\'LL SHOW YOU EVERYTHING WHETHER YOU LIKE IT OR NOT. KETTLE\'S YOURS. — p."' },
     { op: 'narrate', text: 'Under it, in different ink: "P.S. if anyone from a bureau asks, I am a retired cheese-bun inspector!!!!!!"' },
   ],
+  // ---- Rose --------------------------------------------------------------------------
+  // Paul's daughter, minding the kettle in the kitchen (paul_house_1). Exactly one
+  // story-stage line plays (before the bird-pig / after it / after the cup), then
+  // the standing patter. Warm; she never says what her dad IS either.
+  'script.paul_rose': [
+    { op: 'face', actor: 'rose', facing: 'down' },
+    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'Oh! Hello. You\'ll be another of Dad\'s strays. I\'m Rose. He\'s out walking. He\'s always out walking.' },
+    { op: 'say', if_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'Back again? Kettle\'s on. It\'s always on. Dad says a cold kettle is how a house forgets you.' },
+    { op: 'say', unless_flag: CP, speaker: 'ROSE', text: 'Lottie\'s up in the attic, drawing chickens. And pigs. She keeps asking me which one would win. I keep saying "a nap".' },
+    { op: 'say', if_flag: CP, unless_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'Is that a FEATHER on your sleeve? Green, curly... Oh, Lottie is going to lose her mind. Go on up. I\'ll stay here and hold the teapot steady.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'He came home with a tin cup and a grin and won\'t say where he got either. Whatever you did up that wood, thank you. He\'s been humming.' },
+    { op: 'say', speaker: 'ROSE', text: 'If you go up to his shirts: the NEVER rail is mine and Lottie\'s doing. He wore ASK ME ABOUT MY KNEES to a christening. Somebody asked.' },
+    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'He\'s planning a festival again, too. The Festival of the Imagined. The programmes are upstairs. Everyone on the bill is somebody out of a story, which does keep the catering simple.' },
+    { op: 'say', unless_flag: MILAGRO_PACK_FLAG, speaker: 'ROSE', text: 'And if he\'s in a good mood, ask him about the cards. The painted ones, out at his lamp. He pretends he doesn\'t want to show you.' },
+    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'And that poster by the fire is a JOKE. Probably. I stopped asking around the time I learned to make tea.' },
+    { op: 'setFlag', flag: 'flag:paul_rose_met' },
+  ],
+
   // The museum placard at the top of the stairs (once).
   'script.paul_museum': [
     { op: 'narrate', text: 'A hand-lettered placard at the top of the stairs:' },
     { op: 'narrate', text: 'THE MUSEUM OF T-SHIRTS. ADMISSION: ONE STORY. PLEASE DO NOT TOUCH THE EXHIBITS. (LOTTIE MAY TOUCH THE EXHIBITS.)' },
+    { op: 'narrate', text: 'Underneath, smaller: THE WORKING RAILS — OUT. IN. NEVER. (THE THIRD ONE IS NOT A CHALLENGE.)' },
     { op: 'setFlag', flag: 'flag:paul_museum_seen' },
+  ],
+
+  // ---- the Festival of the Imagined (the museum lectern) ---------------------------------
+  'script.paul_festival': festPage(0),
+  ...Object.fromEntries(FEST_PAGES.slice(1).map((_, k) => [`script.paul_festival_${k + 1}`, festPage(k + 1)])),
+  'script.paul_festival_last': [
+    { op: 'narrate', text: 'The last page is almost empty. In the middle, in the same careful print:' },
+    { op: 'narrate', text: 'AND — WHO WILL WE SEE IN YOUR FESTIVAL OF THE IMAGINED?' },
+    { op: 'narrate', if_flag: 'flag:paul_festival_written', text: 'Underneath, in your own hand, is the name you wrote last time. There\'s room for another.' },
+    {
+      op: 'askName',
+      title: 'WHO WILL YOU INVITE?',
+      fallback: '...',
+      store: false,
+      matches: [
+        { value: 'PAUL', flag: 'flag:paul_festival_paul' },
+        { value: 'ROSE', flag: 'flag:paul_festival_family' },
+        { value: 'LOTTIE', flag: 'flag:paul_festival_family' },
+      ],
+    },
+    { op: 'narrate', unless_flag: 'flag:paul_festival_paul', text: 'You write the name on the last page, small and neat. Somewhere in the house a floorboard creaks, as if the room has started setting out another chair.' },
+    { op: 'narrate', if_flag: 'flag:paul_festival_paul', text: 'You write PAUL on the last page. It looks right there. You suspect he\'d grumble, go red, and then turn up an hour early to help with the chairs.' },
+    { op: 'narrate', if_flag: 'flag:paul_festival_family', text: 'Next to your name, in crayon, somebody has already added: "AND THE BIRD-PIG."' },
+    { op: 'setFlag', flag: 'flag:paul_festival_paul', value: false },
+    { op: 'setFlag', flag: 'flag:paul_festival_family', value: false },
+    { op: 'setFlag', flag: 'flag:paul_festival_written' },
+  ],
+
+  // ---- the milagro cards (content/milagros.ts) -----------------------------------------
+  // Paul's lamp menu, once you've met him: the BOX, its lore card, and the first card.
+  // Every other card is out in the world with somebody (WorldScene.maybeGiveMilagro).
+  'script.paul_milagro_cards': [
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Cards? Ha. Somebody\'s been talking. ...Rose. It\'s always Rose.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'In the sun country, over the western sea, folk hang little tin charms in the chapels for whatever wants mending. A tin heart. A tin leg. Milagros, they call them. Small miracles.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Somebody painted a whole deck of them, once, and left them lying about. If a stranger\'s handed you a little painted card on your travels, now you know where it came from. Roughly.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'I came by the box. Don\'t ask me how. ...Here. It\'s yours. Every deck wants somewhere to come home to.' },
+    { op: 'giveItem', unless_flag: MILAGRO_PACK_FLAG, item: 'milagro_cards', count: 1 },
+    { op: 'say', unless_flag: MILAGRO_PACK_FLAG, text: 'He puts a little card box in your hands, covered in painted suns and moons and eyes. Received the MILAGRO CARDS!' },
+    { op: 'narrate', unless_flag: MILAGRO_PACK_FLAG, text: 'Inside: one card, and a little printed slip.' },
+    { op: 'narrate', unless_flag: MILAGRO_PACK_FLAG, text: '"The Milagro Cards you now hold were made by a somewhat mysterious figure known as the Booji-Wooji Man..."' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Read the slip later. The short of it: he left them lying about. Tea-houses, the Lantern-cars, bookshops. So the rest of that deck\'s out there, with whoever found it.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Talk to folk. Somebody always has a card they don\'t know what to do with. That\'s rather the point of them.' },
+    { op: 'setFlag', unless_flag: MILAGRO_PACK_FLAG, flag: MILAGRO_PACK_FLAG },
+    { op: 'milagroCard', unless_flag: 'milagro:desasosiego', card: 'desasosiego' },
+    { op: 'say', speaker: 'PAUL', if_flag: 'milagro:desasosiego', text: 'That one\'s the oldest. The itch to make something. When it comes for you, and it will, you\'ve the look, don\'t fight it. Make the thing. Then come and show me.' },
+  ],
+  // The framed set on the kitchen wall.
+  'script.paul_milagro_wall': [
+    { op: 'narrate', text: 'Three painted cards pinned in a little frame: a red heart bound in blue thorns, a spotted fish, and a dark card with one small flame.' },
+    { op: 'narrate', text: 'Under the dark one, a label in Paul\'s loopy hand: "DESASOSIEGO. the itch to make a thing. do not scratch. MAKE THE THING."' },
+    { op: 'narrate', unless_flag: MILAGRO_PACK_FLAG, text: 'There are pinholes for many more. Wherever the rest of the deck went, it went a long way.' },
+  ],
+
+  // ---- the three rails ------------------------------------------------------------------
+  'script.paul_rail_out': [
+    { op: 'narrate', text: 'A tidy rail under a green board: OUT. Pressed, buttoned, collared. A card in Paul\'s loopy hand: "SAFE TO BE SEEN IN. LOTTIE HAS APPROVED EACH ONE IN WRITING."' },
+    ...railMenu(RAIL_FLAGS[0], [
+      shirtPick('The navy one', 'Plain navy, two buttons, not a crease on it. The card: "for the bank and the barber. same shirt for thirty years. neither of them has noticed."'),
+      shirtPick('The white one', 'Crisp white, with a tiny lighthouse stitched over the pocket. The card: "lottie ironed this one. it is now a slightly different shape. still wearing it."'),
+      shirtPick('The mustard one', 'Mustard yellow with a proper collar. The card: "collars mean you can be trusted with a ladder. that\'s the rule. i didn\'t make it. (i made it.)"'),
+    ]),
+  ],
+  'script.paul_rail_in': [
+    { op: 'narrate', text: 'A worn wooden rail under an amber board: IN. Faded, baggy, much-loved. A pair of slippers waits underneath. The card: "HOUSE ONLY. THE DOOR IS A BORDER."' },
+    ...railMenu(RAIL_FLAGS[1], [
+      shirtPick('The holey one', 'Grey, and more hole than shirt. The card: "do not mend. the hole is load-bearing."'),
+      shirtPick('The stripy one', 'Blue-and-white stripes, soft as a cloud, very clearly half of a pair of pyjamas. The card: "the bottoms are on a beach in the cape country. long story. good beach."'),
+      shirtPick('The pink one', 'A big pink one that reaches the knees. The card: "it\'s a nightshirt now. dignity is optional indoors."'),
+      shirtPick('The painty one', 'Grey, splattered yellow, red and green. The card: "painted the kitchen in this. then the chair. then, briefly, me."'),
+    ]),
+  ],
+  'script.paul_rail_never': [
+    { op: 'narrate', text: 'An iron rail under a red board: NEVER! A velvet rope hangs across the front, padlocked to the post. Tucked into the padlock, a card in Lottie\'s crayon:' },
+    { op: 'narrate', text: '"GRANDAD THESE ARE BANNED. NOT OUTSIDE. NOT INSIDE. NOT EVER. — LOTTIE (IN CHARGE)"' },
+    { op: 'narrate', unless_flag: RAIL_FLAGS[2], text: 'The rope is only padlocked at one end. You lift it, very carefully, and duck under.' },
+    { op: 'emote', unless_flag: RAIL_FLAGS[2], actor: 'player', emote: 'sweat' },
+    ...railMenu(RAIL_FLAGS[2], [
+      shirtPick('The lime one', 'Lime green with yellow zigzags, and in enormous letters: ASK ME ABOUT MY KNEES. Paul\'s card: "nobody asks. everybody is told."'),
+      shirtPick('The pink one', 'Hot pink, with a beaming cartoon bun: CERTIFIED BUN INSPECTOR. Lottie\'s crayon underneath: "CONFISKATED. EVIDENSE."'),
+      shirtPick('The black one', 'Black, with one word in tall white letters: NO. Paul\'s card: "wore it to a wedding. the vicar asked me a question. i didn\'t even have to answer."'),
+      shirtPick('The orange one', 'Bright orange and completely plain. You turn it round. On the back: I\'M NOT LOST, I\'M WANDERING. Paul\'s card: "banned for being too true. i appealed. i lost."'),
+    ]),
+  ],
+  // Looked through all three rails: a note in the last pocket (once).
+  'script.paul_rails_all': [
+    { op: 'run', if_flag: RAIL_FLAGS[0], ref: 'script.paul_rails_all_2' },
+  ],
+  'script.paul_rails_all_2': [
+    { op: 'run', if_flag: RAIL_FLAGS[1], ref: 'script.paul_rails_all_3' },
+  ],
+  'script.paul_rails_all_3': [
+    { op: 'run', if_flag: RAIL_FLAGS[2], unless_flag: 'flag:paul_rails_note', ref: 'script.paul_rails_note' },
+  ],
+  'script.paul_rails_note': [
+    { op: 'narrate', text: 'As you hang the shirt back, something crackles in its pocket: a folded note.' },
+    { op: 'narrate', text: '"IF YOU\'RE READING THIS YOU\'VE BEEN THROUGH ALL THREE RAILS. THAT MAKES YOU A CURATOR. CURATORS GET PAID. — p."' },
+    { op: 'sfx', key: 'world-pickup' },
+    { op: 'giveItem', item: 'glow_charge', count: 1 },
+    { op: 'narrate', text: 'Folded inside is a GLOW CHARGE. Received a GLOW CHARGE!' },
+    { op: 'setFlag', flag: 'flag:paul_rails_note' },
   ],
 
   // ---- Lottie ---------------------------------------------------------------------------
@@ -315,13 +501,7 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
     { text: 'A canoe paddle, its blade painted red and cream. The card reads:' },
     { text: '"from a lake in the maple country. the canoe is still out there. probably upside down."' },
   ],
-  'sign.paul_rack': [
-    { text: 'A rail of t-shirts: every colour, every size, every one of them his. Some name places. Some name things that don\'t make sense anymore. One just says NO.' },
-  ],
-  'sign.paul_rack_b': [
-    { text: 'More shirts. A card on the rail says OVERFLOW. Another card under it says OVERFLOW OVERFLOW.' },
-  ],
-  'sign.paul_folded': [
+      'sign.paul_folded': [
     { text: 'Folded shirts under the candle, too precious to hang: the very first one, one with a hole shaped like a coastline, and one signed by an entire ferry crew.' },
   ],
   'sign.paul_protea': [

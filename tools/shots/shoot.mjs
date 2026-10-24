@@ -600,6 +600,9 @@ async function main() {
     ({ server, url } = await startServer());
   }
   const browser = await chromium.launch({
+    // PIXELKIN_CHROMIUM: a browser binary to use when the pinned Playwright build
+    // isn't installed (cloud sessions ship one at /opt/pw-browsers/chromium).
+    ...(process.env.PIXELKIN_CHROMIUM ? { executablePath: process.env.PIXELKIN_CHROMIUM } : {}),
     headless: !args.headed,
     args: ['--mute-audio', '--autoplay-policy=no-user-gesture-required', '--use-gl=angle', '--use-angle=swiftshader'],
   });

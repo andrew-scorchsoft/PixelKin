@@ -506,6 +506,19 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     desc: 'A handful of the Hollowing who live under the Penumbra Ring, by a fire at the foot of the Spire\'s old shaft. They keep no gate. They try every traveller, to know them, and give the fire to anyone who comes down.',
     unlock_flag: 'flag:q_underways',
   },
+  // The Booji-Wooji Man's milagro cards (content/milagros.ts) — once Paul gives you the box
+  {
+    id: 'milagro_cards',
+    term: 'Milagro Cards',
+    desc: 'Small painted cards made by the somewhat mysterious Booji-Wooji Man, after the tin charms of the sun country that folk hang up for whatever wants mending. He left them lying about in tea-houses and on the Lantern-cars for strangers to find, so half of Vesperholm has one. Draw one at random when you need a sign.',
+    unlock_flag: 'flag:milagro_pack',
+  },
+  {
+    id: 'desasosiego',
+    term: 'Desasosiego',
+    desc: 'A word from the sun country for the restless unease that paces the kitchen at night until you get up and make something. Paul says it isn\'t a sickness. It\'s the cure, turning up early.',
+    unlock_flag: 'milagro:desasosiego',
+  },
 ];
 
 /** Lookup by id (for cutscenes that might surface a single definition later). */
