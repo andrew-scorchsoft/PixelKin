@@ -1517,6 +1517,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **A gated warp's `blocked_ref` may be a `script.*`** (played as a cutscene — someone standing there
   says "not yet", staged on flags: Wanderer Hob at the Wanderwood gap). Prefer that to a bare sign line
   for any long-term "come back later" gate, and open a journal teaser on first contact so it's remembered.
+  **Gate-keepers come to YOU (2026-10):** if the player may already hold what the keeper wants, the
+  script does the hand-in right there (Ansel's stage, Pell's rental) — never "go back and talk to me".
+  If it opens the gate and the player is still on the warp tile, `executeWarp` carries them on through.
+  A keeper standing off the path walks over via a step_on band across the approach (the netmender's
+  `netmender_hail_*` on Pearlmoor's causeway head).
 - **A map that stacks a new accent set must list it in `world/maps.ts` `tilesets` too** — no CI gate
   catches a missing one; the map just fails to load in-game (Coldfog I + `stillwater_set`'s `murkpool`,
   2026-10). Concave pools need a FULL family (inner corners): the shared `murk` is a 9-slice.

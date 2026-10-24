@@ -307,7 +307,9 @@ for i, y in enumerate((23, 24)):
                        "trigger": "step_on", "to_map": "mirelight_landing",
                        "to": {"tx": 0, "ty": y}, "facing": "right", "transition": "fade",
                        "requires_flag": "flag:mirelight_ferry",
-                       "blocked_ref": "npc.mirelight_ansel_blocked"})
+                       # his stage script: the old "off my stage", or — with the
+                       # lens in hand — he comes over, looks, and poles you across
+                       "blocked_ref": f"script.mirelight_ansel_stage_{y}"})
     m["triggers"].append({"id": f"ferry_ride_{y}", "kind": "cutscene",
                           "at": {"tx": W - 2, "ty": y}, "activation": "step_on",
                           "ref": "script.mirelight_ferry_ride",
@@ -322,6 +324,7 @@ m["npcs"].append({"id": "tobin_home", "at": {"tx": 10, "ty": 24}, "facing": "lef
                   "dialogue_ref": "script.mirelight_tobin_home",
                   "requires_flag": "flag:mirelight_tobin_found"})
 owed += ["script.mirelight_ansel", "script.mirelight_ferry_ride",
+         "script.mirelight_ansel_stage_23", "script.mirelight_ansel_stage_24",
          "npc.mirelight_ansel_blocked", "script.mirelight_eelwife",
          "script.mirelight_tobin_home"]
 owed += pt.sign(m, deco, W, sid="mirelight_ferry", at=(26, 25))

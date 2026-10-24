@@ -3,11 +3,64 @@
  * (EventTrigger.ref, e.g. 'script.intro_mentor'). Each is an ordered list of
  * CutsceneStep the CutsceneRunner interprets. Adding a scene is a data edit here.
  */
-import type { ScriptRegistry } from './types';
+import type { CutsceneStep, ScriptRegistry } from './types';
 import { OLDLIGHT_SCRIPTS } from './oldlight';
 import { REGION_EXTRA_SCRIPTS } from './regions';
 import { INTERLUDE_SCRIPTS } from './interludes';
 import { KINCHAT_SCRIPTS } from './kinchatter';
+
+// --- The netmender comes to YOU at the moor-gate (playtest 2026-10) ----------
+// Players walked down the causeway to the chained gate and were told "not yet"
+// from afar, then had to remember to go back up and talk to her. Now a step_on
+// band across the causeway head (row 18, cols 24-25 — the only way to the gate)
+// has her put down her nets and walk over: once before the Old Light (where the
+// errand stands), and — the point of it — every time you come down holding her
+// floats, when she hands the rope over there and then. She walks round by the
+// causeway head (22,16) because (23,17) beside her is open water.
+const NETMENDER_JEST = 'flag:q_south_jest_done';
+const NETMENDER_BELL = 'flag:q_south_bell';
+const NETMENDER_HAILED = 'flag:netmender_hailed';
+function netmenderComesOver(actor: string, col: number, middle: CutsceneStep[]): CutsceneStep[] {
+  return [
+    { op: 'emote', actor, emote: 'alert' },
+    { op: 'face', actor: 'player', facing: 'up' },
+    { op: 'say', speaker: 'NETMENDER', text: 'Hoi — Wayfarer! Hold up there. Let an old woman catch you up.' },
+    { op: 'move', actor, to: { tx: 22, ty: 16 } },
+    { op: 'move', actor, to: { tx: col, ty: 16 } },
+    { op: 'move', actor, to: { tx: col, ty: 17 } },
+    { op: 'face', actor, facing: 'down' },
+    ...middle,
+    { op: 'move', actor, to: { tx: col, ty: 16 } },
+    { op: 'move', actor, to: { tx: 22, ty: 16 } },
+    { op: 'move', actor, to: { tx: 22, ty: 17 } },
+    { op: 'face', actor, facing: 'down' },
+  ];
+}
+function netmenderHailScripts(): ScriptRegistry {
+  const out: ScriptRegistry = {};
+  for (const col of [24, 25]) {
+    const k = `script.netmender_hail_${col}`;
+    out[k] = [
+      { op: 'run', ref: `${k}_rope`, if_flag: NETMENDER_JEST },
+      { op: 'run', ref: `${k}_first`, unless_flag: NETMENDER_JEST },
+    ];
+    // floats home: the rope changes keeping right here on the causeway
+    out[`${k}_rope`] = netmenderComesOver('netmender_floats', col, [{ op: 'run', ref: 'script.netmender_rope' }]);
+    // before the Old Light: she tells you where the errand stands — once
+    out[`${k}_first`] = [
+      { op: 'run', ref: `${k}_stage`, unless_flag: NETMENDER_HAILED },
+      { op: 'setFlag', flag: NETMENDER_HAILED },
+    ];
+    out[`${k}_stage`] = [
+      { op: 'run', ref: `${k}_pre`, unless_flag: NETMENDER_BELL },
+      { op: 'run', ref: `${k}_floats`, if_flag: NETMENDER_BELL },
+    ];
+    out[`${k}_pre`] = netmenderComesOver('netmender_pre', col, [{ op: 'dialogue', ref: 'npc.netmender_gate' }]);
+    out[`${k}_floats`] = netmenderComesOver('netmender_floats', col, [{ op: 'dialogue', ref: 'npc.netmender_floats' }]);
+  }
+  return out;
+}
+const NETMENDER_HAIL_SCRIPTS = netmenderHailScripts();
 
 export const SCRIPTS: ScriptRegistry = {
   // --- The opening: the satchel errand at the Vesper Crossroads -----------------
@@ -5673,6 +5726,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', if_flag: 'flag:q_south_jest_done', speaker: 'TOBIAS', text: 'Somebody finished it! The lighthouse joke! I came back down the coast just to tell you I don\'t know the ending — and I\'m DELIGHTED.' },
   ],
 
+  ...NETMENDER_HAIL_SCRIPTS,
   ...OLDLIGHT_SCRIPTS,
   ...REGION_EXTRA_SCRIPTS,
   ...INTERLUDE_SCRIPTS, // X-4 crown interludes (content/interludes.ts)

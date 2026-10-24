@@ -55,7 +55,8 @@ Warm Balm, and rare Tide kin: **Shimmral**, **Tidalarch** and **Tidmaren** (leve
 
 On the first half of the fen, an old ferryman called **Ansel** waits at a stage on the east
 edge, and an eel-wife is worried about her boy. You can't cross yet; that story opens far later
-in the north. See [[the-wild-ways|The Wild Ways]].
+in the north. When you come back with what he asks for, just step onto his stage and he'll take
+you across. See [[the-wild-ways|The Wild Ways]].
 
 ### The road back to the Crossroads
 

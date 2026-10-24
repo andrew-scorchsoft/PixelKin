@@ -2,6 +2,14 @@
   "_note": "The player-facing changelog: the in-game \"the world has changed\" notice (content/whatsnew.ts) AND the website changelog page (web/site.mjs) both read this. Newest first. NO SPOILERS for the hidden real-people content - see whatsnew.ts.",
   "entries": [
     {
+      "version": "1.41",
+      "date": "2026-10-24",
+      "notes": [
+        "Gate-keepers now come to you. Walk down to Pearlmoor's chained moor-gate and the netmender leaves her nets to meet you, and hands over the bell-rope right there once you have her floats. Step onto the Glassmere ferry stage with what Ansel asked for and he takes you straight across. Walk up to the Wick-Run start-gate and Pell offers you a runner on the spot.",
+        "When someone at a gate lets you through, you now carry straight on instead of having to step off and back on."
+      ]
+    },
+    {
       "version": "1.34",
       "date": "2026-10-23",
       "notes": [
