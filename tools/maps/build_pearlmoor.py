@@ -369,6 +369,15 @@ m = {
          "hidden_when_flag": "flag:tide_blessing_seen"}
         for x in blessing_cols
     ] + [
+        # The netmender comes to YOU (playtest 2026-10): a band across the causeway
+        # head — row 18's two walkable tiles are the only way to the moor-gate — so
+        # walking down to the chained gate brings her over from her nets (once to
+        # say where the errand stands; with the floats, to hand over the rope).
+        {"id": f"netmender_hail_{x}", "kind": "cutscene", "at": {"tx": x, "ty": 18},
+         "activation": "step_on", "ref": f"script.netmender_hail_{x}",
+         "hidden_when_flag": "flag:q_south_rope_or_later"}
+        for x in (24, 25)
+    ] + [
         {"id": "sign_welcome", "kind": "sign", "at": {"tx": sign_tiles["sign_welcome"][0], "ty": sign_tiles["sign_welcome"][1]},
          "activation": "interact", "ref": "sign.pearlmoor_welcome"},
         {"id": "sign_breakwater", "kind": "sign",

@@ -119,8 +119,9 @@ for i, x in enumerate((10, 11)):
                        "trigger": "step_on", "to_map": "wickrun_chute",
                        "to": {"tx": x + 3, "ty": 0}, "facing": "down", "transition": "fade",
                        "requires_flag": "flag:wickrun_riding",
-                       "blocked_ref": "npc.wickrun_gate_blocked"})
-owed.append("npc.wickrun_gate_blocked")
+                       # Pell calls out and offers the rental right there (2026-10)
+                       "blocked_ref": "script.wickrun_gate_offer"})
+owed += ["script.wickrun_gate_offer", "npc.wickrun_gate_blocked"]
 
 # ---- 1. the Tallow Lift's top house (east) ----------------------------------
 # (the lift house: 4x4, a solid building; you work the brake from its front)

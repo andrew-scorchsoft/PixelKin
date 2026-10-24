@@ -54,9 +54,19 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PELL', unless_flag: RIDING, text: 'Runners! Two wheels, one brake, no regrets. The Wick-Run\'s the old wax road — top of the mountain to the sea, if your nerve holds.' },
     { op: 'say', speaker: 'PELL', unless_flag: RIDING, text: 'Fair warning: the kin on the run are mountain-fed — tougher than the Solarium\'s garden lot — and there\'s no pedalling back up. Lucan\'s lit stage first, if I were you.' },
     { op: 'say', speaker: 'PELL', if_flag: RIDING, text: 'You\'ve got one of mine already. Off you go — through the gate and down. Hand it in at the foot; the lift-keeper sends them home.' },
+    { op: 'run', ref: 'script.wickrun_rental_offer', unless_flag: RIDING },
+  ],
+  // Walking into the start-gate without a runner (playtest 2026-10): Pell calls
+  // out and offers the rental right there, instead of sending you back up the
+  // crest to find him — rent one and the engine carries you on through the gate.
+  'script.wickrun_gate_offer': [
+    { op: 'emote', actor: 'pell', emote: 'alert' },
+    { op: 'dialogue', ref: 'npc.wickrun_gate_blocked' },
+    { op: 'run', ref: 'script.wickrun_rental_offer' },
+  ],
+  'script.wickrun_rental_offer': [
     {
       op: 'choice',
-      unless_flag: RIDING,
       speaker: 'PELL',
       prompt: 'Rent a runner? (300 wicks)',
       options: [

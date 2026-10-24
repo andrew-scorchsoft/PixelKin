@@ -39,7 +39,7 @@ Foot**. You can walk in from Pearlmoor at any time, and there are no wild kin th
 car (the **Tallow Lift**) is chained at the top, so the only way up is the long way round.
 
 **From the top (after the Solar Gleam):** at **Wick-Run Crest**, off the foot of the Sunvault
-Climb, **Pell** rents you a **runner** (a two-wheeled bike) for 300 wicks. Then it's six maps
+Climb, **Pell** rents you a **runner** (a two-wheeled bike) for 300 wicks (walk up to the start-gate and he'll offer you one there). Then it's six maps
 downhill: chutes, a slalom, a spiral trestle you cross over and then pass under, a rock garden, a
 ramp line and the long straight. Reaching the crest also frees the Tallow Lift, so it runs both
 ways from then on.

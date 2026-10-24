@@ -91,7 +91,8 @@ Tide team.
 **Where next? Take the floats to the netmender on Pearlmoor Quay.**
 
 She's had the bell-rope spliced and waiting for years. She hands you the **Moor-bell Rope** and
-unchains the moor-gate at the south end of the quay.
+unchains the moor-gate at the south end of the quay. You don't even need to find her: head down
+the causeway towards the moor-gate with the floats and she'll put down her nets and come to you.
 
 ### 3. Ring the moor-bell
 

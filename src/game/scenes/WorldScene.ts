@@ -2145,8 +2145,20 @@ export class WorldScene extends Phaser.Scene {
       // answers — its own line if it has one, else a generic "it's locked" — so a
       // walk-in (or the instinctive Confirm press) is never met with silence.
       // Other gated warps only hint on an active interact.
-      if (warp.blocked_ref?.startsWith('script.')) await this.runBlockedScript(warp.blocked_ref);
-      else if (warp.blocked_ref) await this.runDialogue(warp.blocked_ref);
+      if (warp.blocked_ref?.startsWith('script.')) {
+        // A gate-keeper's script may open the gate there and then (the netmender
+        // hands over her rope, Pell rents a runner) — so if it did and you're
+        // still standing in the gateway, go on through instead of making the
+        // player step off and back on to find out.
+        const mapId = this.map.def.id;
+        await this.runBlockedScript(warp.blocked_ref);
+        if (this.warpAllowed(warp) && this.map.def.id === mapId &&
+            this.player.tx === warp.at.tx && this.player.ty === warp.at.ty) {
+          await this.executeWarp(warp);
+        }
+        return;
+      }
+      if (warp.blocked_ref) await this.runDialogue(warp.blocked_ref);
       else if (warp.transition === 'door') await this.showLockedDoor();
       else if (warp.trigger === 'interact') await this.showHint();
       return;

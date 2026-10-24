@@ -2776,7 +2776,7 @@
       "facing": "down",
       "transition": "fade",
       "requires_flag": "flag:wickrun_riding",
-      "blocked_ref": "npc.wickrun_gate_blocked"
+      "blocked_ref": "script.wickrun_gate_offer"
     },
     {
       "id": "to_chute_e",
@@ -2793,7 +2793,7 @@
       "facing": "down",
       "transition": "fade",
       "requires_flag": "flag:wickrun_riding",
-      "blocked_ref": "npc.wickrun_gate_blocked"
+      "blocked_ref": "script.wickrun_gate_offer"
     }
   ],
   "triggers": [

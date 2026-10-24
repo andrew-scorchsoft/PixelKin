@@ -2794,6 +2794,28 @@
       "hidden_when_flag": "flag:tide_blessing_seen"
     },
     {
+      "id": "netmender_hail_24",
+      "kind": "cutscene",
+      "at": {
+        "tx": 24,
+        "ty": 18
+      },
+      "activation": "step_on",
+      "ref": "script.netmender_hail_24",
+      "hidden_when_flag": "flag:q_south_rope_or_later"
+    },
+    {
+      "id": "netmender_hail_25",
+      "kind": "cutscene",
+      "at": {
+        "tx": 25,
+        "ty": 18
+      },
+      "activation": "step_on",
+      "ref": "script.netmender_hail_25",
+      "hidden_when_flag": "flag:q_south_rope_or_later"
+    },
+    {
       "id": "sign_welcome",
       "kind": "sign",
       "at": {

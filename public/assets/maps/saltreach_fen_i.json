@@ -123,7 +123,7 @@
       "facing": "right",
       "transition": "fade",
       "requires_flag": "flag:mirelight_ferry",
-      "blocked_ref": "npc.mirelight_ansel_blocked"
+      "blocked_ref": "script.mirelight_ansel_stage_23"
     },
     {
       "id": "to_mirelight_s",
@@ -140,7 +140,7 @@
       "facing": "right",
       "transition": "fade",
       "requires_flag": "flag:mirelight_ferry",
-      "blocked_ref": "npc.mirelight_ansel_blocked"
+      "blocked_ref": "script.mirelight_ansel_stage_24"
     }
   ],
   "npcs": [

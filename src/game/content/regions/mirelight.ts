@@ -41,6 +41,26 @@ function dunk(map: string, tx: number, ty: number, facing: 'up' | 'down' | 'left
   ];
 }
 
+/** Old Ansel's stage (the blocked ferry warp on row `y` of the fen's east edge). */
+function anselStage(y: number): ScriptRegistry {
+  const k = `script.mirelight_ansel_stage_${y}`;
+  return {
+    [k]: [
+      { op: 'dialogue', ref: 'npc.mirelight_ansel_blocked', unless_flag: LENS },
+      { op: 'run', ref: `${k}_lens`, if_flag: LENS },
+    ],
+    [`${k}_lens`]: [
+      { op: 'emote', actor: 'ansel', emote: 'alert' },
+      { op: 'face', actor: 'player', facing: 'left' },
+      { op: 'move', actor: 'ansel', to: { tx: 28, ty: 23 } },
+      { op: 'move', actor: 'ansel', to: { tx: 30, ty: y } },
+      { op: 'face', actor: 'ansel', facing: 'right' },
+      { op: 'run', ref: 'script.mirelight_ansel' },
+      { op: 'run', ref: 'script.mirelight_ferry_ride', if_flag: FERRY },
+    ],
+  };
+}
+
 export const MIRELIGHT_SCRIPTS: ScriptRegistry = {
   // ---- Saltreach Fen I: the eel-wife's ask + Old Ansel's stage --------------------------
   'script.mirelight_eelwife': [
@@ -70,6 +90,11 @@ export const MIRELIGHT_SCRIPTS: ScriptRegistry = {
     { op: 'sfx', if_flag: LENS, unless_flag: FERRY, key: 'world-keyitem' },
     { op: 'setFlag', if_flag: LENS, unless_flag: FERRY, flag: FERRY },
   ],
+  // Walking onto the stage with the lens already in hand (playtest 2026-10): he
+  // used to say "off my stage" and leave you to go back and talk to him. Now he
+  // spots it, walks over, has his look and poles you straight across.
+  ...anselStage(23),
+  ...anselStage(24),
   'script.mirelight_ferry_ride': [
     { op: 'setFlag', flag: CROSSED },
     { op: 'letterbox', on: true },
