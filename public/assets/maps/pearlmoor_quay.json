@@ -3350,6 +3350,18 @@
       "hidden_when_flag": "flag:picked_pearlmoor_deep"
     },
     {
+      "id": "milagro_moths",
+      "at": {
+        "tx": 6,
+        "ty": 14
+      },
+      "facing": "down",
+      "sprite": "milagro_card",
+      "movement": "static",
+      "dialogue_ref": "script.milagro_lying_moths",
+      "hidden_when_flag": "milagro:moths"
+    },
+    {
       "id": "oldlight_hint_beach",
       "at": {
         "tx": 9,

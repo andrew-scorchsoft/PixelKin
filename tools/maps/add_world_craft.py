@@ -221,7 +221,7 @@ def lint(mid: str, m: dict, spec: dict) -> list[str]:
     for nid, sprite in spec.get("sprites", {}).items():
         if nid not in ids:
             errs.append(f"{mid}: sprite swap for unknown NPC '{nid}'")
-        if str(sprite).startswith("kin_") or sprite == "item_cache":
+        if str(sprite).startswith("kin_") or sprite in ("item_cache", "milagro_card"):
             errs.append(f"{mid}: sprite swap '{nid}' -> '{sprite}' is not a person sheet")
     if mid in PRE_CHICKENPIG:
         for key in ("triggers", "signs"):
@@ -299,7 +299,7 @@ def lint_words(mid: str, m: dict, spec: dict) -> list[str]:
             continue
         if nid in talk:
             errs.append(f"{mid}: '{nid}' has both an after-twin and a talk re-point — pick one")
-        if n.get("ambient") or n.get("sight_range") or n.get("sprite") == "item_cache":
+        if n.get("ambient") or n.get("sight_range") or n.get("sprite") in ("item_cache", "milagro_card"):
             errs.append(f"{mid}: '{nid}' is ambient/a trainer/a cache — not a talk NPC")
         if n.get("hidden_when_flag") not in (None, flag):
             errs.append(f"{mid}: '{nid}' already hides on '{n['hidden_when_flag']}' — use `talk`")
@@ -315,7 +315,7 @@ def lint_words(mid: str, m: dict, spec: dict) -> list[str]:
         n = npcs.get(nid)
         if n is None:
             errs.append(f"{mid}: talk re-point for unknown NPC '{nid}'")
-        elif n.get("ambient") or n.get("sight_range") or n.get("sprite") == "item_cache":
+        elif n.get("ambient") or n.get("sight_range") or n.get("sprite") in ("item_cache", "milagro_card"):
             errs.append(f"{mid}: '{nid}' is ambient/a trainer/a cache — not a talk NPC")
         if not str(ref).startswith("script."):
             errs.append(f"{mid}: talk re-point '{nid}' -> '{ref}' must be a staged script.*")

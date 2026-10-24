@@ -260,7 +260,7 @@ async function analyse(root, tag) {
           S(s.flag, ref);
           break;
         case 'milagroCard': // banks milagro:<card> (content/milagros.ts)
-          S(`milagro:${s.card}`, ref);
+          S(s.card === 'lore' ? 'flag:milagro_lore' : `milagro:${s.card}`, ref);
           break;
         case 'timer': // a run clock's `stop` sets each beaten tier's flag (the Wick-Run)
           for (const t of s.tiers ?? []) (S(t.flag, ref), S(t.flag + '_now', ref));
@@ -355,7 +355,7 @@ async function analyse(root, tag) {
       if (n.defeated_flag) (S(n.defeated_flag, `${mid}:${n.id} (engine on win)`), R(n.defeated_flag, `${mid}:${n.id}`));
       const sp = n.sprite;
       const km = /^kin_(\d+)_overworld$/.exec(sp);
-      if (sp === 'item_cache' || sp in ALIASES) continue;
+      if (sp === 'item_cache' || sp === 'milagro_card' || sp in ALIASES) continue;
       if (km) {
         if (creatureIds.size && !creatureIds.has(Number(km[1]))) add('E-SPRITE', `${mid}:${n.id} creature sprite ${sp} not packed`);
         continue;

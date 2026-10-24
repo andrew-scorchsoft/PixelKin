@@ -2637,6 +2637,18 @@
       "hidden_when_flag": "flag:picked_dimglass_deep"
     },
     {
+      "id": "milagro_fogbird",
+      "at": {
+        "tx": 7,
+        "ty": 6
+      },
+      "facing": "down",
+      "sprite": "milagro_card",
+      "movement": "static",
+      "dialogue_ref": "script.milagro_lying_fogbird",
+      "hidden_when_flag": "milagro:fogbird"
+    },
+    {
       "id": "oldlight_hint_road",
       "at": {
         "tx": 11,

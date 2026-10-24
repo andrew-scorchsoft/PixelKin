@@ -580,6 +580,18 @@
       "movement": "static",
       "dialogue_ref": "script.pickup_undercroft_balm",
       "hidden_when_flag": "flag:picked_undercroft_balm"
+    },
+    {
+      "id": "milagro_bones",
+      "at": {
+        "tx": 3,
+        "ty": 12
+      },
+      "facing": "down",
+      "sprite": "milagro_card",
+      "movement": "static",
+      "dialogue_ref": "script.milagro_lying_bones",
+      "hidden_when_flag": "milagro:bones"
     }
   ],
   "gates": [],

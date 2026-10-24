@@ -1530,7 +1530,11 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `ui/MilagroView` reveal ceremony (flip + `world-milagro` chime); the pack is START > MILAGROS once any card is held.
   Art: photo crops `assets/milagros/refs/` → `tools/assets/gen_milagros.py` (OpenAI edit; `photo` cards come straight
   from the photo via `milagro_photo.py`; `altered` cards get a baked disclaimer at `--pack`). New givers must be
-  permanent, talkable NPCs.
+  permanent, talkable NPCs. ELEVEN cards (+ the printed LORE SLIP, `flag:milagro_lore`, at the Crossroads fingerpost)
+  instead LIE in the world: `lying: {map, where}` in milagros.ts + a `_MILAGRO_LYING` row (tile) in
+  `hand_placed_data.py` → a glinting `sprite: milagro_card` pickup (drawn in `Npc.ts`) running
+  `script.milagro_lying_<id>`. A lying card is an NPC body: never park one on the only tile something is read from
+  (audit_journey caught one sealing Tinderwick's well). Lore art: `tools/assets/milagro_lorecard.py`.
 - **One-way exits are `travel`, not warps** (Lowtinder's well climb into Tinderwick): audit_warps
   rejects a warp with no return; a scripted `travel` is the legal one-way door.
 

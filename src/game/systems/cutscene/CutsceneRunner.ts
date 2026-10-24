@@ -14,7 +14,7 @@ import { StarterSelect } from '@game/ui/StarterSelect';
 import { Menu } from '@game/ui/Menu';
 import { NameEntry } from '@game/ui/NameEntry';
 import { MilagroView } from '@game/ui/MilagroView';
-import { MILAGROS, milagroFlag } from '@game/content/milagros';
+import { MILAGROS, MILAGRO_LORE, MILAGRO_LORE_FLAG, MILAGRO_LORE_TITLE, milagroFlag } from '@game/content/milagros';
 import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox, clearCinematicFx } from '@game/ui/Transitions';
 import { hex } from '@game/ui/theme';
 import { getDialogue } from '@game/content/dialogue';
@@ -362,6 +362,19 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       return true;
     }
     case 'milagroCard': {
+      if (step.card === 'lore') {
+        // the printed story slip that came in the box: its own little reveal
+        ctx.flags.set(MILAGRO_LORE_FLAG, true);
+        await new MilagroView(scene, ctx.sfx).reveal(
+          { id: 'lore', title: MILAGRO_LORE_TITLE, hint: '', story: MILAGRO_LORE },
+          { number: 0, total: MILAGROS.length, first: false, lore: true, music: ctx.music },
+        );
+        await new DialogueBox(scene, ctx.sfx).run([
+          { text: 'You tuck the slip away. Whatever these cards are, it says, they are out there: given to strangers, left lying about. Keep an eye out.' },
+          { text: 'You can read it again any time: press START and choose MILAGROS. Any cards you find will live there too.' },
+        ]);
+        return true;
+      }
       const card = MILAGROS.find((c) => c.id === step.card);
       if (!card) return true;
       const first = ctx.flags.countHeld('milagro:') === 0;
@@ -376,7 +389,7 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
         // the first card: say plainly where they live from now on
         await new DialogueBox(scene, ctx.sfx).run([
           { text: `A card to keep. You can look at it again any time, along with every other milagro card you find: press START and choose MILAGROS.` },
-          { text: `There are ${MILAGROS.length} of them, and folk all over Vesperholm have been left one. Talk to people. Somebody always has a card they don't know what to do with.` },
+          { text: `There are ${MILAGROS.length} of them. Folk all over Vesperholm have been left one, and some are just lying about. Talk to people, and keep your eyes on the ground.` },
         ]);
       }
       return true;

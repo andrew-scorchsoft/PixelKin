@@ -24,7 +24,7 @@ import { GlossaryMenu } from '@game/ui/GlossaryMenu';
 import { RegisterMenu } from '@game/ui/RegisterMenu';
 import { GleamsMenu } from '@game/ui/GleamsMenu';
 import { MilagroView } from '@game/ui/MilagroView';
-import { MILAGROS_BY_GIVER, MILAGRO_PACK_FLAG, milagroFlag } from '@game/content/milagros';
+import { MILAGROS_BY_GIVER, MILAGRO_LORE_FLAG, MILAGRO_PACK_FLAG, milagroFlag } from '@game/content/milagros';
 import { ChartsMenu } from '@game/ui/ChartsMenu';
 import { JournalMenu } from '@game/ui/JournalMenu';
 import { TravelMenu } from '@game/ui/TravelMenu';
@@ -921,7 +921,7 @@ export class WorldScene extends Phaser.Scene {
 
   private attachNpcAmbience(npc: Npc): void {
     const sprite = npc.placement.sprite;
-    this.ambience?.attach(npc, sprite === 'item_cache' ? 'cache' : /^kin_\d+_overworld$/.test(sprite) ? 'kin' : 'npc');
+    this.ambience?.attach(npc, sprite === 'item_cache' || sprite === 'milagro_card' ? 'cache' : /^kin_\d+_overworld$/.test(sprite) ? 'kin' : 'npc');
   }
 
   private teardownMap(): void {
@@ -2550,7 +2550,8 @@ export class WorldScene extends Phaser.Scene {
         { label: 'LORE', value: 'lore' },
         { label: 'CHARTS', value: 'charts' },
         // Paul's milagro cards, once he's given you the box (content/milagros.ts)
-        ...(this.flags.countHeld('milagro:') > 0 ? [{ label: 'MILAGROS', value: 'milagros' }] : []),
+        ...(this.flags.countHeld('milagro:') > 0 || this.flags.get(MILAGRO_LORE_FLAG)
+          ? [{ label: 'MILAGROS', value: 'milagros' }] : []),
         { label: 'SAVE', value: 'save' },
         { label: 'SETTINGS', value: 'settings' },
       ];
@@ -2603,6 +2604,7 @@ export class WorldScene extends Phaser.Scene {
         await new MilagroView(this, this.sfx).gallery(
           (id) => this.flags.get(milagroFlag(id)),
           this.flags.get(MILAGRO_PACK_FLAG),
+          this.flags.get(MILAGRO_LORE_FLAG),
         );
       } else if (choice === 'save') {
         await this.persist();

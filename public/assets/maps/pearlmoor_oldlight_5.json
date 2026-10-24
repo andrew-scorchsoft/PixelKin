@@ -1515,6 +1515,18 @@
       "movement": "look_around",
       "dialogue_ref": "npc.oldlight_moll_5",
       "hidden_when_flag": "flag:oldlight_5_solved"
+    },
+    {
+      "id": "milagro_stringy",
+      "at": {
+        "tx": 11,
+        "ty": 11
+      },
+      "facing": "down",
+      "sprite": "milagro_card",
+      "movement": "static",
+      "dialogue_ref": "script.milagro_lying_stringy",
+      "hidden_when_flag": "milagro:stringy"
     }
   ],
   "gates": [],
