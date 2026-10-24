@@ -913,6 +913,16 @@
       "ref": "sign.paul_paddle"
     },
     {
+      "id": "rack_out_0",
+      "kind": "cutscene",
+      "at": {
+        "tx": 2,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "script.paul_rail_out"
+    },
+    {
       "id": "rack_out",
       "kind": "cutscene",
       "at": {
@@ -921,6 +931,26 @@
       },
       "activation": "interact",
       "ref": "script.paul_rail_out"
+    },
+    {
+      "id": "rack_out_2",
+      "kind": "cutscene",
+      "at": {
+        "tx": 4,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "script.paul_rail_out"
+    },
+    {
+      "id": "rack_in_0",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "script.paul_rail_in"
     },
     {
       "id": "rack_in",
@@ -933,10 +963,40 @@
       "ref": "script.paul_rail_in"
     },
     {
+      "id": "rack_in_2",
+      "kind": "cutscene",
+      "at": {
+        "tx": 8,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "script.paul_rail_in"
+    },
+    {
+      "id": "rack_never_0",
+      "kind": "cutscene",
+      "at": {
+        "tx": 11,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "script.paul_rail_never"
+    },
+    {
       "id": "rack_never",
       "kind": "cutscene",
       "at": {
         "tx": 12,
+        "ty": 4
+      },
+      "activation": "interact",
+      "ref": "script.paul_rail_never"
+    },
+    {
+      "id": "rack_never_2",
+      "kind": "cutscene",
+      "at": {
+        "tx": 13,
         "ty": 4
       },
       "activation": "interact",

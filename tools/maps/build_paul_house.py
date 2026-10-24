@@ -188,8 +188,12 @@ def middle() -> dict:
     # board on the bar (the overhang row) and runs a "hold one up" menu.
     for rid, x in (("out", 2), ("in", 6), ("never", 11)):
         stand(objects, f"rack_{rid}", f"rack_{rid}", x, 2, 3, 3, overhang=1, walk_under=True)
-        triggers.append({"id": f"rack_{rid}", "kind": "cutscene", "at": {"tx": x + 1, "ty": 4},
-                         "activation": "interact", "ref": f"script.paul_rail_{rid}"})
+        # every tile of the rail's front answers (a 3x3 is too big for the
+        # engine's any-tile furniture reach), not just the middle one
+        for dx in range(3):
+            tid = f"rack_{rid}" if dx == 1 else f"rack_{rid}_{dx}"
+            triggers.append({"id": tid, "kind": "cutscene", "at": {"tx": x + dx, "ty": 4},
+                             "activation": "interact", "ref": f"script.paul_rail_{rid}"})
     # the FESTIVAL OF THE IMAGINED: a lectern of hand-printed programmes in the
     # maple corner (script.paul_festival pages through one)
     stand(objects, "festival", "festival_lectern", 14, 6, 1, 2, overhang=1, walk_under=True)
