@@ -13,47 +13,47 @@
  * — he's out walking; a note on the kitchen table says so. The Registry story
  * stays unconfirmed. NOBODY here says what the Booji-Wooji Man is.
  *
- * The heart of it is FENNELLA, his granddaughter, in the attic. The Rise is only
+ * The heart of it is FELICITAS, his granddaughter, in the attic. The Rise is only
  * reachable after the waystone's word (S5), which itself needs the Chickenpig —
  * so in play she always meets you AFTER `flag:chickenpig_caught`. The tiny
  * "before" branch is a safety net for odd saves and gives nothing away (she
  * likes chickens, and pigs, separately). AFTER: her walls are covered in
  * Chickenpig drawings, she has a plush, she shrieks — and if your Chickenpig is
  * in your lamp it comes out to meet her (`setLead` puts it in front, undone at scene end; a `travel`
- * re-entry onto the same tile spawns the visitor NPC `fennella_cp`, gated on
+ * re-entry onto the same tile spawns the visitor NPC `felicitas_cp`, gated on
  * `flag:paul_lottie_cp_out`, which the scene clears again). First meeting: a
- * dance and a keepsake (FENNELLA'S DRAWING). Repeat visits: short and happy.
+ * dance and a keepsake (FELICITAS'S DRAWING). Repeat visits: short and happy.
  *
- * Staging tiles (paul_house_3): Fennella (5,5); the visitor appears at (6,6); the
+ * Staging tiles (paul_house_3): Felicitas (5,5); the visitor appears at (6,6); the
  * player re-enters at (4,6) facing right. Never progression: nothing here gates.
  */
 import type { CutsceneStep, DialogueRegistry, ScriptRegistry } from '../types';
 import { MILAGROS, MILAGRO_LORE_FLAG, MILAGRO_PACK_FLAG, milagroLyingScript } from '../milagros';
 
 const CP = 'flag:chickenpig_caught';
-// (Fennella was once "Lottie": these flag strings and the lottie_drawing item id keep the old
+// (Felicitas was once "Lottie": these flag strings and the lottie_drawing item id keep the old
 // name on purpose, so saves made before the rename keep her scene state and the drawing.)
 const SCENE = 'flag:paul_lottie_scene'; // the first after-catch shriek has happened
 const MET = 'flag:paul_lottie_cp_met'; // the Chickenpig has met her (gift given)
 const OUT = 'flag:paul_lottie_cp_out'; // the visitor NPC is in the room
-const L = 'FENNELLA';
+const L = 'FELICITAS';
 
 /** Out of the lamp: the Chickenpig steps in front, the room re-enters with it in it. */
 const LET_IT_OUT: CutsceneStep[] = [
-  { op: 'setLead', kin: 163, missingRef: 'npc.paul_fennella_cp_missing' },
+  { op: 'setLead', kin: 163, missingRef: 'npc.paul_felicitas_cp_missing' },
   { op: 'action', actor: 'player', action: 'raiseLamp', holdMs: 600 },
   { op: 'sfx', key: 'world-lantern-light' },
   { op: 'setFlag', flag: OUT },
   { op: 'travel', map: 'paul_house_3', to: { tx: 4, ty: 6 }, facing: 'right' },
-  { op: 'face', actor: 'fennella', facing: 'down' },
+  { op: 'face', actor: 'felicitas', facing: 'down' },
   { op: 'sfx', key: 'cry-163' },
-  { op: 'hop', actor: 'fennella_cp', times: 2 },
+  { op: 'hop', actor: 'felicitas_cp', times: 2 },
 ];
 
 /** Back into the lamp (the visitor leaves when the scene ends and the flag is re-read). */
 const BACK_IN: CutsceneStep[] = [
   { op: 'sfx', key: 'world-lantern-light' },
-  { op: 'hideActor', actor: 'fennella_cp' },
+  { op: 'hideActor', actor: 'felicitas_cp' },
   { op: 'setFlag', flag: OUT, value: false },
 ];
 
@@ -154,7 +154,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   'script.paul_note': [
     { op: 'narrate', text: 'A note, propped against the candle in big loopy capitals:' },
     { op: 'narrate', unless_flag: 'flag:q_south_wander_done', text: '"GONE WALKING. UP THE OLD WOOD. BACK WHEN I\'M BACK. KETTLE\'S YOURS. DON\'T TOUCH THE SHIRTS. — p."' },
-    { op: 'narrate', if_flag: 'flag:q_south_wander_done', text: '"GONE TO KEEP THE DARK COMPANY. FENNELLA\'S UPSTAIRS — SHE\'LL SHOW YOU EVERYTHING WHETHER YOU LIKE IT OR NOT. KETTLE\'S YOURS. — p."' },
+    { op: 'narrate', if_flag: 'flag:q_south_wander_done', text: '"GONE TO KEEP THE DARK COMPANY. FELICITAS\'S UPSTAIRS — SHE\'LL SHOW YOU EVERYTHING WHETHER YOU LIKE IT OR NOT. KETTLE\'S YOURS. — p."' },
     { op: 'narrate', text: 'Under it, in different ink: "P.S. if anyone from a bureau asks, I am a retired cheese-bun inspector!!!!!!"' },
   ],
   // ---- Rose --------------------------------------------------------------------------
@@ -165,10 +165,10 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'rose', facing: 'down' },
     { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'Oh! Hello. You\'ll be another of Dad\'s strays. I\'m Rose. He\'s out walking. He\'s always out walking.' },
     { op: 'say', if_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'Back again? Kettle\'s on. It\'s always on. Dad says a cold kettle is how a house forgets you.' },
-    { op: 'say', unless_flag: CP, speaker: 'ROSE', text: 'Fennella\'s up in the attic, drawing chickens. And pigs. She keeps asking me which one would win. I keep saying "a nap".' },
-    { op: 'say', if_flag: CP, unless_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'Is that a FEATHER on your sleeve? Green, curly... Oh, Fennella is going to lose her mind. Go on up. I\'ll stay here and hold the teapot steady.' },
+    { op: 'say', unless_flag: CP, speaker: 'ROSE', text: 'Felicitas\'s up in the attic, drawing chickens. And pigs. She keeps asking me which one would win. I keep saying "a nap".' },
+    { op: 'say', if_flag: CP, unless_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'Is that a FEATHER on your sleeve? Green, curly... Oh, Felicitas is going to lose her mind. Go on up. I\'ll stay here and hold the teapot steady.' },
     { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'He came home with a tin cup and a grin and won\'t say where he got either. Whatever you did up that wood, thank you. He\'s been humming.' },
-    { op: 'say', speaker: 'ROSE', text: 'If you go up to his shirts: the NEVER rail is mine and Fennella\'s doing. He wore ASK ME ABOUT MY KNEES to a christening. Somebody asked.' },
+    { op: 'say', speaker: 'ROSE', text: 'If you go up to his shirts: the NEVER rail is mine and Felicitas\'s doing. He wore ASK ME ABOUT MY KNEES to a christening. Somebody asked.' },
     { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'He\'s planning a festival again, too. The Festival of the Imagined. The programmes are upstairs. Everyone on the bill is somebody out of a story, which does keep the catering simple.' },
     { op: 'say', unless_flag: MILAGRO_PACK_FLAG, speaker: 'ROSE', text: 'And if he\'s in a good mood, ask him about the cards. The painted ones, out at his lamp. He pretends he doesn\'t want to show you.' },
     { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'And that poster by the fire is a JOKE. Probably. I stopped asking around the time I learned to make tea.' },
@@ -178,7 +178,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   // The museum placard at the top of the stairs (once).
   'script.paul_museum': [
     { op: 'narrate', text: 'A hand-lettered placard at the top of the stairs:' },
-    { op: 'narrate', text: 'THE MUSEUM OF T-SHIRTS. ADMISSION: ONE STORY. PLEASE DO NOT TOUCH THE EXHIBITS. (FENNELLA MAY TOUCH THE EXHIBITS.)' },
+    { op: 'narrate', text: 'THE MUSEUM OF T-SHIRTS. ADMISSION: ONE STORY. PLEASE DO NOT TOUCH THE EXHIBITS. (FELICITAS MAY TOUCH THE EXHIBITS.)' },
     { op: 'narrate', text: 'Underneath, smaller: THE WORKING RAILS — OUT. IN. NEVER. (THE THIRD ONE IS NOT A CHALLENGE.)' },
     { op: 'setFlag', flag: 'flag:paul_museum_seen' },
   ],
@@ -198,7 +198,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
       matches: [
         { value: 'PAUL', flag: 'flag:paul_festival_paul' },
         { value: 'ROSE', flag: 'flag:paul_festival_family' },
-        { value: 'FENNELLA', flag: 'flag:paul_festival_family' },
+        { value: 'FELICITAS', flag: 'flag:paul_festival_family' },
       ],
     },
     { op: 'narrate', unless_flag: 'flag:paul_festival_paul', text: 'You write the name on the last page, small and neat. Somewhere in the house a floorboard creaks, as if the room has started setting out another chair.' },
@@ -237,10 +237,10 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
 
   // ---- the three rails ------------------------------------------------------------------
   'script.paul_rail_out': [
-    { op: 'narrate', text: 'A tidy rail under a green board: OUT. Pressed, buttoned, collared. A card in Paul\'s loopy hand: "SAFE TO BE SEEN IN. FENNELLA HAS APPROVED EACH ONE IN WRITING."' },
+    { op: 'narrate', text: 'A tidy rail under a green board: OUT. Pressed, buttoned, collared. A card in Paul\'s loopy hand: "SAFE TO BE SEEN IN. FELICITAS HAS APPROVED EACH ONE IN WRITING."' },
     ...railMenu(RAIL_FLAGS[0], [
       shirtPick('The navy one', 'Plain navy, two buttons, not a crease on it. The card: "for the bank and the barber. same shirt for thirty years. neither of them has noticed."'),
-      shirtPick('The white one', 'Crisp white, with a tiny lighthouse stitched over the pocket. The card: "fennella ironed this one. it is now a slightly different shape. still wearing it."'),
+      shirtPick('The white one', 'Crisp white, with a tiny lighthouse stitched over the pocket. The card: "felicitas ironed this one. it is now a slightly different shape. still wearing it."'),
       shirtPick('The mustard one', 'Mustard yellow with a proper collar. The card: "collars mean you can be trusted with a ladder. that\'s the rule. i didn\'t make it. (i made it.)"'),
     ]),
   ],
@@ -254,13 +254,13 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     ]),
   ],
   'script.paul_rail_never': [
-    { op: 'narrate', text: 'An iron rail under a red board: NEVER! A velvet rope hangs across the front, padlocked to the post. Tucked into the padlock, a card in Fennella\'s crayon:' },
-    { op: 'narrate', text: '"GRANDAD THESE ARE BANNED. NOT OUTSIDE. NOT INSIDE. NOT EVER. — FENNELLA (IN CHARGE)"' },
+    { op: 'narrate', text: 'An iron rail under a red board: NEVER! A velvet rope hangs across the front, padlocked to the post. Tucked into the padlock, a card in Felicitas\'s crayon:' },
+    { op: 'narrate', text: '"GRANDAD THESE ARE BANNED. NOT OUTSIDE. NOT INSIDE. NOT EVER. — FELICITAS (IN CHARGE)"' },
     { op: 'narrate', unless_flag: RAIL_FLAGS[2], text: 'The rope is only padlocked at one end. You lift it, very carefully, and duck under.' },
     { op: 'emote', unless_flag: RAIL_FLAGS[2], actor: 'player', emote: 'sweat' },
     ...railMenu(RAIL_FLAGS[2], [
       shirtPick('The lime one', 'Lime green with yellow zigzags, and in enormous letters: ASK ME ABOUT MY KNEES. Paul\'s card: "nobody asks. everybody is told."'),
-      shirtPick('The pink one', 'Hot pink, with a beaming cartoon bun: CERTIFIED BUN INSPECTOR. Fennella\'s crayon underneath: "CONFISKATED. EVIDENSE."'),
+      shirtPick('The pink one', 'Hot pink, with a beaming cartoon bun: CERTIFIED BUN INSPECTOR. Felicitas\'s crayon underneath: "CONFISKATED. EVIDENSE."'),
       shirtPick('The black one', 'Black, with one word in tall white letters: NO. Paul\'s card: "wore it to a wedding. the vicar asked me a question. i didn\'t even have to answer."'),
       shirtPick('The orange one', 'Bright orange and completely plain. You turn it round. On the back: I\'M NOT LOST, I\'M WANDERING. Paul\'s card: "banned for being too true. i appealed. i lost."'),
     ]),
@@ -284,31 +284,31 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:paul_rails_note' },
   ],
 
-  // ---- Fennella ---------------------------------------------------------------------------
+  // ---- Felicitas ---------------------------------------------------------------------------
   // Exactly one branch: the return visit FIRST, so the first scene (which sets
   // SCENE at its end) never falls through into it.
-  'script.paul_fennella': [
-    { op: 'run', ref: 'script.paul_fennella_again', if_flag: SCENE },
-    { op: 'run', ref: 'script.paul_fennella_first', if_flag: CP, unless_flag: SCENE },
-    { op: 'run', ref: 'script.paul_fennella_before', unless_flag: CP },
+  'script.paul_felicitas': [
+    { op: 'run', ref: 'script.paul_felicitas_again', if_flag: SCENE },
+    { op: 'run', ref: 'script.paul_felicitas_first', if_flag: CP, unless_flag: SCENE },
+    { op: 'run', ref: 'script.paul_felicitas_before', unless_flag: CP },
   ],
 
   // The safety-net "before" (unreachable in normal play): a cheerful kid, no hints.
-  'script.paul_fennella_before': [
-    { op: 'face', actor: 'fennella', facing: 'down' },
+  'script.paul_felicitas_before': [
+    { op: 'face', actor: 'felicitas', facing: 'down' },
     { op: 'say', speaker: L, text: 'Hello! Are you here for Grandad? He\'s out walking. He\'s ALWAYS out walking. He says he\'s not lost, he\'s just somewhere else on purpose.' },
     { op: 'say', speaker: L, text: 'Did you see his shirts? He\'s got one from EVERYWHERE. He says if you don\'t come home with a shirt, you weren\'t really there.' },
     { op: 'say', speaker: L, text: 'I like chickens. And pigs. Separately. Normal amounts.' },
   ],
 
   // THE SCENE — the first visit after the Chickenpig is caught.
-  'script.paul_fennella_first': [
-    { op: 'face', actor: 'fennella', facing: 'down' },
+  'script.paul_felicitas_first': [
+    { op: 'face', actor: 'felicitas', facing: 'down' },
     { op: 'say', speaker: L, text: 'Hello! Are you here for Grandad? He\'s out walking, he\'s always out walk—' },
-    { op: 'emote', actor: 'fennella', emote: 'alert', holdMs: 700 },
+    { op: 'emote', actor: 'felicitas', emote: 'alert', holdMs: 700 },
     { op: 'narrate', text: 'She stops. She is looking at your sleeve. Stuck to it is one long, curling, emerald-green tail-feather.' },
     { op: 'say', speaker: L, text: '...Where did you get that.' },
-    { op: 'shakeActor', actor: 'fennella', ms: 500, px: 1 },
+    { op: 'shakeActor', actor: 'felicitas', ms: 500, px: 1 },
     { op: 'say', speaker: L, text: 'That\'s a SICKLE feather. That\'s a CHICKENPIG sickle feather. Grandad TOLD me about it — the bird that\'s a pig, the pig that\'s a bird, the only one that still crows for the morning —' },
     { op: 'say', speaker: L, text: '— and NOBODY at school believed me, and Grandad said "believe what you like, Lots, the morning\'s on its way regardless" —' },
     { op: 'say', speaker: L, text: 'HAVE YOU GOT A CHICKENPIG IN THERE?!' },
@@ -316,8 +316,8 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'From your vesperlamp comes a small, smug sound: half crow, half oink.' },
     { op: 'shake', ms: 450, intensity: 0.004 },
     { op: 'say', speaker: L, text: 'EEEEEEEEEEEEEEEEEE!!!' },
-    { op: 'hop', actor: 'fennella', times: 3, height: 6 },
-    { op: 'emote', actor: 'fennella', emote: 'heart', holdMs: 900 },
+    { op: 'hop', actor: 'felicitas', times: 3, height: 6 },
+    { op: 'emote', actor: 'felicitas', emote: 'heart', holdMs: 900 },
     { op: 'narrate', text: 'Somewhere far below, a kettle rattles on its hob in sympathy.' },
     { op: 'say', speaker: L, text: 'Look! LOOK! I drew it! Before I\'d even SEEN one! I drew it ninety times! That\'s not true. I drew it four times. They\'re the best four.' },
     { op: 'cameraFocus', to: { tx: 7, ty: 2 }, ms: 700 },
@@ -326,14 +326,14 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: L, text: 'And that\'s Sir Oinksalot. Grandad sewed him. His comb fell off twice. He\'s very brave about it.' },
     { op: 'cameraReset', ms: 500 },
     { op: 'say', speaker: L, text: 'Can I meet it? Please? PLEASE? I\'ll be so gentle. I\'ll be the gentlest anyone\'s EVER been. Look, I\'m being gentle right now.' },
-    { op: 'shakeActor', actor: 'fennella', ms: 400, px: 1 },
+    { op: 'shakeActor', actor: 'felicitas', ms: 400, px: 1 },
     { op: 'narrate', text: 'She is vibrating.' },
     { op: 'setFlag', flag: SCENE },
     {
       op: 'choice',
-      prompt: 'Let the Chickenpig out to meet Fennella?',
+      prompt: 'Let the Chickenpig out to meet Felicitas?',
       options: [
-        { label: 'LET IT OUT', ops: [{ op: 'run', ref: 'script.paul_fennella_meet' }] },
+        { label: 'LET IT OUT', ops: [{ op: 'run', ref: 'script.paul_felicitas_meet' }] },
         {
           label: 'NOT RIGHT NOW',
           ops: [
@@ -347,65 +347,65 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   ],
 
   // The meeting, the dance, the keepsake (once).
-  'script.paul_fennella_meet': [
+  'script.paul_felicitas_meet': [
     ...LET_IT_OUT,
     { op: 'narrate', text: 'You lift your vesperlamp. The Chickenpig decides, entirely on its own, that this is its moment — and steps out into the attic like it owns the place.' },
-    { op: 'emote', actor: 'fennella', emote: 'alert' },
+    { op: 'emote', actor: 'felicitas', emote: 'alert' },
     { op: 'say', speaker: L, text: '...' },
     { op: 'say', speaker: L, text: '...it\'s REAL.' },
-    { op: 'face', actor: 'fennella_cp', facing: 'up' },
+    { op: 'face', actor: 'felicitas_cp', facing: 'up' },
     { op: 'sfx', key: 'cry-163' },
-    { op: 'narrate', text: 'The Chickenpig looks Fennella up and down, ruffles its one red wing, and CROWS at her.' },
+    { op: 'narrate', text: 'The Chickenpig looks Felicitas up and down, ruffles its one red wing, and CROWS at her.' },
     { op: 'say', speaker: L, text: 'It crowed at ME! It crowed AT ME! Grandad, it — oh, he\'s not here. Wait till I TELL him. He\'ll pretend he isn\'t impressed. He\'ll be SO impressed.' },
-    { op: 'hop', actor: 'fennella', times: 2, height: 5 },
-    { op: 'emote', actor: 'fennella', emote: 'heart' },
-    { op: 'emote', actor: 'fennella_cp', emote: 'heart' },
-    { op: 'say', speaker: L, text: 'Hello. Hello, Chickenpig. I\'m Fennella. I\'m seven and three-quarters. I have drawn you four times and I am going to draw you a HUNDRED.' },
+    { op: 'hop', actor: 'felicitas', times: 2, height: 5 },
+    { op: 'emote', actor: 'felicitas', emote: 'heart' },
+    { op: 'emote', actor: 'felicitas_cp', emote: 'heart' },
+    { op: 'say', speaker: L, text: 'Hello. Hello, Chickenpig. I\'m Felicitas. I\'m seven and three-quarters. I have drawn you four times and I am going to draw you a HUNDRED.' },
     { op: 'narrate', text: 'The Chickenpig considers this offer gravely, and oinks once. It is clearly a yes.' },
     { op: 'say', speaker: L, text: 'Do you dance? Grandad says everybody dances, some people just haven\'t found out yet.' },
     { op: 'music', key: 'pearlmoor-blessing' },
-    { op: 'spin', actor: 'fennella', turns: 2, ms: 120 },
-    { op: 'hop', actor: 'fennella_cp', times: 2 },
-    { op: 'spin', actor: 'fennella_cp', turns: 2, ms: 120 },
-    { op: 'hop', actor: 'fennella', times: 2 },
-    { op: 'emote', actor: 'fennella', emote: 'music' },
-    { op: 'emote', actor: 'fennella_cp', emote: 'music' },
-    { op: 'spin', actor: 'fennella', turns: 3, ms: 100 },
-    { op: 'spin', actor: 'fennella_cp', turns: 3, ms: 100 },
-    { op: 'narrate', text: 'What follows can only be described as a dance. Fennella does a sort of hop-hop-twirl. The Chickenpig does a sort of hop-hop-oink. Neither of them leads. Both of them win.' },
+    { op: 'spin', actor: 'felicitas', turns: 2, ms: 120 },
+    { op: 'hop', actor: 'felicitas_cp', times: 2 },
+    { op: 'spin', actor: 'felicitas_cp', turns: 2, ms: 120 },
+    { op: 'hop', actor: 'felicitas', times: 2 },
+    { op: 'emote', actor: 'felicitas', emote: 'music' },
+    { op: 'emote', actor: 'felicitas_cp', emote: 'music' },
+    { op: 'spin', actor: 'felicitas', turns: 3, ms: 100 },
+    { op: 'spin', actor: 'felicitas_cp', turns: 3, ms: 100 },
+    { op: 'narrate', text: 'What follows can only be described as a dance. Felicitas does a sort of hop-hop-twirl. The Chickenpig does a sort of hop-hop-oink. Neither of them leads. Both of them win.' },
     { op: 'action', actor: 'player', action: 'laugh', holdMs: 900 },
     { op: 'sfx', key: 'cry-163' },
-    { op: 'hop', actor: 'fennella_cp', times: 3, height: 6 },
-    { op: 'narrate', text: 'At the big finish it crows and oinks at the SAME TIME — which should not be possible, and which Fennella will be describing to everyone she meets for the rest of her life.' },
-    { op: 'shakeActor', actor: 'fennella', ms: 600, px: 1 },
+    { op: 'hop', actor: 'felicitas_cp', times: 3, height: 6 },
+    { op: 'narrate', text: 'At the big finish it crows and oinks at the SAME TIME — which should not be possible, and which Felicitas will be describing to everyone she meets for the rest of her life.' },
+    { op: 'shakeActor', actor: 'felicitas', ms: 600, px: 1 },
     { op: 'say', speaker: L, text: 'BEST. DAY. EVER.' },
     { op: 'musicFade', ms: 900 },
-    { op: 'face', actor: 'fennella', facing: 'left' },
+    { op: 'face', actor: 'felicitas', facing: 'left' },
     { op: 'say', speaker: L, text: 'I made you something. Well — I made it for the Chickenpig, but it can\'t hold things, it\'s got a wing and a trotter, so you have to carry it.' },
     { op: 'say', speaker: L, text: 'It\'s the best one. Don\'t look at the ones on the wall, they\'re worse. (They\'re not worse. They\'re all the best.)' },
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'lottie_drawing', count: 1 },
-    { op: 'say', text: 'Fennella hands you a crayon drawing, slightly crumpled from being held very tightly. Received FENNELLA\'S DRAWING!' },
+    { op: 'say', text: 'Felicitas hands you a crayon drawing, slightly crumpled from being held very tightly. Received FELICITAS\'S DRAWING!' },
     { op: 'say', speaker: L, text: 'Keep it somewhere it can see the sky. That\'s what Grandad says about everything.' },
     { op: 'setFlag', flag: MET },
-    { op: 'narrate', text: 'The Chickenpig gives Fennella one last appraising look, oinks something that sounds a lot like "see you", and hops back into your lamp\'s light.' },
+    { op: 'narrate', text: 'The Chickenpig gives Felicitas one last appraising look, oinks something that sounds a lot like "see you", and hops back into your lamp\'s light.' },
     ...BACK_IN,
-    { op: 'emote', actor: 'fennella', emote: 'heart' },
+    { op: 'emote', actor: 'felicitas', emote: 'heart' },
     { op: 'music', key: 'interior-sunny' },
   ],
 
   // Return visits: short and happy, and the Chickenpig can come out again any time.
-  'script.paul_fennella_again': [
-    { op: 'face', actor: 'fennella', facing: 'down' },
-    { op: 'emote', actor: 'fennella', emote: 'heart' },
+  'script.paul_felicitas_again': [
+    { op: 'face', actor: 'felicitas', facing: 'down' },
+    { op: 'emote', actor: 'felicitas', emote: 'heart' },
     { op: 'say', speaker: L, if_flag: MET, text: 'You\'re BACK! Is it in there? Is it awake? Can I say hello? HELLO, CHICKENPIG!' },
     { op: 'say', speaker: L, unless_flag: MET, text: 'You came back! Is it awake now? Can I meet it? I\'ve been waiting. Not very well.' },
     {
       op: 'choice',
       prompt: 'Let the Chickenpig out?',
       options: [
-        { label: 'LET IT OUT', unless_flag: MET, ops: [{ op: 'run', ref: 'script.paul_fennella_meet' }] },
-        { label: 'LET IT OUT', if_flag: MET, ops: [{ op: 'run', ref: 'script.paul_fennella_visit' }] },
+        { label: 'LET IT OUT', unless_flag: MET, ops: [{ op: 'run', ref: 'script.paul_felicitas_meet' }] },
+        { label: 'LET IT OUT', if_flag: MET, ops: [{ op: 'run', ref: 'script.paul_felicitas_visit' }] },
         {
           label: 'JUST VISITING',
           ops: [
@@ -415,14 +415,14 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
       ],
     },
   ],
-  'script.paul_fennella_visit': [
+  'script.paul_felicitas_visit': [
     ...LET_IT_OUT,
     { op: 'say', speaker: L, text: 'HELLO! Hello hello hello. I drew you again. You\'re on the front door now. Grandad says that\'s the first thing visitors see. Grandad is RIGHT.' },
     { op: 'sfx', key: 'cry-163' },
-    { op: 'spin', actor: 'fennella', turns: 2, ms: 120 },
-    { op: 'spin', actor: 'fennella_cp', turns: 2, ms: 120 },
-    { op: 'emote', actor: 'fennella', emote: 'music' },
-    { op: 'emote', actor: 'fennella_cp', emote: 'heart' },
+    { op: 'spin', actor: 'felicitas', turns: 2, ms: 120 },
+    { op: 'spin', actor: 'felicitas_cp', turns: 2, ms: 120 },
+    { op: 'emote', actor: 'felicitas', emote: 'music' },
+    { op: 'emote', actor: 'felicitas_cp', emote: 'heart' },
     { op: 'narrate', text: 'One quick hop-hop-twirl, one quick hop-hop-oink. A shorter dance, but no less sincere.' },
     { op: 'say', speaker: L, text: 'Okay. Okay. You can go back in. I\'ll see you next time. I\'ll draw you NINETY times by then.' },
     ...BACK_IN,
@@ -431,9 +431,9 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
 
 export const PAUL_DIALOGUE: DialogueRegistry = {
   // Setlead's missing line: the Chickenpig's resting at the Hearth (or too tired to stand).
-  'npc.paul_fennella_cp_missing': [
-    { speaker: 'FENNELLA', text: 'It\'s... not in your lamp? Is it resting at the HEARTH?' },
-    { speaker: 'FENNELLA', text: 'That\'s okay. Bring it next time — awake and ready. I\'ll wait right here. I am VERY good at waiting. (I\'m not.)' },
+  'npc.paul_felicitas_cp_missing': [
+    { speaker: 'FELICITAS', text: 'It\'s... not in your lamp? Is it resting at the HEARTH?' },
+    { speaker: 'FELICITAS', text: 'That\'s okay. Bring it next time — awake and ready. I\'ll wait right here. I am VERY good at waiting. (I\'m not.)' },
   ],
 
   // ---- outside -----------------------------------------------------------------------------
@@ -551,14 +551,14 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
   ],
   'sign.paul_plaid': [
     { text: 'A red-and-black checked lumber-jacket from the maple country, and a bobble hat on the peg above it.' },
-    { text: 'The hat is Fennella\'s size. The jacket is not. She wears it anyway.' },
+    { text: 'The hat is Felicitas\'s size. The jacket is not. She wears it anyway.' },
   ],
   'sign.paul_syrup': [
     { text: 'A tin of maple syrup with a red-leaf label, beside a tin mug. The tin is empty.' },
     { text: 'Paul keeps it anyway. The smell, he says, is the souvenir.' },
   ],
 
-  // ---- Fennella's attic ----------------------------------------------------------------------
+  // ---- Felicitas's attic ----------------------------------------------------------------------
   'sign.paul_drawing_bike': [
     { text: 'A crayon drawing: a stick-man on a bicycle, going VERY fast (there are speed lines). Labelled: GRANDAD GOING TO THE JIM.' },
   ],
@@ -572,7 +572,7 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
     { text: 'A crayon Chickenpig in a cloud of hearts. So many hearts. One of the hearts has a heart in it.' },
   ],
   'sign.paul_cp_drawing_c': [
-    { text: 'Fennella and the Chickenpig, holding hands. Well — hand and wing. Labelled: BEST FRENDS (OFISHUL).' },
+    { text: 'Felicitas and the Chickenpig, holding hands. Well — hand and wing. Labelled: BEST FRENDS (OFISHUL).' },
   ],
   'sign.paul_cp_drawing_d': [
     { text: 'A rainbow over an extremely large Chickenpig. Labelled: THE BIGGEST ONE. And then, smaller: it is probly not that big in real life.' },
@@ -581,13 +581,13 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
     { text: 'A Chickenpig plush, lumpy and much-loved. Its comb has been sewn back on twice, in two different reds.' },
     { text: 'It has button eyes and an expression of total confidence. A label on its foot: SIR OINKSALOT.' },
   ],
-  'sign.paul_fennella_bed': [
-    { text: 'Fennella\'s bed. A crayon sign on the pillow: NO GROWN-UPS. (EXCEPT GRANDAD.) (EXCEPT YOU, MAYBE.)' },
+  'sign.paul_felicitas_bed': [
+    { text: 'Felicitas\'s bed. A crayon sign on the pillow: NO GROWN-UPS. (EXCEPT GRANDAD.) (EXCEPT YOU, MAYBE.)' },
   ],
-  'sign.paul_fennella_desk': [
+  'sign.paul_felicitas_desk': [
     { text: 'Crayons, all worn down to stubs — except the black one, which has hardly been touched. Grandad\'s lamp, presumably, gets drawn very carefully.' },
   ],
-  'sign.paul_fennella_toys': [
+  'sign.paul_felicitas_toys': [
     { text: 'A stack of toy crates: a wooden boat, a kite with no string, three spinning tops, and a little bicycle bell.' },
   ],
 };

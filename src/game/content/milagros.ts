@@ -203,10 +203,10 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'pig',
     title: 'GLOSSOLALIA',
-    giver: { map: 'paul_house_3', npc: 'fennella' },
+    giver: { map: 'paul_house_3', npc: 'felicitas' },
     hint: 'A crooked house up past the wood, in the attic: a girl who loves pigs (and chickens, separately).',
     found: [
-      'Fennella: "LOOK. A GOLDEN PIG. It says GLOSSOLALIA, which Grandad says is when you talk and talk and nobody ' +
+      'Felicitas: "LOOK. A GOLDEN PIG. It says GLOSSOLALIA, which Grandad says is when you talk and talk and nobody ' +
         'understands. That\'s ME."',
       '"You can have it, because you\'re my friend. I\'ve drawn you a pig as well. It\'s on the back of the toast. ' +
         'Eat round it."',

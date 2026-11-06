@@ -237,11 +237,11 @@ export const ITEMS: ItemRegistry = {
       turn_off: 'You screw the cap back on. The hum dies down to a mutter. The wilds lose interest.',
     },
   },
-  // Paul's House (2026-10): Fennella's keepsake, after the Chickenpig meets her.
+  // Paul's House (2026-10): Felicitas's keepsake, after the Chickenpig meets her.
   lottie_drawing: {
     id: 'lottie_drawing',
-    name: 'Fennella\'s Drawing',
-    desc: 'A crayon Chickenpig crowing at a crayon sun. Signed FENNELLA, very large.',
+    name: 'Felicitas\'s Drawing',
+    desc: 'A crayon Chickenpig crowing at a crayon sun. Signed FELICITAS, very large.',
     category: 'key',
   },
   fenn_letter: {

@@ -242,7 +242,7 @@ owed += pt.cache(m, cid="bay_shoal", at=(2, 8))
 owed += pt.cache(m, cid="bay_skerry_chart", at=(14, 14))
 owed += pt.cache(m, cid="bay_reef", at=(5, 24))
 # Grandmother Tallow on her reef, only while she's been rowed out (the scene's
-# `travel` re-enters the map so this placement spawns — Fennella's trick).
+# `travel` re-enters the map so this placement spawns — Felicitas's trick).
 m["npcs"].append(
     {"id": "ottery_reef", "at": {"tx": 18, "ty": 24}, "facing": "right", "sprite": "ottery",
      "movement": "static", "dialogue_ref": "script.lowtinder_reef_ottery",
