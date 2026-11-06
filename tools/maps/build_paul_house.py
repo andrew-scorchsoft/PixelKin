@@ -9,7 +9,7 @@ Paul is the quiet wanderer at the dark lamp (S4) who walks the old wood (S5).
 His house is the opposite of a mystery: it is ALL the evidence, and none of it
 agrees. A lifetime of travel between the maple country across the northern
 sea and the cape country far to the south, t-shirts from everywhere, a WANTED
-poster he swears is a joke — and his granddaughter LOTTIE in the attic, who
+poster he swears is a joke — and his granddaughter FENNELLA in the attic, who
 loves the Chickenpig more than anything in the world (after you've caught it;
 the Rise is only reachable after S5's waystone, which itself needs the catch).
 Paul himself is never home: he's out walking. Never confirm the Registry story;
@@ -34,14 +34,14 @@ partner floor's own return stair (roomkit.finish dresses both with stair sprites
        the sunset over the flat-topped mountain, the rugby ball, the sticker
        trunk, a globe); the MAPLE CORNER east (the plaid jacket on its stand,
        the syrup tin). Down-stair NE (16,2), up-stair NW (1,2).
-  2  paul_house_3  12x10  LOTTIE'S ATTIC  focal: the star window (top-centre)
+  2  paul_house_3  12x10  FENNELLA'S ATTIC  focal: the star window (top-centre)
        her drawings on the wall (two always; four Chickenpig ones once
        `flag:chickenpig_caught`), the Chickenpig PLUSH on the floor (same
        flag), her desk, the toy crates, and her bed in the nook behind the
-       partition. LOTTIE stands mid-room (script.paul_lottie). Down-stair NW (1,2).
+       partition. FENNELLA stands mid-room (script.paul_fennella). Down-stair NW (1,2).
 
-The Lottie scene stages on these tiles (keep them floor; audit_flow proves
-reach, the shoot proves the scene): Lottie (5,5); the Chickenpig "visitor" NPC
+The Fennella scene stages on these tiles (keep them floor; audit_flow proves
+reach, the shoot proves the scene): Fennella (5,5); the Chickenpig "visitor" NPC
 (`kin_163_overworld`, flag:paul_lottie_cp_out) appears at (6,6) when you let
 it out of your lamp (a `travel` re-entry onto the same map, so it spawns
 mid-scene), and goes back in when the scene ends.
@@ -240,7 +240,7 @@ def middle() -> dict:
                   objects, warps, triggers, npcs, MUSIC)
 
 
-# ---- TOP: Lottie's attic ------------------------------------------------------------------
+# ---- TOP: Fennella's attic ------------------------------------------------------------------
 CP = "flag:chickenpig_caught"
 
 
@@ -268,29 +268,29 @@ def attic() -> dict:
     windows(over, W, [10])
     # the bed nook (east), behind a partition open at the top
     partition_v(over, W, 8, 5, 8, lip="e")
-    place(objects, "bed", 9, 5, oid="lottie_bed")
-    sign(triggers, "bed", 9, 5, "sign.paul_lottie_bed")
+    place(objects, "bed", 9, 5, oid="fennella_bed")
+    sign(triggers, "bed", 9, 5, "sign.paul_fennella_bed")
     # her corner: the desk with crayons, the toy crates, a rug, the plush (after)
-    place(objects, "desk", 1, 5, oid="lottie_desk")
-    sign(triggers, "desk", 1, 5, "sign.paul_lottie_desk")
+    place(objects, "desk", 1, 5, oid="fennella_desk")
+    sign(triggers, "desk", 1, 5, "sign.paul_fennella_desk")
     place(objects, "crates", 1, 7, oid="toy_crates")
-    sign(triggers, "toys", 1, 7, "sign.paul_lottie_toys")
+    sign(triggers, "toys", 1, 7, "sign.paul_fennella_toys")
     place(objects, "rug", 4, 6, oid="attic_rug", solid=False)
     # solid, so you walk UP to it and press A rather than over it
     stand(objects, "plush", "plush", 7, 8, 1, 1, requires_flag=CP)
     sign(triggers, "plush", 7, 8, "sign.paul_plush", requires_flag=CP)
     place(objects, "plant", 10, 2, oid="attic_plant")
-    npcs.append({"id": "lottie", "at": {"tx": 5, "ty": 5}, "facing": "down",
+    npcs.append({"id": "fennella", "at": {"tx": 5, "ty": 5}, "facing": "down",
                  "sprite": "npc_girl", "movement": "static",
-                 "dialogue_ref": "script.paul_lottie"})
+                 "dialogue_ref": "script.paul_fennella"})
     # the Chickenpig, out of your lamp for a visit (the scene's travel re-entry
     # spawns it; it goes back in when the scene clears the flag)
-    npcs.append({"id": "lottie_cp", "at": {"tx": 6, "ty": 6}, "facing": "left",
+    npcs.append({"id": "fennella_cp", "at": {"tx": 6, "ty": 6}, "facing": "left",
                  "sprite": "kin_163_overworld", "movement": "static",
-                 "dialogue_ref": "script.paul_lottie",
+                 "dialogue_ref": "script.paul_fennella",
                  "requires_flag": "flag:paul_lottie_cp_out"})
     stair(warps, base, W, "down_stairs", "nw", M, MW)
-    return mapdef(A, "Paul's House — Lottie's Attic", W, H, WARM_SET, base, over,
+    return mapdef(A, "Paul's House — Fennella's Attic", W, H, WARM_SET, base, over,
                   objects, warps, triggers, npcs, MUSIC)
 
 

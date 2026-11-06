@@ -431,7 +431,7 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
   {
     id: 'pauls_house',
     term: 'Paul\'s house',
-    desc: 'A tall, crooked house beside the Wayward Arms, three floors of evidence about one man, none of which agrees: tickets from the maple country and the cape country, a museum of t-shirts, a WANTED poster he swears is a joke. He is never in. His granddaughter Lottie usually is.',
+    desc: 'A tall, crooked house beside the Wayward Arms, three floors of evidence about one man, none of which agrees: tickets from the maple country and the cape country, a museum of t-shirts, a WANTED poster he swears is a joke. He is never in. His granddaughter Fennella usually is.',
     unlock_flag: 'flag:paul_house_seen',
   },
   {

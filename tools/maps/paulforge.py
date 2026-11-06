@@ -17,7 +17,7 @@ Two mount classes (the interiorforge convention):
 
   WALL-HUNG  (1 row tall, placed ON the north wall's FACE row, solid:false):
     frames, paintings, the pin-board, the WANTED poster, the paddle, antlers,
-    beadwork, Lottie's drawings. Drawn to sit inside the 16px face band.
+    beadwork, Fennella's drawings. Drawn to sit inside the 16px face band.
   FREE-STANDING (top-down-frontal, ink outline, contact shadow):
     the shirt rack, coat stand, carved antelope, tea bench, gym kit, trunk,
     globe, rugby ball, syrup table, the Chickenpig plush.
@@ -380,7 +380,7 @@ def paddle():
 
 
 # =============================================================================
-#  LOTTIE'S DRAWINGS — crayon on paper, taped to the attic wall
+#  FENNELLA'S DRAWINGS — crayon on paper, taped to the attic wall
 # =============================================================================
 PAPER = [
     "..yy........yy..",
@@ -439,7 +439,7 @@ def cp_drawing_b():  # the Chickenpig surrounded by hearts
     return img(a)
 
 
-def cp_drawing_c():  # Lottie and the Chickenpig, holding hands (well, wing)
+def cp_drawing_c():  # Fennella and the Chickenpig, holding hands (well, wing)
     a = paper()
     stamp(a, GIRL, 2, 6)
     stamp(a, CP, 7, 5)
@@ -908,7 +908,7 @@ def syrup_table():
 
 
 def plush():
-    """1x1 the Chickenpig PLUSH — Lottie's, after the catch."""
+    """1x1 the Chickenpig PLUSH — Fennella's, after the catch."""
     a = canvas(1, 1)
     stamp(a, [
         "......rr........",
