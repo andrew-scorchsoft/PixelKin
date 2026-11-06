@@ -106,9 +106,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'pearlmoor_wanderwood_far', region: 'south', optional: true, reward: 'S5: the Far Side — Mags\'s griddle, the Answering Lamp, the glass steps (all optional)' },
     { map_id: 'wayward_rise', region: 'south', optional: true, reward: 'the Wayward Arms: an open bar, a corner chair, a stranger, a night talked away (a rest point)' }, // north of the Wanderwood
     { map_id: 'wayward_arms', region: 'south', optional: true }, // interior: the Wayward Arms' bar + snug
-    { map_id: 'paul_house_1', region: 'south', optional: true, reward: 'Paul\'s house: three floors of travel, t-shirts and a WANTED poster — and Fennella, who loves the Chickenpig' }, // interior: the kitchen-hall
+    { map_id: 'paul_house_1', region: 'south', optional: true, reward: 'Paul\'s house: three floors of travel, t-shirts and a WANTED poster — and Felicitas, who loves the Chickenpig' }, // interior: the kitchen-hall
     { map_id: 'paul_house_2', region: 'south', optional: true }, // interior: the T-shirt museum
-    { map_id: 'paul_house_3', region: 'south', optional: true }, // interior: Fennella's attic
+    { map_id: 'paul_house_3', region: 'south', optional: true }, // interior: Felicitas's attic
     { map_id: 'wakeful_fair', region: 'south', optional: true, reward: 'S7: the Wakeful Fair — sixteen free samples, one Grand Urn, and a record nobody can beat' }, // interior: the marquee on Wayward Rise
     { map_id: 'wakeful_fair_loft', region: 'south', optional: true }, // interior: the Roasters' Loft (trade only, until you talk fast enough)
     { map_id: 'wakeful_fair_dream', region: 'south', optional: true }, // interior: the bottom of the cup (the hallucination)

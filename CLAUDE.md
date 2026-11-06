@@ -595,7 +595,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   question; the tileset sidecar is the authority (maps carry only gids).
 - **Working with the owner (2026-10):** make the design calls yourself ("use your initiative") —
   ask only when blocked; send every new MP3 and art piece to chat (`SendUserFile`) for a listen/look.
-  Real people cameo (Andrew, Paul, Fennella): keep them warm. The beacon-road auctioneer
+  Real people cameo (Andrew, Paul, Felicitas): keep them warm. The beacon-road auctioneer
   (`script.wink_*`, speaker MAN WITH A CASE) is a nameless stranger who vanishes after the Tin
   Rower — NEVER call him or hint he's Paul.
 - **The easter-egg trail points at S4 "The Booji-Wooji Man."** Andrew at the Tinderwick fence
@@ -1222,7 +1222,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   punctuation. The Chickenpig is NEVER gifted — S4 is the only way to it.
 - **Paul's House (2026-10) is post-Chickenpig by construction** (`wayward_rise`, `paul_house_1/2/3`,
   `content/regions/paul.ts`, drawn kit `tools/maps/paulforge.py` → `paul_*` objects — its OWN master
-  folder, never interiorforge's). Fennella's Chickenpig scene uses two reusable tricks: a `travel` to
+  folder, never interiorforge's). Felicitas's Chickenpig scene uses two reusable tricks: a `travel` to
   the SAME map/tile re-enters it mid-scene so a flag-gated NPC (the `kin_163_overworld` visitor) spawns
   (NPCs only refresh at scene end otherwise; `hideActor` + `setFlag value:false` sends it home), and a
   bare `setLead` (no battle after it) is undone when the scene ends (`playScene` → `restoreLead`). Never name what the
