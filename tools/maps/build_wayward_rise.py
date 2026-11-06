@@ -107,7 +107,7 @@ m["warps"].append({**door, "id": "enter_hotel_e", "at": {"tx": 12, "ty": 8}})
 
 # PAUL'S HOUSE (2026-10) — the Booji-Wooji Man's crooked three-storey home, wedged
 # in beside the hotel at the green's west end (generated 5x7 `paul_house`, door on
-# its col 2). Inside: build_paul_house.py (kitchen-hall / T-shirt museum / Lottie's
+# its col 2). Inside: build_paul_house.py (kitchen-hall / T-shirt museum / Fennella's
 # attic; content/regions/paul.ts). His bike leans on the apron by the door, a line
 # of t-shirts dries in the side yard. Its apron joins the hotel's at col 7.
 PAUL_AT = (2, 3)
