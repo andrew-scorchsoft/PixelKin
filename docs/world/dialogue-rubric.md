@@ -92,6 +92,8 @@ missed in a stream of colour. Mark:
 - **what to bring or do** (`[[ring the Causeway Bell]]`, `[[catch a kin]]`),
 - **a new mechanic or Gift, and its control** (`[[raise your LAMP]]`).
 
+![Brisa's directive with two key-information marks](_dialogue_key_info.png)
+
 Do **not** mark lore, flavour, jokes, emotion, or names that are only colour. Mark the
 phrase, not the sentence (≤ about 5 words), and at most **two marks a line**. If
 everything is underlined, nothing is. Signs mark only their destinations. Marks are

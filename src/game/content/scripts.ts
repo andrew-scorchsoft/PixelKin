@@ -954,7 +954,7 @@ export const SCRIPTS: ScriptRegistry = {
   // wick-key before she'll hold the bond-test at the lantern.
   'script.brisa_quest': [
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'A first friend! Now, dear: [[fetch the Beacon\'s wick-key]]. The Ember is relit there.' },
-    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: '[[The old lamplighter]] has it, on Dimglass Coast — past the north gate.' },
+    { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'neutral', text: '[[The old lamplighter]] has it, on [[Dimglass Coast]] — past the north gate.' },
     { op: 'say', speaker: 'BRISA TALLOW', portrait: 'brisa', expr: 'warm', text: 'Mind the grass, mind the dark — and come back stronger.' },
     { op: 'setFlag', flag: 'flag:beacon_quest' },
   ],
