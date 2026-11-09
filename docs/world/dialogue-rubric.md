@@ -103,11 +103,11 @@ stripped everywhere text isn't drawn by the DialogueBox (battle messages, menus)
 
 | Measure (dialogue_stats.mjs) | Before | Target | After |
 |---|---|---|---|
-| Characters, whole game | 653,756 | −25–35% | 491,222 (−25%) |
+| Characters, whole game | 653,756 | −25–35% | 481,013 (−26%) |
 | Early game (first-hour scripts, school, South, signs/NPCs) | 145,797 | −35–45% | 92,119 (−37%) |
 | Lines over 160 characters | 908 | T1/T5 only | 67 |
 | Lines over 300 characters | 3 | 0 | 0 |
-| Key-information marks | 0 | on every T2 directive | 901 |
+| Key-information marks | 0 | on every T2 directive | 902 |
 
 Real-people cameo content and verbatim-flagged walkthrough lines were trimmed only lightly,
 and riddle text was left intact, which is why the whole-game cut sits at the low end.

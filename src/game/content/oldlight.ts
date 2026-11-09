@@ -36,7 +36,7 @@ const line = (speaker: string, text: string): DialogueLine => ({ speaker, text }
 function solved(n: number): CutsceneStep[] {
   return [
     { op: 'sfx', key: 'world-door' },
-    nar('(Somewhere in the stairwell, a cog turns over. The stair-gate clicks open.)'), // DRAFT: stair_open
+    nar('(A cog turns over. The stair-gate clicks open.)'), // DRAFT: stair_open
     { op: 'setFlag', flag: `flag:oldlight_${n}_solved` },
   ];
 }
@@ -115,7 +115,7 @@ function knockLoop(): CutsceneStep {
   };
   const l2: CutsceneStep = {
     op: 'choice', speaker: PW,
-    options: [{ label: "Who's there?", ops: [pw('Knock. (this is the new bit)'), { op: 'choice', speaker: PW, options: [{ label: 'Knock who?', ops: [pw('Knock knock. (nobody has ever told this joke, because nobody has ever finished it)'), l4] }] }] }, nobody],
+    options: [{ label: "Who's there?", ops: [pw('Knock. (this is the new bit)'), { op: 'choice', speaker: PW, options: [{ label: 'Knock who?', ops: [pw('Knock knock. (nobody has ever finished this joke)'), l4] }] }] }, nobody],
   };
   return {
     op: 'choice', speaker: PW,
@@ -127,11 +127,11 @@ function knockLoop(): CutsceneStep {
 }
 
 const WELCOME: CutsceneStep[] = [
-  pw("Ladies, gentlemen and kin! Every joke in this tower was written by a thinking machine. (ting!) That's me. I'm the machine."), // JOKE: F1.SAYSO
-  pw("Not one human helped. You'll be able to hear the difference. (pause for laughter) (no laughter detected)"), // JOKE: F1.SAYSO
+  pw("Ladies, gentlemen and kin! Every joke in this tower was written by a thinking machine. That's me. (ting!)"), // JOKE: F1.SAYSO
+  pw("Not one human helped. You'll hear the difference. (no laughter detected)"), // JOKE: F1.SAYSO
   pw('...See?'), // JOKE: F1.SAYSO
-  pw('Three clockwork lamplighters walk into an inn. The first one says— (whirr) The second one says— (clunk)'), // JOKE: F1.LAMPLIGHTERS
-  pw("The third one says... (ting?) ...I've lost it. Don't worry, folks. Punchlines wash up. Usually on floor three."), // JOKE: F1.LAMPLIGHTERS
+  pw('Three clockwork lamplighters walk into an inn. The first says— (whirr) The second— (clunk)'), // JOKE: F1.LAMPLIGHTERS
+  pw("The third... (ting?) I've lost it. Punchlines wash up, folks. Usually on floor three."), // JOKE: F1.LAMPLIGHTERS
   { op: 'setFlag', flag: 'flag:oldlight_welcomed' },
 ];
 
@@ -141,20 +141,19 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
   // The Laugh Turnstile: EVERY option turns it (the floor teaches the rule: play along).
   'script.oldlight_1': [
     { op: 'run', ref: 'script.oldlight_welcome', unless_flag: 'flag:oldlight_welcomed' },
-    pw("This turnstile only turns for a laugh. I've been stuck behind it eleven winters. Here's my best one:"), // JOKE: F1.TURNSTILE
+    pw("This turnstile only turns for a laugh. Here's my best one:"), // JOKE: F1.TURNSTILE
     pw('What has one bright eye, stands on the shore all night, and worries about every boat?'), // JOKE: F1.TURNSTILE
     pw("A lighthouse. (pause for laughter) ...Or anybody's mum."), // JOKE: F1.TURNSTILE
     {
       op: 'choice',
       speaker: PW,
       options: [
-        { label: 'Laugh.', ops: [pw("(LAUGHTER DETECTED!) Eleven winters I've waited to hear that up close. Go on through!"), ...solved(1)] }, // JOKE: F1.TURNSTILE.REACT
+        { label: 'Laugh.', ops: [pw("(LAUGHTER DETECTED!) Eleven winters I've waited for that. Go on through!"), ...solved(1)] }, // JOKE: F1.TURNSTILE.REACT
         { label: 'Groan.', ops: [pw('A groan is just a laugh with its coat on. (The turnstile turns, grudgingly.)'), ...solved(1)] }, // JOKE: F1.TURNSTILE.REACT
         {
           label: 'Explain the joke back.',
           ops: [
-            pw("Nobody's ever explained one of my jokes back to me. I feel SEEN."), // JOKE: F1.TURNSTILE.REACT
-            pw('...You got it slightly wrong. But I feel SEEN.'), // JOKE: F1.TURNSTILE.REACT
+            pw("Nobody's ever explained one of my jokes back to me. ...You got it slightly wrong. But I feel SEEN."), // JOKE: F1.TURNSTILE.REACT
             ...solved(1),
           ],
         },
@@ -211,15 +210,14 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
   'script.oldlight_urn': [
     { op: 'say', speaker: 'TEA-URN', text: 'INTERVAL! TWENTY MINUTES! BUY A BUN!' }, // JOKE: F3.URN
     { op: 'heal' },
-    nar('(There is no bun. There has never been a bun. Your kin are mended anyway.)'), // JOKE: F3.URN
+    nar('(There has never been a bun. Your kin are mended anyway.)'), // JOKE: F3.URN
     { op: 'say', speaker: 'TEA-URN', text: 'Drink up, love. You look like the first half.' }, // JOKE: F3.URN
   ],
   // The computer in the east bay: an anachronism nobody in Vesperholm can explain,
   // so of course it's Punchwheel's — his "research" desk. Pure colour: no progression
   // flags; flag:oldlight_mama_read only shortens the re-visit opener.
   'script.oldlight_computer': [
-    nar('(A humming box with a glowing glass face. Nobody in Vesperholm has ever seen one. It seems very sure of itself.)'),
-    nar('(A card is taped to the side: PROPERTY OF MR. PUNCHWHEEL. FOR JOKE RESEARCH. DO NOT LICK.)'),
+    nar('(A humming box with a glowing glass face. A card on the side: PROPERTY OF MR. PUNCHWHEEL. FOR JOKE RESEARCH. DO NOT LICK.)'),
     {
       op: 'choice',
       prompt: 'A website is open: ANDY-LAND.CO.UK. Have a look?',
@@ -227,7 +225,7 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
         {
           label: 'Yes.',
           ops: [
-            { ...nar('Hmm... what have we got here? Some tricky videos...'), unless_flag: 'flag:oldlight_mama_read' },
+            { ...nar('Hmm... some tricky videos...'), unless_flag: 'flag:oldlight_mama_read' },
             { ...nar('The tricky videos are still there. You still do not trust them.'), if_flag: 'flag:oldlight_mama_read' },
             nar('...Oh, wait a minute. A YOUR MAMA JOKES page!'),
             {
@@ -256,7 +254,7 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
                     { op: 'setFlag', flag: 'flag:oldlight_mama_read' },
                   ],
                 },
-                { label: 'No.', ops: [nar('You close the page. A forum full of jokes goes unread. It will cope.')] },
+                { label: 'No.', ops: [nar('You close the page. The forum will cope.')] },
               ],
             },
           ],
@@ -267,7 +265,7 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
   ],
   'script.oldlight_3': [
     { op: 'say', speaker: 'THE MOUTH', text: 'HOW DOES A LAMPLIGHTER GET OVER A BROKEN HEART? ...Mm? Mm?' }, // JOKE: F3.MOUTH
-    nar("(Its big rubbery lips pucker and wait for a punchline it hasn't got.)"), // JOKE: F3.MOUTH
+    nar("(Big rubbery lips pucker, waiting for a punchline it hasn't got.)"), // JOKE: F3.MOUTH
     riddle({
       speaker: 'THE MOUTH',
       prompt: 'HOW DOES A LAMPLIGHTER GET OVER A BROKEN HEART? ...Mm? Mm?',
@@ -296,14 +294,14 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:oldlight_4_opened' },
   ],
   'script.oldlight_lamps_out': [
-    pw('How many lamplighters does it take to light a lamp? None. This is the Backwards Inn. Here, we put them OUT. HA. HA. HA.'), // JOKE: F4.ANTI.3
+    pw('How many lamplighters does it take to light a lamp? None. This is the Backwards Inn. We put them OUT. HA. HA. HA.'), // JOKE: F4.ANTI.3
     { op: 'tint', color: '#0b1026', alpha: 0.4, ms: 400 },
-    nar('(The lamps along the bar go out one by one. Somewhere, somebody giggles.)'), // JOKE: F4.ANTI.3
+    nar('(The bar lamps go out one by one. Somebody giggles.)'), // JOKE: F4.ANTI.3
     { op: 'tint', color: '#0b1026', alpha: 0, ms: 600 },
   ],
   'script.oldlight_ringmaster': [
     { op: 'say', speaker: 'RINGMASTER', text: "GOODBYE! GOODBYE! You've been a WONDERFUL audience. Row home safe!" }, // JOKE: F4.RING.INTRO
-    { op: 'say', speaker: 'RINGMASTER', text: "(Backwards Inn, kid. We start at the end. The machine calls it 'experimental'. I call it Tuesday.) BATTLE!" }, // JOKE: F4.RING.INTRO
+    { op: 'say', speaker: 'RINGMASTER', text: "(Backwards Inn, kid. We start at the end. I call it Tuesday.) BATTLE!" }, // JOKE: F4.RING.INTRO
     { op: 'battle', trainer: 'oldlight_ringmaster' },
     { op: 'setFlag', flag: 'flag:oldlight_ringmaster_beaten' },
     // he poses the riddle at once (the band beside the stair re-offers it later)
@@ -392,7 +390,7 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
 
   // ---- TOP: The Winding Room --------------------------------------------------------
   'script.oldlight_log': [
-    nar("A ship's log lies open on the table, in a careful seaman's hand. Reyl's."), // DRAFT: top_log_intro
+    nar("A ship's log lies open, in Reyl's careful seaman's hand."), // DRAFT: top_log_intro
     { op: 'say', speaker: "REYL'S LOG", text: "Night of the fog. Rang till my hands went. The boats came in. She didn't." },
     { op: 'say', speaker: "REYL'S LOG", text: "Cut the rope today. Told the quay the storm had it. The netmender knows. Spliced a new one anyway. Hasn't said a word. Hasn't needed to." },
     { op: 'say', speaker: "REYL'S LOG", text: "Wound Tam's box with every joke she ever told me and put it where the light was. If the Old Light can't shine, it can laugh." },
@@ -403,7 +401,6 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
     { op: 'letterbox', on: true, ms: 320 },
     { op: 'musicFade', ms: 800 },
     nar("Tam's card, jammed in the drum: WHY DOES A FERRYMAN NEVER SAY GOODBYE? —"), // JOKE: TOP.ATTEMPTS
-    pw("Attempt one: 'He's too oar-some.' (no laughter detected)"), // JOKE: TOP.ATTEMPTS
     pw("Attempt nine thousand: 'Because it was Tuesday.' (no laughter detected)"), // JOKE: TOP.ATTEMPTS
     pw("Attempt thirty-one thousand: 'Because goodbye is a land word.' (no laughter detected) ...I liked that one."), // JOKE: TOP.ATTEMPTS
     pw('Eleven winters. She never wrote the end. Do you know it?'), // JOKE: TOP.ATTEMPTS
@@ -434,15 +431,15 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
       blurt: [pw('(whispering) It\'s the one Reyl says. He says it all the time. He never says who said it first.')], // DRAFT: top_blurt
       after: [
         // the Tin Rower finds its slot in the drum (design: the empty boat-shaped gap)
-        { ...nar('The Tin Rower clambers out of your pack and clicks into the empty boat-shaped slot in the drum. It rows the circle with the lamplighters, nodding.'), if_flag: ROWER }, // DRAFT: top_tin_rower
-        pw("Oh — and these. The netmender's floats. They washed up on my sill the night of the storm. I kept them for the act."), // DRAFT: top_floats
+        { ...nar('The Tin Rower clambers out of your pack, clicks into the boat-shaped slot in the drum and rows with the lamplighters.'), if_flag: ROWER }, // DRAFT: top_tin_rower
+        pw("Oh — these. The netmender's floats. They washed up on my sill the night of the storm."), // DRAFT: top_floats
         { op: 'run', ref: 'script.pickup_net_floats', unless_flag: 'flag:picked_net_floats' },
         { ...pw("...You've already GOT her floats? Then I've been rehearsing with a spare. Typical."), if_flag: 'flag:picked_net_floats' }, // DRAFT: top_floats_oldsave
-        pw("Take them to [[the netmender on the quay]], by her nets. She'll trade you the bell-rope, then it's [[out along the breakwater]]."),
+        pw("Take them to [[the netmender on the quay]]. She'll trade you the bell-rope, then it's [[out along the breakwater]]."),
         { op: 'setFlag', flag: 'flag:picked_net_floats' },
         { op: 'setFlag', flag: 'flag:q_south_jest_done' },
         { op: 'sfx', key: 'world-door' },
-        nar("A hatch in the floor springs open: BOING. Of course the Old Light has a slide. It's the last joke in the building."), // DRAFT: top_slide
+        nar("A hatch in the floor springs open: BOING. A slide: the last joke in the building."), // DRAFT: top_slide
         { op: 'musicCrossfade', key: 'pearlmoor-quay-c', ms: 900 },
         { op: 'letterbox', on: false, ms: 320 },
       ],
@@ -453,66 +450,59 @@ export const OLDLIGHT_SCRIPTS: ScriptRegistry = {
 export const OLDLIGHT_DIALOGUE: DialogueRegistry = {
   // ---- Lightkeeper's Point -----------------------------------------------------------
   'door.oldlight_locked': [
-    { text: 'The door\'s handle is a brass nose. It is cold, and it does not find you funny.' },
-    { text: 'A card in the letter-slot: AUDIENCES BY APPOINTMENT. APPLY TO R. WASH, THE TIDE LUMENARY.' }, // DRAFT
-    { text: 'That\'s [[Reyl Wash]], in the Lumenary [[at the top of Pearlmoor Quay]]. Talk to him and the Old Light will open.' },
+    { text: 'The door\'s handle is a brass nose. It does not find you funny.' },
+    { text: 'A card: AUDIENCES BY APPOINTMENT. APPLY TO R. WASH, TIDE LUMENARY.' }, // DRAFT
+    { text: 'That\'s [[Reyl Wash]], in the Lumenary [[at the top of Pearlmoor Quay]]. Talk to him to open the Old Light.' },
   ],
   'sign.oldlight': [
     { text: "THE OLD LIGHT — PEARLMOOR'S JEST-HOUSE.\nSHUT FOR REPAIRS (11 WINTERS). PLEASE DO NOT TICKLE THE DOOR." },
   ],
   'sign.oldlight_chute': [
-    { text: 'A brass mouth in the grass, grinning and faintly giggling: the bottom of a slide. It only lets people come DOWN. For now.' }, // DRAFT
+    { text: 'A brass mouth in the grass, giggling: the bottom of a slide. It only lets people come DOWN.' }, // DRAFT
   ],
   'sign.wash_ferryhouse': [
     { text: 'The Wash ferry-house: shutters nailed, step unswept for years.' },
     { text: 'A faded board over the door: SAME TIDE TOMORROW — FERRIES, MENDING, JOKES (FREE).' }, // DRAFT
   ],
   'sign.wash_mailbox': [
-    { text: 'The mailbox is stuffed with eleven winters of quay newsletters, every one unopened.' },
+    { text: 'The mailbox: eleven winters of quay newsletters, all unopened.' },
   ],
   'sign.point_bench': [
-    { text: 'A bench facing the open sea, two sets of initials carved in the arm: R. and T.' }, // DRAFT
-    { text: 'You sit a moment. Every buoy out there is dark.' }, // DRAFT
+    { text: 'A bench facing the sea, R. and T. carved in the arm. You sit a moment. Every buoy out there is dark.' }, // DRAFT
   ],
 
   // ---- In the tower ------------------------------------------------------------------
   'sign.oldlight_stairgate': [
-    { text: "The stair-gate's cogs are waiting on a laugh. The speaking-tube by the stair is listening." },
+    { text: "The stair-gate's cogs are waiting on a laugh. The speaking-tube is listening." },
   ],
   'sign.oldlight_plaque': [
-    { text: 'ALL JOKES IN THIS TOWER WERE COMPOSED BY MR. PUNCHWHEEL, PATENT JEST-ENGINE: A THINKING MACHINE OF BRASS AND BELLOWS.' }, // JOKE: F1.PLAQUE
-    { text: 'NO HUMAN WROTE A SINGLE ONE. HUMANS HAVE BEEN INFORMED, AND ARE RELIEVED.' }, // JOKE: F1.PLAQUE
+    { text: 'ALL JOKES IN THIS TOWER WERE COMPOSED BY MR. PUNCHWHEEL, A THINKING MACHINE OF BRASS AND BELLOWS.' }, // JOKE: F1.PLAQUE
+    { text: 'NO HUMAN WROTE A SINGLE ONE. HUMANS ARE RELIEVED.' }, // JOKE: F1.PLAQUE
     { text: '(EXCEPT ONE. TOP FLOOR. UNFINISHED.)' }, // JOKE: F1.PLAQUE
   ],
   'sign.oldlight_box_office': [
-    line(PW, "I asked the tide for advice once. It said, 'Come back later.' (ting!)"), // JOKE: F1.OPENER.1
-    line(PW, '...So I did. It was out.'), // JOKE: F1.OPENER.1
     line(PW, "What do you call a kin that's just kindled? Taller. (ting!)"), // JOKE: F1.OPENER.2
-    line(PW, "That's all kindling is, folks: height and confidence. I've got one of those."), // JOKE: F1.OPENER.2
   ],
   'npc.oldlight_tube_1': [
-    line(PW, 'How many lamplighters does it take to light a lamp? (pause for laughter)'), // JOKE: F1.OPENER.3
-    line(PW, "...One. It's a one-person job. I don't know why I paused. (pause for laughter)"), // JOKE: F1.OPENER.3
-    line(PW, "...I've done it again."), // JOKE: F1.OPENER.3
-    line(PW, "The Long Dusk has been doing the same bit for years now. Nobody's laughing. It just keeps going. (ting!)"), // JOKE: F1.OPENER.4
-    line(PW, '...Honestly? Respect.'), // JOKE: F1.OPENER.4
+    line(PW, "How many lamplighters does it take to light a lamp? (pause for laughter) ...One. Don't know why I paused."), // JOKE: F1.OPENER.3
+    line(PW, "(pause for laughter) ...I've done it again."), // JOKE: F1.OPENER.3
   ],
   // F2
   'npc.oldlight_heckler_block': [
     line('HECKLER', "OI! That tube's got a queue, and I'm it. Talk to ME first."), // DRAFT
   ],
   'npc.oldlight_heckler_after': [
-    line('HECKLER', "(reads a card) 'THE HECKLER IS STILL SITTING DOWN.' ...I am, look. He thinks of everything."), // DRAFT
+    line('HECKLER', "(reads a card) 'THE HECKLER IS STILL SITTING DOWN.' ...I am, look."), // DRAFT
   ],
   'npc.oldlight_late_a': [line('AUDIENCE', '...HA! Oh — sorry, dear. That was for the fellow before you.')], // DRAFT
   'npc.oldlight_late_b': [line('AUDIENCE', "We're regulars. We laugh at everything. Eventually.")], // DRAFT
   'npc.oldlight_late_c': [line('AUDIENCE', '(a beat) (another beat) ...HA!')], // DRAFT
-  'npc.oldlight_tube_2': [line(PW, '(the audience is still laughing at something from earlier) Lovely crowd. Late, but lovely.')], // DRAFT
+  'npc.oldlight_tube_2': [line(PW, '(still laughing at last week) Lovely crowd. Late, but lovely.')], // DRAFT
   // F3
   'npc.oldlight_stove': [
-    line('STOVE', 'HOO! HAA! HAHAHA! Why did the cheese-bun cross the kitchen?'), // JOKE: F3.STOVE
+    line('STOVE', 'HOO! HAA! Why did the cheese-bun cross the kitchen?'), // JOKE: F3.STOVE
     line('STOVE', 'HAHAHAHA— TO GET TO MEEEE!'), // JOKE: F3.STOVE
-    { text: '(Steam puffs from every hole. On the counter, a cheese-bun goes very quiet.)', style: 'narrate' }, // JOKE: F3.STOVE
+    { text: '(On the counter, a cheese-bun goes very quiet.)', style: 'narrate' }, // JOKE: F3.STOVE
   ],
   'npc.oldlight_bookcase': [line('BOOKCASE', "Ahem. AHEM. ...No, that's it. I just like clearing my throat.")], // DRAFT
   'sign.oldlight_p_note': [
@@ -520,12 +510,10 @@ export const OLDLIGHT_DIALOGUE: DialogueRegistry = {
     { text: "\"Heard it. Laughed. Wasn't funny. Laughed anyway — somebody ought to. — p.\"" },
   ],
   'npc.oldlight_punch_tuesday': [
-    line('TUESDAY', "I'm 'Because it was Tuesday.' I go in ALL of them, honestly."), // JOKE: F3.PUNCHLINES
-    line('TUESDAY', "Wicks, kin, ferries. A Wednesday one, once. Didn't work."), // JOKE: F3.PUNCHLINES
+    line('TUESDAY', "I'm 'Because it was Tuesday.' I go in ALL of them. Tried a Wednesday once. Didn't work."), // JOKE: F3.PUNCHLINES
   ],
   'npc.oldlight_punch_buns': [
-    line('CHEESE-BUNS', "I'm 'Two cheese-buns and a bad play.' Don't think I'm from a joke, love."), // JOKE: F3.PUNCHLINES
-    line('CHEESE-BUNS', "I think I'm somebody's perfect evening."), // JOKE: F3.PUNCHLINES
+    line('CHEESE-BUNS', "I'm 'Two cheese-buns and a bad play.' Not from a joke, love. I'm somebody's perfect evening."), // JOKE: F3.PUNCHLINES
   ],
   'npc.oldlight_punch_ladder': [
     line('ONE RUNG', "I'm 'One rung at a time.' I belong to the lamplighter one."), // JOKE: F3.PUNCHLINES
@@ -545,13 +533,13 @@ export const OLDLIGHT_DIALOGUE: DialogueRegistry = {
   ],
   'npc.oldlight_tube_4': [
     line(PW, "Backwards Inn rules: punchline FIRST. 'Taller.'"), // JOKE: F4.ANTI.2
-    line(PW, "...What do you call a kin that's just kindled? (pause for laughter) (still pausing) (any moment now)"), // JOKE: F4.ANTI.2
+    line(PW, "...What do you call a kin that's just kindled? (pause for laughter) (still pausing)"), // JOKE: F4.ANTI.2
   ],
   'npc.oldlight_ringmaster_block': [
     line('RINGMASTER', 'Ah-ah! Backwards Inn rules: you meet the Ringmaster LAST. Which means FIRST. Talk to me.'), // DRAFT
   ],
   'npc.oldlight_ringmaster_after': [
-    line('RINGMASTER', "Arrived already? You've only just left! ...Eleven winters and I still can't tell which way round this place goes."), // DRAFT
+    line('RINGMASTER', "Arrived already? You've only just left!"), // DRAFT
   ],
   // F5
   'sign.oldlight_cap_reyl': [
@@ -569,7 +557,7 @@ export const OLDLIGHT_DIALOGUE: DialogueRegistry = {
   ],
   'sign.oldlight_cap_sea': [
     { text: 'THE SEA (SMALL).' }, // JOKE: F5.GALLERY.4
-    line(PW, "That's all of it. Smaller than you'd think, isn't it? People exaggerate."), // JOKE: F5.GALLERY.4
+    line(PW, "That's all of it. People exaggerate."), // JOKE: F5.GALLERY.4
   ],
   'sign.oldlight_cap_gerald': [
     { text: "KIN No. 0, 'GERALD'. DISCOVERED BY ME, JUST NOW." }, // JOKE: F5.GALLERY.5
@@ -583,22 +571,22 @@ export const OLDLIGHT_DIALOGUE: DialogueRegistry = {
   ],
   // F6
   'sign.oldlight_coat': [
-    { text: 'Two coats on one peg. The blue one still has a reel of tinker\'s wire in the pocket.' }, // DRAFT
+    { text: 'Two coats on one peg. The blue one has tinker\'s wire in the pocket.' }, // DRAFT
   ],
   'sign.oldlight_cups': [
-    { text: 'Two cups on the table. One has been washed every day for a long time. The other has never been moved.' }, // DRAFT
+    { text: 'Two cups on the table. One washed every day for years. The other never moved.' }, // DRAFT
   ],
   'sign.oldlight_window': [
     { text: "Across the harbour, at the breakwater's end, the moor-bell hangs silent." }, // DRAFT
   ],
   // TOP
   'sign.oldlight_rope': [
-    { text: "An old bell-rope coiled on the sill. Its end isn't frayed. It's CUT, clean and straight, by a net-knife." },
+    { text: "An old bell-rope on the sill. Its end isn't frayed. It's CUT, clean, by a net-knife." },
   ],
   'npc.oldlight_punchwheel_after': [
-    line(PW, "(ting.) I've started a NEW one. It's about a ferryman. It isn't finished yet. That's the good bit."), // DRAFT
+    line(PW, "(ting.) I've started a NEW one, about a ferryman. It isn't finished. That's the good bit."), // DRAFT
   ],
   'sign.oldlight_slide_shut': [
-    { text: 'A brass hatch in the floor, stencilled FOR AFTER THE ACT. It is firmly shut.' }, // DRAFT
+    { text: 'A brass hatch in the floor: FOR AFTER THE ACT. Firmly shut.' }, // DRAFT
   ],
 };
