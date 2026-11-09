@@ -51,7 +51,7 @@ export const LIFT_FOOT = { map: 'wickrun_foot', to: { tx: 21, ty: 13 }, facing: 
 export const WICKRUN_SCRIPTS: ScriptRegistry = {
   // ---- the crest ------------------------------------------------------------
   'script.wickrun_rental': [
-    { op: 'say', speaker: 'PELL', unless_flag: RIDING, text: 'Runners! Two wheels, one brake, no regrets. The old wax road, mountain-top to the sea — if your nerve holds.' },
+    { op: 'say', speaker: 'PELL', unless_flag: RIDING, text: 'Runners! Two wheels, one brake, no regrets. Mountain to sea, nerve allowing.' },
     { op: 'say', speaker: 'PELL', unless_flag: RIDING, text: 'Fair warning: the run\'s kin are mountain-fed, and there\'s no pedalling back up. [[Lucan\'s lit stage]] first, if I were you.' },
     { op: 'say', speaker: 'PELL', if_flag: RIDING, text: 'You\'ve one of mine already. [[Through the gate and down]] — hand it in at the foot.' },
     { op: 'run', ref: 'script.wickrun_rental_offer', unless_flag: RIDING },
@@ -75,7 +75,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
           unless_flag: RIBBON,
           ops: [
             { op: 'pay', amount: 300, flag: PAID },
-            { op: 'say', speaker: 'PELL', unless_flag: PAID, text: 'Three hundred wicks, and I don\'t do credit. The wax trade\'s been dead eleven winters.' },
+            { op: 'say', speaker: 'PELL', unless_flag: PAID, text: 'Three hundred wicks. No credit: the wax trade\'s been dead eleven winters.' },
             { op: 'run', ref: 'script.wickrun_hand_runner', if_flag: PAID },
             { op: 'setFlag', flag: PAID, value: false },
           ],
@@ -84,7 +84,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
           label: 'RIBBON RIDE',
           if_flag: RIBBON,
           ops: [
-            { op: 'say', speaker: 'PELL', text: 'Rook\'s ribbon! Put your wicks away — gold riders ride free. House rule. As of now.' },
+            { op: 'say', speaker: 'PELL', text: 'Rook\'s ribbon! Gold riders ride free. House rule. As of now.' },
             { op: 'run', ref: 'script.wickrun_hand_runner' },
           ],
         },
@@ -97,15 +97,15 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'runner' },
     { op: 'setFlag', flag: RIDING },
     { op: 'setFlag', flag: RENTED },
-    { op: 'narrate', text: 'You got a RUNNER! Waxed ash and brass. On the Wick-Run, [[steer with left and right]]; the mountain does the rest.' },
+    { op: 'narrate', text: 'You got a RUNNER! [[Steer with left and right]]. The mountain does the rest.' },
     { op: 'say', speaker: 'PELL', text: 'Rules: [[no pedalling UP]], so don\'t miss anything. Hit a kicker straight and you fly. The lift only runs once someone up here [[lets the brake off]].' },
   ],
   'script.tallow_lift_top': [
-    { op: 'narrate', unless_flag: FREED, text: 'THE TALLOW LIFT. A cable drum, a car chained at the platform. The rusted brake-lever reads: HOLD UNTIL THE WAX RUNS.' },
-    { op: 'say', speaker: 'PELL', unless_flag: FREED, text: 'The lift? Chained the winter the vines shut — no wax to send down. Throw the brake if you like. Let the old thing breathe.' },
+    { op: 'narrate', unless_flag: FREED, text: 'THE TALLOW LIFT, chained. The rusted brake reads: HOLD UNTIL THE WAX RUNS.' },
+    { op: 'say', speaker: 'PELL', unless_flag: FREED, text: 'The lift? Chained since the vines shut. Throw the brake. Let it breathe.' },
     { op: 'sfx', key: 'world-door', unless_flag: FREED },
     { op: 'shake', ms: 400, intensity: 0.004, unless_flag: FREED },
-    { op: 'narrate', unless_flag: FREED, text: 'The brake comes free with a groan. Far below, the cable shivers down to the sea. The Tallow Lift runs again — both ways.' },
+    { op: 'narrate', unless_flag: FREED, text: 'The brake groans free. Far below, the cable shivers. The lift runs again!' },
     { op: 'setFlag', flag: FREED },
     {
       op: 'choice',
@@ -116,7 +116,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
           ops: [
             { op: 'run', ref: 'script.wickrun_hand_in_top', if_flag: RIDING },
             { op: 'musicSting', key: 'tallow-lift' },
-            { op: 'narrate', text: 'The car lurches off and sinks along the cable, the run\'s lamps a crooked line down the dark mountain, the sea opening below.' },
+            { op: 'narrate', text: 'The car sinks along the cable, the run\'s lamps beside you, the sea below.' },
             { op: 'travel', map: LIFT_FOOT.map, to: LIFT_FOOT.to, facing: LIFT_FOOT.facing },
           ],
         },
@@ -125,7 +125,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
     },
   ],
   'script.wickrun_crest_rest': [
-    { op: 'narrate', text: 'The chandlery\'s old rendering hearth, kept lit for the Runners: the last warm spot before the drop.' },
+    { op: 'narrate', text: 'The chandlery\'s old hearth, kept lit for the Runners before the drop.' },
     { op: 'heal', sleep: false },
     { op: 'narrate', text: 'You warm your hands and your kin curl up by the coals. Rested.' },
   ],
@@ -135,15 +135,15 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
     { op: 'timer', id: 'wickrun', action: 'start' },
   ],
   'script.runner_vess': [
-    { op: 'say', speaker: 'VESS', text: 'Hey! Nobody rolls past the Runners\' landing. That\'s a challenge where I come from. Kin out!' },
+    { op: 'say', speaker: 'VESS', text: 'Hey! Nobody rolls past the Runners\' landing without a fight. Kin out!' },
     { op: 'battle', trainer: 'runner_vess' },
-    { op: 'say', speaker: 'VESS', text: 'Fine. Tip: the east line\'s faster, but there\'s a kicker. Hit it straight or eat a boulder.' },
+    { op: 'say', speaker: 'VESS', text: 'Tip: the east line\'s faster but has a kicker. Hit it straight or eat rock.' },
     { op: 'setFlag', flag: 'flag:runner_vess_beaten' },
   ],
   'script.runner_dace': [
-    { op: 'say', speaker: 'DACE', text: 'Made the shelf in one piece? Rook says nobody\'s a Runner till they\'ve lost to one. Let\'s fix that.' },
+    { op: 'say', speaker: 'DACE', text: 'Made the shelf? Nobody\'s a Runner till they\'ve lost to one. Let\'s fix that.' },
     { op: 'battle', trainer: 'runner_dace' },
-    { op: 'say', speaker: 'DACE', text: '...Or beaten one. Rook\'s waiting at the bottom with the record. He won\'t shut up about it.' },
+    { op: 'say', speaker: 'DACE', text: '...Or beaten one. Rook\'s at the bottom with the record. He won\'t shut up about it.' },
     { op: 'setFlag', flag: 'flag:runner_dace_beaten' },
   ],
   'script.pickup_wickrun_ledge': [
@@ -155,7 +155,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
 
   // ---- the trestles ---------------------------------------------------------
   'script.runner_tamsin': [
-    { op: 'say', speaker: 'TAMSIN', text: 'Through the barrels clean? Show-off. Nobody rides the trestle till they\'re past me.' },
+    { op: 'say', speaker: 'TAMSIN', text: 'Through the barrels clean? Show-off. Nobody rides the trestle past me.' },
     { op: 'battle', trainer: 'runner_tamsin' },
     { op: 'say', speaker: 'TAMSIN', text: 'Ugh. Go on, ride the boards — and duck on the way back. You\'ll see.' },
     { op: 'setFlag', flag: 'flag:runner_tamsin_beaten' },
@@ -163,34 +163,34 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
   'script.runner_ossie': [
     { op: 'say', speaker: 'OSSIE', text: 'Round the long way, like everyone. Thought you could cut inside? Kin out!' },
     { op: 'battle', trainer: 'runner_ossie' },
-    { op: 'say', speaker: 'OSSIE', text: 'The carters called it the Spiral: OVER the gully, round, and back UNDER itself. Nobody knows why they didn\'t go straight.' },
+    { op: 'say', speaker: 'OSSIE', text: 'The Spiral: OVER the gully, round, back UNDER itself. Why not go straight? Nobody knows.' },
     { op: 'setFlag', flag: 'flag:runner_ossie_beaten' },
   ],
   'script.pickup_wickrun_purse': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveMoney', amount: 300 },
-    { op: 'say', text: 'Behind a stone at the steps: a Runner\'s purse, shaken loose on the hop. Found 300 WICKS!' },
+    { op: 'say', text: 'A Runner\'s purse, shaken loose on the hop. Found 300 WICKS!' },
     { op: 'setFlag', flag: 'flag:picked_wickrun_purse' },
   ],
 
   // ---- the traverse ----------------------------------------------------------
   'script.runner_pip': [
-    { op: 'say', speaker: 'PIP', text: 'Wait wait — you\'ve done the Spiral already? Fair game, then. Rook says I need practice.' },
+    { op: 'say', speaker: 'PIP', text: 'You\'ve done the Spiral already? Fair game. Rook says I need practice.' },
     { op: 'battle', trainer: 'runner_pip' },
-    { op: 'say', speaker: 'PIP', text: '[[Steer UP or DOWN]] through the rocks — never east. East is uphill. Uphill is for the lift.' },
+    { op: 'say', speaker: 'PIP', text: '[[Steer UP or DOWN]] in the rocks. Never east. East is uphill, for the lift.' },
     { op: 'setFlag', flag: 'flag:runner_pip_beaten' },
   ],
   'script.pickup_wickrun_wreck': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'beacon_charge', count: 1 },
-    { op: 'say', text: 'A cart left here eleven winters ago. Under the spilled wax, still in its tin: a BEACON CHARGE!' },
+    { op: 'say', text: 'Under a wrecked cart\'s spilled wax, still in its tin: a BEACON CHARGE!' },
     { op: 'setFlag', flag: 'flag:picked_wickrun_wreck' },
   ],
 
   // ---- the lower run -----------------------------------------------------------
   'script.runner_rook': [
-    { op: 'say', speaker: 'ROOK', text: 'There you are. Heard you three bends back — you brake like a cart with a stuck wheel.' },
-    { op: 'say', speaker: 'ROOK', text: 'I\'m Rook. I run the Runners; the Runners run this hill. Nobody passes the camp without beating me. House rule.' },
+    { op: 'say', speaker: 'ROOK', text: 'Heard you three bends back. You brake like a cart with a stuck wheel.' },
+    { op: 'say', speaker: 'ROOK', text: 'I\'m Rook. The Runners run this hill, and I run them. Beat me first.' },
     { op: 'battle', trainer: 'runner_rook' },
     { op: 'say', speaker: 'ROOK', text: 'Hah! All right. You can ride. Now go and see if you can RACE.' },
     { op: 'say', speaker: 'ROOK', text: '[[Crest to sea under twenty-six seconds]] is gold. Do that, and I\'ll be at the foot with something for you.' },
@@ -199,7 +199,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
   'script.pickup_wickrun_brake_hut': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'wax_cake', count: 2 },
-    { op: 'say', text: 'The carters\' old brake-hut shelf — you only reach it off a kicker. Two pressed rounds of chandlery wax, still stamped: 2 WAX CAKES!' },
+    { op: 'say', text: 'The carters\' brake-hut shelf, only reached off a kicker. Found 2 WAX CAKES!' },
     { op: 'setFlag', flag: 'flag:picked_wickrun_brake_hut' },
   ],
 
@@ -239,7 +239,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
   'script.wickrun_prize_gold': [
     { op: 'sfx', key: 'world-wicks' },
     { op: 'giveMoney', amount: WICKRUN_PRIZES.gold },
-    { op: 'narrate', text: 'Three rings on the finish bell — a GOLD run! The Runners\' kitty pays out: 600 WICKS.' },
+    { op: 'narrate', text: 'Three rings — a GOLD run! The Runners\' kitty pays out: 600 WICKS.' },
     { op: 'setFlag', flag: 'flag:wickrun_gold_paid' },
   ],
   'script.wickrun_prize_silver': [
@@ -263,7 +263,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
     { op: 'timer', id: 'wickrun', action: 'cancel' },
     { op: 'takeItem', item: 'runner' },
     { op: 'setFlag', flag: RIDING, value: false },
-    { op: 'say', speaker: 'PELL', text: 'Riding the lift DOWN? With my runner? No. Leave it — rent again when your nerve comes back.' },
+    { op: 'say', speaker: 'PELL', text: 'The lift DOWN, with my runner? No. Leave it. Rent again when you\'re braver.' },
   ],
   'script.rook_ribbon_check': [
     { op: 'run', ref: 'script.rook_ribbon', if_flag: ROOK_BEATEN },
@@ -274,7 +274,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'runner_ribbon' },
     { op: 'setFlag', flag: RIBBON },
-    { op: 'narrate', text: 'You got the RUNNER\'S RIBBON! Waxed red silk on a brass pin. [[Pell\'s runners are free]] from now on.' },
+    { op: 'narrate', text: 'You got the RUNNER\'S RIBBON! From now on, [[Pell\'s runners are free]].' },
     { op: 'say', speaker: 'ROOK', text: 'Don\'t let it go to your head. The record\'s still mine — for now.' },
   ],
   'script.rook_foot': [
@@ -283,7 +283,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'ROOK', unless_flag: GOLD, text: '[[Under twenty-six seconds]] is gold. Right-hand gap through the barrels, every kicker square, no stopping for the view.' },
   ],
   'script.tallow_lift_foot': [
-    { op: 'say', speaker: 'LIFT-KEEPER', unless_flag: FREED, text: 'The Tallow Lift? Car\'s chained at the crest. Has been since the vines shut and the wax stopped.' },
+    { op: 'say', speaker: 'LIFT-KEEPER', unless_flag: FREED, text: 'The Tallow Lift? Car\'s been chained at the crest since the wax stopped.' },
     { op: 'say', speaker: 'LIFT-KEEPER', unless_flag: FREED, text: 'Someone has to [[let the brake off up top]]. Nobody walks UP the Wick-Run — come at it [[from the Sunvault side]].' },
     {
       op: 'choice',
@@ -295,7 +295,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
           label: 'RIDE UP',
           ops: [
             { op: 'musicSting', key: 'tallow-lift' },
-            { op: 'narrate', text: 'The car shudders off and climbs the cable, the sea shrinking below, the run\'s lamps sliding past into the mountain\'s dark.' },
+            { op: 'narrate', text: 'The car climbs the cable, the sea shrinking, the run\'s lamps sliding past.' },
             { op: 'travel', map: LIFT_TOP.map, to: LIFT_TOP.to, facing: LIFT_TOP.facing },
           ],
         },
@@ -304,7 +304,7 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
     },
   ],
   'script.wickrun_foot_rest': [
-    { op: 'narrate', text: 'The yard bench, worn smooth by the carters who waited here for the lift. The sea is loud and the lamps are warm.' },
+    { op: 'narrate', text: 'The carters\' bench, worn smooth. The sea is loud; the lamps are warm.' },
     { op: 'heal', sleep: false },
     { op: 'narrate', text: 'You sit a while with your kin and listen to the waves. Rested.' },
   ],
@@ -312,51 +312,51 @@ export const WICKRUN_SCRIPTS: ScriptRegistry = {
 
 export const WICKRUN_DIALOGUE: DialogueRegistry = {
   'npc.wickrun_gate_blocked': [
-    { speaker: 'PELL', text: 'Oi! Nobody walks the run. Steep enough to make you a legend or a lesson. [[Rent a runner]] first.' },
+    { speaker: 'PELL', text: 'Oi! Nobody walks the run. [[Rent a runner]] first — or be a lesson.' },
   ],
   'npc.wickrun_runner_kid': [
-    { text: 'Rook did the whole run, crest to sea, in twenty-four seconds. TWENTY-FOUR. My kin got dizzy just watching.' },
-    { text: 'The wax used to come down this way in carts, Pell says. Can you imagine? Carts! No brakes!' },
+    { text: 'Rook did the run in twenty-four seconds. TWENTY-FOUR. My kin got dizzy.' },
+    { text: 'The wax came down this way in carts, Pell says. Carts! No brakes!' },
   ],
   'sign.wickrun_crest': [
-    { text: 'THE WICK-RUN. The old wax road, Sunvault to the sea. Runners for hire. NO WALKERS. NO PEDALLING UP. NO REFUNDS.' },
+    { text: 'THE WICK-RUN. Runners for hire. NO WALKERS. NO PEDALLING UP. NO REFUNDS.' },
   ],
   'sign.wickrun_runout': [
-    { text: 'THE SHELF. Halfway down. The trestles are below — keep your line on the boards and watch for the turn back under.' },
+    { text: 'THE SHELF. Halfway. Trestles below: watch for the turn back under.' },
   ],
   'npc.runner_vess_after': [
     { speaker: 'VESS', text: 'Some of us like the landing. You can actually SEE the mountain from here.' },
   ],
   'npc.runner_dace_after': [
-    { speaker: 'DACE', text: 'Catch your breath on the shelf while you can. The trestles below don\'t give you a second.' },
+    { speaker: 'DACE', text: 'Breathe on the shelf while you can. The trestles don\'t give you a second.' },
   ],
   'sign.wickrun_trestle': [
-    { text: 'THE SPIRAL TRESTLE. Ride the boards over the gully, round the knoll, and back under. MIND YOUR HEADS. — the Carters\' Guild' },
+    { text: 'THE SPIRAL TRESTLE. Over, round the knoll, back under. MIND YOUR HEADS.' },
   ],
   'sign.wickrun_steps': [
-    { text: 'THE STEPS. Three drops to the traverse. Hop where the fence lets you. No climbing back — this means you, Pip.' },
+    { text: 'THE STEPS. Hop where the fence lets you. No climbing back — this means you, Pip.' },
   ],
   'sign.wickrun_traverse': [
-    { text: 'THE TRAVERSE. West across the flank. ROCKS IN THE ROAD: steer, don\'t brake. Kickers at the end — hit them square.' },
+    { text: 'THE TRAVERSE. ROCKS IN THE ROAD: steer, don\'t brake. Hit the end kickers square.' },
   ],
   'sign.wickrun_lower': [
-    { text: 'THE LOWER RUN. The carts made the sea from here without a brake. So do the Runners. So will you.' },
+    { text: 'THE LOWER RUN. The carts made the sea from here brakeless. So will you.' },
   ],
   'sign.wickrun_camp': [
-    { text: 'RUNNERS\' CAMP. Last landing before the foot. Visitors welcome. Challengers more welcome. — ROOK' },
+    { text: 'RUNNERS\' CAMP. Last landing before the foot. Challengers welcome. — ROOK' },
   ],
   'sign.wickrun_foot_lift': [
-    { text: 'THE TALLOW LIFT · FOOT STATION. Empties up, Runners up. The car runs only when the crest brake is off.' },
+    { text: 'TALLOW LIFT · FOOT STATION. Runs only when the crest brake is off.' },
   ],
   'sign.wickrun_foot': [
-    { text: 'WICK-RUN FOOT. The finish. Runners hand in here. The beach road runs east to Lightkeeper\'s Point and Pearlmoor.' },
+    { text: 'WICK-RUN FOOT. Hand runners in. EAST: [[Lightkeeper\'s Point, Pearlmoor]].' },
   ],
   'npc.wickrun_yard_hand': [
-    { speaker: 'YARD-HAND', text: 'This yard was ankle-deep in wax once. Carts screamed out of that chute, and we barrowed the cakes east to the Pearlmoor boats.' },
+    { speaker: 'YARD-HAND', text: 'This yard was ankle-deep in wax once. Carts screamed out of that chute; we barrowed the cakes east to the boats.' },
     { speaker: 'YARD-HAND', text: 'Every wick in Vesperholm started on that mountain — the ones in your purse too. Then the vines shut, and here we are, lighting lamps on what\'s left.' },
   ],
   'npc.runner_tamsin_after': [
-    { speaker: 'TAMSIN', text: 'Best view on the hill is mid-trestle. Don\'t stop to look, though. You\'ll get a wheel in the back.' },
+    { speaker: 'TAMSIN', text: 'Best view is mid-trestle. Stop to look and you\'ll get a wheel in the back.' },
   ],
   'npc.runner_ossie_after': [
     { speaker: 'OSSIE', text: 'Over, round, under. Over, round, under. I say it in my sleep.' },
