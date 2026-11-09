@@ -138,6 +138,14 @@ def ground() -> dict:
     npcs.append({"id": "rose", "at": {"tx": 3, "ty": 4}, "facing": "down",
                  "sprite": "paul_rose", "movement": "static",
                  "dialogue_ref": "script.paul_rose"})
+    # THE OLD GIRL, Paul's dog, in her basket by his chair (script.paul_dog)
+    npcs.append({"id": "old_girl", "at": {"tx": 11, "ty": 4}, "facing": "down",
+                 "sprite": "paul_dog", "movement": "static",
+                 "dialogue_ref": "script.paul_dog"})
+    # KATHLEEN'S CORNER: the one tidy desk in the house (she's a retired solicitor)
+    place(objects, "desk", 11, 6, oid="kathleen_desk")
+    for x in (11, 12):
+        sign(triggers, f"kathleen_desk_{x}", x, 6, "sign.paul_kathleen_desk")
     triggers.append({"id": "note", "kind": "cutscene", "at": {"tx": 2, "ty": 6},
                      "activation": "interact", "ref": "script.paul_note"})
     sign(triggers, "wanted", 5, 1, "sign.paul_wanted")

@@ -239,6 +239,11 @@
       "width": 128,
       "height": 128
     },
+    "paul_dog": {
+      "path": "assets/sprites/trainers/paul_dog.webp",
+      "width": 128,
+      "height": 128
+    },
     "player_indi": {
       "path": "assets/sprites/trainers/player_indi.webp",
       "width": 128,

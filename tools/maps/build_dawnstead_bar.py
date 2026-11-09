@@ -61,6 +61,9 @@ def build() -> dict:
     place(objects, "table", 12, 6, oid="table_snug")   # cols 12-13, rows 6-7
     place(objects, "barrels", 12, 9, oid="barrels_snug")
     place(objects, "plant", 14, 9, oid="plant_snug")
+    # a WANTED poster by the window (Odell hasn't seen him; the fella in the snug agrees)
+    objects.append({"id": "wanted_poster", "sprite": "paul_wanted",
+                    "at": {"tx": 9, "ty": 1}, "w": 1, "h": 1, "solid": False})
 
     warps = [
         {"id": "to_dawnstead", "at": {"tx": DOOR_X, "ty": H - 1}, "trigger": "step_on",
@@ -75,6 +78,8 @@ def build() -> dict:
         # the old brass tap, read from behind the bar
         {"id": "tap", "kind": "sign", "at": {"tx": 6, "ty": 3},
          "activation": "interact", "ref": "sign.bubble_tap"},
+        {"id": "wanted_poster", "kind": "sign", "at": {"tx": 9, "ty": 1},
+         "activation": "interact", "ref": "sign.wanted_bubble"},
         # the chalkboard price list on the counter's front
         {"id": "board_5", "kind": "sign", "at": {"tx": 5, "ty": 6},
          "activation": "interact", "ref": "sign.bubble_board"},

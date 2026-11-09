@@ -1290,7 +1290,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   **The changelog must NEVER spoil the hidden real-people content** (owner's rule, 2026-10 — the
   people it was built for read the notice AND the website): nothing about Paul or his things — the Booji-Wooji
   Man / S4–S5, the Chickenpig, the Lifting House gym, Paul's house, the Wayward Arms, the
-  Reckoning Works' walking-man story and Bettany Rook's drovers story there, the Bright Bubble bar in Dawnstead (Paul's fizz-bubbles memory), the beacon-road man with the case. Those changes ship
+  Reckoning Works' walking-man story and Bettany Rook's drovers story there, the Bright Bubble bar in Dawnstead (Paul's fizz-bubbles memory), Agent Pellow + the newspaper man in the Galehigh inn (the WANTED joke; Paul always promises the story "over a whiskey sometime" and never tells it), Paul's dog the Old Girl and Kathleen's tidy solicitor's desk, the beacon-road man with the case. Those changes ship
   silently; an entry covers only general changes (and none at all is fine).
 - **Stuck players are answered in-world by ANDREW, on a fence in every rim town** (2026-08).
   `script.andrew_hint` is the wayfinding chain — one `say` per journey stage, each guarded

@@ -300,6 +300,61 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'BETTANY', text: 'And if you see the walking fella, tell him Bettany says the toast\'s still on.' },
   ],
 
+  // ---- THE OLD GIRL (2026-11): Paul's dog, by his chair (paul_house_1) ------------------
+  // Older than him now, in dog years. Connecting with her taught him never to forget the
+  // pleasure of a satisfying turd; he has, against advice, stitched this on a sampler.
+  'script.paul_dog': [
+    { op: 'run', ref: 'script.paul_dog_first', unless_flag: 'flag:paul_dog_met' },
+    { op: 'run', ref: 'script.paul_dog_again', if_flag: 'flag:paul_dog_met' },
+  ],
+  'script.paul_dog_first': [
+    { op: 'narrate', text: 'An old dog in a basket by Paul\'s chair. Grey muzzle, one ear up. She thumps her tail twice, which is all the fuss she does these days.' },
+    { op: 'say', speaker: 'THE OLD GIRL', text: 'Wuff.' },
+    { op: 'narrate', text: 'A tag on her collar: "OLDER THAN P. IN DOG YEARS. SHE\'D LIKE YOU TO KNOW."' },
+    { op: 'narrate', text: 'Over her basket hangs a cross-stitched sampler, in very careful letters:' },
+    { op: 'narrate', text: '"NEVER FORGET THE PLEASURE OF A SATISFYING TURD. — learnt from the dog. stitched by p."' },
+    { op: 'narrate', text: 'Pinned under it, in a neater hand: "I asked him not to frame this. He framed it. — K."' },
+    { op: 'setFlag', flag: 'flag:paul_dog_met' },
+  ],
+  'script.paul_dog_again': [
+    { op: 'narrate', text: 'The old girl heaves herself up, pads out to the garden, and comes back a while later looking DEEPLY satisfied with life.' },
+    { op: 'say', speaker: 'THE OLD GIRL', text: 'Wuff.' },
+    { op: 'narrate', text: 'She settles back into her basket with the sigh of someone who has learnt the important things, and has nothing left to prove.' },
+  ],
+
+  // ---- THE WANTED MAN (2026-11): Agent Pellow in the Steady Gust Inn (galehigh_inn) -------
+  // The far-off bureau is real enough to send an agent. Why Paul is dangerous to the
+  // country: he slows it down. Two tables over, a man reads a VERY large newspaper.
+  'script.wanted_agent': [
+    { op: 'say', unless_flag: 'flag:wanted_agent_met', speaker: 'AGENT PELLOW', text: 'Agent Pellow, Bureau of Far Affairs. Don\'t be alarmed. Have you seen this man?' },
+    { op: 'narrate', unless_flag: 'flag:wanted_agent_met', text: 'He holds up a poster. WANTED. A cheerful face, a shirt you could hear from across a field.' },
+    { op: 'say', unless_flag: 'flag:wanted_agent_met', speaker: 'AGENT PELLOW', text: 'Wanted for EXCESSIVE CHARM, and conspiracy to make strangers late. Wherever he walks, people stop to chat. Ferries leave without them.' },
+    { op: 'say', unless_flag: 'flag:wanted_agent_met', speaker: 'AGENT PELLOW', text: 'Last winter he told a border guard a story so long the guard retired before the end. The guard calls it the best day of his life. That\'s how he gets you.' },
+    { op: 'say', unless_flag: 'flag:wanted_agent_met', speaker: 'AGENT PELLOW', text: 'Our analysts say if he reaches the capital, the whole country could slow to a STROLL. The Bureau cannot permit a stroll.' },
+    { op: 'say', speaker: 'AGENT PELLOW', text: 'He may be disguised. He favours newspapers. And a shirt that says ASK ME ABOUT MY KNEES. Do NOT ask him about his knees.' },
+    { op: 'say', if_flag: 'flag:wanted_paul_found', speaker: 'AGENT PELLOW', text: 'Any sign? ...No. Of course not. He\'s a professional.' },
+    { op: 'setFlag', flag: 'flag:wanted_agent_met' },
+  ],
+  'script.wanted_newspaper': [
+    { op: 'run', ref: 'script.wanted_newspaper_stranger', unless_flag: 'flag:q_south_booji_met' },
+    { op: 'run', ref: 'script.wanted_newspaper_paul', if_flag: 'flag:q_south_booji_met' },
+  ],
+  // you've never met him: just a man and his newspaper
+  'script.wanted_newspaper_stranger': [
+    { op: 'narrate', text: 'A man behind a VERY large newspaper. The newspaper is upside down.' },
+    { op: 'say', speaker: 'NEWSPAPER', text: 'Lovely weather. For a stroll. Not that I stroll. Never strolled in my life.' },
+  ],
+  'script.wanted_newspaper_paul': [
+    { op: 'narrate', text: 'A man behind a VERY large newspaper. The newspaper is upside down. Two familiar eyes appear over the top of it, under a false moustache.' },
+    { op: 'say', unless_flag: 'flag:wanted_paul_found', speaker: 'NEWSPAPER', text: 'Paul? Never heard of him. I\'m... Pual. Laup. Pual Laup. Travelling in... newspapers.' },
+    { op: 'emote', unless_flag: 'flag:wanted_paul_found', actor: 'wanted_newspaper', emote: 'sweat' },
+    { op: 'say', unless_flag: 'flag:wanted_paul_found', speaker: 'PAUL', text: '...Keep your voice down. It\'s a joke, the whole bureau business. I had the posters printed myself. Mostly.' },
+    { op: 'say', unless_flag: 'flag:wanted_paul_found', speaker: 'PAUL', text: 'Long story. I\'ll tell you over a whiskey sometime.' },
+    { op: 'say', if_flag: 'flag:wanted_paul_found', speaker: 'PAUL', text: 'Shh. He\'s getting closer. He\'s been getting closer for eleven years. I\'ll tell you the whole thing over a whiskey sometime. Promise.' },
+    { op: 'narrate', if_flag: 'flag:wanted_paul_found', text: 'He does not tell you over a whiskey. He turns the page. The newspaper is still upside down.' },
+    { op: 'setFlag', flag: 'flag:wanted_paul_found' },
+  ],
+
   // ---- the rest of the family (2026-11) ---------------------------------------------------
   // Dotted round the house and the wood, each a short first meeting then one
   // standing line. Warm, never progression, never saying what Paul IS.
@@ -307,10 +362,18 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   'script.paul_kathleen': [
     { op: 'say', unless_flag: 'flag:paul_kathleen_met', speaker: 'KATHLEEN', text: 'Hello, love. Mind the line, those are his good shirts. Well. His shirts.' },
     { op: 'say', unless_flag: 'flag:paul_kathleen_met', speaker: 'KATHLEEN', text: 'I\'m Kathleen. I married him, so I\'m the one who knows where he isn\'t. Out walking.' },
+    { op: 'say', unless_flag: 'flag:paul_kathleen_met', speaker: 'KATHLEEN', text: 'Forty years a solicitor. I read the small print for a living. He has never read a word of it, and somehow it always works out for him. It\'s maddening.' },
+    { op: 'say', unless_flag: 'flag:paul_kathleen_met', speaker: 'KATHLEEN', text: 'He brings home the stories; I keep the receipts. Somebody has to know where the passports are.' },
     { op: 'say', unless_flag: 'flag:paul_kathleen_met', speaker: 'KATHLEEN', text: 'The house is FULL. Morgan and Frederika, Rose, and my Gen flew in from the far side of the world with her two.' },
     { op: 'say', unless_flag: 'flag:paul_kathleen_met', speaker: 'KATHLEEN', text: 'Arora and India went into the wood after him. They say it\'s nothing on the bush back home. They\'re being polite.' },
-    { op: 'say', if_flag: 'flag:paul_kathleen_met', unless_flag: 'flag:q_south_wander_done', speaker: 'KATHLEEN', text: 'Kettle\'s on indoors; Rose will see to you. If you find him, tell him the line\'s full and so\'s the house.' },
+    { op: 'say', unless_flag: 'flag:paul_kathleen_invoice', speaker: 'KATHLEEN', text: 'Here. A copy of my latest invoice to him, for your records. Always keep a copy. He never pays, but it\'s the principle.' },
+    { op: 'sfx', key: 'world-keyitem', unless_flag: 'flag:paul_kathleen_invoice' },
+    { op: 'giveItem', item: 'kathleen_invoice', count: 1, unless_flag: 'flag:paul_kathleen_invoice' },
+    { op: 'say', unless_flag: 'flag:paul_kathleen_invoice', text: 'Received KATHLEEN\'S INVOICE!' },
+    { op: 'setFlag', flag: 'flag:paul_kathleen_invoice' },
+    { op: 'say', if_flag: 'flag:paul_kathleen_met', unless_flag: 'flag:q_south_wander_done', speaker: 'KATHLEEN', text: 'Kettle\'s on indoors. And if you see him, tell him the line\'s full, the house is full, and his tray is FULL.' },
     { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'KATHLEEN', text: 'He came up the hill with a tin cup, humming. All these years and I\'ve never once heard him hum. Whatever you did, thank you.' },
+    { op: 'say', if_flag: 'flag:paul_kathleen_met', speaker: 'KATHLEEN', text: 'That WANTED poster? I\'ve read it. It isn\'t a warrant, it\'s a joke he had printed. I\'ve told him a joke is not a legal defence.' },
     { op: 'setFlag', flag: 'flag:paul_kathleen_met' },
   ],
   // MORGAN, his daughter, Frederika's mum, folding shirts in the museum (paul_house_2).
@@ -604,6 +667,22 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
     { speaker: 'FREDERIKA', text: 'That\'s okay. Bring it next time. I\'ll wait right here. I am VERY good at waiting. (I\'m not.)' },
   ],
 
+  // ---- Kathleen's corner (paul_house_1) ------------------------------------------------------
+  'sign.paul_kathleen_desk': [
+    { text: 'A desk so tidy it looks frightened. Three trays: IN, OUT and PAUL. The PAUL tray is the fullest. It has its own paperweight.' },
+    { text: 'A pen lies exactly parallel to the blotter, beside a ruler for checking. A brass plate: K. — SOLICITOR (RETIRED). (MOSTLY.)' },
+    { text: 'A drawer labelled PASSPORTS — BOTH OF THEM — YES, HIS TOO. It is the only drawer in the house that knows where anything is.' },
+  ],
+  // ---- the WANTED posters further afield ----------------------------------------------------
+  'sign.wanted_galehigh': [
+    { text: 'WANTED, by the Bureau of Far Affairs: one man, for EXCESSIVE CHARM. Approach with caution. He will ask how your day is, and MEAN it.' },
+    { text: 'Scrawled underneath: "saw him tuesday. lovely fella. didn\'t report him." And under that: "nor me."' },
+  ],
+  'sign.wanted_bubble': [
+    { text: 'WANTED: one man, for slowing down a whole harbour. REWARD: a cup of tea. Someone has written across it: "HAVEN\'T SEEN HIM. — Odell."' },
+    { text: 'The fella in the snug is reading it too. He nods, very seriously, as if he agrees it\'s a disgrace.' },
+  ],
+
   // ---- the Bright Bubble (Dawnstead) --------------------------------------------------------
   'sign.dawnstead_bubble': [
     { text: 'A painted sign over the door: a tall glass, its bubbles spilling over the rim. THE BRIGHT BUBBLE.' },
@@ -630,7 +709,7 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
   // ---- ground floor ------------------------------------------------------------------------
   'sign.paul_wanted': [
     { text: 'A poster, yellowed at the corners. WANTED — by a bureau so far off nobody can pronounce it — FOR EXCESSIVE CHARM.' },
-    { text: 'Underneath, in pencil: "& crimes against fashion." Pinned beside it, in Paul\'s hand: "it\'s a joke. — p."' },
+    { text: 'Underneath, in pencil: "& crimes against fashion." Pinned beside it, in Paul\'s hand: "it\'s a joke. i\'ll tell you the whole story over a whiskey sometime. — p."' },
     { text: 'The story on the back has been crossed out and rewritten four times. Every version is different. Every version is signed.' },
   ],
   'sign.paul_pinboard': [

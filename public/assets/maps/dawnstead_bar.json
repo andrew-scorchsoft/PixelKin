@@ -524,6 +524,17 @@
       },
       "w": 1,
       "h": 1
+    },
+    {
+      "id": "wanted_poster",
+      "sprite": "paul_wanted",
+      "at": {
+        "tx": 9,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
     }
   ],
   "warps": [
@@ -586,6 +597,16 @@
       },
       "activation": "interact",
       "ref": "sign.bubble_tap"
+    },
+    {
+      "id": "wanted_poster",
+      "kind": "sign",
+      "at": {
+        "tx": 9,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.wanted_bubble"
     },
     {
       "id": "board_5",

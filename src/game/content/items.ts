@@ -244,6 +244,13 @@ export const ITEMS: ItemRegistry = {
     desc: 'A crayon Chickenpig crowing at a crayon sun. Signed FREDERIKA, very large.',
     category: 'key',
   },
+  // Paul's House (2026-11): Kathleen hands you a copy, for your records.
+  kathleen_invoice: {
+    id: 'kathleen_invoice',
+    name: 'Kathleen\'s Invoice',
+    desc: 'To P., from K. (solicitor, retired): explaining a WANTED poster to a customs officer, 3 hrs; one bicycle out of a duck pond, 20 mins. DUE: one cup of tea. OVERDUE.',
+    category: 'key',
+  },
   fenn_letter: {
     id: 'fenn_letter',
     name: "Gran's Letter",
