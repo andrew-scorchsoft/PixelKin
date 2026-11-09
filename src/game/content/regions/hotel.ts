@@ -47,7 +47,7 @@ export const HOTEL_SCRIPTS: ScriptRegistry = {
   ],
 
   'script.wayward_first': [
-    { op: 'narrate', text: 'A man stands beside the corner chair, one hand resting on its wing, as if he\'s been waiting a while. He looks up when you come in.' },
+    { op: 'narrate', text: 'A man stands by the corner chair, one hand on its wing, as if he\'s been waiting a while. He looks up as you come in.' },
     { op: 'emote', actor: 'player', emote: 'question' },
     { op: 'narrate', text: 'Who\'s that? A friend? Someone you knew on the road, once?' },
     { op: 'narrate', text: '...A long-lost brother?' },
@@ -68,7 +68,7 @@ export const HOTEL_SCRIPTS: ScriptRegistry = {
             { op: 'move', actor: 'player', to: { tx: 12, ty: 4 }, speed: PACE },
             { op: 'move', actor: 'player', to: { tx: 9, ty: 4 }, speed: PACE },
             { op: 'face', actor: 'player', facing: 'up' },
-            { op: 'narrate', text: 'The top shelf keeps the good bottles, dusty-shouldered and older than the dark.' },
+            { op: 'narrate', text: 'The top shelf keeps the good bottles, dusty-shouldered, older than the dark.' },
             { op: 'action', actor: 'player', action: 'raiseLamp', holdMs: 700 },
             { op: 'narrate', text: 'You reach up and take down the bourbon, and two short glasses.' },
             { op: 'move', actor: 'player', to: { tx: 12, ty: 4 }, speed: PACE },
@@ -147,7 +147,7 @@ export const HOTEL_DIALOGUE: DialogueRegistry = {
     { text: 'The top shelf. Squat amber bottles with brass caps, and one standing a little proud of the rest.' },
   ],
   'sign.wayward_stairs': [
-    { text: 'The stair climbs to the rooms. Every door up there is shut and quiet, and someone has left a lamp burning on the landing.' },
+    { text: 'The stair climbs to the rooms. Every door is shut and quiet; someone has left a lamp burning on the landing.' },
   ],
   'sign.wayward_guestbook': [
     { text: 'The guest-book lies open: pages of names in a hundred different hands.' },
