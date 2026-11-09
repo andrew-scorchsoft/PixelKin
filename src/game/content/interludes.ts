@@ -138,7 +138,7 @@ export const INTERLUDE_SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'interlude_cor', facing: 'up' },
     { op: 'wait', ms: 600 },
     { op: 'move', actor: 'interlude_cor', to: { tx: 9, ty: 10 }, speed: 0.6 },
-    { op: 'narrate', text: 'Then he walks on towards the mountain, like a man who has made this walk many times.' },
+    { op: 'narrate', text: 'Then he walks on towards the mountain, like a man who has walked it many times.' },
     { op: 'wait', ms: 500 },
   ],
 
@@ -159,19 +159,19 @@ export const INTERLUDE_SCRIPTS: ScriptRegistry = {
     { op: 'wait', ms: 900 },
     { op: 'say', speaker: 'WARDEN CÒR', text: 'Because someone should.' },
     { op: 'action', actor: 'interlude_cor', action: 'sad', holdMs: 1300 },
-    { op: 'narrate', text: 'He straightens the tag a little. Then he takes up the broom and sweeps a floor that is already clean.' },
+    { op: 'narrate', text: 'He straightens the tag. Then he takes up the broom and sweeps a floor that is already clean.' },
   ],
 
   // NORTH — seen falling: alone at a high window, a fall lands nearer.
   'script.interlude_north': [
     { op: 'wait', ms: 600 },
-    { op: 'narrate', text: 'The mountain again. Còr stands alone at a high window, the way he does most nights, watching the sky.' },
+    { op: 'narrate', text: 'The mountain again. Còr stands alone at a high window, as most nights, watching the sky.' },
     { op: 'wait', ms: 400 },
     // The live fall (a no-op with Ambient motion off; the line still tells it).
     { op: 'starfall', from: 'right', wait: true },
     { op: 'sfx', key: 'world-star-gutter' },
     { op: 'shake', ms: 280, intensity: 0.004 },
-    { op: 'narrate', text: 'A star comes loose and falls. It comes down nearer than the last one did. They all do, now.' },
+    { op: 'narrate', text: 'A star comes loose and falls, nearer than the last one did. They all do, now.' },
     { op: 'action', actor: 'interlude_cor', action: 'sad', holdMs: 1400 },
     { op: 'narrate', text: 'A thin chain at his collar runs down into his breast pocket. His hand goes there, and rests.' },
     { op: 'say', speaker: 'CÒR', portrait: 'cor', expr: 'sorrowful', text: "Another one. ...Rest. I'll come and fetch you home." },

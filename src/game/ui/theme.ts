@@ -36,6 +36,9 @@ export const theme = {
     hpLow: '#ff5a5a',
     /** The vesperlamp's light: a kin recalled into / sent out of the lamp (Battler). */
     lampGlow: '#ffd98a',
+    /** Key-information marks in dialogue (`[[...]]`): glyph colour + the deeper underline. */
+    keyInfo: '#ffd98a',
+    keyInfoRule: '#c0802e',
   },
 
   /** The seven status conditions as short plate tags (battle HpPanel, KIN list):
@@ -113,6 +116,8 @@ export const theme = {
     small: { fontFamily: FONT_FAMILY, fontSize: '8px', color: COLORS.bone },
     /** Un-attributed narration / cold-open prose — soft, no speaker, set apart. */
     narrate: { fontFamily: FONT_FAMILY, fontSize: '8px', color: '#d8d2e8' },
+    /** Key-information marks in dialogue (lamp-gold, underlined by the DialogueBox). */
+    key: { fontFamily: FONT_FAMILY, fontSize: '8px', color: '#ffd98a' },
   },
 
   /** Dialogue typewriter speeds, characters per second. Hold confirm = fast.

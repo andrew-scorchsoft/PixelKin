@@ -101,7 +101,7 @@ STALLS[2] = {
   first: [
     say(PRUDENCE, 'Shh. The bloom.', { unless_flag: SEEING }),
     say('GLIMFLIT', '...circles... small circles... shh... the bloom...', { if_flag: SEEING }),
-    nar('She pours a thin ring of water over the grounds in a paper cone. She waits. She pours another ring. She looks at you as if you\'d interrupted, although you didn\'t say anything.'),
+    nar('She pours a thin ring of water over the grounds. Waits. Pours another. She looks at you as if you\'d interrupted. You didn\'t say anything.'),
     {
       op: 'choice',
       speaker: PRUDENCE,
@@ -163,7 +163,7 @@ STALLS[5] = {
   first: [
     say(ILKA, 'Sit, child. The little pots cook in the hot sand, slow, slow. And when you finish, I read the grounds.', { unless_flag: SEEING }),
     say('RIDDLESTONE', 'What is small, and hot, and tells your future in mud? ...Me. Sit down.', { if_flag: SEEING }),
-    nar('She lifts a long-handled pot out of the sand just as it froths, and pours a tiny, thick, fragrant cup. You drink it. She takes the cup and peers into the bottom.'),
+    nar('She lifts a pot out of the sand just as it froths and pours a tiny, thick cup. You drink. She takes the cup and peers into the bottom.'),
     say(ILKA, 'I see... a long road. A lamp. A great many friends with too many legs.'),
     say(ILKA, 'And I see...', { unless_flag: PERKY }),
     say(ILKA, '...more coffee. Oh, child. So much more coffee.', { unless_flag: PERKY }),
@@ -268,9 +268,9 @@ STALLS[8] = {
 const ALEMBIC = 'DR ALEMBIC';
 STALLS[11] = {
   first: [
-    say(ALEMBIC, 'Welcome to the Siphon Lab! Vacuum brewing! The water rises into the top chamber by SCIENCE, steeps, and then — watch — falls back down by MORE SCIENCE.', { unless_flag: SEEING }),
+    say(ALEMBIC, 'Welcome to the Siphon Lab! The water rises into the top chamber by SCIENCE, steeps, and then — watch — falls back down by MORE SCIENCE.', { unless_flag: SEEING }),
     say('FLICKORE', 'BZT. Welcome to the lab. BZT. The water goes up. BZT. Then down. Science. BZT.', { if_flag: SEEING }),
-    nar('The blue flame burns. The water climbs into the glass globe as if it had somewhere to be. The doctor watches it with the look of someone meeting an old friend.'),
+    nar('The blue flame burns. The water climbs into the glass globe as if it had somewhere to be. The doctor watches it like an old friend.'),
     say(ALEMBIC, 'That queue? Three hours, some of them. How did you get past them so quickly?'),
     nar('You try to explain. It comes out as one long word.'),
     say(ALEMBIC, '...Ah. Yes. You are very much the target market.'),
@@ -425,9 +425,9 @@ export const BREWFAIR_SCRIPTS: ScriptRegistry = {
   ],
   'script.brewfair_doorman_no_cup': [
     say('DOORMAN', 'Evening! The Wakeful Fair — every brewer in Vesperholm under one roof of canvas. Free samples at every stall!'),
-    say('DOORMAN', 'One rule. Bring your own cup. It\'s tradition. Also, in the third year we ran out of cups and we never recovered.'),
+    say('DOORMAN', 'One rule: [[bring your own cup]]. It\'s tradition. Also, in the third year we ran out of cups and never recovered.'),
     say('DOORMAN', 'No cup? Then no coffee, friend. Sorry.'),
-    say('DOORMAN', 'There\'s an old fellow walks the wood down there carries a tin cup everywhere. Ask him where a person gets a cup like that.', { unless_flag: 'flag:q_south_wander' }),
+    say('DOORMAN', 'There\'s an old fellow walks the wood down there with a tin cup. [[Ask him]] where a person gets a cup like that.', { unless_flag: 'flag:q_south_wander' }),
     say('DOORMAN', 'He\'s sent you up the wood, has he? Then finish what he started. Come back with a cup.', { if_flag: 'flag:q_south_wander' }),
     { op: 'setFlag', flag: 'flag:brew_fair_seen' },
   ],
@@ -449,8 +449,8 @@ export const BREWFAIR_SCRIPTS: ScriptRegistry = {
     nar('You hold up Paul\'s Tin Cup.'),
     say('MARIGOLD', 'Oh. OH. That dent. That\'s — is that —? Never mind. Never you mind. You\'ll want a tasting card.'),
     { op: 'giveItem', item: 'tasting_card', count: 1 },
-    { op: 'say', text: 'Got the TASTING CARD! Sixteen little squares for sixteen stalls, and a seventeenth that just says DECAF?' },
-    say('MARIGOLD', 'Every stall pours you a free sample and stamps your card. Fill the whole card and come back to me — there\'s a prize.'),
+    { op: 'say', text: 'Got the TASTING CARD! Sixteen squares for sixteen stalls, and a seventeenth that just says DECAF?' },
+    say('MARIGOLD', 'Every stall pours a free sample and stamps your card. [[Fill the whole card]] and come back to me — there\'s a prize.'),
     say('MARIGOLD', 'And a word to the wise: the samples are small. But there are a LOT of them.'),
     { op: 'setFlag', flag: HAS_CARD },
     { op: 'setFlag', flag: 'flag:brew_fair_seen' },
@@ -466,7 +466,7 @@ export const BREWFAIR_SCRIPTS: ScriptRegistry = {
     say('MARIGOLD', 'Every square! Even the decaf! Dennis will be beside himself.'),
     say('MARIGOLD', 'Here — the fair\'s own flask. Keep it open on the road and you\'ll fizz so loud the wild kin can hear you coming from a field away.'),
     { op: 'giveItem', item: 'wakeful_flask', count: 1 },
-    { op: 'say', text: 'Got the WAKEFUL FLASK! (Open it from ITEMS: wild kin come to see what all the buzzing is.)' },
+    { op: 'say', text: 'Got the WAKEFUL FLASK! ([[Open it from ITEMS]]: wild kin come to see what the buzzing is.)' },
     { op: 'setFlag', flag: 'flag:brew_card_prize' },
   ],
 
@@ -527,7 +527,7 @@ export const BREWFAIR_SCRIPTS: ScriptRegistry = {
   'script.brew_hit_buzzing': [
     { op: 'shake', ms: 600, intensity: 0.003 },
     { op: 'emote', actor: 'player', emote: 'sweat' },
-    nar('Your heart is doing a drumroll. It has been doing it for a while now. It shows no sign of getting to the big finish.'),
+    nar('Your heart is doing a drumroll. It shows no sign of getting to the big finish.'),
     nar('The colours are louder. The steam is spelling things. You could walk THROUGH a queue now. Not round it. Through it.'),
     nar('And over in the south-west corner there\'s a stall you\'re almost certain wasn\'t there a minute ago.'),
     nar('Just one more, though. Just one.'),
@@ -539,7 +539,7 @@ export const BREWFAIR_SCRIPTS: ScriptRegistry = {
     { op: 'shake', ms: 900, intensity: 0.004 },
     nar('Wait.'),
     nar('Wait, wait, wait.'),
-    nar('Everyone at the fair has turned into a kin. That\'s fine. That\'s normal. Everybody stay calm. You\'re calm. You are vibrating calmly.'),
+    nar('Everyone at the fair has turned into a kin. That\'s fine. That\'s normal. You\'re calm. You are vibrating calmly.'),
     nar('And in the middle of the marquee, the Grand Urn has opened its eyes and started to sing.'),
     nar('There\'s a puddle swirling at its feet, round and round. It goes down a long, long way. It looks a lot like the bottom of a cup.'),
     { op: 'emote', actor: 'player', emote: 'heart' },
@@ -613,7 +613,7 @@ export const BREWFAIR_SCRIPTS: ScriptRegistry = {
   // ---- THE BOTTOM OF THE CUP ------------------------------------------------------------
   'script.brewfair_buzz': [
     { op: 'letterbox', on: true, ms: 400 },
-    nar('Something rises out of the Bottomless Cup. It\'s small, and it\'s very, very fast, and it\'s humming at exactly the speed of your heart.'),
+    nar('Something rises out of the Bottomless Cup: small, very fast, and humming at exactly the speed of your heart.'),
     say('THE BUZZ', 'BZZZZT! Hello! I\'m you! The awake bit! We\'re having SUCH a lovely time!'),
     say('THE BUZZ', 'Sleep? SLEEP? Sleep is for people who haven\'t found the cold brew! One more cup! And one more! And one more!'),
     nar('It isn\'t going to let you rest. Not unless you make it.'),
@@ -672,7 +672,7 @@ export const BREWFAIR_SCRIPTS: ScriptRegistry = {
   'script.pickup_brew_wing': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'glow_charge', count: 2 },
-    { op: 'say', text: 'Wedged behind the bean sacks: 2 GLOW CHARGES. Somebody gave up their place in the queue and dropped these on the way out.' },
+    { op: 'say', text: 'Wedged behind the bean sacks: 2 GLOW CHARGES. Somebody gave up their place in the queue and dropped these.' },
     { op: 'setFlag', flag: 'flag:picked_brew_wing' },
   ],
   'script.pickup_brew_loft': [
@@ -684,7 +684,7 @@ export const BREWFAIR_SCRIPTS: ScriptRegistry = {
   'script.pickup_brew_dream': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'lumen_drop', count: 1 },
-    { op: 'say', text: 'On the islet, a single perfect coffee bean. You pick it up and it turns into a LUMEN DROP. Dreams are like that.' },
+    { op: 'say', text: 'On the islet, a perfect coffee bean. You pick it up and it turns into a LUMEN DROP. Dreams are like that.' },
     { op: 'setFlag', flag: 'flag:picked_brew_dream' },
   ],
 
@@ -750,10 +750,10 @@ export const BREWFAIR_DIALOGUE: DialogueRegistry = {
     { text: 'A brass plaque with a tin cup engraved on it: THE CUP RECORD. P. — TWENTY-THREE SAMPLES. "He said the urn laughed."' },
   ],
   'sign.brewfair_cot': [
-    { text: 'A canvas camp-cot with a folded blanket. It\'s seen things. Mostly people staring at the ceiling, very fast.' },
+    { text: 'A camp-cot with a folded blanket. It\'s seen things. Mostly people staring at the ceiling, very fast.' },
   ],
   'sign.brewfair_roaster': [
-    { text: 'The big drum roaster turns and turns, warm as a hearth. The beans go in green and come out the colour of the Long Dusk.' },
+    { text: 'The big drum roaster turns, warm as a hearth. Beans go in green and come out the colour of the Long Dusk.' },
   ],
   'sign.brewfair_trophy': [
     { text: 'THE GOLDEN CUP. A coffee cup, but gold. But enormous. The plinth lists seven years of the same name: O. CREMA.' },
