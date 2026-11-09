@@ -2,6 +2,13 @@
   "_note": "The player-facing changelog: the in-game \"the world has changed\" notice (content/whatsnew.ts) AND the website changelog page (web/site.mjs) both read this. Newest first. NO SPOILERS for the hidden real-people content - see whatsnew.ts.",
   "entries": [
     {
+      "version": "1.44",
+      "date": "2026-11-09",
+      "notes": [
+        "Additional lore added."
+      ]
+    },
+    {
       "version": "1.42",
       "date": "2026-11-09",
       "notes": [

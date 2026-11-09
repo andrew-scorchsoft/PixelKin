@@ -180,6 +180,126 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:paul_rose_met' },
   ],
 
+  // ---- THE BRIGHT BUBBLE (2026-11): Dawnstead's bar, and Paul's bubbles ------------------
+  // His memory: a bar, the serial on a Thursday, a glass of fizz from a tap that poured
+  // it over-bubbled. Then somebody FIXED the tap, and it was never the same. Here the
+  // keeper's tap has broken again since the dawn. Pour a glass (flag:bubble_poured) and
+  // Paul, in the snug once you've walked the wood with him, says "wait a minute...".
+  // (tools/maps/build_dawnstead_bar.py; the drinks are ours: DUSK FIZZ and LIGHT FIZZ.)
+  'script.bubble_welcome': [
+    { op: 'narrate', text: 'A low room, warm and loud with daylight. Behind the bar, an old brass tap is HISSING to itself.' },
+    { op: 'setFlag', flag: 'flag:bubble_seen' },
+  ],
+  'script.bubble_keeper': [
+    { op: 'say', unless_flag: 'flag:bubble_met', speaker: 'ODELL', text: 'Welcome to the Bright Bubble! First daylight in eleven winters, and everyone wants something cold.' },
+    { op: 'say', if_flag: 'flag:bubble_met', speaker: 'ODELL', text: 'Back for another? The tap\'s still broken. Long may it stay broken.' },
+    { op: 'setFlag', flag: 'flag:bubble_met' },
+    {
+      op: 'choice',
+      prompt: 'What\'ll it be?',
+      options: [
+        { label: 'DUSK FIZZ', ops: [{ op: 'run', ref: 'script.bubble_pour_dusk' }] },
+        { label: 'LIGHT FIZZ', ops: [{ op: 'run', ref: 'script.bubble_pour_light' }] },
+        { label: 'Just looking', ops: [{ op: 'say', speaker: 'ODELL', text: 'Look all you like. Everything\'s on the house today.' }] },
+      ],
+    },
+  ],
+  'script.bubble_pour_dusk': [
+    { op: 'say', speaker: 'ODELL', text: 'Dusk Fizz, the dark one. Sweet as a bad idea. On the house; everything is, today.' },
+    { op: 'run', ref: 'script.bubble_pour' },
+  ],
+  'script.bubble_pour_light': [
+    { op: 'say', speaker: 'ODELL', text: 'Light Fizz, the light one. Same fizz, less sugar, more smugness. On the house.' },
+    { op: 'run', ref: 'script.bubble_pour' },
+  ],
+  'script.bubble_pour': [
+    { op: 'narrate', text: 'He pulls the old brass tap. It coughs, hisses, and the glass fills with bubbles as big as marbles, climbing over each other, bright as lamp-sparks.' },
+    { op: 'sfx', key: 'world-fizz' },
+    { op: 'emote', actor: 'player', emote: 'alert' },
+    { op: 'say', unless_flag: 'flag:bubble_poured', speaker: 'ODELL', text: 'Tap\'s played up since the dawn. My gran had it fixed once, years back. Tiny polite bubbles. Trade fell right off.' },
+    { op: 'say', unless_flag: 'flag:bubble_poured', speaker: 'ODELL', text: 'So I haven\'t the heart to mend it. Folk come in for the bubbles. Nobody ever came in for a fixed tap.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', unless_flag: 'flag:paul_bubbles_remembered', speaker: 'ODELL', text: 'Fella in the snug\'s been nursing one glass since sunrise. [[Show him that]]. Might cheer him.' },
+    { op: 'setFlag', flag: 'flag:bubble_poured' },
+  ],
+  // Paul in the snug: quiet before your glass, the memory after it, then one standing line.
+  'script.bubble_paul': [
+    { op: 'run', ref: 'script.bubble_paul_after', if_flag: 'flag:paul_bubbles_remembered' },
+    { op: 'run', ref: 'script.bubble_paul_remember', if_flag: 'flag:bubble_poured', unless_flag: 'flag:paul_bubbles_remembered' },
+    { op: 'run', ref: 'script.bubble_paul_before', unless_flag: 'flag:bubble_poured' },
+  ],
+  'script.bubble_paul_before': [
+    { op: 'say', speaker: 'PAUL', text: 'Oh, hello. Long way from the Rise, this. I walked. Obviously.' },
+    { op: 'say', speaker: 'PAUL', text: 'Don\'t mind me. Just sitting where the light is. Go on, [[get yourself a drink]]. It\'s on the house.' },
+  ],
+  'script.bubble_paul_remember': [
+    { op: 'say', speaker: 'PAUL', text: 'Oh, hello. Long way from the Rise, this. I walked. Obvious—' },
+    { op: 'narrate', text: 'He glances at your glass. Then looks again.' },
+    { op: 'emote', actor: 'paul_bubble', emote: 'alert', holdMs: 800 },
+    { op: 'say', speaker: 'PAUL', text: '...Wait a minute.' },
+    { op: 'say', speaker: 'PAUL', text: 'Wait a MINUTE. Look at those bubbles.' },
+    { op: 'wait', ms: 600 },
+    { op: 'say', speaker: 'PAUL', text: 'I used to go into a bar like this, years back. Thursdays, for the serial. The one about the ship that never gets home, and nobody minds.' },
+    { op: 'say', speaker: 'PAUL', text: 'And a glass of the light stuff. It came up over-bubbled, like that. Big, bright, all elbows. Best bit of the night.' },
+    { op: 'say', speaker: 'PAUL', text: 'Better than the serial. And I LOVED the serial.' },
+    { op: 'say', speaker: 'PAUL', text: 'Then one day they fixed the tap. Perfect glass. Tiny polite bubbles. I kept going in. It was never quite the same.' },
+    { op: 'narrate', text: 'He lifts a hand to the bar. Odell is already pulling the tap. It coughs, hisses, and pours.' },
+    { op: 'sfx', key: 'world-fizz' },
+    { op: 'narrate', text: 'Paul looks at the glass a long time. Then he drinks, and the bubbles climb all over his nose.' },
+    { op: 'emote', actor: 'paul_bubble', emote: 'heart', holdMs: 900 },
+    { op: 'say', speaker: 'PAUL', text: '...There it is.' },
+    { op: 'say', speaker: 'PAUL', text: 'Don\'t let anybody fix that tap. Tell them I said. Tell them it\'s a joke. It isn\'t.' },
+    { op: 'setFlag', flag: 'flag:paul_bubbles_remembered' },
+  ],
+  'script.bubble_paul_after': [
+    { op: 'say', speaker: 'PAUL', text: 'Same again? I\'m not leaving till the bubbles do. Could be a while. Could be never. Suits me.' },
+  ],
+
+  // ---- THE DROVERS (2026-11): Paul's old work, told by a colleague -------------------------
+  // Before the engines, the Kindly House (children whose minds ran on their own roads)
+  // hired DROVERS: cowboys, problem-solvers, folk who'd try anything twice. When the
+  // reckoning-engines came in, the place grew sure of itself and stopped needing anyone
+  // who improvised. Bettany Rook, one of the last drovers, sits in the Reckoning-Works
+  // watching the engines; the best drover she knew "walked everywhere, never lost".
+  // (Mid-late: the Works is up the Rimeway, after the Frost Gleam.) Hidden content.
+  'script.drover_bettany': [
+    { op: 'run', ref: 'script.drover_after', if_flag: 'flag:drover_told' },
+    { op: 'run', ref: 'script.drover_first', unless_flag: 'flag:drover_told' },
+  ],
+  'script.drover_first': [
+    { op: 'say', unless_flag: 'flag:drover_met', speaker: 'BETTANY', text: 'Don\'t mind me, love. I come up to watch the engines. Somebody ought to, who remembers before.' },
+    { op: 'say', unless_flag: 'flag:drover_met', speaker: 'BETTANY', text: 'Bettany Rook. I was a drover once, at the Kindly House, down in the valleys. Forty winters back, near enough.' },
+    { op: 'say', if_flag: 'flag:drover_met', speaker: 'BETTANY', text: 'Back again? Sit down, then. The engines won\'t miss us.' },
+    { op: 'setFlag', flag: 'flag:drover_met' },
+    {
+      op: 'choice',
+      prompt: 'Hear about the Kindly House?',
+      options: [
+        { label: 'Tell me', ops: [{ op: 'run', ref: 'script.drover_story' }] },
+        { label: 'Not now', ops: [{ op: 'say', speaker: 'BETTANY', text: 'It\'ll keep. I\'ve kept it this long.' }] },
+      ],
+    },
+  ],
+  'script.drover_story': [
+    { op: 'say', speaker: 'BETTANY', text: 'The Kindly House looked after children whose minds ran on their own roads. Some never spoke. Some knew every star by name and couldn\'t bear a bell.' },
+    { op: 'say', speaker: 'BETTANY', text: 'Nobody had written a book on how. So the House hired drovers. Cowboys, the old matron called us. Problem-solvers. Folk who\'d try anything twice.' },
+    { op: 'say', speaker: 'BETTANY', text: 'Lad won\'t come in out of the rain? You don\'t look it up. You go and stand in the rain with him till he\'s ready. Then you both come in for toast.' },
+    { op: 'say', speaker: 'BETTANY', text: 'No two days alike. We made it up as we went, and got it right more than wrong, because we KNEW them. Best work I ever did.' },
+    { op: 'narrate', text: 'She watches the engines clack. Punched cards fly through them like snow.' },
+    { op: 'say', speaker: 'BETTANY', text: 'Then the engines came down from places like this. Every child a card. Every hour a column. A form for the forms.' },
+    { op: 'say', speaker: 'BETTANY', text: 'Good people brought them, mind. Careful people. The engines weren\'t wicked. They were just SURE. And a place that\'s sure doesn\'t need anyone who improvises.' },
+    { op: 'say', speaker: 'BETTANY', text: 'They stopped hiring drovers and started hiring clerks. The cowboys drifted off one by one. I went near the last.' },
+    { op: 'say', speaker: 'BETTANY', text: 'There was one fella, the best of us. Walked everywhere, the long way round. Took the restless ones out with him, and they\'d come home calm. Never got lost once.' },
+    { op: 'say', if_flag: 'flag:q_south_booji_met', speaker: 'BETTANY', text: 'Keeps a dark lamp on a breakwater now, I hear. Still walking. Of course he is.' },
+    { op: 'say', speaker: 'BETTANY', text: 'Everyone\'s asking what the new engines will take next. I\'ll tell you what I told the last lot.' },
+    { op: 'say', speaker: 'BETTANY', text: 'They can have the forms. They can\'t have the standing in the rain. Somebody\'s still got to do that bit.' },
+    { op: 'say', if_flag: 'flag:q_works_done', speaker: 'BETTANY', text: 'And I hear this lot sent half their clerks out for a walk. Well, well. Maybe there\'s room for cowboys yet.' },
+    { op: 'setFlag', flag: 'flag:drover_told' },
+  ],
+  'script.drover_after': [
+    { op: 'say', speaker: 'BETTANY', text: 'Go on, love. The engines don\'t need watching. People do.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'BETTANY', text: 'And if you see the walking fella, tell him Bettany says the toast\'s still on.' },
+  ],
+
   // ---- the rest of the family (2026-11) ---------------------------------------------------
   // Dotted round the house and the wood, each a short first meeting then one
   // standing line. Warm, never progression, never saying what Paul IS.
@@ -482,6 +602,19 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
   'npc.paul_frederika_cp_missing': [
     { speaker: 'FREDERIKA', text: 'It\'s... not in your lamp? Is it resting at the HEARTH?' },
     { speaker: 'FREDERIKA', text: 'That\'s okay. Bring it next time. I\'ll wait right here. I am VERY good at waiting. (I\'m not.)' },
+  ],
+
+  // ---- the Bright Bubble (Dawnstead) --------------------------------------------------------
+  'sign.dawnstead_bubble': [
+    { text: 'A painted sign over the door: a tall glass, its bubbles spilling over the rim. THE BRIGHT BUBBLE.' },
+  ],
+  'sign.bubble_tap': [
+    { text: 'The old brass tap. It hisses, ticks, and every so often lets out a single, enormous bubble, all by itself.' },
+    { text: 'A card tied to the handle: "DO NOT FIX."' },
+  ],
+  'sign.bubble_board': [
+    { text: 'A chalkboard: DUSK FIZZ (the dark one). LIGHT FIZZ (the light one). EVERYTHING ON THE HOUSE TODAY.' },
+    { text: 'Underneath, older chalk that nobody has rubbed out: "THURSDAYS: THE SERIAL."' },
   ],
 
   // ---- outside -----------------------------------------------------------------------------

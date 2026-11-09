@@ -242,6 +242,11 @@ m = {
         {"id": "to_spire_e", "at": {"tx": 16, "ty": 28}, "trigger": "step_on",
          "to_map": "umbral_spire_summit", "to": {"tx": 17, "ty": 20}, "facing": "down",
          "transition": "fade"},
+        # THE BRIGHT BUBBLE (2026-11): the east cottage's door -> the little bar
+        # (build_dawnstead_bar.py; lands on its doormat's inner tile).
+        {"id": "enter_bubble", "at": {"tx": cot_e_door[0], "ty": cot_e_door[1]},
+         "trigger": "step_on", "to_map": "dawnstead_bar", "to": {"tx": 8, "ty": 9},
+         "facing": "up", "transition": "door"},
     ],
     "triggers": [
         # THE ARRIVAL — the sky beat, banded across both pier columns (the only
@@ -301,8 +306,10 @@ m = {
         # line answers a walk-up Confirm; no warp = no graph geometry).
         {"id": "door_store", "kind": "dialogue", "at": {"tx": shop_door[0], "ty": shop_door[1]},
          "activation": "interact", "ref": "door.dawnstead_store"},
-        {"id": "door_cottage_e", "kind": "dialogue", "at": {"tx": cot_e_door[0], "ty": cot_e_door[1]},
-         "activation": "interact", "ref": "door.dawnstead_cottage"},
+        # (the east cottage is THE BRIGHT BUBBLE now — a door warp below; its
+        # hanging sign answers from the wall beside the door)
+        {"id": "sign_bubble", "kind": "sign", "at": {"tx": cot_e_door[0] + 1, "ty": cot_e_door[1]},
+         "activation": "interact", "ref": "sign.dawnstead_bubble"},
         {"id": "door_cottage_w", "kind": "dialogue", "at": {"tx": cot_w_door[0], "ty": cot_w_door[1]},
          "activation": "interact", "ref": "door.dawnstead_home"},
         # Signs.

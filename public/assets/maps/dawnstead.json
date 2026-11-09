@@ -2790,6 +2790,21 @@
       },
       "facing": "down",
       "transition": "fade"
+    },
+    {
+      "id": "enter_bubble",
+      "at": {
+        "tx": 19,
+        "ty": 7
+      },
+      "trigger": "step_on",
+      "to_map": "dawnstead_bar",
+      "to": {
+        "tx": 8,
+        "ty": 9
+      },
+      "facing": "up",
+      "transition": "door"
     }
   ],
   "triggers": [
@@ -3060,14 +3075,14 @@
       "ref": "door.dawnstead_store"
     },
     {
-      "id": "door_cottage_e",
-      "kind": "dialogue",
+      "id": "sign_bubble",
+      "kind": "sign",
       "at": {
-        "tx": 19,
+        "tx": 20,
         "ty": 7
       },
       "activation": "interact",
-      "ref": "door.dawnstead_cottage"
+      "ref": "sign.dawnstead_bubble"
     },
     {
       "id": "door_cottage_w",
