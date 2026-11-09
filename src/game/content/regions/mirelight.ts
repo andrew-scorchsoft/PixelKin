@@ -37,7 +37,7 @@ function dunk(map: string, tx: number, ty: number, facing: 'up' | 'down' | 'left
     { op: 'shake', ms: 260, intensity: 0.004 },
     { op: 'narrate', text: line },
     { op: 'travel', map, to: { tx, ty }, facing },
-    { op: 'narrate', text: 'You haul out at the mouth of the boards, dripping. The blue light hangs where it hung, patient as ever.' },
+    { op: 'narrate', text: 'You haul out at the boards\' mouth, dripping. The blue light hangs on, patient.' },
   ];
 }
 
@@ -80,10 +80,10 @@ export const MIRELIGHT_SCRIPTS: ScriptRegistry = {
     { op: 'say', if_flag: BEGUN, unless_flag: LENS, speaker: 'OLD ANSEL', text: 'The eel-wife\'s boy. Aye. I know. Don\'t think I don\'t look east every night.' },
     { op: 'say', unless_flag: LENS, speaker: 'OLD ANSEL', text: 'I\'d want a true-eye first: [[Pale Vault frost-glass]], cut [[up in the ice country]]. Through that, they say, a false light looks false.' },
     { op: 'setFlag', unless_flag: LENS, flag: ASKED },
-    { op: 'say', if_flag: LENS, unless_flag: FERRY, speaker: 'OLD ANSEL', text: 'What\'s that? ...Frost-glass. Pale Vault cut — I\'d know that grind anywhere. Give it here.' },
+    { op: 'say', if_flag: LENS, unless_flag: FERRY, speaker: 'OLD ANSEL', text: 'Frost-glass? Pale Vault cut — I\'d know that grind anywhere. Give it here.' },
     { op: 'face', if_flag: LENS, unless_flag: FERRY, actor: 'ansel', facing: 'right' },
     { op: 'tint', if_flag: LENS, unless_flag: FERRY, color: '#bfe6ff', alpha: 0.2, ms: 500 },
-    { op: 'narrate', if_flag: LENS, unless_flag: FERRY, text: 'Ansel looks east through the lens a long while. The blue lights turn merely blue — and low on the water, old reed-lanterns glow warm on boards no one has walked in years.' },
+    { op: 'narrate', if_flag: LENS, unless_flag: FERRY, text: 'Ansel looks east through the lens a long while. The blue lights turn merely blue — and low on the water, old reed-lanterns glow warm.' },
     { op: 'tint', if_flag: LENS, unless_flag: FERRY, color: '#bfe6ff', alpha: 0, ms: 700 },
     { op: 'say', if_flag: LENS, unless_flag: FERRY, speaker: 'OLD ANSEL', text: 'The old causeway-reeds. Lit, where the boards are true. Well. I\'ll be.' },
     { op: 'say', if_flag: LENS, unless_flag: FERRY, speaker: 'OLD ANSEL', text: 'Right. I\'ll take you to the landing, no further. Keep the lens up: [[a LIT reed]] at a walk\'s mouth [[means sound boards]]. A dead one means swim.' },
@@ -98,42 +98,42 @@ export const MIRELIGHT_SCRIPTS: ScriptRegistry = {
   'script.mirelight_ferry_ride': [
     { op: 'setFlag', flag: CROSSED },
     { op: 'letterbox', on: true },
-    { op: 'narrate', text: 'Ansel steps into the punt and holds it steady. You climb in. He pushes off without a word.' },
+    { op: 'narrate', text: 'Ansel holds the punt steady. You climb in. He pushes off without a word.' },
     { op: 'narrate', text: 'The reeds fall behind. The water goes black and glassy, and the blue lights drift to meet you — close enough to touch, no warmer than moonlight on a knife.' },
     { op: 'say', speaker: 'OLD ANSEL', text: 'Don\'t look at them. Look at the lens. ...There. The landing.' },
     { op: 'letterbox', on: false },
     { op: 'travel', map: 'mirelight_landing', to: { tx: 1, ty: 23 }, facing: 'right' },
-    { op: 'say', speaker: 'OLD ANSEL', text: 'I\'ll wait here with the punt. [[Walk off the stage, west]], when you want the fen again.' },
+    { op: 'say', speaker: 'OLD ANSEL', text: 'I\'ll wait with the punt. [[Walk off the stage, west]], for the fen.' },
   ],
   'script.mirelight_tobin_home': [
     { op: 'say', speaker: 'TOBIN', text: 'Mum says I\'m not allowed east of the reed-mere till I\'m forty. ...Did you wake the big lantern? I keep dreaming it can\'t find the boards.' },
-    { op: 'say', if_flag: CAUGHT, speaker: 'TOBIN', text: 'You DID. The sky went brighter over the Glassmere last night. Mum said it was the moon. It wasn\'t.' },
+    { op: 'say', if_flag: CAUGHT, speaker: 'TOBIN', text: 'You DID. The Glassmere went bright last night. Mum said it was the moon. It wasn\'t.' },
   ],
 
   // ---- the Landing ----------------------------------------------------------------------
   'script.mirelight_ansel_landing': [
-    { op: 'say', speaker: 'OLD ANSEL', text: 'I\'ll keep the punt here. [[Walk off the stage, west]], and you\'re home before the eels notice.' },
+    { op: 'say', speaker: 'OLD ANSEL', text: 'I\'ll keep the punt. [[Walk off the stage, west]] — home before the eels notice.' },
     { op: 'say', unless_flag: TOBIN, speaker: 'OLD ANSEL', text: 'Find the boy. And mind which boards you trust.' },
   ],
   'script.mirelight_nell': [
     { op: 'say', speaker: 'NELL', text: 'A visitor! On MY causeway! Not since the water came past the third step. Sit, sit — no, not there, that\'s the river.' },
     { op: 'say', speaker: 'NELL', text: 'You\'ll want to know about the lights. Everyone does. They weren\'t always many, dear. Once there was just the one.' },
-    { op: 'say', speaker: 'NELL', text: 'The fen\'s own lamp: a kin with a lantern-glow in its chest. It walked the causeway ahead of the boats at dusk and brought them home. My gran swore it looked back to check she followed.' },
-    { op: 'say', speaker: 'NELL', text: 'Fifteen winters back the quiet folk came — gentle ones, with grey lanterns. The dark was getting rough, they said. They put our lamp to sleep in the chapel, so nothing could ever hurt it.' },
+    { op: 'say', speaker: 'NELL', text: 'The fen\'s own lamp: a kin with a lantern-glow in its chest, walking the causeway ahead of the boats at dusk. My gran swore it looked back to check she followed.' },
+    { op: 'say', speaker: 'NELL', text: 'Fifteen winters back the quiet folk came, gentle, with grey lanterns. They put our lamp to sleep in the chapel, so nothing could ever hurt it.' },
     { op: 'say', speaker: 'NELL', text: 'And nothing has. It\'s only dreaming. Those blue lights are its dreams — trying to lead the boats home, and not knowing the way any more.' },
-    { op: 'say', unless_flag: TOBIN, speaker: 'NELL', text: 'Tobin? The eel-wife\'s lad went by on the boards chasing a light. I leave a pie on the far boards every other night. The dish comes back empty, so he\'s alive, and he\'s rude.' },
+    { op: 'say', unless_flag: TOBIN, speaker: 'NELL', text: 'Tobin? He went by on the boards chasing a light. I leave a pie out every other night. The dish comes back empty, so he\'s alive, and he\'s rude.' },
     { op: 'say', if_flag: TOBIN, speaker: 'NELL', text: 'Tobin got home, I hear. Good. The causeway always let the children through.' },
   ],
   'script.mirelight_empty_hut': [
     { op: 'narrate', text: 'The hut door is roped shut. Chalked on the boards: GONE TO PEARLMOOR. KEY UNDER THE EEL. There is no eel.' },
   ],
   'script.mirelight_tobins_boat': [
-    { op: 'narrate', text: 'A small fen-boat on the mud. TOBIN is painted on the bow, by a hand that ran out of room for the N.' },
+    { op: 'narrate', text: 'A small fen-boat. TOBIN on the bow, by a hand that ran out of room for the N.' },
     { op: 'narrate', unless_flag: TOBIN, text: 'Oars shipped, painter tied to the first board. He didn\'t lose the boat. He went on foot, along the boards, after the lights.' },
     { op: 'narrate', if_flag: TOBIN, text: 'Ansel will tow it home in spring. Tobin says he\'ll row it. Ansel says no.' },
   ],
   'script.mire_eelcatcher': [
-    { op: 'say', speaker: 'MOSS', text: 'Ansel brought you? ANSEL?! Then you\'ve something worth seeing. Let\'s see if your kin are too.' },
+    { op: 'say', speaker: 'MOSS', text: 'Ansel brought you? ANSEL?! Then let\'s see if your kin are worth it.' },
     { op: 'battle', trainer: 'mire_eelcatcher' },
     { op: 'say', speaker: 'MOSS', text: 'Fair\'s fair. I set eel-lines here. The middle walk is sound every winter; the others look the same and aren\'t. Don\'t ask how I know.' },
     { op: 'setFlag', flag: 'flag:mire_eelcatcher_beaten' },
@@ -141,7 +141,7 @@ export const MIRELIGHT_SCRIPTS: ScriptRegistry = {
   'script.pickup_mire_landing_reeds': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'glow_charge', count: 2 },
-    { op: 'say', text: 'A tin wedged in a reed-stook to keep dry. Found 2 GLOW CHARGES!' },
+    { op: 'say', text: 'Under a reed-stook, kept dry: a tin. Found 2 GLOW CHARGES!' },
     { op: 'setFlag', flag: 'flag:picked_mire_landing_reeds' },
   ],
   'script.pickup_mire_landing_tin': [
@@ -162,7 +162,7 @@ export const MIRELIGHT_SCRIPTS: ScriptRegistry = {
   'script.mire_lampdiver': [
     { op: 'say', speaker: 'ODO', text: 'I dive for the old village\'s lamps — brass, glass, the odd candlestick. You\'re on my best spot. Let\'s settle it.' },
     { op: 'battle', trainer: 'mire_lampdiver' },
-    { op: 'say', speaker: 'ODO', text: 'Down there the street\'s still paved. Doors on hinges, kettles on hooks — like they just... stepped out. [[The east island\'s current]] takes you to my old cache. Walk the long boards back.' },
+    { op: 'say', speaker: 'ODO', text: 'Down there the street\'s still paved, kettles on hooks, like they just stepped out. [[The east current]] runs to my old cache. Walk back.' },
     { op: 'setFlag', flag: 'flag:mire_lampdiver_beaten' },
   ],
   'script.pickup_mire_pearl': [
@@ -183,9 +183,9 @@ export const MIRELIGHT_SCRIPTS: ScriptRegistry = {
     { op: 'emote', actor: 'tobin', emote: 'alert' },
     { op: 'say', speaker: 'TOBIN', text: 'Don\'t — oh. You\'ve got a LAMP. A real one. I thought you were another blue one.' },
     { op: 'say', speaker: 'TOBIN', text: 'I\'m not lost. I KNOW where I am: the sunk street. I just... don\'t know where the boards back are. The lights kept moving them.' },
-    { op: 'say', speaker: 'TOBIN', text: 'I got to the chapel. Pried the door with my oar-pin. Stairs, water, and a big grey lantern at the bottom with something IN it. Asleep. Eyes shut, but... glowing at me.' },
-    { op: 'say', speaker: 'TOBIN', text: 'So I ran. I\'ve lived on Nell\'s pies since, working up to going back. Don\'t tell Mum I ran.' },
-    { op: 'say', speaker: 'TOBIN', text: 'Here — I was saving these for catching a light. You have them. You\'ve got the lamp for it.' },
+    { op: 'say', speaker: 'TOBIN', text: 'I got to the chapel and pried the door. Stairs, water, and a big grey lantern with something IN it. Asleep. Eyes shut, but... glowing at me.' },
+    { op: 'say', speaker: 'TOBIN', text: 'So I ran. I\'ve lived on Nell\'s pies since. Don\'t tell Mum I ran.' },
+    { op: 'say', speaker: 'TOBIN', text: 'Here — I was saving these to catch a light. You\'ve the lamp for it.' },
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'beacon_charge', count: 2 },
     { op: 'narrate', text: 'Tobin gave you 2 BEACON CHARGES!' },
@@ -203,7 +203,7 @@ export const MIRELIGHT_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'BROTHER IVES', text: 'Peace, traveller. I keep the chapel\'s watch. Our first here laid the fen\'s lamp to rest, so the dark could never hurt it. It sleeps very sweetly.' },
     { op: 'say', speaker: 'BROTHER IVES', text: '...You\'ve the look of someone who\'d wake it. I\'m bound to ask you not to. Gently. Then less gently.' },
     { op: 'battle', trainer: 'mire_acolyte' },
-    { op: 'say', speaker: 'BROTHER IVES', text: 'Well. I asked. Here\'s what the Warden doesn\'t say aloud: every winter since, more blue lights, fewer boats home. Rest at [[my camp on the east bank]]. The fire doesn\'t mind who sits at it.' },
+    { op: 'say', speaker: 'BROTHER IVES', text: 'Well. I asked. What the Warden won\'t say: every winter, more blue lights, fewer boats home. Rest at [[my camp, east bank]]. The fire doesn\'t mind.' },
     { op: 'setFlag', flag: 'flag:mire_acolyte_beaten' },
   ],
   'script.mirelight_camp_rest': [
@@ -220,13 +220,13 @@ export const MIRELIGHT_SCRIPTS: ScriptRegistry = {
   'script.pickup_mire_meadow_charge': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'beacon_charge', count: 1 },
-    { op: 'say', text: 'Under the old boat\'s hull, out of the wet: a lamp-charge, still sealed. Found a BEACON CHARGE!' },
+    { op: 'say', text: 'Under the old boat\'s hull, still sealed: a BEACON CHARGE!' },
     { op: 'setFlag', flag: 'flag:picked_mire_meadow_charge' },
   ],
   'script.pickup_mire_bank_balm': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'warm_balm', count: 2 },
-    { op: 'say', text: 'At the west bank\'s far corner, facing the chapel: a fen-wife\'s picnic tin. Found 2 WARM BALMS!' },
+    { op: 'say', text: 'At the west bank\'s corner, a fen-wife\'s picnic tin. Found 2 WARM BALMS!' },
     { op: 'setFlag', flag: 'flag:picked_mire_bank_balm' },
   ],
 
@@ -234,7 +234,7 @@ export const MIRELIGHT_SCRIPTS: ScriptRegistry = {
   'script.mirelight_lanthorne': [
     { op: 'letterbox', on: true },
     { op: 'silence', ms: 900 },
-    { op: 'narrate', text: 'The great grey lantern stands on its dais, glass furred with the breath of a long, long sleep. Inside, something folded and blue is dreaming, its light coming and going like slow breathing.' },
+    { op: 'narrate', text: 'The great grey lantern stands on its dais, furred with a long, long sleep. Inside, something folded and blue is dreaming, its light slow as breathing.' },
     { op: 'narrate', text: 'You raise your lamp. The Frostglass Lens catches it — and for the first time in years, a TRUE light falls through the null-glass.' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#7fd6ff', alpha: 0.24, ms: 700 },
@@ -253,10 +253,10 @@ export const MIRELIGHT_SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'Lanthorne settles into your lamp like a boat into a known stage — slowly, the long way round. Its light steadies, warm and patient.' },
     { op: 'musicCrossfade', key: 'mirelight', ms: 1600 },
     { op: 'starfall', wait: true },
-    { op: 'narrate', text: 'Far above the chapel, a small star you never noticed burns a little brighter. Out on the Glassmere, the blue lights go out one by one, like a dream ending.' },
+    { op: 'narrate', text: 'Far above, a small star you never noticed burns brighter. On the Glassmere, the blue lights go out one by one, like a dream ending.' },
   ],
   'script.mirelight_lantern_empty': [
-    { op: 'narrate', unless_flag: CAUGHT, text: 'The lantern\'s grey glass is cold to the touch. Inside, something breathes, very slowly.' },
+    { op: 'narrate', unless_flag: CAUGHT, text: 'The grey glass is cold. Inside, something breathes, very slowly.' },
     { op: 'narrate', if_flag: CAUGHT, text: 'The null-lantern stands open and empty. Someone — Brother Ives, perhaps — has already swept the dais.' },
   ],
 };
@@ -269,7 +269,7 @@ export const MIRELIGHT_DIALOGUE: DialogueRegistry = {
     { text: 'THE GLASSMERE FERRY. Ansel, ferryman. CROSSINGS SUSPENDED. (Underneath, smaller:) Until the lights tell the truth.' },
   ],
   'sign.mirelight_landing': [
-    { text: 'LANTERN CAUSEWAY. Pop. 1 (NELL). Please wipe your boots. Please do not follow the lights.' },
+    { text: 'LANTERN CAUSEWAY. Pop. 1 (NELL). Wipe your boots. Do not follow the lights.' },
   ],
   'sign.mirelight_boards': [
     { text: 'THE BOARDS. Through a true-eye: a LIT reed at a walk\'s mouth means sound boards. A DEAD reed means a bath.' },
@@ -278,10 +278,10 @@ export const MIRELIGHT_DIALOGUE: DialogueRegistry = {
     { text: 'THE GLASSMERE. The old causeway runs island to island underwater. Trust the lit reeds, not the blue lights. Currents run one way.' },
   ],
   'sign.mirelight_current': [
-    { text: 'CURRENT BELOW. It runs south to the old diver\'s islet and never back. Walk the long boards home.' },
+    { text: 'CURRENT BELOW. South to the diver\'s islet, never back. Walk the boards home.' },
   ],
   'sign.mirelight_chapel': [
-    { text: 'CHAPEL OF THE CAUSEWAY. Its bell rang the boats home; its lamp walked ahead. The way down: [[the east bank]].' },
+    { text: 'CHAPEL OF THE CAUSEWAY. Its bell rang the boats home. Way down: [[the east bank]].' },
   ],
   'sign.lanthorne_hollow': [
     { text: 'Scratched into the stair, in a careful grey hand: LET IT SLEEP. Below, in a smaller one: IT\'S LONELY.' },
@@ -299,6 +299,6 @@ export const MIRELIGHT_DIALOGUE: DialogueRegistry = {
     { speaker: 'ODO', text: 'Swim the shelf all you like — Tidecall\'s fine near the islands. Out in the black, there\'s no bottom I\'ve ever found.' },
   ],
   'npc.mire_acolyte_after': [
-    { speaker: 'BROTHER IVES', text: 'If you wake it, be kind to it. It has been asleep a very long time, and it never asked to be.' },
+    { speaker: 'BROTHER IVES', text: 'If you wake it, be kind. It\'s slept a very long time, and never asked to.' },
   ],
 };

@@ -49,8 +49,8 @@ function crank(n: string, name: string, thrown: string, rest: string): CutsceneS
     { op: 'setFlag', flag: F, value: false, if_flag: TMP },
     { op: 'sfx', key: 'world-door-close' },
     { op: 'shake', ms: 200, intensity: 0.0018 },
-    { op: 'narrate', if_flag: F, text: `You lean on ${name}. A louvre swings over with an iron sigh: ${thrown} The pennant shows RED.` },
-    { op: 'narrate', unless_flag: F, text: `You wind ${name} back. The louvre settles home: ${rest} The pennant shows WHITE.` },
+    { op: 'narrate', if_flag: F, text: `You lean on ${name}. A louvre swings over: ${thrown} The pennant shows RED.` },
+    { op: 'narrate', unless_flag: F, text: `You wind ${name} back: ${rest} The pennant shows WHITE.` },
     { op: 'setFlag', flag: TMP, value: false },
   ];
 }
@@ -87,26 +87,26 @@ function acolyte(id: string, name: string, before: string, after: string): Cutsc
 const RELIGHT: CutsceneStep[] = [
   { op: 'letterbox', on: true },
   { op: 'silence', ms: 1000 },
-  { op: 'say', speaker: KEEPER, text: 'Well. Go on, then. It\'s heavier than it looks. Fourteen winters will do that.' },
-  { op: 'narrate', text: 'You set your hands on the great crank. Hers come down beside yours, cold and certain. Together you lean.' },
+  { op: 'say', speaker: KEEPER, text: 'Go on, then. It\'s heavier than it looks. Fourteen winters will do that.' },
+  { op: 'narrate', text: 'You grip the great crank. Her hands come down beside yours, cold and certain. You lean.' },
   { op: 'sfx', key: 'world-door-close' },
   { op: 'shake', ms: 500, intensity: 0.003 },
-  { op: 'narrate', text: 'The first shutter folds back with a groan the whole tower feels. A blade of gold falls across the floor. Then the next, and the next, like a hand uncurling.' },
+  { op: 'narrate', text: 'The first shutter folds back with a groan the whole tower feels. A blade of gold falls across the floor. Then the next, like a hand uncurling.' },
   { op: 'tint', color: '#ffd890', alpha: 0.28, ms: 800 },
   { op: 'sfx', key: 'world-lantern-light' },
   { op: 'setFlag', flag: RELIT },
   { op: 'flashColor', color: '#fff2c8', ms: 520 },
   { op: 'musicCrossfade', key: 'drownlight-relit', ms: 1300 },
-  { op: 'narrate', text: 'THE DROWNLIGHT BURNS. Its beam swings over the dead shallows, the first light on this coast in fourteen winters, and the fog does what fog always does before a lamp: it gives way.' },
-  { op: 'narrate', text: 'Out on the water the old buoys answer, their little lamps waking down the coast one by one.' },
+  { op: 'narrate', text: 'THE DROWNLIGHT BURNS. The first light on this coast in fourteen winters sweeps the shallows, and the fog does what fog always does before a lamp: it gives way.' },
+  { op: 'narrate', text: 'Out on the water the old buoys answer, waking down the coast one by one.' },
   { op: 'tint', color: '#ffd890', alpha: 0, ms: 1200 },
-  { op: 'say', speaker: KEEPER, text: '...I\'d forgotten it was warm. All those winters keeping it, and I\'d forgotten it was warm.' },
-  { op: 'say', speaker: KEEPER, text: 'It isn\'t one lamp alone this time, lying to the sea. It\'s one of a great many. That promise I can keep.' },
-  { op: 'say', speaker: KEEPER, text: 'Here. The first shutter\'s latch. I worked it off the night I bolted her and carried it every winter since. I meant to throw it in the sea. I\'m glad I didn\'t.' },
+  { op: 'say', speaker: KEEPER, text: '...I\'d forgotten it was warm. All those winters keeping it, and I\'d forgotten.' },
+  { op: 'say', speaker: KEEPER, text: 'It isn\'t one lamp alone, lying to the sea. It\'s one of a great many. That I can keep.' },
+  { op: 'say', speaker: KEEPER, text: 'Here. The first shutter\'s latch. I\'ve carried it since the night I bolted her. I meant to throw it in the sea. I\'m glad I didn\'t.' },
   { op: 'sfx', key: 'world-keyitem' },
   { op: 'giveItem', item: 'shutter_charm', count: 1 },
-  { op: 'narrate', text: 'She presses the SHUTTER CHARM into your hand: an iron latch, warm from the lamp. It never gets used up.' },
-  { op: 'say', speaker: KEEPER, text: 'For [[the kin who love the dark]]. Not every kin wants waking, apprentice. A light that meets them gently, where they are, they\'ll follow home. That\'s the light I mean to keep now.' },
+  { op: 'narrate', text: 'She gives you the SHUTTER CHARM: an iron latch, warm from the lamp. It never gets used up.' },
+  { op: 'say', speaker: KEEPER, text: 'For [[the kin who love the dark]]. Not every kin wants waking, apprentice. Meet them gently, where they are, and they\'ll follow you home. That\'s the light I\'ll keep now.' },
   { op: 'letterbox', on: false },
 ];
 
@@ -114,15 +114,15 @@ const RELIGHT: CutsceneStep[] = [
  *  Only ever reached once she's BEATEN (the lamp's own offer is guarded on it), so
  *  her "where I said" always follows a talk that happened. */
 const RELIGHT_OFFER: CutsceneStep[] = [
-  { op: 'say', speaker: KEEPER, text: 'You came back. And look at that sky. I watched it go pink from that window, and didn\'t know what to do with my hands.' },
+  { op: 'say', speaker: KEEPER, text: 'You came back. Look at that sky. I watched it go pink and didn\'t know what to do with my hands.' },
   { op: 'say', speaker: KEEPER, text: 'The crank\'s where I said it would be. Will you open her up?' },
   { op: 'run', ref: 'script.drownlight_relight_ask' },
 ];
 
 /** The same ask, straight after her tale on a post-dawn first meeting. */
 const RELIGHT_OFFER_NOW: CutsceneStep[] = [
-  { op: 'say', speaker: KEEPER, text: 'And you came up with that sky at your back. I watched it go pink from that window, and didn\'t know what to do with my hands.' },
-  { op: 'say', speaker: KEEPER, text: 'It isn\'t one lamp alone any more. I\'ve taken the chain off [[the great crank]]. Will you open her up?' },
+  { op: 'say', speaker: KEEPER, text: 'And that sky at your back. I watched it go pink and didn\'t know what to do with my hands.' },
+  { op: 'say', speaker: KEEPER, text: 'It isn\'t one lamp alone now. [[The great crank]]\'s unchained. Will you open her up?' },
   { op: 'run', ref: 'script.drownlight_relight_ask' },
 ];
 
@@ -131,7 +131,7 @@ const RELIGHT_ASK: CutsceneStep[] = [
     op: 'choice',
     options: [
       { label: 'Open the shutters', ops: [{ op: 'run', ref: 'script.drownlight_relight' }] },
-      { label: 'Not yet', ops: [{ op: 'say', speaker: KEEPER, text: 'No. Take your time. Fourteen winters it\'s waited; it can wait for you.' }] },
+      { label: 'Not yet', ops: [{ op: 'say', speaker: KEEPER, text: 'No. Take your time. It\'s waited fourteen winters.' }] },
     ],
   },
 ];
@@ -139,18 +139,18 @@ const RELIGHT_ASK: CutsceneStep[] = [
 export const DROWNLIGHT_SCRIPTS: ScriptRegistry = {
   // ---- the foot -------------------------------------------------------------------
   'script.drownlight_quay': [
-    { op: 'narrate', text: 'The keepers\' quay, half drowned in the blight, its steps going down into water that has stopped moving. The iron mooring ring is still polished where a rope ran.' },
-    { op: 'narrate', if_flag: RELIT, text: 'In the lamp\'s sweep the water is grey-green again, and very slightly, unmistakably, moving.' },
+    { op: 'narrate', text: 'The keepers\' quay, half drowned, its steps going down into water that has stopped moving. The mooring ring is still polished where a rope ran.' },
+    { op: 'narrate', if_flag: RELIT, text: 'In the lamp\'s sweep the water is grey-green, and very slightly, unmistakably, moving.' },
   ],
   'script.drownlight_buoys': [
     { op: 'narrate', unless_flag: RELIT, text: 'Channel buoys on the dead shallows, their lamps dark, leaning where the last tide left them. Nobody has needed the channel in a long time.' },
-    { op: 'narrate', if_flag: RELIT, text: 'The buoys are lit again, nodding on moving water. Each time the beam passes they wink back, as if waiting to be asked.' },
+    { op: 'narrate', if_flag: RELIT, text: 'The buoys are lit, nodding on moving water. When the beam passes they wink back, as if asked.' },
   ],
 
   // ---- F1: the Oil Stores --------------------------------------------------------
   'script.drownlight_first_steps': [
     { op: 'narrate', text: 'The door gives easily; someone oils its hinges. Inside, the Drownlight smells of lamp-oil, cold stone and the sea. It is very quiet.' },
-    { op: 'narrate', text: 'High overhead, something still burns. You feel it more than see it: a warmth in the walls, like a hand closed round a match.' },
+    { op: 'narrate', text: 'High overhead, something still burns: a warmth in the walls, like a hand closed round a match.' },
     { op: 'setFlag', flag: 'flag:drownlight_entered' },
   ],
   'script.drownlight_crank_1': crank('1', 'the store crank', 'the glare leaves the stair-room door and floods the door down to the hall.', 'the glare crosses the stair-room door again, and the hall door is dark.'),
@@ -165,12 +165,12 @@ export const DROWNLIGHT_SCRIPTS: ScriptRegistry = {
   'script.drownlight_glare_f1_K1': glare(6, 12, 'left'),
   'script.drownlight_slate_keepers': [
     { op: 'narrate', text: 'The watch rota, in a keeper\'s square chalk: thirty-one winters, the oldest names rubbed to ghosts. The last line has one name on every night.' },
-    { op: 'narrate', text: 'Under it, in a tidier hand: "Rota discontinued. With thanks for every night. — your friends of the Quiet."' },
+    { op: 'narrate', text: 'Under it, tidier: "Rota discontinued. With thanks for every night. — your friends of the Quiet."' },
   ],
   'script.drownlight_log': [
     { op: 'sfx', key: 'world-chart' },
-    { op: 'narrate', text: 'THE DROWNLIGHT LOG: thirty-one winters in one hand. Wind, sea, oil burned, boats home. Every night, boats home.' },
-    { op: 'narrate', text: 'The last entry: "Lamp banked. Shutters bolted. Wick trimmed and left long, as it should be. No boats out. None will be." A line ruled under it, very straight.' },
+    { op: 'narrate', text: 'THE DROWNLIGHT LOG: thirty-one winters in one hand. Wind, sea, oil. Every night, boats home.' },
+    { op: 'narrate', text: 'The last entry: "Lamp banked. Shutters bolted. Wick left long, as it should be. No boats out. None will be." A line ruled under it, very straight.' },
   ],
 
   // ---- F2: the Lens Gallery ----------------------------------------------------------
@@ -192,40 +192,40 @@ export const DROWNLIGHT_SCRIPTS: ScriptRegistry = {
   'script.drownlight_glare_f2_f1': glare(9, 13, 'left'),
   // the watch-cot: the tower's rest point (a bed, so it sleeps)
   'script.drownlight_cot': [
-    { op: 'narrate', text: 'The keepers\' watch-cot, its grey blanket folded square. Someone still makes it each morning, though nobody keeps the watch.' },
+    { op: 'narrate', text: 'The watch-cot, its blanket folded square. Someone makes it each morning, though nobody keeps watch.' },
     { op: 'heal' },
     { op: 'narrate', text: 'You wake to the tower\'s hush and the warm walls. Your kin are rested.' },
   ],
   'script.drownlight_log_two': [
     { op: 'sfx', key: 'world-chart' },
-    { op: 'narrate', text: 'Under the lectern, the old logs, one per winter, spines dated in white paint. Thirty-one of them. Then a gap where a thirty-second would go, and dust.' },
+    { op: 'narrate', text: 'The old logs, one per winter, spines dated in white. Thirty-one of them. Then a gap where a thirty-second would go, and dust.' },
     { op: 'narrate', text: 'The one on the lectern lies open. Inside the cover: a pressed sea-pink, and a child\'s drawing of this tower lit, in far too much yellow.' },
   ],
   'script.drownlight_slate_shutters': [
-    { op: 'narrate', text: 'A slate in the tidy hand: lamps, each with a date and a tick. THE DROWNLIGHT is first, fourteen winters back. The list runs on onto a second slate tied under with string.' },
+    { op: 'narrate', text: 'A slate of lamps, each with a date and a tick. THE DROWNLIGHT is first, fourteen winters back. The list runs on to a second slate, tied on with string.' },
     { op: 'narrate', text: 'Beside the first line, much smaller, in a keeper\'s square chalk: "mine."' },
   ],
 
   // ---- the Lantern Room: the Shutterkeeper ------------------------------------------
   'script.drownlight_keeper_hail': [
     { op: 'face', actor: 'shutterkeeper', facing: 'up', unless_flag: BEATEN },
-    { op: 'say', unless_flag: BEATEN, speaker: KEEPER, text: 'Mind the top step; I never mended it. ...Don\'t trouble about the light in the wells. It only leaks. It always did.' },
-    { op: 'say', unless_flag: BEATEN, speaker: KEEPER, text: 'You\'ll be the apprentice putting the stars back. I wondered when you\'d climb up. [[Come by the lamp]], where I can see you.' },
+    { op: 'say', unless_flag: BEATEN, speaker: KEEPER, text: 'Mind the top step; I never mended it. ...Never mind the light in the wells. It only leaks.' },
+    { op: 'say', unless_flag: BEATEN, speaker: KEEPER, text: 'The apprentice putting the stars back. I wondered when you\'d climb up. [[Come by the lamp]].' },
     { op: 'setFlag', flag: 'flag:drownlight_keeper_hailed' },
   ],
   'script.drownlight_keeper': [
     { op: 'face', actor: 'shutterkeeper', facing: 'down' },
     { op: 'say', speaker: KEEPER, text: 'This is the Drownlight. Thirty-one winters I kept it: trimmed it, fed it, wound the lens. I could do it with my eyes shut. Some nights I did.' },
     { op: 'say', speaker: KEEPER, text: 'Fourteen winters ago, three before the sky went dark, I banked it and bolted the shutters. The first light we put out, apprentice. I did it myself. Maudry Kell. Some call me the Shutterkeeper, and I let them.' },
-    { op: 'say', speaker: KEEPER, text: 'You want me to light it. I won\'t. But you\'ve climbed a long way in the dark, and that wants an answer. Show me how you climbed.' },
+    { op: 'say', speaker: KEEPER, text: 'You want me to light it. I won\'t. But a long climb in the dark wants an answer. Show me how you climbed.' },
     { op: 'battle', trainer: 'drownlight_shutterkeeper' },
-    { op: 'say', speaker: KEEPER, text: 'There. A steady light. I see why the sky listens to you. Sit. I\'ll tell you why, and you can carry it down with you.' },
+    { op: 'say', speaker: KEEPER, text: 'There. A steady light. I see why the sky listens to you. Sit. I\'ll tell you why I won\'t.' },
     { op: 'silence', ms: 700 },
-    { op: 'say', speaker: KEEPER, text: 'My girl rowed the sound for herring. One night the fog came thick as wool, and I burned this lamp brighter than ever. She saw it. I know she did. She was rowing straight for it when the swell took her, a cable\'s length off the quay.' },
-    { op: 'say', speaker: KEEPER, text: 'Every winter after, the sea took somebody, and every night I burned the lamp anyway. A light is a promise, apprentice: come home, it\'s safe, someone\'s watching. I\'d told it the whole coast for thirty years, and couldn\'t keep it.' },
-    { op: 'say', speaker: KEEPER, text: 'Then a man climbed those stairs one winter. A quiet sky-watcher, with a grief the size of mine. He didn\'t argue. He sat where you\'re sitting and said: what if we stopped promising?' },
+    { op: 'say', speaker: KEEPER, text: 'My girl rowed the sound for herring. One night the fog came thick as wool, and I burned this lamp brighter than ever. She was rowing straight for it when the swell took her, a cable\'s length off the quay.' },
+    { op: 'say', speaker: KEEPER, text: 'Every winter after, the sea took somebody. A light is a promise, apprentice: come home, it\'s safe, someone\'s watching. I\'d told it the whole coast for thirty years, and couldn\'t keep it.' },
+    { op: 'say', speaker: KEEPER, text: 'Then a quiet sky-watcher climbed those stairs, with a grief the size of mine. He didn\'t argue. He sat where you\'re sitting and said: what if we stopped promising?' },
     { op: 'say', speaker: KEEPER, text: 'Shutting the lamp was my idea. He only told me I was allowed. That was the winter his grief became a way of seeing the world. I watched it happen, right there by the lamp. We both thought it was mercy. Some of us still do.' },
-    { op: 'say', speaker: KEEPER, unless_flag: DAWN, text: 'So, no. Not while the sky\'s dark. One light alone on a dark coast is the cruellest promise of all.' },
+    { op: 'say', speaker: KEEPER, unless_flag: DAWN, text: 'So, no. Not while the sky\'s dark. One light alone on a dark coast is the cruellest promise.' },
     { op: 'say', speaker: KEEPER, unless_flag: DAWN, text: 'But if you mean what you\'re doing up there... [[if the sky ever wakes]], come back and ask me again. I\'ll leave the crank where you can reach it.' },
     { op: 'setFlag', flag: BEATEN },
     // RELIT can't be held here (the lamp's offer waits on BEATEN, and this script
@@ -234,8 +234,8 @@ export const DROWNLIGHT_SCRIPTS: ScriptRegistry = {
   ],
   'script.drownlight_keeper_after': [
     { op: 'face', actor: 'shutterkeeper_after', facing: 'down' },
-    { op: 'say', speaker: KEEPER, if_flag: RELIT, text: 'Thirty-one winters, fourteen dark, and now this. I trim it every evening, and the log says who comes home.' },
-    { op: 'say', speaker: KEEPER, if_flag: RELIT, text: 'Some of my friends of the Quiet came to the quay to look. Nobody spoke. One brought a flask. We stood a long while.' },
+    { op: 'say', speaker: KEEPER, if_flag: RELIT, text: 'Thirty-one winters, fourteen dark, and now this. The log says who comes home again.' },
+    { op: 'say', speaker: KEEPER, if_flag: RELIT, text: 'My friends of the Quiet came to the quay to look. Nobody spoke. Someone brought a flask.' },
     { op: 'say', speaker: KEEPER, unless_flag: DAWN, text: 'The crank isn\'t going anywhere. Nor am I. Go and do what you\'re doing up there, apprentice. I\'ll be watching the sky. I can\'t help it.' },
     { op: 'run', ref: 'script.drownlight_relight_offer', if_flag: DAWN, unless_flag: RELIT },
   ],
@@ -248,29 +248,29 @@ export const DROWNLIGHT_SCRIPTS: ScriptRegistry = {
   // awake); beaten pre-dawn -> the chain's off, not yet; beaten at dawn -> the offer.
   // A step carries one if + one unless, so the stages nest through `run`s.
   'script.drownlight_lamp': [
-    { op: 'narrate', if_flag: RELIT, text: 'The great lamp burns behind its folded shutters, its lens turning. Warm as a hearth to stand by.' },
+    { op: 'narrate', if_flag: RELIT, text: 'The great lamp burns behind folded shutters. Warm as a hearth to stand by.' },
     { op: 'run', ref: 'script.drownlight_lamp_dark', unless_flag: RELIT },
   ],
   'script.drownlight_lamp_dark': [
     { op: 'run', ref: 'script.drownlight_lamp_shut', unless_flag: BEATEN },
-    { op: 'narrate', if_flag: BEATEN, unless_flag: DAWN, text: 'The chain lies coiled off the great crank. Her words stay with you: [[not while the sky\'s dark]].' },
+    { op: 'narrate', if_flag: BEATEN, unless_flag: DAWN, text: 'The crank\'s chain lies coiled. Her words stay with you: [[not while the sky\'s dark]].' },
     { op: 'run', ref: 'script.drownlight_lamp_offer', if_flag: BEATEN },
   ],
   'script.drownlight_lamp_shut': [
-    { op: 'narrate', unless_flag: DAWN, text: 'The great lamp, bolted in iron shutters, a thread of light still showing, low and patient. A keeper never kills a lamp. The great crank is chained to its post.' },
-    { op: 'narrate', if_flag: DAWN, text: 'The great lamp, bolted in iron, light at the seams. Even with morning in the glass, the crank stays chained; the key hangs at the Shutterkeeper\'s belt. It is her lamp. [[Ask her first]].' },
+    { op: 'narrate', unless_flag: DAWN, text: 'The great lamp, bolted in iron, a thread of light still showing. A keeper never kills a lamp. Its great crank is chained.' },
+    { op: 'narrate', if_flag: DAWN, text: 'Even with morning in the glass, the great crank stays chained; the key hangs at the Shutterkeeper\'s belt. It is her lamp. [[Ask her first]].' },
   ],
   'script.drownlight_lamp_offer': [
     { op: 'run', ref: 'script.drownlight_relight_offer', if_flag: DAWN, unless_flag: RELIT },
   ],
   'script.drownlight_slate_lost': [
-    { op: 'narrate', text: 'A slate of names in square chalk. Not the rota: the lost. One or two a year for thirty-one winters, each beside a boat\'s name.' },
+    { op: 'narrate', text: 'A slate of names. Not the rota: the lost, one or two a year, each beside a boat\'s name.' },
     { op: 'narrate', text: 'The chalk is kept fresh, every name gone over again and again by the same hand.' },
-    { op: 'narrate', if_flag: RELIT, text: 'At the bottom, in new chalk, a second column: HOME. It already has three names.' },
+    { op: 'narrate', if_flag: RELIT, text: 'In new chalk, a second column: HOME. It already has three names.' },
   ],
   'script.drownlight_pane': [
-    { op: 'narrate', unless_flag: DAWN, text: 'Storm-glass, salted white. Outside: coldfog, the dead shallows, the dark mass of the mountain. No stars this side of the sky.' },
-    { op: 'narrate', if_flag: DAWN, text: 'Through the salted glass, the sky has a morning in it. The fog thins off the shallows like breath off a cup.' },
+    { op: 'narrate', unless_flag: DAWN, text: 'Salted storm-glass. Outside: coldfog, dead shallows, the dark mountain. No stars this side of the sky.' },
+    { op: 'narrate', if_flag: DAWN, text: 'The sky has a morning in it. The fog thins off the shallows like breath off a cup.' },
   ],
 
   // ---- the acolytes ------------------------------------------------------------------
@@ -293,88 +293,88 @@ export const DROWNLIGHT_SCRIPTS: ScriptRegistry = {
 
 export const DROWNLIGHT_DIALOGUE: DialogueRegistry = {
   'sign.drownlight_stair_fog': [
-    { text: 'Coldfog pools in the stairwell, heavy as wet wool. Your flame shrinks to a bead. Only [[a tended ember]] would push through.' },
+    { text: 'Coldfog pools in the stairwell, heavy as wool. Only [[a tended ember]] would push through.' },
   ],
   'sign.drownlight_wick_shelf': [
-    { text: 'Oil filler-cans, labelled in a square hand fourteen winters ago. Wiped this week.' },
+    { text: 'Oil cans, labelled fourteen winters ago. Wiped this week.' },
   ],
   'sign.drownlight_oil_jars': [
-    { text: 'A copper oil cistern, half full. Enough to burn the Drownlight a winter, if anybody wanted to.' },
+    { text: 'A copper oil cistern, half full. Enough for a winter, if anybody wanted it.' },
   ],
   'sign.drownlight_weights': [
     { text: 'The weight-shaft: two chains down to an iron weight on its block. Wound up, it turned the great lens all night. It has rested a long time.' },
   ],
   'sign.drownlight_buoy_repair': [
-    { text: 'A channel buoy on trestles, fresh-painted red and white. Somebody is mending it for a sea nobody sails.' },
+    { text: 'A buoy on trestles, fresh-painted. Somebody is mending it for a sea nobody sails.' },
   ],
   'sign.drownlight_crank_notice': [
     { text: '"SHUTTER-CRANKS. Each crank swings one louvre. [[The light leaves one doorway and floods another]]; it is never put out, only sent elsewhere."' },
-    { text: '"Pennant WHITE: louvre at rest. Pennant RED: louvre thrown. Mind where the light goes, not where it is."' },
+    { text: '"WHITE: at rest. RED: thrown. Mind where the light goes, not where it is."' },
   ],
   'sign.drownlight_clockwork': [
     { text: 'The turning-gear: chain drum, brass wheels, a governor\'s fan. It turned the lens all night for thirty-one winters. It is oiled. It is still.' },
   ],
   'sign.drownlight_grind_bench': [
-    { text: 'The lens-grinding bench. A blank of glass sits in the clamp, half ground, a thumbprint still on it.' },
+    { text: 'A lens-grinding bench. A glass blank sits half ground, a thumbprint still on it.' },
   ],
   'sign.drownlight_foghorn': [
-    { text: 'The fog-horn, wound every half minute on thick nights so boats could steer by ear. Its crank is tied down with a neat bow of string.' },
+    { text: 'The fog-horn, once wound all thick night so boats could steer by ear. Its crank is tied down with a bow.' },
   ],
   'sign.drownlight_lamp_rack': [
-    { text: 'The keepers\' hand-lamps, each with a name burned in its handle. All trimmed, filled, unlit.' },
+    { text: 'Hand-lamps, each with a name burned in its handle. All trimmed, filled, unlit.' },
   ],
   'sign.drownlight_shutter_plate': [
-    { text: 'A spare shutter-leaf on a nail, labelled: "No. 7 — west louvre. Keep oiled. — Q."' },
+    { text: 'A spare shutter-leaf: "No. 7 — west louvre. Keep oiled. — Q."' },
   ],
   'sign.drownlight_shutter_plate_b': [
-    { text: 'A spare shutter-leaf: "For the gallery wells. The light gets out regardless. Let it. It has nowhere to go."' },
+    { text: 'A shutter-leaf: "For the gallery wells. The light gets out regardless. Let it."' },
   ],
   'sign.drownlight_shutter_plate_c': [
-    { text: 'A shutter-leaf, never hung. Its label has been written, crossed out and written again: "spare." "Not needed." "spare."' },
+    { text: 'A shutter-leaf, never hung. Its label is crossed out and rewritten: "spare." "Not needed." "spare."' },
   ],
   'sign.drownlight_stove': [
-    { text: 'A stove, banked low, a kettle kept warm on top. Whoever lives up here comes down for tea.' },
+    { text: 'A stove banked low, a kettle warm on top. Whoever lives up here comes down for tea.' },
   ],
   'sign.drownlight_oil_barrels': [
-    { text: 'Oil barrels stencilled DROWNLIGHT, a tally of winters chalked on one. It stops, then starts again in another hand.' },
+    { text: 'Oil barrels with a chalked tally of winters. It stops, then starts again in another hand.' },
   ],
   'sign.drownlight_sand_sacks': [
-    { text: 'Sandbags for the spring tides. The sea hasn\'t come in for years. The bags are kept dry.' },
+    { text: 'Sandbags for spring tides that haven\'t come in years. Still kept dry.' },
   ],
   'sign.drownlight_glass_crates': [
-    { text: 'Crates of chimney-glasses and wicks, packed in straw. Enough to light the tower a dozen winters. None opened.' },
+    { text: 'Crates of chimney-glass and wicks: a dozen winters\' worth. None opened.' },
   ],
   'sign.drownlight_mess_table': [
-    { text: 'The mess table, scrubbed pale. A candle burns in a saucer. The Hollowing don\'t snuff candles. Only lamps that make promises.' },
+    { text: 'A candle burns in a saucer on the mess table. The Hollowing don\'t snuff candles. Only lamps that promise.' },
   ],
   'sign.drownlight_lens_store': [
-    { text: 'The spare lens, ringed like the inside of a shell. Hold your lamp to it and the room fills with little bright ladders.' },
+    { text: 'The spare lens, ringed like a shell. Hold your lamp to it and the room fills with bright ladders.' },
   ],
   'sign.drownlight_watch_bench': [
-    { text: 'A bench worn smooth by people waiting for boats. A cushion at one end is newer than the rest.' },
+    { text: 'A bench worn smooth by people waiting for boats. One cushion is newer than the rest.' },
   ],
   'sign.drownlight_gallery_lens': [
-    { text: 'Prism segments racked like plates in a dresser. Light from the wells lies on the floor through them in pale gold ladders.' },
+    { text: 'Prisms racked like plates in a dresser. Light through them lies on the floor in gold ladders.' },
   ],
   'sign.drownlight_keeper_table': [
-    { text: 'One cup, a pot under a knitted cosy, wick scissors, and the log open at a fresh page.' },
+    { text: 'One cup, a pot under a cosy, wick scissors, the log open at a fresh page.' },
   ],
   'sign.drownlight_keeper_cot': [
-    { text: 'A narrow iron cot, blanket folded square. She sleeps up here by the lamp. Of course she does.' },
+    { text: 'A narrow iron cot. She sleeps up here by the lamp. Of course she does.' },
   ],
   'sign.drownlight_wick_basket': [
-    { text: 'Hundreds of trimmed wicks, cut to the old length. A keeper\'s habit outlasts the evenings.' },
+    { text: 'Hundreds of trimmed wicks. A keeper\'s habit outlasts the evenings.' },
   ],
   'sign.drownlight_sea_pink': [
-    { text: 'A sea-pink in a pot, watered. It has no business growing in the dark, and does anyway.' },
+    { text: 'A watered sea-pink. No business growing in the dark, and doing it anyway.' },
   ],
   'npc.drownlight_acolyte_odell_after': [
-    { speaker: 'ODELL', text: 'Sweeping is a kind of praying. Mind the cranks: [[they swing the light, not stop it]].' },
+    { speaker: 'ODELL', text: 'Sweeping is a kind of praying. Mind the cranks: [[they move the light]], never stop it.' },
   ],
   'npc.drownlight_acolyte_prue_after': [
-    { speaker: 'PRUE', text: 'Stuck? [[Think where the light goes]], not where it is. Maudry taught me that. She meant something else, I think.' },
+    { speaker: 'PRUE', text: 'Stuck? [[Think where the light goes]], not where it is. Maudry meant something else by it.' },
   ],
   'npc.drownlight_acolyte_hask_after': [
-    { speaker: 'HASK', text: 'Fourteen winters I\'ve stood here, being quiet. If she lights it... go home, I suppose. I\'ve nearly forgotten where that is.' },
+    { speaker: 'HASK', text: 'Fourteen winters I\'ve stood here. If she lights it... I\'ll go home. If I remember where it is.' },
   ],
 };

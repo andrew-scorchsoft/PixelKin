@@ -50,8 +50,8 @@ function bell(flag: string, name: string, swung: string, still: string): Cutscen
     { op: 'setFlag', flag, value: false, if_flag: TMP },
     { op: 'sfx', key: 'world-moorbell' },
     { op: 'shake', ms: 180, intensity: 0.0015 },
-    { op: 'narrate', if_flag: flag, text: `You swing the ${name}. Its note goes out over the surge — and out at the junction, ${swung} The race-post there shows RED.` },
-    { op: 'narrate', unless_flag: flag, text: `You ring the ${name} back to rest. Out at the junction, ${still} The race-post there shows WHITE.` },
+    { op: 'narrate', if_flag: flag, text: `You swing the ${name}. At the junction, ${swung} The race-post shows RED.` },
+    { op: 'narrate', unless_flag: flag, text: `You ring the ${name} back to rest. At the junction, ${still} The race-post shows WHITE.` },
     { op: 'setFlag', flag: TMP, value: false },
   ];
 }
@@ -73,7 +73,7 @@ function diver(id: string, name: string, before: string, after: string): Cutscen
 function page(n: number, lines: string[]): CutsceneStep[] {
   return [
     { op: 'sfx', key: 'world-chart' },
-    { op: 'narrate', text: `A sea-chest, barnacled shut, and on its lid a logbook swollen with damp. Most of it has run to blue. One page still reads. THE FARLAMP LOG — page ${n} of the last night.` },
+    { op: 'narrate', text: `A sea-chest, barnacled shut, a damp logbook on its lid. One page still reads. THE FARLAMP LOG — page ${n} of the last night.` },
     ...lines.map((text): CutsceneStep => ({ op: 'say', speaker: 'KEEPER EDDA MARROW', text })),
     { op: 'setFlag', flag: 'flag:isles_log_begun' },
     { op: 'setFlag', flag: `flag:isles_log_${n}` },
@@ -105,7 +105,7 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: T1, value: false, unless_flag: TT },
     { op: 'setFlag', flag: T2, value: false, unless_flag: TT },
     { op: 'setFlag', flag: T2, if_flag: TT },
-    { op: 'narrate', if_flag: TT, text: 'The Shoal\'s note doesn\'t die away. It hangs under the Deep\'s, the two of them humming together, waiting.' },
+    { op: 'narrate', if_flag: TT, text: 'The Shoal\'s note hangs under the Deep\'s, the two humming together, waiting.' },
     { op: 'setFlag', flag: TT, value: false },
   ],
   'script.undertide_bell_harbour': [
@@ -120,60 +120,60 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
   'script.undertide_tuned': [
     { op: 'silence', ms: 700 },
     { op: 'tint', color: '#9fe8e0', alpha: 0.22, ms: 600 },
-    { op: 'narrate', text: 'Deep. Shoal. Harbour. The three notes meet in the dark and ring TRUE — one long chord rolling out across the galleries, the way the tide comes in.' },
+    { op: 'narrate', text: 'Deep. Shoal. Harbour. The three notes meet and ring TRUE, one long chord rolling across the galleries like the tide coming in.' },
     { op: 'sfx', key: 'world-gleam-a' },
     { op: 'shake', ms: 500, intensity: 0.003 },
-    { op: 'narrate', text: 'Far off by the north-east wall, something heavy turns over in the water. A race that has slept eleven winters wakes and runs, fast and sure, toward the well-stair.' },
+    { op: 'narrate', text: 'By the north-east wall, something heavy turns in the water. A race asleep eleven winters wakes and runs toward [[the well-stair]].' },
     { op: 'tint', color: '#9fe8e0', alpha: 0, ms: 900 },
-    { op: 'narrate', text: 'And on the landing below, where the bell-ringers used to sit, a tin box you never noticed glints in the wet.' },
-    { op: 'narrate', text: 'All through the Undertide, old races stir. Somewhere up near the mouth, a lane to the bell-ringers\' islet has woken too.' },
+    { op: 'narrate', text: 'On the landing below, where the bell-ringers sat, [[a tin box]] glints in the wet.' },
+    { op: 'narrate', text: 'All through the Undertide, old races stir. Near the mouth, a lane to [[the bell-ringers\' islet]] has woken too.' },
   ],
 
   // ---- the Keeper's Log ----------------------------------------------------------
   'script.undertide_log_1': page(1, [
-    'Dusk came in at the usual hour. It did not go out again. By the ninth bell there was no grey in the east at all, and the sea had a sound I have not heard in thirty years of keeping. A low sound. Like the floor of the world breathing in.',
+    'Dusk came at the usual hour and did not go out. By the ninth bell there was no grey in the east, and the sea made a sound I have not heard in thirty years of keeping. Like the floor of the world breathing in.',
     'Lit the great lamp an hour early and set the small ones in the gallery. If ever a night wanted a light, it\'s this one.',
   ]),
   'script.undertide_log_2': page(2, [
-    'The deep came up at midnight. Not a wave: the whole sea, a fathom higher and still rising. The Sound\'s boats came running in under my light. I sent every one on to Driftholm, kelp-wives, children and all. Told them to keep small lamps till morning.',
-    'The fog closed behind them. I\'ve left my fog-glass on its stand in the vaults. Whoever comes after me, take it: the buoy lane through the Fogwall reads true through it, and the town will want visitors.',
+    'The deep came up at midnight. Not a wave: the whole sea, a fathom higher and rising. I sent every boat in the Sound on to Driftholm, kelp-wives, children and all, to keep small lamps till morning.',
+    'The fog closed behind them. I\'ve left [[my fog-glass]] on its stand [[in the vaults]]. Whoever comes after, take it: the buoy lane through the Fogwall reads true through it.',
   ]),
   'script.undertide_log_3': page(3, [
-    'The water is in the galleries. I rang the bells so the races would carry me, and I rang them wrong, of course, in a hurry. The old keepers hung them to tell the tide\'s order.',
-    'Ring them the way the tide comes in, they used to say: the DEEP first, then the SHOAL, then the HARBOUR, and nothing between. The Driftholm children skip to it. "Deep calls, shoal answers, harbour brings them home."',
+    'The water is in the galleries. I rang the bells so the races would carry me, and rang them wrong, in a hurry. The old keepers hung them to tell the tide\'s order.',
+    'Ring them the way the tide comes in, they said: [[the DEEP first, then the SHOAL, then the HARBOUR]], and nothing between. The Driftholm children skip to it. "Deep calls, shoal answers, harbour brings them home."',
   ]),
   'script.undertide_log_4': page(4, [
     'The water is on the stair. She is still burning down there, my lamp, a fathom under the sea, lighting fish. I\'ve never seen anything so stubborn or so lovely.',
-    'I\'ve put the things that matter in the store and run the sluice shut. Its wheel is on the bell-post: turn it toward the lamp and the race will carry you in.',
+    'I\'ve put what matters in the store and run the sluice shut. Its wheel is on the bell-post: [[turn it toward the lamp]] and the race will carry you in.',
     'I\'m going up the long way now, with a small lamp. If you are reading this, the morning is coming back somewhere. Light her again for me.',
   ]),
 
   // ---- the fog-glass (I4) --------------------------------------------------------
   'script.undertide_fogglass': [
-    { op: 'narrate', if_flag: 'flag:q_isles_fogglass', text: 'The stand\'s brass cradle is empty, polished bright where the lens sat. A little ring of clean stone shows how long it waited.' },
+    { op: 'narrate', if_flag: 'flag:q_isles_fogglass', text: 'The brass cradle is empty, polished bright where the lens sat.' },
     { op: 'run', ref: 'script.undertide_fogglass_take', unless_flag: 'flag:q_isles_fogglass' },
   ],
   'script.undertide_fogglass_take': [
-    { op: 'narrate', text: 'On a stone stand in the middle of the island, out of reach of the surge: a lens in a brass ring, glowing faintly to itself, like a coin of moonlight somebody forgot to spend.' },
+    { op: 'narrate', text: 'On a stone stand, out of the surge\'s reach: a lens in a brass ring, glowing faintly, like a coin of moonlight somebody forgot to spend.' },
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'fog_glass', count: 1 },
     { op: 'setFlag', flag: 'flag:q_isles_fogglass' },
-    { op: 'say', text: 'You take the keeper\'s FOG-GLASS. Held to your eye, the dark in the vaults goes thin and grey, and the far wall shows through it.' },
-    { op: 'narrate', text: 'Out on the open sea, the Fogwall\'s buoys will read true through this. Driftholm is waiting on the other side.' },
+    { op: 'say', text: 'You take the keeper\'s FOG-GLASS. Through it, the dark goes thin and grey.' },
+    { op: 'narrate', text: 'Out on the open sea, [[the Fogwall\'s buoys]] will read true through this. Driftholm waits beyond.' },
   ],
 
   // ---- the keeper's ledge (III): the rest point ------------------------------------
   'script.undertide_camp_rest': [
-    { op: 'narrate', text: 'The keeper\'s dry ledge: a crate, a rolled oilskin bed, a kettle on three stones. Somebody laid a fire here and never lit it. You light it.' },
+    { op: 'narrate', text: 'The keeper\'s dry ledge: a crate, an oilskin bed, a kettle on three stones, a fire laid but never lit. You light it.' },
     { op: 'heal' },
-    { op: 'narrate', text: 'You wake to the bells humming in the dark and the kettle ticking as it cools. Your kin are curled warm against the crate. Rested.' },
+    { op: 'narrate', text: 'You wake to the bells humming and the kettle ticking as it cools. Your kin are curled warm against the crate.' },
   ],
 
   // ---- caches ------------------------------------------------------------------
   'script.pickup_undertide_i_coal': find('flag:picked_undertide_i_coal', [{ op: 'giveItem', item: 'hearth_coal', count: 1 }],
     'In a tin by the keeper\'s pool, wrapped in oilcloth and still faintly warm: a HEARTH COAL!'),
   'script.pickup_undertide_i_islet': find('flag:picked_undertide_i_islet', [{ op: 'giveItem', item: 'starglass_shard', count: 1 }],
-    'On the little islet in the surge, where the bell-ringers used to row out to listen: a tin box, and in it a STARGLASS SHARD — a warm fall from long before the Dusk.'),
+    'On the islet where the bell-ringers rowed out to listen: a tin box, and in it a STARGLASS SHARD!'),
   'script.pickup_undertide_ii_drop': find('flag:picked_undertide_ii_drop', [{ op: 'giveItem', item: 'lumen_drop', count: 1 }],
     'Behind the vault bell, in a niche cut for a lamp: a little jar of light. Found a LUMEN DROP!'),
   'script.pickup_undertide_iii_nw': find('flag:picked_undertide_iii_nw', [{ op: 'giveItem', item: 'beacon_charge', count: 2 }],
@@ -183,47 +183,47 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
   'script.pickup_undertide_iii_eg': find('flag:picked_undertide_iii_eg', [{ op: 'giveItem', item: 'glow_charge', count: 3 }],
     'A net-hand\'s float-box, snagged on the rocks. Found 3 GLOW CHARGES!'),
   'script.pickup_undertide_tuned': find('flag:picked_undertide_tuned', [{ op: 'giveItem', item: 'lumen_drop', count: 1 }],
-    'The bell-ringers\' tin, on the landing where they sat to listen. Inside, on a bed of dry wrack, a LUMEN DROP — and a scrap of paper in a child\'s hand: "DEEP CALLS".'),
+    'The bell-ringers\' tin. Inside, on dry wrack, a LUMEN DROP and a scrap in a child\'s hand: "DEEP CALLS".'),
   'script.pickup_undertide_iv_coal': find('flag:picked_undertide_iv_coal', [{ op: 'giveItem', item: 'hearth_coal', count: 1 }],
     'On the west landing, a keeper\'s fire-pot with its lid wired down. A HEARTH COAL, still glowing!'),
   'script.pickup_undertide_purse': [
     { op: 'sfx', key: 'world-wicks' },
     { op: 'giveMoney', amount: 2000 },
-    { op: 'say', text: 'In the west nook, tucked in a crack above the tide-line: the keeper\'s purse, eleven winters of Farlamp pay never spent. Found 2,000 WICKS!' },
+    { op: 'say', text: 'In a crack in the west nook: the keeper\'s purse, eleven winters of pay never spent. Found 2,000 WICKS!' },
     { op: 'setFlag', flag: 'flag:picked_undertide_purse' },
   ],
   'script.pickup_undertide_iv_drop': find('flag:picked_undertide_iv_drop', [{ op: 'giveItem', item: 'lumen_drop', count: 1 }],
-    'At the back of the east nook, set in the rock where the light from the stair-foot reaches: a LUMEN DROP!'),
+    'At the back of the east nook, where the stair-foot light reaches: a LUMEN DROP!'),
   'script.pickup_farlamp_store_chart': find('flag:picked_farlamp_store_chart', [{ op: 'giveItem', item: 'chart_maelstrom', count: 1 }],
-    'In the keeper\'s store, dry as a cupboard, rolled in waxed silk: the Farlamp\'s own sea-chart, the one they used to teach the boats by. A STAR-CHART: MAELSTROM!'),
+    'In the keeper\'s store, rolled in waxed silk: the Farlamp\'s own sea-chart. A STAR-CHART: MAELSTROM!'),
 
   // ---- trainers ------------------------------------------------------------------
   'script.undertide_diver_ness': diver('undertide_diver_ness', 'NESS',
-    'A boat! Out here! Then the fog really is — never mind, battle first, ask after. I dive the mouth for lamp-glass and I\'m not losing my spot.',
-    'The races carry you, they don\'t ask. Ring the mouth bell on the landing and see which way they change their mind.'),
+    'A boat! Out here! Then the fog really is... never mind, battle first. I dive the mouth for lamp-glass and I\'m keeping my spot.',
+    'The races carry you; they don\'t ask. [[Ring the mouth bell]] on the landing and see which way they change their mind.'),
   'script.undertide_diver_corin': diver('undertide_diver_corin', 'CORIN',
-    'This is the bell vault, and that\'s my bell, and I\'ve been ringing it for practice. You can have a turn when you\'ve had a battle.',
-    'There\'s a lens on the island, sat on a stand, glowing at nothing. My nan says it was the keeper\'s. Ring the bell and ride back round.'),
+    'This is the bell vault, and that\'s my bell. You can have a turn after a battle.',
+    'There\'s [[a lens on the island]], glowing at nothing. My nan says it was the keeper\'s. Ring the bell and ride round.'),
   'script.undertide_nethand_bryn': diver('undertide_nethand_bryn', 'BRYN',
     'You came by the races, didn\'t you? Nobody walks to the east gallery. Nobody leaves without a bout, either.',
-    'The galleries sang once, when they were rung true. My gran could do it. Deep first, she\'d say, and then the rest come in on their own.'),
+    'The galleries sang once, rung true. Gran could do it. [[Deep first]], she\'d say, and the rest come in on their own.'),
   'script.undertide_keeper_isolde': diver('undertide_keeper_isolde', 'ISOLDE',
-    'I was the Farlamp\'s second keeper, the night it went. I came down the long stair to see if she\'d left anything burning. Let me see what you carry first.',
+    'I was the Farlamp\'s second keeper, the night it went. I came down to see if she\'d left anything burning. Show me what you carry.',
     'You\'ve the Star-tender\'s light in that lamp. I can see it from here. Go on down, then. Edda would want it to be you.'),
   'script.undertide_diver_marlo': diver('undertide_diver_marlo', 'MARLO',
-    'The Drowned Stair. Every race goes down, and the long one goes all the way back up. I\'ve ridden it eighty times today. Battle?',
-    'Below the stair-foot there\'s air, and stone, and the lamp. Don\'t mind the fish. They\'ve been keeping her company.'),
+    'The Drowned Stair. Every race goes down; the long one goes all the way back up. I\'ve ridden it eighty times today. Battle?',
+    'Below the stair-foot: air, stone, and the lamp. Don\'t mind the fish. They\'ve kept her company.'),
 
   // ---- the Drowned Lamp: the relight (I6) + Farlume (I7) ---------------------------
   'script.farlamp_lamp': [
-    { op: 'narrate', if_flag: DAWN, text: 'The Farlamp burns, steady and warm, a fathom under the sea. Fish hang in its light like moths. Far above, the isles are having their morning.' },
+    { op: 'narrate', if_flag: DAWN, text: 'The Farlamp burns, steady and warm, a fathom under the sea. Fish hang in its light like moths.' },
     { op: 'run', ref: 'script.farlamp_relight', unless_flag: DAWN },
   ],
   'script.farlamp_relight': [
     { op: 'letterbox', on: true },
     { op: 'silence', ms: 1100 },
-    { op: 'narrate', text: 'The great lamp lies where it fell, on the floor of its own tower. Its glass has gone sea-green. Weed hangs from the gallery rail. At its heart the wick is black and cold, and the whole room is waiting for something.' },
-    { op: 'narrate', text: 'In your vesperlamp burns the flame Star-tender Fenn lit at the skiff\'s prow, lit in turn from the Keystar. The deep answers a lamp lit from the Keystar\'s light.' },
+    { op: 'narrate', text: 'The great lamp lies where it fell, on the floor of its own tower. Its glass has gone sea-green. At its heart the wick is black and cold, and the room is waiting.' },
+    { op: 'narrate', text: 'In your vesperlamp burns the prow-flame Star-tender Fenn lit from the Keystar\'s light. The deep answers it.' },
     { op: 'action', actor: 'player', action: 'raiseLamp' },
     { op: 'sfx', key: 'world-lantern-light' },
     { op: 'tint', color: '#ffd890', alpha: 0.3, ms: 700 },
@@ -233,15 +233,15 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
     { op: 'flashColor', color: '#fff2c8', ms: 500 },
     { op: 'shake', ms: 600, intensity: 0.003 },
     { op: 'musicCrossfade', key: 'farlamp-relit', ms: 1200 },
-    { op: 'narrate', text: 'THE FARLAMP BURNS. Its beam goes up through a fathom of water and out across the sea, and the Fogwall, which has lain on these isles eleven winters, begins to lift.' },
+    { op: 'narrate', text: 'THE FARLAMP BURNS. Its beam climbs through a fathom of water and out across the sea, and the Fogwall, eleven winters on these isles, begins to lift.' },
     { op: 'tint', color: '#ffd890', alpha: 0, ms: 1100 },
-    { op: 'narrate', text: 'All the way up the Undertide, the keepers\' tide-lamps flicker on along the races, one after another, like a held breath let go.' },
-    { op: 'narrate', text: 'Up in Driftholm they will be at their windows with their small lamps. They will see the old light out on the water. Some of them will cry, and say it\'s the salt.' },
+    { op: 'narrate', text: 'All up the Undertide, the tide-lamps flicker on along the races, one after another, like a held breath let go.' },
+    { op: 'narrate', text: 'Up in Driftholm they\'ll be at their windows. They\'ll see the old light on the water. Some will cry, and say it\'s the salt.' },
     { op: 'narrate', text: 'No new star rises for this. It isn\'t that kind of light. It is the isles\' own morning, and it\'s enough.' },
     { op: 'letterbox', on: false },
     // I7 — Farlume rises in the new light
     { op: 'silence', ms: 900 },
-    { op: 'narrate', text: 'In the ring of water round the room, something answers the beam. A shape comes up through the light — finned, lantern-bellied, gold as the lamp — and turns to look at you with the patience of something that kept watch here alone.' },
+    { op: 'narrate', text: 'In the ring of water round the room, something answers the beam: finned, lantern-bellied, gold as the lamp. It turns to look at you with the patience of something that kept watch here alone.' },
     { op: 'setFlag', flag: 'flag:farlume_met' },
     { op: 'musicSting', key: 'sting-hour' },
     { op: 'music', key: 'battle-hours' },
@@ -258,7 +258,7 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.farlume_caught' },
   ],
   'script.farlume_wake': [
-    { op: 'narrate', text: 'FARLUME drifts in the lamp\'s light by the water\'s edge, gold through and through. It watches your vesperlamp the way a keeper watches a boat come in.' },
+    { op: 'narrate', text: 'FARLUME drifts in the lamp\'s light, gold through and through. It watches your vesperlamp the way a keeper watches a boat come in.' },
     { op: 'musicSting', key: 'sting-hour' },
     { op: 'music', key: 'battle-hours' },
     {
@@ -277,15 +277,15 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
     { op: 'silence', ms: 1000 },
     { op: 'narrate', text: 'Farlume comes into your lamp like a boat into harbour: slowly, sure of the way. Your vesperlamp burns a shade warmer, and does not go back.' },
     { op: 'musicCrossfade', key: 'farlamp-relit', ms: 1400 },
-    { op: 'narrate', text: 'The Farlamp keeps burning without it. It never needed watching once it was lit. It only needed someone to come all the way down.' },
+    { op: 'narrate', text: 'The Farlamp burns on without it. It never needed watching once lit. It only needed someone to come all the way down.' },
   ],
 
   // ---- pass 2: the rest before the lamp, the dawn's islets, Ondine, Edda ---------
   // IV's stair-foot niche: the floor's REST POINT, a bed before the Drowned Lamp.
   'script.undertide_niche_rest': [
-    { op: 'narrate', text: 'A keeper\'s niche cut into the rock above the tide-line: a bunk, a blue blanket gone stiff with salt, a little lamp on a hook. Dry as a cupboard.' },
+    { op: 'narrate', text: 'A keeper\'s niche above the tide-line: a bunk, a salt-stiff blue blanket, a little lamp on a hook. Dry as a cupboard.' },
     { op: 'heal' },
-    { op: 'narrate', text: 'You sleep to the sound of the up-race, and wake rested. Your kin are warm in the blanket. Somewhere below, the lamp-room waits.' },
+    { op: 'narrate', text: 'You sleep to the up-race and wake rested. Somewhere below, the lamp-room waits.' },
   ],
   'script.pickup_undertide_iii_dawn': find('flag:picked_undertide_iii_dawn', [{ op: 'giveItem', item: 'starglass_shard', count: 1 }],
     'The little islet the race never used to reach. Tucked in the rock, where the new light falls on it: a STARGLASS SHARD, warm as a hand.'),
@@ -294,13 +294,13 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
   // After the dawn: Ondine dives the Drowned Stair for the joy of it and races
   // anyone who'll have her. A re-runnable bout (she never stands on a sight-line).
   'script.undertide_diver_ondine': [
-    { op: 'say', speaker: 'ONDINE', text: 'You lit her! You lit the Farlamp! I came straight down the well-stair to see. Every race in the Undertide is running warm.' },
+    { op: 'say', speaker: 'ONDINE', text: 'You lit the Farlamp! I came straight down the well-stair to see. Every race is running warm.' },
     {
       op: 'choice', speaker: 'ONDINE', prompt: 'Fancy a bout, while the lamps are lit?',
       options: [
         { label: 'A bout', ops: [
           { op: 'spar', trainer: 'undertide_rematch_ondine', cooldown: 3, restingRef: 'npc.ondine_resting' },
-          { op: 'say', speaker: 'ONDINE', text: 'Ha! Again tomorrow. I\'ll be here. I\'m always going to be here now.' },
+          { op: 'say', speaker: 'ONDINE', text: 'Ha! Again tomorrow. I\'m always going to be here now.' },
         ] },
         { label: 'Not now', ops: [
           { op: 'say', speaker: 'ONDINE', text: 'Suit yourself. The races\'ll keep.' },
@@ -310,44 +310,44 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
   ],
   // The old keeper, come down the long stair once the light was back.
   'script.farlamp_edda': [
-    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I felt it from Driftholm. Eleven winters I\'ve slept with my back to the sea, and this morning I woke facing it.' },
-    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I came down the long stair the way I went up it, with a small lamp. Didn\'t need it. Every tide-lamp on the races was burning.' },
-    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'You read my log, I expect. All my hurrying. Look at her. Stubborn and lovely, same as ever. Thank you for coming all the way down.' },
-    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'Tell Ione Fathom her lamp-boat came home, will you? Her and Bram learned their knots on my stair, the pair of them, forever fighting over the oars.' },
-    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'The light\'s woken the old races, too. There were islets on the Galleries and the Stair we used to row out to for the quiet. Go and see what the sea\'s kept on them.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I felt it from Driftholm. Eleven winters I slept with my back to the sea. This morning I woke facing it.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I came down the long stair the way I went up, with a small lamp. Didn\'t need it. Every tide-lamp was burning.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'You read my log, I expect. All my hurrying. Look at her: stubborn and lovely as ever. Thank you for coming all the way down.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'Tell Ione Fathom her lamp-boat came home. She and Bram learned their knots on my stair, forever fighting over the oars.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'The light\'s woken the old races too. Row out to [[the islets on the Galleries and the Stair]]. See what the sea\'s kept on them.' },
   ],
 
   // ---- the keeper's desk + the store's sluice ------------------------------------
   'script.farlamp_keeper_desk': [
-    { op: 'narrate', unless_flag: DAWN, text: 'The keeper\'s chest-desk, swept clear. Scratched into the lid with a knife-point: E.M., and a little drawing of a lamp with lines coming off it.' },
-    { op: 'narrate', if_flag: DAWN, text: 'In the new light you can read what else is scratched into the lid, under the keeper\'s initials, in a dozen different hands over thirty years: the names of boats. Every one that ever came home by the Farlamp.' },
+    { op: 'narrate', unless_flag: DAWN, text: 'The keeper\'s chest-desk, swept clear. Knife-scratched in the lid: E.M., and a little lamp with lines coming off it.' },
+    { op: 'narrate', if_flag: DAWN, text: 'In the new light you can read the rest of the lid, a dozen hands over thirty years: the names of boats. Every one that came home by the Farlamp.' },
   ],
   'script.farlamp_sluice': [
-    { op: 'narrate', unless_flag: 'flag:isles_log_4', text: 'A sluice of barnacled iron, wheeled shut, the race behind it pushing back at you. A keeper\'s mark is chalked on it: a lamp, and the number four.' },
-    { op: 'narrate', if_flag: 'flag:isles_log_4', text: 'The sluice stands open. Its wheel is on the bell-post, the way the keeper wrote, turned toward the lamp. The race runs in to the store.' },
+    { op: 'narrate', unless_flag: 'flag:isles_log_4', text: 'An iron sluice, wheeled shut, the race behind it pushing back. Chalked on it: a lamp, and the number four.' },
+    { op: 'narrate', if_flag: 'flag:isles_log_4', text: 'The sluice stands open, its wheel on the bell-post turned toward the lamp. The race runs in to the store.' },
   ],
 };
 
 export const UNDERTIDE_DIALOGUE: DialogueRegistry = {
   'npc.ondine_resting': [
-    { speaker: 'ONDINE', text: 'Still catching my breath from the last one! Win a few more out there ({remaining} to go) and I\'ll be ready.' },
+    { speaker: 'ONDINE', text: 'Still catching my breath! Win {remaining} more out there and I\'ll be ready.' },
   ],
   'sign.undertide_mouth': [
-    { text: 'THE UNDERTIDE. Mind the SURGE: white water does not swim. Ride the RACES — they run one way and never back.' },
+    { text: 'THE UNDERTIDE. Mind the SURGE: white water does not swim. [[Ride the RACES]]: one way, never back.' },
     { text: 'The mouth bell turns the junction race. White on the race-post: the race runs on. Red: it turns.' },
   ],
   'sign.undertide_vaults': [
-    { text: 'THE KELP VAULTS. Kelp walk west for the ladder to the mouth. The island is the keeper\'s; the vault bell turns its race.' },
+    { text: 'THE KELP VAULTS. [[Kelp walk west]]: the ladder to the mouth. The island is the keeper\'s; the vault bell turns its race.' },
   ],
   'sign.undertide_galleries': [
     { text: 'THE BELL GALLERIES. Three bells: DEEP, SHOAL, HARBOUR. Each turns one race. Every race runs home to this stair, whatever the bells.' },
     { text: 'Underneath, in chalk, a child\'s hand: DEEP CALLS. SHOAL ANSWERS. HARBOUR BRINGS THEM HOME.' },
   ],
   'sign.undertide_stair': [
-    { text: 'THE DROWNED STAIR. Every race runs down. The long race on the east wall runs all the way back up. Below: the lamp-room.' },
+    { text: 'THE DROWNED STAIR. Every race runs down; the long one on the east wall runs back up. Below: [[the lamp-room]].' },
   ],
   'npc.farlume_resting': [
-    { text: 'Farlume has sunk back into the ring of water round the lamp, a gold shape turning slowly in the deep. It won\'t come up for you again until you\'ve won {remaining} more battles in the world above.' },
+    { text: 'Farlume has sunk back into the ring of water, a gold shape turning in the deep. Win {remaining} more battles above and it will rise again.' },
   ],
   'npc.undertide_diver_ness_after': [{ speaker: 'NESS', text: 'Lamp-glass, lamp-glass everywhere. The sea\'s been keeping it for us.' }],
   'npc.undertide_diver_corin_after': [{ speaker: 'CORIN', text: 'One ring, the race goes one way. Ring again, it goes back. Bells are fair like that.' }],
