@@ -169,7 +169,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'say', if_flag: CP, unless_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'Is that a FEATHER on your sleeve? Green, curly... Oh, Felicitas will lose her mind. [[Go on up to the attic]]. I\'ll hold the teapot steady.' },
     { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'He came home with a tin cup and a grin and won\'t say where he got either. Whatever you did up that wood, thank you. He\'s humming.' },
     { op: 'say', speaker: 'ROSE', text: 'The NEVER rail upstairs is mine and Felicitas\'s doing. He wore ASK ME ABOUT MY KNEES to a christening. Somebody asked.' },
-    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'He\'s planning a festival again: the Festival of the Imagined. Programmes upstairs. Everyone on the bill is out of a story, which keeps the catering simple.' },
+    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'He\'s planning another festival: the Festival of the Imagined. Everyone on the bill is out of a story. Keeps the catering simple.' },
     { op: 'say', unless_flag: MILAGRO_PACK_FLAG, speaker: 'ROSE', text: 'And if he\'s in a good mood, [[ask him about the cards]], out at his lamp. He pretends he doesn\'t want to show you.' },
     { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'That poster by the fire is a JOKE. Probably. I stopped asking around when I learned to make tea.' },
     { op: 'setFlag', flag: 'flag:paul_rose_met' },
@@ -215,7 +215,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   'script.paul_milagro_cards': [
     { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Cards? Ha. Somebody\'s been talking. ...Rose. It\'s always Rose.' },
     { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Over the western sea, in the sun country, folk hang tin charms in chapels for whatever wants mending. A tin heart. A tin leg. Milagros. Small miracles.' },
-    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Somebody painted a whole deck of them once and left them lying about. If a stranger\'s handed you a painted card, now you know where it came from. Roughly.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Somebody painted a deck of them and left them lying about. If a stranger\'s handed you a painted card, now you know why. Roughly.' },
     { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'I came by the box. Don\'t ask me how. ...Here. It\'s yours. Every deck wants somewhere to come home to.' },
     { op: 'giveItem', unless_flag: MILAGRO_PACK_FLAG, item: 'milagro_cards', count: 1 },
     { op: 'say', unless_flag: MILAGRO_PACK_FLAG, text: 'He hands you a card box painted with suns and moons and eyes. Received the MILAGRO CARDS!' },
@@ -376,7 +376,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'action', actor: 'player', action: 'laugh', holdMs: 900 },
     { op: 'sfx', key: 'cry-163' },
     { op: 'hop', actor: 'felicitas_cp', times: 3, height: 6 },
-    { op: 'narrate', text: 'At the big finish it crows and oinks at the SAME TIME — which is not possible, and which Felicitas will describe to everyone she meets for the rest of her life.' },
+    { op: 'narrate', text: 'At the finish it crows and oinks at the SAME TIME, which is not possible, and which Felicitas will describe to everyone for the rest of her life.' },
     { op: 'shakeActor', actor: 'felicitas', ms: 600, px: 1 },
     { op: 'say', speaker: L, text: 'BEST. DAY. EVER.' },
     { op: 'musicFade', ms: 900 },
@@ -453,7 +453,7 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
     { text: 'The story on the back has been crossed out and rewritten four times. Every version is different. Every version is signed.' },
   ],
   'sign.paul_pinboard': [
-    { text: 'Ferry stubs, rail stubs, a lift-pass from a mountain you\'ve never heard of. A frozen lake from the maple country across the northern sea; a flat-topped mountain from the cape country far south.' },
+    { text: 'Ferry stubs, rail stubs. Postcards: a frozen lake from the maple country across the northern sea; a flat-topped mountain from the cape country far south.' },
     { text: 'Every one of them is stamped. Some are stamped twice — going the other way.' },
   ],
   'sign.paul_cape_day': [

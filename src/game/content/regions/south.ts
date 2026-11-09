@@ -29,12 +29,12 @@ export const SOUTH_SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'player', facing: 'left' },
     { op: 'say', speaker: 'WAYKEEPER', text: 'Found the cars, have you? Mind the platform edge, young Wayfarer.' },
     { op: 'say', speaker: 'WAYKEEPER', text: 'That winch is the [[LANTERN-CAR]]: cables up the mountain to Lowleaf, Galehigh and Nightreach. Days of walking, swung over in a breath.' },
-    { op: 'say', speaker: 'WAYKEEPER', text: 'But a line runs only while its far lamp burns. [[Relight a valley\'s constellation]] and its car will carry you there.' },
-    { op: 'say', speaker: 'WAYKEEPER', text: 'Till then, boots and the long way round. You\'ll find more on foot than any car could show you.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'A line runs only while its far lamp burns. [[Relight a valley\'s stars]] to wake it.' },
+    { op: 'say', speaker: 'WAYKEEPER', text: 'Till then, boots. You\'ll find more on foot than any car could show you.' },
     { op: 'face', actor: 'waykeeper', facing: 'down' },
   ],
   'script.lantern_car': [
-    { op: 'narrate', text: 'THE LANTERN-CAR. Three cables climb into the dark, each with a little lamp on the rail.' },
+    { op: 'narrate', text: 'THE LANTERN-CAR. Three cables climb into the dark, each with a little lamp.' },
     { op: 'narrate', unless_flag: 'gleam:verdant', text: 'Every line-lamp is cold. No car runs until a valley\'s light is relit.' },
     {
       op: 'choice',
@@ -46,7 +46,7 @@ export const SOUTH_SCRIPTS: ScriptRegistry = {
           if_flag: 'gleam:verdant',
           ops: [
             { op: 'sfx', key: 'world-lantern-light' },
-            { op: 'narrate', text: 'The green lamp catches. The car swings out over the bay, the Crossroads\' lights shrinking below...' },
+            { op: 'narrate', text: 'The green lamp catches. The car swings out over the bay and climbs...' },
             { op: 'travel', map: 'lanternway_lowleaf', to: { tx: 3, ty: 24 }, facing: 'up' },
           ],
         },
@@ -55,7 +55,7 @@ export const SOUTH_SCRIPTS: ScriptRegistry = {
           if_flag: 'gleam:storm',
           ops: [
             { op: 'sfx', key: 'world-lantern-light' },
-            { op: 'narrate', text: 'The storm-lamp catches. The car climbs the eastern flank, rocking in the updraughts...' },
+            { op: 'narrate', text: 'The storm-lamp catches. The car climbs, rocking in the updraughts...' },
             { op: 'travel', map: 'lanternway_galehigh', to: { tx: 6, ty: 16 }, facing: 'up' },
           ],
         },
@@ -64,7 +64,7 @@ export const SOUTH_SCRIPTS: ScriptRegistry = {
           if_flag: 'gleam:lunar',
           ops: [
             { op: 'sfx', key: 'world-lantern-light' },
-            { op: 'narrate', text: 'The silver lamp catches. The longest line: over the mountain\'s dark shoulder, riding among the stars...' },
+            { op: 'narrate', text: 'The silver lamp catches. The longest line, riding up among the stars...' },
             { op: 'travel', map: 'lanternway_nightreach', to: { tx: 4, ty: 7 }, facing: 'down' },
           ],
         },
@@ -96,7 +96,7 @@ export const SOUTH_SCRIPTS: ScriptRegistry = {
       op: 'choice',
       prompt: 'The Lantern-car waits. Ride down to the [[Vesper Crossroads]]?',
       options: [{ label: 'RIDE DOWN', ops: [
-        { op: 'narrate', text: 'The car slips off the observatory\'s shoulder and glides down to the Crossroads\' small warm lights.' },
+        { op: 'narrate', text: 'The car glides down off the observatory to the Crossroads\' warm lights.' },
         { op: 'travel', map: 'vesper_crossroads', to: { tx: 17, ty: 8 }, facing: 'down' },
       ] }],
     },
@@ -116,10 +116,10 @@ export const SOUTH_SCRIPTS: ScriptRegistry = {
   // The Crossroads inn before the token quest. The old line promised "four
   // festivals over the hearth" while the brackets still hung empty.
   'script.inn_rest_crossroads_early': [
-    { op: 'say', unless_flag: EMBER, speaker: 'INNKEEP', text: "In you come, out of the dark. Bunks first, talk after — only the kettle argues." },
-    { op: 'say', if_flag: EMBER, speaker: 'INNKEEP', text: "In you come! The Ember's back over Tinderwick — half my table's toasting it. Bunks first, talk after." },
+    { op: 'say', unless_flag: EMBER, speaker: 'INNKEEP', text: "In you come, out of the dark. Bunks first, talk after. House rule." },
+    { op: 'say', if_flag: EMBER, speaker: 'INNKEEP', text: "In you come! The Ember's back over Tinderwick. Bunks first, talk after." },
     { op: 'heal' },
-    { op: 'say', speaker: 'INNKEEP', text: "There. Every road's shorter after a night's sleep. That's not lore, that's arithmetic." },
+    { op: 'say', speaker: 'INNKEEP', text: "There. Every road's shorter after sleep. That's not lore, that's arithmetic." },
     { op: 'shop', shop: 'crossroads_inn' },
   ],
   // The old lamplighter who carried the wick-key, once the Beacon burns.
@@ -151,69 +151,69 @@ export const SOUTH_SCRIPTS: ScriptRegistry = {
   ],
   // Pearlmoor inn, the night of the Tide-blessing (the twin's rest; same shape).
   'script.pearlmoor_inn_rest_lit': [
-    { op: 'say', speaker: 'INNKEEP', text: "Mind the singers on the stair. They began the going-out song when the Tide stood up, and not one has gone out." },
+    { op: 'say', speaker: 'INNKEEP', text: "Mind the singers on the stair. They've sung since the Tide stood up." },
     { op: 'heal' },
     { op: 'say', speaker: 'INNKEEP', text: 'Morning! ...Have you ever considered taking a virtuous day?' },
-    { op: 'say', speaker: 'INNKEEP', text: "A day off. Not because you're poorly — just virtuous to yourself. The road will keep." },
-    { op: 'say', speaker: 'INNKEEP', text: "Kin bright-eyed, every room let, every guest awake. Never been so tired, or so glad of it." },
+    { op: 'say', speaker: 'INNKEEP', text: "A day off. Not because you're poorly. Just being virtuous to yourself." },
+    { op: 'say', speaker: 'INNKEEP', text: "Every room let, every guest awake. Never so tired, or so glad of it." },
   ],
 };
 
 export const SOUTH_DIALOGUE: DialogueRegistry = {
   // --- The 2026-10 geometry fix: the bay road + the Lantern-car signs ---
   'sign.crossroads_lantern_car': [
-    { text: 'THE LANTERN-CAR\nTo [[LOWLEAF]], [[GALEHIGH]] and NIGHTREACH. A car runs once its valley\'s lamp is relit. Down runs any time.' },
+    { text: 'THE LANTERN-CAR\nTo LOWLEAF, GALEHIGH, NIGHTREACH, once each valley\'s lamp is lit.' },
   ],
   'sign.crossroads_bay_road': [
-    { text: 'NORTH-WEST: THE BAY ROAD\nLanternfall Road, the Sounding Cave and the Wrackline, round to [[Saltreach Fen]] and [[Pearlmoor]].' },
+    { text: 'NORTH-WEST: THE BAY ROAD\nRound the shore to [[Saltreach Fen]] and [[Pearlmoor]].' },
   ],
   'sign.fen_drowned_road': [
-    { text: 'THE DROWNED ROAD\nSOUTH along the shore: Wrackline Path, the Sounding Cave, Lanternfall Road, to the [[Vesper Crossroads]].' },
+    { text: 'THE DROWNED ROAD\nSOUTH along the shore to the [[Vesper Crossroads]].' },
   ],
 
   // --- AFTER-GLEAM · Tinderwick / the Lanternway / Dimglass (gleam:ember) -----
   'npc.gatewarden_after_lit': [
-    { speaker: 'GATE-WARDEN', text: "All the dark years I watched under a cold beacon. Now I catch myself nodding to it, like a neighbour." },
-    { speaker: 'GATE-WARDEN', text: "The coast road's yours. And now and then, keep a copy of your journey: [[SETTINGS, Backup / restore]]." },
+    { speaker: 'GATE-WARDEN', text: "All the dark years under a cold beacon. Now I nod to it, like a neighbour." },
+    { speaker: 'GATE-WARDEN', text: "Coast road's yours. Now and then, back up your journey in [[SETTINGS]]." },
   ],
   'npc.tinderwick_shopkeeper_lit': [
-    { speaker: 'SHOPKEEPER', text: "Fair-week, dear! Sold out of tapers by second bell. Never been so pleased to be out of anything." },
-    { speaker: 'SHOPKEEPER', text: "Charges and balms for the coast road. The dune grass is restless, Gleam or no Gleam." },
+    { speaker: 'SHOPKEEPER', text: "Fair-week, dear! Sold out of tapers by second bell. Never been so pleased." },
+    { speaker: 'SHOPKEEPER', text: "Charges and balms for the coast. The dune grass is restless, Gleam or no." },
   ],
   'npc.lanternway_keeper_lit': [
-    { speaker: 'WAYKEEPER', text: "The night the Ember stood up, the coast road's lamps burned warmer. I felt it in my trimmer before I saw it." },
-    { speaker: 'WAYKEEPER', text: 'You will walk out and come back in at a gate you know. That is not going wrong — the way home is never the way out.' },
+    { speaker: 'WAYKEEPER', text: "The night the Ember stood up, I felt it in my trimmer before I saw it." },
+    { speaker: 'WAYKEEPER', text: 'You will come back in at a gate you know. That is not lost — that is the way home.' },
     { speaker: 'WAYKEEPER', text: 'Each Gleam wakes another road. One already has.' },
     { speaker: 'WAYKEEPER', text: 'The inward road wants all eight. Count them in the sky, not on your fingers.' },
   ],
   'npc.dimglass_witness_lit': [
-    { speaker: 'OLD LAMPLIGHTER', text: "I saw the beacon from the dunes, burning as if it had never stopped. I took my cap off to it, like a boy." },
-    { speaker: 'OLD LAMPLIGHTER', text: "Forty years I climbed those stairs. Glad yours were the last boots on them. Walk lit, young one." },
+    { speaker: 'OLD LAMPLIGHTER', text: "I saw the beacon burning from the dunes. I took my cap off, like a boy." },
+    { speaker: 'OLD LAMPLIGHTER', text: "Forty years I climbed those stairs. Glad yours were the last boots on them." },
   ],
   'npc.dimglass_wayfarer_lit': [
-    { speaker: 'WREN', text: "You lit the BEACON? The whole coast went orange. I said a word Gran would wash out of my mouth." },
-    { speaker: 'WREN', text: "Fine. One–nil. If Mum's village watches the south sky, she saw it too. ...Race you to [[Pearlmoor]]." },
+    { speaker: 'WREN', text: "You lit the BEACON? I said a word Gran would wash out of my mouth." },
+    { speaker: 'WREN', text: "One–nil. If Mum watches the south sky, she saw it too. Race you to [[Pearlmoor]]!" },
   ],
   'npc.dimglass_wayfarer_tide': [
-    { speaker: 'WREN', text: "Two Gleams. I meant to be annoyed, then wasn't. I wrote Mum three pages. ...She'll write back short. But she'll write back." },
+    { speaker: 'WREN', text: "Two Gleams. I wrote Mum three pages. She'll write back short. But she'll write." },
   ],
   // --- AFTER-GLEAM · the flats and Pearlmoor (gleam:tide) ---------------------
   'npc.flats_wayfarer_b_lit': [
-    { speaker: 'ELSPETH', text: "The post doubled when the Tide came back. Everyone wrote inland that they could hear the singing. Half could." },
+    { speaker: 'ELSPETH', text: "Post's doubled since the Tide. Everyone's writing inland about the singing." },
   ],
   'npc.flats_sky_watcher_lit': [
-    { speaker: 'STAR-TENDER FENN', text: "Two Gleams, child, and the harbour singing. I walked down to hear it. The sky can mind itself one night." },
-    { speaker: 'STAR-TENDER FENN', text: "Reyl will have said tides go out so they can come back. He has been right for sixty years. It is very trying." },
+    { speaker: 'STAR-TENDER FENN', text: "Two Gleams, child, and the harbour singing. The sky can mind itself tonight." },
+    { speaker: 'STAR-TENDER FENN', text: "Reyl says tides go out so they can come back. Sixty years right. Very trying." },
   ],
   'npc.pearlmoor_fisher_lit': [
-    { speaker: 'FISHER', text: "Out past the buoys after dark, first time in eleven winters. The moon-water opened round my keel like it remembered me." },
-    { speaker: 'FISHER', text: "Caught nothing. Just watched the quay lamps from the sea side, the way my father used to." },
+    { speaker: 'FISHER', text: "First time past the buoys in eleven winters. The water remembered my keel." },
+    { speaker: 'FISHER', text: "Caught nothing. Just watched the quay lamps from the sea, like my father." },
   ],
   'npc.pearlmoor_fisher_inn_lit': [
-    { speaker: 'FISHER', text: "Ask me how the night-fishing went. ...Terrible! Two sprats and a boot. Best night in years." },
+    { speaker: 'FISHER', text: "Night-fishing? Terrible! Two sprats and a boot. Best night in years." },
   ],
   'npc.pearlmoor_shopkeeper_lit': [
-    { speaker: 'CHANDLER', text: "Buoy-wicks! Every family's relighting its line, and I alone kept a crate through the dark. Prudence pays." },
+    { speaker: 'CHANDLER', text: "Buoy-wicks! I alone kept a crate through the dark. Prudence pays." },
     { speaker: 'CHANDLER', text: "Balms for the fen-road [[east]], if that's where the Tidecall walks you." },
   ],
   'npc.booji_andrew_lit': [
@@ -223,27 +223,27 @@ export const SOUTH_DIALOGUE: DialogueRegistry = {
 
   // --- Gullcry Rock (post-Chickenpig Tidecall spur): the wreck on the sand ---
   'npc.gullcry_wreck': [
-    { text: 'A small boat sunk in the sand, a lamp painted on her bow. The gulls think she was built to be their nest.' },
+    { text: 'A sunk boat, a lamp painted on her bow. The gulls think she\'s their nest.' },
   ],
   // --- Wrackline Path (§4 #8): three inspect-only finds in the wrack --------
   'npc.wrack_find_pots': [
-    { text: 'Washed-up crab pots. One holds a very offended crab. You leave it be — it\'s had a long night too.' },
+    { text: 'Crab pots. One holds a very offended crab. It\'s had a long night too.' },
   ],
   'npc.wrack_find_drift': [
-    { text: 'Silver driftwood, scratched with a tally: one mark for every star gone dark this winter.' },
+    { text: 'Driftwood, scratched with a tally: one mark per star gone dark this winter.' },
     { text: 'The marks stop halfway, as if the counter would rather not.' },
   ],
   'npc.wrack_find_nest': [
-    { text: 'A gull\'s nest of kelp and string, woven with a scrap of Pearlmoor festival ribbon.' },
+    { text: 'A gull\'s nest of kelp, woven with Pearlmoor festival ribbon.' },
   ],
   // --- Sounding Cave (§4 #8): the sounding stone answers -------------------
   'npc.sounding_stone': [
-    { text: 'You knock. The cave knocks back — three, then one — from above and off to the west.' },
-    { text: 'Echoes don\'t usually point. This one does: back up through the moss, then [[west to the side chamber]].' },
+    { text: 'You knock. The cave knocks back — three, then one — from above and west.' },
+    { text: 'This echo points: back up through the moss, then [[west to the side chamber]].' },
   ],
   // --- The Wanderwood (S5): the wayfarers' board -------------------------------
   'npc.wanderwood_board': [
-    { text: 'A wayfarers\' board. FOUND: one glove, left. LOST: one glove, left. Same handwriting.' },
-    { text: 'Newer: "If you are lost, stand still. Somebody kind will come by. They always have so far."' },
+    { text: 'FOUND: one glove, left. LOST: one glove, left. Same handwriting.' },
+    { text: '"If you are lost, stand still. Somebody kind will come by. They always have."' },
   ],
 };

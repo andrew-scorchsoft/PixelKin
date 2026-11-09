@@ -32,8 +32,8 @@ function lever(n: number, points: string): CutsceneStep[] {
     { op: 'setFlag', flag: F, value: false, if_flag: TMP },
     { op: 'sfx', key: 'world-door-close' },
     { op: 'shake', ms: 220, intensity: 0.002 },
-    { op: 'narrate', if_flag: F, text: `You haul LEVER ${n} over. Out in the dark, ${points} clanks across: [[RED, the turnout]].` },
-    { op: 'narrate', unless_flag: F, text: `You haul LEVER ${n} back. Out in the dark, ${points} clanks home: [[WHITE, the straight]].` },
+    { op: 'narrate', if_flag: F, text: `You haul LEVER ${n} over. ${points} clanks across: [[RED, the turnout]].` },
+    { op: 'narrate', unless_flag: F, text: `You haul LEVER ${n} back. ${points} clanks home: [[WHITE, the straight]].` },
     { op: 'setFlag', flag: TMP, value: false },
   ];
 }
@@ -57,21 +57,21 @@ export const OLDSEAMS_SCRIPTS: ScriptRegistry = {
   // to wait at its door (one Otho at a time; build_cinderhead_interiors.py).
   'script.otho_after_seams': [
     { op: 'dialogue', ref: 'npc.otho_after' },
-    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: 'One more thing. A door in [[the north workings]] has been shut since my grandmother\'s day. I\'d show it to someone with a steady lamp. [[Find me there]] when you\'re ready.' },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: 'One more thing. A door in [[the north workings]] has been shut since my grandmother\'s day. I\'d show it to a steady lamp. [[Find me there]].' },
     { op: 'setFlag', flag: 'flag:old_seams_told' },
     { op: 'narrate', text: 'Otho takes a hand-lamp from its hook and heads off toward the north workings.' },
   ],
   'script.old_seams_otho': [
-    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: 'Found my door, have you. Most nights since your Gleam I\'ve stood here, deciding.' },
-    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: 'My grandmother\'s crew sealed this seam seventy winters back. Not for damp, not for gas. The ledger calls it "the seam we don\'t work" — no reason. Foremen never give reasons.' },
-    { op: 'say', if_flag: 'flag:q_east_ledger_done', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: 'You carried that ledger up yourself. That last page, too faded to read — this is the seam it means.' },
-    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: 'What the old hands tell the young ones, quiet: the coal\'s warm because something down there breathes on it. Older than the mine. Older than lamps.' },
-    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'warm', text: 'You carried a lit lamp through my dark. I\'ll trust you with this one.' },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: 'Found my door, have you. Most nights since your Gleam I\'ve stood here.' },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: 'My grandmother\'s crew sealed this seam seventy winters back. "The seam we don\'t work," says the ledger. No reason. Foremen never give one.' },
+    { op: 'say', if_flag: 'flag:q_east_ledger_done', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: 'You carried that ledger up. That last page, too faded to read? This is its seam.' },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: 'The old hands say, quiet: the coal\'s warm because something down there breathes on it. Older than the mine. Older than lamps.' },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'warm', text: 'You carried a lit lamp through my dark. I\'ll trust you with this.' },
     { op: 'sfx', key: 'world-door-open' },
     { op: 'shake', ms: 500, intensity: 0.004 },
-    { op: 'narrate', text: 'Otho shoulders the iron bar. Seventy winters of rust give with a groan, and warm air breathes out of the dark — coal, and very faintly, summer.' },
+    { op: 'narrate', text: 'Otho shoulders the iron bar. Seventy winters of rust give, and warm air breathes out of the dark — coal, and faintly, summer.' },
     { op: 'setFlag', flag: OPEN },
-    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: '[[Mind the shafts]]; the old crew never filled them. Past the third gallery, lamps go small. If yours won\'t hold, [[come back when it will]]. The seam has waited this long.' },
+    { op: 'say', speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: '[[Mind the shafts]]. Past the third gallery, lamps go small. If yours won\'t hold, [[come back when it will]].' },
   ],
 
   // ---- the rail yard's levers ----------------------------------------------------
@@ -81,7 +81,7 @@ export const OLDSEAMS_SCRIPTS: ScriptRegistry = {
 
   // ---- the foremen's camp (old_seams_iii) — the descent's rest point -------------
   'script.old_seams_camp_rest': [
-    { op: 'narrate', text: 'The foremen\'s old camp: barrels, rusted picks, and a brazier of cinder-coal unfed for seventy winters. Still warm.' },
+    { op: 'narrate', text: 'The foremen\'s camp: barrels, rusted picks, a brazier unfed seventy winters. Still warm.' },
     { op: 'heal', sleep: false },
     { op: 'narrate', text: 'Your kin doze against the barrels, warm through. Rested.' },
   ],
@@ -120,7 +120,7 @@ export const OLDSEAMS_SCRIPTS: ScriptRegistry = {
     'A foreman\'s strongbox, its lock rusted to nothing. Found a BEACON CHARGE!'),
   'script.pickup_seams_ledger_page': [
     { op: 'sfx', key: 'world-chart' },
-    { op: 'say', text: 'Pinned under a stone where the chalk-marks end: a page, ink gone brown. The Foreman\'s Ledger\'s LAST PAGE.' },
+    { op: 'say', text: 'Under a stone where the chalk ends: the Foreman\'s Ledger\'s LAST PAGE.' },
     { op: 'say', text: '"The seam we don\'t work. There is a star at the bottom of Cinderhead, and it is not cold. The coal is its breath and the mountain is its house and we are its lodgers. Close the door gently behind you."' },
     { op: 'setFlag', flag: 'flag:picked_seams_ledger_page' },
   ],
@@ -130,7 +130,7 @@ export const OLDSEAMS_SCRIPTS: ScriptRegistry = {
     { op: 'letterbox', on: true },
     { op: 'silence', ms: 1000 },
     { op: 'narrate', text: 'The last ladder ends. The dark ends with it.' },
-    { op: 'narrate', text: 'The chamber is warm as a kitchen at midnight. Half-sunk in root-rock at its middle, something glows — not like a lamp. Like a hearth that has never once gone out.' },
+    { op: 'narrate', text: 'The chamber is warm as a kitchen at midnight. In root-rock at its middle, something glows — not like a lamp. Like a hearth that never once went out.' },
     { op: 'narrate', text: 'It is a star, come down so long ago no one saw it fall. Every coal seam in Cinderhead runs out of this room like roots from a tree.' },
     { op: 'letterbox', on: false },
   ],
@@ -153,7 +153,7 @@ export const OLDSEAMS_SCRIPTS: ScriptRegistry = {
       terrain: 'cave',
     },
     { op: 'silence', ms: 1200 },
-    { op: 'narrate', text: 'Emberroot settles into your lamp like a coal into a grate: slowly, warmly, with a sigh. Behind you the first star breathes on alone — a little dimmer, a little lighter. A cinder is never dead.' },
+    { op: 'narrate', text: 'Emberroot settles into your lamp like a coal into a grate, with a sigh. Behind you the first star breathes on, a little lighter. A cinder is never dead.' },
     { op: 'musicCrossfade', key: 'old-seams', ms: 1600 },
   ],
   'script.emberroot_star': [
@@ -164,8 +164,8 @@ export const OLDSEAMS_SCRIPTS: ScriptRegistry = {
 
 export const OLDSEAMS_DIALOGUE: DialogueRegistry = {
   'npc.old_seams_sealed': [
-    { text: 'A seam-door of iron-banded timber. Chalked across it in an old foreman\'s hand: THE SEAM WE DON\'T WORK.' },
-    { text: 'Barred fast from this side. Only [[whoever keeps this mine\'s light]] would dare lift it.' },
+    { text: 'A seam-door, iron-banded. Chalked across it: THE SEAM WE DON\'T WORK.' },
+    { text: 'Barred this side. Only [[whoever keeps this mine\'s light]] would lift it.' },
   ],
   'npc.emberroot_dark': [
     { text: 'The last ladder drops into a dark so thick your lamplight stops a hand\'s breadth from the glass. Below, something breathes: slow, warm, enormous.' },
@@ -175,10 +175,10 @@ export const OLDSEAMS_DIALOGUE: DialogueRegistry = {
     { text: 'Emberroot has curled round the star\'s foot, breathing slow and deep. It won\'t wake until you\'ve won {remaining} more battles up in the world.' },
   ],
   'sign.old_seams_i': [
-    { text: 'THE OLD SEAMS. First bench. [[Walk the boards]], not the dark. The shafts follow the warm down — we never found a bottom.' },
+    { text: 'THE OLD SEAMS. [[Walk the boards]], not the dark. The shafts have no bottom.' },
   ],
   'sign.old_seams_yard': [
-    { text: 'THE YARD. Three points, three levers. On the stands: [[WHITE runs straight]], [[RED takes the turnout]].' },
+    { text: 'THE YARD. On the stands: [[WHITE runs straight]], [[RED takes the turnout]].' },
     { text: 'Levers 1 and 2 here. [[Lever 3: south-west siding]]. Every line runs home.' },
   ],
   'sign.old_seams_root': [

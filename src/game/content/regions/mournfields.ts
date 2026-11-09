@@ -42,7 +42,7 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
   'script.pickup_mournfields_shelf': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'lumen_drop', count: 1 },
-    { op: 'say', text: 'Behind the shrine, on the harvest-sweets shelf: a honey-bead in a twist of straw. Found a LUMEN DROP!' },
+    { op: 'say', text: 'On the harvest-sweets shelf: a honey-bead in straw. Found a LUMEN DROP!' },
     { op: 'setFlag', flag: 'flag:picked_mournfields_shelf' },
   ],
 
@@ -58,7 +58,7 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'harvest_knot', count: 1 },
     { op: 'say', text: 'On the top field\'s last post: the year\'s last sheaf, plaited into a knot with ribbon. Found the HARVEST KNOT!' },
-    { op: 'say', text: '[[Tie it to your lamp from ITEMS]] and wild kin take you for the harvest coming home, and let you by.' },
+    { op: 'say', text: 'From ITEMS, [[tie it to your lamp]]: wild kin will let the harvest by.' },
     { op: 'setFlag', flag: 'flag:picked_mournfields_terrace' },
   ],
 
@@ -66,7 +66,7 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
   'script.pickup_mournfields_brook': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'hearth_coal', count: 1 },
-    { op: 'say', text: 'In a tin under the hedge, packed in ash: a live coal, "for if he wakes cold". Found a HEARTH COAL!' },
+    { op: 'say', text: 'Under the hedge, a coal in ash, "for if he wakes cold". Found a HEARTH COAL!' },
     { op: 'setFlag', flag: 'flag:picked_mournfields_brook' },
   ],
   'script.mournfields_brook_sleeper': [
@@ -97,9 +97,9 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'FIELD-TENDER', text: 'This was my field. The light went and the barley wouldn\'t ripen, and the kin kept waking hungry in the dark. Every night, hungry and frightened.', unless_flag: 'flag:mournfields_tender_met' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'When the Wardens said they could let them sleep, I said yes. I\'d say it again. So would you, if you\'d heard them.', unless_flag: 'flag:mournfields_tender_met' },
     { op: 'setFlag', flag: 'flag:mournfields_tender_met' },
-    { op: 'say', speaker: 'FIELD-TENDER', text: 'You\'re the one lighting the sky back up. I can see it on you. Go gently past my sleepers, that\'s all I ask.' },
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'You\'re lighting the sky back up. Go gently past my sleepers, that\'s all.' },
     { op: 'run', ref: 'script.mournfields_tender_knot', if_flag: 'flag:picked_mournfields_terrace', unless_flag: 'flag:mournfields_knot_noted' },
-    { op: 'say', speaker: 'FIELD-TENDER', text: 'Don\'t wake my Tussock in the Brook Piece. He was the first I tucked in, and the hardest.', if_flag: 'flag:mournfields_brook_met' },
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'Don\'t wake my Tussock in the Brook Piece. He was the first, and the hardest.', if_flag: 'flag:mournfields_brook_met' },
   ],
   // once: she sees the top field's knot on your lamp, and says keep it
   'script.mournfields_tender_knot': [
@@ -112,7 +112,7 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'FIELD-TENDER', text: 'Look at them, up before me! At the stooks all morning.' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'I still fold the blankets every evening. Habit. Or in case.' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'Somebody\'s lit all five candles at the shrine. I read the names out at first light, like the old harvest-home. Silly. I cried at the Brook Piece.' },
-    { op: 'say', speaker: 'FIELD-TENDER', text: 'The green moth\'s still in the Brook Piece\'s long grass. Leaf wings, glows like a lamp through a hedge. It sat up with my Tussock every night he slept, and never went to any other field.', if_flag: 'flag:mournfields_brook_met' },
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'The green moth\'s still in the Brook Piece. It sat up with my Tussock every night he slept.', if_flag: 'flag:mournfields_brook_met' },
     { op: 'run', ref: 'script.mournfields_tender_knot', if_flag: 'flag:picked_mournfields_terrace', unless_flag: 'flag:mournfields_knot_noted' },
     { op: 'say', speaker: 'FIELD-TENDER', text: 'Thank you. I\'ll say it the once and then go back to work.', unless_flag: 'flag:mournfields_tender_gift' },
     { op: 'run', ref: 'script.mournfields_tender_gift', unless_flag: 'flag:mournfields_tender_gift' },
@@ -120,7 +120,7 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
   ],
   // the dawn gift, once: the wool charms she wound for the sleepers' lamps
   'script.mournfields_tender_gift': [
-    { op: 'say', speaker: 'FIELD-TENDER', text: 'I wound these for the sleepers\' lamps, the nights they wouldn\'t settle. I won\'t need them now.' },
+    { op: 'say', speaker: 'FIELD-TENDER', text: 'I wound these for the sleepers\' lamps on restless nights. I won\'t need them now.' },
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'lullwool_charm', count: 3 },
     { op: 'say', text: 'Got 3 LULLWOOL CHARMS! They burn [[threefold at a dozing kin]].' },
@@ -130,9 +130,9 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
   // ---- the wool-gatherer at the Coldfog gate (the wayfinding voice) ----------------
   // (was "Stillwater trader" — a trader with nothing to sell; the 2026-10-14 review)
   'script.mournfields_walker': [
-    { op: 'say', speaker: 'WOOL-GATHERER', text: 'Mind the fences, love. The fog leaves its wool on the wire overnight, and somebody has to pick it off. That\'s me.', unless_flag: DAWN },
+    { op: 'say', speaker: 'WOOL-GATHERER', text: 'Mind the fences, love. The fog leaves wool on the wire overnight, and I pick it off.', unless_flag: DAWN },
     { op: 'say', speaker: 'WOOL-GATHERER', text: '[[West]]: Coldfog Marches. [[North, up the bank]]: Stillwater. South, down the col: the Rimeway.' },
-    { op: 'say', speaker: 'WOOL-GATHERER', text: 'You can hop down the bank anywhere, but not climb it. For Stillwater, take [[the one stair by the shrine]], east, where a lamp\'s left a slit open. Then back along the top.' },
+    { op: 'say', speaker: 'WOOL-GATHERER', text: 'You can\'t climb the bank. For Stillwater, take [[the stair by the shrine]], east, where a lamp\'s left a slit open.' },
     { op: 'say', speaker: 'WOOL-GATHERER', text: 'Not a wrong turn. Just the long way round, which is how fields are.', unless_flag: DAWN },
     { op: 'say', speaker: 'WOOL-GATHERER', text: 'Every blanket here came off these fences, a skein a night. I don\'t know what it\'s for any more. I just know how to do it.', unless_flag: DAWN },
     { op: 'say', speaker: 'WOOL-GATHERER', text: 'No fog on the wire this morning, first time in eleven winters. I came out with my basket anyway and stood here laughing.', if_flag: DAWN },
@@ -142,14 +142,14 @@ export const MOURNFIELDS_SCRIPTS: ScriptRegistry = {
   // ---- the two acolytes ------------------------------------------------------------
   'script.mournfields_ines': [
     { op: 'say', speaker: 'INES', text: 'Quietly, now. We\'ve only just got the little ones off.' },
-    { op: 'say', speaker: 'INES', text: 'I\'ll not stop you. But I\'ll see what kin walk with the one waking the sky. Softly, mind.' },
+    { op: 'say', speaker: 'INES', text: 'I\'ll not stop you. But let\'s see what kin walk with the one waking the sky.' },
     { op: 'battle', trainer: 'mournfields_ines' },
     { op: 'say', speaker: 'INES', text: 'Yours are gentle with you. Good. I worried they wouldn\'t be.' },
     { op: 'setFlag', flag: 'flag:mournfields_ines_beaten' },
   ],
   'script.mournfields_corran': [
-    { op: 'say', speaker: 'CORRAN', text: 'Nobody comes up the Rimeway road but us, carrying blankets. You\'re not carrying blankets.' },
-    { op: 'say', speaker: 'CORRAN', text: 'I\'m to ask you to turn your lamp down through the fields. You\'ll say no. So let\'s have it out.' },
+    { op: 'say', speaker: 'CORRAN', text: 'Nobody comes up the Rimeway road but us, with blankets. You\'ve no blankets.' },
+    { op: 'say', speaker: 'CORRAN', text: 'I\'m to ask you to dim your lamp here. You\'ll say no. So let\'s have it out.' },
     { op: 'battle', trainer: 'mournfields_corran' },
     { op: 'say', speaker: 'CORRAN', text: 'Keep it lit, then. I won\'t pretend I didn\'t look. Go on, the col\'s yours.' },
     { op: 'setFlag', flag: 'flag:mournfields_corran_beaten' },
