@@ -97,12 +97,16 @@ phrase, not the sentence (≤ about 5 words), and at most **two marks a line**. 
 everything is underlined, nothing is. Signs mark only their destinations. Marks are
 stripped everywhere text isn't drawn by the DialogueBox (battle messages, menus).
 
-## 7. Targets for the 2026-11 pass
+## 7. The 2026-11 pass: targets and results
 
-| Measure (dialogue_stats.mjs) | Before | Target |
-|---|---|---|
-| Characters, whole game | 653,756 | −25–35% |
-| Early game (South, school, the Old Light, first hour) | — | −35–45% |
-| Lines over 160 characters | 908 | T1/T5 only |
-| Lines over 300 characters | 3 | 0 |
-| Key-information marks | 0 | on every T2 directive |
+| Measure (dialogue_stats.mjs) | Before | Target | After |
+|---|---|---|---|
+| Characters, whole game | 653,756 | −25–35% | 491,222 (−25%) |
+| Early game (first-hour scripts, school, South, signs/NPCs) | 145,797 | −35–45% | 92,119 (−37%) |
+| Lines over 160 characters | 908 | T1/T5 only | 67 |
+| Lines over 300 characters | 3 | 0 | 0 |
+| Key-information marks | 0 | on every T2 directive | 901 |
+
+Real-people cameo content and verbatim-flagged walkthrough lines were trimmed only lightly,
+and riddle text was left intact, which is why the whole-game cut sits at the low end.
+New content should be written to the budgets above rather than trimmed later.
