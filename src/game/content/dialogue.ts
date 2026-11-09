@@ -830,7 +830,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   // --- Vesper Crossroads (the Lanternway hub) ---------------------------------
   'sign.crossroads': [
-    { text: 'VESPER CROSSROADS\n[[W: Tinderwick]]. [[NW: bay road]] (Tide). N: shut. [[E: Lantern-car]].' },
+    { text: 'VESPER CROSSROADS\nWEST: Tinderwick. NORTH-WEST: [[the bay road to Pearlmoor]]. NORTH: mountain road (shut). EAST: [[the Lantern-car]].' },
   ],
   'sign.crossroads_spire': [
     { text: 'The inward road. Eight cold braziers ring its gate. The mountain waits.' },
