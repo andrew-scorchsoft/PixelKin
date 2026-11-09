@@ -2074,37 +2074,37 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
     { speaker: 'WREN', text: "No Lamps, no stakes — just us and our partners. Show me what your bond's worth." },
     {
       speaker: 'WREN',
-      text: "And a kindness, since we're friends: ember chars the green, green drinks the tide, tide drowns the ember — round and round. Match your move to that, not your mood.",
+      text: "A tip, since we're friends: ember chars green, green drinks tide, tide drowns ember. Match your move to that, not your mood.",
     },
   ],
   'trainer.wren_dimglass.defeat': [
-    { speaker: 'WREN', text: "Ha! Knew you'd be good. Race you to Pearlmoor — keep to the lamps, Wayfarer." },
+    { speaker: 'WREN', text: "Ha! Knew you'd be good. Race you to Pearlmoor — keep to the lamps!" },
   ],
   'trainer.flats_wayfarer_a.intro': [
-    { speaker: 'MORROW', text: 'Hold there, friend. Two lamps on a dark flat had better test their wicks — that is the custom.' },
+    { speaker: 'MORROW', text: 'Hold there, friend. Two lamps on a dark flat test their wicks. Custom.' },
   ],
   'trainer.flats_wayfarer_a.defeat': [
-    { speaker: 'MORROW', text: 'A steady flame, yours. Pearlmoor sits past the buoys — the old ferryman keeps the second Gleam.' },
+    { speaker: 'MORROW', text: 'A steady flame. Pearlmoor\'s past the buoys; the old ferryman keeps the Gleam.' },
   ],
   'trainer.flats_wayfarer_b.intro': [
-    { speaker: 'ELSPETH', text: 'Courier post! Letters for Pearlmoor — and a standing wager for any Wayfarer who dares the flats.' },
+    { speaker: 'ELSPETH', text: 'Courier post! And a standing wager for any Wayfarer who dares the flats.' },
   ],
   'trainer.flats_wayfarer_b.defeat': [
-    { speaker: 'ELSPETH', text: 'The wager is yours. Mind the tide pools, and tell Reyl his letters are late because of you.' },
+    { speaker: 'ELSPETH', text: 'The wager\'s yours. Tell Reyl his letters are late because of you.' },
   ],
   'trainer.net_hand_a.intro': [
-    { speaker: 'MAREN', text: 'Nobody walks the moor-boards but bell-business and net-hands — and you don\'t smell of either yet.' },
-    { speaker: 'MAREN', text: 'Rope or no rope, the causeway tests every lamp it carries. Out here that\'s the LAW.' },
+    { speaker: 'MAREN', text: 'Nobody walks the moor-boards but bell-business and net-hands. You\'re neither yet.' },
+    { speaker: 'MAREN', text: 'Rope or no rope, the causeway tests every lamp. That\'s the LAW.' },
   ],
   'trainer.net_hand_a.defeat': [
-    { speaker: 'MAREN', text: 'Steady on wet stone — that\'s rarer than you\'d think. Go on, then. Mind Cob by the far lantern; he\'s been spoiling for a bout all season.' },
+    { speaker: 'MAREN', text: 'Steady on wet stone — rarer than you\'d think. Mind Cob by the far lantern.' },
   ],
   'trainer.net_hand_b.intro': [
-    { speaker: 'COB', text: 'Past Maren with your boots still dry! Then you\'re the one carrying the old rope home.' },
+    { speaker: 'COB', text: 'Past Maren with dry boots! Then you\'re the one bringing the old rope home.' },
     { speaker: 'COB', text: 'One more net between you and the bell, Wayfarer. Mine\'s the heavier.' },
   ],
   'trainer.net_hand_b.defeat': [
-    { speaker: 'COB', text: 'Hah! Well hauled. The shrine\'s at the causeway\'s end — ring it LOUD, so the whole quay hears it come back.' },
+    { speaker: 'COB', text: 'Well hauled! [[Ring the shrine bell]] at the causeway\'s end — LOUD.' },
   ],
   'trainer.breakwater_paul.intro': [
     { speaker: 'PAUL', text: 'On purpose. Remember that part.' },
@@ -2137,65 +2137,65 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
     { speaker: 'PAUL', text: 'Ha. Still here, still on purpose. Come find me again — the dark lamp keeps regular hours.' },
   ],
   'trainer.wrackline_drifter.intro': [
-    { speaker: 'DRIFTER OSK', text: 'Down the wrackline, are you? Long way round to the crossroads. Tide-things in this grass have teeth — let me see if YOU do.' },
+    { speaker: 'DRIFTER OSK', text: 'Down the wrackline? Tide-things in this grass have teeth. Do YOU?' },
   ],
   'trainer.wrackline_drifter.defeat': [
-    { speaker: 'DRIFTER OSK', text: 'Hah — teeth and then some. The cave mouth\'s on past the bend. Mind the dark; the sea talks to itself in there.' },
+    { speaker: 'DRIFTER OSK', text: 'Teeth and then some. The cave mouth\'s past the bend; mind the dark.' },
   ],
   'trainer.lanternfall_warden.intro': [
-    { speaker: 'LAMP-KEEPER NELL', text: 'I keep the lamps down to the hub. You\'ll not pass an unlit stretch on my watch — nor an untested Wayfarer. Up they go.' },
+    { speaker: 'LAMP-KEEPER NELL', text: 'I keep the lamps down to the hub — and no untested Wayfarer passes them.' },
   ],
   'trainer.lanternfall_warden.defeat': [
-    { speaker: 'LAMP-KEEPER NELL', text: 'Brightly done. The crossroads is just below, where all the lit roads meet. Tell the Waykeeper Nell\'s lamps are trimmed.' },
+    { speaker: 'LAMP-KEEPER NELL', text: 'Brightly done. The crossroads is just below. Tell the Waykeeper Nell\'s lamps are trimmed.' },
   ],
   // R9 — the Old Light's keepers (final lines: F2.HECKLER.DEFEAT / F4.RING.DEFEAT).
   'trainer.oldlight_heckler.defeat': [
     { speaker: 'HECKLER', text: "(flips to the last card) 'YOU WIN. THE HECKLER SITS DOWN QUIETLY.'" },
-    { speaker: 'HECKLER', text: '...He even wrote me losing. (sits down, loudly) Here. Your wicks. He wrote those too.' },
+    { speaker: 'HECKLER', text: '...He even wrote me losing. (sits down, loudly) Your wicks. He wrote those too.' },
   ],
   'trainer.oldlight_headliners.intro': [
     { speaker: 'PUNCHWHEEL', text: 'Three clowns, one tune, NO refunds. Take it away, my darlings!' },
   ],
   'trainer.oldlight_headliners.defeat': [
-    { speaker: 'PUNCHWHEEL', text: '(clockwork applause, slightly sarcastic) A tough crowd. The toughest. They will be talking about this in the lift for weeks.' },
+    { speaker: 'PUNCHWHEEL', text: '(clockwork applause, slightly sarcastic) A tough crowd. They\'ll talk about this in the lift for weeks.' },
   ],
   'trainer.oldlight_ringmaster.defeat': [
-    { speaker: 'RINGMASTER', text: "HELLO! Welcome, welcome! Pull up a stool by the fire, you're going to LOVE it here!" },
-    { speaker: 'RINGMASTER', text: "...Ahem. Your riddle. The machine wrote it. He's never been surer of anything. Bad sign." },
+    { speaker: 'RINGMASTER', text: "HELLO! Welcome, welcome! Pull up a stool, you're going to LOVE it here!" },
+    { speaker: 'RINGMASTER', text: "...Ahem. Your riddle. The machine wrote it, and he's never been surer. Bad sign." },
   ],
   'trainer.lampwarden_pearlmoor.intro': [
-    { speaker: 'REYL WASH', text: 'Apprentice, is it. I have ferried a hundred Wayfarers across this harbour. Few read the water right.' },
-    { speaker: 'REYL WASH', text: 'Tides go out so they can come back, see. Show me your bond holds against mine — then I will teach you to ask the sea to part.' },
+    { speaker: 'REYL WASH', text: 'Apprentice, is it. I\'ve ferried a hundred Wayfarers across this harbour. Few read the water right.' },
+    { speaker: 'REYL WASH', text: 'Tides go out so they can come back, see. Show me your bond holds against mine.' },
   ],
   'trainer.lampwarden_pearlmoor.defeat': [
-    { speaker: 'REYL WASH', text: 'Well rowed, Wayfarer. The Tide constellation answers you — see it shiver awake over the masts.' },
-    { speaker: 'REYL WASH', text: 'The Tide Gleam is yours, and with it the Tidecall. Step to the shallows now; the moon-water will part where it would not before.' },
+    { speaker: 'REYL WASH', text: 'Well rowed. See the Tide constellation shiver awake over the masts?' },
+    { speaker: 'REYL WASH', text: 'The Tide Gleam is yours, and the Tidecall. [[Step into the shallows]] — the water will part for you now.' },
   ],
   'trainer.georgina.intro': [
-    { speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "Oh, you brought my Pim home — and you've kin of your OWN, look at them! Right. There's only one proper way to say thank you to a fellow keeper." },
-    { speaker: 'GEORGINA', portrait: 'georgina', expr: 'sunny', text: "A friendly bout! No stakes, all cuddles after. My babies have been moping in the dark all week and a good fuss is EXACTLY what they need. Mittens — wakey-wakey, sweetheart!" },
+    { speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "You brought my Pim home — and you've kin of your OWN! There's only one proper thank-you between keepers." },
+    { speaker: 'GEORGINA', portrait: 'georgina', expr: 'sunny', text: "A friendly bout! No stakes, all cuddles after. Mittens — wakey-wakey, sweetheart!" },
   ],
   'trainer.georgina.defeat': [
-    { speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "EEE! Did you SEE them?! Lost AND adorable — best of both, that's my motto. You're a natural, you know. Come inside, I've got something for you." },
+    { speaker: 'GEORGINA', portrait: 'georgina', expr: 'delighted', text: "EEE! Did you SEE them?! Lost AND adorable — that's my motto. Come inside, I've something for you." },
   ],
   'trainer.lampwarden_lowleaf.intro': [
     { speaker: 'SABLE QUILL', text: 'I\'m better at this part than the talking part. My moss thinks so too.' },
-    { speaker: 'SABLE QUILL', text: 'Everything green in this hall keeps a little light it was never asked to keep. Show me your kin do the same.' },
+    { speaker: 'SABLE QUILL', text: 'Everything green in this hall keeps a light it was never asked to keep. Do your kin?' },
   ],
   'trainer.lampwarden_lowleaf.defeat': [
     { speaker: 'SABLE QUILL', text: '...Oh. Oh, that was LOVELY. Don\'t tell anyone I said that out loud.' },
-    { speaker: 'SABLE QUILL', text: 'The Verdant Gleam is yours — the moss vouched for you, and the moss has never once been wrong about a person.' },
+    { speaker: 'SABLE QUILL', text: 'The Verdant Gleam is yours. The moss vouched for you, and the moss is never wrong.' },
   ],
   'trainer.lampwarden_cinderhead.intro': [
-    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: 'No rush in my kin and no rush in me. We are the mountain, Wayfarer. We OUTLAST.' },
-    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: 'Show me a light that does not gutter when the rock leans in. That is all a Gleam ever was.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'neutral', text: 'No rush in my kin, no rush in me. We are the mountain. We OUTLAST.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'grave', text: 'Show me a light that holds when the rock leans in. That is all a Gleam ever was.' },
   ],
   'trainer.lampwarden_cinderhead.defeat': [
-    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'proud', text: 'Hah. You did not out-hit them. You out-LASTED them. ...That, I respect. That is the deep way.' },
-    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'warm', text: 'A steady light. The Stone remembers it. Come — let the vigil see what you carried up.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'proud', text: 'You did not out-hit them. You out-LASTED them. That, I respect.' },
+    { speaker: 'OTHO GRIST', portrait: 'otho', expr: 'warm', text: 'A steady light. The Stone remembers it. Come — the vigil waits.' },
   ],
   'trainer.gallery_miner_a.intro': [
-    { speaker: 'DRUSE', text: 'Wick against wick, Wayfarer. Crew rule. You do not pass the gallery till you have weighed it.' },
+    { speaker: 'DRUSE', text: 'Wick against wick. Crew rule — nobody passes the gallery unweighed.' },
   ],
   'trainer.gallery_miner_a.defeat': [
     { speaker: 'DRUSE', text: 'Steady enough. The lamp is two chambers on — and Hobb is between you and it.' },
@@ -2204,26 +2204,26 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
     { speaker: 'HOBB', text: 'Last lamp before the vigil-lamp, and it is mine to keep. Come on, then.' },
   ],
   'trainer.gallery_miner_b.defeat': [
-    { speaker: 'HOBB', text: 'Well held. Lift the vigil-lamp gentle, now — it has waited a long dark for a steady hand.' },
+    { speaker: 'HOBB', text: 'Well held. Lift the vigil-lamp gentle — it\'s waited a long dark.' },
   ],
 
   // --- The North. Defeat lines are the sanctioned humour home in Galehigh /
   // Windward (good-loser energy, never mockery); the Pale Vault cluster stays
   // sincere throughout, and Wren's A4 lines stay unresolved by design.
   'trainer.galehigh_kitehand.intro': [
-    { speaker: 'PERRIN', text: 'The wind\'s representative requests a bout! It would ask itself, but it\'s busy with the kites.' },
+    { speaker: 'PERRIN', text: 'The wind\'s representative requests a bout! The wind\'s busy with the kites.' },
   ],
   'trainer.galehigh_kitehand.defeat': [
     { speaker: 'PERRIN', text: 'Down I come. The wind keeps no favourites — it just enjoys the view.' },
   ],
   'trainer.galehigh_terracer.intro': [
-    { speaker: 'SORREL', text: 'Thirty years I\'ve farmed sideways on this cliff. A bout holds no fears for me whatsoever.' },
+    { speaker: 'SORREL', text: 'Thirty years farming sideways on this cliff. A bout holds no fears.' },
   ],
   'trainer.galehigh_terracer.defeat': [
-    { speaker: 'SORREL', text: 'Well grown, that bond of yours. Better soil than mine, clearly. It would have to be.' },
+    { speaker: 'SORREL', text: 'Well grown, that bond. Better soil than mine, clearly.' },
   ],
   'trainer.skyloft_ward_a.intro': [
-    { speaker: 'TAMSIN', text: 'The ledge admits no flame the wind hasn\'t weighed — and up here, the wind weighs HONESTLY.' },
+    { speaker: 'TAMSIN', text: 'The ledge admits no flame the wind hasn\'t weighed — honestly.' },
   ],
   'trainer.skyloft_ward_a.defeat': [
     { speaker: 'TAMSIN', text: 'Well flown! And I\'d trained that gust personally. It clearly liked you better.' },
@@ -2235,30 +2235,30 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
     { speaker: 'BRAN', text: 'It said yes. The ledge is yours to stand, Wayfarer.' },
   ],
   'trainer.mira_vael.intro': [
-    { speaker: 'MIRA VAEL', text: 'Five hundred feet of open air under the ledge and a storm overhead that LIKES you. There is no better arena in Vesperholm — let\'s give the wind a show!' },
-    { speaker: 'MIRA VAEL', text: 'My kin ride the gusts the way your kite did. Match them in the air, Wayfarer — the Storm Gleam watches!' },
+    { speaker: 'MIRA VAEL', text: 'Five hundred feet of open air below, and a storm that LIKES you. Let\'s give the wind a show!' },
+    { speaker: 'MIRA VAEL', text: 'My kin ride the gusts like your kite did. Match them — the Storm Gleam watches!' },
   ],
   'trainer.mira_vael.defeat': [
-    { speaker: 'MIRA VAEL', text: 'HA! Did you feel the wind change sides halfway through? It does that for the ones it means to keep.' },
-    { speaker: 'MIRA VAEL', text: 'The Storm Gleam is yours, Wayfarer — and the wind with it. Come to the ledge; the sky wants relighting.' },
+    { speaker: 'MIRA VAEL', text: 'HA! Feel the wind change sides halfway? It does that for the ones it keeps.' },
+    { speaker: 'MIRA VAEL', text: 'The Storm Gleam is yours, Wayfarer — and the wind with it!' },
   ],
   'trainer.windward_craghand.intro': [
-    { speaker: 'EDDA', text: 'Stair custom at every bend — the climb tests your legs, the crag-hands test the rest.' },
+    { speaker: 'EDDA', text: 'Stair custom: the climb tests your legs, the crag-hands test the rest.' },
   ],
   'trainer.windward_craghand.defeat': [
-    { speaker: 'EDDA', text: 'Four hundred and twelve steps a day, and the lesson walks UP to me. Well fought.' },
+    { speaker: 'EDDA', text: 'Four hundred steps a day, and the lesson walks UP to me. Well fought.' },
   ],
   'trainer.windward_galewatch.intro': [
-    { speaker: 'ROWAN', text: 'The gale-watch greets every flame that climbs this far. The greeting is a bout. It keeps us both warm.' },
+    { speaker: 'ROWAN', text: 'The gale-watch greets every flame up here with a bout. Keeps us warm.' },
   ],
   'trainer.windward_galewatch.defeat': [
     { speaker: 'ROWAN', text: 'Warm enough! The high blue suits you better than it suits most.' },
   ],
   'trainer.windward_cragwatch.intro': [
-    { speaker: 'MERLE', text: 'The glacier ahead doesn\'t practise mercy, Wayfarer. Consider this your last rehearsal.' },
+    { speaker: 'MERLE', text: 'The glacier ahead won\'t practise mercy. Call this your last rehearsal.' },
   ],
   'trainer.windward_cragwatch.defeat': [
-    { speaker: 'MERLE', text: 'Rehearsal passed. The cold will find you ready, and it will be very disappointed about it.' },
+    { speaker: 'MERLE', text: 'Rehearsal passed. The cold will be very disappointed in you.' },
   ],
   'trainer.wren_pale_vault.intro': [
     { speaker: 'WREN', text: 'No friendly rules this time. Everything you have — make me FEEL it.' },
@@ -2267,7 +2267,7 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
     { speaker: 'WREN', text: '...Yeah. Okay. ...Yeah.' },
   ],
   'trainer.undercroft_ward_a.intro': [
-    { speaker: 'SELA', text: 'The vault admits no flame the wards haven\'t weighed. The brackets deserve that much care.' },
+    { speaker: 'SELA', text: 'The vault admits no flame the wards haven\'t weighed.' },
   ],
   'trainer.undercroft_ward_a.defeat': [
     { speaker: 'SELA', text: 'Weighed, and worthy of the line. Walk on, lamplighter.' },
@@ -2280,80 +2280,80 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.ysolde_frost.intro': [
     { speaker: 'YSOLDE FROST', text: 'Cold does not hate the flame, wanderer. It only waits to see if the flame means it.' },
-    { speaker: 'YSOLDE FROST', text: 'Seven brackets say yours does. Now warm your kin — and let me see the light hold.' },
+    { speaker: 'YSOLDE FROST', text: 'Seven brackets say yours does. Warm your kin, and let the light hold.' },
   ],
   'trainer.ysolde_frost.defeat': [
     { speaker: 'YSOLDE FROST', text: '...It held. Through everything my vault could ask of it, it held.' },
-    { speaker: 'YSOLDE FROST', text: 'The Frost Gleam is yours, wanderer — and the northern crown closes with it. Stand still a moment. This is worth standing still for.' },
+    { speaker: 'YSOLDE FROST', text: 'The Frost Gleam is yours, and the northern crown closes. Stand still a moment. It\'s worth it.' },
   ],
 
   // --- The West. Hushfrost runs sincere (the caretaker owns the register);
   // the Solarium/Sunvault defeat lines carry the sanctioned good-loser warmth;
   // Nightreach stays reverent; Coldfog has no trainers at all, by design.
   'trainer.hushfrost_lampman.intro': [
-    { speaker: 'DUNSTAN', text: 'Hold there, Wayfarer. My lamp is losing to that fog an inch a season — so before you pass, show me a flame the cold has not argued down.' },
+    { speaker: 'DUNSTAN', text: 'Hold there. My lamp loses an inch a season to that fog. Show me one the cold can\'t argue down.' },
   ],
   'trainer.hushfrost_lampman.defeat': [
-    { speaker: 'DUNSTAN', text: 'There it is. That is the burn I have been rationing all winter. Go on — and warm the throat for the rest of us.' },
+    { speaker: 'DUNSTAN', text: 'There it is — the burn I\'ve rationed all winter. Go warm the throat for us.' },
   ],
   'trainer.hushfrost_survivor.intro': [
-    { speaker: 'HESPER', text: 'I walked out of the deep fog once, on one lamp and no luck to spare. Every flame that passes me gets tested now. I owe the road that much.' },
+    { speaker: 'HESPER', text: 'I walked out of the deep fog once, on one lamp. Now I test every flame that passes.' },
   ],
   'trainer.hushfrost_survivor.defeat': [
-    { speaker: 'HESPER', text: 'Steady right through. ...Good. If the fog takes anyone else this year, it will not be for want of my checking.' },
+    { speaker: 'HESPER', text: 'Steady right through. ...Good. It won\'t be for want of my checking.' },
   ],
   'trainer.hushfrost_thawtender.intro': [
-    { speaker: 'TILDA', text: 'Mind the lane — I have just swept the rime off it. Terrace rule from back home: a clear road is paid for with a bout.' },
+    { speaker: 'TILDA', text: 'Mind the lane — just swept! A clear road is paid for with a bout.' },
   ],
   'trainer.hushfrost_thawtender.defeat': [
-    { speaker: 'TILDA', text: 'Well fought! And see — the gold on the fog ahead is real. Stored daylight, a whole gardenful. First warm thing I have said all week that the weather agreed with.' },
+    { speaker: 'TILDA', text: 'Well fought! The gold on the fog ahead is real — stored daylight. The weather finally agrees with me.' },
   ],
   'trainer.troupe_player_a.intro': [
-    { speaker: 'CALLA', text: 'A walker in the wings! House rule, friend: nobody crosses the flooded lanes during rehearsal without giving the understudies a scene.' },
+    { speaker: 'CALLA', text: 'A walker in the wings! Nobody crosses in rehearsal without giving the understudies a scene.' },
   ],
   'trainer.troupe_player_a.defeat': [
-    { speaker: 'CALLA', text: 'Upstaged in my own water. Forty years of stagecraft and the audience walks in off a glacier with better timing.' },
+    { speaker: 'CALLA', text: 'Upstaged in my own water, by someone who walked in off a glacier.' },
   ],
   'trainer.troupe_player_b.intro': [
-    { speaker: 'ORSINO', text: 'Stop! That is — forgive me, the boards say STOP, in the play. One bout, traveller, for the company. The drowned halls make a tremendous house.' },
+    { speaker: 'ORSINO', text: 'Stop! That is — the boards say STOP, in the play. One bout, for the company!' },
   ],
   'trainer.troupe_player_b.defeat': [
-    { speaker: 'ORSINO', text: 'Bravo. No, truly — I have died on stage a hundred times and that was the most convincing of them.' },
+    { speaker: 'ORSINO', text: 'Bravo. I\'ve died on stage a hundred times. That was the most convincing.' },
   ],
   'trainer.lucan_pyre.intro': [
-    { speaker: 'LUCAN PYRE', text: 'PLACES! The stage is lit, the house is full, and the last warm day has found its closing scene. You fetched our daylight up spark by spark, apprentice — now act the part it paid for.' },
-    { speaker: 'LUCAN PYRE', text: 'Show me a bond that remembers the sun! Not the heat, mind — anyone can burn. The PROMISE of it. The coming back.' },
+    { speaker: 'LUCAN PYRE', text: 'PLACES! The stage is lit, the house is full. You fetched our daylight up — now act the part it paid for.' },
+    { speaker: 'LUCAN PYRE', text: 'Show me a bond that remembers the sun! Not the heat — the PROMISE. The coming back.' },
   ],
   'trainer.lucan_pyre.defeat': [
-    { speaker: 'LUCAN PYRE', text: '...Hold. Hold the lights just there. Do you hear the house? That is not applause for ME, and I have never been gladder to be upstaged.' },
-    { speaker: 'LUCAN PYRE', text: 'The Solar Gleam is yours, Wayfarer. The sun only went to sleep — and tonight, between us, I think we woke the understudy.' },
+    { speaker: 'LUCAN PYRE', text: '...Hold the lights there. Hear the house? That\'s not for ME, and I\'ve never been gladder to be upstaged.' },
+    { speaker: 'LUCAN PYRE', text: 'The Solar Gleam is yours. The sun only slept — and tonight, I think, we woke it.' },
   ],
   'trainer.sunvault_terracer.intro': [
-    { speaker: 'BEL', text: 'Mind the beds! These terraces fed a garden by sunlight once — now they make do with mine. Every lamp that climbs through gets weighed against the gold. Custom.' },
+    { speaker: 'BEL', text: 'Mind the beds! Every lamp that climbs gets weighed against the gold.' },
   ],
   'trainer.sunvault_terracer.defeat': [
-    { speaker: 'BEL', text: 'Weighed, and the garden approves. The overgrowth leaned toward you the whole bout — it has never once done that for me, and I prune it.' },
+    { speaker: 'BEL', text: 'The garden leaned toward you the whole bout. It never does that for me, and I prune it.' },
   ],
   'trainer.sunvault_skywatcher.intro': [
-    { speaker: 'TAM', text: 'You are walking into the brightest sky in Vesperholm, friend. The watchers send nothing up the rim they have not tested — consider me the test.' },
+    { speaker: 'TAM', text: 'Brightest sky in Vesperholm up there. Nothing goes up the rim untested — I\'m the test.' },
   ],
   'trainer.sunvault_skywatcher.defeat': [
-    { speaker: 'TAM', text: 'Passed, and then some. Go on up — and when the dome takes your breath, that is not the climb. That is the sky.' },
+    { speaker: 'TAM', text: 'Passed. When the dome takes your breath, that\'s not the climb. That\'s the sky.' },
   ],
   'trainer.junior_watcher_a.intro': [
-    { speaker: 'LIRA', text: 'Hold the walk, please. Seven lamps, seven stars, and a junior watcher to keep the order of it — nobody crosses my stretch unweighed. Even the senior watchers. ESPECIALLY the senior watchers.' },
+    { speaker: 'LIRA', text: 'Hold the walk! Nobody crosses my stretch unweighed. Even senior watchers. ESPECIALLY them.' },
   ],
   'trainer.junior_watcher_a.defeat': [
-    { speaker: 'LIRA', text: 'Weighed and recorded. ...In my own ledger, which nobody reads. The walk is yours, Wayfarer — keep the order.' },
+    { speaker: 'LIRA', text: 'Weighed and recorded, in my own ledger, which nobody reads. Keep the order.' },
   ],
   'trainer.junior_watcher_b.intro': [
-    { speaker: 'OS', text: 'A lamp on the high terrace. Good — the vigil likes a tested flame. I keep the last stretch before the seventh lamp; show me yours keeps too.' },
+    { speaker: 'OS', text: 'I keep the last stretch before the seventh lamp. Show me your flame keeps too.' },
   ],
   'trainer.junior_watcher_b.defeat': [
-    { speaker: 'OS', text: 'It keeps. Walk on — and walk soft. Nessa has been at the eyepiece three nights straight, waiting on whatever it is you are carrying.' },
+    { speaker: 'OS', text: 'It keeps. Walk soft — Nessa\'s been at the eyepiece three nights, waiting on you.' },
   ],
   'trainer.wren_nightreach.intro': [
-    { speaker: 'WREN', text: "Friendly rules. Like the coast. I want to remember what it's FOR before we light the last one." },
+    { speaker: 'WREN', text: "Friendly rules, like the coast. I want to remember what it's FOR before the last one." },
   ],
   'trainer.wren_nightreach.defeat': [
     { speaker: 'WREN', text: 'Ha — there it is. THAT\'s the thing the quiet doesn\'t have. Come on.' },
@@ -2365,18 +2365,18 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
     { speaker: 'WREN', text: 'Still you. Good. Some things should survive a sunrise.' },
   ],
   'trainer.nessa_cole.intro': [
-    { speaker: 'NESSA COLE', text: 'Seven watch-fires, lit in the order they came home. I watched every one from this eyepiece. You walk the way a careful light burns.' },
-    { speaker: 'NESSA COLE', text: 'One star left, and it is mine to vouch for. My kin keep the dream-hours with me — the soft dark, the kind that lets you sleep. Stay awake through it, Wayfarer... and the eighth will answer you.' },
+    { speaker: 'NESSA COLE', text: 'Seven watch-fires, lit in the order they came home. I watched each one. You burn carefully.' },
+    { speaker: 'NESSA COLE', text: 'One star left, mine to vouch for. My kin keep the soft dark, the kind that lets you sleep. Stay awake through it.' },
   ],
   'trainer.nessa_cole.defeat': [
-    { speaker: 'NESSA COLE', text: '...Awake at the end of it. All my long watches, and I have never been so glad to lose an argument with the dark.' },
-    { speaker: 'NESSA COLE', text: 'Stand by the lamp, Wayfarer. The eighth star has been waiting longest of all — and I would like to watch it remember.' },
+    { speaker: 'NESSA COLE', text: '...Awake at the end of it. I\'ve never been so glad to lose an argument with the dark.' },
+    { speaker: 'NESSA COLE', text: 'Stand by the lamp, Wayfarer. The eighth star has waited longest of all.' },
   ],
 
   // --- The summit. Còr's case lives in script.warden_cor_final (portraits, the
   // full cadence); these are only the battle's own frame — courteous to the last.
   'trainer.warden_cor.intro': [
-    { speaker: 'WARDEN CÒR', text: 'Very well. Let the lamps make the argument, then — yours as they are, mine as I have made them.' },
+    { speaker: 'WARDEN CÒR', text: 'Very well. Let the lamps make the argument — yours as they are, mine as I made them.' },
     { speaker: 'WARDEN CÒR', text: 'I will be gentle. I am always gentle. That was never the part anyone disagreed with.' },
   ],
   'trainer.warden_cor.defeat': [
@@ -2427,13 +2427,13 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
     { speaker: 'ONDRA VAEL', text: 'Same as the aerie. Sharper. Go on — Solenne\'s next, and she rehearsed.' },
   ],
   'trainer.vigilant_solenne_summit.intro': [
-    { speaker: 'DAME SOLENNE', text: 'Encore of the encore. The summit makes a tremendous house — and the lighting, my dear, is finally perfect.' },
+    { speaker: 'DAME SOLENNE', text: 'Encore of the encore! The summit makes a tremendous house, and the lighting is perfect.' },
   ],
   'trainer.vigilant_solenne_summit.defeat': [
-    { speaker: 'DAME SOLENNE', text: 'Bravo, again. Mer keeps the last gate before the old man. Go gently — she always means it.' },
+    { speaker: 'DAME SOLENNE', text: 'Bravo, again. Mer keeps the last gate. Go gently — she always means it.' },
   ],
   'trainer.vigilant_mer_summit.intro': [
-    { speaker: 'WARDEN MER', text: 'One more steadiness, before he asks you for all of it. I hand the light on gladly now. Show me once more why.' },
+    { speaker: 'WARDEN MER', text: 'One more steadiness, before he asks you for all of it. Show me once more.' },
   ],
   'trainer.vigilant_mer_summit.defeat': [
     { speaker: 'WARDEN MER', text: 'It holds, to the last gate. He\'s waiting at the lantern. ...Be everything you\'ve become.' },
@@ -2449,10 +2449,10 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   // ---- Lane E (walkthrough/10 Part III): Gran Tallow on her reef ----
   'trainer.lowtinder_ottery.intro': [
-    { speaker: 'GRAN TALLOW', text: 'Lampwarden of the low town, forty years on shift. Show me the light that woke the whole sky, duckling.' },
+    { speaker: 'GRAN TALLOW', text: 'Forty years on shift, Lampwarden of the low town. Show me the light that woke the sky, duckling.' },
   ],
   'trainer.lowtinder_ottery.defeat': [
-    { speaker: 'GRAN TALLOW', text: 'Outshone! By a Wayfarer in a borrowed boat. Oh, I haven\'t had this much fun since the water came up.' },
+    { speaker: 'GRAN TALLOW', text: 'Outshone! By a Wayfarer in a borrowed boat. I haven\'t had this much fun since the water came up.' },
   ],
   // ---- Lane N2 (walkthrough/11 Part B): the Shutterkeeper ----
   'trainer.drownlight_shutterkeeper.intro': [

@@ -37,13 +37,13 @@ const INNS: Array<{ id: string; quip: string; memory: string }> = [
   },
   {
     id: 'pearlmoor',
-    quip: 'Before you ask: I set off before you did, and I don\'t stop for every wild kin in the grass. Old legs, long strides.',
-    memory: 'Sorrel loved the quay. She\'d sit on the bollards and glare at the gulls. When the Dusk came, she forgot every move she had, all in one night. Lamps went dim, and so did she.',
+    quip: 'Before you ask: I set off before you, and I don\'t stop for every kin in the grass. Old legs, long strides.',
+    memory: 'Sorrel loved the quay — sat on the bollards glaring at gulls. When the Dusk came, she forgot every move in one night. Lamps went dim, and so did she.',
   },
   {
     id: 'lowleaf',
-    quip: 'Before you ask: the Lantern-car. I take the early one. You walk; I sit. And Lowleaf does a mushroom broth I would cross the whole crescent for.',
-    memory: 'That\'s how I learned to read echoes. Every move a kin has known leaves a little light behind, like a warm cup leaves a ring. I sat with Sorrel\'s lamp every night and coaxed hers back, one by one.',
+    quip: 'Before you ask: the Lantern-car. You walk; I sit. And Lowleaf\'s mushroom broth is worth the whole crescent.',
+    memory: 'So I learned to read echoes. Every move a kin has known leaves a little light, like a warm cup leaves a ring. Night by night, I coaxed hers back.',
   },
   {
     id: 'galehigh',
@@ -53,7 +53,7 @@ const INNS: Array<{ id: string; quip: string; memory: string }> = [
   {
     id: 'pale_vault',
     quip: 'Cold enough to freeze a thought halfway. Sit by the fire with me; the echoes read clearer when you\'re warm.',
-    memory: 'Sorrel\'s old now. She rests in a Hearth back home, curled round the warm stones. She can\'t come on the cars with me. So I listen to other people\'s lamps instead. It keeps my hands in.',
+    memory: 'Sorrel\'s old now. She rests in a Hearth back home, curled round the warm stones. So I listen to other people\'s lamps. It keeps my hands in.',
   },
   {
     id: 'nightreach',
@@ -84,7 +84,7 @@ INNS.forEach((inn, i) => {
 });
 giftChain[`script.hesper_gift_${INNS.length}`] = [
   h('Six inns, and you\'ve sat through every one of my stories. Most people leave after the porridge.'),
-  h('Here. Sorrel saved these for a kin who\'d need them more than she does. She was very firm about it. Well. I was. On her behalf.'),
+  h('Here. Sorrel saved these for a kin who\'d need them more. She was very firm about it. Well. I was. On her behalf.'),
   { op: 'giveItem', item: 'lumen_drop', count: 2 },
   { op: 'say', text: 'Received two LUMEN DROPS!' },
   { op: 'setFlag', flag: 'flag:hesper_gift' },
@@ -96,8 +96,8 @@ export const INNFOLK_SCRIPTS: ScriptRegistry = {
 
   'script.hesper_meet': [
     h('Oh! A lamp-tender. Come and sit; I don\'t bite, and the fire\'s the good chair.'),
-    h('Hesper Vane. I read echoes. Every move your kin has ever known leaves a little light in its lamp, and I can coax one back out, if it\'s been forgotten.'),
-    h('Or help one go, if it\'s crowding the others. Or just tell you how your kin are getting on. I\'m in every inn, more or less. Don\'t ask how.'),
+    h('Hesper Vane. I read echoes. Every move your kin has known leaves light in its lamp, and I can [[coax a forgotten one back]].'),
+    h('Or help one go, or tell you how your kin are getting on. I\'m in every inn, more or less. Don\'t ask how.'),
     { op: 'setFlag', flag: 'flag:met_hesper' },
   ],
 
@@ -134,8 +134,8 @@ export const INNFOLK_SCRIPTS: ScriptRegistry = {
   ],
 
   'script.namewright': [
-    { ...n('Ottilie Penn, Namewright. I write the names on the lamp-school\'s slates, and in the big book behind me.'), unless_flag: 'flag:met_namewright' },
-    { ...n('A name you give at the catch is a promise, so it sticks. But promises can be rewritten, with care. That\'s my trade.'), unless_flag: 'flag:met_namewright' },
+    { ...n('Ottilie Penn, Namewright. I write the names on the school\'s slates, and in the big book behind me.'), unless_flag: 'flag:met_namewright' },
+    { ...n('A name given at the catch is a promise, so it sticks. But promises can be rewritten, with care.'), unless_flag: 'flag:met_namewright' },
     { op: 'setFlag', flag: 'flag:met_namewright' },
     {
       op: 'choice',
@@ -153,7 +153,7 @@ export const INNFOLK_SCRIPTS: ScriptRegistry = {
           label: 'WHY NAMES?',
           ops: [
             n('In the old days, a lamp-tender named a kin before they ever lit for it. If you know what to call something, you can call it home.'),
-            n('Write the old name in again, or leave just a space, and I\'ll put it back. No shame in that. It was a good name when you found it.'),
+            n('Write the old name in again, or leave a space, and I\'ll put it back. No shame. It was a good name when you found it.'),
           ],
         },
         { label: 'NOTHING', ops: [n('Come back with a story. I\'ll find it a name.')] },

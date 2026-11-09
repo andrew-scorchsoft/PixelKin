@@ -106,7 +106,7 @@ export const TYPE_CHATTER: Record<KinType, KinChatterLine[]> = {
   Dark: [
     { text: '"Hssh." It keeps to the edge of your light and watches from there.' },
     { text: '"Grrrm." Not a growl. More of a question.', react: 'shake' },
-    { text: '"...hff." It edges a half-step closer to your lamp, then thinks better of it.' },
+    { text: '"...hff." It edges a half-step nearer your lamp, then thinks better of it.' },
   ],
 };
 
@@ -115,7 +115,7 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
   // --- South ---------------------------------------------------------------
   8: { // Glimflit — the blinking courier (Duskapple Orchard)
     lines: [
-      { text: '"Pip! Pip-pip!" Its tail-lantern blinks a rhythm at you. Blink, blink... blink.', react: 'hop' },
+      { text: '"Pip! Pip-pip!" Its tail-lantern blinks at you. Blink, blink... blink.', react: 'hop' },
       { text: '"Pip?" It blinks twice and waits, as if you were meant to blink back.' },
     ],
     dawn: [{ text: '"Pip-pip-pip!" It blinks at the morning sky, and for once the sky blinks back.', react: 'twirl' }],
@@ -125,7 +125,7 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
     lines: [
       { text: '"Yip! Yip-yip!" Its candle-tail wags so hard the flame leans sideways.', react: 'hop' },
       { text: '"Arf." It sniffs your lamp, decides it is a friend, and sits.' },
-      { text: '"Hrrm-yip." It curls its tail around its paws to keep the flame out of the wind.' },
+      { text: '"Hrrm-yip." It curls its tail round its paws to keep the flame from the wind.' },
     ],
     dawn: [{ text: '"Yip!" Its candle-tail looks pale in the daylight. It does not seem to mind.' }],
     event: { flag: 'flag:kinchat_tallowpup', script: 'script.kinchat_tallowpup' },
@@ -133,7 +133,7 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
   16: { // Wickmoth — follows warm light (Tinderwick, the Lanternway)
     lines: [
       { text: '"Fwip-fwip." It circles your lamp once, twice, and bumps it. Ow.', react: 'twirl' },
-      { text: '"Fwip." It lands on the lamp\'s rim to warm its wings, then thinks better of it.' },
+      { text: '"Fwip." It lands on your lamp to warm its wings. Then thinks better of it.' },
     ],
     event: { flag: 'flag:kinchat_wickmoth', follow_ms: 6000 },
   },
@@ -173,7 +173,7 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
   },
   32: { // Lumplass — the grown lighthouse-limpet (the Glassmere, the chapel)
     lines: [
-      { text: '"Pomm. Pomm." Its beacon pulses steady and slow, like a lamp left in a window.' },
+      { text: '"Pomm. Pomm." Its beacon pulses slow, like a lamp left in a window.' },
       { text: '"Mm!" It shines a little brighter at your lamp, then settles, satisfied.', react: 'hop' },
     ],
   },
@@ -185,7 +185,7 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
   },
   53: { // Oreling — the ore-grub (Sounding Cave, the Lanternfall road)
     lines: [
-      { text: '"Bonk." It headbutts the nearest rock, chews the flake, and looks at you. Bonk.', react: 'shake' },
+      { text: '"Bonk." It headbutts a rock, chews the flake, and looks at you. Bonk.', react: 'shake' },
       { text: '"Grumm." It is heavier than it was this morning. It is very proud.' },
     ],
   },
@@ -213,8 +213,8 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
   },
   60: { // Poolfrond — the lily-pad glider (Saltreach Fen)
     lines: [
-      { text: '"Shhhwoo." It glides a slow circle, fronds trailing, very serene, slightly absurd.', react: 'twirl' },
-      { text: '"Shoo-shoo." Its fronds stir. Something in the water told it you were coming.' },
+      { text: '"Shhhwoo." It glides a slow circle, fronds trailing, serene and slightly absurd.', react: 'twirl' },
+      { text: '"Shoo-shoo." Its fronds stir. The water told it you were coming.' },
     ],
   },
   65: { // Glowsip — the liquid-light larva (Lowleaf Hollow, Spore Grotto)
@@ -225,8 +225,8 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
   },
   67: { // Fennlight — the fern-serpent (Lowleaf Hollow, Glowmoss Deep)
     lines: [
-      { text: '"Ssss-ting." It traces a fern\'s outline in light, then darts behind the real one.' },
-      { text: '"Tsss." It pulses cyan, three quick and one slow, and is gone into the fronds.', react: 'twirl' },
+      { text: '"Ssss-ting." It traces a fern in light, then darts behind the real one.' },
+      { text: '"Tsss." It pulses cyan, three quick, one slow, and is gone.', react: 'twirl' },
     ],
   },
 
@@ -239,7 +239,7 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
   },
   74: { // Geolace — the geode crab (Windward Stair II)
     lines: [
-      { text: '"Click-click." It opens its shell a crack. Inside, the frost-crystals catch your lamp.' },
+      { text: '"Click-click." Its shell opens a crack. Frost-crystals catch your lamp.' },
       { text: '"Clk." It scuttles sideways, stops, and scuttles back. Undecided.', react: 'shake' },
     ],
   },
@@ -257,14 +257,14 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
   },
   81: { // Blizzrhare — the hare-ghost (Hushfrost Pass)
     lines: [
-      { text: '"Hwhooo!" A little snow-devil spins up around it, and then it is somewhere else.', react: 'twirl' },
+      { text: '"Hwhooo!" A snow-devil spins up round it, and then it is somewhere else.', react: 'twirl' },
       { text: '"Hrff." It holds very still. For a hare-ghost, that is a great compliment.' },
     ],
   },
   84: { // Hushbore — the silent burrower (Hushfrost Pass)
     lines: [
-      { text: '"...!" It opens its mouth wide. The cry comes out muffled, as if through a door.' },
-      { text: '"..." It taps its ice-plated shoulder against yours. The quiet feels like company.', react: 'shake' },
+      { text: '"...!" It opens wide. The cry comes out muffled, as if through a door.' },
+      { text: '"..." It taps its icy shoulder against yours. The quiet feels like company.', react: 'shake' },
     ],
   },
   88: { // Sparrowcaw — the flint sparrow (Galehigh terraces)
@@ -300,54 +300,54 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
   172: { // Fathomote — the lantern-fish fry (the deep, the isles' shallows)
     lines: [
       { text: '"Blip!" Its lure flicks on, off, on. It is very proud of that.', react: 'hop' },
-      { text: '"Bloop." It swims a circle round your lamp, as if checking whose light is bigger.', react: 'twirl' },
-      { text: '"Blip-blip." It noses your boot, then darts back to show its little light to the others.' },
+      { text: '"Bloop." It circles your lamp, checking whose light is bigger.', react: 'twirl' },
+      { text: '"Blip-blip." It noses your boot, then darts off to show the others its light.' },
     ],
     event: { flag: 'flag:kinchat_fathomote', script: 'script.kinchat_fathomote' },
   },
   173: { // Fathomere — the grown lantern-fish
     lines: [
-      { text: '"Mmmmohh." A slow, deep hum. Its lure dims, then brightens, like a lamp being trimmed.' },
-      { text: '"Ohhmm." It turns its light toward the open sea and holds it there, steady, the way a keeper would.', react: 'turn' },
+      { text: '"Mmmmohh." A deep hum. Its lure dims and brightens, like a lamp being trimmed.' },
+      { text: '"Ohhmm." It turns its light on the open sea and holds it there, like a keeper.', react: 'turn' },
     ],
   },
   174: { // Hermiwick — the hermit crab in a broken lamp-glass
     lines: [
-      { text: '"Clik-clik." It backs into its cracked glass until only its eyes show. Then, slowly, the claws.', react: 'shake' },
-      { text: '"Tik." It polishes one chipped pane with its small claw, very carefully, and waits for you to notice.' },
-      { text: '"Clk-clk!" It peers into your vesperlamp a long time. Looking for the lamp its glass came from.', react: 'hop' },
+      { text: '"Clik-clik." It backs into its cracked glass till only its eyes show.', react: 'shake' },
+      { text: '"Tik." It polishes one chipped pane and waits for you to notice.' },
+      { text: '"Clk-clk!" It peers into your lamp, looking for the lamp its glass came from.', react: 'hop' },
     ],
   },
   175: { // Beaconclaw — the crab-lighthouse
     lines: [
       { text: '"KLAK." It raises its great claw like a shield, then lowers it. You passed.', react: 'shake' },
-      { text: '"Hmmm-klak." The lamp on its back turns once, slow, and sweeps its beam right across you.', react: 'twirl' },
+      { text: '"Hmmm-klak." The lamp on its back turns once and sweeps its beam across you.', react: 'twirl' },
     ],
   },
   176: { // Fogwisp — the sea-fog moth (the Fogwall, the Undertide)
     lines: [
-      { text: '"...fffh." It drifts to your lamp and settles on the glass. The glass goes cold and grey.' },
-      { text: '"Hhhh." It flutters a slow circle. When it is gone the air still smells of the sea.', react: 'twirl' },
-      { text: '"...ff." It tries to land on your lamp-flame, thinks better of it, and sits on your hat instead.', react: 'hop' },
+      { text: '"...fffh." It settles on your lamp. The glass goes cold and grey.' },
+      { text: '"Hhhh." It flutters a slow circle. When it goes, the air smells of the sea.', react: 'twirl' },
+      { text: '"...ff." It tries to land on your lamp-flame, then sits on your hat instead.', react: 'hop' },
     ],
   },
   // Lane C1 (pass 2) — the isles' other ambient kin
   61: { // Tidalarch — the pool-spanning kelp entity (Kelpcrown's drowned courtyard)
     lines: [
-      { text: '"Shhhhaa." A frond lifts out of the pool and arches over your head, dripping, then lays itself back down.', react: 'twirl' },
-      { text: '"Hhuu." Its blossom crown glows a little brighter while you stand there, as if the pool approves of you.' },
+      { text: '"Shhhhaa." A frond arches out of the pool over your head, dripping.', react: 'twirl' },
+      { text: '"Hhuu." Its blossom crown glows brighter, as if the pool approves of you.' },
     ],
   },
   76: { // Vaultclaw — the glacier-hermit (Gullwrack's gull walk)
     lines: [
-      { text: '"KRRNK." It shifts its great ice-shell. Something small inside chirps and goes quiet again.', react: 'shake' },
-      { text: '"Grrmm." It holds very still and lets a gull land on its shell. It seems to like the company.' },
+      { text: '"KRRNK." It shifts its ice-shell. Something small inside chirps, then hushes.', react: 'shake' },
+      { text: '"Grrmm." It holds still and lets a gull land on its shell. Company.' },
     ],
   },
   96: { // Frigalance — the blizzard-wasp (Gullwrack's high meadow)
     lines: [
-      { text: '"Zzzt!" It hovers at your eye level. The air round its wings goes cold and smells of thunder.', react: 'hop' },
-      { text: '"Zzz-zip." It darts once round your lamp, fast as a spark, and is back where it started.', react: 'twirl' },
+      { text: '"Zzzt!" It hovers at eye level. The air round its wings smells of thunder.', react: 'hop' },
+      { text: '"Zzz-zip." It darts round your lamp, fast as a spark, and back again.', react: 'twirl' },
     ],
   },
   // ---- Lane A — the Ashfall Shelf (walkthrough/10 Part II) ----
@@ -359,7 +359,7 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
   },
   63: { // Stonebark — the ash-grass stump (the Ashfall Shelf, rare)
     lines: [
-      { text: '"...rrrk." Grey grass rustles on its shoulders. It turns, very slowly, to face the wind.', react: 'hop' },
+      { text: '"...rrrk." Grey grass rustles on its back. It turns to face the wind.', react: 'hop' },
       { text: '"Hhhm." It roots its toes in the ash. Something green pokes up beside them.' },
     ],
     dawn: [{ text: '"Hhhmm!" The ash-grass on its back has gone a little green at the tips.' }],
@@ -367,47 +367,47 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
   // --- Lane E (10 Part III): Lowtinder, the town under the bay ----------------
   11: { // Tallowcrest — warms itself in the drowned hearths (Lowtinder)
     lines: [
-      { text: '"Fff." It sits in an old fireplace that has not had a fire in forty years, and glows, so now it has one.', react: 'hop' },
-      { text: '"Tsss." A drop of sea lands on its back and steams. It looks offended at the whole ocean.' },
+      { text: '"Fff." It sits in a long-cold fireplace and glows. Now it has a fire.', react: 'hop' },
+      { text: '"Tsss." Sea-spray steams on its back. It glares at the whole ocean.' },
     ],
     dawn: [{ text: '"Fff-fff!" It basks in a square of real sunlight on the old cobbles, belly-up.' }],
   },
   21: { // Tidmaren — the tide-pool glimmer (Lowtinder, the bay)
     lines: [
-      { text: '"Plip." It bobs in a puddle that used to be somebody\'s kitchen, and blinks a little light at you.', react: 'hop' },
+      { text: '"Plip." It bobs in a puddle that was once somebody\'s kitchen, and blinks at you.', react: 'hop' },
       { text: '"Plip-plip." It drifts round your boots like you are a rock worth circling.' },
     ],
   },
   39: { // Mossmantle — the moss that kept the lamp-school's lesson (the moss-garden)
     lines: [
-      { text: '"Mmmm." Its mossy cloak glows a little brighter as your lamp comes near, like a pupil answering a question.', react: 'twirl' },
-      { text: '"Mm." It shuffles over and settles by your feet, warm and damp and quite pleased with itself.' },
+      { text: '"Mmmm." Its mossy cloak brightens near your lamp, like a keen pupil.', react: 'twirl' },
+      { text: '"Mm." It settles by your feet, warm and damp and quite pleased with itself.' },
     ],
-    dawn: [{ text: '"Mmmm!" A thread of daylight finds the garden through the fallen roof. It leans toward it, every frond at once.' }],
+    dawn: [{ text: '"Mmmm!" Daylight finds the garden. It leans in, every frond at once.' }],
   },
   // --- Lane N4 (11 §F): the Hollowing family — Stillwater, the Mourning Fields, Drownlight
   178: { // Dousecap — the snuffer-cap that puts the lamps to bed
     lines: [
-      { text: '"Tff." It hops toward your vesperlamp, stops, and looks up at you. It is asking if it may.', react: 'hop' },
-      { text: '"...pff." A thread of smoke curls off its tip. Somewhere behind it, a candle has just gone to sleep.' },
-      { text: '"Tff-tff." It tips its brim at you, very politely, then settles down on the grass like a little brass bell.', react: 'shake' },
+      { text: '"Tff." It hops toward your lamp, stops, and looks up. It is asking if it may.', react: 'hop' },
+      { text: '"...pff." Smoke curls off its tip. Somewhere, a candle has gone to sleep.' },
+      { text: '"Tff-tff." It tips its brim, very politely, and settles like a brass bell.', react: 'shake' },
     ],
-    dawn: [{ text: '"Tff?" It peeks out from under its brim at the morning, blinks, and decides to leave this one lit.', react: 'hop' }],
+    dawn: [{ text: '"Tff?" It peeks out at the morning, and decides to leave this one lit.', react: 'hop' }],
   },
   179: { // Shutterwick — the shuttered lantern-keeper
     lines: [
-      { text: '"Hhmm." It turns its lantern away from you, the way you would shield a candle from the wind.', react: 'turn' },
-      { text: '"...mmh." One slat of its shutters opens, just a crack. Warm light falls across your boots, and then it is gone.' },
+      { text: '"Hhmm." It turns its lantern away, as you would shield a candle.', react: 'turn' },
+      { text: '"...mmh." One shutter opens a crack. Warm light on your boots, then gone.' },
     ],
-    dawn: [{ text: '"Hhmm-hm." It opens every shutter at once and stands there in the morning, glowing, a little shy about it.', react: 'twirl' }],
+    dawn: [{ text: '"Hhmm-hm." It opens every shutter at once and glows, a little shy.', react: 'twirl' }],
   },
   180: { // Lullwing — the dream-moth that keeps sleepers asleep
     lines: [
-      { text: '"Hmmmmm." It hums one low note, and your eyelids feel heavy. You shake it off. It looks a little disappointed.', react: 'twirl' },
-      { text: '"...fff." Silver dust sifts off its wings onto your sleeve. It smells of clean linen and a fire banked for the night.' },
-      { text: '"Hm." It lands on your lamp-hand and folds its wings, as if you are the one who needs looking after.', react: 'hop' },
+      { text: '"Hmmmmm." One low hum. Your eyelids droop. You shake it off. It sulks.', react: 'twirl' },
+      { text: '"...fff." Silver dust on your sleeve, smelling of linen and a banked fire.' },
+      { text: '"Hm." It lands on your hand, as if YOU need looking after.', react: 'hop' },
     ],
-    dawn: [{ text: '"Hmm?" It flutters up into the light, confused, then follows a dozing kin home to tuck it in properly.', react: 'twirl' }],
+    dawn: [{ text: '"Hmm?" It flutters up, confused, then goes to tuck a dozing kin in.', react: 'twirl' }],
     event: { flag: 'flag:kinchat_lullwing', follow_ms: 4000 },
   },
 };
@@ -419,19 +419,19 @@ export const KINCHAT_SCRIPTS: ScriptRegistry = {
   'script.kinchat_glimflit': [
     { op: 'emote', actor: 'player', emote: 'question', holdMs: 700 },
     { op: 'narrate', text: 'Blink. Blink... blink. The pattern repeats. Then, far above, one dim star seems to blink the same way.' },
-    { op: 'narrate', text: 'Old lamp-tenders say every star has a kin on the ground that carries its spark. Maybe this one is just saying hello to a cousin.' },
+    { op: 'narrate', text: 'Old lamp-tenders say every star has a kin below that carries its spark. Maybe this one is saying hello to a cousin.' },
   ],
   // Tallowpup: a tiny find (the game's one kinchatter gift).
   'script.kinchat_tallowpup': [
-    { op: 'narrate', text: 'It trots off, digs at the roots, and trots back with something in its mouth. It drops it at your feet, tail-flame wagging.' },
+    { op: 'narrate', text: 'It digs at the roots and drops something at your feet, tail-flame wagging.' },
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'tallow_balm', count: 1 },
     { op: 'say', text: 'Found a TALLOW BALM, a little chewed.' },
   ],
   // Brinelet: what the tide brings — the falling cinders (story-bible §11).
   'script.kinchat_brinelet': [
-    { op: 'narrate', text: 'It rolls over and shows you its treasures. Among the shells is a chip of something dark and cold, with a blue-grey glow in its cracks.' },
-    { op: 'narrate', text: 'It will not give that one up. It rolls it back into its belly-dip, carefully, the way you would keep something that was not quite asleep.' },
+    { op: 'narrate', text: 'It rolls over to show its treasures. Among the shells: a chip of something dark and cold, a blue-grey glow in its cracks.' },
+    { op: 'narrate', text: 'It won\'t give that one up. It tucks it back in its belly-dip, the way you would keep something not quite asleep.' },
   ],
   // Snoozlet: a dream-mote, and the Long Dusk's eleven winters (story-bible §12).
   'script.kinchat_snoozlet': [
@@ -443,13 +443,13 @@ export const KINCHAT_SCRIPTS: ScriptRegistry = {
   'script.kinchat_sparrowcaw': [
     { op: 'emote', actor: 'player', emote: 'alert', holdMs: 600 },
     { op: 'narrate', text: 'It stops pecking and stares straight up, every feather flat. You look too. Nothing, only the dark.' },
-    { op: 'narrate', text: 'Up here they say the birds see the falling stars before anyone does. It watches for a long while before it goes back to its flint.' },
+    { op: 'narrate', text: 'Up here they say the birds see falling stars first. It watches a long while before going back to its flint.' },
   ],
   // Fathomote: the shoal answers your lamp (the Farlamp Isles' lore, §1).
   'script.kinchat_fathomote': [
     { op: 'emote', actor: 'player', emote: 'alert', holdMs: 700 },
-    { op: 'narrate', text: 'It dives. A moment later the dark water lights up, one small lure after another, until a whole shoal is blinking back at your lamp.' },
-    { op: 'narrate', text: 'Driftholm folk used to set lamps by the water for the fry. Eleven winters, and the fry still come to any light that waits for them.' },
+    { op: 'narrate', text: 'It dives. The dark water lights up, lure after lure, until a whole shoal is blinking back at your lamp.' },
+    { op: 'narrate', text: 'Driftholm folk once set lamps by the water for the fry. Eleven winters on, the fry still come to any light that waits.' },
   ],
 };
 

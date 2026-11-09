@@ -13,6 +13,12 @@
  * text reflowing — and paginating — beside it) and/or `style: 'narrate'` (un-attributed,
  * softer prose for cold-open / cutscene narration). Both are additive: a missing portrait
  * or a plain `{speaker,text}` line renders exactly as before.
+ *
+ * Text wrapped in `[[double brackets]]` is KEY INFORMATION (where to go, who to see,
+ * what to bring): it's drawn underlined in lamp-gold, revealed with the typewriter.
+ * PressStart2P is monospace, so a marked run is simply columns × glyph width: the
+ * base text blanks those cells and a gold overlay draws them (ui/textMarks.ts,
+ * docs/world/dialogue-rubric.md §6).
  */
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
@@ -22,6 +28,7 @@ import { Panel } from './Panel';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import { resolvePortrait } from '@game/content/portraits';
 import { textSpeedMultiplier } from './preferences';
+import { parseMarks, runsForRows, type MarkRun } from './textMarks';
 import type { DialogueLine } from '@game/content/types';
 import type { Sfx } from '@game/systems/audio/Sfx';
 
@@ -31,6 +38,9 @@ const PAD = theme.space.lg;
 /** Body text sits below the speaker-name row. */
 const BODY_TOP = PAD + 8;
 
+/** A box-sized page: the line's attributes, its wrapped rows, and its key-info runs. */
+type Page = DialogueLine & { runs: MarkRun[] };
+
 export class DialogueBox {
   private readonly panel: Panel;
   private readonly body: Phaser.GameObjects.Text;
@@ -38,6 +48,10 @@ export class DialogueBox {
   private readonly caret: Phaser.GameObjects.Text;
   private readonly width: number;
   private portrait?: Phaser.GameObjects.Image;
+  /** Key-information overlay: gold glyphs + underline for the current page's marks. */
+  private readonly underline: Phaser.GameObjects.Graphics;
+  private markTexts: Phaser.GameObjects.Text[] = [];
+  private glyph = { w: 8, h: 8 };
   private input?: InputController;
   private tickFn?: () => void;
 
@@ -56,6 +70,8 @@ export class DialogueBox {
     this.panel.add(this.name);
     this.panel.add(this.body);
     this.panel.add(this.caret);
+    this.underline = scene.add.graphics();
+    this.panel.add(this.underline);
   }
 
   /** The portrait bust to show for a line, if one resolves and its texture is loaded. */
@@ -81,23 +97,70 @@ export class DialogueBox {
    * chunks that fit the box vertically. Carries the line's speaker/portrait/style onto
    * every page. Returns at least one page so an empty line still advances.
    */
-  private paginate(line: DialogueLine, maxLines: number): DialogueLine[] {
+  private paginate(line: DialogueLine, maxLines: number): Page[] {
+    const { plain, marked } = parseMarks(line.text);
     this.body.setWordWrapWidth(this.bodyWrap(this.portraitFor(line)));
-    const wrapped = this.body.getWrappedText(line.text);
-    if (wrapped.length === 0) return [{ ...line, text: '' }];
-    const pages: DialogueLine[] = [];
+    const wrapped = this.body.getWrappedText(plain);
+    if (wrapped.length === 0) return [{ ...line, text: '', runs: [] }];
+    const pages: Page[] = [];
+    let from = 0;
     for (let i = 0; i < wrapped.length; i += maxLines) {
-      pages.push({ ...line, text: wrapped.slice(i, i + maxLines).join('\n') });
+      const rows = wrapped.slice(i, i + maxLines);
+      const { runs, next } = runsForRows(plain, marked, rows, from);
+      from = next;
+      pages.push({ ...line, text: rows.join('\n'), runs });
     }
     return pages;
+  }
+
+  /** Blank the marked cells of a page so the gold overlay is the only glyph there. */
+  private static blankRuns(text: string, runs: MarkRun[]): string {
+    if (runs.length === 0) return text;
+    const chars = text.split('');
+    for (const r of runs) for (let i = 0; i < r.end - r.start; i++) chars[r.offset + i] = ' ';
+    return chars.join('');
+  }
+
+  /** Lay out one gold overlay Text per marked run of a new page. */
+  private startMarks(page: Page): void {
+    for (const t of this.markTexts) t.destroy();
+    this.markTexts = page.runs.map((r) => {
+      const t = makeText(this.scene, this.body.x + r.start * this.glyph.w, this.body.y + r.row * this.glyph.h, '', theme.text.key);
+      this.panel.add(t);
+      return t;
+    });
+    this.underline.clear();
+  }
+
+  /** Reveal the marked runs up to the typewriter's `shown` character. */
+  private drawMarks(page: Page, shown: number): void {
+    if (page.runs.length === 0) return;
+    const rows = page.text.split('\n');
+    this.underline.clear();
+    this.underline.fillStyle(Phaser.Display.Color.HexStringToColor(theme.color.keyInfoRule).color, 1);
+    page.runs.forEach((r, i) => {
+      const vis = Math.max(0, Math.min(r.end - r.start, shown - r.offset));
+      this.markTexts[i]?.setText(rows[r.row].slice(r.start, r.start + vis));
+      if (vis > 0) {
+        const x = this.body.x + r.start * this.glyph.w;
+        // Rows sit flush (8px font, 8px rows), so the rule lives in the glyph cell's
+        // blank bottom row and is a deeper amber than the glyphs: it reads as a rule,
+        // never as the top stroke of a letter on the row below.
+        const y = this.body.y + r.row * this.glyph.h + this.glyph.h - 1;
+        this.underline.fillRect(x, y, vis * this.glyph.w, 1);
+      }
+    });
   }
 
   /** How many wrapped lines fit in the body area, from the measured font line height. */
   private maxBodyLines(): number {
     const prev = this.body.text;
     this.body.setWordWrapWidth(0); // measure a single unwrapped line
+    this.body.setText('M');
+    this.glyph.w = this.body.width; // PressStart2P is monospace
     this.body.setText('Mg');
     const lineHeight = this.body.height;
+    this.glyph.h = lineHeight;
     this.body.setWordWrapWidth(this.width - PAD * 2);
     this.body.setText(prev);
     const available = HEIGHT - BODY_TOP - PAD;
@@ -135,8 +198,10 @@ export class DialogueBox {
       this.body.setStyle(theme.text.base);
       speed = { cps: theme.typewriter.cps, fastCps: theme.typewriter.fastCps };
     }
-    // Set the wrap AFTER setStyle (which replaces the style config) so it sticks.
-    this.body.setWordWrapWidth(this.bodyWrap(pr));
+    // Pages arrive pre-wrapped (paginate), so the body draws them as-is: no re-wrap
+    // that could fold a row whose key-info cells are blanked to spaces. Set AFTER
+    // setStyle (which replaces the style config) so it sticks.
+    this.body.setWordWrapWidth(null);
     return speed;
   }
 
@@ -148,7 +213,7 @@ export class DialogueBox {
 
     // Expand each authored line into one-or-more box-sized pages up front.
     const maxLines = this.maxBodyLines();
-    const pages: DialogueLine[] = lines.flatMap((line) => this.paginate(line, maxLines));
+    const pages: Page[] = lines.flatMap((line) => this.paginate(line, maxLines));
 
     let page = 0;
     let shown = 0; // chars revealed
@@ -160,10 +225,11 @@ export class DialogueBox {
       const line = pages[page];
       speed = this.layout(line);
       this.name.setText(line.speaker ?? '');
-      full = line.text;
+      full = DialogueBox.blankRuns(line.text, line.runs);
       shown = 0;
       acc = 0;
       this.body.setText('');
+      this.startMarks(line);
       this.caret.setVisible(false);
     };
 
@@ -198,6 +264,7 @@ export class DialogueBox {
             }
           }
           this.body.setText(full.slice(0, shown));
+          this.drawMarks(pages[page], shown);
           if (shown >= full.length) this.caret.setVisible(true);
         } else {
           this.caret.setVisible(true);

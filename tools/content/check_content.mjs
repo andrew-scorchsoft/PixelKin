@@ -201,7 +201,7 @@ async function analyse(root, tag) {
   };
   const textIssues = (txt, where, portrait) => {
     const max = portrait ? 23 : 27;
-    for (const w of txt.replace(/\{name\}/g, 'Wayfarer').split(/\s+/)) if (w.length > max) add('W-TEXT', `${where}: unbreakable word (${w.length} ch > ${max}): "${w}"`);
+    for (const w of txt.replace(/\{name\}/g, 'Wayfarer').replace(/\[\[|\]\]/g, '').split(/\s+/)) if (w.length > max) add('W-TEXT', `${where}: unbreakable word (${w.length} ch > ${max}): "${w}"`);
   };
 
   // --- per-script checks ---

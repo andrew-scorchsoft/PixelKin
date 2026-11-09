@@ -48,11 +48,11 @@ const home = (n: number) => `flag:isles_letter_home_${n}`;
 
 /** The five coasts, as Ione names them (the panel's clarity fix). */
 const COASTS = [
-  'the Dimglass strand, south of Pearlmoor;',
-  'Gullcry Rock, out past the Dimglass buoys;',
-  'the beach at the Wick-Run\'s foot, just west of here;',
-  'the Glassmere shallows, out east past the fens;',
-  'and the shingle under the Drownlight Beacon, up in the Coldfog marshes.',
+  '[[the Dimglass strand]], south of Pearlmoor;',
+  '[[Gullcry Rock]], out past the Dimglass buoys;',
+  'the beach at [[the Wick-Run\'s foot]], just west of here;',
+  '[[the Glassmere shallows]], east past the fens;',
+  'and the shingle under [[the Drownlight Beacon]], up in the Coldfog marshes.',
 ];
 
 const pickup = (flag: string, give: CutsceneStep[], text: string): CutsceneStep[] => [
@@ -65,7 +65,7 @@ const pickup = (flag: string, give: CutsceneStep[], text: string): CutsceneStep[
 /** A driftletter: a bottle that glints on the strand, a letter you can read. */
 const driftletter = (n: number, where: string, lines: string[]): CutsceneStep[] => [
   { op: 'sfx', key: 'world-pickup' },
-  { op: 'narrate', text: `A stoppered bottle, green glass gone milky with salt, wedged ${where}. There's a letter rolled inside.` },
+  { op: 'narrate', text: `A stoppered bottle, milky with salt, wedged ${where}. A letter is inside.` },
   ...lines.map((text): CutsceneStep => ({ op: 'narrate', text })),
   { op: 'setFlag', flag: letter(n) },
   { op: 'setFlag', flag: RUMOUR },
@@ -94,10 +94,10 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.ione_ask', unless_flag: Q },
   ],
   'script.ione_seed': [
-    { op: 'say', speaker: 'IONE', text: 'Mind the shavings. This old girl was the Farlamp\'s lamp-boat once. I\'m giving her new strakes, a plank a winter. I\'ve the winters to spare.' },
-    { op: 'say', speaker: 'IONE', text: 'See that bank of fog on the sea, south? There\'s a lamp in it, blinking. Look long enough and you\'ll catch it. That\'s where the Farlamp stood. The far lamp. My brother kept the isles\' light beside it.' },
-    { op: 'say', speaker: 'IONE', text: 'It went quiet eleven winters back, the night the dark came down. The deep came up after it, and no boat\'s crossed since. The deep doesn\'t answer to a tide-song.' },
-    { op: 'say', speaker: 'IONE', text: 'But bottles still come ashore, now and then. Letters. Keep an eye on the shores, will you? Five of them catch what the current brings:' },
+    { op: 'say', speaker: 'IONE', text: 'Mind the shavings. She was the Farlamp\'s lamp-boat once. A new plank a winter. I\'ve the winters to spare.' },
+    { op: 'say', speaker: 'IONE', text: 'See the fog on the sea, south? There\'s a lamp in it, blinking. The Farlamp stood there. My brother kept the isles\' light beside it.' },
+    { op: 'say', speaker: 'IONE', text: 'It went quiet eleven winters back, the night the dark came. The deep rose after it. No boat\'s crossed since, and the deep won\'t answer a tide-song.' },
+    { op: 'say', speaker: 'IONE', text: 'Bottles wash ashore. Letters! [[Watch the shores]] for me? Five catch the current:' },
     ...COASTS.map((c): CutsceneStep => ({ op: 'say', speaker: 'IONE', text: c })),
     { op: 'setFlag', flag: RUMOUR },
   ],
@@ -106,47 +106,47 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.ione_i1', if_flag: L3 },
   ],
   'script.ione_letters_needed': [
-    { op: 'say', speaker: 'IONE', text: 'You did it. The sky\'s lit from here to the mountain. Look at it. ...Everywhere but there.' },
-    { op: 'say', speaker: 'IONE', text: 'The fog still sits on the isles like a lid. The sea keeps what it drowned, I think. I can\'t ask anyone to row into that on a hope. Bring me their letters. Three would do. Three, and I\'ll know someone\'s still writing.' },
+    { op: 'say', speaker: 'IONE', text: 'You did it. The sky\'s lit to the mountain. ...Everywhere but there.' },
+    { op: 'say', speaker: 'IONE', text: 'The fog sits on the isles like a lid. I won\'t row into that on a hope. [[Bring me their letters]]. Three, and I\'ll know they\'re still writing.' },
     { op: 'say', speaker: 'IONE', text: 'Try the five shores:' },
     ...COASTS.map((c): CutsceneStep => ({ op: 'say', speaker: 'IONE', text: c })),
     { op: 'setFlag', flag: RUMOUR },
   ],
   'script.ione_i1': [
-    { op: 'say', speaker: 'IONE', text: 'Letters? Show me. ...That\'s Marra Lowe\'s hand. And this is little Lorne Sallow, the lamp-boy. He\'d be a grown man now.' },
+    { op: 'say', speaker: 'IONE', text: 'Marra Lowe\'s hand! And Lorne Sallow, the lamp-boy. He\'d be grown now.' },
     { op: 'emote', actor: 'ione', emote: 'heart' },
     { op: 'say', speaker: 'IONE', text: 'Then they\'re alive. Eleven winters, and they\'re still writing.' },
-    { op: 'say', speaker: 'IONE', text: 'Right. She\'s sound enough to float. But the deep won\'t carry a boat into dark it can\'t see through. The old keepers lit their prow-lamps from the Keystar\'s light. Nothing less ever crossed the Fogwall.' },
-    { op: 'say', speaker: 'IONE', text: 'There\'s one lamp on the mainland lit from that light. The Star-tender carries it. You\'ll find him at Dawnstead, on the front. Take him the prow-lamp and ask him to light it. Then come back to me.' },
+    { op: 'say', speaker: 'IONE', text: 'She\'ll float. But the deep won\'t carry a boat into dark it can\'t see through. The old keepers lit their prow-lamps from the Keystar\'s light.' },
+    { op: 'say', speaker: 'IONE', text: 'One lamp on the mainland was lit from that light. [[The Star-tender]] carries it, [[at Dawnstead]] on the front. Have him light the prow-lamp, then come back.' },
     { op: 'sfx', key: 'world-keyitem' },
-    { op: 'narrate', text: 'Ione unhooks a small brass prow-lamp from the hull and puts it in your hands. It\'s cold, and its wick has never been lit.' },
+    { op: 'narrate', text: 'Ione hands you a small brass prow-lamp. Its wick has never been lit.' },
     { op: 'setFlag', flag: Q },
   ],
   'script.ione_wait': [
-    { op: 'say', speaker: 'IONE', text: 'Dawnstead, love. The Star-tender, on the front by the sea. Have him light the prow-lamp from his own. I\'ll have her caulked by the time you\'re back.' },
+    { op: 'say', speaker: 'IONE', text: '[[Dawnstead]], love. Have [[the Star-tender]] light the prow-lamp from his own. I\'ll have her caulked by then.' },
   ],
   'script.ione_launch': [
     { op: 'say', speaker: 'IONE', text: 'Let me see. ...Oh. Oh, look at that. It burns like a little piece of morning.' },
     { op: 'musicFade', ms: 800 },
-    { op: 'narrate', text: 'Ione fits the lamp to the prow-post. The flame steadies, and the hull seems to sit up on its trestles, the way a dog lifts its head at a familiar step.' },
-    { op: 'say', speaker: 'IONE', text: 'There. The Farlamp skiff. She\'s yours. Row her down the slip and she\'ll carry you over deep water no swimmer could cross. Keep the lamp lit and the deep will let you by.' },
+    { op: 'narrate', text: 'Ione fits the lamp to the prow-post. The flame steadies, and the hull seems to lift its head, like a dog at a familiar step.' },
+    { op: 'say', speaker: 'IONE', text: 'The Farlamp skiff. She\'s yours. Keep her lamp lit and she\'ll carry you over deep water no swimmer could cross.' },
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'farlamp_skiff', count: 1 },
     { op: 'giveAbility', ability: 'deepdive' },
     { op: 'setFlag', flag: AFLOAT },
-    { op: 'say', text: 'You got the FARLAMP SKIFF! You can row across deep water now.' },
-    { op: 'say', speaker: 'IONE', text: 'South through the Sound, then west by the reefs to the Fogwall. In the fog you\'ll lose the buoys, everyone does. The old keepers read them through a glass. Find one, and you\'ll find Driftholm.' },
+    { op: 'say', text: 'You got the FARLAMP SKIFF! You can [[row across deep water]] now.' },
+    { op: 'say', speaker: 'IONE', text: '[[South through the Sound]], [[west by the reefs]], to the Fogwall. In the fog you lose the buoys; the keepers read them through a glass. Find one, find Driftholm.' },
     { op: 'say', speaker: 'IONE', text: 'And if you see my brother Bram... tell him I kept his boat.' },
   ],
   'script.ione_after': [
-    { op: 'say', speaker: 'IONE', unless_flag: IDAWN, text: 'Still dark out there? The blink\'s still going. Somebody\'s keeping it, whatever it is.' },
-    { op: 'say', speaker: 'IONE', if_flag: IDAWN, unless_flag: KEEPER, text: 'The fog\'s gone. I can see the isles from my own trestles. Eleven winters... Go and give Bram a fright on the quay. He\'ll want a battle. He always does.' },
+    { op: 'say', speaker: 'IONE', unless_flag: IDAWN, text: 'Still dark out there? The blink\'s still going. Somebody\'s keeping it.' },
+    { op: 'say', speaker: 'IONE', if_flag: IDAWN, unless_flag: KEEPER, text: 'Fog\'s gone! Go give [[Bram]] a fright on the quay. He\'ll want a battle. He always does.' },
     { op: 'say', speaker: 'IONE', if_flag: KEEPER, text: 'Bram sent word on the first boat over: "beaten by a mainlander, fair and square, don\'t tell anyone." So I\'m telling everyone.' },
   ],
   'script.point_looking_glass': [
-    { op: 'say', text: 'A brass looking-glass on a tripod, aimed south across the water. You put your eye to it.' },
-    { op: 'narrate', unless_flag: IDAWN, text: 'Grey fog, a wall of it, lying on the sea. Then, deep inside it, a pinprick of light. It glows. It goes out. It glows again.' },
-    { op: 'narrate', if_flag: IDAWN, text: 'Open sea, green islands, a little town by a harbour. Out on its black rock the little watch-light still blinks, and under the water beside it there\'s a great gold glow: the Farlamp, burning where it drowned.' },
+    { op: 'say', text: 'A brass looking-glass on a tripod, aimed south. You put your eye to it.' },
+    { op: 'narrate', unless_flag: IDAWN, text: 'Grey fog. Deep inside, a pinprick of light. It glows. It goes out. It glows again.' },
+    { op: 'narrate', if_flag: IDAWN, text: 'Open sea, green islands, a harbour town. The watch-light blinks on its rock, and under the water beside it glows the Farlamp, burning where it drowned.' },
     { op: 'setFlag', flag: RUMOUR },
   ],
 
@@ -162,13 +162,13 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   // the after-stage was a plain dialogue; a script wrapper for it
   'script.fenn_dawnstead_after': [{ op: 'dialogue', ref: 'npc.fenn_dawnstead_after' }],
   'script.fenn_prow_lamp': [
-    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'peace', text: 'A Farlamp prow-lamp. I haven\'t seen one of these since I was younger than you. Where did you... Ione Fathom. Of course.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'peace', text: 'A Farlamp prow-lamp. I haven\'t seen one since I was a boy. Ione Fathom. Of course.' },
     { op: 'musicFade', ms: 900 },
-    { op: 'narrate', text: 'Fenn turns the little lamp over in his hands for a long moment. Then he opens his own old lantern, the one he\'s carried longer than you\'ve been alive, and tips its flame to the dry wick.' },
+    { op: 'narrate', text: 'Fenn turns the little lamp over for a long moment. Then he opens his own old lantern, carried longer than you\'ve been alive, and tips its flame to the wick.' },
     { op: 'sfx', key: 'world-gleam-a' },
     { op: 'tint', color: '#ffd58a', alpha: 0.18, ms: 700 },
     { op: 'narrate', text: 'It catches. A small, very clear flame.' },
-    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'This light was filled for a ladder, a long time ago, by someone with steadier hands than mine. It doesn\'t mind being asked again. Light doesn\'t keep, apprentice. It\'s only good for passing on.' },
+    { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'warm', text: 'This light was filled for a ladder, by steadier hands than mine. Light doesn\'t keep, apprentice. It\'s only good for passing on.' },
     { op: 'tint', color: '#ffd58a', alpha: 0, ms: 700 },
     { op: 'say', speaker: 'FENN', portrait: 'fenn', expr: 'smile', text: 'Go on. Ione will be pacing a groove in that headland.' },
     { op: 'setFlag', flag: PROW },
@@ -182,7 +182,7 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     'Keep a lamp in your window on the quay, the way Mam did. If I can\'t see it, I\'ll know it\'s there. Your sister, Marra Lowe, Driftholm."',
   ]),
   'script.pickup_driftletter_2': driftletter(2, 'in a crack of the high stone', [
-    '"To whoever keeps the Point\'s light. Some nights we see your Old Light from our harbour wall. Ours went under, with the rock it stood on.',
+    '"To whoever keeps the Point\'s light. Some nights we see your Old Light from our harbour wall. Ours went under, with its rock.',
     'I am the lamp-boy now. I trim all twelve lamps on the quay. I am eleven. Please keep yours burning so I know which way the mainland is. Lorne Sallow."',
   ]),
   'script.pickup_driftletter_3': driftletter(3, 'in the wrack at the tideline', [
@@ -194,7 +194,7 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     'Bake it on a hot stone. Eat it with your feet to a fire. Think of us. Hesk Dunnet, net-mender, who has mended every net on this island twice."',
   ]),
   'script.pickup_driftletter_5': driftletter(5, 'in the shingle below the old beacon', [
-    '"To the Star-tender\'s house, by the Crossroads. The Farlamp is under the sea. The deep rose the night the dark came, and took the rock and the lamp and the keeper\'s stair.',
+    '"To the Star-tender\'s house, by the Crossroads. The Farlamp is under the sea. The deep rose the night the dark came, and took the rock, the lamp and the keeper\'s stair.',
     'No boat can cross. If any lamp on the mainland still burns from the Keystar\'s own light, send us a flame. We will keep the small lamps lit until it comes. Nan Creel, elder of Driftholm."',
   ]),
 
@@ -203,50 +203,50 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   // ===========================================================================
   'script.fogwall_turned': [
     { op: 'musicFade', ms: 600 },
-    { op: 'narrate', text: 'The fog closes round the skiff. The nearest buoy goes grey, then goes. You lose the buoys, one by one, and then you lose the blink.' },
-    { op: 'narrate', text: 'You row a long time. When the fog thins, the open sea is on your left again, and you\'re back where you came in.' },
-    { op: 'say', text: 'If only you had a glass to read the buoys by...' },
+    { op: 'narrate', text: 'Fog closes round the skiff. The buoys go grey, then go. Then the blink goes too.' },
+    { op: 'narrate', text: 'You row a long time. When the fog thins, you\'re back where you came in.' },
+    { op: 'say', text: 'If only you had [[a glass to read the buoys]] by...' },
     { op: 'travel', map: 'farlamp_fogwall', to: { tx: 29, ty: 7 }, facing: 'left' },
   ],
   'script.sound_oarsman': [
-    { op: 'say', speaker: 'CALDER', text: 'A boat! A real boat, with a lamp on it! I was out on this holm after cormorant eggs the night the deep came up, and it never went down again. Eleven winters I\'ve lived off the reef, waving at every gull. Show me what\'s in it!' },
+    { op: 'say', speaker: 'CALDER', text: 'A boat, with a lamp on it! I was out egging the night the deep came up. Eleven winters on this holm, waving at gulls. Show me what\'s in it!' },
     { op: 'battle', trainer: 'sound_oarsman' },
-    { op: 'say', speaker: 'CALDER', text: 'Bested by a boat. Fair\'s fair. The reefs west are the Shelfwater: shallow as a puddle in places, so mind your keel. Rowan\'s out there. Tell her Calder says hello. Loudly. We\'ve been shouting it across the water for years.' },
+    { op: 'say', speaker: 'CALDER', text: 'Bested by a boat! The reefs [[west]] are the Shelfwater: mind your keel. Tell Rowan out there Calder says hello. Loudly.' },
     { op: 'setFlag', flag: 'flag:sound_oarsman_beaten' },
   ],
   'script.shelf_kelper': [
-    { op: 'say', speaker: 'ROWAN', text: 'You\'re off the mainland? In a BOAT? I was cutting kelp out here when the deep came up, and I\'ve been marooned on these reefs ever since. Kelp to eat, kelp to sleep on, Calder to shout at. Eleven winters! Let\'s see your kin, then.' },
+    { op: 'say', speaker: 'ROWAN', text: 'Off the mainland? In a BOAT? Eleven winters marooned here: kelp to eat, kelp to sleep on, Calder to shout at. Let\'s see your kin!' },
     { op: 'battle', trainer: 'shelf_kelper' },
-    { op: 'say', speaker: 'ROWAN', text: 'Good. You\'ll want to be good where you\'re going. The fog west eats boats. The keepers used to read the buoys through some sort of glass.' },
+    { op: 'say', speaker: 'ROWAN', text: 'Good. The fog west eats boats. The keepers read buoys through [[a glass]].' },
     { op: 'setFlag', flag: 'flag:shelf_kelper_beaten' },
   ],
   // pass 2: the Shelfwater's SE flat and the Fogwall's wreck bar
   'script.shelf_salvager': [
-    { op: 'say', speaker: 'DUNSTAN', text: 'Mind the ribs, they\'re sharp. That\'s the GANNET, a Driftholm cutter. She came apart on this hook the night the deep came up.' },
-    { op: 'say', speaker: 'DUNSTAN', text: 'I was aboard her. Waded ashore on this bar, and the bar\'s been my home since. Eleven winters I\'ve stacked her planks up the dry end, sorted and oiled, for when the fog lifts and Driftholm wants its doors mended. Now, a salvager tests what he finds. Let\'s see yours.' },
+    { op: 'say', speaker: 'DUNSTAN', text: 'Mind the ribs! The GANNET, a Driftholm cutter. She broke here the night the deep rose.' },
+    { op: 'say', speaker: 'DUNSTAN', text: 'I was aboard. Waded ashore and never left. Eleven winters stacking her planks for Driftholm\'s doors. A salvager tests what he finds. Let\'s see yours.' },
     { op: 'battle', trainer: 'shelf_salvager' },
-    { op: 'say', speaker: 'DUNSTAN', text: 'Sound timber, that lot. Row the channel between the two long bars if you\'re heading for the Foot. The old tenders buoyed it so they wouldn\'t lose their keels.' },
+    { op: 'say', speaker: 'DUNSTAN', text: 'Sound timber. For the Foot, row [[between the two long bars]].' },
     { op: 'setFlag', flag: 'flag:shelf_salvager_beaten' },
   ],
   'script.fog_pilot': [
-    { op: 'say', speaker: 'WILLA', text: 'The lamp-boat! I came out in your wake. A lit boat leaves a lit wake, did you know? The deep let my little coracle through behind you, all the way to this bar.' },
-    { op: 'say', speaker: 'WILLA', text: 'This is the GREYLAG, my dad\'s old cutter. She ran aground in the fog the night the deep came up, and he waded home across the shallows before they drowned. He\'s never stopped talking about her.' },
+    { op: 'say', speaker: 'WILLA', text: 'The lamp-boat! The deep let my coracle through in your lit wake.' },
+    { op: 'say', speaker: 'WILLA', text: 'This is the GREYLAG, Dad\'s old cutter. She grounded in the fog the night the deep came up. He\'s never stopped talking about her.' },
     { op: 'say', speaker: 'WILLA', text: 'Pilot\'s custom: nobody shares a wreck without a battle first.' },
     { op: 'battle', trainer: 'fog_pilot' },
-    { op: 'say', speaker: 'WILLA', text: 'Fair. Watch the fog south of here, it turns a boat round like a hand on your shoulder. Dad says the keepers read the buoys through a glass. Find the glass and you\'ll find the lane.' },
+    { op: 'say', speaker: 'WILLA', text: 'Fair. The fog south of here turns boats round like a hand on your shoulder. [[Find the keepers\' glass]] and you\'ll find the lane.' },
     { op: 'setFlag', flag: 'flag:fog_pilot_beaten' },
   ],
   // the blink the player has watched from the mainland since the first visit: not
   // the Farlamp (that lies drowned), but Driftholm's own watch-light on the Teeth
   'script.fogwall_watch_light': [
-    { op: 'narrate', text: 'A little white lamp-tower on a black skerry, hardly twice your height. Its lamp is small and very well kept: the glass wiped, the wick trimmed square.' },
+    { op: 'narrate', text: 'A white lamp-tower on a black skerry, hardly twice your height. Its small lamp is wiped and trimmed square.' },
     { op: 'say', text: 'A tin plate is riveted to the door: WATCH-LIGHT OF DRIFTHOLM. TRIMMED NIGHTLY. L. SALLOW.' },
-    { op: 'narrate', unless_flag: IDAWN, text: 'So this is the blink you watched from the Point. Not the Farlamp at all. Somebody poles out along the reef every dusk to keep it lit, so that anything lost in the fog has one light to steer by.' },
-    { op: 'narrate', if_flag: IDAWN, text: 'The watch-light still burns, out of habit. And under the clear green water beside the rock there\'s a much bigger glow, gold and steady, where the Farlamp lies burning on the sea-bed.' },
+    { op: 'narrate', unless_flag: IDAWN, text: 'So this is the blink you watched from the Point. Not the Farlamp: somebody keeps it lit, so anything lost in the fog has a light to steer by.' },
+    { op: 'narrate', if_flag: IDAWN, text: 'The watch-light still burns, out of habit. Under the water beside it glows the Farlamp, gold and steady on the sea-bed.' },
   ],
   'script.pickup_sound_stack': pickup('flag:picked_sound_stack',
     [{ op: 'giveItem', item: 'lumen_drop', count: 1 }],
-    'At the foot of the stack, under the gannets, a keeper\'s oilskin bundle with a sweet in it. Found a LUMEN DROP!'),
+    'Under the gannets, a keeper\'s oilskin bundle with a sweet in it. Found a LUMEN DROP!'),
   'script.pickup_sound_cove': pickup('flag:picked_sound_cove',
     [{ op: 'giveItem', item: 'hearth_coal', count: 1 }],
     'At the foot of the sea-cliff, a lamp-tender\'s tin, still dry inside. Found a HEARTH COAL!'),
@@ -261,7 +261,7 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     'Wedged in the rocks, a fog-bound keeper\'s satchel. Found 3 BRIGHT BALMS!'),
   'script.pickup_gull_spur': pickup('flag:picked_gull_spur',
     [{ op: 'giveItem', item: 'starglass_shard', count: 1 }],
-    'At the end of the gull walk, where the keepers stood to watch the arch, a shard of old starglass in a nest. Found a STARGLASS SHARD!'),
+    'At the end of the gull walk, a shard of old starglass in a nest. Found a STARGLASS SHARD!'),
   'script.pickup_gull_meadow': pickup('flag:picked_gull_meadow',
     [{ op: 'giveItem', item: 'bright_balm', count: 2 }],
     'In the long sea-grass, a keeper\'s forgotten kit-bag. Found 2 BRIGHT BALMS!'),
@@ -278,9 +278,9 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
     [{ op: 'giveItem', item: 'bright_balm', count: 1 }, { op: 'giveItem', item: 'beacon_charge', count: 1 }],
     'A shipwright\'s chest of spares. Found a BRIGHT BALM and a BEACON CHARGE!'),
   'script.gullwrack_hut_rest': [
-    { op: 'say', speaker: 'SORREL', text: 'A visitor! On Gullwrack! Sit down before the gulls take your hat. There\'s a cot and a fire, and the kettle\'s always on.' },
+    { op: 'say', speaker: 'SORREL', text: 'A visitor! Sit down before the gulls take your hat. The kettle\'s on.' },
     { op: 'heal' },
-    { op: 'say', speaker: 'SORREL', text: 'There. I keep the bothy for anyone who washes up. Eleven winters, and you\'re the first who washed up on purpose.' },
+    { op: 'say', speaker: 'SORREL', text: 'Eleven winters, and you\'re the first to wash up here on purpose.' },
   ],
 
   // ===========================================================================
@@ -288,17 +288,17 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   // ===========================================================================
   'script.driftholm_arrival': [
     { op: 'letterbox', on: true, ms: 400 },
-    { op: 'narrate', text: 'Your keel bumps the quay steps. Up and down the harbour, doors open. Lamps come to windows.' },
+    { op: 'narrate', text: 'Your keel bumps the quay steps. Doors open. Lamps come to windows.' },
     { op: 'say', speaker: 'LORNE', text: 'A boat. A BOAT. Out of the fog, with a lamp lit on its prow!' },
-    { op: 'say', speaker: 'BRAM', text: '...That\'s the Farlamp\'s lamp-boat. I\'d know her lines anywhere. My sister\'s been patching her for eleven winters, the stubborn old article.' },
+    { op: 'say', speaker: 'BRAM', text: '...That\'s the Farlamp\'s lamp-boat. I\'d know her lines anywhere. My sister\'s been patching her eleven winters, the stubborn old article.' },
     { op: 'emote', actor: 'bram', emote: 'heart' },
-    { op: 'say', speaker: 'BRAM', text: 'You\'d best see the elder, mainlander. Nan Creel. Blue door, south of the square. She\'ll want to know who\'s come, and what you\'ve brought.' },
+    { op: 'say', speaker: 'BRAM', text: 'See [[the elder, Nan Creel]], mainlander. [[Blue door, south of the square]].' },
     { op: 'letterbox', on: false, ms: 400 },
     { op: 'setFlag', flag: ARRIVED },
   ],
   'script.creel_well_locked': [
-    { op: 'narrate', text: 'The well-head is chained, and the chain sealed with old lamp-wax. Steps are cut into its side, going down into the dark. A tag hangs from the lock: OPEN BY THE ELDER\'S WORD.' },
-    { op: 'say', if_flag: ARRIVED, text: 'Nan Creel\'s house is the one with the blue door.' },
+    { op: 'narrate', text: 'The well-head is chained and sealed with lamp-wax. Steps go down into the dark. A tag: OPEN BY THE ELDER\'S WORD.' },
+    { op: 'say', if_flag: ARRIVED, text: '[[Nan Creel\'s house]] is the one with the blue door.' },
   ],
   // Return visits first (guarded on WELL), then the first visit (which SETS WELL),
   // so exactly one branch plays — and on a first visit her greeting comes before
@@ -319,18 +319,18 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   ],
   'script.nan_wellstair': [
     { op: 'say', speaker: 'NAN CREEL', text: 'So you\'re the boat. Sit, sit. I\'m too old to be surprised standing up.' },
-    { op: 'say', speaker: 'NAN CREEL', text: 'The night the dark came, the deep came up a fathom and took the Farlamp\'s rock. The lamp went down still burning. We watched it through the water for a week before it went out. The fog came in after, and never left.' },
-    { op: 'say', speaker: 'NAN CREEL', text: 'The old keepers cut a stair down from our well to the sea-caves under the isles. The Undertide. It runs all the way out to the lamp\'s rock. We sealed it when the water rose. Nobody had the light to go down.' },
+    { op: 'say', speaker: 'NAN CREEL', text: 'The night the dark came, the deep rose and took the Farlamp\'s rock. The lamp burned under the water a week, then went out. Then the fog came.' },
+    { op: 'say', speaker: 'NAN CREEL', text: 'A stair runs from our well down to the sea-caves, [[the Undertide]], and out to the lamp\'s rock. We sealed it. Nobody had the light to go down.' },
     { op: 'say', speaker: 'NAN CREEL', text: 'You have. I can see it on you. Here.' },
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'narrate', text: 'She presses a heavy iron key into your hand, worn smooth.' },
-    { op: 'say', speaker: 'NAN CREEL', text: 'Mind the bells down there. The keepers tuned the tides with them. And if the Farlamp can be lit again... light it. We\'d like to see the morning too.' },
+    { op: 'say', speaker: 'NAN CREEL', text: '[[Mind the bells]] down there: they tune the tides. And if the Farlamp can be lit... [[light it]]. We\'d like to see the morning too.' },
     { op: 'setFlag', flag: ARRIVED },
     { op: 'setFlag', flag: WELL },
   ],
   'script.nan_after': [
-    { op: 'say', speaker: 'NAN CREEL', unless_flag: IDAWN, text: 'The well-stair\'s open. Down, and out under the sea. Take a light you trust.' },
-    { op: 'say', speaker: 'NAN CREEL', if_flag: IDAWN, text: 'Look at it out there. Morning on the water. I\'d forgotten it moved like that.' },
+    { op: 'say', speaker: 'NAN CREEL', unless_flag: IDAWN, text: 'The well-stair\'s open. [[Down, and out under the sea]].' },
+    { op: 'say', speaker: 'NAN CREEL', if_flag: IDAWN, text: 'Morning on the water. I\'d forgotten it moved like that.' },
   ],
   // the Letters Home tally: nested guards = "all five home", then Nan's gift once
   'script.nan_letters_tally': [{ op: 'run', ref: 'script.nan_tally_2', if_flag: home(1) }],
@@ -339,8 +339,8 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   'script.nan_tally_4': [{ op: 'run', ref: 'script.nan_tally_5', if_flag: home(4) }],
   'script.nan_tally_5': [{ op: 'run', ref: 'script.nan_letters_gift', if_flag: home(5), unless_flag: LETTERS_DONE }],
   'script.nan_letters_gift': [
-    { op: 'say', speaker: 'NAN CREEL', text: 'All five letters home. Every one we threw, and you brought them back. Do you know, the whole island\'s been talking about nothing else?' },
-    { op: 'say', speaker: 'NAN CREEL', text: 'Take these. The chandlery minted them for the deep, and the first ones go to the one who brought our words home.' },
+    { op: 'say', speaker: 'NAN CREEL', text: 'All five letters home! The island talks of nothing else.' },
+    { op: 'say', speaker: 'NAN CREEL', text: 'Take these. The chandlery minted them for the deep.' },
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'deep_charm', count: 3 },
     { op: 'giveItem', item: 'lumen_drop', count: 1 },
@@ -350,46 +350,46 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
 
   // ---- Letters Home: each writer reads her or his own letter back ------------
   'script.letter_home_1': letterHome(1, 'MARRA', [
-    'That\'s... that\'s my letter to Ama. You found it. On the Dimglass strand? Then the current runs north after all. I always said it did.',
+    'That\'s my letter to Ama! On the Dimglass strand? Then the current runs north after all. I always said it did.',
     'Here. Kelp-wrapped, the way we pack them for the long boats.',
   ], [{ op: 'giveItem', item: 'bright_balm', count: 2 }], 'You got 2 BRIGHT BALMS!', [
-    { unless: IDAWN, text: 'We dry the kelp by lamplight now. Eleven winters of lamplight. It comes out grey, but it keeps.' },
+    { unless: IDAWN, text: 'Eleven winters drying kelp by lamplight. It comes out grey, but it keeps.' },
     { if: IDAWN, text: 'Kelp in the sun! It dries green again. I\'d forgotten it was ever green.' },
   ], [
-    { text: 'If you ever row past Pearlmoor, look for a lamp in a quay window. That\'s my sister. Ama.' },
+    { text: 'Row past Pearlmoor, look for a lamp in a quay window. That\'s my sister. Ama.' },
   ]),
   'script.letter_home_2': letterHome(2, 'LORNE', [
     'Oh, no. Is that the one I wrote to the Point? I was ELEVEN. I spelled "lighthouse" with two H\'s. Don\'t look at it.',
-    '...You found it on Gullcry Rock. Then somebody on the mainland might have seen our lamps after all. Here, have the good lamp-cells. I\'ve kept them for best.',
+    '...On Gullcry Rock? Then someone on the mainland might have seen our lamps. Have the good lamp-cells. I kept them for best.',
   ], [{ op: 'giveItem', item: 'beacon_charge', count: 3 }], 'You got 3 BEACON CHARGES!', [
-    { unless: IDAWN, text: 'Twelve lamps on the quay, and the watch-light out on the skerry, and I trim every one, every night. I pole out along the Teeth at dusk. Somebody has to, until the big one\'s lit.' },
-    { if: IDAWN, text: 'I trimmed the lamps this morning out of habit and then just stood there. They\'re not needed. Nan says that\'s the best kind of lamp.' },
+    { unless: IDAWN, text: 'Twelve quay lamps and the watch-light, and I trim every one, every night. Somebody has to, till the big one\'s lit.' },
+    { if: IDAWN, text: 'I trimmed the lamps this morning out of habit, then just stood there. Nan says an unneeded lamp is the best kind.' },
   ], [
-    { text: 'Your Old Light on the Point, the one we could see? Tell whoever keeps it that a lamp-boy said thank you.' },
+    { text: 'The Old Light on the Point? Tell its keeper a lamp-boy said thank you.' },
   ]),
   'script.letter_home_3': letterHome(3, 'MAUDIE', [
     'My register. You found my register! Wynn, Petra, Cass, Bree, Ottar, the twins... someone out there knew their names all this time.',
     'They\'re great lumps now, the lot of them. Please take this. A teacher\'s salary is mostly coal.',
   ], [{ op: 'giveItem', item: 'hearth_coal', count: 1 }], 'You got a HEARTH COAL!', [
-    { unless: IDAWN, text: 'We do our letters by lamplight. Ottar asked me once what the sun looked like, and I had to draw it on a slate.' },
+    { unless: IDAWN, text: 'Ottar asked me once what the sun looked like. I had to draw it on a slate.' },
     { if: IDAWN, text: 'School is cancelled. Nobody can sit still. I can\'t sit still. Look at the SEA.' },
   ], [
     { text: 'Ottar wants to be a lamp-keeper. Bram says he\'s too short. Bram said that about me too.' },
   ]),
   'script.letter_home_4': letterHome(4, 'HESK', [
-    'My kelp bread! The Glassmere? Inland? Then it went round the whole coast and up the fen. That bottle\'s seen more of Vesperholm than I have.',
+    'My kelp bread! The Glassmere? Then it went round the whole coast and up the fen. That bottle\'s seen more of Vesperholm than I have.',
     'Here. A mender gets paid in odd coin, but it all spends.',
   ], [{ op: 'giveMoney', amount: 1500 }], 'You got 1,500 WICKS!', [
-    { unless: IDAWN, text: 'Every net on Driftholm\'s been mended twice. Some of them three times. There\'s been nowhere to fish but the harbour.' },
-    { if: IDAWN, text: 'The boats are going out! The nets are going to tear on real fish. I\'ve never been so pleased about anything in my life.' },
+    { unless: IDAWN, text: 'Every net on Driftholm\'s been mended twice. Nowhere to fish but the harbour.' },
+    { if: IDAWN, text: 'The boats are going out! The nets will tear on real fish. I\'ve never been so pleased.' },
   ], [
-    { text: 'Did you try the bread? Hot stone, feet to the fire. It\'s the fire that makes it.' },
+    { text: 'Did you try the bread? Hot stone, feet to the fire. The fire makes it.' },
   ]),
   'script.letter_home_5': [
     { op: 'run', ref: 'script.letter_home_5_read', if_flag: letter(5), unless_flag: home(5) },
   ],
   'script.letter_home_5_read': [
-    { op: 'say', speaker: 'NAN CREEL', text: 'My own hand. "Send us a flame." I wrote that on the worst night of the first winter, and threw it as far as these arms would throw.' },
+    { op: 'say', speaker: 'NAN CREEL', text: 'My own hand. "Send us a flame." I threw that on the worst night of the first winter.' },
     { op: 'say', speaker: 'NAN CREEL', text: 'And here you are, with the flame. Well. Some letters take their time.' },
     { op: 'setFlag', flag: home(5) },
   ],
@@ -398,25 +398,25 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   // is the puzzle's hint; once the Bell Galleries are tuned she thanks you — the
   // Lumen Drop is in the ringers' tin down there, so no second prize up here) ----
   'script.driftholm_child': [
-    { op: 'say', speaker: 'OTTAR', unless_flag: 'flag:q_isles_bells_tuned', text: 'Mam says I\'m not to go past the quay lamps. She says the fog has teeth. Has it got teeth?' },
-    { op: 'say', speaker: 'OTTAR', unless_flag: 'flag:q_isles_bells_tuned', text: 'We skip to the old bells. "Deep calls, shoal answers, harbour brings them home!" Nobody\'s heard them ring in AGES.' },
-    { op: 'say', speaker: 'OTTAR', if_flag: 'flag:q_isles_bells_tuned', text: 'It was YOU! We heard the bells come up the well, deep and shoal and harbour, just like the rhyme. Gran cried. Thank you!' },
+    { op: 'say', speaker: 'OTTAR', unless_flag: 'flag:q_isles_bells_tuned', text: 'Mam says the fog has teeth. Has it got teeth?' },
+    { op: 'say', speaker: 'OTTAR', unless_flag: 'flag:q_isles_bells_tuned', text: 'We skip to the old bells: "[[Deep calls, shoal answers, harbour]] brings them home!"' },
+    { op: 'say', speaker: 'OTTAR', if_flag: 'flag:q_isles_bells_tuned', text: 'It was YOU! We heard the bells come up the well: deep, shoal, harbour! Gran cried. Thank you!' },
   ],
   'script.driftholm_child_day': [
-    { op: 'say', speaker: 'OTTAR', text: 'I can see ALL the way to the mainland! There\'s a lighthouse! And it\'s got a big brass face on it!' },
+    { op: 'say', speaker: 'OTTAR', text: 'I can see ALL the way to the mainland! There\'s a lighthouse with a brass face!' },
     { op: 'say', speaker: 'OTTAR', if_flag: 'flag:q_isles_bells_tuned', text: 'And the bells! Did you hear the bells this morning? Deep, shoal, harbour!' },
   ],
 
   // ---- Driftholm's counter, inn and keeper -----------------------------------
   'script.driftholm_chandler': [
-    { op: 'say', speaker: 'TESS CREEL', unless_flag: IDAWN, text: 'Creel and Daughter. I\'m the daughter. Mam\'s the elder, so the chandlery\'s mine. Balms, coals, lamp-cells. We\'ve plenty of lamp-cells.' },
-    { op: 'say', speaker: 'TESS CREEL', if_flag: IDAWN, text: 'Morning! Look at me, saying morning. New on the shelf: Deep Charms. A lamp-cell steeped in sea-light. Over open deep water it\'s worth three of anything else.' },
+    { op: 'say', speaker: 'TESS CREEL', unless_flag: IDAWN, text: 'Creel and Daughter. I\'m the daughter. Balms, coals, lamp-cells. Plenty of lamp-cells.' },
+    { op: 'say', speaker: 'TESS CREEL', if_flag: IDAWN, text: 'Morning! Look at me, saying morning. New: Deep Charms. Over deep water they\'re worth three of anything.' },
     { op: 'shop', shop: 'driftholm_chandlery' },
   ],
   'script.driftholm_inn_rest': [
-    { op: 'say', speaker: 'INNKEEPER', text: 'The Lamplighters\' Rest! There\'s a bed, a fire and a pot of kelp broth. You look like you need all three.' },
+    { op: 'say', speaker: 'INNKEEPER', text: 'The Lamplighters\' Rest! Bed, fire, kelp broth. You look like you need all three.' },
     { op: 'heal' },
-    { op: 'say', speaker: 'INNKEEPER', unless_flag: IDAWN, text: 'Slept well? Good. The fog\'s still out there, but it can wait till you\'ve had your breakfast.' },
+    { op: 'say', speaker: 'INNKEEPER', unless_flag: IDAWN, text: 'Slept well? The fog can wait till you\'ve had breakfast.' },
     { op: 'say', speaker: 'INNKEEPER', if_flag: IDAWN, text: 'Slept well? Sun\'s up. I keep saying it to people. Sun\'s up!' },
   ],
   'script.bram_fathom': [
@@ -429,16 +429,16 @@ export const FARLAMP_SCRIPTS: ScriptRegistry = {
   ],
   'script.bram_wait': [
     { op: 'say', speaker: 'BRAM', text: 'Bram Fathom. I kept the isles\' light beside the Farlamp, before the water took it. These days I keep the quay bell and a grudge.' },
-    { op: 'say', speaker: 'BRAM', unless_flag: 'flag:isles_dawn', text: 'Old Edda Marrow kept the Farlamp itself. Since the night it went down she sits with her back to the sea and won\'t speak of it. Her log stayed down there with the lamp.' },
-    { op: 'say', speaker: 'BRAM', if_flag: 'flag:isles_dawn', text: 'Edda went down the long stair this morning, first time in eleven winters, and came back up asking who\'d been at her log. I had to sit down on the quay.' },
-    { op: 'say', speaker: 'BRAM', unless_flag: ARRIVED, text: 'You came over in my sister\'s boat, didn\'t you? Ione. She always said she\'d finish it.' },
-    { op: 'say', speaker: 'BRAM', text: 'You want a battle? Not in the dark, mainlander. My kin fight best by a lit lamp. Light the Farlamp, and I\'ll give you the best bout on these isles.' },
+    { op: 'say', speaker: 'BRAM', unless_flag: 'flag:isles_dawn', text: 'Old Edda Marrow kept the Farlamp itself. She sits with her back to the sea now. Her log went down with the lamp.' },
+    { op: 'say', speaker: 'BRAM', if_flag: 'flag:isles_dawn', text: 'Edda went down the long stair this morning, first time in eleven winters. Came up asking who\'d been at her log!' },
+    { op: 'say', speaker: 'BRAM', unless_flag: ARRIVED, text: 'You came in my sister\'s boat? Ione always said she\'d finish it.' },
+    { op: 'say', speaker: 'BRAM', text: 'Not in the dark, mainlander. [[Light the Farlamp]], and I\'ll give you the best bout on these isles.' },
   ],
   'script.bram_challenge': [
     { op: 'say', speaker: 'BRAM', text: 'You lit it. You actually lit it. Look at that water, all gold to the horizon.' },
-    { op: 'say', speaker: 'BRAM', text: 'Right. A promise is a promise, and I\'ve been saving my best kin for eleven winters. Keeper\'s rules: no quarter, no regrets.' },
+    { op: 'say', speaker: 'BRAM', text: 'A promise is a promise. I\'ve saved my best kin eleven winters. No quarter, no regrets.' },
     { op: 'battle', trainer: 'bram_fathom' },
-    { op: 'say', speaker: 'BRAM', text: 'Ha! Beaten on my own quay, by daylight. Best thing that\'s happened to me in years. Come back whenever you like. I\'ll be training.' },
+    { op: 'say', speaker: 'BRAM', text: 'Ha! Beaten on my own quay, by daylight. Best thing in years. I\'ll be training.' },
     { op: 'setFlag', flag: KEEPER },
   ],
   'script.bram_rematch': [
@@ -554,52 +554,52 @@ Object.assign(FARLAMP_SCRIPTS, READS, {
 
 export const FARLAMP_DIALOGUE: DialogueRegistry = {
   'npc.bram_rematch_resting': [
-    { speaker: 'BRAM', text: 'Not yet, mainlander. My lot are still drying their fins. Win a few more out there ({remaining} to go) and I\'m yours.' },
+    { speaker: 'BRAM', text: 'My lot are still drying their fins. Win {remaining} more out there and I\'m yours.' },
   ],
   'sign.point_slip_end': [
-    { text: 'The slip runs down into black water. Past it the sea goes deep, far too deep to swim. Only a boat could cross here.' },
+    { text: 'The slip runs into black water, far too deep to swim. Only a boat could cross here.' },
   ],
   'sign.foot_slip_end': [
-    { text: 'An old launch slip, its planks green with weed. The deep starts a stone\'s throw out. Only a boat could cross here.' },
+    { text: 'An old launch slip, green with weed. Deep water a stone\'s throw out. Only a boat could cross.' },
   ],
   'sign.farlamp_sound': [
-    { text: 'FARLAMP SOUND. The lamp-road to the isles: keep the buoys to port and the Fogwall ahead. (Somebody has scratched underneath: "STILL HERE".)' },
+    { text: 'FARLAMP SOUND. Lamp-road to the isles: buoys to port, the Fogwall ahead. (Scratched underneath: "STILL HERE".)' },
   ],
   'sign.fogwall_warning': [
-    { text: 'TURN BACK IF YOU CANNOT SEE THE BUOYS. The keepers\' glass reads the lane. Without it, the fog will walk you in circles till you\'re home again.' },
+    { text: 'TURN BACK IF YOU CANNOT SEE THE BUOYS. Without the keepers\' glass, the fog walks you in circles.' },
   ],
   'sign.gullwrack_hut': [
     { text: 'GULLWRACK BOTHY. Fire lit. Kettle on. Knock loud, the gulls are louder.' },
   ],
   'sign.kelpcrown_ruins': [
-    { text: 'The old keepers\' quarter. Their names are cut in the lintel, worn almost smooth. Kelp grows in the doorways now.' },
+    { text: 'The old keepers\' quarter. Their names are worn almost smooth. Kelp grows in the doorways.' },
   ],
   'sign.driftholm': [
     { text: 'DRIFTHOLM. Keepers of the Farlamp. Mind the bell.' },
   ],
   'sign.driftholm_waystone': [
-    { text: 'A Driftholm lamp-stone, lit and humming. It knows the other waystones of Vesperholm. TRAVEL from the pause menu takes you home from here.' },
+    { text: 'A Driftholm lamp-stone, humming. [[TRAVEL]] from the pause menu takes you home.' },
   ],
   'sign.driftholm_schoolhouse': [
-    { speaker: 'MAUDIE', text: '(Through the door:) School\'s out! Find me in the square, or at the bottom of the lane.' },
+    { speaker: 'MAUDIE', text: '(Through the door:) School\'s out! Find me in the square.' },
   ],
   'sign.driftholm_cottage_marra': [
-    { text: 'The door\'s on the latch. Kelp hangs drying from the lintel, and the house smells of salt and smoke.' },
+    { text: 'The door\'s on the latch. Kelp dries on the lintel. Salt and smoke.' },
   ],
   'sign.driftholm_cottage_hesk': [
-    { text: 'Nets, nets and more nets, heaped against the door. Somebody inside is mending them.' },
+    { text: 'Nets heaped against the door. Somebody inside is mending them.' },
   ],
   'sign.driftholm_inn': [
-    { text: 'THE LAMPLIGHTERS\' REST. Broth on the fire. Beds by the night or the week. No credit for mainlanders. (There have been no mainlanders.)' },
+    { text: 'THE LAMPLIGHTERS\' REST. Broth on the fire. No credit for mainlanders. (There have been no mainlanders.)' },
   ],
   'sign.driftholm_chandlery': [
-    { text: 'A board of hooks and floats, ropes priced by the fathom, and a jar marked SPARE WICKS, DON\'T ASK.' },
+    { text: 'Hooks, floats, rope by the fathom, and a jar: SPARE WICKS, DON\'T ASK.' },
   ],
   'sign.driftholm_elder_shelf': [
     { text: 'Eleven years of tide-books, one for every winter. The last one is half full.' },
   ],
   'sign.driftholm_boathouse_hull': [
-    { text: 'A boat on the stocks, half-built. Its maker stopped the year the fog came in, with nowhere to sail it.' },
+    { text: 'A boat on the stocks, half-built. Its maker stopped when the fog came.' },
   ],
   'sign.gullwrack_hut_log': [
     { text: 'The bothy log. "Day 4,016. Fog. Gulls. Kettle." "Day 4,017. Fog. Gulls. Kettle." The keeper has a steady hand.' },
@@ -608,27 +608,27 @@ export const FARLAMP_DIALOGUE: DialogueRegistry = {
     { speaker: 'CALDER', text: 'I\'m going to build a boat like yours. With a lamp on it. Twice the size.' },
   ],
   'npc.shelf_salvager_after': [
-    { speaker: 'DUNSTAN', text: 'When the fog lifts, her stern-post goes home to Driftholm. A lintel over the schoolhouse door, I think. Children like a door with a story in it.' },
+    { speaker: 'DUNSTAN', text: 'Her stern-post goes home as the schoolhouse lintel. Children like a door with a story.' },
   ],
   'npc.fog_pilot_after': [
-    { speaker: 'WILLA', text: 'I\'m drawing her lines for Dad. He\'ll want to know she\'s still sitting up proud.' },
+    { speaker: 'WILLA', text: 'I\'m drawing her lines for Dad. He\'ll want to know she still sits proud.' },
   ],
   'npc.shelf_kelper_after': [
-    { speaker: 'ROWAN', text: 'Eleven winters of kelp and I still like it. Mostly. When the fog lifts I\'m rowing home with a boatload for every table in Driftholm.' },
+    { speaker: 'ROWAN', text: 'Eleven winters of kelp and I still like it. Mostly.' },
   ],
   'npc.driftholm_kelper': [
-    { text: 'Eleven winters of kelp by lamplight. You get so you can tell the good fronds by feel.' },
+    { text: 'Eleven winters of kelp. You can tell good fronds by feel.' },
   ],
   'npc.driftholm_cat': [
-    { text: 'The cat watches the harbour with enormous patience. It has been waiting for fishing boats for most of its life.' },
+    { text: 'The cat watches the harbour with enormous patience, waiting for fishing boats.' },
   ],
   'npc.driftholm_inn_fisher': [
-    { speaker: 'FISHER', text: 'Haven\'t fished past the harbour mouth since the fog came. Too easy to lose your way and row into the deep.' },
+    { speaker: 'FISHER', text: 'No fishing past the harbour mouth since the fog. Too easy to row into the deep.' },
   ],
   'npc.driftholm_inn_fisher_day': [
-    { speaker: 'FISHER', text: 'Went out past the mouth this morning! Caught nothing at all. Best day\'s fishing of my life.' },
+    { speaker: 'FISHER', text: 'Out past the mouth this morning! Caught nothing. Best day\'s fishing of my life.' },
   ],
   'npc.driftholm_apprentice': [
-    { speaker: 'APPRENTICE', text: 'Master Fathom started that one before I was born. I\'m going to finish her. Mister Bram says I can, if I learn to plane straight.' },
+    { speaker: 'APPRENTICE', text: 'Master Fathom started her before I was born. I\'ll finish her, if I learn to plane straight.' },
   ],
 };

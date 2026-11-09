@@ -39,7 +39,7 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
   'script.school_types': [
     {
       op: 'say', unless_flag: VISITED, speaker: HEAD,
-      text: 'Welcome to the Wickstead Lamp-school, {name}! Every Wayfarer in the South has sat at these desks. Old ones come back, too — nobody remembers everything.',
+      text: 'Welcome to the Lamp-school, {name}! Every Wayfarer sat at these desks once.',
     },
     {
       op: 'say', if_flag: VISITED, speaker: HEAD,
@@ -54,41 +54,39 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
         {
           label: 'THE TEN TYPES',
           ops: [
-            { op: 'say', speaker: HEAD, text: 'Every kin carries one or two of ten types. Eight are the constellation elements: Ember, Tide, Verdant, Stone, Storm, Frost, Solar and Lunar.' },
-            { op: 'say', speaker: HEAD, text: 'The last two are older than any constellation: Light and Dark.' },
-            { op: 'say', speaker: HEAD, text: 'Every move has a type too. A move of the kin\'s OWN type hits half again as hard — so a fire-kin\'s Ember moves burn brightest.' },
-            { op: 'say', speaker: HEAD, text: 'Plain moves belong to no type at all. They never hit harder, and never softer — a fair blow against anyone.' },
+            { op: 'say', speaker: HEAD, text: 'Kin carry one or two of [[ten types]]: Ember, Tide, Verdant, Stone, Storm, Frost, Solar, Lunar — and the older Light and Dark.' },
+            { op: 'say', speaker: HEAD, text: 'A move of the kin\'s [[OWN type]] hits half again as hard.' },
+            { op: 'say', speaker: HEAD, text: 'Plain moves have no type: a fair blow against anyone.' },
           ],
         },
         {
           label: 'MATCHUPS',
           ops: [
-            { op: 'say', speaker: HEAD, text: 'Some types hit others twice as hard. Some only half as hard. And a very few do nothing at all.' },
-            { op: 'say', speaker: HEAD, text: 'Ember burns Verdant and Frost — but Tide, Stone and Solar shrug it off. Tide douses Ember and wears down Stone. Verdant drinks up Tide and cracks Stone.' },
-            { op: 'say', speaker: HEAD, text: 'So the three starter elements go round like a wheel: Ember beats Verdant, Verdant beats Tide, Tide beats Ember.' },
-            { op: 'say', speaker: HEAD, text: 'And mind Storm: it strikes Tide, Verdant and Solar — but against Stone it has no effect whatsoever.' },
-            { op: 'say', speaker: HEAD, text: 'In battle, listen to your lamp. It will tell you "It\'s super effective!", "It\'s not very effective..." or "It had no effect...".' },
+            { op: 'say', speaker: HEAD, text: 'Some types hit others [[twice as hard]], some half as hard — and a few not at all.' },
+            { op: 'say', speaker: HEAD, text: 'Ember burns Verdant and Frost, but Tide and Stone shrug it off. Tide douses Ember and Stone. Verdant drinks Tide and cracks Stone.' },
+            { op: 'say', speaker: HEAD, text: 'Starters go round like a wheel: Ember beats Verdant beats Tide beats Ember.' },
+            { op: 'say', speaker: HEAD, text: 'Mind Storm: it strikes Tide, Verdant and Solar, but can\'t touch Stone.' },
+            { op: 'say', speaker: HEAD, text: 'In battle, [[listen to your lamp]]: it says how well each move landed.' },
           ],
         },
         {
           label: 'THE MIRRORS',
           ops: [
-            { op: 'say', speaker: HEAD, text: 'Two pairs of types are MIRRORS: Solar and Lunar, Light and Dark. Each hits its mirror twice as hard — and is hit twice as hard back.' },
-            { op: 'say', speaker: HEAD, text: 'So Solar against Lunar is a race. Whoever lands the first good blow usually wins it.' },
-            { op: 'say', speaker: HEAD, text: 'One catch: Lunar moves do nothing at all to Dark. The moon cannot find what hides in the dark — and Dark hits Lunar hard besides.' },
+            { op: 'say', speaker: HEAD, text: 'Solar and Lunar, Light and Dark are [[MIRRORS]]: each hits the other twice as hard.' },
+            { op: 'say', speaker: HEAD, text: 'So Solar against Lunar is a race: the first good blow usually wins.' },
+            { op: 'say', speaker: HEAD, text: 'But Lunar can\'t touch Dark. The moon can\'t find what hides there.' },
           ],
         },
         {
           label: 'TWO TYPES',
           ops: [
-            { op: 'say', speaker: HEAD, text: 'Plenty of kin carry two types. Then BOTH count, multiplied together.' },
-            { op: 'say', speaker: HEAD, text: 'A move strong against both hits four times as hard. Strong against one and weak against the other? It comes out even.' },
-            { op: 'say', speaker: HEAD, text: 'You\'ll find a kin\'s types on its card under KIN. I\'ve chalked the main matchups on the board, too — have a read.' },
+            { op: 'say', speaker: HEAD, text: 'Two types? [[Multiply them]]. Strong against both: four times. One each way: even.' },
+            { op: 'say', speaker: HEAD, text: 'Types are on each kin\'s card under [[KIN]]. Matchups are chalked on the board.' },
           ],
         },
         {
           label: 'THAT\'S ALL',
-          ops: [{ op: 'say', speaker: HEAD, text: 'Off you go, then. And bring back your homework: a fuller REGISTER than you left with!' }],
+          ops: [{ op: 'say', speaker: HEAD, text: 'Off you go. Homework: a fuller REGISTER than you came in with!' }],
         },
       ],
     },
@@ -105,33 +103,33 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
         {
           label: 'THE THROW',
           ops: [
-            { op: 'say', speaker: TOLLY, text: 'Your vesperlamp doesn\'t trap a kin — it offers its light somewhere warm to rest. In a wild battle, choose LAMP. A PLAIN THROW is free, and never runs out.' },
-            { op: 'say', speaker: TOLLY, text: 'The lamp shakes... and either it settles, or the kin pops back out. Then you try again.' },
-            { op: 'say', speaker: TOLLY, text: 'Only WILD kin, mind. Another Wayfarer\'s kin are spoken for — there\'s no LAMP in a trainer\'s bout.' },
-            { op: 'say', speaker: TOLLY, text: 'And a catch teaches your kin as much as a win would. Collecting never costs you levels.' },
+            { op: 'say', speaker: TOLLY, text: 'Choose [[LAMP]] in a wild battle. A PLAIN THROW is always free.' },
+            { op: 'say', speaker: TOLLY, text: 'The lamp shakes... then settles, or the kin pops out and you try again.' },
+            { op: 'say', speaker: TOLLY, text: 'Only WILD kin, mind. No LAMP in a trainer\'s bout — those kin are spoken for.' },
+            { op: 'say', speaker: TOLLY, text: 'And a catch teaches your kin as much as a win.' },
           ],
         },
         {
           label: 'WEAKEN FIRST',
           ops: [
-            { op: 'say', speaker: TOLLY, text: 'A kin at full health is hard to coax — about a third as easy as one that\'s nearly spent. Wear it down to the red first, gently, then throw.' },
-            { op: 'say', speaker: TOLLY, text: 'Don\'t knock it out, though. A fainted kin has nothing left to catch.' },
-            { op: 'say', speaker: TOLLY, text: 'A status helps too. Dozing or chilled kin are easiest of all; any other trouble helps a little. Old Quennell by the lamps can tell you about those.' },
+            { op: 'say', speaker: TOLLY, text: '[[Wear it down to the red]], gently, then throw. Full health is hard to coax.' },
+            { op: 'say', speaker: TOLLY, text: 'Don\'t knock it out, though. A fainted kin can\'t be caught.' },
+            { op: 'say', speaker: TOLLY, text: 'A status helps too. Old Quennell by the lamps knows his troubles.' },
           ],
         },
         {
           label: 'CHARGES',
           ops: [
-            { op: 'say', speaker: TOLLY, text: 'Charges are one-throw boosts for your lamp. When you choose LAMP with charges in your pack, you can pick one instead of a PLAIN THROW.' },
-            { op: 'say', speaker: TOLLY, text: 'A GLOW CHARGE makes a throw half again as likely — 200 wicks at a general store. A BEACON CHARGE is two and a half times as good, 600 wicks; Tinderwick stocks them once you\'ve a Gleam.' },
-            { op: 'say', speaker: TOLLY, text: 'Folk on the road give out rarer charms for special kin. Read their labels — some only work in the right place.' },
+            { op: 'say', speaker: TOLLY, text: '[[Charges]] boost one throw. Choose LAMP and pick one instead of a PLAIN THROW.' },
+            { op: 'say', speaker: TOLLY, text: 'GLOW CHARGE, 200 wicks: half again as good. BEACON, 600: two and a half times — Tinderwick sells those once you\'ve a Gleam.' },
+            { op: 'say', speaker: TOLLY, text: 'Rarer charms come from folk on the road. Read the labels.' },
           ],
         },
         {
           label: 'A FULL LAMP',
           ops: [
-            { op: 'say', speaker: TOLLY, text: 'Your lamp carries six kin at most. Catch a seventh and it doesn\'t vanish — it goes straight to the Hearth to rest.' },
-            { op: 'say', speaker: TOLLY, text: 'The Hearthkeeper\'s in the nook by the fire today. Ask her about it.' },
+            { op: 'say', speaker: TOLLY, text: 'Your lamp holds [[six kin]]. A seventh catch goes to the Hearth.' },
+            { op: 'say', speaker: TOLLY, text: 'The Hearthkeeper\'s by the fire today. Ask her.' },
           ],
         },
         {
@@ -147,7 +145,7 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: VISITED },
     {
       op: 'say', speaker: QUENNELL,
-      text: 'Seven troubles can settle on a kin. Only one at a time, mind — a kin that\'s already troubled can\'t catch a second.',
+      text: '[[Seven troubles]] can settle on a kin — only one at a time, mind.',
     },
     {
       op: 'choice',
@@ -157,36 +155,36 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
         {
           label: 'SCORCH & BLIGHT',
           ops: [
-            { op: 'say', speaker: QUENNELL, text: 'SCORCH is a burn: it nibbles a little health every turn, and halves the kin\'s physical attacks.' },
-            { op: 'say', speaker: QUENNELL, text: 'BLIGHT creeps: a little harm the first turn, more the next, more again the longer it lingers. Swap the kin out and it starts small again.' },
+            { op: 'say', speaker: QUENNELL, text: 'SCORCH burns: a nibble of health each turn, and physical attacks halved.' },
+            { op: 'say', speaker: QUENNELL, text: 'BLIGHT creeps: worse each turn it lingers. Swap the kin out to reset it.' },
           ],
         },
         {
           label: 'DRENCH & NUMB',
           ops: [
-            { op: 'say', speaker: QUENNELL, text: 'DRENCH soaks a kin through: it\'s slowed, and one turn in four its action fizzles out.' },
-            { op: 'say', speaker: QUENNELL, text: 'NUMB is a stinging jolt: slowed as well, and one turn in four it simply can\'t move.' },
+            { op: 'say', speaker: QUENNELL, text: 'DRENCH soaks: slowed, and one turn in four its action fizzles.' },
+            { op: 'say', speaker: QUENNELL, text: 'NUMB stings: slowed too, and one turn in four it can\'t move.' },
           ],
         },
         {
           label: 'DOZE & CHILL',
           ops: [
             { op: 'say', speaker: QUENNELL, text: 'DOZE puts a kin to sleep for one to three turns.' },
-            { op: 'say', speaker: QUENNELL, text: 'CHILL freezes it stiff: no moves at all until it thaws — a small chance each turn, or at once if an Ember move hits it.' },
-            { op: 'say', speaker: QUENNELL, text: 'A dozing or chilled wild kin is the easiest of all to lamp. Remember that.' },
+            { op: 'say', speaker: QUENNELL, text: 'CHILL freezes it stiff till it thaws — sooner if an Ember move hits it.' },
+            { op: 'say', speaker: QUENNELL, text: 'A dozing or chilled wild kin is the [[easiest to lamp]]. Remember that.' },
           ],
         },
         {
           label: 'DAZZLE',
           ops: [
-            { op: 'say', speaker: QUENNELL, text: 'DAZZLE leaves a kin muddled and seeing stars. A third of the time it hurts itself instead of doing as it\'s told.' },
+            { op: 'say', speaker: QUENNELL, text: 'DAZZLE leaves a kin seeing stars. A third of the time it hurts itself instead.' },
           ],
         },
         {
           label: 'CURING',
           ops: [
-            { op: 'say', speaker: QUENNELL, text: 'Troubles don\'t end with the battle. A scorched kin stays scorched on the road, until it rests.' },
-            { op: 'say', speaker: QUENNELL, text: 'A good night\'s rest cures every one — your own bed, an inn, any rest point. Master Mallow by the cot knows all about resting. A few kin know a cleansing move, too.' },
+            { op: 'say', speaker: QUENNELL, text: 'Troubles outlast the battle — until the kin rests.' },
+            { op: 'say', speaker: QUENNELL, text: 'A [[good rest]] cures them all — bed, inn, any rest point. Ask Mallow.' },
           ],
         },
         {
@@ -208,27 +206,26 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
         {
           label: 'KINDLING',
           ops: [
-            { op: 'say', speaker: FERNLY, text: 'When a kin has taken on enough light, it KINDLES — it blazes up into a brighter, stronger form.' },
-            { op: 'say', speaker: FERNLY, text: 'Most kindle at a certain level. A Tallowpup at level 14, say, or a Wickmoth at 18.' },
-            { op: 'say', speaker: FERNLY, text: 'When the moment comes, you\'ll be asked. Say "not yet" and it will ask again at the next level — some folk like their kin small a while longer.' },
+            { op: 'say', speaker: FERNLY, text: 'Take on enough light and a kin [[KINDLES]] into a brighter, stronger form.' },
+            { op: 'say', speaker: FERNLY, text: 'Most kindle at a set level: a Tallowpup at 14, a Wickmoth at 18.' },
+            { op: 'say', speaker: FERNLY, text: 'You\'ll be asked. Say "not yet" and it asks again next level.' },
           ],
         },
         {
           label: 'NEW MOVES',
           ops: [
-            { op: 'say', speaker: FERNLY, text: 'Kin learn new moves as they grow. A kin can hold four moves at most.' },
-            { op: 'say', speaker: FERNLY, text: 'To learn a fifth it must forget one — you choose which, or give up the new move and keep the four it has.' },
-            { op: 'say', speaker: FERNLY, text: 'Star-charts can teach a move, too. Bunce at the tuck-shop outside will tell you about those.' },
+            { op: 'say', speaker: FERNLY, text: 'Kin hold [[four moves]]. To learn a fifth, forget one — or skip it.' },
+            { op: 'say', speaker: FERNLY, text: 'Star-charts teach moves too. Ask Bunce at the tuck-shop outside.' },
           ],
         },
         {
           label: 'BOND',
           ops: [
-            { op: 'say', speaker: FERNLY, text: 'BOND is how much a kin trusts you. Win a battle or make a catch, and every kin still standing at the end grows a little closer.' },
-            { op: 'say', speaker: FERNLY, text: 'Tending a kin with a balm from your ITEMS warms it a little, too.' },
-            { op: 'say', speaker: FERNLY, text: 'Look on a kin\'s card under KIN: NEW, then WARM, CLOSE... and KINDRED.' },
-            { op: 'say', speaker: FERNLY, text: 'A few kin won\'t kindle by level at all — only once the bond runs that deep. A Hearthkit is one.' },
-            { op: 'say', speaker: FERNLY, text: 'Bond never makes a kin hit harder, mind. It isn\'t that sort of thing.' },
+            { op: 'say', speaker: FERNLY, text: '[[BOND]] is trust. Win or catch, and every kin still standing grows closer.' },
+            { op: 'say', speaker: FERNLY, text: 'Tending one with a balm from ITEMS warms it too.' },
+            { op: 'say', speaker: FERNLY, text: 'Its card under KIN shows it: NEW, WARM, CLOSE... KINDRED.' },
+            { op: 'say', speaker: FERNLY, text: 'A few, like the Hearthkit, kindle only once the bond runs that deep.' },
+            { op: 'say', speaker: FERNLY, text: 'Bond never makes a kin hit harder. It isn\'t that sort of thing.' },
           ],
         },
         {
@@ -244,7 +241,7 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: VISITED },
     {
       op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'warm',
-      text: 'Hello, pet. I keep the Hearth — the warm keep where kin rest when they aren\'t travelling in your lamp. The school\'s borrowed me to explain it. Sit by the fire.',
+      text: 'Hello, pet. I keep the Hearth, where kin rest. Sit by the fire.',
     },
     {
       op: 'choice',
@@ -254,23 +251,23 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
         {
           label: 'THE HEARTH',
           ops: [
-            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'neutral', text: 'Your vesperlamp carries six kin. Every other friend you make rests at my Hearth, safe and warm, for as long as you like. Nothing you befriend is ever lost.' },
-            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'warm', text: 'And it\'s never far. Your lamp\'s light runs all the way home to my fire, so you can reach the Hearth from anywhere at all.' },
+            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'neutral', text: 'Past six, friends rest at my Hearth. None is ever lost.' },
+            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'warm', text: 'You can [[reach the Hearth]] from anywhere at all.' },
           ],
         },
         {
           label: 'A FULL LAMP',
           ops: [
-            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'neutral', text: 'Catch a kin with six already in your lamp, and it comes straight to me. No fuss, no choosing in the middle of the grass.' },
-            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'warm', text: 'So never fear a full lamp. A full lamp just means the next friend waits by the fire.' },
+            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'neutral', text: 'Catch one with six in your lamp and it comes straight to me.' },
+            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'warm', text: 'A full lamp just means the next friend waits by the fire.' },
           ],
         },
         {
           label: 'MOVING KIN',
           ops: [
-            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'neutral', text: 'Open your menu — START, or Esc — and choose HEARTH. Every kin you own is listed: a lit mark for those in your lamp, a dim one for those resting with me.' },
-            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'neutral', text: 'Pick one of your lamp kin to DEPOSIT it here. Pick a resting one to WITHDRAW it. Keep at least one at your side, and no more than six.' },
-            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'warm', text: 'An old keeper\'s tip: before a big fight, bring the right types to your side. The others won\'t mind a sit by the fire.' },
+            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'neutral', text: 'Press [[START]] and choose [[HEARTH]]. Lit kin travel; dim ones rest.' },
+            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'neutral', text: 'DEPOSIT or WITHDRAW. Keep one to six with you.' },
+            { op: 'say', speaker: KEEPER, portrait: 'hearthkeeper', expr: 'warm', text: 'Before a big fight, bring the right types. The rest love the fire.' },
           ],
         },
         {
@@ -292,30 +289,30 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
         {
           label: 'A GOOD REST',
           ops: [
-            { op: 'say', speaker: MALLOW, text: 'A proper rest heals every kin in your lamp: health back, troubles gone, every move topped up.' },
-            { op: 'say', speaker: MALLOW, text: 'Your own bed at home does it. So does any inn, and a few kind souls along the road.' },
+            { op: 'say', speaker: MALLOW, text: 'A [[proper rest]] heals your lamp: health, troubles, every move topped up.' },
+            { op: 'say', speaker: MALLOW, text: 'Your bed at home, any inn, a few kind souls on the road.' },
           ],
         },
         {
           label: 'REST POINTS',
           ops: [
-            { op: 'say', speaker: MALLOW, text: 'Every place you rest is remembered. Lost, or a long way from a bed? Open SETTINGS and choose "Return to rest point".' },
-            { op: 'say', speaker: MALLOW, text: 'Your lamp will walk you back to any of them. Nobody needs to be lost for long.' },
+            { op: 'say', speaker: MALLOW, text: 'Lost? Open SETTINGS and choose [["Return to rest point"]].' },
+            { op: 'say', speaker: MALLOW, text: 'Your lamp walks you back. Nobody stays lost long.' },
           ],
         },
         {
           label: 'IF YOU FALL',
           ops: [
-            { op: 'say', speaker: MALLOW, text: 'If every kin in your lamp faints, a kind light carries you all back to the last place you rested. It keeps a tithe for the trouble — a tenth of your wicks, never more than a modest sum, less each time the same foe beats you again, and never your last few.' },
-            { op: 'say', speaker: MALLOW, text: 'And if you\'d rather never fall at all, SETTINGS has a "Cannot die" switch. No shame in it. The road\'s long enough.' },
+            { op: 'say', speaker: MALLOW, text: 'Lose every kin and you wake at your [[last rest point]], a few wicks lighter.' },
+            { op: 'say', speaker: MALLOW, text: 'Rather never fall? SETTINGS has a "Cannot die" switch. No shame in it.' },
           ],
         },
         {
           label: 'A LIE-DOWN',
           ops: [
-            { op: 'say', speaker: MALLOW, text: 'Go on, then — the cot\'s clean. Rest a while; I\'ll mind the lamp.' },
+            { op: 'say', speaker: MALLOW, text: 'The cot\'s clean. Rest a while; I\'ll mind the lamp.' },
             { op: 'heal' },
-            { op: 'say', speaker: MALLOW, text: 'There. Right as rain. And the school\'s a rest point of yours now, too.' },
+            { op: 'say', speaker: MALLOW, text: 'Right as rain. The school\'s one of your rest points now.' },
           ],
         },
         {
@@ -337,29 +334,29 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
         {
           label: 'WICKS',
           ops: [
-            { op: 'say', speaker: BUNCE, text: 'Wicks are coin: waxed lamp-wicks, brass-capped and bundled. Win a fair bout against a trainer — a road-trainer, a rival, a Lampwarden — and they\'ll pay you for it.' },
-            { op: 'say', speaker: BUNCE, text: 'Wild kin don\'t carry purses. But folk drop them, in out-of-the-way corners. Keep your eyes open.' },
+            { op: 'say', speaker: BUNCE, text: 'Wicks are coin. [[Beat a trainer]] in a fair bout and they\'ll pay you.' },
+            { op: 'say', speaker: BUNCE, text: 'Wild kin carry no purses, but folk drop them in odd corners. Eyes open.' },
           ],
         },
         {
           label: 'SHOPS',
           ops: [
-            { op: 'say', speaker: BUNCE, text: 'Every town has a counter. Talk to the keeper, choose BUY, and pick your stock: balms to mend kin, charges for your lamp.' },
-            { op: 'say', speaker: BUNCE, text: 'Shops put out better stock as you earn Gleams, so look in again after each one.' },
+            { op: 'say', speaker: BUNCE, text: 'Talk to a town\'s keeper and choose [[BUY]]: balms for kin, charges for your lamp.' },
+            { op: 'say', speaker: BUNCE, text: 'Stock improves with each Gleam, so look in again.' },
           ],
         },
         {
           label: 'SELLING',
           ops: [
-            { op: 'say', speaker: BUNCE, text: 'Choose SELL at any counter and you\'ll get half what a thing costs new.' },
-            { op: 'say', speaker: BUNCE, text: 'Some finds — pearls, odd stones — are worth a great deal and good for nothing else. Key things and quest charms never go on the counter, so you can\'t sell those by accident.' },
+            { op: 'say', speaker: BUNCE, text: 'Choose [[SELL]] at any counter for half the new price.' },
+            { op: 'say', speaker: BUNCE, text: 'Pearls and odd stones fetch a lot. Key things can\'t be sold — no accidents.' },
           ],
         },
         {
           label: 'STAR-CHARTS',
           ops: [
-            { op: 'say', speaker: BUNCE, text: 'A Star-chart is a pressed chart of one little constellation. A kin that studies it learns a move — and the chart burns out. One use.' },
-            { op: 'say', speaker: BUNCE, text: 'It has to suit the kin: the move shares one of its types, or it\'s a Plain move anyone can learn, or it\'s one the kin would learn anyway. Use it from your ITEMS.' },
+            { op: 'say', speaker: BUNCE, text: 'A [[Star-chart]] teaches a kin one move, then burns out.' },
+            { op: 'say', speaker: BUNCE, text: 'It must suit the kin: its type, Plain, or its own. Use it from [[ITEMS]].' },
           ],
         },
         {
@@ -381,24 +378,24 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
         {
           label: 'LANTERN GIFTS',
           ops: [
-            { op: 'say', speaker: ESK, text: 'When a Lampwarden relights their constellation, some teach you a knack with your lamp as well: a LANTERN GIFT.' },
-            { op: 'say', speaker: ESK, text: 'Each Gift opens ground you couldn\'t walk before. Six of them, all told — night-water, woods too dark to enter, cold fog, and stranger things.' },
+            { op: 'say', speaker: ESK, text: 'Some Lampwardens teach your lamp a knack: a [[LANTERN GIFT]].' },
+            { op: 'say', speaker: ESK, text: 'Six in all, each opening new ground — night-water, dark woods, cold fog...' },
           ],
         },
         {
           label: 'THIS POND',
           ops: [
             { op: 'face', actor: 'teacher_gifts', facing: 'left' },
-            { op: 'say', speaker: ESK, text: 'See this pond? Night-water. Step in now and you\'d sink to your ears.' },
-            { op: 'say', speaker: ESK, text: 'With TIDECALL — the Gift of Pearlmoor\'s Lampwarden — the moon-tide answers your lamp, and you can cross water like this.' },
-            { op: 'say', speaker: ESK, text: 'So remember the places you couldn\'t reach. Come back with the right Gift and they\'ll be waiting, every one.' },
+            { op: 'say', speaker: ESK, text: 'This pond\'s night-water. Step in now and you\'d sink to your ears.' },
+            { op: 'say', speaker: ESK, text: 'With [[TIDECALL]], Pearlmoor\'s Gift, the moon-tide carries you across.' },
+            { op: 'say', speaker: ESK, text: 'Remember the [[places you couldn\'t reach]]. Come back with the right Gift.' },
           ],
         },
         {
           label: 'LAMPLIGHT',
           ops: [
-            { op: 'say', speaker: ESK, text: 'Your vesperlamp grows brighter with every Gleam you earn. A brighter lamp shows more in dark places: tucked-away paths, hidden things.' },
-            { op: 'say', speaker: ESK, text: 'It never bars your way, mind. It only rewards the curious.' },
+            { op: 'say', speaker: ESK, text: 'Each Gleam brightens your lamp, showing hidden paths in dark places.' },
+            { op: 'say', speaker: ESK, text: 'It never bars your way. It only rewards the curious.' },
           ],
         },
         {
@@ -415,38 +412,38 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
     {
       op: 'choice',
       speaker: ODO,
-      prompt: 'I\'m rubbish at sums but I know my menu. Press START — or Esc! What d\'you want?',
+      prompt: 'I\'m rubbish at sums but I know my menu. Press [[START or Esc]]! What d\'you want?',
       options: [
         {
           label: 'JOURNAL',
           ops: [
-            { op: 'say', speaker: ODO, text: 'JOURNAL keeps your quests. The Wayfaring\'s at the top — where your next Gleam is — and every errand folk have asked of you, ticked off as you go.' },
+            { op: 'say', speaker: ODO, text: '[[JOURNAL]] keeps your quests: the Wayfaring on top, then every errand.' },
           ],
         },
         {
           label: 'MAP',
           ops: [
-            { op: 'say', speaker: ODO, text: 'MAP shows all of Vesperholm, with a blinking dot for you. Hop between places with the arrows to see their names.' },
+            { op: 'say', speaker: ODO, text: 'MAP shows Vesperholm, with a blinking dot for you. Arrows hop between places.' },
           ],
         },
         {
           label: 'LORE',
           ops: [
-            { op: 'say', speaker: ODO, text: 'LORE\'s a little book of words: Gleam, Lumenary, the Hearth, all that. New words fill in as you learn them. I read it under the covers.' },
+            { op: 'say', speaker: ODO, text: 'LORE\'s a book of words that fills in as you learn. I read it under the covers.' },
           ],
         },
         {
           label: 'REGISTER',
           ops: [
-            { op: 'say', speaker: ODO, text: 'REGISTER is every kin you\'ve seen and caught. The ones you\'ve only seen are just shadows till they\'re yours.' },
-            { op: 'say', speaker: ODO, text: 'And CHARTS collects pictures of places — the first time you set foot somewhere new, you get its picture.' },
+            { op: 'say', speaker: ODO, text: 'REGISTER is every kin you\'ve seen and caught. Seen-only ones are shadows.' },
+            { op: 'say', speaker: ODO, text: 'CHARTS collects a picture of each new place you set foot in.' },
           ],
         },
         {
           label: 'SAVING',
           ops: [
-            { op: 'say', speaker: ODO, text: 'SAVE writes your journey down. SETTINGS has "Backup / restore" to keep a copy somewhere safe.' },
-            { op: 'say', speaker: ODO, text: 'And if you\'re ever stuck, there\'s a man called Andrew on a fence in nearly every town. He always knows where you ought to be going.' },
+            { op: 'say', speaker: ODO, text: '[[SAVE]] writes your journey down. SETTINGS has "Backup / restore" for a safe copy.' },
+            { op: 'say', speaker: ODO, text: 'Stuck? [[Andrew]] sits on a fence in nearly every town. He always knows the way.' },
           ],
         },
         {
@@ -461,39 +458,37 @@ export const SCHOOL_SCRIPTS: ScriptRegistry = {
   'script.pickup_school_lost_property': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'tallow_balm', count: 1 },
-    { op: 'say', text: 'The school\'s lost-property box. Under a single mitten and a chewed pencil: a TALLOW BALM! Nobody has claimed it since the dusk fell.' },
+    { op: 'say', text: 'Lost property. Under a mitten and a chewed pencil: a TALLOW BALM!' },
     { op: 'setFlag', flag: 'flag:picked_school_lost_property' },
   ],
 };
 
 export const SCHOOL_DIALOGUE: DialogueRegistry = {
   'sign.wickstead_green': [
-    { text: 'WICKSTEAD GREEN — The Lamp-school. All Wayfarers welcome, however old. East: Duskapple Orchard and Tinderwick.' },
+    { text: 'WICKSTEAD GREEN — The Lamp-school. East: [[Duskapple]], [[Tinderwick]].' },
   ],
   'sign.school_timetable': [
-    { text: 'TODAY\'S LESSONS, pinned up in chalky fingerprints:' },
-    { text: 'IN THE SCHOOLROOM — Types: Mistress Pennyweather, at the board. Catching: Master Tolly. Statuses: Old Quennell. Kindling & Bond: Tutor Fernly.' },
-    { text: 'The Hearth: the Hearthkeeper, visiting, by the fire. Resting: Master Mallow, at the cot.' },
-    { text: 'ON THE GREEN — Lantern Gifts: Wayfarer Esk, by the pond. Wicks & Shops: Bunce, at the tuck-shop. Your Menus: ask Odo (he\'s meant to be indoors).' },
+    { text: 'TODAY\'S LESSONS. INDOORS — Types: Pennyweather. Catching: Tolly. Statuses: Quennell. Kindling: Fernly.' },
+    { text: 'Hearth: the Hearthkeeper, by the fire. Resting: Mallow, at the cot.' },
+    { text: 'ON THE GREEN — Gifts: Esk. Wicks: Bunce. Menus: Odo (meant to be indoors).' },
   ],
   'sign.school_chalkboard': [
-    { text: 'Chalked on the board in a careful round hand: WHO BEATS WHOM (twice as hard).' },
+    { text: 'In a careful round hand: WHO BEATS WHOM (twice as hard).' },
     { text: 'EMBER beats Verdant, Frost. TIDE beats Ember, Stone. VERDANT beats Tide, Stone. STONE beats Ember, Storm.' },
     { text: 'STORM beats Tide, Verdant, Solar — and does NOTHING to Stone. FROST beats Verdant, Storm, Stone.' },
     { text: 'THE MIRRORS: Solar and Lunar beat each other. So do Light and Dark. Solar beats Frost and Dark too; Lunar beats Tide, but does NOTHING to Dark.' },
-    { text: 'Underneath, smaller: "Own type = half again harder. Two types? MULTIPLY." And in a pupil\'s hand, crossed out: "EMBER BEATS EVERYTHING".' },
+    { text: 'Below: "Own type: half again. Two types: MULTIPLY." Crossed out: "EMBER BEATS EVERYTHING".' },
   ],
   'sign.school_bookcase': [
-    { text: 'Primers, mostly. "My First Constellations." "Kin, and How to Befriend Them." "A Hundred Uses for a Wick."' },
-    { text: 'Someone has drawn a moustache on every Lampwarden in "Great Wardens of the South".' },
+    { text: 'Every Lampwarden in "Great Wardens of the South" has a drawn-on moustache.' },
   ],
   'npc.school_pupil_willa': [
-    { speaker: 'WILLA', text: 'Shh! I\'m learning the wheel. Ember beats Verdant, Verdant beats Tide, Tide beats Ember... and round again!' },
+    { speaker: 'WILLA', text: 'Shh! I\'m learning the wheel. Ember, Verdant, Tide... and round again!' },
   ],
   'npc.school_pupil_dob': [
-    { speaker: 'DOB', text: 'I\'m not asleep. I\'m DOZING. It\'s a status. Mistress says that makes me very easy to lamp.' },
+    { speaker: 'DOB', text: 'I\'m not asleep. I\'m DOZING. It\'s a status. Very easy to lamp, me.' },
   ],
   'npc.school_yard_kid': [
-    { speaker: 'LARK', text: 'School\'s on, but the wind\'s up — and you can\'t fly a kite indoors! Don\'t tell the Mistress.' },
+    { speaker: 'LARK', text: 'Wind\'s up — and you can\'t fly a kite indoors! Don\'t tell the Mistress.' },
   ],
 };

@@ -7,6 +7,7 @@
  */
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '@game/config';
+import { stripMarks } from '@game/ui/textMarks';
 import { theme } from '@game/ui/theme';
 import { makeText } from '@game/ui/Text';
 import { Panel } from '@game/ui/Panel';
@@ -41,7 +42,7 @@ export class BattleMessage {
 
   /** Set text without waiting (used while a sub-menu is open). */
   set(text: string): void {
-    this.body.setText(text);
+    this.body.setText(stripMarks(text));
   }
 
   /**
@@ -51,7 +52,7 @@ export class BattleMessage {
    * Settings → Trainer talk is Auto, when it holds like any other line.
    */
   show(text: string, opts: { wait?: boolean; confirm?: boolean } = {}): Promise<void> {
-    this.body.setText(text);
+    this.body.setText(stripMarks(text));
     const wait = opts.wait !== false;
     const needsA = wait && opts.confirm === true && !getTrainerTalkAuto();
     let blink = 0;

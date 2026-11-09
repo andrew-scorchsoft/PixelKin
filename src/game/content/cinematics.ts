@@ -68,7 +68,7 @@ export const COLDOPEN_SOUTH: CinematicScript = {
       lines: [
         'Long ago, the night sky over Vesperholm was full of lanterns.',
         'Eight constellations, burning steady — the light that kept the dark a friend, and not a grave.',
-        'And below them lived the kin: the bright-hearted creatures of valley and shore, each carrying a spark of that same sky.',
+        'And below them lived the kin: bright-hearted creatures of valley and shore, each carrying a spark of that same sky.',
       ],
     },
     {
@@ -122,7 +122,7 @@ export const ENDING_CREDITS: CinematicScript = {
       dwellMs: 1400,
       lines: [
         'The Keystar caught — and the sky remembered itself.',
-        'Light ran the Skyweave like flame along a wick: eight constellations blazing whole, and beneath them, for the first time in years, an east with a colour in it.',
+        'Light ran the Skyweave like flame along a wick: eight constellations blazing whole, and beneath them, for the first time in years, an east with colour in it.',
       ],
     },
     {
@@ -136,8 +136,8 @@ export const ENDING_CREDITS: CinematicScript = {
     {
       panel: PANEL('dawnbreak-03'),
       lines: [
-        'Galehigh flew every kite it owned with no flame on a single tail — daylight carried them instead. On the Pale Vault ice, the silent watch finally talked, all of them at once, about nothing.',
-        'The Solarium\'s drowned garden steamed gold in the sun, its long-stored warmth giving way to the real thing. And at Nightreach the watchers slept — actually slept — under a sky that could mind itself for one morning.',
+        'Galehigh flew every kite it owned with no flame on a single tail — daylight carried them. On the Pale Vault ice, the silent watch finally talked, all at once, about nothing.',
+        'The Solarium\'s drowned garden steamed gold, its stored warmth giving way to the real thing. And at Nightreach the watchers slept — actually slept — under a sky that could mind itself for one morning.',
       ],
     },
     {
@@ -145,7 +145,7 @@ export const ENDING_CREDITS: CinematicScript = {
       sfx: 'world-lantern-light',
       lines: [
         'Two old star-tenders walked down a mountain together, one ladder\'s width apart, the way they had always worked.',
-        'A rival lit out for the coast road, to see a particular harbour in daylight. A Waykeeper trimmed lamps that, for the first time in forty years, did not strictly need him. He did it anyway. That is what tending is.',
+        'A rival lit out for the coast road, to see a particular harbour in daylight. A Waykeeper trimmed lamps that, for the first time in forty years, did not need him. He did it anyway. That is what tending is.',
         'And the long night ended the only way it ever could: not in a victory — in a morning. Dusk will come again. The lamps are ready. So are you.',
       ],
     },

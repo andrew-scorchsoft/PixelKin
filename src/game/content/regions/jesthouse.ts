@@ -53,85 +53,80 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
   // ---- F1: the Lobby of Groaners ------------------------------------------------------
   'script.oldlight_whoopee': [
     { op: 'sfx', key: 'battle-not-effective' },
-    nar('Your foot finds something soft. It lets out a long, mournful note, like a tuba that has just heard bad news.'),
-    pw('(from every speaking-tube at once) WHO DID THAT. ...Oh. The cushion. It is always the cushion. (ting!)'),
+    nar('Something soft underfoot lets out a long, mournful note, like a tuba hearing bad news.'),
+    pw('(from every speaking-tube) WHO DID THAT. ...Oh. The cushion. It is always the cushion.'),
     { op: 'setFlag', flag: 'flag:oldlight_whoopee_sat' },
   ],
   'script.oldlight_mime': [
-    nar('The MIME presses both palms flat against a wall that is not there. She looks at you. She points up the stairs.'),
-    nar('She mimes climbing. And climbing. And climbing. She mimes a cup of tea, halfway up, and a very contented sigh.'),
-    nar('Then she mimes being trapped in a box. You mime opening the lid for her.'),
-    nar('She stares at you as if you have ruined her entire act.'),
+    nar('The MIME presses her palms to an invisible wall, points upstairs, and mimes climbing: a cup of tea halfway, then trapped in a box.'),
+    nar('You mime opening the lid. She stares as if you have ruined her entire act.'),
   ],
   'script.oldlight_laugh_meter': [
-    nar('A brass gauge on a stand: QUIET — CHUCKLE — GUFFAW — UPROAR. The needle is jammed hard against UPROAR.'),
-    pw('Calibrated it myself! It has read UPROAR every minute for eleven winters. Morale has never been higher.'),
+    nar('A brass gauge: QUIET — CHUCKLE — GUFFAW — UPROAR. The needle is jammed on UPROAR.'),
+    pw('Calibrated it myself! UPROAR every minute for eleven winters. Morale has never been higher.'),
   ],
   'script.oldlight_laugh_track': [
-    nar('Three clockwork dolls on a bench, wound tight, mouths open. A brass button is marked PRESS IF SHY.'),
+    nar('Three clockwork dolls on a bench, mouths open. A button: PRESS IF SHY.'),
     { op: 'sfx', key: 'ui-confirm' },
-    nar('HA. HA. HA. — they laugh in perfect time, then stop, and turn slowly to look at one another, as if to ask who started it.'),
-    pw('The laugh track! For when the audience is shy. Or absent. Or, most nights, both.'),
+    nar('HA. HA. HA. — perfectly in time. Then they turn to each other, as if to ask who started it.'),
+    pw('The laugh track! For when the audience is shy. Or absent. Usually both.'),
   ],
   'script.oldlight_jack_box': [
-    nar('A jack-in-the-box, already sprung. Its little clown hangs out over the rim, quite out of breath.'),
-    pw('Eleven winters he waited for someone to turn the handle. Then a draught did it. He has not spoken to the draught since.'),
+    nar('A jack-in-the-box, already sprung, its clown quite out of breath.'),
+    pw('He waited eleven winters for someone to turn the handle. A draught did it. He hasn\'t spoken to it since.'),
   ],
   'script.oldlight_usher': bout('usher', 'USHER', [
-    'TICKETS, please! ...No ticket? Then you pay the house\'s old price, same as everybody: one bout, best of whatever we\'ve got.',
+    'TICKETS, please! ...No ticket? Then you pay the old price: one bout.',
   ], [
-    '(He stamps the back of your hand. It reads: ADMIT ONE. Underneath, smaller: BRAVE.)',
+    '(He stamps your hand: ADMIT ONE. Underneath, smaller: BRAVE.)',
   ]),
 
   // ---- F2: the Late Laugh ----------------------------------------------------------------
   'script.oldlight_laugh_track_late': [
-    nar('Another bench of clockwork dolls. You press the button. Nothing at all happens.'),
-    nar('You give up and turn to go.'),
+    nar('Another bench of clockwork dolls. You press the button. Nothing. You turn to go.'),
     { op: 'wait', ms: 900 },
     nar('...HA. HA. HA.'),
   ],
   'script.oldlight_juggler': bout('juggler', 'JUGGLER', [
-    'Watch this! Three cheese-buns, one hand! ...Two cheese-buns. ...One cheese-bun and a bit of floor.',
+    'Three cheese-buns, one hand! ...Two cheese-buns. ...One cheese-bun and a bit of floor.',
     'Battle me while I pick these up!',
   ], [
-    'I can do four now. Well. I can DROP four. In a very juggly sort of way.',
+    'I can do four now. Well. I can DROP four.',
   ]),
 
   // ---- F3: Intermission --------------------------------------------------------------------
   'script.oldlight_pie_thrower': bout('pie_thrower', 'PIE-THROWER', [
-    'Interval special! One custard pie, delivered at speed, to the face of your choice!',
-    '...No? Then I\'ll throw my kin at you instead. Less custard. More feelings.',
+    'Interval special! One custard pie, at speed, to the face of your choice!',
+    '...No? Then I\'ll throw my kin at you. Less custard. More feelings.',
   ], [
-    'Fair\'s fair — you\'ve earned a pie. Not to eat. Nobody eats them. They\'re for COMEDY.',
+    'You\'ve earned a pie. Not to eat. Nobody eats them. They\'re for COMEDY.',
   ]),
 
   // ---- F4: the Backwards Inn -------------------------------------------------------------------
   'script.oldlight_mirror': bout('mirror', 'THE MIRROR', [
-    'Nice coat. Same as mine. Same hair, same lamp, same face. Punchwheel built me to show visitors their best side.',
-    'You\'re reaching for your lamp. I\'m reaching for my lamp. You blinked. I blinked.',
-    '...Fine. I blinked first. BATTLE!',
+    'Nice coat. Same as mine. You\'re reaching for your lamp. So am I.',
+    'You blinked. I blinked. ...Fine. I blinked first. BATTLE!',
   ], [
-    '(He copies your bow. Then he starts copying you walking away, thinks better of it, and stays put.)',
+    '(He copies your bow, starts copying you walking away, and thinks better of it.)',
   ]),
 
   // ---- F5: the Gallery of Confident Facts ---------------------------------------------------
   'script.oldlight_lectern': [
-    nar('A lectern holding an enormous book: THE BIG BOOK OF FACTS, by MR. PUNCHWHEEL. It falls open where it is opened most.'),
-    pw('FACT: the sea is salty because the fish have been crying ever since somebody told them about rain.'),
-    pw('FACT: every lamp in Vesperholm is secretly the same lamp, moving very fast.'),
+    nar('On a lectern: THE BIG BOOK OF FACTS, by MR. PUNCHWHEEL.'),
+    pw('FACT: the sea is salty because the fish have been crying ever since they heard about rain.'),
     pw('FACT: this book is one hundred per cent accurate. (CORRECTIONS ON PAGE FOUR.) (PAGE FOUR IS MISSING.)'),
   ],
   'script.oldlight_banana': [
     { op: 'sfx', key: 'world-bump' },
-    nar('Your foot meets a banana peel. Time slows. Your whole life flashes past your eyes. Most of it was walking.'),
-    nar('You do not fall. You do something far worse: you nearly fall, catch yourself, and look round to see whether anyone saw.'),
+    nar('A banana peel. Time slows. Your life flashes past. Most of it was walking.'),
+    nar('You nearly fall, catch yourself, and look round to see if anyone saw.'),
     pw('(from every speaking-tube at once) I SAW.'),
     { op: 'setFlag', flag: 'flag:oldlight_banana_slipped' },
   ],
   'script.oldlight_critic': bout('critic', 'THE CRITIC', [
-    'Two stars. You haven\'t done anything yet — that\'s two stars for turning up. Battle me and I\'ll decide whether to take one back.',
+    'Two stars, just for turning up. Battle me and I\'ll decide whether to take one back.',
   ], [
-    'Four stars. It would have been five, but your kin didn\'t do an encore. They never do, these days.',
+    'Four stars. It would have been five, but your kin didn\'t do an encore.',
   ]),
 
   // ---- F6: the One Joke — the two cups (the floor's rest) ------------------------------------
@@ -141,12 +136,12 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
   // they step aside; the music falls away; the card (script.oldlight_top) is the crescendo.
   'script.oldlight_headliners': [
     { op: 'emote', actor: 'act_jester', emote: 'alert' },
-    pw('Ah-ah-AH. Not one step nearer the drum. That is her card in there.'),
-    pw('Eleven winters, everyone who reads it gets the same answer. No laughter detected. I am not hearing it again.'),
-    pw('So if you want the card, you sit through the act first. ALL of it. Ladies and lamp-tenders: MY HEADLINERS!'),
-    nar('The Smiler beams. McClownface honks a little brass horn. JesterHalf bows, and about half of the bow is sincere.'),
+    pw('Ah-ah-AH. Not one step nearer. That is her card in the drum.'),
+    pw('Eleven winters of "no laughter detected". I am not hearing it again.'),
+    pw('Want the card? Sit through the act first. Ladies and lamp-tenders: MY HEADLINERS!'),
+    nar('The Smiler beams. McClownface honks a brass horn. JesterHalf bows, about half sincerely.'),
     { op: 'battle', trainer: 'oldlight_headliners' },
-    nar('The act takes its bows (three bows, none of them at the same time) and shuffles aside.'),
+    nar('The act takes three bows, none at the same time, and shuffles aside.'),
     { op: 'musicFade', ms: 1800 },
     pw('...Hm. You laughed. Twice. I counted.'),
     pw('Go on, then. The card is in the drum. She would have liked you.'),
@@ -154,7 +149,7 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
   ],
   // ---- TOP: the green room (a rest point before the headline act) ----------------------
   'script.oldlight_greenroom': [
-    nar('A battered green-room armchair by the stairhead. A card pinned to it: PERFORMERS ONLY. Someone has crossed out PERFORMERS and written ANYONE TIRED.'),
+    nar('A battered green-room armchair: PERFORMERS ONLY, with PERFORMERS crossed out and ANYONE TIRED written in.'),
     {
       op: 'choice',
       prompt: 'Sit a while?',
@@ -162,9 +157,9 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
         {
           label: 'Sit down.',
           ops: [
-            nar('You sink into it. Somewhere below, the whole tower ticks and wheezes and laughs to itself. Your lamp warms.'),
+            nar('You sink into it. Below, the whole tower ticks and laughs to itself.'),
             { op: 'heal', sleep: false },
-            pw('(from the drum) Nerves before the big show? Everybody gets them. I get them, and I am mostly springs.'),
+            pw('(from the drum) Nerves? Everybody gets them. I get them, and I am mostly springs.'),
           ],
         },
         { label: 'Not now.', ops: [] },
@@ -174,12 +169,12 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
   // F4's rest, beside the Ringmaster (playtest: the bout came a long walk after F3's urn).
   'script.oldlight_urn_backwards': [
     { op: 'say', speaker: 'TEA-URN', text: 'NUB A YUB! ...SETUNIM YTNEWT! LAVRETNI!' },
-    nar('(It is the tea-urn from downstairs, only backwards. The tea goes in before you are thirsty.)'),
+    nar('(The tea-urn from downstairs, only backwards. The tea goes in before you are thirsty.)'),
     { op: 'heal', sleep: false },
-    nar('Your kin are mended. The Ringmaster pretends he did not see a thing.'),
+    nar('Your kin are mended. The Ringmaster pretends not to see.'),
   ],
   'script.oldlight_cups_rest': [
-    nar('Two cups on the table. One has been washed every day for a long time. The other has never been moved.'),
+    nar('Two cups on the table. One washed every day for years. The other never moved.'),
     {
       op: 'choice',
       prompt: 'Sit a while?',
@@ -187,9 +182,9 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
         {
           label: 'Sit down.',
           ops: [
-            nar('You take the chair that has never been moved. It is the most comfortable chair in the tower. Somebody chose it very carefully, a long time ago.'),
+            nar('You take the chair that has never been moved: the comfiest in the tower, chosen carefully long ago.'),
             { op: 'heal', sleep: false },
-            nar('Your kin are rested. Across the table, the other cup stays exactly where it has always been.'),
+            nar('Your kin are rested. The other cup stays where it has always been.'),
           ],
         },
         { label: 'Leave it be.', ops: [] },
@@ -222,74 +217,71 @@ export const JESTHOUSE_SCRIPTS: ScriptRegistry = {
   'script.oldlight_rope_reminder': [
     { op: 'emote', actor: 'pip', emote: 'alert', unless_flag: 'flag:q_south_rope_or_later' },
     { op: 'move', actor: 'pip', to: { tx: 17, ty: 8 }, unless_flag: 'flag:q_south_rope_or_later' },
-    { op: 'say', speaker: 'PIP', text: 'WAIT! Wayfarer! Gran says you went UP the Old Light — all the way! Did you get her floats back off that machine?', unless_flag: 'flag:q_south_rope_or_later' },
-    { op: 'say', speaker: 'PIP', text: 'Take them to her on the quay, by her nets! She\'s got the bell-rope put by. Then you can walk the whole breakwater, right out to the bell.', unless_flag: 'flag:q_south_rope_or_later' },
-    { op: 'say', speaker: 'PIP', text: 'And go all the way to the END. Everyone says there\'s somebody out past the bell who... I don\'t know what he is. Nobody does! Go and SEE!', unless_flag: 'flag:q_south_rope_or_later' },
+    { op: 'say', speaker: 'PIP', text: 'WAIT! Wayfarer! Did you get Gran\'s floats back off that machine?', unless_flag: 'flag:q_south_rope_or_later' },
+    { op: 'say', speaker: 'PIP', text: 'Take them to [[Gran, by her nets on the quay]]! She\'s got the bell-rope. Then [[walk the breakwater]] out to the bell.', unless_flag: 'flag:q_south_rope_or_later' },
+    { op: 'say', speaker: 'PIP', text: 'And go right to the END. Everyone says there\'s somebody out past the bell who... nobody knows what he is! Go and SEE!', unless_flag: 'flag:q_south_rope_or_later' },
     { op: 'setFlag', flag: 'flag:oldlight_rope_reminded' },
   ],
   // ---- MOLL's two floors that notice your wins (the rest are plain dialogue) ----------
   'script.oldlight_moll_2': [
-    say('MOLL', "Don't ask how I got here first. Sixty years of knowing where the back stairs are."),
-    { ...say('MOLL', "And I heard you see off that heckler. Tam would've hired you on the spot."), if_flag: 'flag:oldlight_heckler_beaten' },
-    say('MOLL', "This was our stage. Winter nights the whole quay squeezed in. Tam rowed the late ferry, then came on still dripping in her oilskins and did twenty minutes."),
-    say('MOLL', "The audience laughed a beat late even then. 'Fog in their ears,' she said. You're doing grand. Keep climbing."),
+    say('MOLL', "Don't ask how I got here first. Sixty years of knowing the back stairs."),
+    { ...say('MOLL', "I heard you see off that heckler. Tam would've hired you on the spot."), if_flag: 'flag:oldlight_heckler_beaten' },
+    say('MOLL', "This was our stage. Tam rowed the late ferry, then came on dripping and did twenty minutes."),
+    say('MOLL', "They laughed a beat late even then. 'Fog in their ears,' she said. Keep climbing."),
   ],
   'script.oldlight_moll_4': [
-    { ...say('MOLL', "The Ringmaster's still sulking. Good. He's needed a proper audience for years."), if_flag: 'flag:oldlight_ringmaster_beaten' },
-    say('MOLL', "Everything's backwards on this floor. Tam's idea. 'People look their best laughing at themselves, Moll.'"),
-    say('MOLL', "She'd pull faces at those mirrors till the mirrors gave up first."),
-    say('MOLL', "You've a good face for this. A face that keeps going. That's the whole trick of comedy, and of most things."),
+    { ...say('MOLL', "The Ringmaster's sulking. Good. He's needed a proper audience for years."), if_flag: 'flag:oldlight_ringmaster_beaten' },
+    say('MOLL', "Everything's backwards here. Tam's idea: 'People look their best laughing at themselves, Moll.'"),
+    say('MOLL', "She'd pull faces at those mirrors till they gave up first."),
+    say('MOLL', "You've a face that keeps going. That's the whole trick of comedy, and of most things."),
   ],
   // ---- F5: the waxed floor (a glare-ice flow across the hall's north lane) ----------------
   'script.oldlight_waxed_floor': [
-    nar('The gallery floor gleams like a frozen pond. Someone has waxed it to a mirror shine.'),
-    pw('(from a speaking-tube) MIND THE FLOOR! I polished it for the critics. Then I left some bananas on it. For the critics.'),
-    nar('Step onto the shine and you will skid until something stops you. The dry boards either side are slower, and far less fun.'),
+    nar('The gallery floor is waxed to a mirror shine.'),
+    pw('(from a speaking-tube) MIND THE FLOOR! I polished it for the critics. Then I left bananas on it. For the critics.'),
+    nar('[[Step onto the shine and you skid]] until something stops you. The dry boards are slower, and less fun.'),
     { op: 'setFlag', flag: 'flag:oldlight_waxed_seen' },
   ],
   // ---- F2: the audience laughs at you, late; F5: the meter has opinions now ----------------
   'script.oldlight_late_laugh': [
-    nar('You walk past the audience. Nothing. You take another step. Nothing.'),
+    nar('You walk past the audience. Nothing. Another step. Nothing.'),
     { op: 'wait', ms: 700 },
-    nar('HA! HA HA HA! — they roar, all at once, at something you did three steps ago.'),
-    pw('(from the wings) They loved your walk. They will tell you so tomorrow.'),
+    nar('HA! HA HA HA! — they roar at something you did three steps ago.'),
+    pw('(from the wings) They loved your walk. They\'ll say so tomorrow.'),
     { op: 'setFlag', flag: 'flag:oldlight_late_laughed' },
   ],
   'script.oldlight_laugh_meter_f5': [
-    nar('Another brass laugh meter, newer. Its dial reads: DOUBTFUL — PLAUSIBLE — TRUE — CONFIDENT. The needle is bent clean past CONFIDENT.'),
-    pw('This one measures how sure I am. It has never once gone below CONFIDENT. That is how you know it works.'),
+    nar('A newer meter: DOUBTFUL — PLAUSIBLE — TRUE — CONFIDENT. The needle is bent past CONFIDENT.'),
+    pw('It measures how sure I am. It has never gone below CONFIDENT. That is how you know it works.'),
   ],
 };
 
 export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   // ---- F1 ---------------------------------------------------------------------------------
   'sign.oldlight_applause': [
-    sign('A lit box sign: APPLAUSE. Underneath, in smaller letters: (OR AT LEAST A KIND NOD.)'),
-    sign('Underneath that, smaller still: (OR JUST STAY A WHILE. STAYING COUNTS.)'),
+    sign('A lit sign: APPLAUSE. Smaller: (OR A KIND NOD.) Smaller still: (OR JUST STAY. STAYING COUNTS.)'),
   ],
   'sign.oldlight_coats': [
-    sign('The cloakroom. Every coat has a ticket pinned to it, and every ticket says: BACK IN FIVE MINUTES. The dust has been counting.'),
+    sign('The cloakroom. Every ticket says BACK IN FIVE MINUTES. The dust has been counting.'),
   ],
   'sign.oldlight_chickens': [
-    sign('A hat-stand hung with rubber chickens. A card: ONE PER CUSTOMER. TO BE SQUEEZED IN EMERGENCIES ONLY. (A LONG SILENCE IS AN EMERGENCY.)'),
+    sign('Rubber chickens on a hat-stand: SQUEEZE IN EMERGENCIES ONLY. (A LONG SILENCE IS AN EMERGENCY.)'),
   ],
   'sign.oldlight_masks': [
-    sign('Two masks on the wall, one laughing, one weeping. Somebody has drawn a tiny moustache on the weeping one. It looks much happier.'),
+    sign('Two masks, laughing and weeping. Someone has drawn a moustache on the weeping one. It looks much happier.'),
   ],
   'sign.oldlight_bench_reserved': [
-    sign('A bench with a card: RESERVED FOR LAUGHTER. It has been reserved for eleven winters. Laughter never turned up. It didn\'t even send word.'),
+    sign('A bench: RESERVED FOR LAUGHTER. Eleven winters, and laughter never turned up. Didn\'t even send word.'),
   ],
   'sign.oldlight_spotlight': [
-    sign('A spotlight, aimed with great care at the one spot on the floor where nobody has ever stood.'),
-    sign('You stand in it. It swings away, embarrassed.'),
+    sign('A spotlight, aimed at the one spot nobody has ever stood. You stand in it. It swings away, embarrassed.'),
   ],
   'sign.oldlight_bunting': [
-    sign('Bunting spelling out GRAND OPENING. One flag has fallen, so it reads GRAND OPEN NG. Everyone has noticed. Nobody has said anything.'),
+    sign('Bunting: GRAND OPEN NG. One flag has fallen. Everyone has noticed. Nobody has said anything.'),
   ],
   'npc.oldlight_groaner': [
     line('GROANER', 'Ohhhhh. ...Sorry. Reflex.'),
-    line('GROANER', 'I\'m the house groaner. Every good jest-house keeps one. When the machine lands a pun, somebody has to make the noise it deserves.'),
-    line('GROANER', 'Eleven winters of it. The lamp-doctor says I\'ve the lungs of a man who\'s heard every pun twice.'),
+    line('GROANER', 'I\'m the house groaner. When the machine lands a pun, somebody has to make the noise it deserves.'),
   ],
   'npc.oldlight_usher_after': [
     line('USHER', 'Best seats are upstairs. Worst jokes too. It\'s a package.'),
@@ -297,7 +289,7 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
   // the battle-screen OPENERS (trainer-intro beat): a fresh punchline once they're on the battle screen
   'trainer.oldlight_heckler.intro': [line("THE HECKLER", "BOO! ...Sorry. Reflex. I heckle everything. Battles especially.")],
   'trainer.oldlight_ringmaster.intro': [line("THE RINGMASTER", "Lamp-tenders and lamp-tenderesses! In THIS corner: me! In THAT corner: also quite good!")],
-  'trainer.oldlight_usher.intro': [line("THE USHER", "Your seat is right there, facing my kin. Kindly dim all lanterns. ...No? Fine. Bout it is.")],
+  'trainer.oldlight_usher.intro': [line("THE USHER", "Your seat faces my kin. Kindly dim all lanterns. ...No? Fine. Bout it is.")],
   'trainer.oldlight_juggler.intro': [line("THE JUGGLER", "Three balls, two hands, one battle. I've done worse sums.")],
   'trainer.oldlight_pie_thrower.intro': [line("THE PIE-THROWER", "Custard first, questions after!")],
   'trainer.oldlight_mirror.intro': [line("THE MIRROR", "Ready when you are. ...Ready when I am. ...Will you STOP copying me?")],
@@ -306,73 +298,65 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
 
   // ---- F2 ---------------------------------------------------------------------------------
   'sign.oldlight_unicycle': [
-    sign('A unicycle on a stand. A label: FOR THE ACT. A second label: THE ACT IS FALLING OFF A UNICYCLE.'),
-    sign('A third label, in different handwriting: IT\'S A VERY GOOD ACT.'),
+    sign('A unicycle: FOR THE ACT. THE ACT IS FALLING OFF A UNICYCLE. Another hand adds: IT\'S A VERY GOOD ACT.'),
   ],
   'sign.oldlight_clown_shoes': [
-    sign('A pair of enormous clown shoes. Inside one sits a smaller pair of clown shoes. Inside those, a note: IT\'S SHOES ALL THE WAY DOWN.'),
+    sign('Enormous clown shoes. Inside, a smaller pair. Inside those, a note: IT\'S SHOES ALL THE WAY DOWN.'),
   ],
   'sign.oldlight_masks_late': [
     sign('Two masks. The weeping one is wincing at a joke the laughing one hasn\'t heard yet.'),
   ],
   'sign.oldlight_props': [
-    sign('A crate stencilled PROPS. Inside it, a smaller crate stencilled MORE PROPS. Inside that, a note: STOP LOOKING AT THE PROPS.'),
+    sign('A crate stencilled PROPS. A note on the lid: STOP LOOKING AT THE PROPS.'),
   ],
   'sign.oldlight_spotlight_late': [
-    sign('This spotlight is following you. Slowly. About a step and a half behind.'),
-    sign('It\'s on the late floor. It\'ll catch up.'),
+    sign('This spotlight follows you, a step and a half behind. It\'s the late floor. It\'ll catch up.'),
   ],
   'npc.oldlight_juggler_after': [
-    line('JUGGLER', 'Want to see me juggle three kin? ...Neither do they. They\'ve made that very clear.'),
+    line('JUGGLER', 'Want to see me juggle three kin? ...Neither do they.'),
   ],
   'trainer.oldlight_juggler.defeat': [line('JUGGLER', 'I dropped the battle! I meant to do that. That was the act.')],
 
   // ---- F3 ---------------------------------------------------------------------------------
   'sign.oldlight_teacups': [
-    sign('A tower of teacups stacked eleven high. A card at the bottom: DO NOT TAKE THE BOTTOM CUP.'),
-    sign('A card at the top: WE KNOW YOU\'RE THINKING ABOUT IT.'),
+    sign('Teacups stacked eleven high: DO NOT TAKE THE BOTTOM CUP. At the top: WE KNOW YOU\'RE THINKING ABOUT IT.'),
   ],
   'sign.oldlight_pies': [
-    sign('A table of custard pies. One is missing. There is a perfect pie-shaped mark on the ceiling. Nobody has explained it, and nobody will.'),
+    sign('Custard pies, one missing, and a pie-shaped mark on the ceiling. Nobody will explain it.'),
   ],
   'sign.oldlight_cogs': [
-    sign('A heap of spare brass cogs, each one labelled. SPARE TIMING. FOR WHEN THE SMALL TALK STICKS. The biggest says: DO NOT LOSE. THIS ONE IS THE PUNCH.'),
+    sign('Spare cogs labelled SPARE TIMING. The biggest: DO NOT LOSE. THIS ONE IS THE PUNCH.'),
   ],
   'npc.oldlight_pie_thrower_after': [
-    line('PIE-THROWER', 'Interval\'s nearly over. Mind how you go upstairs — they don\'t have custard up there. Just feelings.'),
+    line('PIE-THROWER', 'Mind how you go upstairs. No custard up there. Just feelings.'),
   ],
   'trainer.oldlight_pie_thrower.defeat': [line('PIE-THROWER', 'Splat. That one was mine, wasn\'t it.')],
 
   // ---- F4 ---------------------------------------------------------------------------------
   'sign.oldlight_clock_backwards': [
-    sign('A wall clock with every number the wrong way round. By its reckoning, you left this room an hour from now, and you were very glad you did.'),
+    sign('A clock with backwards numbers. By its reckoning, you left an hour from now, and were glad you did.'),
   ],
   'sign.oldlight_upside_chair': [
     sign('A chair standing on its head. A note tied to one leg: IT\'S FINE. IT\'S RESTING.'),
   ],
   'sign.oldlight_funhouse': [
-    sign('A wobbly carnival mirror. In it you are seven feet tall and one inch wide. Your reflection gives you a thumbs-up you did not give it.'),
+    sign('A wobbly mirror: seven feet tall, one inch wide. Your reflection gives a thumbs-up you didn\'t give it.'),
   ],
   // one distortion per glass (build_pearlmoor_oldlight.py floor_4): every mirror bends you its own way
   'sign.oldlight_mirror_squat': [
-    sign('A squat carnival mirror. In it you are three feet tall and as wide as a door.'),
-    sign('You look very sturdy. Dependable, even. Your reflection would make an excellent wardrobe.'),
+    sign('A squat mirror: three feet tall, wide as a door. You\'d make an excellent wardrobe.'),
   ],
   'sign.oldlight_mirror_upside': [
-    sign('In this one you are standing on your head. Your reflection seems perfectly comfortable about it.'),
-    sign('It looks at you as though YOU are the one doing it wrong.'),
+    sign('In this one you stand on your head, and look at yourself as though YOU are doing it wrong.'),
   ],
   'sign.oldlight_mirror_bighead': [
-    sign('Your head fills the whole glass, big as a harvest pumpkin. Somewhere far below it, two tiny legs are trying their best.'),
-    sign('The legs look worried. You would be too.'),
+    sign('Your head fills the glass like a harvest pumpkin. Far below, two tiny legs look worried.'),
   ],
   'sign.oldlight_mirror_wavy': [
-    sign('This glass ripples. Your reflection flaps like washing on a windy line.'),
-    sign('It looks seasick. Now, so do you.'),
+    sign('This glass ripples. Your reflection flaps like washing on a line, and looks seasick.'),
   ],
   'sign.oldlight_mirror_late': [
-    sign('A plain mirror, for once. You wave. ...A moment later, your reflection waves.'),
-    sign('You stop. It is still waving. It notices, goes red, and pretends it was swatting a fly.'),
+    sign('A plain mirror. You wave. ...A moment later, so does your reflection. It goes red and pretends to swat a fly.'),
   ],
   'npc.oldlight_mirror_after': [
     line('THE MIRROR', 'Same time next week? ...I already said yes. You just hadn\'t asked yet.'),
@@ -381,87 +365,79 @@ export const JESTHOUSE_DIALOGUE: DialogueRegistry = {
 
   // ---- F5 ---------------------------------------------------------------------------------
   'sign.oldlight_mallet': [
-    sign('A giant wooden mallet. The handle reads: FOR EMERGENCY PUNCHLINES. Lower down, more firmly: NOT FOR THE AUDIENCE.'),
+    sign('A giant mallet: FOR EMERGENCY PUNCHLINES. Lower down: NOT FOR THE AUDIENCE.'),
   ],
   'npc.oldlight_critic_after': [
-    line('THE CRITIC', 'The tower? Three stars. The jokes are too long and the stairs are too many. I come every night.'),
+    line('THE CRITIC', 'The tower? Three stars. Jokes too long, stairs too many. I come every night.'),
   ],
   'trainer.oldlight_critic.defeat': [line('THE CRITIC', 'Five stars. Don\'t let it go to your head. I give the stairs five stars too.')],
 
   // ---- F6 ---------------------------------------------------------------------------------
   // ---- F3/F4/F5/TOP: the extra props (2026-10, more jokes) -----------------------------------
   'sign.oldlight_bar_stool': [
-    sign('A bar stool. You sit on it. It spins you round once, very slowly, and stops with you facing the wall.'),
-    sign('It does this to everybody. It thinks it\'s a bit.'),
+    sign('A bar stool. It spins you round once, slowly, and stops with you facing the wall. It thinks it\'s a bit.'),
   ],
   'sign.oldlight_brazier': [
-    sign('A brazier, burning merrily. It gives off no heat at all. A tag on it reads: FOR DRAMATIC EFFECT ONLY. DO NOT WARM HANDS.'),
+    sign('A brazier, burning merrily, giving no heat. Its tag: FOR DRAMATIC EFFECT ONLY.'),
   ],
   'sign.oldlight_viewing_bench': [
-    sign('A bench labelled VIEWING BENCH. You sit and view. The gallery views you back.'),
-    sign('Somewhere, the Critic writes: two stars.'),
+    sign('A VIEWING BENCH. You view the gallery. It views you back. Somewhere, the Critic writes: two stars.'),
   ],
   'sign.oldlight_plant': [
-    sign('A potted plant. Its card reads: FACT: THIS IS A TREE.'),
-    sign('It is not a tree. It knows. It\'s doing its best.'),
+    sign('A potted plant: FACT: THIS IS A TREE. It isn\'t. It knows. It\'s doing its best.'),
   ],
   'sign.oldlight_jars': [
-    sign('Three oil jars labelled FUNNY, FUNNIER and NOT FOR LAMPS. The NOT FOR LAMPS one is empty.'),
-    sign('Several lamps on this floor are laughing quietly to themselves.'),
+    sign('Oil jars: FUNNY, FUNNIER and NOT FOR LAMPS. The last is empty. The lamps here are giggling.'),
   ],
 
   'sign.oldlight_old_confetti': [
-    sign('A small heap of very old confetti, swept into a corner and then, it seems, never swept away. Somebody was keeping it for a celebration that hasn\'t come yet.'),
+    sign('Old confetti swept into a corner, kept for a celebration that hasn\'t come yet.'),
   ],
   'sign.oldlight_spring_can': [
-    sign('A can of spring-snakes with its lid popped. Only one snake jumped. The rest are still inside, waiting for a better audience.'),
+    sign('A can of spring-snakes. Only one jumped. The rest are waiting for a better audience.'),
   ],
 
   // ---- MOLL: Tam's old stage partner, always one floor ahead (build_pearlmoor_oldlight.py
   // MOLL). Non-fighting: she cheers you on and tells Tam's story a floor at a time. The cut
   // rope stays Reyl's log's to tell (TOP) — Moll only names it once you've read it.
   'npc.oldlight_moll_1': [
-    line('MOLL', "Oh! A Wayfarer. Reyl sends one up now and then. I send myself, once a winter."),
-    line('MOLL', "I'm Moll. Forty years I was the straight half of a double act, right here in this lobby. Tam Wash was the funny half."),
-    line('MOLL', "She built that clattering joke-box upstairs so there'd still be jokes when she was out on the water. Go on, love, up you go. I'll be right behind you."),
+    line('MOLL', "Oh! A Wayfarer. Reyl sends one up now and then. I'm Moll: forty years the straight half of a double act, right here."),
+    line('MOLL', "Tam Wash was the funny half. She built that joke-box upstairs for while she was on the water. Up you go, love. I'm right behind you."),
   ],
   'npc.oldlight_moll_3': [
-    line('MOLL', "Interval! Tam's rule: nobody climbs on an empty stomach. She baked cheese-buns for the house. Two each. Three if you heckled well."),
-    line('MOLL', "She used to say a lighthouse and a joke want the same thing: somebody out in the dark, coming home toward them."),
-    line('MOLL', "Sit by the urn if you're flagging, love. I'm off up. My knees and I aren't on speaking terms."),
+    line('MOLL', "Interval! Tam's rule: nobody climbs hungry. Cheese-buns, two each. Three if you heckled well."),
+    line('MOLL', "She said a lighthouse and a joke want the same thing: somebody out in the dark, coming home toward them."),
+    line('MOLL', "[[Sit by the urn]] if you're flagging, love. I'm off up."),
   ],
   'npc.oldlight_moll_5': [
-    line('MOLL', "Her pictures, mostly. That's the old ferry. That's Reyl, young and scowling. He only ever smiled when he thought nobody was looking."),
+    line('MOLL', "Her pictures, mostly. The old ferry. Reyl, young and scowling. He only smiled when nobody was looking."),
     line('MOLL', "Eleven winters back the fog came in thick as wool. Tam was out with the late boat. ...The boats came home. She didn't."),
-    line('MOLL', "Reyl rang that bell till his hands gave out. You'll understand more at the top. Go gently with him after, won't you? Nearly there."),
+    line('MOLL', "Reyl rang that bell till his hands gave out. Go gently with him after, won't you? Nearly there."),
   ],
   'npc.oldlight_moll_6': [
     line('MOLL', "Hear it? The same joke, round and round. He wrote it for her, for when she got home."),
-    line('MOLL', "I come up once a winter and sit with it a while. Somebody ought to laugh at it, and I never can."),
-    line('MOLL', "Go on up and finish it for her. I'll be along. The last flight's the steepest, and I like to take it slow."),
+    line('MOLL', "I sit with it once a winter. Somebody ought to laugh at it, and I never can."),
+    line('MOLL', "Go on up and finish it for her. I'll take the last flight slow."),
   ],
   'sign.oldlight_mirror_maze': [
-    sign('A card on a stand: MIRROR MAZE (SMALL). EXIT: THAT WAY.'),
-    sign('Underneath, in the same hand: (THE OTHER THAT WAY.)'),
+    sign('MIRROR MAZE (SMALL). EXIT: THAT WAY. (THE OTHER THAT WAY.)'),
   ],
   'sign.oldlight_maze_end': [
-    sign('A dead end, and a tall mirror in it. Your reflection has its back to you, looking for the way out.'),
-    sign('Someone has chalked an arrow on the glass, pointing at you: EXIT.'),
-    sign('You are not the exit. You check twice.'),
+    sign('A dead end and a tall mirror. Your reflection has its back to you, looking for the way out.'),
+    sign('A chalk arrow on the glass points at you: EXIT. You are not the exit. You check twice.'),
   ],
   'sign.oldlight_audience': [
-    sign('Rows of stools, set out for an audience. Every one has been dusted. Not one has been sat on.'),
-    sign('They all face the little table with the two cups.'),
+    sign('Rows of stools, every one dusted, not one sat on. They all face the little table with the two cups.'),
   ],
   'npc.oldlight_moll_card': [
     line('MOLL', "(puffing) Couldn't sit with it down there. Not this time."),
-    line('MOLL', "That's her card, jammed in the drum. Eleven winters it's been trying to finish her joke for her."),
-    line('MOLL', "His headline act's stood between you and the drum. He won't let anyone near her card, not since the last one who read it got no laugh. Have a sit in the green-room chair by the stairs first."),
-    line('MOLL', "Go on, love. You've laughed all the way up. I'll be right here."),
+    line('MOLL', "That's her card in the drum. Eleven winters it's tried to finish her joke."),
+    line('MOLL', "His headline act guards the drum now. [[Rest in the green-room chair]] by the stairs first."),
+    line('MOLL', "Go on, love. I'll be right here."),
   ],
   'npc.oldlight_moll_top': [
-    line('MOLL', "(puffing) There. Made it. ...You finished her card, didn't you? I heard the drum stop turning."),
-    line('MOLL', "If you've read his log, you know about the rope. He thinks nobody knows. The whole quay knows, love. We just let him carry it his own way."),
-    line('MOLL', "Take those floats down to the netmender and ring that bell. Let the old man hear it rung by someone who laughed on the way up. ...Thank you. Truly."),
+    line('MOLL', "(puffing) Made it. ...You finished her card, didn't you? I heard the drum stop."),
+    line('MOLL', "If you've read his log, you know about the rope. He thinks nobody knows. The whole quay knows. We let him carry it his own way."),
+    line('MOLL', "Take those floats to [[the netmender]] and [[ring that bell]]. Let the old man hear it rung by someone who laughed on the way up. ...Thank you."),
   ],
 };

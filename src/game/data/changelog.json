@@ -2,6 +2,14 @@
   "_note": "The player-facing changelog: the in-game \"the world has changed\" notice (content/whatsnew.ts) AND the website changelog page (web/site.mjs) both read this. Newest first. NO SPOILERS for the hidden real-people content - see whatsnew.ts.",
   "entries": [
     {
+      "version": "1.42",
+      "date": "2026-11-09",
+      "notes": [
+        "Everyone talks less and says more. Dialogue across the whole game has been tightened, the first hours most of all, so you spend more time on the road and less pressing A.",
+        "Story-critical information (where to go next, who to see, what to bring, a new control) is now picked out in gold and underlined in the dialogue box, so it can't be lost in the chatter."
+      ]
+    },
+    {
       "version": "1.41",
       "date": "2026-10-24",
       "notes": [

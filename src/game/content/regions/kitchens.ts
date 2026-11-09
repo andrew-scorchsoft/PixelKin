@@ -68,7 +68,7 @@ function order(dish: string): CutsceneStep[] {
       op: 'say',
       speaker: MARISOL,
       unless_flag: paid,
-      text: "Ay, your purse is light. Come back with sixty wicks — the pot will still be on.",
+      text: "Ay, your purse is light. Come back with [[sixty wicks]] — the pot will still be on.",
     },
   ];
 }
@@ -97,7 +97,7 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
   ],
 
   'script.moka_hello': [
-    { op: 'narrate', text: 'A bald man in an apron crouches over a tiny burner, glaring at a little eight-sided pot.' },
+    { op: 'narrate', text: 'A bald man in an apron crouches over a tiny burner, glaring at an eight-sided pot.' },
     p("Shh. Shh! Listen. ...Hear that? Not yet. Nearly. It's thinking."),
     { op: 'narrate', text: 'The pot gives a soft, throaty gurgle.' },
     { op: 'emote', actor: 'percy', emote: 'alert' },
@@ -118,13 +118,12 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
       p("A fellow watched the wash-boiler: water boils below, shoots up a pipe, pours over the laundry."),
       p('And he thought: what if that... but COFFEE.'),
       p('Cast it in aluminium. Light, cheap, heats in a blink.'),
-      p('Within a generation there was one on near every stove in that country.'),
-      p('A whole country, gurgling at breakfast. Imagine it. I do. Often.'),
+      p('Within a generation, one on near every stove. A whole country, gurgling at breakfast. Imagine it. I do. Often.'),
     ],
     [
       p('Why EIGHT sides? The facets spread the flame round evenly, so all the water warms at once.'),
       p('No hot spot. No scorch. Just eight honest little walls.'),
-      p("And they've barely changed it since. Same shape, near a hundred years. You don't fix perfect."),
+      p("Same shape, near a hundred years. You don't fix perfect."),
       p("You just polish it. ...No! Don't polish it. Ask me WHY IT'S THE BEST. You'll see."),
     ],
   ),
@@ -133,18 +132,15 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
     'how',
     [
       p('Three parts. Bottom: water. Middle: a basket for the grounds. Top: where the coffee comes up.'),
-      p('Fill the water to just BELOW the valve. That little nub on the side? Safety valve.'),
-      p('Cover the valve and the pot sulks. Or worse. Never cover the valve.'),
-      p('Grounds: medium-fine. Finer than sand, coarser than flour. Level it off with a fingertip.'),
-      p('And NEVER tamp it. Never press it down!'),
-      p("Tamp it and the water can't get through. It goes bitter. It goes whistly. Don't make it whistle."),
+      p('Fill the water to just BELOW the valve — that nub on the side. Cover it and the pot sulks. Or worse.'),
+      p('Grounds: finer than sand, coarser than flour. Level it with a fingertip.'),
+      p("And NEVER tamp it down! The water can't get through. It goes bitter. It goes whistly. Don't make it whistle."),
     ],
     [
-      p("Here's the magic. Heat the bottom. The water makes steam, and the steam's got nowhere to go."),
-      p('So it PUSHES. Pushes the hot water up the funnel, through the grounds, and out the spout up top.'),
-      p('Coffee, rising! A little fountain. Gentle flame. Lid up, if you like, to watch it come.'),
+      p("Here's the magic. Heat the bottom: the steam's got nowhere to go, so it PUSHES the water up through the grounds."),
+      p('Coffee, rising! A little fountain. Lid up, if you like, to watch it come.'),
       p("Then — when it gurgles and sputters — OFF the flame. That's the last of the water."),
-      p('Any longer and it burns. Some cool the base under cold water. I just take it off and say thank you.'),
+      p('Any longer and it burns. I just take it off and say thank you.'),
     ],
   ),
 
@@ -153,13 +149,10 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
     [
       p("Now. It's not quite the short, fierce cup the great hissing machines make."),
       p("And that's the POINT. It's thick, it's bold, it's honest. No machine. No fuss. A flame and a pot."),
-      p('It goes anywhere. A stove, a campfire, a burner on a crate in an orchard in the dark.'),
-      p("Exhibit A: me. You can't take a hissing machine on your Wayfaring. You can take THIS."),
+      p("It goes anywhere. A campfire, a crate in an orchard in the dark. Exhibit A: me. You can't take a hissing machine on your Wayfaring."),
     ],
     [
-      p('NEVER wash it with soap. Rinse it, dry it, done.'),
-      p('The coffee oils season the inside, like a good iron pan. That seasoning IS the flavour.'),
-      p('Scrub it shiny and it tastes of nothing for a month.'),
+      p('NEVER wash it with soap. The coffee oils season it, like a good iron pan. Scrub it shiny and it tastes of nothing for a month.'),
       p("I knew a man who scrubbed his. We don't speak of him. He knows what he did."),
       p("And they LAST. A good pot outlives its owner. This was my grandmother's."),
       p("New seal, new basket. Same pot. One day it'll be someone else's."),
@@ -172,7 +165,7 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
     { op: 'action', actor: 'percy', action: 'gift', holdMs: 700 },
     { op: 'giveItem', item: 'moka_cup', count: 1 },
     { op: 'say', text: 'He pours a short, dark cup with a little tan foam on top. Got a MOKA CUP!' },
-    p('Kin like it too, a sip at a time. Perks them right up. Not too much. Look at me.'),
+    p('Kin like it too, a sip at a time. Not too much. Look at me.'),
     { op: 'setFlag', flag: 'flag:moka_cup_given' },
   ],
 
@@ -199,8 +192,7 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
   'script.cantina_hello': [
     { op: 'narrate', text: 'Woodsmoke and toasting chile. A cook in a bright headscarf flips tortillas on a wide iron griddle.' },
     m("Welcome, welcome! I'm Marisol. I came up from a sunny country far to the south, over the sea."),
-    m("Back home every kitchen smells like this. Here, only mine. The whole hollow comes to sniff."),
-    m("Tonight everything is red. Not from fire — from dried chiles and tomato. Sit. Eat. You'll leave warm."),
+    m("Back home every kitchen smells like this. Here, only mine. Tonight everything is red — dried chiles and tomato. Sit. Eat. You'll leave warm."),
     { op: 'setFlag', flag: 'flag:cantina_met' },
   ],
 
@@ -225,11 +217,9 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
   'script.cantina_enchiladas': [
     { op: 'narrate', text: 'She dips corn tortillas in brick-red sauce, warms them, and rolls them round cheese and onion.' },
     m("Enchiladas! The name only means 'put chile in it'. The whole recipe, in one word."),
-    m("The sauce: dried red chiles, toasted a breath on the comal — my griddle — then soaked soft."),
-    m('Then into the blender with tomato, garlic and a little onion. Simmer it till it shines.'),
+    m("The sauce: dried red chiles, toasted a breath on the comal — my griddle — soaked soft, blended with tomato and garlic, simmered till it shines."),
     m("Toast the chiles too long and they go bitter. My grandmother could smell it from the next room."),
     m("'Marisol! They're SMOKING!' ...She was always right."),
-    m('Folk rolled tortillas round a filling and dipped them in chile long before anyone wrote it down.'),
     m('Every town back home has its own way. This is my grandmother\'s.'),
     { op: 'run', ref: 'script.cantina_meal_end' },
   ],
@@ -237,9 +227,8 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
   'script.cantina_chilaquiles': [
     { op: 'narrate', text: "Yesterday's tortillas, fried crisp, tumbled in red salsa and crowned with cream, cheese and an egg." },
     m('Chilaquiles! A breakfast born from thrift. Nobody back home throws away a tortilla.'),
-    m("Yesterday's go stale, so you cut them up, fry them crisp and drown them in salsa."),
-    m("And today they're the best thing on the table. That's a kitchen's whole trick, really."),
-    m("Crunchy, or soft and soaked? Red or green? That's an argument at every family breakfast."),
+    m("Yesterday's go stale, so you fry them crisp and drown them in salsa — and today they're the best thing on the table."),
+    m("Crunchy or soaked? Red or green? An argument at every family breakfast."),
     m("Red is right. I'm the cook."),
     m("It's what you eat after a long night. A festival. A wedding. A Wayfaring, maybe?"),
     { op: 'run', ref: 'script.cantina_meal_end' },
@@ -247,12 +236,10 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
 
   'script.cantina_pozole': [
     { op: 'narrate', text: 'A deep bowl of brick-red broth, slow pork and fat white hominy, with cabbage, radish and lime.' },
-    m('Pozole. This one is OLD — older than the cities back home.'),
-    m('It was a feast dish, a ceremony, long before it was ever supper.'),
+    m('Pozole. This one is OLD — a feast dish, a ceremony, long before it was ever supper.'),
     m('Those big white kernels are hominy: maize cooked with slaked lime till they burst open like flowers.'),
     m('Slaked lime the mineral, mind. Not the fruit. The fruit goes on top.'),
-    m("It's still for celebrating. Birthdays, feast days, a whole street on a holiday night."),
-    m('Red, white or green, depending which valley your grandmother came from.'),
+    m("Still for celebrating. Red, white or green, depending which valley your grandmother came from."),
     m('You finish it yourself: cabbage, radish, a pinch of oregano, a squeeze of lime. Go on.'),
     { op: 'run', ref: 'script.cantina_meal_end' },
   ],
@@ -260,7 +247,7 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
   'script.cantina_arroz': [
     { op: 'narrate', text: 'Rice fried golden, then simmered in tomato broth with garlic, peas and carrot. Fluffy as a cloud.' },
     m('Arroz rojo. Rice came over the sea to my country long ago, and we made it ours.'),
-    m('Fry it first, then cook it in tomato. Frying the grains is the secret — every one stays apart.'),
+    m('Fry the grains first, then cook them in tomato. That\'s the secret — every one stays apart.'),
     m("Stir it once the lid's on and I'll know. I will KNOW."),
     m('It sits beside everything. Every family thinks theirs is the best. Every family is right.'),
     { op: 'run', ref: 'script.cantina_meal_end' },
@@ -268,11 +255,9 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
 
   'script.cantina_red': [
     m('Everything red here starts with the chiles. Dried long and wrinkled, nearly black.'),
-    m('See them hanging off my awning? Back home they hang in long strings to dry in the sun.'),
     m('Toast them on the comal, soak them soft, blend them with tomato. That is the red.'),
     m('Some salsas are cooked and silky, some raw and chunky. Every house has its own secret.'),
-    m('And corn! Nothing here works without corn.'),
-    m('We cook the maize with lime — nixtamal, we call it — then grind it into masa, the tortilla dough.'),
+    m('And corn! We cook the maize with lime — nixtamal — then grind it into masa, the tortilla dough.'),
     m('That trick is thousands of years old. It makes the corn kinder to the body.'),
     m('And it makes it taste like home.'),
   ],

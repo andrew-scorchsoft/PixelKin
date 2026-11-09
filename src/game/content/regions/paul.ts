@@ -86,28 +86,28 @@ const FEST_PAGES: string[][] = [
     'FESTIVAL OF THE IMAGINED.',
   ],
   [
-    'WELCOME to the first Festival of the Imagined, to be held on the twenty-ninth of the short month — a day that only turns up one winter in four, so we thought it could spare us an evening.',
-    'There will be people in conversation, pictures on the walls, and a night of lantern-shows. This is only the first, so we have not tried to do everything. We hope you leave imagining what might come next.',
+    'WELCOME to the first Festival of the Imagined, on the twenty-ninth of the short month — a day that turns up one winter in four, so it can spare us an evening.',
+    'People in conversation, pictures on the walls, a night of lantern-shows. This is only the first. We hope you leave imagining what might come next.',
   ],
   [
     'THE LAMPLIGHTER\'S DAUGHTER AND THE GIRL WHO FELL UP THE WELL, IN CONVERSATION.',
-    'They have written to each other for years but never met. Both grew up to be nursery stories and both went to great lengths to live quietly anyway. They will talk about growing older, the end of childhood, and whether you can lose the knack of imagining. (You can\'t. Probably.)',
+    'Pen-friends for years who have never met, both grown into nursery stories, both living quietly anyway. They will talk about growing older and whether you can lose the knack of imagining. (You can\'t. Probably.)',
   ],
   [
     'THE LONG-ROAD DRIFTER AND THE MAN WHO WALKED OUT OF THE MAP, IN CONVERSATION.',
-    'Two men who have wandered every dust road, crossroads inn and shuttered car-station in the old songs. They will talk about wanting things, being afraid of things, and the strange comfort of the road. Drinks will be served. It will go late.',
+    'Two men who have wandered every dust road and crossroads inn in the old songs, on wanting things, fearing things, and the strange comfort of the road. Drinks will be served. It will go late.',
   ],
   [
     'THE SORTING-OFFICE POET AND THE WOMAN WHO HEARD THE POST-HORN, IN CONVERSATION.',
-    'A pair of outsiders: one sorts letters by night and writes on the backs of them; one keeps finding a muffled horn drawn in the margins of everything. Topics: how to live in a world that has stopped making sense. They have asked for a dance floor, and intend to use it.',
+    'One sorts letters by night and writes on their backs; one keeps finding a muffled horn drawn in every margin. Topic: living in a world that has stopped making sense. They have asked for a dance floor.',
   ],
   [
     'THREE ARTISTS IN CONVERSATION: ART?',
     'A painter who sleeps under his own canvases, a sculptor of hanging things, and an old woman who has drawn the same harbour every morning for sixty years.',
-    'They have asked to begin from one word, sent in by post with no name on it: DESASOSIEGO. The itch that won\'t let you sit still until you\'ve made something. Should be quite an evening.',
+    'They begin from one word, posted to us unsigned: DESASOSIEGO. The itch that won\'t let you sit still until you\'ve made something. Should be quite an evening.',
   ],
   [
-    'TICKETS. There is no charge. Write to us and tell us your name, and why you want to come. One event each — if you and a friend want the same evening, you each write your own letter. Your ticket will come back by return of post.',
+    'TICKETS. No charge. Write with your name and why you want to come. One event each — a friend for the same evening writes their own letter. Tickets by return of post.',
   ],
 ];
 
@@ -136,7 +136,7 @@ const MILAGRO_LYING_SCRIPTS: ScriptRegistry = {
     ]),
   ),
   [milagroLyingScript('lore')]: [
-    { op: 'narrate', text: 'Tucked into the foot of the fingerpost, out of the wind, is a little printed slip with a yellow border, the kind that comes in a box of something.' },
+    { op: 'narrate', text: 'Tucked into the foot of the fingerpost, out of the wind: a little printed slip with a yellow border.' },
     { op: 'narrate', text: 'Somebody has written on the back, in pencil: "READ ME. THEN KEEP AN EYE OUT."' },
     { op: 'milagroCard', card: 'lore' },
   ],
@@ -147,7 +147,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   // ---- the house ------------------------------------------------------------------------
   'script.paul_house_welcome': [
     { op: 'narrate', text: 'The door isn\'t locked. It doesn\'t look as if it has ever been locked. It doesn\'t look as if it has ever been entirely SHUT.' },
-    { op: 'narrate', text: 'Inside, every wall is busy: tickets, paintings, carvings, a kettle still warm on the bench. Somewhere upstairs, someone small is singing to herself.' },
+    { op: 'narrate', text: 'Every wall is busy: tickets, paintings, carvings, a kettle still warm. Upstairs, someone small is singing to herself.' },
     { op: 'setFlag', flag: 'flag:paul_house_seen' },
   ],
   // The note on the kitchen table. Paul is never home.
@@ -163,15 +163,15 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   // the standing patter. Warm; she never says what her dad IS either.
   'script.paul_rose': [
     { op: 'face', actor: 'rose', facing: 'down' },
-    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'Oh! Hello. You\'ll be another of Dad\'s strays. I\'m Rose. He\'s out walking. He\'s always out walking.' },
+    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'Oh! Hello. Another of Dad\'s strays. I\'m Rose. He\'s out walking. He\'s always out walking.' },
     { op: 'say', if_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'Back again? Kettle\'s on. It\'s always on. Dad says a cold kettle is how a house forgets you.' },
-    { op: 'say', unless_flag: CP, speaker: 'ROSE', text: 'Felicitas\'s up in the attic, drawing chickens. And pigs. She keeps asking me which one would win. I keep saying "a nap".' },
-    { op: 'say', if_flag: CP, unless_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'Is that a FEATHER on your sleeve? Green, curly... Oh, Felicitas is going to lose her mind. Go on up. I\'ll stay here and hold the teapot steady.' },
-    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'He came home with a tin cup and a grin and won\'t say where he got either. Whatever you did up that wood, thank you. He\'s been humming.' },
-    { op: 'say', speaker: 'ROSE', text: 'If you go up to his shirts: the NEVER rail is mine and Felicitas\'s doing. He wore ASK ME ABOUT MY KNEES to a christening. Somebody asked.' },
-    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'He\'s planning a festival again, too. The Festival of the Imagined. The programmes are upstairs. Everyone on the bill is somebody out of a story, which does keep the catering simple.' },
-    { op: 'say', unless_flag: MILAGRO_PACK_FLAG, speaker: 'ROSE', text: 'And if he\'s in a good mood, ask him about the cards. The painted ones, out at his lamp. He pretends he doesn\'t want to show you.' },
-    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'And that poster by the fire is a JOKE. Probably. I stopped asking around the time I learned to make tea.' },
+    { op: 'say', unless_flag: CP, speaker: 'ROSE', text: 'Felicitas\'s up in the attic, drawing chickens. And pigs. She asks which would win. I say "a nap".' },
+    { op: 'say', if_flag: CP, unless_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'Is that a FEATHER on your sleeve? Green, curly... Oh, Felicitas will lose her mind. [[Go on up to the attic]]. I\'ll hold the teapot steady.' },
+    { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'He came home with a tin cup and a grin and won\'t say where he got either. Whatever you did up that wood, thank you. He\'s humming.' },
+    { op: 'say', speaker: 'ROSE', text: 'The NEVER rail upstairs is mine and Felicitas\'s doing. He wore ASK ME ABOUT MY KNEES to a christening. Somebody asked.' },
+    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'He\'s planning another festival: the Festival of the Imagined. Everyone on the bill is out of a story. Keeps the catering simple.' },
+    { op: 'say', unless_flag: MILAGRO_PACK_FLAG, speaker: 'ROSE', text: 'And if he\'s in a good mood, [[ask him about the cards]], out at his lamp. He pretends he doesn\'t want to show you.' },
+    { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'That poster by the fire is a JOKE. Probably. I stopped asking around when I learned to make tea.' },
     { op: 'setFlag', flag: 'flag:paul_rose_met' },
   ],
 
@@ -201,8 +201,8 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
         { value: 'FELICITAS', flag: 'flag:paul_festival_family' },
       ],
     },
-    { op: 'narrate', unless_flag: 'flag:paul_festival_paul', text: 'You write the name on the last page, small and neat. Somewhere in the house a floorboard creaks, as if the room has started setting out another chair.' },
-    { op: 'narrate', if_flag: 'flag:paul_festival_paul', text: 'You write PAUL on the last page. It looks right there. You suspect he\'d grumble, go red, and then turn up an hour early to help with the chairs.' },
+    { op: 'narrate', unless_flag: 'flag:paul_festival_paul', text: 'You write the name on the last page, small and neat. A floorboard creaks, as if the room is setting out another chair.' },
+    { op: 'narrate', if_flag: 'flag:paul_festival_paul', text: 'You write PAUL on the last page. It looks right. He\'d grumble, go red, then turn up an hour early to help with the chairs.' },
     { op: 'narrate', if_flag: 'flag:paul_festival_family', text: 'Next to your name, in crayon, somebody has already added: "AND THE BIRD-PIG."' },
     { op: 'setFlag', flag: 'flag:paul_festival_paul', value: false },
     { op: 'setFlag', flag: 'flag:paul_festival_family', value: false },
@@ -214,30 +214,30 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   // Every other card is out in the world with somebody (WorldScene.maybeGiveMilagro).
   'script.paul_milagro_cards': [
     { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Cards? Ha. Somebody\'s been talking. ...Rose. It\'s always Rose.' },
-    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'In the sun country, over the western sea, folk hang little tin charms in the chapels for whatever wants mending. A tin heart. A tin leg. Milagros, they call them. Small miracles.' },
-    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Somebody painted a whole deck of them, once, and left them lying about. If a stranger\'s handed you a little painted card on your travels, now you know where it came from. Roughly.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Over the western sea, in the sun country, folk hang tin charms in chapels for whatever wants mending. A tin heart. A tin leg. Milagros. Small miracles.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Somebody painted a deck of them and left them lying about. If a stranger\'s handed you a painted card, now you know why. Roughly.' },
     { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'I came by the box. Don\'t ask me how. ...Here. It\'s yours. Every deck wants somewhere to come home to.' },
     { op: 'giveItem', unless_flag: MILAGRO_PACK_FLAG, item: 'milagro_cards', count: 1 },
-    { op: 'say', unless_flag: MILAGRO_PACK_FLAG, text: 'He puts a little card box in your hands, covered in painted suns and moons and eyes. Received the MILAGRO CARDS!' },
+    { op: 'say', unless_flag: MILAGRO_PACK_FLAG, text: 'He hands you a card box painted with suns and moons and eyes. Received the MILAGRO CARDS!' },
     { op: 'narrate', unless_flag: MILAGRO_PACK_FLAG, text: 'Inside: one card, and a little printed slip.' },
     { op: 'narrate', unless_flag: MILAGRO_PACK_FLAG, text: '"The Milagro Cards you now hold were made by a somewhat mysterious figure known as the Booji-Wooji Man..."' },
-    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Read the slip later. The short of it: he left them lying about. Tea-houses, the Lantern-cars, bookshops. So the rest of that deck\'s out there, with whoever found it.' },
-    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Talk to folk. Somebody always has a card they don\'t know what to do with. That\'s rather the point of them.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: 'Read the slip later. Short of it: he left them in tea-houses, Lantern-cars, bookshops. The rest of that deck\'s out there, with whoever found it.' },
+    { op: 'say', speaker: 'PAUL', unless_flag: MILAGRO_PACK_FLAG, text: '[[Talk to folk]]. Somebody always has a card they don\'t know what to do with. That\'s rather the point.' },
     { op: 'setFlag', unless_flag: MILAGRO_PACK_FLAG, flag: MILAGRO_PACK_FLAG },
     { op: 'setFlag', flag: MILAGRO_LORE_FLAG },
     { op: 'milagroCard', unless_flag: 'milagro:desasosiego', card: 'desasosiego' },
-    { op: 'say', speaker: 'PAUL', if_flag: 'milagro:desasosiego', text: 'That one\'s the oldest. The itch to make something. When it comes for you, and it will, you\'ve the look, don\'t fight it. Make the thing. Then come and show me.' },
+    { op: 'say', speaker: 'PAUL', if_flag: 'milagro:desasosiego', text: 'That one\'s the oldest. The itch to make something. When it comes for you, and it will, don\'t fight it. Make the thing. Then come and show me.' },
   ],
   // The framed set on the kitchen wall.
   'script.paul_milagro_wall': [
-    { op: 'narrate', text: 'Three painted cards pinned in a little frame: a red heart bound in blue thorns, a spotted fish, and a dark card with one small flame.' },
-    { op: 'narrate', text: 'Under the dark one, a label in Paul\'s loopy hand: "DESASOSIEGO. the itch to make a thing. do not scratch. MAKE THE THING."' },
+    { op: 'narrate', text: 'Three painted cards in a frame: a red heart in blue thorns, a spotted fish, and a dark card with one small flame.' },
+    { op: 'narrate', text: 'Under the dark one, in Paul\'s loopy hand: "DESASOSIEGO. the itch to make a thing. do not scratch. MAKE THE THING."' },
     { op: 'narrate', unless_flag: MILAGRO_PACK_FLAG, text: 'There are pinholes for many more. Wherever the rest of the deck went, it went a long way.' },
   ],
 
   // ---- the three rails ------------------------------------------------------------------
   'script.paul_rail_out': [
-    { op: 'narrate', text: 'A tidy rail under a green board: OUT. Pressed, buttoned, collared. A card in Paul\'s loopy hand: "SAFE TO BE SEEN IN. FELICITAS HAS APPROVED EACH ONE IN WRITING."' },
+    { op: 'narrate', text: 'A tidy rail under a green board: OUT. Pressed and collared. A card: "SAFE TO BE SEEN IN. FELICITAS HAS APPROVED EACH ONE IN WRITING."' },
     ...railMenu(RAIL_FLAGS[0], [
       shirtPick('The navy one', 'Plain navy, two buttons, not a crease on it. The card: "for the bank and the barber. same shirt for thirty years. neither of them has noticed."'),
       shirtPick('The white one', 'Crisp white, with a tiny lighthouse stitched over the pocket. The card: "felicitas ironed this one. it is now a slightly different shape. still wearing it."'),
@@ -245,7 +245,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     ]),
   ],
   'script.paul_rail_in': [
-    { op: 'narrate', text: 'A worn wooden rail under an amber board: IN. Faded, baggy, much-loved. A pair of slippers waits underneath. The card: "HOUSE ONLY. THE DOOR IS A BORDER."' },
+    { op: 'narrate', text: 'A worn rail under an amber board: IN. Faded, baggy, much-loved, slippers underneath. The card: "HOUSE ONLY. THE DOOR IS A BORDER."' },
     ...railMenu(RAIL_FLAGS[1], [
       shirtPick('The holey one', 'Grey, and more hole than shirt. The card: "do not mend. the hole is load-bearing."'),
       shirtPick('The stripy one', 'Blue-and-white stripes, soft as a cloud, very clearly half of a pair of pyjamas. The card: "the bottoms are on a beach in the cape country. long story. good beach."'),
@@ -254,7 +254,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     ]),
   ],
   'script.paul_rail_never': [
-    { op: 'narrate', text: 'An iron rail under a red board: NEVER! A velvet rope hangs across the front, padlocked to the post. Tucked into the padlock, a card in Felicitas\'s crayon:' },
+    { op: 'narrate', text: 'An iron rail under a red board: NEVER! A velvet rope across it, padlocked. Tucked in the padlock, a card in Felicitas\'s crayon:' },
     { op: 'narrate', text: '"GRANDAD THESE ARE BANNED. NOT OUTSIDE. NOT INSIDE. NOT EVER. — FELICITAS (IN CHARGE)"' },
     { op: 'narrate', unless_flag: RAIL_FLAGS[2], text: 'The rope is only padlocked at one end. You lift it, very carefully, and duck under.' },
     { op: 'emote', unless_flag: RAIL_FLAGS[2], actor: 'player', emote: 'sweat' },
@@ -296,8 +296,8 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   // The safety-net "before" (unreachable in normal play): a cheerful kid, no hints.
   'script.paul_felicitas_before': [
     { op: 'face', actor: 'felicitas', facing: 'down' },
-    { op: 'say', speaker: L, text: 'Hello! Are you here for Grandad? He\'s out walking. He\'s ALWAYS out walking. He says he\'s not lost, he\'s just somewhere else on purpose.' },
-    { op: 'say', speaker: L, text: 'Did you see his shirts? He\'s got one from EVERYWHERE. He says if you don\'t come home with a shirt, you weren\'t really there.' },
+    { op: 'say', speaker: L, text: 'Hello! Here for Grandad? He\'s ALWAYS out walking. He says he\'s not lost, he\'s just somewhere else on purpose.' },
+    { op: 'say', speaker: L, text: 'Did you see his shirts? He\'s got one from EVERYWHERE. No shirt, he says, and you weren\'t really there.' },
     { op: 'say', speaker: L, text: 'I like chickens. And pigs. Separately. Normal amounts.' },
   ],
 
@@ -306,11 +306,11 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'felicitas', facing: 'down' },
     { op: 'say', speaker: L, text: 'Hello! Are you here for Grandad? He\'s out walking, he\'s always out walk—' },
     { op: 'emote', actor: 'felicitas', emote: 'alert', holdMs: 700 },
-    { op: 'narrate', text: 'She stops. She is looking at your sleeve. Stuck to it is one long, curling, emerald-green tail-feather.' },
+    { op: 'narrate', text: 'She stops, staring at your sleeve. Stuck to it: one long, curling, emerald-green tail-feather.' },
     { op: 'say', speaker: L, text: '...Where did you get that.' },
     { op: 'shakeActor', actor: 'felicitas', ms: 500, px: 1 },
-    { op: 'say', speaker: L, text: 'That\'s a SICKLE feather. That\'s a CHICKENPIG sickle feather. Grandad TOLD me about it — the bird that\'s a pig, the pig that\'s a bird, the only one that still crows for the morning —' },
-    { op: 'say', speaker: L, text: '— and NOBODY at school believed me, and Grandad said "believe what you like, Lots, the morning\'s on its way regardless" —' },
+    { op: 'say', speaker: L, text: 'That\'s a CHICKENPIG sickle feather. Grandad TOLD me — the bird that\'s a pig, the pig that\'s a bird, the only one that still crows for the morning —' },
+    { op: 'say', speaker: L, text: '— and NOBODY at school believed me, and Grandad said "believe what you like, Lots, the morning\'s coming regardless" —' },
     { op: 'say', speaker: L, text: 'HAVE YOU GOT A CHICKENPIG IN THERE?!' },
     { op: 'emote', actor: 'player', emote: 'sweat' },
     { op: 'narrate', text: 'From your vesperlamp comes a small, smug sound: half crow, half oink.' },
@@ -319,13 +319,13 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'hop', actor: 'felicitas', times: 3, height: 6 },
     { op: 'emote', actor: 'felicitas', emote: 'heart', holdMs: 900 },
     { op: 'narrate', text: 'Somewhere far below, a kettle rattles on its hob in sympathy.' },
-    { op: 'say', speaker: L, text: 'Look! LOOK! I drew it! Before I\'d even SEEN one! I drew it ninety times! That\'s not true. I drew it four times. They\'re the best four.' },
+    { op: 'say', speaker: L, text: 'LOOK! I drew it before I\'d even SEEN one! Ninety times! That\'s not true. Four times. They\'re the best four.' },
     { op: 'cameraFocus', to: { tx: 7, ty: 2 }, ms: 700 },
-    { op: 'narrate', text: 'Crayon Chickenpigs cover the wall: under a sun, in a cloud of hearts, holding a little girl\'s hand, and one under a rainbow that is MUCH too big.' },
+    { op: 'narrate', text: 'Crayon Chickenpigs cover the wall: under a sun, in hearts, holding a little girl\'s hand, and one under a rainbow, MUCH too big.' },
     { op: 'cameraFocus', to: { tx: 7, ty: 7 }, ms: 600 },
     { op: 'say', speaker: L, text: 'And that\'s Sir Oinksalot. Grandad sewed him. His comb fell off twice. He\'s very brave about it.' },
     { op: 'cameraReset', ms: 500 },
-    { op: 'say', speaker: L, text: 'Can I meet it? Please? PLEASE? I\'ll be so gentle. I\'ll be the gentlest anyone\'s EVER been. Look, I\'m being gentle right now.' },
+    { op: 'say', speaker: L, text: 'Can I meet it? PLEASE? I\'ll be the gentlest anyone\'s EVER been. Look, I\'m being gentle right now.' },
     { op: 'shakeActor', actor: 'felicitas', ms: 400, px: 1 },
     { op: 'narrate', text: 'She is vibrating.' },
     { op: 'setFlag', flag: SCENE },
@@ -337,7 +337,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
         {
           label: 'NOT RIGHT NOW',
           ops: [
-            { op: 'say', speaker: L, text: 'That\'s okay. It\'s probably asleep. Chickenpigs need eleventy hours of sleep. I read that. I wrote it, actually. But I READ it after.' },
+            { op: 'say', speaker: L, text: 'That\'s okay. It\'s probably asleep. Chickenpigs need eleventy hours of sleep. I read that. I wrote it, actually. Then I READ it.' },
             { op: 'say', speaker: L, text: 'Come back when it\'s awake! I\'ll be here. I am VERY good at waiting.' },
             { op: 'narrate', text: 'She is not very good at waiting.' },
           ],
@@ -349,18 +349,18 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   // The meeting, the dance, the keepsake (once).
   'script.paul_felicitas_meet': [
     ...LET_IT_OUT,
-    { op: 'narrate', text: 'You lift your vesperlamp. The Chickenpig decides, entirely on its own, that this is its moment — and steps out into the attic like it owns the place.' },
+    { op: 'narrate', text: 'You lift your vesperlamp. The Chickenpig decides this is its moment, and steps into the attic like it owns the place.' },
     { op: 'emote', actor: 'felicitas', emote: 'alert' },
     { op: 'say', speaker: L, text: '...' },
     { op: 'say', speaker: L, text: '...it\'s REAL.' },
     { op: 'face', actor: 'felicitas_cp', facing: 'up' },
     { op: 'sfx', key: 'cry-163' },
-    { op: 'narrate', text: 'The Chickenpig looks Felicitas up and down, ruffles its one red wing, and CROWS at her.' },
-    { op: 'say', speaker: L, text: 'It crowed at ME! It crowed AT ME! Grandad, it — oh, he\'s not here. Wait till I TELL him. He\'ll pretend he isn\'t impressed. He\'ll be SO impressed.' },
+    { op: 'narrate', text: 'The Chickenpig looks Felicitas up and down, ruffles its one red wing, and CROWS.' },
+    { op: 'say', speaker: L, text: 'It crowed AT ME! Grandad, it — oh, he\'s not here. Wait till I TELL him. He\'ll pretend he isn\'t impressed. He\'ll be SO impressed.' },
     { op: 'hop', actor: 'felicitas', times: 2, height: 5 },
     { op: 'emote', actor: 'felicitas', emote: 'heart' },
     { op: 'emote', actor: 'felicitas_cp', emote: 'heart' },
-    { op: 'say', speaker: L, text: 'Hello. Hello, Chickenpig. I\'m Felicitas. I\'m seven and three-quarters. I have drawn you four times and I am going to draw you a HUNDRED.' },
+    { op: 'say', speaker: L, text: 'Hello, Chickenpig. I\'m Felicitas. I\'m seven and three-quarters. I\'ve drawn you four times and I\'m going to draw you a HUNDRED.' },
     { op: 'narrate', text: 'The Chickenpig considers this offer gravely, and oinks once. It is clearly a yes.' },
     { op: 'say', speaker: L, text: 'Do you dance? Grandad says everybody dances, some people just haven\'t found out yet.' },
     { op: 'music', key: 'pearlmoor-blessing' },
@@ -372,23 +372,23 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'emote', actor: 'felicitas_cp', emote: 'music' },
     { op: 'spin', actor: 'felicitas', turns: 3, ms: 100 },
     { op: 'spin', actor: 'felicitas_cp', turns: 3, ms: 100 },
-    { op: 'narrate', text: 'What follows can only be described as a dance. Felicitas does a sort of hop-hop-twirl. The Chickenpig does a sort of hop-hop-oink. Neither of them leads. Both of them win.' },
+    { op: 'narrate', text: 'What follows can only be called a dance. Felicitas does a hop-hop-twirl. The Chickenpig does a hop-hop-oink. Neither leads. Both win.' },
     { op: 'action', actor: 'player', action: 'laugh', holdMs: 900 },
     { op: 'sfx', key: 'cry-163' },
     { op: 'hop', actor: 'felicitas_cp', times: 3, height: 6 },
-    { op: 'narrate', text: 'At the big finish it crows and oinks at the SAME TIME — which should not be possible, and which Felicitas will be describing to everyone she meets for the rest of her life.' },
+    { op: 'narrate', text: 'At the finish it crows and oinks at the SAME TIME, which is not possible, and which Felicitas will describe to everyone for the rest of her life.' },
     { op: 'shakeActor', actor: 'felicitas', ms: 600, px: 1 },
     { op: 'say', speaker: L, text: 'BEST. DAY. EVER.' },
     { op: 'musicFade', ms: 900 },
     { op: 'face', actor: 'felicitas', facing: 'left' },
-    { op: 'say', speaker: L, text: 'I made you something. Well — I made it for the Chickenpig, but it can\'t hold things, it\'s got a wing and a trotter, so you have to carry it.' },
+    { op: 'say', speaker: L, text: 'I made you something. Well — for the Chickenpig, but it\'s got a wing and a trotter, so you have to carry it.' },
     { op: 'say', speaker: L, text: 'It\'s the best one. Don\'t look at the ones on the wall, they\'re worse. (They\'re not worse. They\'re all the best.)' },
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'lottie_drawing', count: 1 },
-    { op: 'say', text: 'Felicitas hands you a crayon drawing, slightly crumpled from being held very tightly. Received FELICITAS\'S DRAWING!' },
+    { op: 'say', text: 'Felicitas hands you a crayon drawing, crumpled from being held very tightly. Received FELICITAS\'S DRAWING!' },
     { op: 'say', speaker: L, text: 'Keep it somewhere it can see the sky. That\'s what Grandad says about everything.' },
     { op: 'setFlag', flag: MET },
-    { op: 'narrate', text: 'The Chickenpig gives Felicitas one last appraising look, oinks something that sounds a lot like "see you", and hops back into your lamp\'s light.' },
+    { op: 'narrate', text: 'The Chickenpig gives Felicitas one last look, oinks something very like "see you", and hops back into your lamp\'s light.' },
     ...BACK_IN,
     { op: 'emote', actor: 'felicitas', emote: 'heart' },
     { op: 'music', key: 'interior-sunny' },
@@ -409,7 +409,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
         {
           label: 'JUST VISITING',
           ops: [
-            { op: 'say', speaker: L, text: 'Grandad\'s still out walking. He came back for ONE cup of tea and then went out again. He said the hill was "making eyes at him".' },
+            { op: 'say', speaker: L, text: 'Grandad came back for ONE cup of tea and went out again. He said the hill was "making eyes at him".' },
           ],
         },
       ],
@@ -417,7 +417,7 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
   ],
   'script.paul_felicitas_visit': [
     ...LET_IT_OUT,
-    { op: 'say', speaker: L, text: 'HELLO! Hello hello hello. I drew you again. You\'re on the front door now. Grandad says that\'s the first thing visitors see. Grandad is RIGHT.' },
+    { op: 'say', speaker: L, text: 'HELLO! Hello hello hello. I drew you again. You\'re on the front door now, the first thing visitors see. Grandad says. Grandad is RIGHT.' },
     { op: 'sfx', key: 'cry-163' },
     { op: 'spin', actor: 'felicitas', turns: 2, ms: 120 },
     { op: 'spin', actor: 'felicitas_cp', turns: 2, ms: 120 },
@@ -433,13 +433,13 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
   // Setlead's missing line: the Chickenpig's resting at the Hearth (or too tired to stand).
   'npc.paul_felicitas_cp_missing': [
     { speaker: 'FELICITAS', text: 'It\'s... not in your lamp? Is it resting at the HEARTH?' },
-    { speaker: 'FELICITAS', text: 'That\'s okay. Bring it next time — awake and ready. I\'ll wait right here. I am VERY good at waiting. (I\'m not.)' },
+    { speaker: 'FELICITAS', text: 'That\'s okay. Bring it next time. I\'ll wait right here. I am VERY good at waiting. (I\'m not.)' },
   ],
 
   // ---- outside -----------------------------------------------------------------------------
   'sign.paul_bike': [
-    { text: 'A sturdy old bicycle with a wicker basket, leaning on its stand by the door. A gym towel is rolled up in the basket; the saddle is worn shiny.' },
-    { text: 'Every morning, they say, he rides it down the hill and round the quay to the Lifting House — and walks it back up, because hills, he says, are for thinking.' },
+    { text: 'A sturdy old bicycle by the door, a gym towel rolled in its wicker basket, the saddle worn shiny.' },
+    { text: 'Every morning he rides it down the hill to the Lifting House, and walks it back up, because hills, he says, are for thinking.' },
   ],
   'sign.paul_washing_line': [
     { text: 'T-shirts drying on the line: red, mustard, teal, a white one with a red leaf, a hooped green-and-gold.' },
@@ -453,11 +453,11 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
     { text: 'The story on the back has been crossed out and rewritten four times. Every version is different. Every version is signed.' },
   ],
   'sign.paul_pinboard': [
-    { text: 'Tickets. Ferry stubs, rail stubs, a lift-pass from a mountain you\'ve never heard of. A postcard of a frozen lake from the maple country across the northern sea; another of a flat-topped mountain from the cape country far to the south.' },
+    { text: 'Ferry stubs, rail stubs. Postcards: a frozen lake from the maple country across the northern sea; a flat-topped mountain from the cape country far south.' },
     { text: 'Every one of them is stamped. Some are stamped twice — going the other way.' },
   ],
   'sign.paul_cape_day': [
-    { text: 'A sunny painting: a great flat-topped mountain above a blue bay, a white cloud poured over its top like a tablecloth. The cape country, far to the south.' },
+    { text: 'A flat-topped mountain above a blue bay, a white cloud poured over it like a tablecloth. The cape country, far to the south.' },
     { text: 'On the frame, in pencil: "home, the first time."' },
   ],
   'sign.paul_tea': [
@@ -525,14 +525,14 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
     { text: '"from a lake in the maple country. the canoe is still out there. probably upside down."' },
   ],
       'sign.paul_folded': [
-    { text: 'Folded shirts under the candle, too precious to hang: the very first one, one with a hole shaped like a coastline, and one signed by an entire ferry crew.' },
+    { text: 'Shirts too precious to hang: the very first one, one with a hole shaped like a coastline, one signed by an entire ferry crew.' },
   ],
   'sign.paul_protea': [
     { text: 'A painting of a great pink flower, all spiky crown and soft heart — the cape country\'s own. The card reads:' },
     { text: '"looks fierce. isn\'t. like most things worth knowing."' },
   ],
   'sign.paul_beadwork': [
-    { text: 'A panel of tiny glass beads in bright diamonds, hung from a little rod, from the cape country. The card reads:' },
+    { text: 'A panel of tiny glass beads in bright diamonds, from the cape country. The card reads:' },
     { text: '"took her a whole winter. she gave it me for helping carry a stove up four flights. i still owe her."' },
   ],
   'sign.paul_sunset': [
@@ -547,7 +547,7 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
     { text: 'Another trunk. This one is labelled MORE STICKERS. It is full of more stickers.' },
   ],
   'sign.paul_globe': [
-    { text: 'A little globe on a brass stand. Someone has drawn a dotted pencil line round and round it, until the line simply became the globe.' },
+    { text: 'A little globe. A dotted pencil line goes round and round it, until the line simply became the globe.' },
   ],
   'sign.paul_plaid': [
     { text: 'A red-and-black checked lumber-jacket from the maple country, and a bobble hat on the peg above it.' },
@@ -585,7 +585,7 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
     { text: 'Felicitas\'s bed. A crayon sign on the pillow: NO GROWN-UPS. (EXCEPT GRANDAD.) (EXCEPT YOU, MAYBE.)' },
   ],
   'sign.paul_felicitas_desk': [
-    { text: 'Crayons, all worn down to stubs — except the black one, which has hardly been touched. Grandad\'s lamp, presumably, gets drawn very carefully.' },
+    { text: 'Crayons worn to stubs — except the black one, hardly touched. Grandad\'s lamp gets drawn very carefully.' },
   ],
   'sign.paul_felicitas_toys': [
     { text: 'A stack of toy crates: a wooden boat, a kite with no string, three spinning tops, and a little bicycle bell.' },

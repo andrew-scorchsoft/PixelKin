@@ -272,6 +272,7 @@ go digging on every task.
 | Map & level-design rules (binding) | `docs/world/level-design.md` |
 | Retro map/route-design research (the §2b/§3a evidence base) | `docs/world/retro-map-design-research.md` |
 | Interior design rules (binding, SNES-style) | `docs/world/interiors.md` |
+| Dialogue length + key-info marking rules (binding) | `docs/world/dialogue-rubric.md` (+ `tools/content/dialogue_stats.mjs`) |
 | Per-area/route music briefs | `docs/world/music-direction.md` |
 | Remastered score (cue-sheet specs, motif, pipeline) | `assets/audio/elevenlabs/<id>/spec.json` + `tools/audio/remaster_track.py` (method: generate-music SKILL.md) |
 | Mechanics design (start here) | `docs/mechanics/00-overview.md` |
@@ -1309,6 +1310,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `sign.lanternfall_hub` (where the loop actually closes), the Waykeeper, and Andrew's
   THESE ROADS. Keep new connector signage in that voice — "not a wrong turn, a shortcut
   you've earned" — never apologise for the loop.
+- **Dialogue is paced to a rubric and KEY INFO is marked (2026-11).** Before writing or editing any
+  line, classify it by `docs/world/dialogue-rubric.md` (T1 story … T6 repeat; ≤160 chars unless T1/T5,
+  never >300; the instruction first). Wrap story-critical info — where to go, who to see, what to bring,
+  a new control — in `[[double brackets]]`: the DialogueBox draws it lamp-gold and underlined
+  (`ui/textMarks.ts`; stripped in battle messages). Sparse: ≤2 marks a line, never on flavour.
+  `node tools/content/dialogue_stats.mjs` measures the whole game's reading load.
 - **`giveKin {kin, level}` gifts a SPECIFIC kin (no chooser)** — the gift-kin op (2026-06,
   `WorldScene.onGiveKin`): joins the party at `level`, or overflows to the Hearth (`box`) when
   the party is full, and registers in the dex. Distinct from `giveStarter` (opens StarterSelect)
