@@ -51,7 +51,7 @@ function bell(flag: string, name: string, swung: string, still: string): Cutscen
     { op: 'sfx', key: 'world-moorbell' },
     { op: 'shake', ms: 180, intensity: 0.0015 },
     { op: 'narrate', if_flag: flag, text: `You swing the ${name}. At the junction, ${swung} The race-post shows RED.` },
-    { op: 'narrate', unless_flag: flag, text: `You ring the ${name} back to rest. At the junction, ${still} The race-post shows WHITE.` },
+    { op: 'narrate', unless_flag: flag, text: `You rest the ${name}. At the junction, ${still} The race-post shows WHITE.` },
     { op: 'setFlag', flag: TMP, value: false },
   ];
 }
@@ -73,7 +73,7 @@ function diver(id: string, name: string, before: string, after: string): Cutscen
 function page(n: number, lines: string[]): CutsceneStep[] {
   return [
     { op: 'sfx', key: 'world-chart' },
-    { op: 'narrate', text: `A sea-chest, barnacled shut, a damp logbook on its lid. One page still reads. THE FARLAMP LOG — page ${n} of the last night.` },
+    { op: 'narrate', text: `A barnacled sea-chest, a damp logbook on its lid. One page still reads: THE FARLAMP LOG — page ${n} of the last night.` },
     ...lines.map((text): CutsceneStep => ({ op: 'say', speaker: 'KEEPER EDDA MARROW', text })),
     { op: 'setFlag', flag: 'flag:isles_log_begun' },
     { op: 'setFlag', flag: `flag:isles_log_${n}` },
@@ -159,14 +159,14 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'fog_glass', count: 1 },
     { op: 'setFlag', flag: 'flag:q_isles_fogglass' },
     { op: 'say', text: 'You take the keeper\'s FOG-GLASS. Through it, the dark goes thin and grey.' },
-    { op: 'narrate', text: 'Out on the open sea, [[the Fogwall\'s buoys]] will read true through this. Driftholm waits beyond.' },
+    { op: 'narrate', text: 'Through this, [[the Fogwall\'s buoys]] will read true. Driftholm waits beyond.' },
   ],
 
   // ---- the keeper's ledge (III): the rest point ------------------------------------
   'script.undertide_camp_rest': [
-    { op: 'narrate', text: 'The keeper\'s dry ledge: a crate, an oilskin bed, a kettle on three stones, a fire laid but never lit. You light it.' },
+    { op: 'narrate', text: 'The keeper\'s dry ledge: a crate, an oilskin bed, a kettle, a fire laid but never lit. You light it.' },
     { op: 'heal' },
-    { op: 'narrate', text: 'You wake to the bells humming and the kettle ticking as it cools. Your kin are curled warm against the crate.' },
+    { op: 'narrate', text: 'You wake to the bells humming and the kettle ticking. Your kin are curled warm by the crate.' },
   ],
 
   // ---- caches ------------------------------------------------------------------
@@ -189,7 +189,7 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
   'script.pickup_undertide_purse': [
     { op: 'sfx', key: 'world-wicks' },
     { op: 'giveMoney', amount: 2000 },
-    { op: 'say', text: 'In a crack in the west nook: the keeper\'s purse, eleven winters of pay never spent. Found 2,000 WICKS!' },
+    { op: 'say', text: 'In a crack: the keeper\'s purse, eleven winters\' pay. Found 2,000 WICKS!' },
     { op: 'setFlag', flag: 'flag:picked_undertide_purse' },
   ],
   'script.pickup_undertide_iv_drop': find('flag:picked_undertide_iv_drop', [{ op: 'giveItem', item: 'lumen_drop', count: 1 }],
@@ -216,7 +216,7 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
 
   // ---- the Drowned Lamp: the relight (I6) + Farlume (I7) ---------------------------
   'script.farlamp_lamp': [
-    { op: 'narrate', if_flag: DAWN, text: 'The Farlamp burns, steady and warm, a fathom under the sea. Fish hang in its light like moths.' },
+    { op: 'narrate', if_flag: DAWN, text: 'The Farlamp burns a fathom under the sea. Fish hang in its light like moths.' },
     { op: 'run', ref: 'script.farlamp_relight', unless_flag: DAWN },
   ],
   'script.farlamp_relight': [
@@ -283,7 +283,7 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
   // ---- pass 2: the rest before the lamp, the dawn's islets, Ondine, Edda ---------
   // IV's stair-foot niche: the floor's REST POINT, a bed before the Drowned Lamp.
   'script.undertide_niche_rest': [
-    { op: 'narrate', text: 'A keeper\'s niche above the tide-line: a bunk, a salt-stiff blue blanket, a little lamp on a hook. Dry as a cupboard.' },
+    { op: 'narrate', text: 'A keeper\'s niche: a bunk, a salt-stiff blanket, a little lamp on a hook. Dry as a cupboard.' },
     { op: 'heal' },
     { op: 'narrate', text: 'You sleep to the up-race and wake rested. Somewhere below, the lamp-room waits.' },
   ],
@@ -294,7 +294,7 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
   // After the dawn: Ondine dives the Drowned Stair for the joy of it and races
   // anyone who'll have her. A re-runnable bout (she never stands on a sight-line).
   'script.undertide_diver_ondine': [
-    { op: 'say', speaker: 'ONDINE', text: 'You lit the Farlamp! I came straight down the well-stair to see. Every race is running warm.' },
+    { op: 'say', speaker: 'ONDINE', text: 'You lit the Farlamp! I came straight down to see. Every race is running warm.' },
     {
       op: 'choice', speaker: 'ONDINE', prompt: 'Fancy a bout, while the lamps are lit?',
       options: [
@@ -310,10 +310,10 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
   ],
   // The old keeper, come down the long stair once the light was back.
   'script.farlamp_edda': [
-    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I felt it from Driftholm. Eleven winters I slept with my back to the sea. This morning I woke facing it.' },
-    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I came down the long stair the way I went up, with a small lamp. Didn\'t need it. Every tide-lamp was burning.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I felt it from Driftholm. Eleven winters with my back to the sea. Today I woke facing it.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'I came down the long stair with a small lamp. Didn\'t need it. Every tide-lamp was burning.' },
     { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'You read my log, I expect. All my hurrying. Look at her: stubborn and lovely as ever. Thank you for coming all the way down.' },
-    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'Tell Ione Fathom her lamp-boat came home. She and Bram learned their knots on my stair, forever fighting over the oars.' },
+    { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'Tell Ione her lamp-boat came home. She and Bram learned their knots on my stair.' },
     { op: 'say', speaker: 'KEEPER EDDA MARROW', text: 'The light\'s woken the old races too. Row out to [[the islets on the Galleries and the Stair]]. See what the sea\'s kept on them.' },
   ],
 
@@ -324,7 +324,7 @@ export const UNDERTIDE_SCRIPTS: ScriptRegistry = {
   ],
   'script.farlamp_sluice': [
     { op: 'narrate', unless_flag: 'flag:isles_log_4', text: 'An iron sluice, wheeled shut, the race behind it pushing back. Chalked on it: a lamp, and the number four.' },
-    { op: 'narrate', if_flag: 'flag:isles_log_4', text: 'The sluice stands open, its wheel on the bell-post turned toward the lamp. The race runs in to the store.' },
+    { op: 'narrate', if_flag: 'flag:isles_log_4', text: 'The sluice stands open, wheel turned toward the lamp. The race runs in to the store.' },
   ],
 };
 
@@ -350,8 +350,8 @@ export const UNDERTIDE_DIALOGUE: DialogueRegistry = {
     { text: 'Farlume has sunk back into the ring of water, a gold shape turning in the deep. Win {remaining} more battles above and it will rise again.' },
   ],
   'npc.undertide_diver_ness_after': [{ speaker: 'NESS', text: 'Lamp-glass, lamp-glass everywhere. The sea\'s been keeping it for us.' }],
-  'npc.undertide_diver_corin_after': [{ speaker: 'CORIN', text: 'One ring, the race goes one way. Ring again, it goes back. Bells are fair like that.' }],
+  'npc.undertide_diver_corin_after': [{ speaker: 'CORIN', text: 'One ring, the race goes one way. Ring again, it goes back. Fair, bells.' }],
   'npc.undertide_nethand_bryn_after': [{ speaker: 'BRYN', text: 'Deep, shoal, harbour. Say it till it\'s a song.' }],
-  'npc.undertide_keeper_isolde_after': [{ speaker: 'ISOLDE', text: 'She always said the lamp would outlast her stubbornness. It was a close thing.' }],
+  'npc.undertide_keeper_isolde_after': [{ speaker: 'ISOLDE', text: 'She said the lamp would outlast her stubbornness. It was a close thing.' }],
   'npc.undertide_diver_marlo_after': [{ speaker: 'MARLO', text: 'Eighty-one. Eighty-two after this one.' }],
 };
