@@ -522,6 +522,28 @@
       "dialogue_ref": "script.andrew_wood"
     },
     {
+      "id": "arora",
+      "at": {
+        "tx": 4,
+        "ty": 14
+      },
+      "facing": "right",
+      "sprite": "paul_arora",
+      "movement": "static",
+      "dialogue_ref": "script.paul_arora"
+    },
+    {
+      "id": "india",
+      "at": {
+        "tx": 5,
+        "ty": 14
+      },
+      "facing": "left",
+      "sprite": "paul_india",
+      "movement": "static",
+      "dialogue_ref": "script.paul_india"
+    },
+    {
       "id": "milagro_bottle",
       "at": {
         "tx": 2,

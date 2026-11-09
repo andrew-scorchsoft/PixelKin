@@ -344,6 +344,17 @@
       "facing": "left",
       "movement": "static",
       "dialogue_ref": "script.brewfair_doorman"
+    },
+    {
+      "id": "kathleen",
+      "at": {
+        "tx": 6,
+        "ty": 12
+      },
+      "facing": "left",
+      "sprite": "paul_kathleen",
+      "movement": "static",
+      "dialogue_ref": "script.paul_kathleen"
     }
   ],
   "gates": [],
@@ -1341,6 +1352,7 @@
         0,
         0,
         0,
+        0,
         8,
         0,
         0,
@@ -1349,8 +1361,8 @@
         0,
         0,
         0,
-        0,
         117,
+        0,
         0,
         0,
         0,
@@ -1411,7 +1423,6 @@
         0,
         0,
         6,
-        0,
         0,
         0,
         0,

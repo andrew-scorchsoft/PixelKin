@@ -422,7 +422,7 @@ stitched world is `python3 tools/maps/render_world.py` (rendered art at true pos
 | **B · the Mirelights** (Lanthorne #165) | `mirelight_*`, `lanthorne_hollow` | see roll-up row |
 | **D · the Old Seams** (Emberroot #166, the lever rail yard) | `old_seams_i..iii`, `emberroot_heart` | see East table |
 | **The Wayward Arms** — hotel on Wayward Rise past the Wanderwood: open bar, the corner chair, the stranger (a rest point) | `wayward_rise`, `wayward_arms` | `build_wayward_*.py`, `regions/hotel.ts` |
-| **Paul's House** — three floors (kitchen-hall, T-shirt museum, Felicitas's attic); Felicitas's Chickenpig scene (post-S4 only) | `paul_house_1..3` | `build_paul_house.py`, `paulforge.py`, `regions/paul.ts` |
+| **Paul's House** — three floors (kitchen-hall, T-shirt museum, Frederika's attic); Frederika's Chickenpig scene (post-S4 only) | `paul_house_1..3` | `build_paul_house.py`, `paulforge.py`, `regions/paul.ts` |
 | **The kitchens** — Percy's moka brew-stand (Duskapple) + Marisol's kitchen (Lowleaf, 60w plates) | `duskapple_orchard`, `lowleaf_hollow` | `regions/kitchens.ts`, `draw_moka_stall.py`; price mirrored in `progression.mjs` |
 | **Old Light computer** (the east-bay anachronism) + tower stairs dressed | `pearlmoor_oldlight_*` | `content/oldlight.ts`, `roomkit.dress_tower_stairs` |
 | **Andrew's costumes** — a different look on each rim-town fence | `andrew_road` maps | worldcraft `sprites: {andrew_road: andrew_<look>}` |

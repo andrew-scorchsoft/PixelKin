@@ -107,7 +107,7 @@ m["warps"].append({**door, "id": "enter_hotel_e", "at": {"tx": 12, "ty": 8}})
 
 # PAUL'S HOUSE (2026-10) — the Booji-Wooji Man's crooked three-storey home, wedged
 # in beside the hotel at the green's west end (generated 5x7 `paul_house`, door on
-# its col 2). Inside: build_paul_house.py (kitchen-hall / T-shirt museum / Felicitas's
+# its col 2). Inside: build_paul_house.py (kitchen-hall / T-shirt museum / Frederika's
 # attic; content/regions/paul.ts). His bike leans on the apron by the door, a line
 # of t-shirts dries in the side yard. Its apron joins the hotel's at col 7.
 PAUL_AT = (2, 3)
@@ -213,6 +213,10 @@ m["objects"] += [
     {"id": "paul_washing_line", "sprite": "paul_washing_line", "at": {"tx": 2, "ty": 12},
      "w": 4, "h": 2},
 ]
+# KATHLEEN, Paul's wife, pegging his shirts out (script.paul_kathleen)
+m["npcs"].append({"id": "kathleen", "at": {"tx": 6, "ty": 12}, "facing": "left",
+                  "sprite": "paul_kathleen", "movement": "static",
+                  "dialogue_ref": "script.paul_kathleen"})
 m["triggers"] += [
     {"id": "paul_bike", "kind": "sign", "at": {"tx": 3, "ty": 11},
      "activation": "interact", "ref": "sign.paul_bike"},
