@@ -22,36 +22,36 @@ export const CENTRAL_SCRIPTS: ScriptRegistry = {
   // Three acolytes keep its turns. They do not threaten — they ask, and only
   // fight because you won't turn round (the Hollowing: gentle, half-right).
   'script.approach_acolyte_a': [
-    { op: 'say', speaker: 'ORLA', text: 'Ah — a lamp on the mountain road. We do not get many. Most folk see the dark ahead and decide, quite sensibly, that they have walked far enough.' },
-    { op: 'say', speaker: 'ORLA', text: 'I mended nets in Pearlmoor, once. Every net I ever mended, the sea took back. Up here nothing is taken. Turn round, love — or show me why not.' },
+    { op: 'say', speaker: 'ORLA', text: 'A lamp on the mountain road! Most folk see the dark and turn back.' },
+    { op: 'say', speaker: 'ORLA', text: 'The sea took every net I mended. Up here, nothing is taken. Turn round, love, or show me why not.' },
     { op: 'battle', trainer: 'approach_acolyte_a' },
-    { op: 'say', speaker: 'ORLA', text: '...Well. That was why not. Go gently on the shelf above — the lamps give out there, and the ground forgets it was ever a road.' },
+    { op: 'say', speaker: 'ORLA', text: '...Well. That was why not. Go gently above: the lamps give out there.' },
     { op: 'setFlag', flag: 'flag:approach_acolyte_a_beaten' },
   ],
   'script.approach_acolyte_b': [
-    { op: 'say', speaker: 'BRENN', text: 'You came up past the last of the grass. Can you feel it? The quiet starts here. Nothing grows loud on this shelf; nothing grieves.' },
-    { op: 'say', speaker: 'BRENN', text: 'The Warden asks only that we keep the road soft for those who come to rest. You do not look like you came to rest.' },
+    { op: 'say', speaker: 'BRENN', text: 'Past the last grass, the quiet starts. Nothing grows loud here; nothing grieves.' },
+    { op: 'say', speaker: 'BRENN', text: 'We keep the road soft for those who come to rest. You did not come to rest.' },
     { op: 'battle', trainer: 'approach_acolyte_b' },
-    { op: 'say', speaker: 'BRENN', text: 'No. Not resting. ...There is one more of us on the shoulder. She will ask you the same thing, kinder than I did.' },
+    { op: 'say', speaker: 'BRENN', text: 'No. ...One more of us waits on the shoulder. She\'ll ask you kinder.' },
     { op: 'setFlag', flag: 'flag:approach_acolyte_b_beaten' },
   ],
   'script.approach_acolyte_c': [
-    { op: 'say', speaker: 'WYNNE', text: 'This is the last turn before the Ring, Wayfarer. Past it the kin will not follow you — they feel the old dark and lie down. Mine did, once. I stayed with them.' },
-    { op: 'say', speaker: 'WYNNE', text: 'I will not stop you. I only want you to have been asked, properly, by someone who means it: are you sure the light is worth what it costs?' },
+    { op: 'say', speaker: 'WYNNE', text: 'The last turn before the Ring. Past it, kin lie down in the old dark. Mine did. I stayed.' },
+    { op: 'say', speaker: 'WYNNE', text: 'I won\'t stop you. I only ask, and mean it: is the light worth what it costs?' },
     { op: 'battle', trainer: 'approach_acolyte_c' },
-    { op: 'say', speaker: 'WYNNE', text: '...You are sure. Then go up. And if you do bring the morning back — let it come slowly, for those of us who forgot how.' },
+    { op: 'say', speaker: 'WYNNE', text: '...You are sure. Then go up. Let the morning come slowly, for those of us who forgot how.' },
     { op: 'setFlag', flag: 'flag:approach_acolyte_c_beaten' },
   ],
   'script.pickup_approach_shard': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'starglass_shard', count: 1 },
-    { op: 'say', text: 'Half-buried at the foot of the mountain road, where the last grass grows: a STARGLASS SHARD, fallen a long way from home. Found it!' },
+    { op: 'say', text: 'Half-buried where the last grass grows: a STARGLASS SHARD, far from home. Found it!' },
     { op: 'setFlag', flag: 'flag:picked_approach_shard' },
   ],
   'script.pickup_approach_wicks': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveMoney', amount: 500 },
-    { op: 'say', text: 'A pilgrim\'s tin tucked under the shelf\'s lip — left for whoever needed it on the way up. Found 500 WICKS!' },
+    { op: 'say', text: 'A pilgrim\'s tin under the ledge, left for whoever needs it. Found 500 WICKS!' },
     { op: 'setFlag', flag: 'flag:picked_approach_wicks' },
   ],
 
@@ -70,8 +70,8 @@ export const CENTRAL_SCRIPTS: ScriptRegistry = {
     { op: 'silence', ms: 1400 },
     { op: 'cameraFocus', to: { tx: 21, ty: 8 }, ms: 1100 },
     { op: 'wait', ms: 600 },
-    { op: 'narrate', text: 'Rows of dark stones on clean linen, each with a paper tag in a careful hand. DUSKAPPLE ORCHARD. HUSHFROST, A SPLINTER OF THE FOURTH FALL. GALEHIGH, KITE-RISING NIGHT. Dozens of them.' },
-    { op: 'narrate', text: 'Shelves of them, dusted. Two niches, each holding a single stone as if it might wake. A cot with its blanket squared. A brass lamp, polished bright and never lit.' },
+    { op: 'narrate', text: 'Dark stones on clean linen, each tagged in a careful hand. DUSKAPPLE ORCHARD. HUSHFROST, A SPLINTER OF THE FOURTH FALL. GALEHIGH, KITE-RISING NIGHT.' },
+    { op: 'narrate', text: 'Shelves of them, dusted. Two niches, each with a single stone. A cot, its blanket squared. A brass lamp, polished and never lit.' },
     { op: 'narrate', if_flag: 'flag:orchard_strike_seen', text: "You find Wendel's without looking for it: a splinter only. The heart of that one would not leave its pit." },
     { op: 'emote', actor: 'player', emote: 'ellipsis' },
     { op: 'say', if_flag: 'flag:wren_joined', speaker: 'WREN', portrait: 'wren', expr: 'unsure', text: "He's been... collecting them. Like a churchyard. ...He sweeps in here too, look." },
@@ -87,28 +87,28 @@ export const CENTRAL_SCRIPTS: ScriptRegistry = {
   // ===========================================================================
   'script.penumbra_gone_quiet_elder': dawnPair(
     'GREY-ROBED ELDER',
-    "I wore the grey six winters. I came to see whether he'd really do it. ...I think I came to see whether I'd stop him, if I could. I can't. You might.",
-    "I took the grey off at first light. It's folded in my pack. I may keep it, to remember that I was wrong gently.",
+    "I wore the grey six winters. I came to see if I'd stop him, if I could. ...I can't. You might.",
+    "I took the grey off at first light. I may keep it, to remember I was wrong gently.",
   ),
   'script.penumbra_gone_quiet_walker': dawnPair(
     'MARSH WALKER',
-    'The marsh lamps went out one by one, and nobody came. We stopped expecting anybody. Then a lamp came up the road from the crossroads. Yours.',
-    'Morning on the Ring. I keep feeling for the dark, the way your tongue goes to a missing tooth.',
+    'The marsh lamps went out one by one, and nobody came. Then a lamp came up the road. Yours.',
+    'Morning on the Ring. I keep feeling for the dark, like a tongue to a missing tooth.',
   ),
   'script.penumbra_gone_quiet_child': dawnPair(
     'MARSH CHILD',
-    "Mum says the mountain is where the night lives. I don't think it lives there. I think it's only visiting.",
-    "The night went HOME. Mum says it's coming back tonight, but only for a bit, and then it has to go again.",
+    "Mum says the night lives in the mountain. I think it's only visiting.",
+    "The night went HOME. Mum says it's back tonight, but only for a bit.",
   ),
   'script.penumbra_gone_quiet_mender': dawnPair(
     'LAMP-MENDER',
-    'We brought one lamp for every light you woke, and set them in a ring facing the mountain. It seemed the right shape. Go and read them, if you like. We wrote the plaques small, so they would fit.',
-    'Eight lamps, and the sun come up behind them anyway. We will carry them home lit. It seems a waste of oil, and I do not care.',
+    'One lamp for every light you woke, set in a ring facing the mountain. [[Read their plaques]], if you like. We wrote them small.',
+    'Eight lamps, and the sun come up behind them anyway. We will carry them home lit. A waste of oil. I do not care.',
   ),
   'script.penumbra_forecourt_sweeper': dawnPair(
     'GREY-ROBED SWEEPER',
-    'Mind the row, please. I sweep it every dusk. The Warden says untidiness is only grief that has given up. ...He sweeps the high rooms himself. He will not let anyone else.',
-    "I came out at dusk to sweep, and there was no dusk. I've been standing here with the broom for an hour, watching the light on the stone.",
+    'Mind the row, please. The Warden says untidiness is only grief that has given up. ...He sweeps the high rooms himself.',
+    "I came out at dusk to sweep, and there was no dusk. I've stood here an hour, watching the light on the stone.",
   ),
 };
 
@@ -121,22 +121,22 @@ const memorial = (el: string, warden: string, town: string, lesson: string) => [
 export const CENTRAL_DIALOGUE: DialogueRegistry = {
   // --- The Umbral Approach (2026-10) ---
   'sign.umbral_approach': [
-    { text: 'THE UMBRAL APPROACH\nThe mountain road. Up through the drained shelf to the Penumbra Ring and the Spire\'s foot. Keep to the way-lamps where the road gives out.' },
+    { text: 'THE UMBRAL APPROACH\nUP: [[the Penumbra Ring]]. Keep to the way-lamps.' },
   ],
   'sign.umbral_lookout': [
-    { text: 'From this shelf the whole crescent shows: the Crossroads\' lamps below, the bay\'s glint west of them, the fen-mist beyond — and every valley you relit, burning on the mountain\'s flanks like a ring of hearths.' },
+    { text: 'The whole crescent shows from here: every valley you relit, burning like a ring of hearths.' },
   ],
   'npc.approach_snuffed_shrine': [
-    { text: 'A wayshrine on the old inward road. Its lamp was not smashed. It was put out with care, the wick trimmed short, the glass wiped clean — the way you\'d close a door on someone sleeping.' },
+    { text: 'A wayshrine, its lamp put out with care, like closing a door on someone sleeping.' },
   ],
   'npc.approach_notice': [
-    { text: 'A Hollowing notice, neatly lettered: "REST HERE IF YOU ARE TIRED. NO ONE WILL WAKE YOU." Beneath it, in a smaller and less steady hand: "please".' },
+    { text: 'A Hollowing notice: "REST HERE IF YOU ARE TIRED. NO ONE WILL WAKE YOU." Beneath, in a less steady hand: "please".' },
   ],
   'npc.approach_vigil_camp': [
-    { text: 'A camp left tidy: bedrolls folded, a cold kettle, three cups set out upside down. Whoever kept vigil here went up the mountain and did not come back down.' },
+    { text: 'A tidy camp, bedrolls folded, three cups upturned. Its keepers went up and never came down.' },
   ],
   'npc.approach_acolyte_a_after': [
-    { speaker: 'ORLA', text: 'The sea took every net. And still I mended them. Funny thing to remember, up here.' },
+    { speaker: 'ORLA', text: 'The sea took every net. Still I mended them. Funny thing to remember, up here.' },
   ],
   'npc.approach_acolyte_b_after': [
     { speaker: 'BRENN', text: 'I keep listening for the quiet. It sounds less like peace since you came by.' },
@@ -147,8 +147,8 @@ export const CENTRAL_DIALOGUE: DialogueRegistry = {
 
   // --- the Cinder Hoard's reads (cold until the relight; woken after) --------
   'npc.hoard_shelf_w': [
-    { text: 'A shelf of cinders on swept linen, each tagged in the same careful hand. DIMGLASS FLATS. SALTREACH, THE REED-BED, SPRING. LOWLEAF, BEHIND THE KILN.' },
-    { text: 'There is no dust on any of them. Someone has been keeping it off.' },
+    { text: 'Cinders on swept linen, each tagged in the same hand. DIMGLASS FLATS. SALTREACH, THE REED-BED, SPRING. LOWLEAF, BEHIND THE KILN.' },
+    { text: 'No dust on any of them. Someone keeps it off.' },
   ],
   'npc.hoard_shelf_e': [
     { text: 'More tags. CINDERHEAD, A CHIP FROM THE ROOF-FAULT. COLDFOG, THIRD MARCH. NIGHTREACH, FELL DURING THE WATCH. NESSA DID NOT SEE.' },
@@ -159,41 +159,41 @@ export const CENTRAL_DIALOGUE: DialogueRegistry = {
     { text: "Under it, in the same hand: 'Carried up warm. It was cold by the ladder.'" },
   ],
   'npc.hoard_linen_a': [
-    { text: 'Rows of dark stones on clean linen. DUSKAPPLE ORCHARD: A SPLINTER, THE HEART WOULD NOT LEAVE ITS PIT. HUSHFROST, A SPLINTER OF THE FOURTH FALL. GALEHIGH, KITE-RISING NIGHT.' },
-    { text: 'Each one lies exactly a hand from the next, the way graves are laid out by somebody who means to visit.' },
+    { text: 'DUSKAPPLE ORCHARD: A SPLINTER, THE HEART WOULD NOT LEAVE ITS PIT. HUSHFROST, A SPLINTER OF THE FOURTH FALL. GALEHIGH, KITE-RISING NIGHT.' },
+    { text: 'A hand apart each, the way graves are laid by someone who means to visit.' },
   ],
   'npc.hoard_linen_b': [
     { text: 'The second row. PEARLMOOR, NORTH SHORE. THE WINDWARD STAIR. SUNVAULT, THE FAMILY WHO CHOSE THE QUIET.' },
-    { text: 'The linen between the stones has been swept so often that the weave has gone soft.' },
+    { text: 'The linen between them has been swept until the weave went soft.' },
   ],
   'npc.hoard_lamp': [
-    { text: 'A tall brass lamp, polished bright, its wick trimmed and its chimney clean.' },
+    { text: 'A tall brass lamp, polished bright, wick trimmed, chimney clean.' },
     { text: 'It has never been lit. The oil in it is years old.' },
   ],
   'npc.hoard_cot': [
-    { text: 'A narrow cot, the blanket folded square. Someone sleeps here, among the stones, so that they will not be alone.' },
+    { text: 'A narrow cot among the stones, so whoever sleeps here is not alone.' },
   ],
   'npc.hoard_shelf_w_woken': [
-    { text: 'Every stone on the shelf is glowing gold through its cracks, and the paper tags have gone warm in the light.' },
+    { text: 'Every stone on the shelf glows gold through its cracks.' },
     { text: 'Not dead. They were never dead. Only guttered.' },
   ],
   'npc.hoard_shelf_e_woken': [
-    { text: "The Nightreach stone burns brightest of the row. 'Better she didn't,' says its tag. She will see this one." },
+    { text: "The Nightreach stone burns brightest. 'Better she didn't.' She will see this one." },
   ],
   'npc.hoard_niche_woken': [
-    { text: "The Hushfrost stone has woken in its niche, warm as a held hand. 'It was cold by the ladder,' says the tag. It isn't now." },
+    { text: "The Hushfrost stone glows, warm as a held hand. Not cold by the ladder now." },
   ],
   'npc.hoard_linen_a_woken': [
-    { text: 'Every stone on the linen has woken. Row on row of small gold lights, like a churchyard on the night the lamps are lit for the names.' },
+    { text: 'Every stone on the linen has woken, like a churchyard on the night of the names.' },
   ],
   'npc.hoard_linen_b_woken': [
-    { text: 'The second row glows too, each light beside its tag. Somebody walked out and fetched every one of these home. Now they have come home all the way.' },
+    { text: 'Somebody fetched each of these home. Now they\'ve come home all the way.' },
   ],
   'npc.hoard_lamp_woken': [
-    { text: 'The brass lamp still stands unlit, the only dark thing left in the room. Nothing here needs it lit any more.' },
+    { text: 'The brass lamp stands unlit, the only dark thing left. Nothing needs it now.' },
   ],
   'npc.hoard_cot_woken': [
-    { text: 'The blanket is still folded square. Whoever slept among the stones has gone down to the morning.' },
+    { text: 'The blanket\'s still square. Whoever slept here has gone down to the morning.' },
   ],
 
   // --- the Penumbra Ring's memorial lamps (one per Gleam, the marsh-folk's) --
@@ -208,9 +208,9 @@ export const CENTRAL_DIALOGUE: DialogueRegistry = {
 
   // --- the summit: Fenn waits at the dawn road's gate after the scene -------
   'npc.fenn_summit_dawn': [
-    { speaker: 'STAR-TENDER FENN', text: "Go on down ahead, child. I'll walk him home at his own pace. We've time now. That's the strangest part." },
+    { speaker: 'STAR-TENDER FENN', text: "Go on down, child. I'll walk him home at his pace. We've time now. That's the strangest part." },
   ],
   'npc.fenn_summit_round': [
-    { speaker: 'STAR-TENDER FENN', text: 'The lantern first, apprentice. Then the lesson. I have waited forty years; I can wait while you climb three more steps.' },
+    { speaker: 'STAR-TENDER FENN', text: 'The lantern first, apprentice. Then the lesson. I\'ve waited forty years; I can wait three steps.' },
   ],
 };

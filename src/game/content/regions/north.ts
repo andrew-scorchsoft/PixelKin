@@ -41,22 +41,22 @@ function staged(orig: string, lit: string, gleam: string): ScriptRegistry[string
 const NORTH_AFTER_SCRIPTS: ScriptRegistry = {
   // --- Cinderwind Scarp (2026-10): the climb out of Cinderhead Deep ---
   'script.scarp_hauler': [
-    { op: 'say', speaker: 'HOBB-REE', text: 'Up out of the Deep, are you? Then you\'ve earned a breather — and I\'ve earned a bout. Thirty years hauling ore up this scarp. Let\'s see what YOUR lot can carry.' },
-    { op: 'say', speaker: 'HOBB-REE', unless_flag: 'gleam:stone', text: 'Mind — Otho not tested you yet? Then this ridge\'ll test you worse. Win or lose here, go and see him in the headframe hall before you climb on.' },
+    { op: 'say', speaker: 'HOBB-REE', text: 'Up out of the Deep? Thirty years I\'ve hauled ore up here. Let\'s see what YOUR lot can carry.' },
+    { op: 'say', speaker: 'HOBB-REE', unless_flag: 'gleam:stone', text: 'Mind, Otho not tested you yet? [[See him in the headframe hall]] before you climb on. This ridge tests worse.' },
     { op: 'battle', trainer: 'scarp_hauler' },
-    { op: 'say', speaker: 'HOBB-REE', text: 'Ha! Strong backs, the lot of them. Galehigh\'s at the top: up the far ladder, through the crest wood and over the Ashfall tips. If your hat leaves first, let it go.' },
+    { op: 'say', speaker: 'HOBB-REE', text: 'Ha! Strong backs. Galehigh\'s [[up the far ladder]], through the crest wood and [[over the Ashfall tips]]. If your hat leaves first, let it go.' },
     { op: 'setFlag', flag: 'flag:scarp_hauler_beaten' },
   ],
   'script.scarp_kiterunner': [
     { op: 'say', speaker: 'RUE', text: 'Oi, mine-dust! Nobody comes up onto MY ridge without a race. Kites up, kin out!' },
     { op: 'battle', trainer: 'scarp_kiterunner' },
-    { op: 'say', speaker: 'RUE', text: 'Outflown. Fine. The old gate east is under half the ridge now, so it\'s up through the crest wood behind me and over the Ashfall. Tell the kite-maker Rue sent you, and she\'ll laugh at you.' },
+    { op: 'say', speaker: 'RUE', text: 'Outflown. Fine. The east gate\'s buried, so go [[up through the crest wood]] and [[over the Ashfall]]. Tell the kite-maker Rue sent you.' },
     { op: 'setFlag', flag: 'flag:scarp_kiterunner_beaten' },
   ],
   'script.pickup_scarp_amber': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'moth_amber', count: 1 },
-    { op: 'say', text: 'Wedged behind the crystal spoil, where the haulers never looked: a lump of MOTH-AMBER. Found it!' },
+    { op: 'say', text: 'Wedged behind the crystal spoil: a lump of MOTH-AMBER. Found it!' },
     { op: 'setFlag', flag: 'flag:picked_scarp_amber' },
   ],
   'script.pickup_scarp_balm': [
@@ -75,94 +75,94 @@ const NORTH_AFTER_SCRIPTS: ScriptRegistry = {
     { op: 'shop', shop: 'galehigh' },
   ],
   'script.galehigh_inn_rest_lit': [
-    { op: 'say', speaker: 'INNKEEP', text: "In out of the gusts, Wayfarer. Gentler gusts tonight, if you can believe it. Half my guests are up on the roof watching the Storm-star." },
+    { op: 'say', speaker: 'INNKEEP', text: "In out of the gusts! Half my guests are on the roof, watching the Storm-star." },
     { op: 'heal' },
-    { op: 'say', speaker: 'INNKEEP', text: "There. Kin bright-eyed and boots warm. I let the shutters rattle as much as they like now. It sounds like applause." },
+    { op: 'say', speaker: 'INNKEEP', text: "There. Kin bright-eyed. The shutters rattle like applause now." },
   ],
   // Pale Vault: the watcher is an actor in the Aurora-watch; the tallow-keeper's
   // last stage already hangs on her oil.
   'script.aurora_watcher_b_staged': staged('npc.aurora_watcher_b', 'npc.aurora_watcher_b_lit', FROST),
   'script.tallow_keeper_staged': staged('npc.tallow_keeper_after', 'npc.tallow_keeper_lit', FROST),
   'script.pale_vault_inn_rest_lit': [
-    { op: 'say', speaker: 'INNKEEP', text: "Come in quiet, Wayfarer. The hearth is low, but the brackets are lit at last, and I've moved the good chair to the window." },
+    { op: 'say', speaker: 'INNKEEP', text: "Come in quiet. The brackets are lit at last, and the good chair's by the window." },
     { op: 'heal' },
-    { op: 'say', speaker: 'INNKEEP', text: "Rested, and your kin with you. Sleep if you can. The sky is keeping its own watch tonight." },
+    { op: 'say', speaker: 'INNKEEP', text: "Rested, kin and all. Sleep if you can. The sky keeps its own watch tonight." },
   ],
 };
 
 const NORTH_AFTER_DIALOGUE: DialogueRegistry = {
   // --- Cinderwind Scarp (2026-10) ---
   'sign.cinderwind_scarp': [
-    { text: 'CINDERWIND SCARP\nWEST: the Deep\'s mouth and the Cinderhead galleries. UP and NORTH: the Ashfall Shelf, and over it Galehigh Terraces. Mind the gusts on the top tier.' },
-    { text: 'Scratched under it: "Ore goes DOWN, haulers go UP. Ladders at each end of the pitches — the grass lips are for coming down quick, not climbing."' },
-    { text: 'And under that, newer: "THE HAULERS\' RULE — NOBODY CLIMBS TILL OTHO\'S SEEN THEIR LAMP. THE WIND UP TOP BITES HARDER THAN THE DEEP."' },
+    { text: 'CINDERWIND SCARP\nWEST: [[the Deep\'s mouth]]. UP and NORTH: [[the Ashfall Shelf]], then Galehigh Terraces.' },
+    { text: 'Scratched under it: "Ladders at each end of the pitches. The grass lips are for coming DOWN quick."' },
+    { text: 'Newer: "HAULERS\' RULE: NOBODY CLIMBS TILL OTHO\'S SEEN THEIR LAMP."' },
   ],
   'npc.scarp_cairn': [
-    { text: 'A wind cairn, every stone wrapped in a faded kite-ribbon. Galehigh folk build one wherever they first feel the updraught. This is where the mountain starts to breathe.' },
+    { text: 'A wind cairn, tied in kite-ribbon. Here the mountain starts to breathe.' },
   ],
   'npc.scarp_hauler_after': [
-    { speaker: 'HOBB-REE', text: 'The carts used to run right up to the terraces. Then the dark came, and the rail-lamps went, and now it\'s legs. Good legs, mind.' },
+    { speaker: 'HOBB-REE', text: 'Carts ran to the terraces once. Then the rail-lamps went. Now it\'s legs.' },
   ],
   'npc.scarp_kiterunner_after': [
-    { speaker: 'RUE', text: 'You can see the whole Deep\'s spoil-heap from up here. And the kites. Mostly the kites.' },
+    { speaker: 'RUE', text: 'You can see the Deep\'s spoil-heap from here. And the kites. Mostly kites.' },
   ],
 
   // --- Galehigh Terraces (gleam:storm) ----------------------------------------
   'npc.galehigh_festival_piper_lit': [
-    { speaker: 'FESTIVAL PIPER', text: "Still playing! The kites came down hours ago, but the Storm's up there now, and somebody ought to keep it company." },
-    { speaker: 'FESTIVAL PIPER', text: "Mira flew the launch ledge twice after your bout: once for the Gleam, and once, she says, so the wind wouldn't feel left out." },
+    { speaker: 'FESTIVAL PIPER', text: "Still playing! Somebody ought to keep the Storm company." },
+    { speaker: 'FESTIVAL PIPER', text: "Mira flew the ledge twice: once for the Gleam, once for the wind." },
   ],
   'npc.galehigh_festival_kid_lit': [
-    { speaker: 'FESTIVAL KID', text: "Talo says his kite touched the Storm-star. It DIDN'T. But it looked like it did, so I'm letting him have it. Once." },
+    { speaker: 'FESTIVAL KID', text: "Talo says his kite touched the Storm-star. It DIDN'T. He can have it. Once." },
   ],
   'npc.galehigh_festival_goer_lit': [
-    { speaker: 'FESTIVAL-GOER', text: "My gran's ladder of little lights worked, then. Or the Storm was only waiting for an excuse. Either way, my tail-lamp stays lit till it gutters on its own." },
+    { speaker: 'FESTIVAL-GOER', text: "Gran's ladder of little lights worked! My tail-lamp stays lit till it gutters." },
   ],
   'npc.galehigh_farmer_lit': [
-    { speaker: 'TERRACE FARMER', text: "Three nights since the Storm came back, and the wind's turned honest: steady off the north-west, no tricks. The cabbages don't know which way to lean. Neither do I." },
+    { speaker: 'TERRACE FARMER', text: "The wind's turned honest since the Storm came back. The cabbages don't know which way to lean." },
   ],
   'npc.galehigh_hall_keeper_lit': [
-    { speaker: 'HALL-KEEPER', text: "Looking for Mira? Off the launch ledge again, dear, teaching the Wind-Eye's name to anyone who'll hold a string." },
-    { speaker: 'HALL-KEEPER', text: "The hall is quiet. I've swept it twice and polished the ledger-case. A hall may be proud, so long as it doesn't say so out loud." },
+    { speaker: 'HALL-KEEPER', text: "Looking for Mira? Up on the launch ledge, dear, with anyone who has a string." },
+    { speaker: 'HALL-KEEPER', text: "I've swept the hall twice. A hall may be proud, so long as it doesn't say so." },
   ],
   'npc.galehigh_inn_guest_lit': [
-    { speaker: 'INN GUEST', text: "I came up for the room out of the wind and stayed for the Rising. Now they tell me the best room is the ROOF, with a blanket, under the Storm. It is not out of the wind. I'm staying anyway." },
+    { speaker: 'INN GUEST', text: "They say the best room is the ROOF, under the Storm. It's not out of the wind. I'm staying." },
   ],
   'npc.galehigh_home_elder_lit': [
-    { speaker: 'TERRACE ELDER', text: "Seventy years I've flown the Rising, and last night I flew one more: a little kite off the doorstep, the Storm overhead and my knees objecting the whole way. Worth every objection." },
+    { speaker: 'TERRACE ELDER', text: "Seventy Risings, and last night one more: a little kite off the doorstep. Worth my knees." },
   ],
   'npc.galehigh_home_kid_lit': [
-    { speaker: 'TERRACE KID', text: "Da says this year's impossible thing is DONE. The Storm came back! So next year I get two. I've already picked them." },
+    { speaker: 'TERRACE KID', text: "Da says this year's impossible thing is DONE. So next year I get two!" },
   ],
   'npc.galehigh_shopkeeper_lit': [
-    { speaker: 'KITE-KEEPER', text: "The Rising cleared my shelf of string and filled my till with wicks. A fair trade, the wind would say. Storm charts still in: Thunder Kick, Volt Arc, Gale Slam." },
-    { speaker: 'KITE-KEEPER', text: "And stock your balms HERE, Wayfarer. Pale Vault keeps no counter, Gleam or no Gleam." },
+    { speaker: 'KITE-KEEPER', text: "The Rising cleared my string. Storm charts still in: Thunder Kick, Volt Arc, Gale Slam." },
+    { speaker: 'KITE-KEEPER', text: "[[Stock your balms HERE]], Wayfarer. Pale Vault keeps no counter." },
   ],
   'npc.lanternway_galehigh_lamplighter_lit': [
-    { speaker: 'LAMPLIGHTER', text: "Since the Storm stood up, the posts on this road hold their flame in the gusts. I trimmed every one twice anyway, out of pure suspicion." },
-    { speaker: 'LAMPLIGHTER', text: "The road is only a road while you can see it. Tonight you can see it all the way to the top bend." },
+    { speaker: 'LAMPLIGHTER', text: "The posts hold their flame in the gusts now. I trimmed each twice anyway." },
+    { speaker: 'LAMPLIGHTER', text: "The road is only a road while you can see it. Tonight, all the way up." },
   ],
   // --- Pale Vault Glacier (gleam:frost) ---------------------------------------
   'npc.pale_vault_townsfolk_lit': [
-    { speaker: 'GLACIER-DWELLER', text: "We still do not shout in Pale Vault. But when the brackets lit, someone at the watch laughed, once, softly. The glacier is carrying it still. I hope it keeps that one." },
+    { speaker: 'GLACIER-DWELLER', text: "We do not shout here. But when the brackets lit, someone laughed. Softly." },
   ],
   'npc.aurora_watcher_b_lit': [
-    { speaker: 'WATCHER', text: "My mother stood this ice, and hers, and neither of them saw all seven brackets burn. Tonight I stood here and counted them for the three of us." },
+    { speaker: 'WATCHER', text: "Mother and grandmother stood this ice. Neither saw seven brackets burn. I counted for three." },
   ],
   'npc.pale_vault_home_elder_lit': [
-    { speaker: 'GLACIER ELDER', text: "The aurora crossed my window as it always has. But tonight there was a second light under it, from the vault. I am old, child, and the sky can still surprise me with company." },
+    { speaker: 'GLACIER ELDER', text: "Tonight the aurora had company: a second light, from the vault. The sky can still surprise me." },
   ],
   'npc.pale_vault_home_kid_lit': [
-    { speaker: 'GLACIER KID', text: "I said the undercroft hums something. Now I know what: the brackets. Seven notes, low to high, in the order you lit them. I hummed them back. It didn't mind." },
+    { speaker: 'GLACIER KID', text: "The undercroft hums seven notes, in the order you lit them. I hummed back. It didn't mind." },
   ],
   'npc.pale_vault_inn_guest_lit': [
-    { speaker: 'INN GUEST', text: "The ice creaked TWICE last night. Third bell, and again at fourth. We have talked of nothing else. We are all very excited, in our way." },
+    { speaker: 'INN GUEST', text: "The ice creaked TWICE last night. We are very excited, in our way." },
   ],
   'npc.pale_vault_hall_keeper_lit': [
-    { speaker: 'HALL-KEEPER', text: "Begin wherever you like now, Wayfarer. The undercroft door stands open and the brackets are burning. I sent the children down to look. They came back whispering, which in this town is a kind of cheering." },
+    { speaker: 'HALL-KEEPER', text: "The undercroft is open. The children came back whispering. Here, that's cheering." },
   ],
   'npc.tallow_keeper_lit': [
-    { speaker: 'TALLOW-KEEPER', text: "Seven brackets burning, child, and every one of them smells of my pans. I've rendered the vault's oil all my life and never been this proud of a smell." },
+    { speaker: 'TALLOW-KEEPER', text: "Seven brackets burning, child, and all smelling of my pans. Proud of a smell!" },
   ],
 };
 
@@ -173,25 +173,25 @@ export const NORTH_SCRIPTS: ScriptRegistry = {
   // way up; the summit cairn notices whether you added all four.
   'script.windward_cairn_foot': cairnStone(
     'flag:windward_cairn_foot',
-    'Climbers have stacked this cairn a stone at a time, each from their own road. You find a flat one in the grass and set it on top.',
+    'Climbers have stacked this cairn a stone at a time. You find a flat one in the grass and set it on top.',
     'Hhhh — a long way up. Begin it anyway.',
     'Your stone is still on top, a little crooked. The wind has not argued with it.',
   ),
   'script.windward_cairn_kettle': cairnStone(
     'flag:windward_cairn_kettle',
-    'The kettle-camp cairn is warm on its sheltered side. You add a stone from your pocket, still warm from the walk.',
+    'The kettle-camp cairn is warm on its sheltered side. You add a stone from your pocket.',
     'Hhh. Sit if you must. The stair waits. I do not.',
     'Your stone sits where you left it, rimed now, part of the cairn.',
   ),
   'script.windward_cairn_mid': cairnStone(
     'flag:windward_cairn_mid',
-    'Halfway. The cairn here leans into the slope like a climber catching breath. You wedge your stone where it will stop the lean.',
+    'Halfway. The cairn leans like a climber catching breath. You wedge your stone to stop the lean.',
     'Hhhhh. Halfway is where the legs make up their minds.',
     'The cairn still leans. Your stone is still holding it up.',
   ),
   'script.windward_cairn_head': cairnStone(
     'flag:windward_cairn_head',
-    'The last cairn below the wind-gap is old and wide, its lowest stones furred with lichen. You add yours to the top.',
+    'The last cairn below the wind-gap is old and wide, furred with lichen. You add yours to the top.',
     'HHHHH— there. You are nearly mine now.',
     'Your stone is one of a great many up here. You know which one.',
   ),
@@ -214,13 +214,13 @@ export const NORTH_SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.windward_summit_short', unless_flag: 'flag:windward_cairn_head' },
   ],
   'script.windward_summit_short': [
-    { op: 'narrate', text: 'The summit cairn is taller than you are. A stone for every switchback, the crag-tender says — and some of yours are missing somewhere below.' },
+    { op: 'narrate', text: 'The summit cairn: a stone for every switchback. Some of yours are missing below.' },
   ],
   'script.windward_summit_all': [
-    { op: 'narrate', text: 'The summit cairn is taller than you are, and the wind has gone round it so long that it hums.', unless_flag: 'flag:windward_cairns_all' },
+    { op: 'narrate', text: 'The summit cairn is taller than you. The wind has gone round it so long it hums.', unless_flag: 'flag:windward_cairns_all' },
     { op: 'action', actor: 'player', action: 'gift', holdMs: 400, unless_flag: 'flag:windward_cairns_all' },
     { op: 'sfx', key: 'world-gleam-a', unless_flag: 'flag:windward_cairns_all' },
-    { op: 'narrate', text: 'You set your fifth stone on top. Somewhere below, four smaller cairns each hold one of yours, and for a moment the whole Stair feels like a single long sentence you have finished writing.', unless_flag: 'flag:windward_cairns_all' },
+    { op: 'narrate', text: 'You set your fifth stone on top. Four cairns below hold one of yours each, and the whole Stair feels like one long sentence you have finished.', unless_flag: 'flag:windward_cairns_all' },
     { op: 'say', speaker: 'THE WIND', text: 'Hhhh. Every turn. Not many do. Go on, then — up.', unless_flag: 'flag:windward_cairns_all' },
     { op: 'narrate', text: 'Five stones of yours on the Windward Stair. The wind hums round the top one.', if_flag: 'flag:windward_cairns_all' },
     { op: 'setFlag', flag: 'flag:windward_cairns_all' },
@@ -229,33 +229,33 @@ export const NORTH_SCRIPTS: ScriptRegistry = {
   // The climbers' shelter on the halfway shelf — a sit, not a heal (the kettle
   // camp above and the Stair II rest shelf keep their jobs).
   'script.windward_shelter': [
-    { op: 'narrate', text: 'A dry-stone shelter, roofed in slate and snow. Inside: a bench, a lantern on a nail, a coil of rope nobody has needed this year.' },
+    { op: 'narrate', text: 'A dry-stone shelter: a bench, a lantern on a nail, a coil of rope.' },
     { op: 'action', actor: 'player', action: 'sit', holdMs: 1400 },
-    { op: 'narrate', text: 'You sit. The wind goes over the roof instead of through you. Your kin lean in close, and the climb gets a little shorter while you are not doing it.' },
-    { op: 'narrate', text: 'Someone has scratched tallies into the lintel — climbers counting days up, or nights out. The newest are a long way from the oldest.', unless_flag: 'flag:windward_shelter_seen' },
+    { op: 'narrate', text: 'You sit. The wind goes over the roof, not through you. Your kin lean in close.' },
+    { op: 'narrate', text: 'Tallies on the lintel: climbers counting nights. Some are very old.', unless_flag: 'flag:windward_shelter_seen' },
     { op: 'setFlag', flag: 'flag:windward_shelter_seen' },
   ],
 
   // The lookout spyglass at the head of the Stair: a fall, seen from the heights.
   // It goes down south, towards the mountain (the peril thread, North register).
   'script.windward_spyglass': [
-    { op: 'narrate', text: 'A brass spyglass on a frosted tripod, aimed south over the terraces. Someone has scratched beside the eyepiece: FOR THE FALLS.' },
+    { op: 'narrate', text: 'A brass spyglass aimed south. Scratched by the eyepiece: FOR THE FALLS.' },
     { op: 'letterbox', on: true, ms: 320, unless_flag: 'flag:windward_spyglass_seen' },
     { op: 'cameraFocus', to: { tx: 12, ty: 37 }, ms: 1200, unless_flag: 'flag:windward_spyglass_seen' },
-    { op: 'narrate', text: 'Down past Galehigh\'s little fires the land goes dark, and past the dark rises the mountain — a black shape cut out of the stars.', unless_flag: 'flag:windward_spyglass_seen' },
+    { op: 'narrate', text: 'Past Galehigh\'s fires the land goes dark, and the mountain rises, cut out of the stars.', unless_flag: 'flag:windward_spyglass_seen' },
     { op: 'starfall', from: 'right', wait: true, unless_flag: 'flag:windward_spyglass_seen' },
-    { op: 'narrate', text: 'As you watch, one star lets go. It crosses half the sky without a sound and goes down on the mountain\'s flank, and the place where it was is simply empty.', unless_flag: 'flag:windward_spyglass_seen' },
+    { op: 'narrate', text: 'One star lets go. It crosses half the sky without a sound and goes down on the mountain\'s flank. Where it was is simply empty.', unless_flag: 'flag:windward_spyglass_seen' },
     { op: 'wait', ms: 700, unless_flag: 'flag:windward_spyglass_seen' },
-    { op: 'narrate', text: 'They fall nearer the mountain. Everyone up here knows it. Nobody says it twice.', unless_flag: 'flag:windward_spyglass_seen' },
+    { op: 'narrate', text: 'They fall nearer the mountain. Everyone knows. Nobody says it twice.', unless_flag: 'flag:windward_spyglass_seen' },
     { op: 'cameraReset', ms: 900, unless_flag: 'flag:windward_spyglass_seen' },
     { op: 'letterbox', on: false, ms: 320, unless_flag: 'flag:windward_spyglass_seen' },
-    { op: 'narrate', text: 'Through the glass, the mountain. The sky above it is a little thinner than the sky above you.', if_flag: 'flag:windward_spyglass_seen' },
+    { op: 'narrate', text: 'Through the glass, the mountain. The sky above it is thinner than yours.', if_flag: 'flag:windward_spyglass_seen' },
     { op: 'setFlag', flag: 'flag:windward_spyglass_seen' },
   ],
 
   // Wind-shrines: small stone niches along the Stair; a line each, read-only.
   'script.windward_shrine': [
-    { op: 'narrate', text: 'A wind-shrine: a stone niche, a stub of candle, three iron chimes that never quite stop. Climbers leave a pebble for a kind wind.' },
+    { op: 'narrate', text: 'A wind-shrine: a candle stub, three iron chimes. Climbers leave a pebble for a kind wind.' },
     { op: 'narrate', text: 'You leave one. The chimes go on about it for some time.' },
   ],
 };
@@ -264,12 +264,12 @@ export const NORTH_DIALOGUE: DialogueRegistry = {
   ...NORTH_AFTER_DIALOGUE,
   // B3's silent company: one of Còr's people keeps the drained shelf with him.
   'npc.cor_acolyte': [
-    { text: 'A cowled figure in Hollowing grey, a little behind the other one. It keeps its eyes on the valley and its hands folded round an unlit lantern.', style: 'narrate' },
-    { text: 'When you speak, it only bows its head — as if to say the answer is not its to give.', style: 'narrate' },
+    { text: 'A cowled figure in Hollowing grey, holding an unlit lantern.', style: 'narrate' },
+    { text: 'When you speak, it only bows its head, as if the answer is not its to give.', style: 'narrate' },
   ],
   // The Galehigh spoke finally has a soul on it: the lane's lamplighter.
   'npc.lanternway_galehigh_lamplighter': [
-    { speaker: 'LAMPLIGHTER', text: 'Up to Galehigh? Mind the gusts at the top bend — they take hats, kites and the occasional opinion.' },
-    { speaker: 'LAMPLIGHTER', text: 'I trim these posts every dusk, which these days is every hour. Somebody has to. The road is only a road while you can see it.' },
+    { speaker: 'LAMPLIGHTER', text: 'Up to Galehigh? Mind the top bend. The gusts take hats, kites and opinions.' },
+    { speaker: 'LAMPLIGHTER', text: 'I trim these posts hourly. The road is only a road while you can see it.' },
   ],
 };
