@@ -24,49 +24,49 @@ export const SUNVAULT_SCRIPTS: ScriptRegistry = {
     { op: 'narrate', text: 'Your kin curl in out of the wind. Rested. The top of the face is close now.' },
   ],
   'script.sunvault_spyglass': [
-    { op: 'narrate', text: 'An old brass spyglass, aimed down the face: the shelves you climbed, the trestle stitched across the gully, and far below, the drowned gold of the Solarium.' },
+    { op: 'narrate', text: 'A brass spyglass, aimed down the face: the shelves you climbed, the gully\'s trestle, and far below, the Solarium\'s drowned gold.' },
     { op: 'narrate', text: 'Swing it up and there is only stone — and above the stone, stars. Not long now.' },
   ],
   'script.sunvault_suncaller': [
     { op: 'say', speaker: 'IMMA', text: 'A climber! The keepers called the sun up from this shelf — one note, every dawn. I still practise. Tell me if it sounds like morning.' },
     { op: 'battle', trainer: 'sunvault_suncaller' },
-    { op: 'say', speaker: 'IMMA', text: 'Not morning yet. But you made it sound closer. [[Ladder\'s to the west]] — three points on the rungs, eyes off the drop.' },
+    { op: 'say', speaker: 'IMMA', text: 'Not morning yet. But closer. [[Ladder\'s to the west]] — eyes off the drop.' },
     { op: 'setFlag', flag: 'flag:sunvault_suncaller_beaten' },
   ],
   'script.sunvault_stargazer': [
     { op: 'say', speaker: 'ORRIN', text: 'Shh — counting. Seven up there, the eighth not yet... You look like you\'ve been relighting them. Prove it, and I\'ll lose count gladly.' },
     { op: 'battle', trainer: 'sunvault_stargazer' },
-    { op: 'say', speaker: 'ORRIN', text: 'Proved. [[The gully behind me]] drops you out under the old trestle, to the lower shelf. The keepers\' quick way home.' },
+    { op: 'say', speaker: 'ORRIN', text: 'Proved. [[The gully behind me]] comes out under the trestle. Quick way home.' },
     { op: 'setFlag', flag: 'flag:sunvault_stargazer_beaten' },
   ],
   'script.pickup_sunvault_gully': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'lumen_drop', count: 1 },
-    { op: 'say', text: 'At the top of the slot where the keepers dropped in: a forgotten waxed pouch. Found a LUMEN DROP!' },
+    { op: 'say', text: 'A forgotten waxed pouch at the top of the slot. Found a LUMEN DROP!' },
     { op: 'setFlag', flag: 'flag:picked_sunvault_gully' },
   ],
   'script.pickup_sunvault_pitch': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'beacon_charge', count: 1 },
-    { op: 'say', text: 'A keeper\'s cubby cut into the face, halfway up nothing. Found a BEACON CHARGE!' },
+    { op: 'say', text: 'A keeper\'s cubby, halfway up nothing. Found a BEACON CHARGE!' },
     { op: 'setFlag', flag: 'flag:picked_sunvault_pitch' },
   ],
 
   // ---- the Sun Ledges (climb IV) -----------------------------------------------
   'script.sunvault_ledgewatcher': [
-    { op: 'say', speaker: 'PIM', text: 'Steady! One at a time on the planks — that\'s the rule, and I\'m the rule. Cross ME first.' },
+    { op: 'say', speaker: 'PIM', text: 'Steady! One at a time on the planks. That\'s the rule, and I\'m the rule.' },
     { op: 'battle', trainer: 'sunvault_ledgewatcher' },
     { op: 'say', speaker: 'PIM', text: 'All right. Mind the third board, it sings. [[Nightreach is two ledges up]] — you\'ll hear the dome before you see it.' },
     { op: 'setFlag', flag: 'flag:sunvault_ledgewatcher_beaten' },
   ],
   'script.sunvault_hill_spyglass': [
-    { op: 'narrate', text: 'The watchers\' spyglass. North, Nightreach Observatory\'s dome, its seven lamps a horseshoe of patient light. East, past the marshes, a high white road along the col: rime-lamps, all dark.' },
+    { op: 'narrate', text: 'The watchers\' spyglass. North, Nightreach\'s dome, seven lamps in a patient horseshoe. East, along the col, a line of rime-lamps, all dark.' },
     { op: 'narrate', text: 'The sky up here is the densest you have ever seen it. Seven constellations lit. One space waits.' },
   ],
   'script.pickup_sunvault_ledge_tin': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveMoney', amount: 350 },
-    { op: 'say', text: 'At the ledge\'s end, a watcher\'s tin pegged against the wind. Found 350 WICKS!' },
+    { op: 'say', text: 'A watcher\'s tin, pegged against the wind. Found 350 WICKS!' },
     { op: 'setFlag', flag: 'flag:picked_sunvault_ledge_tin' },
   ],
   'script.pickup_sunvault_brass': [
@@ -80,17 +80,17 @@ export const SUNVAULT_SCRIPTS: ScriptRegistry = {
 export const SUNVAULT_DIALOGUE: DialogueRegistry = {
   // ---- climb I / II (new signs on the rebuilt face) ---------------------------
   'npc.sunvault_wayfarer_face': [
-    { speaker: 'RESTING WAYFARER', text: 'Every lit road in Vesperholm, and this is the first that goes straight UP. Rest a while. The eighth Lumenary has kept for years; it\'ll keep while your knees stop shaking.' },
+    { speaker: 'RESTING WAYFARER', text: 'Every lit road in Vesperholm, and the first straight UP. Rest. The eighth Lumenary will keep while your knees stop shaking.' },
   ],
   'sign.sunvault_face': [
-    { text: 'THE SUNVAULT FACE. The sun-keepers\' ladders. Climb facing the rungs. Quick way home: [[the WEST NOTCH]] (one way).' },
+    { text: 'THE SUNVAULT FACE. Climb facing the rungs. Quick way home: [[the WEST NOTCH]], one way.' },
   ],
   'sign.sunvault_cleft': [
-    { text: 'THE CLEFT. One plank, one climber. If it sways, that is the plank\'s business, not yours.' },
+    { text: 'THE CLEFT. One plank, one climber. If it sways, that\'s its business.' },
   ],
   // ---- climb III ------------------------------------------------------------
   'sign.sunvault_gilt_face': [
-    { text: 'THE GILT FACE. Four pitches to [[the Sun Ledges]], a shelter at the top. The trestle crosses the gully — stay on the boards.' },
+    { text: 'THE GILT FACE. Four pitches to [[the Sun Ledges]]. Stay on the trestle\'s boards.' },
   ],
   'sign.sunvault_gully': [
     { text: 'THE GULLY. Drop in, walk out under the trestle to the lower shelf. No climbing back. (The keepers\' "quick way to breakfast.")' },
@@ -103,16 +103,16 @@ export const SUNVAULT_DIALOGUE: DialogueRegistry = {
   ],
   // ---- climb IV --------------------------------------------------------------
   'sign.sunvault_sun_ledges': [
-    { text: 'THE SUN LEDGES. The last of the climb, and the most exposed. NORTH: [[NIGHTREACH OBSERVATORY]].' },
+    { text: 'THE SUN LEDGES. The last, most exposed climb. NORTH: [[NIGHTREACH]].' },
   ],
   'sign.sunvault_observatory_hill': [
-    { text: 'OBSERVATORY HILL. NORTH — [[NIGHTREACH]]. Seven lamps for seven stars. Walk toward the brightest sky in Vesperholm.' },
+    { text: 'OBSERVATORY HILL. NORTH — [[NIGHTREACH]]. Walk toward the brightest sky.' },
   ],
   'npc.sunvault_ledgewatcher_after': [
     { speaker: 'PIM', text: 'Third board sings. Told you.' },
   ],
   'npc.sunvault_hill_watcher': [
-    { speaker: 'HILL WATCHER', text: 'The sun-keepers climbed up to wipe the mirrors; we watchers climbed down for the post. We met here every morning. Two orders, one job: keep the lights. Then the dark came, and it got lonelier.' },
-    { speaker: 'HILL WATCHER', text: 'Look east, past the marsh. Those dead lamps along the col are [[the Rimeway]], the tenders\' high road to Pale Vault. Barred these days — [[from the marsh side]], mind.' },
+    { speaker: 'HILL WATCHER', text: 'Keepers climbing up, watchers down: we met here every morning. Two orders, one job: keep the lights. Then the dark came, and it got lonelier.' },
+    { speaker: 'HILL WATCHER', text: 'Those dead lamps along the col, east, are [[the Rimeway]] to Pale Vault. Barred these days — [[from the marsh side]].' },
   ],
 };
