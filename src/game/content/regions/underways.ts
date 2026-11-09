@@ -43,7 +43,7 @@ export const UNDERWAYS_SCRIPTS: ScriptRegistry = {
   'script.underways_lightwell': [
     { op: 'narrate', text: 'An iron grate, set flush in the stone. You kneel and look down it.', unless_flag: 'flag:underways_lightwell_seen' },
     { op: 'narrate', text: 'Far down: a pale column of light in the dark, and beside it, small and orange, a fire someone is keeping. A laugh comes up the shaft. Then a kettle.', unless_flag: DAWN },
-    { op: 'narrate', text: 'Far down, the shaft is full of morning. Someone is still keeping a fire, out of habit.', if_flag: DAWN },
+    { op: 'narrate', text: 'The shaft below is full of morning. Someone still keeps a fire.', if_flag: DAWN },
     { op: 'setFlag', flag: 'flag:underways_lightwell_seen' },
     { op: 'setFlag', flag: OPEN },
   ],
@@ -55,23 +55,23 @@ export const UNDERWAYS_SCRIPTS: ScriptRegistry = {
 
   // ---- the Last Watch's fire (the REST POINT) -----------------------------------------
   'script.underways_watchfire_rest': [
-    { op: 'say', speaker: 'CLEMENCY', text: 'Sit, sit. Nobody comes down this far without needing the fire, and nobody\'s turned away. That was always the rule.', unless_flag: 'flag:underways_watchfire_rested' },
+    { op: 'say', speaker: 'CLEMENCY', text: 'Sit, sit. Nobody comes this far without needing the fire. Nobody\'s turned away.', unless_flag: 'flag:underways_watchfire_rested' },
     { op: 'narrate', text: 'The watch-fire burns low under an iron hood, enough to see a face by. Above, the whole weight of the Ring. Above that, the Spire.', unless_flag: 'flag:underways_watchfire_rested' },
     { op: 'setFlag', flag: 'flag:underways_watchfire_rested' },
     { op: 'setFlag', flag: OPEN },
     { op: 'heal' },
-    { op: 'narrate', text: 'Your kin wake warm. Clemency put a blanket over them in the night, and folded it before they stirred.' },
+    { op: 'narrate', text: 'Your kin wake warm. Clemency tucked a blanket over them in the night.' },
   ],
 
   // ---- the view up the Spire's shaft (seen, never climbed) ---------------------------
   'script.underways_shaft_view': [
     { op: 'narrate', text: 'The mountain\'s roots open on a round pit, worked smooth. You look up.', unless_flag: 'flag:underways_shaft_seen' },
     { op: 'narrate', text: 'Straight up, through the Ring\'s stone and the dark heart of the Spire, a shaft so tall its top is one pale point. The Crown\'s light, arriving here as a whisper.', unless_flag: 'flag:underways_shaft_seen' },
-    { op: 'narrate', text: 'There is no way up it. It was dug so somebody could stand at the bottom and look.', unless_flag: 'flag:underways_shaft_seen' },
+    { op: 'narrate', text: 'No way up it. It was dug so somebody could stand at the bottom and look.', unless_flag: 'flag:underways_shaft_seen' },
     { op: 'narrate', text: 'High in the rock, a little square of starlight: the grate in the Ring\'s floor, where you knelt and looked down.', if_flag: 'flag:underways_lightwell_seen', unless_flag: 'flag:underways_shaft_seen' },
     { op: 'setFlag', flag: 'flag:underways_shaft_seen' },
-    { op: 'narrate', text: 'The pale point at the top. [[The way up is through the Spire\'s door]], out in the Ring.', unless_flag: DAWN },
-    { op: 'narrate', text: 'The shaft is full of morning now. Someone has set a cushion at the bottom.', if_flag: DAWN },
+    { op: 'narrate', text: '[[The way up is the Spire\'s door]], out in the Ring.', unless_flag: DAWN },
+    { op: 'narrate', text: 'The shaft is full of morning. Someone has set a cushion at the bottom.', if_flag: DAWN },
   ],
 
   // ---- Old Clemency, who keeps the watch-fire -----------------------------------------
@@ -90,10 +90,10 @@ export const UNDERWAYS_SCRIPTS: ScriptRegistry = {
   ],
   'script.underways_clemency_kept': [
     { op: 'emote', actor: 'clemency', emote: 'heart' },
-    { op: 'say', speaker: 'CLEMENCY', text: 'Odalie, Bran and Hesk, all three. That\'s the whole last watch, dear. There never were very many of us.' },
+    { op: 'say', speaker: 'CLEMENCY', text: 'All three. That\'s the whole last watch, dear. There were never many of us.' },
     { op: 'say', speaker: 'CLEMENCY', text: 'Take this. The watch drew it the first winter: the dark as we meant it, not a void but a held breath. Nobody here has the heart to use it now.' },
     { op: 'giveItem', item: 'chart_voidburst', count: 1 },
-    { op: 'say', speaker: 'CLEMENCY', text: 'And no sense the three of them standing in the cold for nobody. I\'ll call them in.' },
+    { op: 'say', speaker: 'CLEMENCY', text: 'No sense them standing in the cold for nobody. I\'ll call them in.' },
     { op: 'sfx', key: 'world-moorbell-a' },
     { op: 'narrate', text: 'She rings the little watch-bell, twice, soft. Up the galleries, someone laughs. Then footsteps, coming in.' },
     { op: 'setFlag', flag: 'flag:underways_watch_kept' },
@@ -113,13 +113,13 @@ export const UNDERWAYS_SCRIPTS: ScriptRegistry = {
   ],
   'script.underways_clemency_dusk': [
     { op: 'face', actor: 'clemency', facing: 'down' },
-    { op: 'say', speaker: 'CLEMENCY', text: 'So you\'re the one. People always want to see the bottom of things before the top.', unless_flag: 'flag:underways_clemency_met' },
+    { op: 'say', speaker: 'CLEMENCY', text: 'So you\'re the one. People always want the bottom of things before the top.', unless_flag: 'flag:underways_clemency_met' },
     { op: 'say', speaker: 'CLEMENCY', text: 'This is the last watch. Not a guard; we stop nobody. We\'re here so that when it\'s over, up there, somebody who loves him is close by.', unless_flag: 'flag:underways_clemency_met' },
     { op: 'say', speaker: 'CLEMENCY', text: 'I taught the Warden his letters, long before he was anybody\'s Warden. A careful boy. Too careful with his sorrows. He kept every one.', unless_flag: 'flag:underways_clemency_met' },
     { op: 'say', speaker: 'CLEMENCY', text: 'Warm stones lie [[by the east cut, down the slump]]. A light-kin comes to them, ember and light both. Now and then a jester-kin, bright one side, dark the other, comes to do its turn and bow.', unless_flag: 'flag:underways_clemency_met' },
     { op: 'setFlag', flag: 'flag:underways_clemency_met' },
     { op: 'setFlag', flag: OPEN },
-    { op: 'say', speaker: 'CLEMENCY', text: 'The fire\'s yours whenever you want it. Rest, then go up and do what you must. Be kind to him, if you can.' },
+    { op: 'say', speaker: 'CLEMENCY', text: 'Rest, then go up and do what you must. Be kind to him, if you can.' },
   ],
   'script.underways_clemency_dawn': [
     { op: 'emote', actor: 'clemency', emote: 'heart' },
@@ -131,15 +131,15 @@ export const UNDERWAYS_SCRIPTS: ScriptRegistry = {
   'script.underways_watch_a': [
     { op: 'setFlag', flag: OPEN },
     { op: 'say', speaker: 'ODALIE', text: 'You walk like someone who\'s been walking a long time.' },
-    { op: 'say', speaker: 'ODALIE', text: 'The watch tries every traveller. Not to turn them back. To know them. Let me know you.' },
+    { op: 'say', speaker: 'ODALIE', text: 'The watch tries every traveller. Not to turn them back. To know them.' },
     { op: 'battle', trainer: 'underways_watch_a' },
-    { op: 'say', speaker: 'ODALIE', text: 'Now I know you. [[The fire\'s down the ladder]], through the cistern. Tell Clemency Odalie sent you.' },
+    { op: 'say', speaker: 'ODALIE', text: 'Now I know you. [[The fire\'s down the ladder]], through the cistern.' },
     { op: 'setFlag', flag: 'flag:underways_watch_a_beaten' },
   ],
   'script.underways_watch_b': [
     { op: 'setFlag', flag: OPEN },
     { op: 'say', speaker: 'BRAN', text: 'Hold. The watch-fire\'s through here, and I keep the way to it.' },
-    { op: 'say', speaker: 'BRAN', text: 'Everyone who sits by that fire is tried first. Even the Warden was, once. He lost, and laughed about it.' },
+    { op: 'say', speaker: 'BRAN', text: 'Everyone at that fire is tried first. Even the Warden. He lost, and laughed.' },
     { op: 'battle', trainer: 'underways_watch_b' },
     { op: 'say', speaker: 'BRAN', text: 'Through you go. Mind the sleepers in the alcove.' },
     { op: 'setFlag', flag: 'flag:underways_watch_b_beaten' },
@@ -157,7 +157,7 @@ export const UNDERWAYS_SCRIPTS: ScriptRegistry = {
   'script.pickup_underways_starglass': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'starglass_shard', count: 1 },
-    { op: 'say', text: 'Behind the glow-moss, in an empty lamp-niche: a sliver of starlight gone to glass. Found a STARGLASS SHARD!' },
+    { op: 'say', text: 'Behind the glow-moss: starlight gone to glass. Found a STARGLASS SHARD!' },
     { op: 'setFlag', flag: 'flag:picked_underways_starglass' },
   ],
   'script.pickup_underways_lumen': [
@@ -189,6 +189,6 @@ export const UNDERWAYS_DIALOGUE: DialogueRegistry = {
     { speaker: 'BRAN', text: 'Funny, keeping watch under a tower you hope nobody climbs. Funnier to find you hope someone does.' },
   ],
   'npc.underways_watch_c_after': [
-    { speaker: 'HESK', text: 'If you see the Warden up there, tell him Hesk says the stair\'s swept. He\'ll know.' },
+    { speaker: 'HESK', text: 'Tell the Warden Hesk says the stair\'s swept. He\'ll know.' },
   ],
 };
