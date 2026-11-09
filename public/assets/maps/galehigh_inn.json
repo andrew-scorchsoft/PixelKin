@@ -457,6 +457,17 @@
       },
       "w": 2,
       "h": 1
+    },
+    {
+      "id": "wanted_poster",
+      "sprite": "paul_wanted",
+      "at": {
+        "tx": 1,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false
     }
   ],
   "warps": [
@@ -476,7 +487,18 @@
       "transition": "door"
     }
   ],
-  "triggers": [],
+  "triggers": [
+    {
+      "id": "wanted_poster",
+      "kind": "sign",
+      "at": {
+        "tx": 1,
+        "ty": 1
+      },
+      "activation": "interact",
+      "ref": "sign.wanted_galehigh"
+    }
+  ],
   "encounters": [],
   "npcs": [
     {
@@ -526,6 +548,28 @@
       "movement": "static",
       "dialogue_ref": "npc.galehigh_inn_guest_lit",
       "requires_flag": "gleam:storm"
+    },
+    {
+      "id": "wanted_agent",
+      "at": {
+        "tx": 10,
+        "ty": 7
+      },
+      "facing": "left",
+      "sprite": "road_courier",
+      "movement": "static",
+      "dialogue_ref": "script.wanted_agent"
+    },
+    {
+      "id": "wanted_newspaper",
+      "at": {
+        "tx": 5,
+        "ty": 9
+      },
+      "facing": "up",
+      "sprite": "old_salt",
+      "movement": "static",
+      "dialogue_ref": "script.wanted_newspaper"
     },
     {
       "id": "hesper",

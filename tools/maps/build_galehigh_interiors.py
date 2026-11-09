@@ -125,9 +125,22 @@ def build_inn():
         {"id": "guest", "at": {"tx": 3, "ty": 7}, "facing": "up",
          "sprite": "npc_man", "movement": "static",
          "dialogue_ref": "npc.galehigh_inn_guest"},
+        # THE WANTED MAN (2026-11, content/regions/paul.ts — hidden Paul content):
+        # Agent Pellow of the Bureau of Far Affairs, and two tables over, a man
+        # behind a very large newspaper.
+        {"id": "wanted_agent", "at": {"tx": 10, "ty": 7}, "facing": "left",
+         "sprite": "road_courier", "movement": "static",
+         "dialogue_ref": "script.wanted_agent"},
+        {"id": "wanted_newspaper", "at": {"tx": 5, "ty": 9}, "facing": "up",
+         "sprite": "old_salt", "movement": "static",
+         "dialogue_ref": "script.wanted_newspaper"},
     ]
+    objects.append({"id": "wanted_poster", "sprite": "paul_wanted",
+                    "at": {"tx": 1, "ty": 1}, "w": 1, "h": 1, "solid": False})
+    triggers = [{"id": "wanted_poster", "kind": "sign", "at": {"tx": 1, "ty": 1},
+                 "activation": "interact", "ref": "sign.wanted_galehigh"}]
     return mapdef("galehigh_inn", "The Steady Gust Inn", W, H, WARM_SET,
-                  base, over, objects, warps, [], npcs,
+                  base, over, objects, warps, triggers, npcs,
                   "assets/audio/music/inn-rest.mp3")
 
 

@@ -1,6 +1,6 @@
 {
   "id": "paul_house_3",
-  "display_name": "Paul's House \u2014 Felicitas's Attic",
+  "display_name": "Paul's House \u2014 Frederika's Attic",
   "width": 12,
   "height": 10,
   "tile_width": 16,
@@ -357,7 +357,7 @@
       "requires_flag": "flag:chickenpig_caught"
     },
     {
-      "id": "felicitas_bed",
+      "id": "frederika_bed",
       "sprite": "interior_bed",
       "at": {
         "tx": 9,
@@ -367,7 +367,7 @@
       "h": 3
     },
     {
-      "id": "felicitas_desk",
+      "id": "frederika_desk",
       "sprite": "interior_desk",
       "at": {
         "tx": 1,
@@ -520,7 +520,7 @@
         "ty": 5
       },
       "activation": "interact",
-      "ref": "sign.paul_felicitas_bed"
+      "ref": "sign.paul_frederika_bed"
     },
     {
       "id": "desk",
@@ -530,7 +530,7 @@
         "ty": 5
       },
       "activation": "interact",
-      "ref": "sign.paul_felicitas_desk"
+      "ref": "sign.paul_frederika_desk"
     },
     {
       "id": "toys",
@@ -540,7 +540,7 @@
         "ty": 7
       },
       "activation": "interact",
-      "ref": "sign.paul_felicitas_toys"
+      "ref": "sign.paul_frederika_toys"
     },
     {
       "id": "plush",
@@ -557,7 +557,7 @@
   "encounters": [],
   "npcs": [
     {
-      "id": "felicitas",
+      "id": "frederika",
       "at": {
         "tx": 5,
         "ty": 5
@@ -565,10 +565,10 @@
       "facing": "down",
       "sprite": "npc_girl",
       "movement": "static",
-      "dialogue_ref": "script.paul_felicitas"
+      "dialogue_ref": "script.paul_frederika"
     },
     {
-      "id": "felicitas_cp",
+      "id": "frederika_cp",
       "at": {
         "tx": 6,
         "ty": 6
@@ -576,7 +576,7 @@
       "facing": "left",
       "sprite": "kin_163_overworld",
       "movement": "static",
-      "dialogue_ref": "script.paul_felicitas",
+      "dialogue_ref": "script.paul_frederika",
       "requires_flag": "flag:paul_lottie_cp_out"
     }
   ],

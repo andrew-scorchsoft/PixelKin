@@ -106,9 +106,9 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'pearlmoor_wanderwood_far', region: 'south', optional: true, reward: 'S5: the Far Side — Mags\'s griddle, the Answering Lamp, the glass steps (all optional)' },
     { map_id: 'wayward_rise', region: 'south', optional: true, reward: 'the Wayward Arms: an open bar, a corner chair, a stranger, a night talked away (a rest point)' }, // north of the Wanderwood
     { map_id: 'wayward_arms', region: 'south', optional: true }, // interior: the Wayward Arms' bar + snug
-    { map_id: 'paul_house_1', region: 'south', optional: true, reward: 'Paul\'s house: three floors of travel, t-shirts and a WANTED poster — and Felicitas, who loves the Chickenpig' }, // interior: the kitchen-hall
+    { map_id: 'paul_house_1', region: 'south', optional: true, reward: 'Paul\'s house: three floors of travel, t-shirts and a WANTED poster — and Frederika, who loves the Chickenpig' }, // interior: the kitchen-hall
     { map_id: 'paul_house_2', region: 'south', optional: true }, // interior: the T-shirt museum
-    { map_id: 'paul_house_3', region: 'south', optional: true }, // interior: Felicitas's attic
+    { map_id: 'paul_house_3', region: 'south', optional: true }, // interior: Frederika's attic
     { map_id: 'wakeful_fair', region: 'south', optional: true, reward: 'S7: the Wakeful Fair — sixteen free samples, one Grand Urn, and a record nobody can beat' }, // interior: the marquee on Wayward Rise
     { map_id: 'wakeful_fair_loft', region: 'south', optional: true }, // interior: the Roasters' Loft (trade only, until you talk fast enough)
     { map_id: 'wakeful_fair_dream', region: 'south', optional: true }, // interior: the bottom of the cup (the hallucination)
@@ -189,6 +189,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'umbral_spire_f3', region: 'central' }, // the high gallery; home of the shaft compressor
     { map_id: 'umbral_spire_summit', region: 'central' }, // the Great Null; sets keystar_relit -> dawn
     { map_id: 'dawnstead', region: 'south', unlocked_by_flag: 'flag:dawn' },
+    { map_id: 'dawnstead_bar', region: 'south', optional: true }, // interior: the Bright Bubble, Dawnstead's bar
     // ---- The Starfall Vigils (walkthrough 06-postgame): one annex per quadrant + the
     // outer marches, sealed behind the star-readings (the host warps carry the flags).
     { map_id: 'vigil_hearthfall', region: 'south', optional: true, reward: 'Vigil I: EMBRALUX #33 + TIDEVEIL #34 register beds (58-60) + the Radiant Charm' },
@@ -463,6 +464,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // The dawn road leaves from the SUMMIT (where flag:dawn is set) — the
     // post-game hand-off; dawnstead is the post-game writer's map.
     { from_map: 'umbral_spire_summit', to_map: 'dawnstead', via_warp: 'to_dawn', requires_flag: 'flag:dawn', bidirectional: true },
+    { from_map: 'dawnstead', to_map: 'dawnstead_bar', via_warp: 'enter_bubble', bidirectional: true },
 
     // ---- The Starfall Vigils: each reading opens ONE host scar (06-postgame master list)
     { from_map: 'tinderwick', to_map: 'vigil_hearthfall', via_warp: 'to_vigil_hearth', requires_flag: 'flag:vigil_reading_1', bidirectional: true },

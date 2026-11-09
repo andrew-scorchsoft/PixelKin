@@ -566,6 +566,16 @@
       "h": 1
     },
     {
+      "id": "kathleen_desk",
+      "sprite": "interior_desk",
+      "at": {
+        "tx": 11,
+        "ty": 6
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
       "id": "stairs_up_sprite",
       "sprite": "interior_stairs_up",
       "at": {
@@ -710,6 +720,26 @@
       "hidden_when_flag": "flag:paul_house_seen"
     },
     {
+      "id": "kathleen_desk_11",
+      "kind": "sign",
+      "at": {
+        "tx": 11,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "sign.paul_kathleen_desk"
+    },
+    {
+      "id": "kathleen_desk_12",
+      "kind": "sign",
+      "at": {
+        "tx": 12,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "sign.paul_kathleen_desk"
+    },
+    {
       "id": "note",
       "kind": "cutscene",
       "at": {
@@ -842,6 +872,17 @@
       "sprite": "paul_rose",
       "movement": "static",
       "dialogue_ref": "script.paul_rose"
+    },
+    {
+      "id": "old_girl",
+      "at": {
+        "tx": 11,
+        "ty": 4
+      },
+      "facing": "down",
+      "sprite": "paul_dog",
+      "movement": "static",
+      "dialogue_ref": "script.paul_dog"
     }
   ],
   "gates": [],

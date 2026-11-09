@@ -90,8 +90,15 @@ const SPRITE_SHEETS: Record<string, string> = {
   npc_parent: 'npc_parent',
   npc_boy: 'npc_boy',
   npc_girl: 'npc_girl',
-  // Rose, Paul's daughter (paul_house_1) — the generic sheet until she has her own.
-  paul_rose: 'npc_woman',
+  // Paul's family (content/regions/paul.ts) — borrowed sheets until they have their own,
+  // chosen so no screen shows the same sheet twice.
+  paul_rose: 'npc_woman', // granddaughter (~20), the kettle (paul_house_1)
+  paul_kathleen: 'star_watcher', // his wife, the washing line (wayward_rise)
+  paul_morgan: 'hollow_gardener', // his daughter, Frederika's mum (paul_house_2)
+  paul_gen: 'pass_walker', // Kathleen's daughter (paul_house_2)
+  paul_arora: 'kite_weaver', // Gen's daughter (~20, pearlmoor_wanderwood)
+  paul_india: 'market_trader', // Gen's daughter (~20, pearlmoor_wanderwood)
+  paul_dog: 'paul_dog', // the old girl, Paul's dog (paul_house_1) — her own sheet
   // 'npc_child' is the long-standing generic-kid key; point it at the boy sheet.
   npc_child: 'npc_boy',
   // The REGIONAL CAST (2026-10): townsfolk dressed for where they live, so a

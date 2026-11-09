@@ -138,6 +138,10 @@ def build():
             requires_flag="flag:works_found_brann"),
         # Nib keeps the star-room from the story on (the window's new keeper)
         npc("nib_star", 16, 4, "up", "npc_girl", "script.works_nib", requires_flag=STORY),
+        # BETTANY ROOK, a retired drover of the Kindly House, come up to watch the
+        # engines (2026-11; script.drover_bettany in content/regions/paul.ts — Paul's
+        # old line of work, told by a colleague; hidden content like all of his)
+        npc("bettany", 18, 11, "left", "npc_old_woman", "script.drover_bettany"),
     ]
     return mapdef("reckoning_works", "The Reckoning-Works", W, H, WARM_SET,
                   base, over, objects, warps, triggers, npcs,

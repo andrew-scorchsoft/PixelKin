@@ -9,7 +9,7 @@ Paul is the quiet wanderer at the dark lamp (S4) who walks the old wood (S5).
 His house is the opposite of a mystery: it is ALL the evidence, and none of it
 agrees. A lifetime of travel between the maple country across the northern
 sea and the cape country far to the south, t-shirts from everywhere, a WANTED
-poster he swears is a joke — and his granddaughter FELICITAS in the attic, who
+poster he swears is a joke — and his granddaughter FREDERIKA in the attic, who
 loves the Chickenpig more than anything in the world (after you've caught it;
 the Rise is only reachable after S5's waystone, which itself needs the catch).
 Paul himself is never home: he's out walking. Never confirm the Registry story;
@@ -25,7 +25,7 @@ partner floor's own return stair (roomkit.finish dresses both with stair sprites
        red-bush, Paul's NOTE on the table) behind a partition; east: the hall —
        the bike helmet + gym bag by the door, the carved antelope, Paul's chair by
        the fire. Wall: the pin-board of tickets, the WANTED poster, the sunny cape
-       painting. ROSE, Paul's daughter, minds the kettle (script.paul_rose).
+       painting. ROSE, Paul's granddaughter (~20), minds the kettle (script.paul_rose).
        Up-stair NE (14,2). Doormat (8,10) -> wayward_rise.
   1  paul_house_2  18x11  THE T-SHIRT MUSEUM  focal: the three rails (OUT / IN / NEVER)
        the north wall is shirts in frames (each a tiny story) between the maple
@@ -34,14 +34,14 @@ partner floor's own return stair (roomkit.finish dresses both with stair sprites
        the sunset over the flat-topped mountain, the rugby ball, the sticker
        trunk, a globe); the MAPLE CORNER east (the plaid jacket on its stand,
        the syrup tin). Down-stair NE (16,2), up-stair NW (1,2).
-  2  paul_house_3  12x10  FELICITAS'S ATTIC  focal: the star window (top-centre)
+  2  paul_house_3  12x10  FREDERIKA'S ATTIC  focal: the star window (top-centre)
        her drawings on the wall (two always; four Chickenpig ones once
        `flag:chickenpig_caught`), the Chickenpig PLUSH on the floor (same
        flag), her desk, the toy crates, and her bed in the nook behind the
-       partition. FELICITAS stands mid-room (script.paul_felicitas). Down-stair NW (1,2).
+       partition. FREDERIKA stands mid-room (script.paul_frederika). Down-stair NW (1,2).
 
-The Felicitas scene stages on these tiles (keep them floor; audit_flow proves
-reach, the shoot proves the scene): Felicitas (5,5); the Chickenpig "visitor" NPC
+The Frederika scene stages on these tiles (keep them floor; audit_flow proves
+reach, the shoot proves the scene): Frederika (5,5); the Chickenpig "visitor" NPC
 (`kin_163_overworld`, flag:paul_lottie_cp_out) appears at (6,6) when you let
 it out of your lamp (a `travel` re-entry onto the same map, so it spawns
 mid-scene), and goes back in when the scene ends.
@@ -133,11 +133,19 @@ def ground() -> dict:
         triggers.append({"id": f"welcome_{x}", "kind": "cutscene", "at": {"tx": x, "ty": 8},
                          "activation": "step_on", "ref": "script.paul_house_welcome",
                          "hidden_when_flag": "flag:paul_house_seen"})
-    # ROSE, Paul's daughter, at the kettle (script.paul_rose). Generic woman's
+    # ROSE, Paul's granddaughter, at the kettle (script.paul_rose). Generic woman's
     # sheet via the `paul_rose` sprite key (Npc.ts) until she has her own.
     npcs.append({"id": "rose", "at": {"tx": 3, "ty": 4}, "facing": "down",
                  "sprite": "paul_rose", "movement": "static",
                  "dialogue_ref": "script.paul_rose"})
+    # THE OLD GIRL, Paul's dog, in her basket by his chair (script.paul_dog)
+    npcs.append({"id": "old_girl", "at": {"tx": 11, "ty": 4}, "facing": "down",
+                 "sprite": "paul_dog", "movement": "static",
+                 "dialogue_ref": "script.paul_dog"})
+    # KATHLEEN'S CORNER: the one tidy desk in the house (she's a retired solicitor)
+    place(objects, "desk", 11, 6, oid="kathleen_desk")
+    for x in (11, 12):
+        sign(triggers, f"kathleen_desk_{x}", x, 6, "sign.paul_kathleen_desk")
     triggers.append({"id": "note", "kind": "cutscene", "at": {"tx": 2, "ty": 6},
                      "activation": "interact", "ref": "script.paul_note"})
     sign(triggers, "wanted", 5, 1, "sign.paul_wanted")
@@ -234,13 +242,21 @@ def middle() -> dict:
     triggers.append({"id": "placard", "kind": "cutscene", "at": {"tx": 16, "ty": 3},
                      "activation": "step_on", "ref": "script.paul_museum",
                      "hidden_when_flag": "flag:paul_museum_seen"})
+    # the family: MORGAN (Paul's daughter, Frederika's mum) folding by the maple rug,
+    # GEN (Kathleen's daughter, over from the far side of the world) by the rails
+    npcs.append({"id": "morgan", "at": {"tx": 13, "ty": 6}, "facing": "down",
+                 "sprite": "paul_morgan", "movement": "static",
+                 "dialogue_ref": "script.paul_morgan"})
+    npcs.append({"id": "gen", "at": {"tx": 10, "ty": 7}, "facing": "right",
+                 "sprite": "paul_gen", "movement": "static",
+                 "dialogue_ref": "script.paul_gen"})
     stair(warps, base, W, "down_stairs", "ne", G, GW)
     stair(warps, base, W, "up_stairs", "nw", A, AW)
     return mapdef(M, "Paul's House — The T-Shirt Museum", W, H, WARM_SET, base, over,
                   objects, warps, triggers, npcs, MUSIC)
 
 
-# ---- TOP: Felicitas's attic ------------------------------------------------------------------
+# ---- TOP: Frederika's attic ------------------------------------------------------------------
 CP = "flag:chickenpig_caught"
 
 
@@ -268,29 +284,29 @@ def attic() -> dict:
     windows(over, W, [10])
     # the bed nook (east), behind a partition open at the top
     partition_v(over, W, 8, 5, 8, lip="e")
-    place(objects, "bed", 9, 5, oid="felicitas_bed")
-    sign(triggers, "bed", 9, 5, "sign.paul_felicitas_bed")
+    place(objects, "bed", 9, 5, oid="frederika_bed")
+    sign(triggers, "bed", 9, 5, "sign.paul_frederika_bed")
     # her corner: the desk with crayons, the toy crates, a rug, the plush (after)
-    place(objects, "desk", 1, 5, oid="felicitas_desk")
-    sign(triggers, "desk", 1, 5, "sign.paul_felicitas_desk")
+    place(objects, "desk", 1, 5, oid="frederika_desk")
+    sign(triggers, "desk", 1, 5, "sign.paul_frederika_desk")
     place(objects, "crates", 1, 7, oid="toy_crates")
-    sign(triggers, "toys", 1, 7, "sign.paul_felicitas_toys")
+    sign(triggers, "toys", 1, 7, "sign.paul_frederika_toys")
     place(objects, "rug", 4, 6, oid="attic_rug", solid=False)
     # solid, so you walk UP to it and press A rather than over it
     stand(objects, "plush", "plush", 7, 8, 1, 1, requires_flag=CP)
     sign(triggers, "plush", 7, 8, "sign.paul_plush", requires_flag=CP)
     place(objects, "plant", 10, 2, oid="attic_plant")
-    npcs.append({"id": "felicitas", "at": {"tx": 5, "ty": 5}, "facing": "down",
+    npcs.append({"id": "frederika", "at": {"tx": 5, "ty": 5}, "facing": "down",
                  "sprite": "npc_girl", "movement": "static",
-                 "dialogue_ref": "script.paul_felicitas"})
+                 "dialogue_ref": "script.paul_frederika"})
     # the Chickenpig, out of your lamp for a visit (the scene's travel re-entry
     # spawns it; it goes back in when the scene clears the flag)
-    npcs.append({"id": "felicitas_cp", "at": {"tx": 6, "ty": 6}, "facing": "left",
+    npcs.append({"id": "frederika_cp", "at": {"tx": 6, "ty": 6}, "facing": "left",
                  "sprite": "kin_163_overworld", "movement": "static",
-                 "dialogue_ref": "script.paul_felicitas",
+                 "dialogue_ref": "script.paul_frederika",
                  "requires_flag": "flag:paul_lottie_cp_out"})
     stair(warps, base, W, "down_stairs", "nw", M, MW)
-    return mapdef(A, "Paul's House — Felicitas's Attic", W, H, WARM_SET, base, over,
+    return mapdef(A, "Paul's House — Frederika's Attic", W, H, WARM_SET, base, over,
                   objects, warps, triggers, npcs, MUSIC)
 
 

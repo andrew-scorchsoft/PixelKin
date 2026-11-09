@@ -1155,7 +1155,30 @@
     }
   ],
   "encounters": [],
-  "npcs": [],
+  "npcs": [
+    {
+      "id": "morgan",
+      "at": {
+        "tx": 13,
+        "ty": 6
+      },
+      "facing": "down",
+      "sprite": "paul_morgan",
+      "movement": "static",
+      "dialogue_ref": "script.paul_morgan"
+    },
+    {
+      "id": "gen",
+      "at": {
+        "tx": 10,
+        "ty": 7
+      },
+      "facing": "right",
+      "sprite": "paul_gen",
+      "movement": "static",
+      "dialogue_ref": "script.paul_gen"
+    }
+  ],
   "gates": [],
   "music": "assets/audio/music/interior-sunny.mp3"
 }

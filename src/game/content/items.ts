@@ -237,11 +237,18 @@ export const ITEMS: ItemRegistry = {
       turn_off: 'You screw the cap back on. The hum dies down to a mutter. The wilds lose interest.',
     },
   },
-  // Paul's House (2026-10): Felicitas's keepsake, after the Chickenpig meets her.
+  // Paul's House (2026-10): Frederika's keepsake, after the Chickenpig meets her.
   lottie_drawing: {
     id: 'lottie_drawing',
-    name: 'Felicitas\'s Drawing',
-    desc: 'A crayon Chickenpig crowing at a crayon sun. Signed FELICITAS, very large.',
+    name: 'Frederika\'s Drawing',
+    desc: 'A crayon Chickenpig crowing at a crayon sun. Signed FREDERIKA, very large.',
+    category: 'key',
+  },
+  // Paul's House (2026-11): Kathleen hands you a copy, for your records.
+  kathleen_invoice: {
+    id: 'kathleen_invoice',
+    name: 'Kathleen\'s Invoice',
+    desc: 'To P., from K. (solicitor, retired): explaining a WANTED poster to a customs officer, 3 hrs; one bicycle out of a duck pond, 20 mins. DUE: one cup of tea. OVERDUE.',
     category: 'key',
   },
   fenn_letter: {

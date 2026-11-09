@@ -292,8 +292,16 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/inn-rest.mp3',
   },
+  // The Bright Bubble (2026-11): Dawnstead's little bar, in the east cottage
+  // (build_dawnstead_bar.py; script.bubble_* in content/regions/paul.ts).
+  dawnstead_bar: {
+    json: 'assets/maps/dawnstead_bar.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-sunny.mp3',
+  },
   // Paul's House (2026-10): the Booji-Wooji Man's three-storey home beside the
-  // Arms (kitchen-hall / T-shirt museum / Felicitas's attic; content/regions/paul.ts).
+  // Arms (kitchen-hall / T-shirt museum / Frederika's attic; content/regions/paul.ts).
   paul_house_1: { // the kitchen-hall
     json: 'assets/maps/paul_house_1.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
@@ -306,7 +314,7 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     kind: 'interior',
     music: 'assets/audio/music/interior-sunny.mp3',
   },
-  paul_house_3: { // Felicitas's attic
+  paul_house_3: { // Frederika's attic
     json: 'assets/maps/paul_house_3.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
     kind: 'interior',

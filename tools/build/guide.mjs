@@ -32,7 +32,7 @@ export const GUIDE_SECTIONS = [
 ];
 
 /** Never on the public site (owner's rule — the people it was built for read it). */
-const FORBIDDEN = [/booji/i, /chicken-?pig/i, /\bpaul\b/i, /lifting house/i, /wayward/i, /lottie/i, /felicitas/i,
+const FORBIDDEN = [/booji/i, /chicken-?pig/i, /\bpaul\b/i, /lifting house/i, /wayward/i, /lottie/i, /felicitas/i, /frederika/i, /kathleen/i, /arora/i,
     /omenire/i, /wanderwood/i, /\baldous\b/i, /\bWink's\b/, /tin rower/i, /reckoning works/i,
     /wakeful fair/i, /tasting card/i, /bottomless cup/i, /milagro/i, /desasosiego/i,
     /festival of the imagined/i];

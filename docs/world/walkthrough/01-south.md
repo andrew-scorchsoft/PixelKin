@@ -683,12 +683,12 @@ netmender's keeping.
      **T-shirt museum** (framed shirts with tiny stories, the maple country across the northern
      sea — lake painting, antlers, paddle, plaid jacket, syrup tin — and the cape country far to
      the south — protea, beadwork, hooped jersey, rugby ball, sunset over the flat-topped
-     mountain); **`paul_house_3`** **Felicitas's attic** — his granddaughter. The Rise is only
+     mountain); **`paul_house_3`** **Frederika's attic** — his five-year-old granddaughter (the family is dotted round too: Kathleen his wife at the washing line on the Rise, granddaughter Rose ~20 at the kettle, Morgan — Frederika's mum — and Kathleen's daughter Gen in the museum, Gen's girls Arora and India in the Wanderwood's west clearing). The Rise is only
      reachable after the Chickenpig (S5 needs it), so her scene is the AFTER one: Chickenpig
      drawings + a plush (`requires_flag: flag:chickenpig_caught`), a shriek, and — if the
      Chickenpig is in your lamp (`setLead`) — it comes out to meet her (a `travel` re-entry spawns
      the `kin_163_overworld` visitor on `flag:paul_lottie_cp_out`), they dance, and she gives you
-     **FELICITAS'S DRAWING** (key item). LORE "Paul's house" on `flag:paul_house_seen`. The
+     **FREDERIKA'S DRAWING** (key item). LORE "Paul's house" on `flag:paul_house_seen`. The
      Booji-Wooji Man stays unexplained; the bureau story stays unconfirmed.
    - **S6 "The Tin Rower"** — **[BUILT R9, 2026-10]** giver: **a nameless man with a toy case** (never named — he vanishes once the toy is yours) ("Wink's Wind-Ups
      — toys, tales, trades"), `npc_old_man` on the **Dimglass Coast I** south sand strip at (12,30),

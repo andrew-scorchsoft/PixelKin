@@ -210,6 +210,15 @@ m["npcs"].append({"id": "andrew_wood", "at": {"tx": 11, "ty": 20}, "facing": "up
                   "sprite": "andrew_ward", "movement": "static",
                   "dialogue_ref": "script.andrew_wood"})
 
+# ARORA and INDIA, Gen's daughters (Paul's family, ~20), "lost on purpose" in the
+# west clearing, off every lane (scripts in content/regions/paul.ts)
+m["npcs"].append({"id": "arora", "at": {"tx": 4, "ty": 14}, "facing": "right",
+                  "sprite": "paul_arora", "movement": "static",
+                  "dialogue_ref": "script.paul_arora"})
+m["npcs"].append({"id": "india", "at": {"tx": 5, "ty": 14}, "facing": "left",
+                  "sprite": "paul_india", "movement": "static",
+                  "dialogue_ref": "script.paul_india"})
+
 # ---- glowshrooms strung through the dark (the deep-wood light) ----------------------
 for (x, y, nm) in [(3, 7, "glowshroom_a"), (9, 15, "glowshroom_b"), (16, 15, "glowshroom_a"),
                    (22, 7, "glowshroom_b"), (8, 4, "glowshroom_a"), (17, 4, "glowshroom_b"),
