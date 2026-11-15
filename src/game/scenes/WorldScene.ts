@@ -715,6 +715,21 @@ export class WorldScene extends Phaser.Scene {
       seen_flag: 'flag:catch_tutorial_seen',
       requires_flag: 'flag:has_starter',
     },
+    // The Rio Tower's Thunder Table: the storm is never missable. Rods lit and
+    // unseen -> Ottoline serves you and the thunder rolls on arrival; otherwise
+    // a once-only welcome that points at the rods. (Order matters: first match wins.)
+    {
+      map: 'rio_tower_top',
+      script: 'script.rio_arrive_storm',
+      seen_flag: 'flag:rio_thunder_seen',
+      requires_flag: 'flag:sere_storm_called',
+    },
+    {
+      map: 'rio_tower_top',
+      script: 'script.rio_arrive_quiet',
+      seen_flag: 'flag:sere_rods_hook',
+      unless_flag: 'flag:sere_storm_called',
+    },
   ];
 
   /** Queue the first-entry tutorial for `mapId`, if one is due (run on the next

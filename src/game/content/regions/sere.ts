@@ -261,6 +261,26 @@ export const SERE_SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.rio_thunder', if_flag: CALLED },
     { op: 'run', ref: 'script.rio_menu_gift', if_flag: 'flag:rio_menu_full', unless_flag: 'flag:rio_menu_gift' },
   ],
+  // Arriving at the top is never a dead end (owner, 2026-11: "it mustn't be easy
+  // to miss"). WorldScene.ENTRY_TUTORIALS plays one of these on stepping in:
+  // rods lit and storm unseen -> Ottoline calls you over, the first bowl's free,
+  // and the thunder rolls (no ordering, no wicks needed); rods still dark ->
+  // her welcome names the rods and opens the journal entry.
+  'script.rio_arrive_storm': [
+    { op: 'emote', actor: 'ottoline', emote: 'alert' },
+    o('There you are! The whole Sere heard those rods go up. She\'s coming, love: [[sit by the window]]!'),
+    o('First bowl\'s on the house. Nobody pays on a storm night. That was the custom.'),
+    { op: 'narrate', text: 'A clay bowl of dark stew lands in front of you, smoky and slow. Your kin crowd round your feet.' },
+    { op: 'heal', rest: false, sleep: false },
+    { op: 'run', ref: 'script.rio_thunder' },
+    { op: 'setFlag', flag: 'flag:rio_met' },
+  ],
+  'script.rio_arrive_quiet': [
+    { op: 'run', ref: 'script.rio_hello', unless_flag: 'flag:rio_met' },
+    o('Storm nights were the thing up here. Not one in years: [[the callers\' rods]] out on the sand went dark.'),
+    o('Light all three and the storms\'ll find their road again. [[Calder]], one floor down, can tell you more.'),
+    { op: 'setFlag', flag: HOOK },
+  ],
   'script.rio_quiet_sky': [
     { op: 'narrate', text: 'Out past the windows the Sere lies dark. A bruise of cloud flickers far off east. It never comes any closer.' },
     o('No storm again. Calder says it\'s [[the callers\' rods]]. Three of them, out on the sand, gone dark.'),
