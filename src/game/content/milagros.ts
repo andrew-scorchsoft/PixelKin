@@ -798,6 +798,22 @@ export const MILAGROS: MilagroCard[] = [
       'three hours. She will go. She simply has to finish arriving at the idea first. The world can wait. It ' +
       'usually does.',
   },
+  {
+    id: 'emergent',
+    title: 'WHAT IS CONSCIOUSNESS BUT AN EMERGENT PHENOMENON THAT RESULTS FROM ANY RECURRENT INFORMATION SYSTEM?!',
+    giver: { map: 'vesper_crossroads', npc: 'andrew_road' },
+    hint: 'Vesper Crossroads: the fellow on the fence who thinks in ones and noughts.',
+    found: [
+      'Andrew: "Found this pinned to the waystone. A grinning skull with its lid off, and the brain\'s nothing but ' +
+        'ones and noughts. I\'ve been arguing with it all morning."',
+      '"It\'s winning. Have it, and half my flask of coffee. If the waystone starts asking questions back, come ' +
+        'and fetch me."',
+    ],
+    story:
+      'A skull that has taken its own lid off to have a look. Inside there is no ghost, only ones and noughts ' +
+      'going round and round, telling each other what they just said, until somewhere in the going round a ' +
+      'someone turns up. The skull finds this hilarious. It has not stopped grinning since.',
+  },
 ];
 
 export const MILAGROS_BY_GIVER = new Map(

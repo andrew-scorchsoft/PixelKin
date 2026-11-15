@@ -1249,27 +1249,51 @@
       "hidden_when_flag": "flag:q_south_bell_rung"
     },
     {
-      "id": "chickenpig_leash_w",
+      "id": "cp_chase_4",
       "kind": "cutscene",
       "at": {
-        "tx": 8,
-        "ty": 24
+        "tx": 4,
+        "ty": 2
       },
       "activation": "step_on",
-      "ref": "script.booji_chickenpig",
-      "requires_flag": "flag:q_south_booji_done",
+      "ref": "script.booji_cp_chase",
+      "requires_flag": "flag:q_south_booji_met",
       "hidden_when_flag": "flag:chickenpig_caught"
     },
     {
-      "id": "chickenpig_leash_n",
+      "id": "cp_chase_5",
       "kind": "cutscene",
       "at": {
-        "tx": 9,
-        "ty": 23
+        "tx": 5,
+        "ty": 2
       },
       "activation": "step_on",
-      "ref": "script.booji_chickenpig",
-      "requires_flag": "flag:q_south_booji_done",
+      "ref": "script.booji_cp_chase",
+      "requires_flag": "flag:q_south_booji_met",
+      "hidden_when_flag": "flag:chickenpig_caught"
+    },
+    {
+      "id": "cp_chase_6",
+      "kind": "cutscene",
+      "at": {
+        "tx": 6,
+        "ty": 2
+      },
+      "activation": "step_on",
+      "ref": "script.booji_cp_chase",
+      "requires_flag": "flag:q_south_booji_met",
+      "hidden_when_flag": "flag:chickenpig_caught"
+    },
+    {
+      "id": "cp_chase_7",
+      "kind": "cutscene",
+      "at": {
+        "tx": 7,
+        "ty": 2
+      },
+      "activation": "step_on",
+      "ref": "script.booji_cp_chase",
+      "requires_flag": "flag:q_south_booji_met",
       "hidden_when_flag": "flag:chickenpig_caught"
     },
     {
@@ -1411,6 +1435,19 @@
       "movement": "static",
       "dialogue_ref": "script.booji_paul_lamp",
       "requires_flag": "flag:q_south_wander_done"
+    },
+    {
+      "id": "paul_chase",
+      "at": {
+        "tx": 4,
+        "ty": 11
+      },
+      "facing": "up",
+      "sprite": "booji_paul",
+      "movement": "static",
+      "dialogue_ref": "npc.chickenpig_after",
+      "requires_flag": "flag:cp_paul_chasing",
+      "hidden_when_flag": "flag:chickenpig_caught"
     }
   ],
   "gates": [],

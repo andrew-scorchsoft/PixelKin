@@ -568,9 +568,14 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PAUL', text: 'My question, apprentice: all these folk relighting things — reasons, or memberships?' },
     { op: 'narrate', text: 'You open your mouth. You close it. The question starts moving the furniture.' },
     { op: 'say', speaker: 'PAUL', text: 'Ha. There it goes. Now, a bout. I\'m old: everything I still do, I do on purpose.' },
+    // The S4 catch happens IN this bout: the Chickenpig scraps on Paul's side but
+    // isn't his (TrainerKin.catch_flag), so the LAMP works on it. Said plainly
+    // here, again as it comes out, and once more when it's worn down.
+    { op: 'say', speaker: 'PAUL', text: 'Odd company of mine fights too: a bird-pig. Not mine. [[Lamp it mid-bout]] and it\'s yours.' },
     { op: 'battle', trainer: 'breakwater_paul' },
     { op: 'say', speaker: 'PAUL', text: 'Good. GOOD. You fight like someone who hasn\'t decided who they are. Don\'t rush that.' },
-    { op: 'say', speaker: 'PAUL', text: 'That bird-pig on my side? Not mine. It crows at a lamp I won\'t light. Tonight it fancied a look at YOU.' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', speaker: 'PAUL', text: 'And the bird-pig went to YOU, mid-bout. It crows at a lamp I won\'t light. Never picked a side before.' },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'PAUL', text: 'That bird-pig on my side? Not mine. It crows at a lamp I won\'t light. Tonight it fancied a look at YOU.' },
     { op: 'say', speaker: 'PAUL', text: 'I don\'t give things to whoever wants them. I give them to whoever will GET them.' },
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'booji_folio', count: 1 },
@@ -585,25 +590,40 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PAUL', text: 'Mind, the wood\'s particular. Its stone wants the last word of an old line about wanderers — the one thing I\'ve never been.' },
     { op: 'say', speaker: 'PAUL', text: 'Ask me sometime if I ever get lost — once you\'ve more company in that lamp.' },
     { op: 'setFlag', flag: 'flag:q_south_booji_met' },
-    // The Chickenpig is the S4 payoff and must never be missed: the first meeting
-    // ends by pointing straight at it, with a plain now-or-later offer. "Later"
-    // says exactly where it waits (the lamp menu + the lamp's foot re-offer it
-    // forever; a failed catch is only a short battles-won cooldown).
-    { op: 'say', speaker: 'PAUL', text: 'Oh — the bird-pig\'s at the lamp\'s foot, pretending to sleep. Waiting to be somebody\'s, I think.' },
-    {
-      op: 'choice',
-      speaker: 'PAUL',
-      prompt: 'Want to try waking it?',
-      options: [
-        { label: 'Wake it now', ops: [{ op: 'run', ref: 'script.booji_chickenpig' }] },
-        {
-          label: 'Later',
-          ops: [
-            { op: 'say', speaker: 'PAUL', text: 'It\'ll keep. Find me at this lamp whenever you\'re ready.' },
-          ],
-        },
-      ],
-    },
+    // The Chickenpig is the S4 payoff and must never be missed. Caught in the
+    // bout: Paul's pleased. Not caught: another bout re-fields it (catchable),
+    // and if you leave without it, Paul runs it up the boards after you
+    // (script.booji_cp_chase — a gift that walks out at the front of your lamp).
+    { op: 'emote', if_flag: 'flag:chickenpig_caught', actor: 'player', emote: 'heart' },
+    { op: 'say', if_flag: 'flag:chickenpig_caught', speaker: 'PAUL', text: 'Ha! When the dawn comes, that one gets to say it told us so. Let it see the sky.' },
+    { op: 'say', unless_flag: 'flag:chickenpig_caught', speaker: 'PAUL', text: 'It\'s at the lamp\'s foot now, sulking. Ask me for [[another bout]] if you want another go with your lamp.' },
+  ],
+  // The fallback (owner, 2026-11): leave the breakwater without the bird-pig and
+  // Paul RUNS it up the boards after you. The step_on band across the north end
+  // (hand_placed_data, pearlmoor_breakwater `cp_chase_*`) runs this; `paul_chase`
+  // is a placement that only exists while `flag:cp_paul_chasing` is held, spawned
+  // mid-scene by showNpcs just below the screen. The gift leads your lamp; a full
+  // lamp asks who rests at the Hearth to make room.
+  'script.booji_cp_chase': [
+    { op: 'say', speaker: 'PAUL', text: 'OI! Apprentice! Hold up a tick!' },
+    { op: 'emote', actor: 'player', emote: 'alert' },
+    { op: 'face', actor: 'player', facing: 'down' },
+    { op: 'setFlag', flag: 'flag:cp_paul_chasing' },
+    { op: 'showNpcs' },
+    { op: 'move', actor: 'paul_chase', to: { tx: 4, ty: 8 }, speed: 2 },
+    { op: 'move', actor: 'paul_chase', to: { tx: 5, ty: 3 }, speed: 2 },
+    { op: 'face', actor: 'paul_chase', facing: 'up' },
+    { op: 'say', speaker: 'PAUL', text: 'Puff... eighty-odd and still sprinting after Wayfarers. You FORGOT something.' },
+    { op: 'narrate', text: 'Under his arm, crowing indignantly, is the bird-pig.' },
+    { op: 'say', speaker: 'PAUL', text: 'Trotted up the boards after you the moment you left. Won\'t be told. It\'s YOURS.' },
+    { op: 'say', text: 'Received the CHICKENPIG!' },
+    { op: 'giveKin', kin: 163, level: 15, lead: true },
+    { op: 'setFlag', flag: 'flag:chickenpig_caught' },
+    { op: 'say', speaker: 'PAUL', text: 'Ha! When the dawn comes, that one gets to say it told us so. Mind how you go.' },
+    { op: 'move', actor: 'paul_chase', to: { tx: 5, ty: 8 }, speed: 2 },
+    { op: 'move', actor: 'paul_chase', to: { tx: 4, ty: 11 }, speed: 2 },
+    { op: 'hideActor', actor: 'paul_chase' },
+    { op: 'setFlag', flag: 'flag:cp_paul_chasing', value: false },
   ],
   // Paul's friendly REMATCH (the wren_rematch pattern): once you've met him,
   // talking to Paul at the dark lamp re-runs this bout, forever, never forced.
@@ -621,20 +641,14 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'say', speaker: 'PAUL', text: 'Give that rooster my regards. It won\'t understand them, and it\'ll be right not to.' },
   ],
   // Paul at the dark lamp, every visit AFTER the first meeting — a MENU, never a
-  // forced fight. "Wake the bird-pig" runs the Chickenpig catch right here (no
-  // round-trip needed); "A bout" is the opt-in rematch (with the Chickenpig while
-  // it's still his, his stones once you've caught it); Cancel/"Step away" leaves.
+  // forced fight. "A bout" is the opt-in rematch (with the Chickenpig — catchable
+  // mid-bout — while it's still his, his stones once you've caught it).
   'script.booji_paul_lamp': [
     {
       op: 'choice',
       speaker: 'PAUL',
       prompt: 'Back at my lamp. What\'ll it be?',
       options: [
-        {
-          label: 'Wake the bird-pig',
-          unless_flag: 'flag:chickenpig_caught',
-          ops: [{ op: 'run', ref: 'script.booji_chickenpig' }],
-        },
         {
           label: 'A bout',
           unless_flag: 'flag:chickenpig_caught',
@@ -821,22 +835,6 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'dialogue', ref: 'npc.booji_andy_after', unless_flag: 'flag:q_south_wander_done' },
     { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ANDY', text: 'He came in with a CUP! Poured me something hot and sweet. Wouldn\'t say what.' },
     { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ANDY', text: 'I asked about the Registry. He poured another. Best night of my life. Still know nothing.' },
-  ],
-  // The S4 epilogue: the Chickenpig (#163) — the only rooster in Vesperholm
-  // that still believes in morning, asleep at the foot of the one lamp Paul
-  // keeps dark. The Lampling set-piece pattern: interact trigger on the
-  // breakwater (post-q_south_booji_done), legendaryBattle with a short
-  // cooldown, if_flag colour after the catch. Paul's story IS the link: he
-  // keeps the dark company, it keeps the dawn's — they get on.
-  'script.booji_chickenpig': [
-    { op: 'narrate', text: 'At the lamp\'s foot curls a cream pig with a rooster\'s red comb and green tail-sickles. Impossibly, both.' },
-    { op: 'say', speaker: 'PAUL', text: 'The other reason I come out here. Only rooster in Vesperholm that still believes in morning.' },
-    { op: 'say', speaker: 'PAUL', text: 'It won\'t follow me. It\'s waiting for someone who hasn\'t decided who they are. Wake it gently.' },
-    { op: 'action', actor: 'player', action: 'raiseLamp' }, // X-2: the lamp held out to it
-    { op: 'legendaryBattle', name: 'chickenpig', kin: 163, level: 16, caughtFlag: 'flag:chickenpig_caught', cooldownBattles: 2, cooldownRef: 'npc.chickenpig_shy' },
-    { op: 'emote', if_flag: 'flag:chickenpig_caught', actor: 'player', emote: 'heart' },
-    { op: 'say', if_flag: 'flag:chickenpig_caught', speaker: 'PAUL', text: 'Ha! When the dawn comes, that one gets to say it told us so. Let it see the sky.' },
-    { op: 'narrate', if_flag: 'flag:chickenpig_caught', text: 'From your lamp comes half a crow, half a contented oink. Paul looks very pleased.' },
   ],
   // Rod is a quest STARTER too (any of Andy/Abdul/Sid/Rod opens Paul). His spiel
   // already points to Paul and seeds the Chickenpig, so talking to him sets the

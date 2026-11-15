@@ -359,7 +359,16 @@ export const TRAINERS: TrainerRegistry = {
     title: 'The Booji-Wooji Man',
     party: [
       { species_id: 53, level: 13 }, // Oreling — Stone
-      { species_id: 163, level: 15 }, // Chickenpig — Solar (the dark lamp's odd company, scrapping on Paul's side)
+      // Chickenpig — Solar (the dark lamp's odd company, scrapping on Paul's side).
+      // Not his, so it can be LAMPED mid-bout — the S4 catch (the fallback: Paul
+      // runs it up the breakwater after you if you leave without it).
+      {
+        species_id: 163,
+        level: 15,
+        catch_flag: 'flag:chickenpig_caught',
+        catch_hint: 'That bird-pig isn\'t mine, mind. Want it? [[Raise your LAMP]] at it — don\'t knock it flat!',
+        catch_hint_low: 'It\'s puffed now. NOW\'s the time for [[your lamp]], apprentice!',
+      },
     ],
     intro_ref: 'trainer.breakwater_paul.intro',
     defeat_ref: 'trainer.breakwater_paul.defeat',
@@ -379,7 +388,13 @@ export const TRAINERS: TrainerRegistry = {
     party: [
       { species_id: 53, level: 13 }, // Oreling — Stone
       { species_id: 69, level: 15 }, // Riddlestone — Stone (a stone that asks questions)
-      { species_id: 163, level: 15 }, // Chickenpig — Solar (the dark lamp's company, still scrapping for Paul)
+      {
+        species_id: 163,
+        level: 15,
+        catch_flag: 'flag:chickenpig_caught',
+        catch_hint: 'Still not mine, that one. [[Your LAMP]], apprentice — gently.',
+        catch_hint_low: 'There — it\'s puffed. [[Lamp it]] now!',
+      }, // Chickenpig — Solar (the dark lamp's company, still scrapping for Paul; catchable)
     ],
     intro_ref: 'trainer.breakwater_paul_rematch.intro',
     defeat_ref: 'trainer.breakwater_paul_rematch.defeat',
@@ -2108,6 +2123,7 @@ export const TRAINER_DIALOGUE: Record<string, DialogueLine[]> = {
   ],
   'trainer.breakwater_paul.intro': [
     { speaker: 'PAUL', text: 'On purpose. Remember that part.' },
+    { speaker: 'PAUL', text: 'The bird-pig fights for me tonight. It isn\'t mine. If you want it, [[catch it in the bout]].' },
   ],
   'trainer.brewfair_fern.intro': [
     { speaker: 'FERN', text: 'Art is a battle! Battle is art! I\'ve been waiting ALL day to say that to someone.' },

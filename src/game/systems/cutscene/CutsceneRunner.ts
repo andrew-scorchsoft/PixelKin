@@ -35,7 +35,9 @@ export interface CutsceneContext {
   /** Run a kin counter service (the `kinService` op) on the live party. */
   kinService?(service: 'rename' | 'relearn' | 'forget' | 'read', cost?: number, speaker?: string): Promise<void>;
   /** Hand the player a specific kin at a level (a gift kin); joins party or Hearth. */
-  onGiveKin?(speciesId: number, level: number): void;
+  onGiveKin?(speciesId: number, level: number, lead?: boolean): void | Promise<void>;
+  /** Spawn NPC placements whose flags now hold (the `showNpcs` op; adds only). */
+  showNpcs?(): void;
   onGiveItem(item: string, count: number): void;
   /** Take an item back from the pack (no-op if absent). */
   onTakeItem?(item: string, count: number): void;
@@ -395,10 +397,13 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       return true;
     }
     case 'giveKin': {
-      ctx.onGiveKin?.(step.kin, step.level);
       void ctx.sfx.play('dex-register');
+      await ctx.onGiveKin?.(step.kin, step.level, step.lead);
       return true;
     }
+    case 'showNpcs':
+      ctx.showNpcs?.();
+      return true;
     case 'giveItem':
       ctx.onGiveItem(step.item, step.count ?? 1);
       void ctx.sfx.play(itemGetCue(step.item));

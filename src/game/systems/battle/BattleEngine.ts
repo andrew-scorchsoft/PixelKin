@@ -17,7 +17,7 @@
  * It deliberately does NOT touch Phaser; the BattleScene plays the events back.
  */
 import type { Move } from '@game/data/dex';
-import type { KinInstance } from '@game/systems/party/KinInstance';
+import { KinInstance } from '@game/systems/party/KinInstance';
 import type { Party } from '@game/systems/party/Party';
 import type { KinStatus } from '@game/systems/save/types';
 import { computeDamage, rollHit } from './damage';
@@ -655,6 +655,25 @@ export class BattleEngine {
 
     if (result.caught) {
       events.push({ type: 'catch-success' });
+      if (this.kind === 'trainer') {
+        // A trainer's catchable odd company (TrainerKin.catch_flag): a COPY joins
+        // you, and its slot on their side is spent (left at 0 HP, so it still
+        // counts toward the bout's EXP and their party can't send it again).
+        // The trainer fights on; lamping their last kin wins the bout.
+        this.caught = KinInstance.fromData(this.foe.toData());
+        this.foe.takeDamage(this.foe.hp);
+        if (this.foeParty.allFainted) {
+          this.ended = true;
+          this.outcome = 'win';
+          return events;
+        }
+        if (this.foeParty.promoteToHealthy()) {
+          this.foe.resetBattleState(this.rng);
+          events.push({ type: 'switch', side: 'foe', incoming: this.foe });
+          this.applyEntryHazard('foe', events);
+        }
+        return events;
+      }
       this.ended = true;
       this.outcome = 'caught';
       this.caught = this.foe;
