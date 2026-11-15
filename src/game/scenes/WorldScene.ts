@@ -13,6 +13,7 @@ import { makeText } from '@game/ui/Text';
 import { DebugOverlay } from '@game/ui/DebugOverlay';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { Menu } from '@game/ui/Menu';
+import { getTrainer } from '@game/content/trainers';
 import { Panel } from '@game/ui/Panel';
 import { PagedText } from '@game/ui/PagedText';
 import { nextGoal } from '@game/content/nextgoal';
@@ -1569,6 +1570,9 @@ export class WorldScene extends Phaser.Scene {
           box: this.box,
           inventory: this.inventory,
           dex_caught: [...this.dexCaught],
+          held_catch_flags: (getTrainer(trainer)?.party ?? [])
+            .map((k) => k.catch_flag)
+            .filter((f): f is WorldFlag => !!f && this.flags.get(f)),
         });
         const foe = `trainer:${trainer}`;
         if (result.outcome !== 'win') {

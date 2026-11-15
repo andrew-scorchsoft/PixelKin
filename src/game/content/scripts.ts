@@ -5453,7 +5453,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'flag:q_south_booji_met', speaker: 'ANDREW',
-      text: 'You\'ve met him, so you\'re close. Back down the breakwater to [[his dark lamp]]. Something sleeps at its foot. Ask him to wake it.',
+      text: 'You\'ve met him, so you\'re close. Walk [[back down the breakwater]]. He\'s got something for you he won\'t let you leave without.',
     },
     { op: 'say', speaker: 'ANDREW', text: 'The fen\'ll keep. It\'s been wet for years. Or go on, and ask me about THE EASTER EGG on any fence when you\'re ready.' },
     { op: 'move', actor: 'andrew_road', to: { tx: 23, ty: 12 }, speed: 2 },
@@ -5504,7 +5504,7 @@ export const SCRIPTS: ScriptRegistry = {
     },
     {
       op: 'say', if_flag: 'flag:q_south_booji_met', unless_flag: 'flag:chickenpig_caught', speaker: 'ANDREW',
-      text: 'The egg isn\'t the old man, exactly. Look at [[the foot of his dark lamp]]. Something sleeps there that thinks it\'s morning. Ask him to wake it.',
+      text: 'The egg isn\'t the old man, exactly. It\'s his odd company. Go [[back down the breakwater]]; he\'ll see you right.',
     },
     // E
     {

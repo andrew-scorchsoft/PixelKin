@@ -366,8 +366,8 @@ export const TRAINERS: TrainerRegistry = {
         species_id: 163,
         level: 15,
         catch_flag: 'flag:chickenpig_caught',
-        catch_hint: 'That bird-pig isn\'t mine, mind. Want it? [[Raise your LAMP]] at it — don\'t knock it flat!',
-        catch_hint_low: 'It\'s puffed now. NOW\'s the time for [[your lamp]], apprentice!',
+        catch_hint: 'Not mine, that bird-pig. Want it? Use your LAMP. Don\'t knock it out!',
+        catch_hint_low: 'It\'s puffed! NOW\'s the time for your LAMP!',
       },
     ],
     intro_ref: 'trainer.breakwater_paul.intro',
@@ -392,8 +392,8 @@ export const TRAINERS: TrainerRegistry = {
         species_id: 163,
         level: 15,
         catch_flag: 'flag:chickenpig_caught',
-        catch_hint: 'Still not mine, that one. [[Your LAMP]], apprentice — gently.',
-        catch_hint_low: 'There — it\'s puffed. [[Lamp it]] now!',
+        catch_hint: 'Still not mine, that one. Your LAMP, apprentice. Gently.',
+        catch_hint_low: 'There, it\'s puffed. LAMP it now!',
       }, // Chickenpig — Solar (the dark lamp's company, still scrapping for Paul; catchable)
     ],
     intro_ref: 'trainer.breakwater_paul_rematch.intro',
@@ -1602,6 +1602,41 @@ export const TRAINERS: TrainerRegistry = {
       { species_id: 46, level: 33 }, // Voltcrag — Stone/Storm (ace)
     ],
     payout: 528, // route 16 × ace 33
+  },
+  // ---- The Sere + the Rio Tower (2026-11, optional, off Galehigh's east gap): route
+  // trainers on the desert's chokes + the storm-chaser holding the tower's watch floor
+  // (route 16 × ace, 10-economy §4).
+  sere_runner: {
+    id: 'sere_runner',
+    name: 'TAVI',
+    title: 'Kite-runner',
+    party: [
+      { species_id: 101, level: 31 }, // Galefox — Storm
+      { species_id: 45, level: 32 }, // Sparkrat — Stone/Storm (ace)
+    ],
+    payout: 512, // route 16 × ace 32
+  },
+  sere_chaser: {
+    id: 'sere_chaser',
+    name: 'BRANNOCK',
+    title: 'Storm-chaser',
+    party: [
+      { species_id: 89, level: 32 }, // Flintbeak — Storm
+      { species_id: 98, level: 32 }, // Thrumble — Storm
+      { species_id: 46, level: 33 }, // Voltcrag — Stone/Storm (ace)
+    ],
+    payout: 528, // route 16 × ace 33
+  },
+  rio_chaser: {
+    id: 'rio_chaser',
+    name: 'ESME',
+    title: 'Storm-chaser',
+    party: [
+      { species_id: 91, level: 32 }, // Cirruff — Storm/Light
+      { species_id: 101, level: 33 }, // Galefox — Storm
+      { species_id: 98, level: 34 }, // Thrumble — Storm (ace)
+    ],
+    payout: 544, // route 16 × ace 34
   },
   sunvault_stargazer: {
     id: 'sunvault_stargazer',

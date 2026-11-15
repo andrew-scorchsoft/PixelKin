@@ -86,6 +86,10 @@ export type BattleRequest =
       inventory: InventoryData;
       /** See the wild variant — foes the player has caught get move hints. */
       dex_caught?: number[];
+      /** `TrainerKin.catch_flag`s the player already holds: that kin is theirs
+       *  already (e.g. caught in a bout they then lost), so it fights as a plain
+       *  foe — no LAMP, no second copy. */
+      held_catch_flags?: string[];
     };
 
 /** What the scene hands back via onComplete. */
@@ -218,7 +222,8 @@ export class BattleScene extends Phaser.Scene {
     }
     return new Party(trainer.party.map((k) => {
       const kin = KinInstance.create(k.species_id, k.level);
-      if (k.catch_flag) this.foeCatch.set(kin, { flag: k.catch_flag, hint: k.catch_hint, low: k.catch_hint_low });
+      const held = this.request.kind === 'trainer' && (this.request.held_catch_flags ?? []).includes(k.catch_flag ?? '');
+      if (k.catch_flag && !held) this.foeCatch.set(kin, { flag: k.catch_flag, hint: k.catch_hint, low: k.catch_hint_low });
       return kin;
     }));
   }
