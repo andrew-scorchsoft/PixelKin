@@ -5273,6 +5273,13 @@
      "max": 62
     },
     {
+     "area": "the_sere",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 32,
+     "max": 33
+    },
+    {
      "area": "old_seams_ii",
      "terrain": "cave",
      "rarity": "uncommon",
@@ -5538,6 +5545,13 @@
      "max": 31
     },
     {
+     "area": "the_sere",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 30,
+     "max": 32
+    },
+    {
      "area": "old_seams_ii",
      "terrain": "cave",
      "rarity": "common",
@@ -5651,6 +5665,13 @@
      "rarity": "common",
      "min": 56,
      "max": 61
+    },
+    {
+     "area": "the_sere",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 31,
+     "max": 34
     },
     {
      "area": "farlamp_sound",
@@ -5858,6 +5879,13 @@
      "rarity": "common",
      "min": 28,
      "max": 30
+    },
+    {
+     "area": "the_sere",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 30,
+     "max": 32
     }
    ],
    "scripted": false,
@@ -10781,6 +10809,13 @@
      "rarity": "common",
      "min": 30,
      "max": 32
+    },
+    {
+     "area": "the_sere",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 31,
+     "max": 33
     }
    ],
    "scripted": false,
@@ -11782,6 +11817,13 @@
      "rarity": "common",
      "min": 30,
      "max": 31
+    },
+    {
+     "area": "the_sere",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 31,
+     "max": 33
     }
    ],
    "scripted": false,
@@ -12050,6 +12092,13 @@
      "rarity": "common",
      "min": 30,
      "max": 32
+    },
+    {
+     "area": "the_sere",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 30,
+     "max": 32
     }
    ],
    "scripted": false,
@@ -12143,6 +12192,13 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 62
+    },
+    {
+     "area": "the_sere",
+     "terrain": "tall_grass",
+     "rarity": "rare",
+     "min": 33,
+     "max": 34
     }
    ],
    "scripted": false,

@@ -116,6 +116,7 @@ const TITLE_CLASS: Record<string, string> = {
   'Vigil Miner': 'miner', 'Ore-hauler': 'miner', 'Seam-miner': 'miner',
   'Kite-hand': 'kite_hand', 'Wind-ward': 'kite_hand', 'Gale-watch': 'kite_hand',
   'Crag-hand': 'kite_hand', 'Crag-watch': 'kite_hand', 'Kite-runner': 'kite_hand',
+  'Storm-chaser': 'kite_hand', // the Sere + the Rio Tower (2026-11)
   'Frost-ward': 'frost_ward', 'Pass Survivor': 'frost_ward', 'Thaw-tender': 'frost_ward',
   'Rime-walker': 'frost_ward', 'Fog-walker': 'frost_ward',
   'Troupe Player': 'troupe_player',

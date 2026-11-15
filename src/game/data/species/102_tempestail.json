@@ -81,6 +81,13 @@
       "rarity": "uncommon",
       "min": 57,
       "max": 62
+    },
+    {
+      "area": "the_sere",
+      "terrain": "tall_grass",
+      "rarity": "rare",
+      "min": 33,
+      "max": 34
     }
   ],
   "scripted": false,

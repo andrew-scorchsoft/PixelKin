@@ -448,3 +448,24 @@ the GBC→GBA voice budget the skill enforces, and write mp3 loops into
 > all of them (the recurring *Vesper motif*, per-element sonic signatures, the
 > voice/era policy, the dusk→dawn key arc) live in the skill's
 > [`pixelkin-soundtrack.md`](../../.claude/skills/generate-midi/references/pixelkin-soundtrack.md).
+
+---
+
+### The Sere — *Galehigh's dry side (optional, mid-game; ships silently)*
+
+<img src="../../assets/concept-art/areas/the-sere.webp" alt="The Sere — concept art" width="480">
+
+- **Kind:** route (+ the Rio Tower's three interiors) · **Region:** north · **Gate:** none (Galehigh's east gap)
+- **Graphics:** the `sere_set` accent — dusk-ochre sand, a drovers' track, cracked hardpan, redrock mesas whose
+  faces show the canyon's strata, sage-scrub beds, and the **Thousandfold**: the canyon drop in rust/bone/violet
+  bands along the whole east side. The **Rio Tower** (striped sandstone, a red-and-cream awning over the Thunder
+  Table) stands on the rim.
+- **Story:** the terraces catch every cloud, so the Sere's storms are DRY. The storm-callers' three copper
+  **Calling Rods** lit their road to the canyon; in the Long Dusk the lamps went out and the storms lost their way.
+  Relight all three and eat at the Thunder Table: the rolling thunder crosses the Sere (`script.rio_thunder`).
+- **Music:** reuses `galehigh-terraces-c` (desert), `interior-lamplit` (the tower), `inn-rest` (the Table);
+  ambience bed `amb-desert`; the scene's `world-thunder-roll` / `world-thunder-crack`.
+- **Kin (30-34):** Galefox, Sparkrat, Rubbol, Voltcrag (scrub); Flintbeak, Thrumble, Pyrolith, Voltcrag, rare
+  Tempestail (the band + the wash).
+- **Terrain:** `tall_grass` (the `serescrub` tile; a full-corridor band at cols 16-17).
+

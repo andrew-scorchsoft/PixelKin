@@ -91,6 +91,13 @@
       "max": 61
     },
     {
+      "area": "the_sere",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 31,
+      "max": 34
+    },
+    {
       "area": "farlamp_sound",
       "terrain": "tall_grass",
       "rarity": "uncommon",

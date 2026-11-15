@@ -192,6 +192,23 @@ type CutsceneStepBase =
       action: 'start' | 'stop' | 'cancel';
       tiers?: { ms: number; flag: WorldFlag; label: string }[];
     }
+  /**
+   * A short full-screen picture SEQUENCE over the world (ui/FrameReel): served 3:2
+   * stills played in order with cross-dissolves — `holdMs` each (default 1400),
+   * `fadeMs` dissolves (default 600). Frames listed in `flash` STRIKE (a white
+   * flash + shake + `flashSfx`); `sfx` plays once under the whole reel. Missing
+   * stills are skipped; Cancel skips to the end. The rolling thunder at the Rio
+   * Tower's Thunder Table is the worked example (content/regions/sere.ts).
+   */
+  | {
+      op: 'frames';
+      frames: string[];
+      holdMs?: number;
+      fadeMs?: number;
+      flash?: number[];
+      sfx?: string;
+      flashSfx?: string;
+    }
   | { op: 'sfx'; key: string }
   | { op: 'music'; key: string | null } // swap the bed (crossfades when one is playing)
   | { op: 'musicCrossfade'; key: string; ms?: number } // explicit crossfade to a new bed

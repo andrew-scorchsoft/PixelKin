@@ -48,6 +48,8 @@ import { STILLWATER_DIALOGUE, STILLWATER_SCRIPTS } from './stillwater';
 import { DROWNLIGHT_DIALOGUE, DROWNLIGHT_SCRIPTS } from './drownlight';
 // S7 "Just One More Cup" (2026-10): the Wakeful Fair, the coffee festival on Wayward Rise.
 import { BREWFAIR_DIALOGUE, BREWFAIR_SCRIPTS } from './brewfair';
+// The Sere + the Rio Tower (2026-11): Galehigh's dry side, the Thunder Table.
+import { SERE_DIALOGUE, SERE_SCRIPTS } from './sere';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -77,6 +79,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...STILLWATER_SCRIPTS, // Lane N1
   ...DROWNLIGHT_SCRIPTS, // Lane N2
   ...BREWFAIR_SCRIPTS, // S7
+  ...SERE_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -107,4 +110,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...STILLWATER_DIALOGUE, // Lane N1
   ...DROWNLIGHT_DIALOGUE, // Lane N2
   ...BREWFAIR_DIALOGUE, // S7
+  ...SERE_DIALOGUE,
 };

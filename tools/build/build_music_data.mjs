@@ -41,6 +41,10 @@ const GROUPS = [
  *  story) — the game plays them, the website never lists them (CLAUDE.md: the site
  *  and changelog must never spoil it). */
 const HIDDEN = ['wakeful-fair', 'battle-wakeful'];
+/** Maps that ship silently (the Sere + the Rio Tower, 2026-11): never named in a
+ *  cue's "where", and a cue only they play is left off the page entirely. */
+const HIDDEN_MAPS = new Set(['the_sere', 'rio_tower_1', 'rio_tower_2', 'rio_tower_top']);
+const hiddenOnly = new Set();
 
 /** Friendly names for cues that aren't a single place. */
 const CUE_NAMES = {
@@ -101,6 +105,10 @@ for (const m of mapsTs.matchAll(/^ {2}(\w+): \{([\s\S]*?)^ {2}\},?$/gm)) {
     const musics = [...body.matchAll(/music: '([^']+)'/g)].map((x) => x[1]);
     const json = body.match(/json: '([^']+)'/)?.[1];
     if (!musics.length || !json) continue;
+    if (HIDDEN_MAPS.has(m[1])) {
+        for (const music of musics) hiddenOnly.add(music.split('/').pop().replace(/\.mp3$/, ''));
+        continue;
+    }
     let name = m[1];
     try {
         name = JSON.parse(readFileSync(join(ROOT, 'public', json), 'utf8')).display_name || name;
@@ -121,6 +129,7 @@ for (const file of readdirSync(MUSIC).filter((f) => f.endsWith('.mp3')).sort()) 
     const id = file.replace(/\.mp3$/, '');
     if (!new RegExp(`['/]${id}(\\.mp3)?'`).test(srcText)) continue; // unused variant
     if (HIDDEN.some((p) => id.startsWith(p))) continue; // hidden content: never on the site
+    if (hiddenOnly.has(id) && !placesByTrack[id]) continue; // played only on silent maps
     const gi = GROUPS.findIndex(([, pre]) => pre.some((p) => id.startsWith(p)));
     const r = remaster[id];
     const places = [...(placesByTrack[id] ?? [])];

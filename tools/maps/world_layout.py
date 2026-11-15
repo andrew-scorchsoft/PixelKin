@@ -74,6 +74,7 @@ NODE_KINDS: dict[str, str] = {
     # north
     "cinderwind_scarp": "route", "galehigh_terraces": "town", "lanternway_galehigh": "route",
     "wind_eye": "landmark", "windward_stair_i": "route", "windward_stair_ii": "route",
+    "the_sere": "route",  # Galehigh's dry side (2026-11); the Rio Tower is its interior
     "thunderroost": "landmark", "pale_vault_glacier": "town",
     "cinderwind_ashfall": "route", "cinderwind_kiln": "landmark",  # Lane A (walkthrough/10 Part II)
     # west
@@ -322,6 +323,7 @@ ROADS: list[tuple[str, str, str]] = [
     ("galehigh_terraces", "lanternway_galehigh", "lane"),
     ("galehigh_terraces", "wind_eye", "gate"),
     ("galehigh_terraces", "windward_stair_i", "road"),
+    ("galehigh_terraces", "the_sere", "road"),
     ("windward_stair_i", "windward_stair_ii", "gate"),
     ("windward_stair_ii", "thunderroost", "gate"),
     ("windward_stair_ii", "pale_vault_glacier", "road"),

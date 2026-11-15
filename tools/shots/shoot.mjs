@@ -74,6 +74,8 @@ common:
                                 battles default 2500)
   --url http://host:port/       use an already-running dev server
   --headed                      show the browser (debugging)
+  --video <dir>                 also RECORD each page to a .webm in <dir> (Playwright recordVideo;
+                                silent — mux the audio yourself); logs when a --script starts
   --verbose                     log browser console`;
 
 function parseArgs(argv) {
@@ -490,6 +492,8 @@ async function shoot(page, url, shot) {
         await tap(page, 'z');
       }
     } else if (shot.script) {
+      if (globalThis.__videoT0) await page.addStyleTag({ content: HIDE_CHROME_CSS }); // clean recording
+      if (globalThis.__videoT0) console.log(`  video: script ${shot.script} starts at ${((Date.now() - globalThis.__videoT0) / 1000).toFixed(2)}s`);
       await page.evaluate((ref) => {
         const w = window.__pixelkin.scene.getScene('World');
         w.modal = true;
@@ -587,7 +591,7 @@ async function main() {
     const raw = JSON.parse(fs.readFileSync(args.batch, 'utf8'));
     if (!Array.isArray(raw)) throw new Error('--batch file must be a JSON array of shot specs');
     // CLI flags (other than --batch) act as defaults for every spec.
-    const { batch, headed, verbose, url, ...defaults } = args;
+    const { batch, headed, verbose, url, video, ...defaults } = args;
     specs = raw.map((s, i) => normaliseSpec({ ...defaults, ...s }, i + 1));
   } else {
     specs = [normaliseSpec(args)];
@@ -616,7 +620,12 @@ async function main() {
       const [dw, dh] = device ? device.split('x').map(Number) : [];
       const ctx = await browser.newContext(device
         ? { viewport: { width: dw, height: dh }, deviceScaleFactor: 2, isMobile: true, hasTouch: true }
-        : { viewport: { width: 240 * scale, height: 160 * scale }, deviceScaleFactor: 1 });
+        : {
+            viewport: { width: 240 * scale, height: 160 * scale },
+            deviceScaleFactor: 1,
+            ...(args.video ? { recordVideo: { dir: args.video, size: { width: 240 * scale, height: 160 * scale } } } : {}),
+          });
+      if (args.video) globalThis.__videoT0 = Date.now();
       const settings = device ? { ...SETTINGS, shell: 'device', controlsVisible: true } : SETTINGS;
       await ctx.addInitScript((settings) => {
         try {

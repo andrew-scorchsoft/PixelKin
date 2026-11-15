@@ -1,0 +1,465 @@
+{
+  "id": "rio_tower_1",
+  "display_name": "Rio Tower",
+  "width": 12,
+  "height": 10,
+  "tile_width": 16,
+  "tile_height": 16,
+  "kind": "interior",
+  "tilesets": [
+    {
+      "name": "interior_set",
+      "image": "assets/tilesets/interior_set.webp",
+      "tile_width": 16,
+      "tile_height": 16,
+      "first_gid": 1,
+      "columns": 8,
+      "tile_count": 55
+    }
+  ],
+  "layers": [
+    {
+      "name": "base",
+      "role": "base",
+      "depth": 0,
+      "data": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        3,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        2,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        3,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "walls",
+      "role": "deco",
+      "depth": 5,
+      "data": [
+        18,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        6,
+        22,
+        8,
+        4,
+        4,
+        5,
+        4,
+        4,
+        4,
+        4,
+        4,
+        5,
+        4,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        9,
+        15,
+        7,
+        7,
+        7,
+        7,
+        12,
+        0,
+        13,
+        7,
+        7,
+        7,
+        16
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": "aisle_3",
+      "sprite": "interior_rug_runner",
+      "at": {
+        "tx": 6,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 3,
+      "solid": false
+    },
+    {
+      "id": "aisle_6",
+      "sprite": "interior_rug_runner",
+      "at": {
+        "tx": 6,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 3,
+      "solid": false
+    },
+    {
+      "id": "bookcase",
+      "sprite": "interior_bookcase",
+      "at": {
+        "tx": 1,
+        "ty": 1
+      },
+      "w": 2,
+      "h": 3,
+      "overhang": 1,
+      "walk_under": true
+    },
+    {
+      "id": "barometer",
+      "sprite": "sere_barometer",
+      "at": {
+        "tx": 4,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "overhang": 1
+    },
+    {
+      "id": "drovers_table",
+      "sprite": "interior_table",
+      "at": {
+        "tx": 7,
+        "ty": 5
+      },
+      "w": 2,
+      "h": 2
+    },
+    {
+      "id": "stool_a",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 7,
+        "ty": 7
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "stool_b",
+      "sprite": "interior_stool",
+      "at": {
+        "tx": 9,
+        "ty": 6
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "barrels",
+      "sprite": "interior_barrels",
+      "at": {
+        "tx": 1,
+        "ty": 8
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
+      "id": "plant",
+      "sprite": "interior_plant",
+      "at": {
+        "tx": 10,
+        "ty": 8
+      },
+      "w": 1,
+      "h": 1
+    },
+    {
+      "id": "stairs_up_sprite",
+      "sprite": "interior_stairs_up",
+      "at": {
+        "tx": 10,
+        "ty": 1
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false
+    }
+  ],
+  "warps": [
+    {
+      "id": "to_sere",
+      "at": {
+        "tx": 6,
+        "ty": 9
+      },
+      "trigger": "step_on",
+      "to_map": "the_sere",
+      "to": {
+        "tx": 30,
+        "ty": 18
+      },
+      "facing": "down",
+      "transition": "door"
+    },
+    {
+      "id": "up_stairs",
+      "at": {
+        "tx": 10,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "rio_tower_2",
+      "to": {
+        "tx": 10,
+        "ty": 3
+      },
+      "facing": "down",
+      "transition": "fade"
+    }
+  ],
+  "triggers": [
+    {
+      "id": "plaque",
+      "kind": "sign",
+      "at": {
+        "tx": 1,
+        "ty": 3
+      },
+      "activation": "interact",
+      "ref": "sign.rio_plaque"
+    },
+    {
+      "id": "barometer",
+      "kind": "sign",
+      "at": {
+        "tx": 4,
+        "ty": 2
+      },
+      "activation": "interact",
+      "ref": "sign.rio_barometer"
+    }
+  ],
+  "encounters": [],
+  "npcs": [
+    {
+      "id": "porter_amsel",
+      "at": {
+        "tx": 4,
+        "ty": 5
+      },
+      "facing": "down",
+      "sprite": "innkeeper",
+      "movement": "static",
+      "dialogue_ref": "script.rio_porter"
+    },
+    {
+      "id": "drover_resting",
+      "at": {
+        "tx": 9,
+        "ty": 5
+      },
+      "facing": "left",
+      "sprite": "market_trader",
+      "movement": "static",
+      "dialogue_ref": "npc.rio_drover"
+    }
+  ],
+  "gates": [],
+  "music": "assets/audio/music/interior-lamplit.mp3"
+}

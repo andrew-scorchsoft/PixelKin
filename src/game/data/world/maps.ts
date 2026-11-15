@@ -790,6 +790,41 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
       'assets/backgrounds/battle/galehigh-terraces-b.webp',
     ],
   },
+  // The Sere (2026-11, optional): Galehigh's dry side east of the terraces — the
+  // rain-shadow desert, the Calling Rods and the Thousandfold's rim. Its own accent
+  // set (sere_set: dusk sand, redrock mesas, the canyon) over the shared one.
+  the_sere: {
+    json: 'assets/maps/the_sere.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      sere_set: 'assets/tilesets/sere_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/galehigh-terraces-c.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/the-sere-a.webp'],
+  },
+  // The Rio Tower: the storm-watchers' tower on the rim; the Thunder Table at the top.
+  rio_tower_1: {
+    json: 'assets/maps/rio_tower_1.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-lamplit.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/the-sere-a.webp'],
+  },
+  rio_tower_2: {
+    json: 'assets/maps/rio_tower_2.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/interior-lamplit.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/the-sere-a.webp'],
+  },
+  rio_tower_top: {
+    json: 'assets/maps/rio_tower_top.json',
+    tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },
+    kind: 'interior',
+    music: 'assets/audio/music/inn-rest.mp3',
+    battle_backdrops: ['assets/backgrounds/battle/the-sere-a.webp'],
+  },
   galehigh_skyloft: {
     json: 'assets/maps/galehigh_skyloft.json',
     tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },

@@ -801,14 +801,9 @@ export const MILAGROS: MilagroCard[] = [
   {
     id: 'emergent',
     title: 'WHAT IS CONSCIOUSNESS BUT AN EMERGENT PHENOMENON THAT RESULTS FROM ANY RECURRENT INFORMATION SYSTEM?!',
-    giver: { map: 'vesper_crossroads', npc: 'andrew_road' },
-    hint: 'Vesper Crossroads: the fellow on the fence who thinks in ones and noughts.',
-    found: [
-      'Andrew: "Found this pinned to the waystone. A grinning skull with its lid off, and the brain\'s nothing but ' +
-        'ones and noughts. I\'ve been arguing with it all morning."',
-      '"It\'s winning. Have it, and half my flask of coffee. If the waystone starts asking questions back, come ' +
-        'and fetch me."',
-    ],
+    // No giver: it blows in on the storm. Found on the Thunder Table's wet tablecloth
+    // after the rolling thunder crosses the Sere (script.rio_thunder_first, sere.ts).
+    hint: 'The Rio Tower, on the canyon rim east of Galehigh: a supper at the Thunder Table, once the storms find their road again.',
     story:
       'A skull that has taken its own lid off to have a look. Inside there is no ghost, only ones and noughts ' +
       'going round and round, telling each other what they just said, until somewhere in the going round a ' +

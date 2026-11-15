@@ -223,12 +223,24 @@ def bed_crickets(rng: np.random.Generator) -> np.ndarray:
     return air + crick * 0.5
 
 
+def bed_desert(rng: np.random.Generator) -> np.ndarray:
+    """The Sere (Galehigh's dry side): a thin dry wind with sand hissing over the
+    crests, and now and then a far, low grumble of the lost storms out east."""
+    n = loop_len(24)
+    gust = slow_lfo(n, rng, (1, 2, 4), 0.7)
+    base = shaped_noise(n, rng, 90, 700, tilt=-6) * (0.30 + 0.55 * gust)
+    sand = shaped_noise(n, rng, 2500, 7000, tilt=-3) * 0.16 * gust ** 3
+    grumble = shaped_noise(n, rng, 25, 90, tilt=-5) * bumps(n, rng, [0.18, 0.62], width=5.0, rise=0.4) * 0.7
+    return base + sand + grumble
+
+
 BEDS = {
     "amb-surf": (bed_surf, 101),
     "amb-marsh": (bed_marsh, 202),
     "amb-wind": (bed_wind, 303),
     "amb-drips": (bed_drips, 404),
     "amb-crickets": (bed_crickets, 505),
+    "amb-desert": (bed_desert, 606),
 }
 
 

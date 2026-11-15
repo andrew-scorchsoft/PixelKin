@@ -14,6 +14,7 @@ import { StarterSelect } from '@game/ui/StarterSelect';
 import { Menu } from '@game/ui/Menu';
 import { NameEntry } from '@game/ui/NameEntry';
 import { MilagroView } from '@game/ui/MilagroView';
+import { FrameReel } from '@game/ui/FrameReel';
 import { MILAGROS, MILAGRO_LORE, MILAGRO_LORE_FLAG, MILAGRO_LORE_TITLE, milagroFlag } from '@game/content/milagros';
 import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox, clearCinematicFx } from '@game/ui/Transitions';
 import { hex } from '@game/ui/theme';
@@ -417,6 +418,9 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       if (step.text) await new DialogueBox(scene, ctx.sfx).run([{ text: step.text, style: 'narrate' }]);
       return true;
     }
+    case 'frames':
+      await new FrameReel(scene, ctx.sfx).play(step);
+      return true;
     case 'sfx':
       void ctx.sfx.play(step.key);
       return true;
