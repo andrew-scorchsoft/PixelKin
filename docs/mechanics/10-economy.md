@@ -99,6 +99,7 @@ Prices live on `ItemDef.price` (`content/items.ts`); one price everywhere.
 | Harvest Knot | key item; toggle — wild encounter rate ×0.25 while hung (the strongest damper) | not sold, not sellable | the Mourning Fields' terrace cache (optional, late, lv 48–52 ground) — moves no wicks |
 | Deep Charm | one throw, catch ×3.0 on kin met over the open DEEP (a conditional charge; plain elsewhere) | 900w | the Driftholm chandlery (the Farlamp Isles), once `flag:isles_dawn` is held — post-game optional, outside every solvency leg; Nan Creel gives three for "Letters Home" |
 | A plate at Marisol's | restores the whole party (a courtesy heal, not a rest point) + her food talk; the first plate adds a Salsa Roja (heal 60, once) | 60w | Marisol's kitchen, Lowleaf Hollow — the `pay` op (`content/regions/kitchens.ts`), optional colour outside every solvency leg |
+| A dish at the Thunder Table | restores the whole party (a courtesy heal, not a rest point); with the Sere's three Calling Rods lit, the rolling thunder plays; trying all three dishes once earns 2 Beacon Charges | Ochre Flatbread 120w · Thunder Stew 240w · the Rio Supper 480w | Ottoline Bask, the top of the Rio Tower (the Sere, off Galehigh's east gap) — the `pay` op (`content/regions/sere.ts RIO_PRICES`, mirrored in `progression.mjs PRICES.rio_*`), optional colour outside every solvency leg |
 
 Key items leave a shop's shelf once held (`ShopMenu`), so a toggle can't be bought
 twice. The Tin Rower's 12,000w reserve is set *not* to be met: the free path (Wink's

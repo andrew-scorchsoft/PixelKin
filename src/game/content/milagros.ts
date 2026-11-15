@@ -798,6 +798,17 @@ export const MILAGROS: MilagroCard[] = [
       'three hours. She will go. She simply has to finish arriving at the idea first. The world can wait. It ' +
       'usually does.',
   },
+  {
+    id: 'emergent',
+    title: 'WHAT IS CONSCIOUSNESS BUT AN EMERGENT PHENOMENON THAT RESULTS FROM ANY RECURRENT INFORMATION SYSTEM?!',
+    // No giver: it blows in on the storm. Found on the Thunder Table's wet tablecloth
+    // after the rolling thunder crosses the Sere (script.rio_thunder_first, sere.ts).
+    hint: 'The Rio Tower, on the canyon rim east of Galehigh: a supper at the Thunder Table, once the storms find their road again.',
+    story:
+      'A skull that has taken its own lid off to have a look. Inside there is no ghost, only ones and noughts ' +
+      'going round and round, telling each other what they just said, until somewhere in the going round a ' +
+      'someone turns up. The skull finds this hilarious. It has not stopped grinning since.',
+  },
 ];
 
 export const MILAGROS_BY_GIVER = new Map(

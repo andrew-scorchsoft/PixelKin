@@ -1,0 +1,552 @@
+{
+  "name": "sere_set",
+  "columns": 8,
+  "tiles": [
+    {
+      "file": "000_sere0.png",
+      "role": "sand",
+      "collides": false
+    },
+    {
+      "file": "001_sere1.png",
+      "role": "sand",
+      "collides": false
+    },
+    {
+      "file": "002_sere2.png",
+      "role": "sand",
+      "collides": false
+    },
+    {
+      "file": "003_sere3.png",
+      "role": "sand",
+      "collides": false
+    },
+    {
+      "file": "004_seretrail_corner_nw.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "005_seretrail_edge_n.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "006_seretrail_corner_ne.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "007_seretrail_edge_w.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "008_seretrail_fill.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "fill"
+    },
+    {
+      "file": "009_seretrail_edge_e.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "010_seretrail_corner_sw.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "011_seretrail_edge_s.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "012_seretrail_corner_se.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "013_seretrail_strip_h.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "014_seretrail_strip_v.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "015_seretrail_inner_nw.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "016_seretrail_inner_ne.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "017_seretrail_inner_sw.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "018_seretrail_inner_se.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "019_seretrail_fill_v1.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "fill"
+    },
+    {
+      "file": "020_seretrail_fill_v2.png",
+      "role": "path",
+      "collides": false,
+      "terrain": "seretrail",
+      "autotile": "fill"
+    },
+    {
+      "file": "021_hardpan_corner_nw.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "022_hardpan_edge_n.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "023_hardpan_corner_ne.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "024_hardpan_edge_w.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "025_hardpan_fill.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "fill"
+    },
+    {
+      "file": "026_hardpan_edge_e.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "027_hardpan_corner_sw.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "028_hardpan_edge_s.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "029_hardpan_corner_se.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "030_hardpan_strip_h.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "031_hardpan_strip_v.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "032_hardpan_inner_nw.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "033_hardpan_inner_ne.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "034_hardpan_inner_sw.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "035_hardpan_inner_se.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "036_hardpan_fill_v1.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "fill"
+    },
+    {
+      "file": "037_hardpan_fill_v2.png",
+      "role": "sand",
+      "collides": false,
+      "terrain": "hardpan",
+      "autotile": "fill"
+    },
+    {
+      "file": "038_redrock_corner_nw.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "039_redrock_edge_n.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "040_redrock_corner_ne.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "041_redrock_edge_w.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "042_redrock_fill.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "fill"
+    },
+    {
+      "file": "043_redrock_edge_e.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "044_redrock_corner_sw.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "045_redrock_edge_s.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "046_redrock_corner_se.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "047_redrock_strip_h.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "048_redrock_strip_v.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "049_redrock_inner_nw.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "050_redrock_inner_ne.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "051_redrock_inner_sw.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "052_redrock_inner_se.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "053_redrock_fill_v1.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "fill"
+    },
+    {
+      "file": "054_redrock_fill_v2.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "fill"
+    },
+    {
+      "file": "055_redrock_edge_s_v1.png",
+      "role": "cliff",
+      "collides": true,
+      "terrain": "redrock",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "056_canyon_corner_nw.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "057_canyon_edge_n.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "058_canyon_corner_ne.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "059_canyon_edge_w.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "060_canyon_fill.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "fill"
+    },
+    {
+      "file": "061_canyon_edge_e.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "062_canyon_corner_sw.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "063_canyon_edge_s.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "064_canyon_corner_se.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "065_canyon_strip_h.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "066_canyon_strip_v.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "067_canyon_inner_nw.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "068_canyon_inner_ne.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "069_canyon_inner_sw.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "070_canyon_inner_se.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "071_canyon_fill_v1.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "fill"
+    },
+    {
+      "file": "072_canyon_fill_v2.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "fill"
+    },
+    {
+      "file": "073_canyon_fill_v3.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "canyon",
+      "autotile": "fill"
+    },
+    {
+      "file": "074_serescrub_fill.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "serescrub",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "075_serescrub_fill_v1.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "serescrub",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "076_serescrub_fill_v2.png",
+      "role": "ground",
+      "collides": false,
+      "terrain": "serescrub",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "file": "077_sere_ledge_s.png",
+      "role": "ledge",
+      "collides": false,
+      "ledge": "down"
+    },
+    {
+      "file": "078_sere_ledge_s_v1.png",
+      "role": "ledge",
+      "collides": false,
+      "ledge": "down"
+    }
+  ]
+}

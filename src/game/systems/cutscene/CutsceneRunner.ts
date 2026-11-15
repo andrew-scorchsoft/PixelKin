@@ -14,6 +14,7 @@ import { StarterSelect } from '@game/ui/StarterSelect';
 import { Menu } from '@game/ui/Menu';
 import { NameEntry } from '@game/ui/NameEntry';
 import { MilagroView } from '@game/ui/MilagroView';
+import { FrameReel } from '@game/ui/FrameReel';
 import { MILAGROS, MILAGRO_LORE, MILAGRO_LORE_FLAG, MILAGRO_LORE_TITLE, milagroFlag } from '@game/content/milagros';
 import { fadeIn, fadeOut, flash, flashColor, shake, tint, letterbox, clearCinematicFx } from '@game/ui/Transitions';
 import { hex } from '@game/ui/theme';
@@ -35,7 +36,9 @@ export interface CutsceneContext {
   /** Run a kin counter service (the `kinService` op) on the live party. */
   kinService?(service: 'rename' | 'relearn' | 'forget' | 'read', cost?: number, speaker?: string): Promise<void>;
   /** Hand the player a specific kin at a level (a gift kin); joins party or Hearth. */
-  onGiveKin?(speciesId: number, level: number): void;
+  onGiveKin?(speciesId: number, level: number, lead?: boolean): void | Promise<void>;
+  /** Spawn NPC placements whose flags now hold (the `showNpcs` op; adds only). */
+  showNpcs?(): void;
   onGiveItem(item: string, count: number): void;
   /** Take an item back from the pack (no-op if absent). */
   onTakeItem?(item: string, count: number): void;
@@ -395,10 +398,13 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       return true;
     }
     case 'giveKin': {
-      ctx.onGiveKin?.(step.kin, step.level);
       void ctx.sfx.play('dex-register');
+      await ctx.onGiveKin?.(step.kin, step.level, step.lead);
       return true;
     }
+    case 'showNpcs':
+      ctx.showNpcs?.();
+      return true;
     case 'giveItem':
       ctx.onGiveItem(step.item, step.count ?? 1);
       void ctx.sfx.play(itemGetCue(step.item));
@@ -412,6 +418,9 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
       if (step.text) await new DialogueBox(scene, ctx.sfx).run([{ text: step.text, style: 'narrate' }]);
       return true;
     }
+    case 'frames':
+      await new FrameReel(scene, ctx.sfx).play(step);
+      return true;
     case 'sfx':
       void ctx.sfx.play(step.key);
       return true;

@@ -280,6 +280,18 @@ export const KIN_CHATTER: Record<number, KinChatterEntry> = {
       { text: '"Krrk." It cleans its beak on the stone with great care.' },
     ],
   },
+  101: { // Galefox — the dust-devil fox (the Sere)
+    lines: [
+      { text: '"Yip-yip!" It spins three times on the spot and a little dust-devil spins with it.', react: 'twirl' },
+      { text: '"Hff." Its big ears turn east, toward the horizon, listening for thunder.' },
+    ],
+  },
+  45: { // Sparkrat — the static-whiskered sand-rat (the Sere)
+    lines: [
+      { text: '"Tzik!" Its whiskers crackle as it sniffs your boot.', react: 'hop' },
+      { text: '"Tzk-tzk." It drags a copper wire-end proudly toward its burrow.' },
+    ],
+  },
   90: { // Strikeaven — the apex flint-raven (Thunderroost)
     lines: [
       { text: '"KRAAAWK!" Static runs down its beak and crackles off into the wind.' },

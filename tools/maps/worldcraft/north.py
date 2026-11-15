@@ -199,7 +199,7 @@ PLACEMENTS: dict[str, dict] = {
         ],
         "npcs": [
             ambient_kin("amb_sparrowcaw", (8, 6), 88, radius=2),
-            ambient_kin("amb_cirruff", (27, 20), 91, radius=1),
+            ambient_kin("amb_cirruff", (28, 16), 91, radius=1),
             *recast("galehigh_terraces",
                     galehigh_kitehand="kite_weaver", galehigh_kitehand_after="kite_weaver",
                     festival_piper="market_trader", festival_kid="kite_child",
@@ -207,6 +207,21 @@ PLACEMENTS: dict[str, dict] = {
                     kite_maker_lost="kite_weaver", kite_maker_build="kite_weaver",
                     kite_maker_after="kite_weaver", kite_maker_round="kite_weaver",
                     kite_maker_round_after="kite_weaver"),
+        ],
+    },
+    # ------------------------------------------------------------------ the Sere
+    # Galehigh's dry side (2026-11): dust on the wind, a warm haze, the desert bed
+    # (a dry wind and the far grumble of the lost storms); kin from its own table.
+    "the_sere": {
+        "ambience": {
+            "particles": [particles("dust", 1.0), particles("motes", 0.4)],
+            "mist": {"color": "#5a2a20", "alpha": 0.05, "speed": 4},
+            "starfall": {"min_s": 35, "max_s": 75},
+            "sound_bed": "amb-desert",
+        },
+        "npcs": [
+            ambient_kin("amb_galefox", (8, 19), 101, radius=2),
+            ambient_kin("amb_sparkrat", (27, 13), 45, radius=1),
         ],
     },
     # ------------------------------------------------------------------ Lane A

@@ -107,6 +107,7 @@ panel E-1/E-2/E-3 + the East X-2 acting pass; see `02-east.md` § World-craft pa
 | Thunderroost (Updraft spur · Strikeaven) | `thunderroost` | ✅ | `build_thunderroost.py` |
 | Pale Vault Glacier (Frost · Ysolde · Emberward) | `pale_vault_glacier` + lumenary/inn/home | ✅ | `build_pale_vault_*.py` |
 | Pale Vault Undercroft (the Lamp-Line trial) | `pale_vault_undercroft` | ✅ | `build_pale_vault_undercroft.py` |
+| **The Sere + the Rio Tower** (2026-11, optional, SILENT — never in changelog/guide/site): Galehigh's dry side off its east gap, lv 30-34; three Calling Rods relit (`flag:sere_rod_1..3` → `flag:sere_storm_called`) → a dish at the Thunder Table plays the rolling thunder (`frames` op) and leaves the `emergent` milagro card; Calder's Storm Log (Star-chart), Hesk's camp rest, 3 route trainers, 3 caches | `the_sere`, `rio_tower_1/2/top` | ✅ | `build_the_sere.py`, `build_rio_tower.py` (tiles `build_sere_set.py`, props `sereforge.py`, content `regions/sere.ts`) |
 
 Festivals: Kite-rising, Aurora-watch (all 8 festivals now have LORE codex entries).
 Arcs delivered: B3 (Còr in person, `met_cor` — un-walk-aroundable on the oil leg),

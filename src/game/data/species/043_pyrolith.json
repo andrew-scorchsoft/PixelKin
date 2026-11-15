@@ -91,6 +91,13 @@
       "max": 62
     },
     {
+      "area": "the_sere",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 32,
+      "max": 33
+    },
+    {
       "area": "old_seams_ii",
       "terrain": "cave",
       "rarity": "uncommon",

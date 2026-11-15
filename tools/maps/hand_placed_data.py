@@ -312,11 +312,17 @@ PLACEMENTS: dict[str, dict] = {
             {"id": "paul_meet", "at": {"tx": 9, "ty": 25}, "facing": "down", "sprite": "booji_paul", "movement": "static", "dialogue_ref": "script.booji_paul", "requires_flag": "flag:q_south_booji", "hidden_when_flag": "flag:q_south_booji_met"},
             {"id": "paul_lamp", "at": {"tx": 9, "ty": 25}, "facing": "down", "sprite": "booji_paul", "movement": "static", "dialogue_ref": "script.booji_paul_lamp", "requires_flag": "flag:q_south_booji_met", "hidden_when_flag": "flag:q_south_wander"},
             {"id": "paul_lamp_back", "at": {"tx": 9, "ty": 25}, "facing": "down", "sprite": "booji_paul", "movement": "static", "dialogue_ref": "script.booji_paul_lamp", "requires_flag": "flag:q_south_wander_done"},
+            # S4 fallback: Paul running the bird-pig up the boards after you
+            # (script.booji_cp_chase spawns him here, just below the screen, mid-scene)
+            {"id": "paul_chase", "at": {"tx": 4, "ty": 11}, "facing": "up", "sprite": "booji_paul", "movement": "static", "dialogue_ref": "npc.chickenpig_after", "requires_flag": "flag:cp_paul_chasing", "hidden_when_flag": "flag:chickenpig_caught"},
         ],
         "triggers": [
-            # S4: the Chickenpig at the breakwater
-            {"id": "chickenpig_leash_w", "kind": "cutscene", "at": {"tx": 8, "ty": 24}, "activation": "step_on", "ref": "script.booji_chickenpig", "requires_flag": "flag:q_south_booji_done", "hidden_when_flag": "flag:chickenpig_caught"},
-            {"id": "chickenpig_leash_n", "kind": "cutscene", "at": {"tx": 9, "ty": 23}, "activation": "step_on", "ref": "script.booji_chickenpig", "requires_flag": "flag:q_south_booji_done", "hidden_when_flag": "flag:chickenpig_caught"},
+            # S4: the Chickenpig is caught IN Paul's bout; leave without it and he
+            # runs it up after you — a band across the boards' full north cut (row 2)
+            {"id": "cp_chase_4", "kind": "cutscene", "at": {"tx": 4, "ty": 2}, "activation": "step_on", "ref": "script.booji_cp_chase", "requires_flag": "flag:q_south_booji_met", "hidden_when_flag": "flag:chickenpig_caught"},
+            {"id": "cp_chase_5", "kind": "cutscene", "at": {"tx": 5, "ty": 2}, "activation": "step_on", "ref": "script.booji_cp_chase", "requires_flag": "flag:q_south_booji_met", "hidden_when_flag": "flag:chickenpig_caught"},
+            {"id": "cp_chase_6", "kind": "cutscene", "at": {"tx": 6, "ty": 2}, "activation": "step_on", "ref": "script.booji_cp_chase", "requires_flag": "flag:q_south_booji_met", "hidden_when_flag": "flag:chickenpig_caught"},
+            {"id": "cp_chase_7", "kind": "cutscene", "at": {"tx": 7, "ty": 2}, "activation": "step_on", "ref": "script.booji_cp_chase", "requires_flag": "flag:q_south_booji_met", "hidden_when_flag": "flag:chickenpig_caught"},
             {"id": "chickenpig_after", "kind": "dialogue", "at": {"tx": 8, "ty": 26}, "activation": "interact", "ref": "npc.chickenpig_after", "requires_flag": "flag:chickenpig_caught"},
             # S5: Not All Who Wander
             {"id": "wander_note", "kind": "dialogue", "at": {"tx": 8, "ty": 25}, "activation": "interact", "ref": "npc.wander_note", "requires_flag": "flag:q_south_wander", "hidden_when_flag": "flag:q_south_wander_done"},

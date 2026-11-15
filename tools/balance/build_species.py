@@ -798,6 +798,22 @@ ASHFALL_DAY_ENCOUNTERS = {
 for _slug, _rows_ in ASHFALL_DAY_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
+# The Sere (2026-11, optional, off Galehigh's east gap; lv 30-34): mirrors of the
+# BUILT in-map tables (tools/maps/build_the_sere.py — the sage-scrub beds and the
+# full-corridor band/dry-wash beds). Tempestail is the rim's rare.
+SERE_ENCOUNTERS = {
+    "galefox":    _rows("the_sere", [(30, 32, "common")]),
+    "sparkrat":   _rows("the_sere", [(30, 32, "common")]),
+    "rubbol":     _rows("the_sere", [(30, 32, "uncommon")]),
+    "voltcrag":   _rows("the_sere", [(31, 34, "uncommon")]),
+    "flintbeak":  _rows("the_sere", [(31, 33, "common")]),
+    "thrumble":   _rows("the_sere", [(31, 33, "common")]),
+    "pyrolith":   _rows("the_sere", [(32, 33, "uncommon")]),
+    "tempestail": _rows("the_sere", [(33, 34, "rare")]),
+}
+for _slug, _rows_ in SERE_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
 # The Wild Ways — Sunvault Climb rebuild (S, 09-the-wild-ways §2 S, 2026-10): the
 # Gilt Face + the Sun Ledges' BUILT in-map tables (tools/maps/build_sunvault_climb_iii/_iv.py),
 # night (48-49) + day twins. Same W6 weight->rarity rule.
@@ -1172,6 +1188,8 @@ CURATED_AREAS = {
     "cinderwind_scarp", "umbral_approach",
     # Lane A (walkthrough/10 Part II): the Ashfall Shelf + Kiln Gully (mirrored above)
     "cinderwind_ashfall", "cinderwind_kiln",
+    # The Sere (2026-11): Galehigh's dry side (mirrored above, SERE_ENCOUNTERS)
+    "the_sere",
     # The Wild Ways — Sunvault Climb rebuild (S): the two new face maps
     "sunvault_climb_iii", "sunvault_climb_iv",
     # The Wild Ways — the Rimeway (C)

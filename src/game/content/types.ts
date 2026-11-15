@@ -137,7 +137,12 @@ type CutsceneStepBase =
   // Hand the player a SPECIFIC kin at a set level (a gift kin — e.g. Georgina's
   // dragon-cat kitten). Joins the party, or overflows to the Hearth when it's
   // full, and registers in the dex. Unlike giveStarter there is no chooser.
-  | { op: 'giveKin'; kin: number; level: number }
+  // `lead: true` puts it in slot 0 (the battle lead); with a FULL lamp it asks
+  // which kin rests at the Hearth to make room (decline = the gift rests there).
+  | { op: 'giveKin'; kin: number; level: number; lead?: boolean }
+  // Spawn any NPC placement whose flags now hold, mid-scene (a setFlag alone waits
+  // for the scene to end). Only ADDS — never removes an actor a script may address.
+  | { op: 'showNpcs' }
   /**
    * Hand the player one of the Booji-Wooji Man's milagro cards (content/milagros.ts):
    * banks `milagro:<card>` and plays the card's reveal (its art, phrase and story).
@@ -186,6 +191,23 @@ type CutsceneStepBase =
       id: string;
       action: 'start' | 'stop' | 'cancel';
       tiers?: { ms: number; flag: WorldFlag; label: string }[];
+    }
+  /**
+   * A short full-screen picture SEQUENCE over the world (ui/FrameReel): served 3:2
+   * stills played in order with cross-dissolves — `holdMs` each (default 1400),
+   * `fadeMs` dissolves (default 600). Frames listed in `flash` STRIKE (a white
+   * flash + shake + `flashSfx`); `sfx` plays once under the whole reel. Missing
+   * stills are skipped; Cancel skips to the end. The rolling thunder at the Rio
+   * Tower's Thunder Table is the worked example (content/regions/sere.ts).
+   */
+  | {
+      op: 'frames';
+      frames: string[];
+      holdMs?: number;
+      fadeMs?: number;
+      flash?: number[];
+      sfx?: string;
+      flashSfx?: string;
     }
   | { op: 'sfx'; key: string }
   | { op: 'music'; key: string | null } // swap the bed (crossfades when one is playing)
@@ -490,6 +512,17 @@ export interface StarterOption {
 export interface TrainerKin {
   species_id: number;
   level: number;
+  /**
+   * A kin that ISN'T really the trainer's — odd company scrapping on their side —
+   * and so can be LAMPED mid-bout (the Chickenpig on Paul's breakwater). Set =
+   * the LAMP shows while it's out; a catch banks this flag, and the trainer
+   * fights on with whatever's left (catching their last kin wins the bout).
+   */
+  catch_flag?: WorldFlag;
+  /** Trainer talk shown as this catchable kin comes out (the "lamp it!" hint). */
+  catch_hint?: string;
+  /** A second nudge, once, the first time it drops below half HP. */
+  catch_hint_low?: string;
 }
 
 export interface TrainerDef {

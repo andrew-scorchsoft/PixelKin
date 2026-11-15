@@ -78,6 +78,11 @@ const PRICES = {
   // isles' dawn breaks — a post-game optional buy, never in a solvency leg.
   // Mirrored in items.ts and 10-economy.md.
   deep_charm: 900,
+  // The Sere (2026-11): a dish at the Rio Tower's Thunder Table — the `pay` op, a
+  // courtesy heal (and, with the Calling Rods lit, the rolling thunder); optional
+  // colour, never in a solvency leg. Mirrors content/regions/sere.ts RIO_PRICES and
+  // 10-economy.md.
+  rio_flatbread: 120, rio_stew: 240, rio_supper: 480,
 };
 
 // ---------------------------------------------------------------------------
@@ -111,6 +116,8 @@ const TREND_SKIP_AREAS = new Set([
   // the Rimeway (09-the-wild-ways §2 C, optional, 39-48): FC3 moved its beds to final
   // forms (the old base forms sat 10-40 lv past kindling), so it now bends the trend too
   'rimeway_ascent', 'rimeway_fold', 'rimeway_descent',
+  // the Sere (2026-11): Galehigh's dry side, optional, lv 30-34 (rarer Storm lines)
+  'the_sere',
 ]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {
@@ -532,6 +539,9 @@ const BUILT_PAYOUTS = {
   scarp_kiterunner: ['route', 31, 496],
   ashfall_picker: ['route', 32, 512], // the Ashfall Shelf (Lane A, 2026-10)
   ashfall_galewatch: ['route', 33, 528],
+  sere_runner: ['route', 32, 512], // the Sere (2026-11, optional)
+  sere_chaser: ['route', 33, 528],
+  rio_chaser: ['route', 34, 544], // the Rio Tower's watch floor
   galehigh_kitehand: ['route', 29, 464],
   galehigh_terracer: ['route', 30, 480],
   skyloft_ward_a: ['keeper', 30, 600],

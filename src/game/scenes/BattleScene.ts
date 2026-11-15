@@ -86,6 +86,10 @@ export type BattleRequest =
       inventory: InventoryData;
       /** See the wild variant — foes the player has caught get move hints. */
       dex_caught?: number[];
+      /** `TrainerKin.catch_flag`s the player already holds: that kin is theirs
+       *  already (e.g. caught in a bout they then lost), so it fights as a plain
+       *  foe — no LAMP, no second copy. */
+      held_catch_flags?: string[];
     };
 
 /** What the scene hands back via onComplete. */
@@ -160,6 +164,10 @@ export class BattleScene extends Phaser.Scene {
    *  own record of who is out there to call back. */
   private shownPlayer?: KinInstance;
   private shownFoe?: KinInstance;
+  /** A trainer's catchable odd company (TrainerKin.catch_flag) → its flag + hints. */
+  private foeCatch = new Map<KinInstance, { flag: WorldFlag; hint?: string; low?: string }>();
+  /** Low-HP "lamp it now" nudges already given (once per kin per battle). */
+  private lowHinted = new Set<KinInstance>();
 
   constructor() {
     super('Battle');
@@ -175,6 +183,8 @@ export class BattleScene extends Phaser.Scene {
     this.dexCaught = new Set(data.dex_caught ?? []);
     this.turnsResolved = 0;
     this.participants = new Set();
+    this.foeCatch = new Map();
+    this.lowHinted = new Set();
     this.cameras.main.setBackgroundColor(COLORS.night);
     this.sfx = new Sfx(this);
     this.music = new MusicDirector(this);
@@ -210,7 +220,27 @@ export class BattleScene extends Phaser.Scene {
       // Fallback so a missing trainer id doesn't hard-crash the slice.
       return new Party([KinInstance.create(1, 5)]);
     }
-    return new Party(trainer.party.map((k) => KinInstance.create(k.species_id, k.level)));
+    return new Party(trainer.party.map((k) => {
+      const kin = KinInstance.create(k.species_id, k.level);
+      const held = this.request.kind === 'trainer' && (this.request.held_catch_flags ?? []).includes(k.catch_flag ?? '');
+      if (k.catch_flag && !held) this.foeCatch.set(kin, { flag: k.catch_flag, hint: k.catch_hint, low: k.catch_hint_low });
+      return kin;
+    }));
+  }
+
+  /** Can the LAMP be raised at the foe on the field right now? Every wild kin
+   *  (bar a `bossBattle`), and a trainer's catchable odd company. */
+  private canLampFoe(): boolean {
+    if (this.request.kind === 'wild') return this.request.catchable !== false;
+    return this.foeCatch.has(this.engine.foe) && !this.engine.foe.isFainted;
+  }
+
+  /** The trainer's "lamp it!" nudge as a catchable kin of theirs comes out. */
+  private async catchHint(kin: KinInstance): Promise<void> {
+    const hint = this.foeCatch.get(kin)?.hint;
+    if (!hint || this.request.kind !== 'trainer') return;
+    const name = getTrainer(this.request.trainer)?.name ?? 'Foe';
+    await this.msg.show(`${name}: ${hint}`, { confirm: true });
   }
 
   private buildScene(): void {
@@ -310,6 +340,7 @@ export class BattleScene extends Phaser.Scene {
       this.foeHp.setVisible(true);
       playCry(this.sfx, this.engine.foe.species.id);
       await this.msg.show(`${trainer?.name ?? 'Foe'} sent out ${this.engine.foe.displayName}!`, { confirm: true });
+      await this.catchHint(this.engine.foe);
       await this.stage?.exitPlayer();
       this.revealBattler(this.playerBattler, PLAYER_POS.y);
       this.playerHp.setVisible(true);
@@ -455,8 +486,8 @@ export class BattleScene extends Phaser.Scene {
       { label: 'BAG', value: 'bag' },
       { label: 'KIN', value: 'switch' },
     ];
+    if (this.canLampFoe()) opts.splice(1, 0, { label: 'LAMP', value: 'catch' });
     if (this.request.kind === 'wild') {
-      if (this.request.catchable !== false) opts.splice(1, 0, { label: 'LAMP', value: 'catch' });
       if (this.request.can_run !== false) opts.push({ label: 'RUN', value: 'run' });
     } else {
       opts.push({ label: 'RUN', value: 'run' });
@@ -592,11 +623,11 @@ export class BattleScene extends Phaser.Scene {
     this.lastItem = choice;
 
     if (def.category === 'charge') {
-      if (this.request.kind !== 'wild') {
+      if (this.request.kind !== 'wild' && !this.canLampFoe()) {
         await this.msg.show("You can't catch another warden's kin!");
         return null;
       }
-      if (this.request.catchable === false) {
+      if (!this.canLampFoe()) {
         await this.msg.show("This one won't be caught. It has to be faced.");
         return null;
       }
@@ -650,7 +681,7 @@ export class BattleScene extends Phaser.Scene {
   private itemUsable(id: string): boolean {
     const def = getItem(id);
     if (!def) return false;
-    if (def.category === 'charge') return this.request.kind === 'wild' && this.request.catchable !== false;
+    if (def.category === 'charge') return this.canLampFoe();
     if (def.category === 'medicine' && def.revive) return this.playerParty.all.some((k) => k.isFainted);
     if (def.category === 'medicine') return !def.level_up;
     return false;
@@ -816,7 +847,7 @@ export class BattleScene extends Phaser.Scene {
         return;
       case 'catch-throw':
         void this.sfx.playVariant('capture-throw', ['a', 'b']);
-        await this.msg.show(`You raised your lamp toward ${this.engine.foe.displayName}...`);
+        await this.msg.show(`You raised your lamp toward ${(this.shownFoe ?? this.engine.foe).displayName}...`);
         return;
       case 'catch-wobble':
         for (let i = 0; i < ev.count; i++) {
@@ -824,21 +855,30 @@ export class BattleScene extends Phaser.Scene {
           await this.msg.show('...', { wait: true });
         }
         return;
-      case 'catch-success':
+      case 'catch-success': {
+        // In a trainer bout the engine has already moved on to their next kin,
+        // so name the one that went into the lamp (engine.caught), not engine.foe.
+        const got = this.engine.caught ?? this.engine.foe;
         void this.sfx.playVariant('capture-success', ['a', 'b', 'c']);
         // …and the caught kin answers from inside the lamp.
-        this.time.delayedCall(700, () => playCry(this.sfx, this.engine.foe.species.id));
+        this.time.delayedCall(700, () => playCry(this.sfx, got.species.id));
+        if (this.request.kind === 'trainer') {
+          // It's in your lamp now — clear it off the trainer's side of the field.
+          await this.foeBattler.recall(this);
+          this.foeHp.setVisible(false);
+        }
         // isFull is still true here — the add happens in complete() — so it
         // correctly predicts whether this catch will overflow to the Hearth.
         if (this.playerParty.isFull) {
-          await this.msg.show(`Your lamp is full! ${this.engine.foe.displayName} will rest at the Hearth.`);
+          await this.msg.show(`Your lamp is full! ${got.displayName} will rest at the Hearth.`);
         } else {
-          await this.msg.show(`${this.engine.foe.displayName} walks with you now!`);
+          await this.msg.show(`${got.displayName} walks with you now!`);
         }
         return;
+      }
       case 'catch-break':
         void this.sfx.play('capture-break');
-        await this.msg.show(`${this.engine.foe.displayName} slipped free!`);
+        await this.msg.show(`${(this.shownFoe ?? this.engine.foe).displayName} slipped free!`);
         return;
       case 'run-success':
         void this.sfx.play('battle-flee');
@@ -876,6 +916,14 @@ export class BattleScene extends Phaser.Scene {
       await this.msg.show('It had no effect...');
     } else if (ev.crit) {
       await this.msg.show('A critical hit!');
+    }
+
+    // A trainer's catchable kin, worn down: the once-per-bout "lamp it NOW" nudge.
+    const foe = this.engine.foe;
+    const low = !hitPlayer ? this.foeCatch.get(foe)?.low : undefined;
+    if (low && !foe.isFainted && foe.hpRatio < 0.5 && !this.lowHinted.has(foe) && this.request.kind === 'trainer') {
+      this.lowHinted.add(foe);
+      await this.msg.show(`${getTrainer(this.request.trainer)?.name ?? 'Foe'}: ${low}`, { confirm: true });
     }
   }
 
@@ -928,6 +976,7 @@ export class BattleScene extends Phaser.Scene {
     playCry(this.sfx, incoming.species.id);
     // the foe's send-out is trainer talk (waits for A); yours rolls straight on
     await this.msg.show(line, side === 'foe' ? { confirm: true } : { wait: false });
+    if (side === 'foe') await this.catchHint(incoming);
   }
 
   // --- Win / lose / exit ---------------------------------------------------
@@ -967,7 +1016,7 @@ export class BattleScene extends Phaser.Scene {
 
     // A new catch may take a name of its own (kept for good; the Namewright alone
     // changes it after). The engine's instance is what complete() stores.
-    if (outcome === 'caught' && this.engine.caught) {
+    if (outcome !== 'lose' && this.engine.caught) {
       // It's in your lamp now: clear it (and its plate) off the field first.
       this.foeBattler.container.setVisible(false);
       this.foeHp.setVisible(false);
@@ -1110,7 +1159,9 @@ export class BattleScene extends Phaser.Scene {
     this.finished = true;
 
     let caught: KinInstanceData | undefined;
-    if (outcome === 'caught' && this.engine.caught) {
+    if (this.engine.caught) {
+      // (A trainer's catchable kin can be caught in a bout that ends 'win' — or
+      // even 'lose': it was lamped fair and square before the lamp guttered.)
       // Append the caught kin to the party if there's room; otherwise the lamp is
       // full and it overflows to the Hearth (never silently lost). The catch-success
       // message already told the player which happened.
@@ -1121,7 +1172,12 @@ export class BattleScene extends Phaser.Scene {
 
     // The first wild catch is a progression beat (Brisa's bond-test waits for
     // it) — every catch sets the flag; setting it twice is harmless.
-    if (outcome === 'caught') this.setFlags.push('flag:caught_first_kin');
+    if (this.engine.caught) {
+      this.setFlags.push('flag:caught_first_kin');
+      // A trainer's odd company that's now yours banks its own story flag.
+      const flag = [...this.foeCatch].find(([kin]) => kin.species.id === this.engine.caught?.species.id)?.[1].flag;
+      if (flag) this.setFlags.push(flag);
+    }
 
     const result: BattleResult = {
       outcome,

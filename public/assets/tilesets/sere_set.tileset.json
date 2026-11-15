@@ -1,0 +1,513 @@
+{
+  "name": "sere_set",
+  "image": "assets/tilesets/sere_set.webp",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 8,
+  "tile_count": 79,
+  "tiles": [
+    {
+      "index": 0,
+      "role": "sand"
+    },
+    {
+      "index": 1,
+      "role": "sand"
+    },
+    {
+      "index": 2,
+      "role": "sand"
+    },
+    {
+      "index": 3,
+      "role": "sand"
+    },
+    {
+      "index": 4,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "corner_nw"
+    },
+    {
+      "index": 5,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "edge_n"
+    },
+    {
+      "index": 6,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "corner_ne"
+    },
+    {
+      "index": 7,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "edge_w"
+    },
+    {
+      "index": 8,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "fill"
+    },
+    {
+      "index": 9,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "edge_e"
+    },
+    {
+      "index": 10,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "corner_sw"
+    },
+    {
+      "index": 11,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "edge_s"
+    },
+    {
+      "index": 12,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "corner_se"
+    },
+    {
+      "index": 13,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "strip_h"
+    },
+    {
+      "index": 14,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "strip_v"
+    },
+    {
+      "index": 15,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "inner_nw"
+    },
+    {
+      "index": 16,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "inner_ne"
+    },
+    {
+      "index": 17,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "inner_sw"
+    },
+    {
+      "index": 18,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "inner_se"
+    },
+    {
+      "index": 19,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "fill"
+    },
+    {
+      "index": 20,
+      "role": "path",
+      "terrain": "seretrail",
+      "autotile": "fill"
+    },
+    {
+      "index": 21,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "corner_nw"
+    },
+    {
+      "index": 22,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "edge_n"
+    },
+    {
+      "index": 23,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "corner_ne"
+    },
+    {
+      "index": 24,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "edge_w"
+    },
+    {
+      "index": 25,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "fill"
+    },
+    {
+      "index": 26,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "edge_e"
+    },
+    {
+      "index": 27,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "corner_sw"
+    },
+    {
+      "index": 28,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "edge_s"
+    },
+    {
+      "index": 29,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "corner_se"
+    },
+    {
+      "index": 30,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "strip_h"
+    },
+    {
+      "index": 31,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "strip_v"
+    },
+    {
+      "index": 32,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "inner_nw"
+    },
+    {
+      "index": 33,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "inner_ne"
+    },
+    {
+      "index": 34,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "inner_sw"
+    },
+    {
+      "index": 35,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "inner_se"
+    },
+    {
+      "index": 36,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "fill"
+    },
+    {
+      "index": 37,
+      "role": "sand",
+      "terrain": "hardpan",
+      "autotile": "fill"
+    },
+    {
+      "index": 38,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "corner_nw",
+      "collides": true
+    },
+    {
+      "index": 39,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "edge_n",
+      "collides": true
+    },
+    {
+      "index": 40,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "corner_ne",
+      "collides": true
+    },
+    {
+      "index": 41,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "edge_w",
+      "collides": true
+    },
+    {
+      "index": 42,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 43,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "edge_e",
+      "collides": true
+    },
+    {
+      "index": 44,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "corner_sw",
+      "collides": true
+    },
+    {
+      "index": 45,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "edge_s",
+      "collides": true
+    },
+    {
+      "index": 46,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "corner_se",
+      "collides": true
+    },
+    {
+      "index": 47,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "strip_h",
+      "collides": true
+    },
+    {
+      "index": 48,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "strip_v",
+      "collides": true
+    },
+    {
+      "index": 49,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "inner_nw",
+      "collides": true
+    },
+    {
+      "index": 50,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "inner_ne",
+      "collides": true
+    },
+    {
+      "index": 51,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "inner_sw",
+      "collides": true
+    },
+    {
+      "index": 52,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "inner_se",
+      "collides": true
+    },
+    {
+      "index": 53,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 54,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 55,
+      "role": "cliff",
+      "terrain": "redrock",
+      "autotile": "edge_s",
+      "collides": true
+    },
+    {
+      "index": 56,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "corner_nw",
+      "collides": true
+    },
+    {
+      "index": 57,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "edge_n",
+      "collides": true
+    },
+    {
+      "index": 58,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "corner_ne",
+      "collides": true
+    },
+    {
+      "index": 59,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "edge_w",
+      "collides": true
+    },
+    {
+      "index": 60,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 61,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "edge_e",
+      "collides": true
+    },
+    {
+      "index": 62,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "corner_sw",
+      "collides": true
+    },
+    {
+      "index": 63,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "edge_s",
+      "collides": true
+    },
+    {
+      "index": 64,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "corner_se",
+      "collides": true
+    },
+    {
+      "index": 65,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "strip_h",
+      "collides": true
+    },
+    {
+      "index": 66,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "strip_v",
+      "collides": true
+    },
+    {
+      "index": 67,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "inner_nw",
+      "collides": true
+    },
+    {
+      "index": 68,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "inner_ne",
+      "collides": true
+    },
+    {
+      "index": 69,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "inner_sw",
+      "collides": true
+    },
+    {
+      "index": 70,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "inner_se",
+      "collides": true
+    },
+    {
+      "index": 71,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 72,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 73,
+      "role": "void",
+      "terrain": "canyon",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 74,
+      "role": "ground",
+      "terrain": "serescrub",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "index": 75,
+      "role": "ground",
+      "terrain": "serescrub",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "index": 76,
+      "role": "ground",
+      "terrain": "serescrub",
+      "autotile": "fill",
+      "encounter_terrain": "tall_grass"
+    },
+    {
+      "index": 77,
+      "role": "ledge",
+      "ledge": "down"
+    },
+    {
+      "index": 78,
+      "role": "ledge",
+      "ledge": "down"
+    }
+  ]
+}

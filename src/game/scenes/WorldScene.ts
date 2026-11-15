@@ -13,6 +13,7 @@ import { makeText } from '@game/ui/Text';
 import { DebugOverlay } from '@game/ui/DebugOverlay';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { Menu } from '@game/ui/Menu';
+import { getTrainer } from '@game/content/trainers';
 import { Panel } from '@game/ui/Panel';
 import { PagedText } from '@game/ui/PagedText';
 import { nextGoal } from '@game/content/nextgoal';
@@ -713,6 +714,21 @@ export class WorldScene extends Phaser.Scene {
       script: 'script.catch_tutorial',
       seen_flag: 'flag:catch_tutorial_seen',
       requires_flag: 'flag:has_starter',
+    },
+    // The Rio Tower's Thunder Table: the storm is never missable. Rods lit and
+    // unseen -> Ottoline serves you and the thunder rolls on arrival; otherwise
+    // a once-only welcome that points at the rods. (Order matters: first match wins.)
+    {
+      map: 'rio_tower_top',
+      script: 'script.rio_arrive_storm',
+      seen_flag: 'flag:rio_thunder_seen',
+      requires_flag: 'flag:sere_storm_called',
+    },
+    {
+      map: 'rio_tower_top',
+      script: 'script.rio_arrive_quiet',
+      seen_flag: 'flag:sere_rods_hook',
+      unless_flag: 'flag:sere_storm_called',
     },
   ];
 
@@ -1444,16 +1460,55 @@ export class WorldScene extends Phaser.Scene {
         this.dexCaught.add(speciesId);
         this.pendingNickname = speciesId;
       },
-      onGiveKin: (speciesId, level) => {
+      onGiveKin: async (speciesId, level, lead) => {
         // A gift kin (e.g. Georgina's dragon-cat kitten): join the lamp, or rest
         // in the Hearth if the party is already full — never silently dropped.
         const kin = makeStarterKin(speciesId, level);
-        if (this.party.length < MAX_PARTY) {
-          this.party.push(kin);
-          this.pendingNickname = speciesId;
-        } else this.box.push(kin);
         this.dexSeen.add(speciesId);
         this.dexCaught.add(speciesId);
+        if (!lead) {
+          if (this.party.length < MAX_PARTY) {
+            this.party.push(kin);
+            this.pendingNickname = speciesId;
+          } else this.box.push(kin);
+          return;
+        }
+        // `lead`: it walks out FIRST (slot 0). A full lamp asks who rests at the
+        // Hearth to make room; declining sends the gift there instead.
+        if (this.party.length >= MAX_PARTY) {
+          const name = SPECIES_BY_ID.get(speciesId)?.name ?? 'It';
+          await new DialogueBox(this, this.sfx).run([
+            { text: `Your lamp is full. Which kin should rest at the Hearth to make room for ${name.toUpperCase()}?` },
+          ]);
+          const entries = this.party.map((d, i) => {
+            const k = KinInstance.fromData(d);
+            return { label: `${k.displayName} Lv${k.level}`, value: String(i) };
+          });
+          entries.push({ label: `Send ${name} instead`, value: 'gift' });
+          const pick = await new Menu(this, entries, { x: 8, y: 8, sfx: this.sfx, cancellable: false }).run();
+          if (pick === null || pick === 'gift') {
+            this.box.push(kin);
+            await new DialogueBox(this, this.sfx).run([{ text: `${name} went to rest at the Hearth.` }]);
+            return;
+          }
+          const [rested] = this.party.splice(Number(pick), 1);
+          this.box.push(rested);
+          await new DialogueBox(this, this.sfx).run([
+            { text: `${KinInstance.fromData(rested).displayName} went to rest at the Hearth.` },
+          ]);
+        }
+        this.party.unshift(kin);
+        this.pendingNickname = speciesId;
+      },
+      showNpcs: () => {
+        if (!this.scene.isActive() || this.staging) return;
+        for (const placement of this.map.def.npcs) {
+          if (placement.ambient || !this.npcVisible(placement)) continue;
+          if (this.npcs.some((n) => n.placement === placement)) continue;
+          const npc = new Npc(this, placement);
+          this.npcs.push(npc);
+          this.attachNpcAmbience(npc);
+        }
       },
       kinService: async (service, cost, speaker) => {
         const live = this.party.map((d) => KinInstance.fromData(d));
@@ -1530,6 +1585,9 @@ export class WorldScene extends Phaser.Scene {
           box: this.box,
           inventory: this.inventory,
           dex_caught: [...this.dexCaught],
+          held_catch_flags: (getTrainer(trainer)?.party ?? [])
+            .map((k) => k.catch_flag)
+            .filter((f): f is WorldFlag => !!f && this.flags.get(f)),
         });
         const foe = `trainer:${trainer}`;
         if (result.outcome !== 'win') {

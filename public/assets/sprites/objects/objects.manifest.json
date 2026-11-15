@@ -3710,6 +3710,132 @@
       "tw": 1,
       "th": 3
     },
+    "sere_barometer": {
+      "path": "assets/sprites/objects/sere_barometer.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "sere_butte": {
+      "path": "assets/sprites/objects/sere_butte.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "sere_campfire": {
+      "path": "assets/sprites/objects/sere_campfire.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "sere_dish_counter": {
+      "path": "assets/sprites/objects/sere_dish_counter.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "sere_hoodoo": {
+      "path": "assets/sprites/objects/sere_hoodoo.webp",
+      "width": 32,
+      "height": 48,
+      "tw": 2,
+      "th": 3
+    },
+    "sere_rim_post": {
+      "path": "assets/sprites/objects/sere_rim_post.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "sere_rio_tower": {
+      "path": "assets/sprites/objects/sere_rio_tower.webp",
+      "width": 80,
+      "height": 176,
+      "tw": 5,
+      "th": 11
+    },
+    "sere_rock_pair": {
+      "path": "assets/sprites/objects/sere_rock_pair.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "sere_rod_dark": {
+      "path": "assets/sprites/objects/sere_rod_dark.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "sere_rod_lit": {
+      "path": "assets/sprites/objects/sere_rod_lit.webp",
+      "width": 16,
+      "height": 48,
+      "tw": 1,
+      "th": 3
+    },
+    "sere_saltbush": {
+      "path": "assets/sprites/objects/sere_saltbush.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "sere_spyglass": {
+      "path": "assets/sprites/objects/sere_spyglass.webp",
+      "width": 16,
+      "height": 32,
+      "tw": 1,
+      "th": 2
+    },
+    "sere_storm_log": {
+      "path": "assets/sprites/objects/sere_storm_log.webp",
+      "width": 32,
+      "height": 32,
+      "tw": 2,
+      "th": 2
+    },
+    "sere_tent": {
+      "path": "assets/sprites/objects/sere_tent.webp",
+      "width": 48,
+      "height": 48,
+      "tw": 3,
+      "th": 3
+    },
+    "sere_thornbush": {
+      "path": "assets/sprites/objects/sere_thornbush.webp",
+      "width": 16,
+      "height": 16,
+      "tw": 1,
+      "th": 1
+    },
+    "sere_vista": {
+      "path": "assets/sprites/objects/sere_vista.webp",
+      "width": 96,
+      "height": 32,
+      "tw": 6,
+      "th": 2
+    },
+    "sere_wagon": {
+      "path": "assets/sprites/objects/sere_wagon.webp",
+      "width": 48,
+      "height": 32,
+      "tw": 3,
+      "th": 2
+    },
+    "sere_water_jars": {
+      "path": "assets/sprites/objects/sere_water_jars.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
     "solarium_brazier_dead": {
       "path": "assets/sprites/objects/solarium_brazier_dead.webp",
       "width": 32,

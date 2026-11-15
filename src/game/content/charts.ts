@@ -122,6 +122,16 @@ export const CHARTS: readonly ChartEntry[] = [
     art: AREA('galehigh-terraces'),
     maps: ['galehigh_terraces'],
   },
+  // The Sere (2026-11): Galehigh's dry side, the Rio Tower on the Thousandfold's rim.
+  {
+    id: 'the-sere',
+    name: 'The Sere',
+    subtitle: 'Dry thunder over the sand, and a tower on the edge of a thousand folds of stone.',
+    region: 'north',
+    kind: 'area',
+    art: AREA('the-sere'),
+    maps: ['the_sere'],
+  },
   {
     id: 'windward-stair',
     name: 'Windward Stair',

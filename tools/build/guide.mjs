@@ -35,7 +35,9 @@ export const GUIDE_SECTIONS = [
 const FORBIDDEN = [/booji/i, /chicken-?pig/i, /\bpaul\b/i, /lifting house/i, /wayward/i, /lottie/i, /felicitas/i, /frederika/i, /kathleen/i, /arora/i,
     /omenire/i, /wanderwood/i, /\baldous\b/i, /\bWink's\b/, /tin rower/i, /reckoning works/i,
     /wakeful fair/i, /tasting card/i, /bottomless cup/i, /milagro/i, /desasosiego/i,
-    /festival of the imagined/i];
+    /festival of the imagined/i,
+    // the Sere + the Rio Tower (2026-11) ship silently too (owner's call)
+    /rio tower/i, /thunder table/i, /thousandfold/i, /\bthe sere\b/i, /calling rods?/i];
 
 function frontMatter(src, file) {
     const m = /^---\n([\s\S]*?)\n---\n?/.exec(src);

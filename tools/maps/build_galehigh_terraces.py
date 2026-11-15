@@ -138,6 +138,10 @@ mk.organic_border(tree, W, H, depth=0,
 for y in (29, 30, 31):                              # the Lanternway road gap south
     tree[y * W + 15] = 0
     tree[y * W + 16] = 0
+# (2026-11) the EAST gap: the drovers' track out to the Sere, Galehigh's dry side
+for y in (19, 20):
+    for x in range(23, W):
+        tree[y * W + x] = 0
 
 # ---- lanes -----------------------------------------------------------------------
 mk.hline(path, W, H, 7, 0, 13)                      # the Ashfall road in (Lane A)
@@ -147,6 +151,7 @@ mk.hline(path, W, H, 15, 1, 5)
 mk.rect(path, W, H, 8, 18, 19, 19)                  # the lumenary/winch front street
 mk.rect(path, W, H, 13, 13, 19, 17)                 # the festival square
 mk.rect(path, W, H, 20, 18, 22, 18)                 # the winch platform
+mk.rect(path, W, H, 20, 19, W - 1, 20)              # the drovers' track east to the Sere
 mk.vline(path, W, H, 14, 5, 12)                     # the upper switchback (grass leg)
 mk.vline(path, W, H, 15, 5, 12)
 mk.vline(snowtrail, W, H, 14, 0, 4)                 # the lane where it crosses snow
@@ -302,8 +307,6 @@ m["objects"] += [
      "overhang": 3, "walk_under": True},
     {"id": "tree_b", "sprite": "tinderwick_tree", "at": {"tx": 24, "ty": 28}, "w": 3, "h": 4,
      "overhang": 3, "walk_under": True},
-    {"id": "tree_c", "sprite": "tinderwick_tree", "at": {"tx": 28, "ty": 17}, "w": 3, "h": 4,
-     "overhang": 3, "walk_under": True},
     {"id": "tree_d", "sprite": "tinderwick_tree", "at": {"tx": 8, "ty": 29}, "w": 3, "h": 4,
      "overhang": 3, "walk_under": True},
 ]
@@ -355,6 +358,14 @@ m["warps"] += [
      "transition": "fade"},
     {"id": "to_crossroads_e", "at": {"tx": 16, "ty": 31}, "trigger": "step_on",
      "to_map": "lanternway_galehigh", "to": {"tx": 7, "ty": 0}, "facing": "down",
+     "transition": "fade"},
+    # EAST -> the Sere (2026-11): Galehigh's dry side, the Rio Tower and the
+    # Thousandfold. Optional, ungated; its `to_galehigh` lands ON these tiles.
+    {"id": "to_sere", "at": {"tx": 31, "ty": 19}, "trigger": "step_on",
+     "to_map": "the_sere", "to": {"tx": 1, "ty": 16}, "facing": "right",
+     "transition": "fade"},
+    {"id": "to_sere_s", "at": {"tx": 31, "ty": 20}, "trigger": "step_on",
+     "to_map": "the_sere", "to": {"tx": 1, "ty": 17}, "facing": "right",
      "transition": "fade"},
     # THE WINCH up to the skyloft — festival-flag-gated, NEVER Updraft (§0 r1)
     {"id": "to_skyloft", "at": {"tx": 21, "ty": 18}, "trigger": "step_on",
@@ -413,6 +424,7 @@ owed += pt.sign(m, deco, W, sid="galehigh_welcome", at=(6, 19))
 owed += pt.sign(m, deco, W, sid="galehigh_winch", at=(19, 17))
 owed += pt.sign(m, deco, W, sid="galehigh_high_ledges", at=(22, 8))
 owed += pt.sign(m, deco, W, sid="galehigh_lanternway", at=(17, 27))
+owed += pt.sign(m, deco, W, sid="galehigh_to_sere", at=(29, 18))
 m["triggers"].append({"id": "pane_lamp", "kind": "cutscene", "at": {"tx": 17, "ty": 26},
                       "activation": "interact", "ref": "script.galehigh_pane_lamp"})
 owed += ["script.galehigh_pane_lamp"]

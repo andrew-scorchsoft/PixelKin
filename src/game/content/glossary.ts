@@ -181,6 +181,18 @@ export const GLOSSARY: readonly GlossaryEntry[] = [
     unlock_flag: 'gleam:storm',
   },
   {
+    id: 'thousandfold',
+    term: 'the Thousandfold',
+    desc: 'The vast canyon east of Galehigh, its walls banded rust, bone and violet: a fold for every age the old river cut. The river, the Rio, went underground long ago. The Rio Tower on its rim is named for it.',
+    unlock_flag: 'flag:sere_rods_hook',
+  },
+  {
+    id: 'calling_rods',
+    term: 'the Calling Rods',
+    desc: 'Three copper masts the storm-callers stood across the Sere, lamps in their cages, so the dry storms could find their road over the dark sand. Lit, the thunder rolls past the Rio Tower to the canyon. Unlit, it only grumbles on the horizon.',
+    unlock_flag: 'flag:sere_storm_called',
+  },
+  {
     id: 'aurora_watch',
     term: 'the Aurora-watch',
     desc: "Pale Vault's festival, kept in silence: the town gathers on the open ice, each with one lit lamp, watching the aurora till it fades. Calm as any quieted valley — except every flame is lit, and someone chose to hold it.",

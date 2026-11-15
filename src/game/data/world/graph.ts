@@ -138,6 +138,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'galehigh_inn', region: 'north' }, // interior: the terrace inn (rest point)
     { map_id: 'galehigh_home', region: 'north' }, // interior: a wind-break cottage
     { map_id: 'galehigh_kitemaker', region: 'north' }, // interior: the kite-maker's workshop (shop)
+    { map_id: 'the_sere', region: 'north', optional: true, reward: 'the Calling Rods, the Rio Tower and the rolling thunder; desert Storm/Stone kin' },
+    { map_id: 'rio_tower_1', region: 'north', optional: true }, // interior: the Rio Tower's foot (the porter)
+    { map_id: 'rio_tower_2', region: 'north', optional: true }, // interior: the Watch (Calder's Storm Log)
+    { map_id: 'rio_tower_top', region: 'north', optional: true }, // interior: the Thunder Table
     { map_id: 'windward_stair_i', region: 'north' }, // route: lower switchbacks
     { map_id: 'windward_stair_ii', region: 'north' }, // route: high crags
     { map_id: 'thunderroost', region: 'north', optional: true, reward: 'rare Storm/Flying kin + item' },
@@ -363,6 +367,11 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'galehigh_terraces', to_map: 'galehigh_home', via_warp: 'to_home', bidirectional: true },
     { from_map: 'galehigh_terraces', to_map: 'galehigh_kitemaker', via_warp: 'to_shop', bidirectional: true },
     { from_map: 'galehigh_terraces', to_map: 'galehigh_skyloft', via_warp: 'to_skyloft', requires_flag: 'flag:q_north_kite_blessed', bidirectional: true },
+    // the Sere (2026-11): Galehigh's east gap -> the desert -> the Rio Tower's three floors
+    { from_map: 'galehigh_terraces', to_map: 'the_sere', via_warp: 'to_sere', bidirectional: true },
+    { from_map: 'the_sere', to_map: 'rio_tower_1', via_warp: 'enter_rio_tower', bidirectional: true },
+    { from_map: 'rio_tower_1', to_map: 'rio_tower_2', via_warp: 'up_stairs', bidirectional: true },
+    { from_map: 'rio_tower_2', to_map: 'rio_tower_top', via_warp: 'up_stairs', bidirectional: true },
     { from_map: 'galehigh_terraces', to_map: 'windward_stair_i', via_warp: 'to_stair', bidirectional: true },
     { from_map: 'windward_stair_i', to_map: 'windward_stair_ii', via_warp: 'to_stair_ii', requires_ability: 'updraft_kite', bidirectional: true },
     { from_map: 'windward_stair_ii', to_map: 'pale_vault_glacier', via_warp: 'to_glacier', bidirectional: true },

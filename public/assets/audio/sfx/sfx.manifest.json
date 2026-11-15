@@ -1,6 +1,7 @@
 {
   "stems": [
     "amb-crickets",
+    "amb-desert",
     "amb-drips",
     "amb-marsh",
     "amb-surf",
@@ -336,6 +337,8 @@
     "world-stairs-b",
     "world-star-gutter-a",
     "world-star-gutter-b",
+    "world-thunder-crack",
+    "world-thunder-roll",
     "world-transition-a",
     "world-transition-b",
     "world-transition-c",

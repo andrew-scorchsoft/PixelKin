@@ -86,6 +86,10 @@ const COUNT_AT_LEAST: { flag: WorldFlag; prefix: string; min: number }[] = [
   { flag: 'flag:brew_seeing', prefix: 'flag:brewcup_', min: 12 },
   // ...and every stall's stamp on the tasting card (the cups + the decaf).
   { flag: 'flag:brew_card_full', prefix: 'flag:brew_stamp_', min: 17 },
+  // The Sere (2026-11): the three Calling Rods relit = the storm has its road again;
+  // and every dish on the Thunder Table's slate tried once.
+  { flag: 'flag:sere_storm_called', prefix: 'flag:sere_rod_', min: 3 },
+  { flag: 'flag:rio_menu_full', prefix: 'flag:rio_dish_', min: 3 },
 ];
 
 export class FlagStore {

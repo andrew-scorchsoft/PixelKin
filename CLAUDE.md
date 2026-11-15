@@ -213,6 +213,11 @@ go digging on every task.
   the **Drownlight** (3 floors of shutter-crank glare puzzles; Maudry Kell the Shutterkeeper; relit
   after the dawn → the reusable Shutter Charm), the **Mourning Fields** (the north loop to the Rimeway)
   and the **Penumbra Underways** (hub + Starreach; Old Clemency's last watch; never reaches the Spire).
+  **The Sere** (2026-11, optional mid-game, lv 30-34, SHIPS SILENTLY): Galehigh's dry rain-shadow desert off its
+  east gap (`the_sere`), the **Rio Tower** on the rim of the **Thousandfold** canyon (`rio_tower_1/2/top`; the
+  **Thunder Table** restaurant at the top). Relight the three **Calling Rods** (`flag:sere_rod_1..3` → derived
+  `flag:sere_storm_called`), eat at the Table and the rolling thunder crosses the Sere (`script.rio_thunder`, the
+  `frames` op); the first storm leaves the `emergent` milagro card on the tablecloth. Content `regions/sere.ts`.
 - **The journey is canon, written before the game.** `docs/world/walkthrough/` is the
   start-to-finish **user-journey blueprint** — golden thread, five interlocking arcs (Wren,
   the Hollowing/Còr, Fenn, the celestial calendar, festivals), the level curve, the
@@ -1290,7 +1295,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   **The changelog must NEVER spoil the hidden real-people content** (owner's rule, 2026-10 — the
   people it was built for read the notice AND the website): nothing about Paul or his things — the Booji-Wooji
   Man / S4–S5, the Chickenpig, the Lifting House gym, Paul's house, the Wayward Arms, the
-  Reckoning Works' walking-man story and Bettany Rook's drovers story there, the Bright Bubble bar in Dawnstead (Paul's fizz-bubbles memory), Agent Pellow + the newspaper man in the Galehigh inn (the WANTED joke; Paul always promises the story "over a whiskey sometime" and never tells it), Paul's dog the Old Girl and Kathleen's tidy solicitor's desk, the beacon-road man with the case. Those changes ship
+  Reckoning Works' walking-man story and Bettany Rook's drovers story there, the Bright Bubble bar in Dawnstead (Paul's fizz-bubbles memory), Agent Pellow + the newspaper man in the Galehigh inn (the WANTED joke; Paul always promises the story "over a whiskey sometime" and never tells it), Paul's dog the Old Girl and Kathleen's tidy solicitor's desk, the beacon-road man with the case. Also the whole **Sere** — the desert east of Galehigh, the **Rio Tower**, the Thunder Table, the
+  Thousandfold, the Calling Rods and the rolling-thunder scene (owner's call, 2026-11; `guide.mjs` FORBIDDEN carries
+  the names). Those changes ship
   silently; an entry covers only general changes (and none at all is fine).
 - **Stuck players are answered in-world by ANDREW, on a fence in every rim town** (2026-08).
   `script.andrew_hint` is the wayfinding chain — one `say` per journey stage, each guarded
@@ -1547,6 +1554,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `hand_placed_data.py` → a glinting `sprite: milagro_card` pickup (drawn in `Npc.ts`) running
   `script.milagro_lying_<id>`. A lying card is an NPC body: never park one on the only tile something is read from
   (audit_journey caught one sealing Tinderwick's well). Lore art: `tools/assets/milagro_lorecard.py`.
+- **Show, don't tell: the `frames` cutscene op (2026-11)** plays a short full-screen still SEQUENCE over the world
+  (`ui/FrameReel`: dissolves, `flash` frames strike with a white flash + shake + `flashSfx`, one `sfx` under it all,
+  Cancel skips). The Rio Tower's rolling thunder is the worked example: stills are image-gen EDITS of one base plate
+  (`assets/backgrounds/cinematic/thunder/`, packed by `tools/assets/pack_thunder_frames.py`), sound is synthesised
+  (`tools/audio/thunder_roll.py`). New desert/canyon terrain = the `sere_set` accent (`build_sere_set.py`); props =
+  `sereforge.py`. Record a scene with `shoot.mjs --script <ref> --video <dir>` (silent webm; mux audio with ffmpeg).
 - **One-way exits are `travel`, not warps** (Lowtinder's well climb into Tinderwick): audit_warps
   rejects a warp with no return; a scripted `travel` is the legal one-way door.
 

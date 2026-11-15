@@ -501,6 +501,28 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:q_north_pane'],
     done_flag: 'flag:q_north_pane_done',
   },
+  // ---- The Sere + the Rio Tower (2026-11, off Galehigh's east gap): relight the
+  // callers' rods, then watch the storm from the Thunder Table; and try the slate.
+  {
+    id: 'north_rolling_thunder',
+    name: 'The Rolling Thunder',
+    region: 'north',
+    giver: 'Calder Voss',
+    blurb: 'The Sere\'s storms lost their road when the callers\' rods went dark. Relight all three, then eat at the Thunder Table on top of the Rio Tower and watch the thunder roll.',
+    start_flag: 'flag:sere_rods_hook',
+    stage_flags: ['flag:sere_rod_1', 'flag:sere_rod_2', 'flag:sere_rod_3', 'flag:rio_thunder_seen'],
+    done_flag: 'flag:rio_log_signed',
+  },
+  {
+    id: 'north_thunder_table',
+    name: 'A Taste of the Table',
+    region: 'north',
+    giver: 'Ottoline Bask',
+    blurb: 'Three dishes on the Thunder Table\'s slate: the flatbread, the stew and the Rio Supper. Regulars, Ottoline says, get a little something.',
+    start_flag: 'flag:rio_met',
+    stage_flags: ['flag:rio_dish_1', 'flag:rio_dish_2', 'flag:rio_dish_3'],
+    done_flag: 'flag:rio_menu_gift',
+  },
   // ---- Lane C2 (10-the-farlamp-isles.md Part I): the Undertide's two side quests.
   // Keeper Edda Marrow's four logbook pages (Undertide I-IV) tell the night the deep
   // came up; the fourth opens the Drowned Lamp's store (its Star-chart is the close).
