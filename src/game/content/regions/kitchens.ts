@@ -211,6 +211,9 @@ export const KITCHENS_SCRIPTS: ScriptRegistry = {
     m('Take this for the road: a jar of my salsa. On the house. A first plate earns a little extra.'),
     { op: 'giveItem', item: 'salsa_roja', count: 1 },
     { op: 'say', text: 'Got a jar of SALSA ROJA!' },
+    // a seed for the Rio Tower (the Sere, off Galehigh): heard of here, found much later
+    m('The only kitchen I envy is up north, past Galehigh: a table on top of a tower over a great canyon.'),
+    m('Ottoline\'s. On storm nights folk climbed it just to eat while the thunder rolled. No storms now, she writes.'),
     { op: 'setFlag', flag: 'flag:cantina_salsa_given' },
   ],
 

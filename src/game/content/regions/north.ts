@@ -130,6 +130,7 @@ const NORTH_AFTER_DIALOGUE: DialogueRegistry = {
   ],
   'npc.galehigh_home_elder_lit': [
     { speaker: 'TERRACE ELDER', text: "Seventy Risings, and last night one more: a little kite off the doorstep. Worth my knees." },
+    { speaker: 'TERRACE ELDER', text: "Now if somebody would light the callers' rods out on the Sere, [[east of the gap]], I might hear the thunder roll once more." },
   ],
   'npc.galehigh_home_kid_lit': [
     { speaker: 'TERRACE KID', text: "Da says this year's impossible thing is DONE. So next year I get two!" },

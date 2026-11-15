@@ -1096,6 +1096,7 @@ export const DIALOGUE: DialogueRegistry = {
   ],
   'npc.galehigh_home_elder': [
     { speaker: 'TERRACE ELDER', text: 'I flew my first Rising seventy years gone. The wind is the one thing the dusk never quieted.' },
+    { speaker: 'TERRACE ELDER', text: 'The thunder, though. It used to roll in over the Sere, past [[our east gap]]. The callers kept their rods lit for it. All quiet now.' },
   ],
   'npc.galehigh_home_kid': [
     { speaker: 'TERRACE KID', text: 'When I\'m big I\'ll ride the winch AND a storm-bird. Da says one impossible thing a year. Da is slow.' },

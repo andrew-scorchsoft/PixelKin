@@ -186,6 +186,7 @@ export const SERE_SCRIPTS: ScriptRegistry = {
     c('Calder Voss, last of the storm-watchers. That book is the Storm Log. Two hundred years of storms, and then... nothing.'),
     c('The callers had three copper rods out on the Sere, lamps in their cages, so the storms could find their road across the dark.'),
     c('The lamps went out with the Long Dusk. Light [[the three rods]] with that lamp of yours, and I\'ll have something to write again.'),
+    c('One by [[the drovers\' camp]], north-west. One down in [[the dry wash]], south. One out on the canyon rim, below this tower.'),
     { op: 'setFlag', flag: HOOK },
   ],
   'script.rio_calder_waiting': [
@@ -278,7 +279,8 @@ export const SERE_SCRIPTS: ScriptRegistry = {
   'script.rio_arrive_quiet': [
     { op: 'run', ref: 'script.rio_hello', unless_flag: 'flag:rio_met' },
     o('Storm nights were the thing up here. Not one in years: [[the callers\' rods]] out on the sand went dark.'),
-    o('Light all three and the storms\'ll find their road again. [[Calder]], one floor down, can tell you more.'),
+    o('Light all three and the storms\'ll find their road again: by [[the drovers\' camp]], down [[the dry wash]], and out on the rim below us.'),
+    o('[[Calder]], one floor down, keeps the Storm Log. He\'ll tell you the rest.'),
     { op: 'setFlag', flag: HOOK },
   ],
   'script.rio_quiet_sky': [

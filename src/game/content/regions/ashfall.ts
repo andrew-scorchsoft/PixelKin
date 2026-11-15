@@ -220,6 +220,7 @@ export const ASHFALL_DIALOGUE: DialogueRegistry = {
   ],
   'npc.ashfall_camp_hauler': [
     { speaker: 'HAULER', text: 'Our Oda says somebody must be here when the kiln wakes. Kilns don\'t wake. She pours tea.' },
+    { speaker: 'HAULER', text: 'Past Galehigh it goes dry: the Sere. My da watched the thunder roll over it from the Rio Tower. Not since the Dusk.' },
   ],
   'npc.ashfall_picker_after': [
     { speaker: 'SILE', text: 'A century of slag underfoot, and the grass grows through it anyway. Stubborn. I like it.' },
