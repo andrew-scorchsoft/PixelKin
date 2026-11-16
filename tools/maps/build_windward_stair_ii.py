@@ -337,9 +337,9 @@ m["npcs"] += [
 ]
 deco[8 * W + 15] = 0
 deco[7 * W + 19] = 0
-m["triggers"].append({"id": "sign_hartway_steps", "kind": "sign", "at": {"tx": 16, "ty": 6},
+m["triggers"].append({"id": "sign_hartway_steps", "kind": "sign", "at": {"tx": 15, "ty": 5},
                       "activation": "interact", "ref": "sign.hartway_steps"})
-deco[6 * W + 16] = gid("sign")
+deco[5 * W + 15] = gid("sign")
 owed += ["script.hartway_gate", "script.hartway_low_road", "script.hartway_hollis",
          "script.greg_rope_up", "sign.hartway_steps"]
 

@@ -101,7 +101,7 @@ const HOLLIS_HOOK: CutsceneStep[] = [
   h('Hollis, rope-warden. The low road to Pale Vault is drifted shut, and will be till spring. The only way now is over: the Hartway.'),
   h('One rule, older than me: [[nobody goes up alone]]. Two on a rope. One with the nerve, one with the sense.'),
   h('And the ridges want someone who knows them. There\'s one left who does: [[Greg]]. He\'s not been up since his partner hung up his boots.'),
-  h('He\'s down in [[Galehigh, at the top of the town]], staring up here like the hill owes him money. Fetch him and the steps are yours.'),
+  h('He\'s down in [[Galehigh, at the top of the town]], staring up here like the hill owes him money. [[The drop-steps in the south-west crag]] put you out beside him.'),
   { op: 'setFlag', flag: HOOK },
 ];
 
@@ -122,7 +122,8 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
   ...chain(
     'script.hartway_gate',
     [
-      [FOUND, [n('Greg is waiting by the steps with a rope in his hands. Best not go up without it.')]],
+      // gate-keepers come to YOU: he ties you in right here, and the steps carry you on up
+      [FOUND, [n('Greg steps across with a rope already in his hands.'), { op: 'run', ref: 'script.greg_rope_up' }]],
       [HOOK, [h('Not alone! [[Fetch Greg]] first. Galehigh, top of the town.')]],
     ],
     [n('You\'ve one foot on the steps when a voice calls across the snow.'), ...HOLLIS_HOOK],
@@ -277,11 +278,11 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     { op: 'letterbox', on: true },
     g('The Staircase. A rib of rock with the night on both sides of it. My old partner hated this bit.'),
     g('I go first. You watch where I put my feet, and you put yours there. Nowhere else.'),
-    { op: 'move', actor: 'player', to: { tx: 19, ty: 46 } },
+    { op: 'move', actor: 'player', to: { tx: 20, ty: 46 } },
     { op: 'face', actor: 'player', facing: 'right' },
     { op: 'cameraFocus', to: { tx: 22, ty: 42 }, ms: 700 },
-    { op: 'move', actor: 'greg_t0', to: { tx: 20, ty: 46 }, speed: 1.4 },
-    { op: 'move', actor: 'greg_t0', to: { tx: 20, ty: 43 }, speed: 1.4 },
+    { op: 'move', actor: 'greg_t0', to: { tx: 21, ty: 46 }, speed: 1.4 },
+    { op: 'move', actor: 'greg_t0', to: { tx: 21, ty: 43 }, speed: 1.4 },
     { op: 'move', actor: 'greg_t0', to: { tx: 23, ty: 43 }, speed: 1.4 },
     { op: 'move', actor: 'greg_t0', to: { tx: 23, ty: 41 }, speed: 1.4 },
     { op: 'hop', actor: 'greg_t0', times: 1 },
@@ -377,6 +378,9 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'player', facing: 'down' },
     { op: 'move', actor: 'greg_uw', to: { tx: 6, ty: 22 }, speed: 1 },
     { op: 'move', actor: 'greg_uw', to: { tx: 11, ty: 22 }, speed: 1 },
+    // ...and you follow him out onto it (two legs: the corner at (8,21) is the drop)
+    { op: 'move', actor: 'player', to: { tx: 7, ty: 22 }, speed: 0.8 },
+    { op: 'move', actor: 'player', to: { tx: 9, ty: 22 }, speed: 0.8 },
     { op: 'musicFade', ms: 900 },
     {
       op: 'frames',
@@ -408,6 +412,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     g('Don\'t tell anyone. ...No. DO. If you ever meet a man who walks everywhere, tell HIM. He\'ll want to know I haven\'t changed.'),
     g('Same thing happened with him, you know. A ridge just like it. My legs went then, too. I said "table" then, too.'),
     g('Right. I\'m putting a ladder on this shelf before either of us has another idea.'),
+    { op: 'cameraFocus', to: { tx: 24, ty: 26 }, ms: 700 },
     { op: 'move', actor: 'greg_ue', to: { tx: 25, ty: 21 }, speed: 2 },
     { op: 'move', actor: 'greg_ue', to: { tx: 25, ty: 26 }, speed: 2 },
     { op: 'face', actor: 'greg_ue', facing: 'down' },
@@ -415,6 +420,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     { op: 'sfx', key: 'world-chest' },
     { op: 'setFlag', flag: 'flag:hart_ladder_2' },
     g('There. From now on the Whiteback\'s for looking at. [[The trail\'s safe from here: north, up to the Seat]]. After you, for once.'),
+    { op: 'cameraReset', ms: 600 },
     { op: 'letterbox', on: false },
     { op: 'music', key: CLIMB_MUSIC },
   ],
@@ -460,6 +466,8 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     },
     { op: 'move', actor: 'greg_seat', to: { tx: 15, ty: 10 }, speed: 1.5 },
     { op: 'face', actor: 'greg_seat', facing: 'down' },
+    { op: 'move', actor: 'player', to: { tx: 16, ty: 10 } },
+    { op: 'face', actor: 'player', facing: 'down' },
     g('Come and sit. You\'ve earned the bench.'),
     { op: 'setFlag', flag: 'flag:hart_b3_done' },
     { op: 'run', ref: 'script.hart_seat_first' },
@@ -468,7 +476,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     'script.greg_bench',
     [
       [DONE, [g('Paul laughed? Good. And he kept the stone? Ha. Tell him there\'s room on the bench. I\'ll be here a while yet.')]],
-      [MIST, [g('I\'m stopping up here a bit. [[Pale Vault\'s down the trail, east end]]. Go on. I\'ll catch you up in a year or two.')]],
+      [MIST, [g('I\'m stopping up here a bit. [[Pale Vault\'s down the trail, north-east corner]]. Go on. I\'ll catch you up in a year or two.')]],
     ],
     [g('Sit down! [[The bench]]. Go on. It\'s the best seat in Vesperholm and nobody\'s used it in eleven winters.')],
   ),
@@ -514,7 +522,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'seat_stone', count: 1 },
     { op: 'say', text: 'Got a STONE FROM THE SEAT!' },
-    g('Pale Vault\'s [[down the safe trail, east end of the Seat]]. And Hollis\'ll have the low road dug out behind us by now.'),
+    g('Pale Vault\'s [[down the safe trail, north-east corner of the Seat]]. And Hollis\'ll have the low road dug out behind us by now.'),
     { op: 'say', speaker: 'GREG', if_flag: TOKEN, text: 'And [[take that stone to Paul]], when you\'re next south. Tell him the hill\'s still here. Tell him about the legs, if you must.' },
     { op: 'run', ref: 'script.hart_sense_gift', if_flag: 'flag:hart_sense_all' },
     { op: 'setFlag', flag: MIST },
@@ -599,7 +607,13 @@ export const HARTWAY_DIALOGUE: DialogueRegistry = {
   'sign.hartway_whiteback': [
     { text: 'THE WHITEBACK\nThe trail goes ROUND. This sign is here so you can\'t say nobody told you.' },
   ],
-  'sign.hartway_seat': [{ text: 'THE SEAT\nTop of the Hartway. Sit. Look. Take one stone down.' }],
+  'sign.hartway_seat': [
+    { text: 'THE SEAT\nTop of the Hartway. Sit. Look. Take one stone down.' },
+    { text: 'Pale Vault: [[the safe trail, north-east corner]].' },
+  ],
+  'sign.hartway_pegs': [
+    { text: 'Old iron pegs, hammered into the lip of the rock. Whatever used to hang from them is long gone.' },
+  ],
   'sign.hartway_hut': [
     { text: 'The climbers\' old bothy. Moss on the walls, a nest in the roof, and something small breathing slowly in the cold hearth.' },
     { text: 'You leave the door exactly as it is.' },

@@ -4,7 +4,7 @@
   "tile_width": 16,
   "tile_height": 16,
   "columns": 8,
-  "tile_count": 18,
+  "tile_count": 20,
   "tiles": [
     {
       "index": 0,
@@ -130,6 +130,16 @@
       "role": "void",
       "terrain": "gulf",
       "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 18,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 19,
+      "role": "void",
       "collides": true
     }
   ]

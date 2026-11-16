@@ -36,22 +36,23 @@ PEG = (120, 124, 140, 255)
 
 
 def rope_ladder(th: int = 5) -> Image.Image:
+    """Hemp and slats, lighter than the iron ladder: two pale ropes with a little sag,
+    thin rungs, two iron pegs and a coil at the lip."""
     im = Image.new("RGBA", (16, th * 16))
     d = ImageDraw.Draw(im)
     h = th * 16
-    for x in (4, 11):                                   # the two ropes (ink, rope, shade)
-        d.line([(x - 1, 2), (x - 1, h - 3)], fill=INK)
-        d.line([(x + 1, 2), (x + 1, h - 3)], fill=INK)
-        d.line([(x, 2), (x, h - 3)], fill=ROPE)
-        for y in range(4, h - 3, 4):                    # the lay of the rope
-            d.point((x, y), fill=ROPE_D)
-    for y in range(6, h - 4, 6):                        # rungs
-        d.rectangle([3, y - 1, 12, y + 1], fill=INK)
-        d.line([(4, y), (11, y)], fill=RUNG)
-        d.line([(4, y - 1), (11, y - 1)], fill=RUNG_L)
-    for x in (4, 11):                                   # iron pegs at the lip
+    hemp, hemp_d = (220, 202, 156, 255), (160, 138, 100, 255)
+    for x, lean in ((4, 1), (11, -1)):
+        for y in range(3, h - 2):
+            sag = lean if (y // 9) % 2 else 0                # the ropes hang, they aren't rails
+            d.point((x + sag, y), fill=hemp if y % 3 else hemp_d)
+    for y in range(7, h - 4, 5):                            # thin slats
+        d.line([(4, y), (11, y)], fill=RUNG_L)
+        d.line([(4, y + 1), (11, y + 1)], fill=INK)
+    for x in (4, 11):                                       # iron pegs at the lip
         d.rectangle([x - 1, 0, x + 1, 2], fill=INK)
         d.point((x, 1), fill=PEG)
+    d.ellipse([6, 0, 9, 3], outline=hemp_d)                 # the spare coil
     return im
 
 

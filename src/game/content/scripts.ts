@@ -5284,7 +5284,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.andrew_hint_crown', if_flag: 'gleam:lunar', unless_flag: 'flag:keystar_relit' },
     {
       op: 'say', if_flag: 'flag:keystar_relit', unless_flag: 'flag:dawn', speaker: 'ANDREW',
-      text: 'The Keystar\'s lit. Whatever comes next is coming on its own. Stand still and let it.',
+      text: 'The Keystar\'s lit. Whatever comes next is coming on its own. Stand still and let it. And [[stay past the credits]]. Old theatre rule.',
     },
     {
       op: 'say', if_flag: 'flag:dawn', unless_flag: 'flag:q_isles', speaker: 'ANDREW',
@@ -5324,7 +5324,7 @@ export const SCRIPTS: ScriptRegistry = {
   'script.andrew_hint_crown': [
     {
       op: 'say', speaker: 'ANDREW',
-      text: 'Eight! [[The Spire]]\'s up the mountain road, [[north from the Crossroads]]. And it isn\'t a patient sort of waiting.',
+      text: 'Eight! [[The Spire]]\'s up the mountain road, [[north from the Crossroads]]. And when it\'s all over, [[don\'t leave before the very end]].',
     },
     { op: 'run', ref: 'script.underways_hint', if_flag: 'flag:hub_unlocked' },
   ],

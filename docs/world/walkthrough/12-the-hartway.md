@@ -71,6 +71,18 @@ from Galehigh still plays the whole story. Greg's stages and the story bands wan
 - Seeds (words only): the Pearlmoor innkeep, the fisher after the Tide, Kathleen, Rose and the
   pinboard in Paul's house. None names the quest or says what happens on the mountain.
 
+### Staging rules this map learned (two sub-agent reviews, 2026-11)
+
+- A fix-it beat that happens off-screen didn't happen: `cameraFocus` on rope ladder 2 as Greg
+  drops it, and walk the player to the bench before "you sit".
+- The player follows Greg out onto the Whiteback before the reel starts, so the showpiece ridge
+  is walked, not only watched.
+- The exit off the Seat is led to (a trail up the east side, steps set into the north wall) and
+  signed; the Lumen Drop cache costs a detour into the high grass.
+- The steps' gate ropes you in on the spot once Greg has agreed (gate-keepers come to you).
+- Iron pegs are signed at both ladder sites before the ladders exist: a seeded lock, not a
+  false lead.
+
 ## Engine pieces this added (all data, reusable)
 
 - **Flag-gated spans**: `SpanZone.requires_flag` / `hidden_when_flag` — a ladder that isn't

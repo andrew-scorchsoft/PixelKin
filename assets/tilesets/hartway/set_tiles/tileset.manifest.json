@@ -127,6 +127,16 @@
       "collides": true,
       "terrain": "gulf",
       "autotile": "fill"
+    },
+    {
+      "file": "018_gulf_town.png",
+      "role": "void",
+      "collides": true
+    },
+    {
+      "file": "019_gulf_lane.png",
+      "role": "void",
+      "collides": true
     }
   ]
 }

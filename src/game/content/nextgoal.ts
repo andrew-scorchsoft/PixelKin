@@ -25,7 +25,7 @@ export const NEXT_GOALS: GoalStage[] = [
   { flag: 'flag:q_isles_prow_lit', text: 'Take the lit prow-lamp back to Ione on Lightkeeper\'s Point.' },
   { flag: 'flag:q_isles', text: 'Have Fenn light Ione\'s prow-lamp, at Dawnstead on the front.' },
   { flag: 'flag:dawn', text: 'Look up. Then walk down to Dawnstead and see the valley in the morning.' },
-  { flag: 'flag:keystar_relit', text: 'The Keystar is lit. Stand still and let what comes, come.' },
+  { flag: 'flag:keystar_relit', text: 'The Keystar is lit. Let what comes, come. And stay past the credits.' },
   { flag: 'gleam:lunar', text: 'The Crown is whole: climb the Umbral Spire, up the mountain road north of the Vesper Crossroads.' },
   { flag: 'gleam:solar', text: 'Lunar Gleam: Nessa Cole at Nightreach Observatory, top of the Sunvault Climb.' },
   { flag: 'gleam:frost', text: 'Solar Gleam: Lucan Pyre in the Sunken Solarium, west through Hushfrost Pass.' },

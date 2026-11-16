@@ -67,25 +67,32 @@ c.band(2, 27, 39, lip=2, face=3)
 # band B + the iron ladder (always there)
 c.band(2, 27, 28, lip=2, face=3)
 c.ladder(5, 28, 32)
-# band C: a low wall under the Seat, the safe trail's gap at x24-25
+# band C: a low wall under the Seat's two ends, the safe trail's gap at x24-25. Between
+# them the Seat's south edge IS the drop: the bench looks straight out over the gulf.
 c.rect(2, 12, 27, 13, "#")
 
-# THE GULF under the Staircase (east, through band A) and under the Whiteback
+# THE GULF under the Staircase (east, through band A) and under the Whiteback (which
+# runs on up to the Seat's lip). Ragged outlines, never ruled boxes; the ridges are a
+# white crest (plain snow + footprints), not a paved road.
 c.rect(19, 38, 27, 45, "G")
-c.rect(8, 14, 20, 27, "G")
-STAIRCASE = [(20, 45), (20, 44), (20, 43), (21, 43), (22, 43), (23, 43), (23, 42), (23, 41),
+c.rect(8, 12, 20, 27, "G")
+c.put([(8, 14), (9, 14), (19, 14), (20, 14), (20, 15), (8, 26), (8, 27), (9, 27), (20, 26),
+       (20, 27), (8, 17), (20, 23)], ".")              # snow bites back into the rim
+c.put([(7, 24), (7, 25)], "G")                         # ...and the drop bites into the shelf
+STAIRCASE = [(21, 45), (21, 44), (21, 43), (22, 43), (23, 43), (23, 42), (23, 41),
              (24, 41), (25, 41), (25, 40), (25, 39), (25, 38)]
-WHITEBACK = ([(x, 22) for x in range(8, 14)] + [(13, 21), (13, 20)]
-             + [(x, 20) for x in range(14, 21)])
-c.put(STAIRCASE + WHITEBACK, "=")
+WHITEBACK = ([(x, 22) for x in range(8, 14)] + [(13, 21), (13, 20), (14, 20), (15, 20), (16, 20),
+                                                (16, 19), (17, 19), (18, 19), (17, 20), (18, 20), (19, 20),
+                                                (20, 20)])
+c.put(STAIRCASE + WHITEBACK, ".")
 
 # ---- the trodden line ----------------------------------------------------------------
-c.rect(8, 46, 20, 46, "=").rect(14, 46, 14, 47, "=").rect(8, 44, 8, 46, "=")     # T0
+c.rect(8, 46, 21, 46, "=").rect(14, 46, 14, 47, "=").rect(8, 44, 8, 46, "=")     # T0
 c.rect(5, 36, 25, 36, "=").rect(25, 36, 25, 37, "=").rect(5, 33, 5, 36, "=")     # T1
 c.rect(8, 36, 8, 38, "=").rect(24, 33, 24, 36, "=")
 c.rect(5, 22, 7, 22, "=").rect(5, 22, 5, 27, "=")                                # U-west
 c.rect(21, 20, 25, 20, "=").rect(24, 12, 25, 27, "=")                            # U-east + gap
-c.rect(15, 9, 25, 9, "=").rect(24, 9, 25, 11, "=")                               # the Seat
+c.rect(15, 9, 27, 9, "=").rect(24, 9, 25, 11, "=").rect(27, 2, 27, 9, "=")       # the Seat + the trail on
 
 # ---- frost-tuft (the encounter tile) ---------------------------------------------------
 c.rect(2, 44, 5, 47, '"')                     # T0 west
@@ -95,7 +102,7 @@ c.rect(2, 14, 4, 19, '"')                     # the high shelf, west
 c.rect(26, 14, 27, 18, '"')                   # the high shelf, east
 c.rect(19, 2, 26, 5, '"')                     # THE HIGH GRASS above the Seat
 # a few boulders on open ground
-c.put([(10, 44), (22, 47), (3, 37), (20, 34), (3, 25), (22, 24), (11, 6), (3, 9)], "o")
+c.put([(10, 44), (24, 47), (3, 37), (20, 34), (3, 25), (22, 24), (14, 4), (3, 9)], "o")
 rows = c.rows()
 prows = [r.replace("G", " ") for r in rows]   # facekit ignores the gulf (its own terrain)
 
@@ -135,7 +142,7 @@ m["warps"].append({"id": "to_crags", "at": {"tx": 14, "ty": 48}, "trigger": "ste
                    "to_map": "windward_stair_ii", "to": {"tx": 17, "ty": 6}, "facing": "down",
                    "transition": "fade"})
 # ---- the way on: the safe trail down off the Seat into Pale Vault ------------------------
-wm.add(m, wm.marker("steps_vault", "steps_s", 27, 2))
+wm.add(m, wm.marker("steps_vault", "steps_n", 27, 0))   # set into the north wall, like the crags' steps
 m["warps"].append({"id": "to_vault", "at": {"tx": 27, "ty": 2}, "trigger": "step_on",
                    "to_map": "pale_vault_glacier", "to": {"tx": 23, "ty": 27}, "facing": "up",
                    "transition": "fade"})
@@ -161,7 +168,7 @@ def greg(gid_: str, at, facing, ref, req=None, hide=None):
     m["npcs"].append(n)
 
 
-greg("greg_t0", (21, 46), "left", "script.greg_t0", "flag:greg_roped", "flag:hart_p1_done")
+greg("greg_t0", (22, 46), "left", "script.greg_t0", "flag:greg_roped", "flag:hart_p1_done")
 greg("greg_t1", (26, 36), "left", "script.greg_wait", "flag:hart_p1_done", "flag:hart_ladder_1")
 greg("greg_t1b", (6, 34), "left", "script.greg_t1b", "flag:hart_ladder_1", "flag:hart_b1_done")
 greg("greg_uw", (6, 23), "right", "script.greg_uw", "flag:hart_b1_done", "flag:hart_p2_done")
@@ -186,7 +193,7 @@ def beat(tid: str, cells, ref: str, req=None, hide=None):
     owed.append(ref)
 
 
-beat("staircase", [(20, 46)], "script.hart_staircase", "flag:greg_roped", "flag:hart_p1_done")
+beat("staircase", [(21, 46)], "script.hart_staircase", "flag:greg_roped", "flag:hart_p1_done")
 beat("ladder_one", [(25, 37)], "script.hart_ladder_one", "flag:hart_p1_done", "flag:hart_ladder_1")
 beat("chimney", [(5, 33)], "script.hart_chimney", "flag:hart_ladder_1", "flag:hart_b1_done")
 beat("whiteback", [(7, 22)], "script.hart_whiteback", "flag:hart_b1_done", "flag:hart_p2_done")
@@ -195,31 +202,33 @@ beat("cornice", [(24, 11), (25, 11)], "script.hart_cornice", "flag:hart_ladder_2
 # ---- T1: the walkers' camp (a rest point) ----------------------------------------------
 m["objects"].append({"id": "camp", "sprite": "hushfrost_walker_camp", "at": {"tx": 8, "ty": 32},
                      "w": 4, "h": 3, "overhang": 1})
-for x in (9, 10):
+for x in (8, 9, 10, 11):
     m["triggers"].append({"id": f"camp_rest_{x}", "kind": "script", "at": {"tx": x, "ty": 35},
                           "activation": "interact", "ref": "script.hartway_camp"})
 owed.append("script.hartway_camp")
 
 # ---- THE SEAT ---------------------------------------------------------------------------
 m["objects"] += [
-    {"id": "ruin_hut", "sprite": "hartway_ruin_hut", "at": {"tx": 4, "ty": 3}, "w": 4, "h": 4,
+    {"id": "ruin_hut", "sprite": "hartway_ruin_hut", "at": {"tx": 8, "ty": 6}, "w": 4, "h": 4,
      "overhang": 2},
+    {"id": "spyglass", "sprite": "windward_spyglass", "at": {"tx": 20, "ty": 10}, "w": 2, "h": 2,
+     "overhang": 1, "walk_under": True},
     {"id": "bench", "sprite": "hartway_bench", "at": {"tx": 13, "ty": 10}, "w": 2, "h": 1},
     {"id": "cairn_seat", "sprite": "windward_cairn", "at": {"tx": 17, "ty": 9}, "w": 2, "h": 3,
      "overhang": 2, "walk_under": True},
-    {"id": "flags_seat", "sprite": "windward_prayer_flags", "at": {"tx": 9, "ty": 3}, "w": 4, "h": 2,
+    {"id": "flags_seat", "sprite": "windward_prayer_flags", "at": {"tx": 4, "ty": 3}, "w": 4, "h": 2,
      "overhang": 2, "walk_under": True, "solid": False},
 ]
 for x in (13, 14):
     m["triggers"].append({"id": f"seat_{x}", "kind": "cutscene", "at": {"tx": x, "ty": 10},
                           "activation": "interact", "ref": "script.hart_seat"})
-m["triggers"].append({"id": "hut_door", "kind": "sign", "at": {"tx": 6, "ty": 7},
+m["triggers"].append({"id": "hut_door", "kind": "sign", "at": {"tx": 10, "ty": 10},
                       "activation": "interact", "ref": "sign.hartway_hut"})
 owed += ["script.hart_seat", "sign.hartway_hut"]
 
 # the bothy belongs to the mountain's kin now (ambient: greetable, never colliding)
-for aid, kin, (x, y), r in [("amb_hut_a", 77, (9, 6), 2), ("amb_hut_b", 88, (3, 8), 2),
-                            ("amb_seat", 80, (11, 8), 1), ("amb_shelf", 80, (16, 35), 2),
+for aid, kin, (x, y), r in [("amb_hut_a", 77, (12, 7), 1), ("amb_hut_b", 88, (3, 6), 2),
+                            ("amb_seat", 80, (15, 7), 1), ("amb_shelf", 80, (16, 35), 2),
                             ("amb_high", 77, (3, 21), 1)]:
     m["npcs"].append({"id": aid, "at": {"tx": x, "ty": y}, "facing": "down",
                       "sprite": f"kin_{kin}_overworld", "movement": "wander",
@@ -231,11 +240,16 @@ owed += pt.sign(m, deco, W, sid="hartway_whiteback", at=(4, 23))
 owed += pt.sign(m, deco, W, sid="hartway_seat", at=(23, 8))
 owed += pt.cache(m, cid="hartway_shelf", at=(27, 34))
 owed += pt.cache(m, cid="hartway_high", at=(2, 16))
-owed += pt.cache(m, cid="hartway_seat", at=(26, 7))
+owed += pt.cache(m, cid="hartway_seat", at=(22, 2))       # in the high grass: a detour that pays
+# the rope ladders' pegs, before the ladders: a seeded lock, not a false lead
+owed += pt.sign(m, deco, W, sid="hartway_pegs", at=(9, 44))
+m["triggers"].append({"id": "sign_hartway_pegs_high", "kind": "sign", "at": {"tx": 26, "ty": 26},
+                      "activation": "interact", "ref": "sign.hartway_pegs"})
+deco[26 * W + 26] = gid("sign")
 
 # ---- dressing (a landmark on every screen) ------------------------------------------------
 m["objects"] += [
-    {"id": "cairn_t0", "sprite": "windward_cairn", "at": {"tx": 16, "ty": 43}, "w": 2, "h": 3,
+    {"id": "pine_landing", "sprite": "windward_bent_pine", "at": {"tx": 16, "ty": 43}, "w": 2, "h": 3,
      "overhang": 2, "walk_under": True},
     {"id": "pine_t0", "sprite": "hushfrost_snow_pine", "at": {"tx": 6, "ty": 44}, "w": 2, "h": 3,
      "overhang": 2, "walk_under": True},
@@ -244,14 +258,17 @@ m["objects"] += [
     {"id": "rocks_t1", "sprite": "hushfrost_snow_boulders", "at": {"tx": 12, "ty": 37}, "w": 2, "h": 2},
     {"id": "dead_uw", "sprite": "hushfrost_dead_tree", "at": {"tx": 2, "ty": 23}, "w": 2, "h": 3,
      "overhang": 2, "walk_under": True},
-    {"id": "cairn_uw", "sprite": "windward_cairn", "at": {"tx": 6, "ty": 18}, "w": 2, "h": 3,
+    {"id": "struck_uw", "sprite": "windward_struck_rock", "at": {"tx": 6, "ty": 18}, "w": 2, "h": 2},
+    {"id": "outcrop_uw", "sprite": "hushfrost_rock_outcrop_a", "at": {"tx": 5, "ty": 15}, "w": 3, "h": 2},
+    {"id": "pine_ue", "sprite": "windward_bent_pine", "at": {"tx": 26, "ty": 21}, "w": 2, "h": 3,
      "overhang": 2, "walk_under": True},
+    {"id": "woodpile_t1", "sprite": "pale_vault_woodpile", "at": {"tx": 22, "ty": 34}, "w": 2, "h": 2},
     {"id": "flags_ue", "sprite": "windward_prayer_flags", "at": {"tx": 21, "ty": 16}, "w": 4, "h": 2,
      "overhang": 2, "walk_under": True, "solid": False},
     {"id": "drift_ue", "sprite": "hushfrost_snowdrift", "at": {"tx": 21, "ty": 24}, "w": 3, "h": 2},
     {"id": "pine_seat", "sprite": "hushfrost_snow_pine", "at": {"tx": 2, "ty": 2}, "w": 2, "h": 3,
      "overhang": 2, "walk_under": True},
-    {"id": "rocks_seat", "sprite": "hushfrost_snow_boulders", "at": {"tx": 9, "ty": 9}, "w": 2, "h": 2},
+    {"id": "rocks_seat", "sprite": "hushfrost_snow_boulders", "at": {"tx": 4, "ty": 8}, "w": 2, "h": 2},
 ]
 
 # ---- encounters (the high crags' own table, 35-36; night/day pairs) ------------------------
@@ -297,6 +314,8 @@ if __name__ == "__main__":
     import sys
     if "--show" in sys.argv:
         print("\n".join(f"{y:3d} {r}" for y, r in enumerate(rows)))
+    # three far-off lights in the drop (deliberate, never scattered)
+    pin.update({(11, 17): "gulf_town", (17, 25): "gulf_lane", (25, 44): "gulf_lane"})
     ok = mk.finalize(m, scale=3, pin_base=pin)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

@@ -1353,7 +1353,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   `script.dawn_breaks` (sets `flag:dawn` ITSELF, then the **`cinematic` op** — the runner hook
   persists FIRST, stops world music, and hands to CinematicScene; nothing after the op plays, so
   it must be a script's LAST step). `ENDING_CREDITS` (dawnbreak panels + credits) hands on to **`THE_DEPOT`** (2026-11, its own script so skipping the roll
-  never skips it: the old coach depot, the departures board, the ticket punched with eight stars — the journey you finished
+  never skips it, and `skippable: false` so it is always watched; the roll shows a bottom strip — the beat's `creditsNote` + "B: SKIP" — and Andrew's last hints + the NEXT panel say to stay past the credits: the old coach depot, the departures board, the ticket punched with eight stars — the journey you finished
   was one you chose, and now you choose the next; Paul's own idea, never named, never in the changelog) → Title;
   Continue resumes at the summit with `flag:dawn` held — the post-game's door.
 - **Crown interludes cut AWAY to Còr, then return (X-4, `content/interludes.ts`).** On the
@@ -1579,7 +1579,10 @@ keep entries one or two lines, concrete, and prune what's gone stale.
 - **The `frames` op takes `captions` (2026-11):** one entry per still (a string, pages, or null); a captioned frame shows its
   words in a band on the picture and waits for Confirm, so a whole scene can be told ON the stills (the Hartway's Whiteback and
   mist-herd reels; packed by `tools/assets/pack_hartway_frames.py`). `frameSfx` fires a cue as a frame lands. A ridge = ordinary
-  ground one tile wide inside `gulf` terrain (`hartway_set`, the drop; `build_hartway_set.py`).
+  ground one tile wide inside `gulf` terrain (`hartway_set`, the drop; `build_hartway_set.py`). To READ as a ridge and not a path
+  between pits (the 2026-11 look review): leave the crest plain snow (never a trail family), rag the gulf outline, never leave a
+  1-wide gulf strip (the set has no end/strip caps), and the gulf draws a rock FACE under any snow to its north. Far-off lights in the
+  drop are PINNED tiles (`gulf_town`/`gulf_lane`), never a scattered fill variant.
 - **One-way exits are `travel`, not warps** (Lowtinder's well climb into Tinderwick): audit_warps
   rejects a warp with no return; a scripted `travel` is the legal one-way door.
 

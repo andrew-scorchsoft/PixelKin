@@ -46,6 +46,8 @@ export interface CinematicBeat {
   credits?: CreditsSection[];
   /** Heading shown at the top of a `credits` scroll (e.g. the game's name). */
   creditsTitle?: string;
+  /** A short line held along the bottom during the credits roll (beside the skip prompt). */
+  creditsNote?: string;
 }
 
 export interface CinematicScript {
@@ -53,6 +55,8 @@ export interface CinematicScript {
   beats: CinematicBeat[];
   /** Where to go when the sequence finishes (or is skipped). */
   next: { scene: string; data?: unknown };
+  /** false = Cancel does not skip this sequence (the last scene of the game is watched). */
+  skippable?: boolean;
 }
 
 const PANEL = (n: string): string => `assets/backgrounds/cinematic/${n}.webp`;
@@ -153,6 +157,8 @@ export const ENDING_CREDITS: CinematicScript = {
       // The roll holds the dawn panel and scrolls the credits up over it.
       music: 'ending-credits',
       creditsTitle: 'PixelKin',
+      // shown along the bottom for the whole roll, beside the "B: SKIP" prompt
+      creditsNote: 'ONE MORE SCENE AFTER',
       credits: [
         { role: 'A game by', names: ['Andrew Ward Studios'] },
         { role: 'Published by', names: ['Scorchsoft'] },
@@ -165,6 +171,7 @@ export const ENDING_CREDITS: CinematicScript = {
         { role: 'Built with', names: ['TypeScript', 'Phaser 3', 'Vite'] },
         { role: 'And for', names: ['Every lamp-tender who kept a light', 'through a long dark'] },
         { role: '', names: ['The dawn is worth the dusk.', 'Thank you for walking it.'] },
+        { role: '', names: ['Don\'t go yet.', 'There is one more stop.'] },
       ],
     },
   ],
@@ -182,6 +189,7 @@ export const ENDING_CREDITS: CinematicScript = {
  */
 export const THE_DEPOT: CinematicScript = {
   id: 'the_depot',
+  skippable: false, // skipping the credits lands here; this one you sit through
   beats: [
     {
       panel: PANEL('depot-01'),

@@ -9,10 +9,12 @@ Hartway's two ridges — the Staircase and the Whiteback — are one tile wide w
 night on both sides, so they need their own gulf, drawn against the alpine ground it
 actually sits in (`snow`, the shared North family):
 
-  * `gulf`   THE DROP. Fill = the night air over the valleys: near-black violet, a few
-             dim slope lines far below and (one layout) two warm lamp pixels — a town,
-             a very long way down. Every edge falls away from the snow rim: lit lip,
-             blue shade, then rock bands darkening into the deep. Collides.
+  * `gulf`   THE DROP. Fill = the night air over the valleys: near-black violet with dim
+             far-ridge dashes. Edges follow the cliff convention: under any snow to the
+             NORTH a full rock FACE (lit lip, streaked stone, a caught snow ledge), on the
+             south rim only a thin cornice, a few px of rock at the sides. Collides.
+  * `gulf_town` / `gulf_lane`  two far-off lights, PINNED by a builder (mk.finalize
+             pin_base), never scattered.
 
 Writes:
   assets/tilesets/hartway/set_tiles/*.png + tileset.manifest.json   (masters)
@@ -52,36 +54,69 @@ FAR = [
 ]
 
 
-def gulf_fill(v: int = 0):
-    """Night air: dim far-slope dashes; layout 3 carries two lamp pixels (a town)."""
+def gulf_fill(v: int = 0, lamps: str | None = None):
+    """Night air over the valleys: dim far-ridge dashes (a slope a mile below), never
+    noise. `lamps` adds a deliberate far-off light — 'town' (a small warm cluster) or
+    'lane' (three lamps on a road) — for the few cells a builder PINS; the scattered
+    fill variants are lampless, so the dark never reads as a field of eyes."""
     a = flat(DEEP)
-    dim = (30, 27, 58)
-    dimmer = (23, 20, 46)
+    dim = (42, 38, 78)
+    dimmer = (28, 25, 56)
     for i, (x, y, n) in enumerate(FAR[v % len(FAR)]):
         put(a, [((x + k) % 16, y) for k in range(n)], dim if i == 0 else dimmer)
-    if v == 3:
-        put(a, [(6, 10)], (236, 170, 92))
-        put(a, [(8, 11)], (198, 132, 76))
+        put(a, [((x + k + 1) % 16, y + 1) for k in range(max(1, n - 2))], dimmer)
+    if lamps == "town":
+        put(a, [(6, 9), (8, 10), (7, 11)], (236, 170, 92))
+        put(a, [(5, 10), (9, 9), (9, 11)], (176, 112, 70))
+    elif lamps == "lane":
+        put(a, [(4, 12), (8, 9), (12, 6)], (214, 150, 86))
     return img(a)
 
 
+# the rock of the Hartshoulder under the snow (the reel's ridge: dark warm stone)
+ROCK = [(92, 74, 92), (78, 60, 78), (66, 50, 68), (56, 42, 62), (48, 36, 58),
+        (40, 30, 52), (33, 26, 48), (27, 22, 44), (22, 18, 40)]
+
+
 def gulf_tile(role: str, v: int = 0):
+    """The drop, drawn the way the house draws height (cliff = top + visible FACE):
+
+      * snow ABOVE a gulf pixel (the north rim, and the ground under a ridge):
+        a FACE — a 2px lit snow lip, then streaked rock darkening into the deep,
+        with a small snow ledge caught on it. This is what makes a ridge a fin.
+      * snow BELOW (the south rim): only a thin cornice — you are looking over it.
+      * snow to the SIDE: a few px of rock.
+    """
     if role == "fill":
         return gulf_fill(v)
     m = overlay_mask(role, 3, 3)           # True = snow (outer) shows
     a = np.asarray(gulf_fill(v).convert("RGBA")).astype(np.int16).copy()
     o = np.asarray(gf.snow_fill(v).convert("RGBA")).astype(np.int16)
-    a[m] = o[m]
-    seen = m.copy()
-    ring = _border_of(m)
-    snow_rim = _border_of(~m) & m          # snow px touching the drop: a shaded lip
-    for k in range(len(FALL)):
-        if not ring.any():
-            break
-        a[ring & ~seen, :3] = FALL[k]
-        seen |= ring
-        ring = _border_of(seen) & ~seen
-    a[snow_rim, :3] = sh(gf.SNOW, 0.80)
+    H, W = m.shape
+    for y in range(H):
+        for x in range(W):
+            if m[y, x]:
+                a[y, x] = o[y, x]
+                continue
+            up = next((d for d in range(1, 17) if y - d >= 0 and m[y - d, x]), None)
+            dn = next((d for d in range(1, 4) if y + d < H and m[y + d, x]), None)
+            side = min([d for d in range(1, 5)
+                        if (x - d >= 0 and m[y, x - d]) or (x + d < W and m[y, x + d])] or [9])
+            if up is not None:
+                if up <= 2:
+                    col = (232, 238, 250) if up == 1 else (158, 172, 208)     # the lip
+                else:
+                    k = min(len(ROCK) - 1, (up - 3) * len(ROCK) // 11)
+                    col = ROCK[k]
+                    if (x * 5 + v * 3) % 7 == 2 and up > 3:                    # weathering streak
+                        col = sh(col, 0.80)
+                    if up in (7, 8) and (x + v * 4) % 16 in (3, 4, 5, 11, 12): # a caught ledge of snow
+                        col = (150, 166, 204) if up == 7 else sh(col, 0.72)
+                a[y, x, :3] = col
+            elif dn is not None:
+                a[y, x, :3] = (214, 224, 244) if dn == 1 else (58, 54, 92)     # cornice + its shadow
+            elif side <= 3:
+                a[y, x, :3] = ROCK[min(len(ROCK) - 1, 2 + side * 2)]
     return img(a)
 
 
@@ -112,6 +147,9 @@ def main() -> None:
     for v in (1, 2, 3):
         add(f"gulf_fill_v{v}", gulf_fill(v), role="void", terrain="gulf", autotile="fill",
             collides=True)
+    # APPENDED: the two far-off lights (never scattered — a builder pins them, a few a map)
+    add("gulf_town", gulf_fill(1, "town"), role="void", collides=True)
+    add("gulf_lane", gulf_fill(2, "lane"), role="void", collides=True)
 
     manifest = {"name": "hartway_set", "columns": 8, "tiles": tiles}
     (TILES_DIR / "tileset.manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
