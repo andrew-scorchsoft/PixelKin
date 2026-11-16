@@ -53,6 +53,13 @@ only thing that moves him.
   `requires_flag: flag:hart_mist_seen`).
 - The bench replays the view or the whole herd reel on later visits.
 
+## Seeds (words only, from Pearlmoor on)
+
+The Pearlmoor innkeep (an old climber who faces the hill all night), the fisher and the Quay
+elder after the Tide Gleam (old snow on the big hill; thunder with no rain up north), then
+Kathleen, Rose and the pinboard in Paul's house, who point west off the green. None of them
+names the quest or says what happens on the mountain.
+
 ## Engine pieces this added (all data, reusable)
 
 - **Flag-gated spans**: `SpanZone.requires_flag` / `hidden_when_flag` — a ladder that

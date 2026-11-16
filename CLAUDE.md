@@ -403,6 +403,12 @@ free instead of re-deriving it.
   `node tools/build/bump_version.mjs minor` (a patch for a tiny fix) — it updates `package.json`
   AND `src/game/version.ts` (shown on the title screen + browser tab), then refresh the lock with
   `npm install --package-lock-only`. Players check that number to know they're on the new build.
+- **Changelog spoiler rule (STANDING — apply it without being asked).** `src/game/data/changelog.json` is read
+  in-game and on the website by the very people the hidden content was built for. Before writing ANY entry, check each
+  note: does it name or describe (a) hidden real-people content — anything of Paul's (the full list is in the "world has
+  changed" gotcha below; new Paul content joins that list in the same commit), or (b) an ending, late-story or
+  post-credits surprise? If yes, that note is NOT written. A round that is only hidden content gets NO entry at all (the
+  version still bumps). When unsure, leave it out. Seeds/hints for hidden content are hidden too.
 - If the branch's PR has already been merged, restart the branch from `origin/main` and open a
   NEW PR for the follow-up work (never stack onto the merged one).
 
@@ -1346,7 +1352,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the climax never strands; Fenn's Starlamp rides Wren's un-missable crossroads join band) →
   `script.dawn_breaks` (sets `flag:dawn` ITSELF, then the **`cinematic` op** — the runner hook
   persists FIRST, stops world music, and hands to CinematicScene; nothing after the op plays, so
-  it must be a script's LAST step). `ENDING_CREDITS` (dawnbreak panels + credits) routes → Title;
+  it must be a script's LAST step). `ENDING_CREDITS` (dawnbreak panels + credits) hands on to **`THE_DEPOT`** (2026-11, its own script so skipping the roll
+  never skips it: the old coach depot, the departures board, the ticket punched with eight stars — the journey you finished
+  was one you chose, and now you choose the next; Paul's own idea, never named, never in the changelog) → Title;
   Continue resumes at the summit with `flag:dawn` held — the post-game's door.
 - **Crown interludes cut AWAY to Còr, then return (X-4, `content/interludes.ts`).** On the
   first idle frame a crown's `requires` are held, `WorldScene.runCrownInterlude` stages the
@@ -1561,6 +1569,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   (`assets/backgrounds/cinematic/thunder/`, packed by `tools/assets/pack_thunder_frames.py`), sound is synthesised
   (`tools/audio/thunder_roll.py`). New desert/canyon terrain = the `sere_set` accent (`build_sere_set.py`); props =
   `sereforge.py`. Record a scene with `shoot.mjs --script <ref> --video <dir>` (silent webm; mux audio with ffmpeg).
+- **Seeding hidden quests is WORDS ONLY, on people who already talk.** The Hartway and the tower are hinted from
+  Pearlmoor on (the innkeep, the fisher and the Quay elder after the Tide; Kathleen, Rose and the pinboard in Paul's
+  house): a page appended to an existing line, never a new NPC, never the quest's name, never what happens there.
 - **A ladder that appears later = a flag-gated span (2026-11).** `SpanZone.requires_flag`/`hidden_when_flag` (Traversal.ts ⇄
   `worldmodel.span_at(…, thrown)` ⇄ `check_traversal.mjs`): the span isn't there until its flag is, so the cliff under it
   stays solid. Pair it with a `solid:false` object carrying the SAME flag (the Hartway's `hartway_rope_ladder`); a `setFlag`

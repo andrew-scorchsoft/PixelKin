@@ -525,6 +525,7 @@ subsection below so they read as one piece. This section covers the ascent's sup
 >   it — every lamp, every name, every small goodbye you'd have me erase. ...I had forgotten it was
 >   worth the ache."*
 > - The resolution beat now lives in the credits panel (*"not in a victory — in a morning"*);
+> - **After the credits: THE DEPOT** (2026-11, `THE_DEPOT` in `content/cinematics.ts`, five stills). An old coach depot, a departures board of whole journeys, a ticket already punched with eight stars: the journey you finished was one you chose, and now you choose the next. Then the Title. Its own script, so skipping the credits never skips it.
 >   `dawn_breaks` ends on an image instead (C-2): *"Behind you, the Great Null stands silent in the
 >   first light — and deep in its cold housing, where he packed the fallen ones close, something
 >   answers the sun."*

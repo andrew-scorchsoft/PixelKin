@@ -208,6 +208,7 @@ export const SOUTH_DIALOGUE: DialogueRegistry = {
   'npc.pearlmoor_fisher_lit': [
     { speaker: 'FISHER', text: "First time past the buoys in eleven winters. The water remembered my keel." },
     { speaker: 'FISHER', text: "Caught nothing. Just watched the quay lamps from the sea, like my father." },
+    { speaker: 'FISHER', text: "You can see old snow on the big hill from out there. Two fellas used to climb it, roped together like a pair of kites." },
   ],
   'npc.pearlmoor_fisher_inn_lit': [
     { speaker: 'FISHER', text: "Night-fishing? Terrible! Two sprats and a boot. Best night in years." },

@@ -399,6 +399,7 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.pearlmoor_innkeep': [
     { speaker: 'INNKEEP', text: "Rest your feet. The quay's hanging fresh lanterns for the Tide-blessing." },
     { speaker: 'INNKEEP', text: 'They say when Reyl relights the Tide, the shallows answer a lit lamp.' },
+    { speaker: 'INNKEEP', text: 'An old climber drinks here some winters. Sits facing the big hill behind the town all night, and never once goes up it.' },
   ],
   'npc.pearlmoor_fisher': [
     { speaker: 'FISHER', text: 'Tide-blessing soon! We ask the sea to bring our lights home.' },
@@ -420,6 +421,7 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.blessing_elder': [
     { speaker: 'QUAY ELDER', text: 'The Tide stands over the water again. Sixty years I waited to sing under it.' },
     { speaker: 'QUAY ELDER', text: 'Tides go out so they can come back. Tonight, child, you brought one back.' },
+    { speaker: 'QUAY ELDER', text: 'Tides I know. Thunder with no rain, now: that\'s the far north, past the kite town. My sister ate her supper up a tower and watched it walk.' },
   ],
   'npc.blessing_kid': [
     { speaker: 'DECKHAND', text: 'The shallows are ANSWERING! Every buoy lights up. The old folk are happy-crying!' },

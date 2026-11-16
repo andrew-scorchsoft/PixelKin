@@ -173,6 +173,8 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'say', unless_flag: CP, speaker: 'ROSE', text: 'Frederika\'s up in the attic, drawing chickens. And pigs. She asks which would win. I say "a nap".' },
     { op: 'say', if_flag: CP, unless_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'Is that a FEATHER on your sleeve? Green, curly... Oh, Frederika will lose her mind. [[Go on up to the attic]]. I\'ll hold the teapot steady.' },
     { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'ROSE', text: 'He came home with a tin cup and a grin and won\'t say where he got either. Whatever you did up that wood, thank you. He\'s humming.' },
+    { op: 'say', unless_flag: 'flag:greg_found', speaker: 'ROSE', text: 'He stands at the gate looking west at the Hartshoulder when he thinks nobody\'s watching. He used to climb it with someone called Greg.' },
+    { op: 'say', if_flag: 'flag:hart_mist_seen', speaker: 'ROSE', text: 'You went UP there? With Greg? Grandad\'s going to want every word. Twice.' },
     { op: 'say', speaker: 'ROSE', text: 'The NEVER rail upstairs is mine and Frederika\'s doing. He wore ASK ME ABOUT MY KNEES to a christening. Somebody asked.' },
     { op: 'say', unless_flag: 'flag:paul_rose_met', speaker: 'ROSE', text: 'He\'s planning another festival: the Festival of the Imagined. Everyone on the bill is out of a story. Keeps the catering simple.' },
     { op: 'say', unless_flag: MILAGRO_PACK_FLAG, speaker: 'ROSE', text: 'And if he\'s in a good mood, [[ask him about the cards]], out at his lamp. He pretends he doesn\'t want to show you.' },
@@ -373,6 +375,10 @@ export const PAUL_SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:paul_kathleen_invoice' },
     { op: 'say', if_flag: 'flag:paul_kathleen_met', unless_flag: 'flag:q_south_wander_done', speaker: 'KATHLEEN', text: 'Kettle\'s on indoors. And if you see him, tell him the line\'s full, the house is full, and his tray is FULL.' },
     { op: 'say', if_flag: 'flag:q_south_wander_done', speaker: 'KATHLEEN', text: 'He came up the hill with a tin cup, humming. All these years and I\'ve never once heard him hum. Whatever you did, thank you.' },
+    // seeds for THE HARTWAY (content/regions/hartway.ts): his old rope partner, the hill out west
+    { op: 'say', unless_flag: 'flag:greg_found', speaker: 'KATHLEEN', text: 'If you want to do him a kindness: there\'s a man called Greg he used to climb with. Neither has rung the other in years. Stubborn as fence posts, the pair.' },
+    { op: 'say', unless_flag: 'flag:greg_found', speaker: 'KATHLEEN', text: 'The hill\'s [[west off the green]], under my washing line. The rope-warden there knows the rest.' },
+    { op: 'say', if_flag: 'flag:q_hartway_done', speaker: 'KATHLEEN', text: 'Greg came to supper. Years of not ringing each other, cured by a bit of rope and a stranger. I\'d have charged for that.' },
     { op: 'say', if_flag: 'flag:paul_kathleen_met', speaker: 'KATHLEEN', text: 'That WANTED poster? I\'ve read it. It isn\'t a warrant, it\'s a joke he had printed. I\'ve told him a joke is not a legal defence.' },
     { op: 'setFlag', flag: 'flag:paul_kathleen_met' },
   ],
@@ -715,6 +721,8 @@ export const PAUL_DIALOGUE: DialogueRegistry = {
   'sign.paul_pinboard': [
     { text: 'Ferry stubs, rail stubs. Postcards: a frozen lake from the maple country across the northern sea; a flat-topped mountain from the cape country far south.' },
     { text: 'Every one of them is stamped. Some are stamped twice — going the other way.' },
+    { text: 'Pinned at the edge, a faded picture: two men roped together on a ridge of snow, both laughing. On the back: "G. said it was fine."' },
+    { text: 'And a menu, of all things, from a supper-room on top of a tower, a long way north and east. Someone has written across it: "Go on a storm night."' },
   ],
   'sign.paul_cape_day': [
     { text: 'A flat-topped mountain above a blue bay, a white cloud poured over it like a tablecloth. The cape country, far to the south.' },

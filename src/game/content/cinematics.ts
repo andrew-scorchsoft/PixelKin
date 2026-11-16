@@ -168,12 +168,71 @@ export const ENDING_CREDITS: CinematicScript = {
       ],
     },
   ],
-  next: { scene: 'Title' }, // the ending hands control back to the Title screen
+  // the credits hand on to THE DEPOT (its own script, so skipping the roll never skips it)
+  next: { scene: 'Cinematic', data: { scriptId: 'the_depot' } },
+};
+
+/**
+ * THE DEPOT (2026-11) — after the credits, the very last thing the game says. An old
+ * walker's theory of where a road goes when it runs out of world: a coach depot, a
+ * board of departures, and the discovery that the journey you just finished was one
+ * you CHOSE, sitting on this same bench, before it began. Then you choose the next —
+ * and the scene hands back to the Title (NEW GAME is the board). Stills:
+ * assets/backgrounds/cinematic/depot/ -> tools/assets/pack_depot_frames.py.
+ */
+export const THE_DEPOT: CinematicScript = {
+  id: 'the_depot',
+  beats: [
+    {
+      panel: PANEL('depot-01'),
+      music: 'interior-lamplit',
+      dwellMs: 1400,
+      lines: [
+        'There is a story some walkers tell, about where a road goes when it has run out of world.',
+        'They say it comes to a depot. An old one. Wooden benches, a stove, a clock in no hurry at all.',
+        'And along one wall, a board of departures as long as the room.',
+      ],
+    },
+    {
+      panel: PANEL('depot-02'),
+      lines: [
+        'Every line on the board is a whole journey: where it sets out, every stop along the way, and where it lets you down.',
+        'Some are short. Some are hard. Some have a great deal of weather in them.',
+        'Nobody hurries you. You sit as long as you like, reading the stops, working out which one is yours.',
+      ],
+    },
+    {
+      panel: PANEL('depot-03'),
+      sfx: 'world-lantern-light',
+      lines: [
+        'And in your pocket there is a ticket you do not remember buying. Used. Punched eight times, each hole the shape of a star.',
+        'Because the journey you have just finished was never handed to you. You chose it.',
+        'You sat on this very bench, a long time ago, and read the stops: a dark that would not lift, a small lamp, a long climb. And you said: that one.',
+      ],
+    },
+    {
+      panel: PANEL('depot-04'),
+      lines: [
+        'An old walker on the next bench lifts a tin cup to you. He has been through here before. He says everybody has.',
+        '"Took me a few goes to pick one with decent hills," he says. "No regrets. Well. One or two. They were the best bits."',
+      ],
+    },
+    {
+      panel: PANEL('depot-05'),
+      lines: [
+        'So you look up at the board again. All those roads. All those stops.',
+        'There is no wrong one. There is only the next one.',
+        'When you are ready, you stand up, and choose.',
+      ],
+    },
+  ],
+  next: { scene: 'Title' }, // the last scene hands control back to the Title screen
 };
 
 export const CINEMATICS: Record<string, CinematicScript> = {
   [COLDOPEN_SOUTH.id]: COLDOPEN_SOUTH,
   [ENDING_CREDITS.id]: ENDING_CREDITS,
+  [THE_DEPOT.id]: THE_DEPOT,
 };
 
 export function getCinematic(id: string): CinematicScript | undefined {
