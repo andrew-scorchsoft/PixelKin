@@ -679,6 +679,10 @@ export const SCRIPTS: ScriptRegistry = {
           label: 'Your cards?',
           ops: [{ op: 'run', ref: 'script.paul_milagro_cards' }],
         },
+        // THE HARTWAY (content/regions/hartway.ts): his old rope partner, and the hill
+        { label: 'Greg?', if_flag: 'flag:greg_met', unless_flag: 'flag:hart_mist_seen', ops: [{ op: 'run', ref: 'script.hartway_paul_router' }] },
+        { label: 'The Hartway', if_flag: 'flag:hart_mist_seen', unless_flag: 'flag:q_hartway_done', ops: [{ op: 'run', ref: 'script.hartway_paul_told' }] },
+        { label: 'The Hartway', if_flag: 'flag:q_hartway_done', ops: [{ op: 'run', ref: 'script.hartway_paul_after' }] },
         {
           label: 'Too much coffee?',
           if_flag: 'flag:q_south_wander_done',
@@ -5263,8 +5267,8 @@ export const SCRIPTS: ScriptRegistry = {
       text: 'Mira Vael keeps the Storm at [[the Galehigh Terraces]]: out the Deep\'s far door, up Cinderwind Scarp, over the Ashfall Shelf.',
     },
     {
-      op: 'say', if_flag: 'gleam:storm', unless_flag: 'gleam:frost', speaker: 'ANDREW',
-      text: 'Ysolde Frost keeps the Frost at [[the Pale Vault Glacier]], [[up the Windward Stair]]. The Kite clears the crags. Wrap up.',
+      // Storm -> Frost: one line, staged on the pass (content/regions/hartway.ts chain)
+      op: 'run', if_flag: 'gleam:storm', unless_flag: 'gleam:frost', ref: 'script.andrew_hint_frost',
     },
     {
       op: 'say', if_flag: 'gleam:frost', unless_flag: 'gleam:solar', speaker: 'ANDREW',
@@ -5280,7 +5284,7 @@ export const SCRIPTS: ScriptRegistry = {
     { op: 'run', ref: 'script.andrew_hint_crown', if_flag: 'gleam:lunar', unless_flag: 'flag:keystar_relit' },
     {
       op: 'say', if_flag: 'flag:keystar_relit', unless_flag: 'flag:dawn', speaker: 'ANDREW',
-      text: 'The Keystar\'s lit. Whatever comes next is coming on its own. Stand still and let it.',
+      text: 'The Keystar\'s lit. Whatever comes next is coming on its own. Stand still and let it. And [[stay past the credits]]. Old theatre rule.',
     },
     {
       op: 'say', if_flag: 'flag:dawn', unless_flag: 'flag:q_isles', speaker: 'ANDREW',
@@ -5320,7 +5324,7 @@ export const SCRIPTS: ScriptRegistry = {
   'script.andrew_hint_crown': [
     {
       op: 'say', speaker: 'ANDREW',
-      text: 'Eight! [[The Spire]]\'s up the mountain road, [[north from the Crossroads]]. And it isn\'t a patient sort of waiting.',
+      text: 'Eight! [[The Spire]]\'s up the mountain road, [[north from the Crossroads]]. And when it\'s all over, [[don\'t leave before the very end]].',
     },
     { op: 'run', ref: 'script.underways_hint', if_flag: 'flag:hub_unlocked' },
   ],

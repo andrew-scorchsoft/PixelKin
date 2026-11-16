@@ -207,6 +207,16 @@
       "walk_under": true
     },
     {
+      "id": "low_road_drift",
+      "sprite": "windward_snow_drift",
+      "at": {
+        "tx": 14,
+        "ty": 27
+      },
+      "w": 2,
+      "h": 1
+    },
+    {
       "id": "pv_fur_rack",
       "sprite": "pale_vault_fur_rack",
       "at": {
@@ -346,36 +356,6 @@
       "blocked_ref": "npc.ysolde_door_unlit"
     },
     {
-      "id": "to_windward",
-      "at": {
-        "tx": 14,
-        "ty": 29
-      },
-      "trigger": "step_on",
-      "to_map": "windward_stair_ii",
-      "to": {
-        "tx": 20,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
-      "id": "to_windward_e",
-      "at": {
-        "tx": 15,
-        "ty": 29
-      },
-      "trigger": "step_on",
-      "to_map": "windward_stair_ii",
-      "to": {
-        "tx": 21,
-        "ty": 1
-      },
-      "facing": "down",
-      "transition": "fade"
-    },
-    {
       "id": "to_pass",
       "at": {
         "tx": 0,
@@ -451,6 +431,36 @@
         "ty": 54
       },
       "facing": "up",
+      "transition": "fade"
+    },
+    {
+      "id": "to_hartway",
+      "at": {
+        "tx": 31,
+        "ty": 10
+      },
+      "trigger": "step_on",
+      "to_map": "hartway_climb",
+      "to": {
+        "tx": 1,
+        "ty": 9
+      },
+      "facing": "right",
+      "transition": "fade"
+    },
+    {
+      "id": "to_hartway_s",
+      "at": {
+        "tx": 31,
+        "ty": 11
+      },
+      "trigger": "step_on",
+      "to_map": "hartway_climb",
+      "to": {
+        "tx": 1,
+        "ty": 10
+      },
+      "facing": "right",
       "transition": "fade"
     }
   ],
@@ -648,6 +658,36 @@
       },
       "activation": "interact",
       "ref": "sign.pale_vault_rimeway"
+    },
+    {
+      "id": "sign_low_road_14",
+      "kind": "sign",
+      "at": {
+        "tx": 14,
+        "ty": 27
+      },
+      "activation": "interact",
+      "ref": "sign.hartway_low_road"
+    },
+    {
+      "id": "sign_low_road_15",
+      "kind": "sign",
+      "at": {
+        "tx": 15,
+        "ty": 27
+      },
+      "activation": "interact",
+      "ref": "sign.hartway_low_road"
+    },
+    {
+      "id": "sign_hartway_top",
+      "kind": "sign",
+      "at": {
+        "tx": 28,
+        "ty": 12
+      },
+      "activation": "interact",
+      "ref": "sign.hartway_top"
     }
   ],
   "encounters": [
@@ -1858,8 +1898,8 @@
         226,
         200,
         258,
-        263,
-        266,
+        259,
+        259,
         199,
         200,
         218,
@@ -1890,8 +1930,8 @@
         197,
         199,
         197,
-        255,
-        266,
+        197,
+        197,
         200,
         227,
         225,
@@ -1921,9 +1961,9 @@
         236,
         237,
         200,
-        198,
-        255,
-        265,
+        227,
+        227,
+        227,
         253,
         254,
         197,
@@ -1954,8 +1994,8 @@
         247,
         237,
         197,
-        255,
-        266,
+        252,
+        253,
         256,
         257,
         235,
@@ -2418,8 +2458,8 @@
         200,
         197,
         200,
-        221,
-        223,
+        224,
+        226,
         199,
         199,
         197,
@@ -2449,10 +2489,6 @@
         253,
         253,
         253,
-        254,
-        221,
-        223,
-        252,
         253,
         253,
         253,
@@ -2461,12 +2497,16 @@
         253,
         253,
         253,
-        261,
         253,
         253,
         253,
         253,
         261,
+        253,
+        253,
+        253,
+        253,
+        261,
         256,
         265,
         265,
@@ -2481,10 +2521,10 @@
         256,
         266,
         256,
-        257,
-        221,
-        223,
-        255,
+        256,
+        266,
+        266,
+        256,
         265,
         256,
         266,
@@ -2919,7 +2959,7 @@
         0,
         0,
         0,
-        0,
+        117,
         0,
         0,
         0,

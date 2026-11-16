@@ -615,6 +615,36 @@ for (x, y) in [(9, 5), (22, 4), (29, 5), (3, 12), (12, 14), (18, 15),
     if (x, y) not in avoid and deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
 
+# ---- THE HARTWAY (2026-11): the pass arrives OVER THE TOP now ------------------------------
+# The old low road in from the crags (the south gap, rows 28-29) is buried under the
+# drift; the way from the Windward Stair is the Hartway, whose Seat trail walks in
+# through the east crag at rows 10-11 (edge link: hartway_climb's west edge, rows 9-10).
+# Done after the scatter so the town's rng-rolled deco doesn't reshuffle.
+m["warps"] = [_w for _w in m["warps"] if not _w["id"].startswith("to_windward")]
+for (x, y) in [(14, 28), (15, 28), (14, 29), (15, 29)]:
+    glacier[y * W + x] = 1
+    snowtrail[y * W + x] = 0
+    deco[y * W + x] = 0
+m["objects"].append({"id": "low_road_drift", "sprite": "windward_snow_drift",
+                     "at": {"tx": 14, "ty": 27}, "w": 2, "h": 1})
+for x in (14, 15):
+    deco[27 * W + x] = 0
+    m["triggers"].append({"id": f"sign_low_road_{x}", "kind": "sign", "at": {"tx": x, "ty": 27},
+                          "activation": "interact", "ref": "sign.hartway_low_road"})
+for (x, y) in [(30, 10), (31, 10), (30, 11), (31, 11)]:
+    glacier[y * W + x] = 0
+    frosttuft[y * W + x] = 0
+    deco[y * W + x] = 0
+for (x, y) in [(29, 11), (30, 11), (31, 11)]:
+    snowtrail[y * W + x] = 1
+    deco[y * W + x] = 0
+for _k, (gy, hy) in enumerate(((10, 9), (11, 10))):
+    m["warps"].append({"id": "to_hartway" + ("_s" if _k else ""), "at": {"tx": 31, "ty": gy},
+                       "trigger": "step_on", "to_map": "hartway_climb",
+                       "to": {"tx": 1, "ty": hy}, "facing": "right", "transition": "fade"})
+owed += pt.sign(m, deco, W, sid="hartway_top", at=(28, 12))
+owed.append("sign.hartway_low_road")
+
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
     {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)},

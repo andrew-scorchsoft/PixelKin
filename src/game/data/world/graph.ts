@@ -144,6 +144,7 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'rio_tower_top', region: 'north', optional: true }, // interior: the Thunder Table
     { map_id: 'windward_stair_i', region: 'north' }, // route: lower switchbacks
     { map_id: 'windward_stair_ii', region: 'north' }, // route: high crags
+    { map_id: 'hartway_climb', region: 'north' }, // route: THE HARTWAY, the climbers' road over to Pale Vault (walked with Greg)
     { map_id: 'thunderroost', region: 'north', optional: true, reward: 'rare Storm/Flying kin + item' },
     { map_id: 'wind_eye', region: 'north', optional: true, reward: 'landmark sky-grotto; a unique Storm kin' },
     { map_id: 'pale_vault_glacier', region: 'north' },
@@ -374,7 +375,10 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'rio_tower_2', to_map: 'rio_tower_top', via_warp: 'up_stairs', bidirectional: true },
     { from_map: 'galehigh_terraces', to_map: 'windward_stair_i', via_warp: 'to_stair', bidirectional: true },
     { from_map: 'windward_stair_i', to_map: 'windward_stair_ii', via_warp: 'to_stair_ii', requires_ability: 'updraft_kite', bidirectional: true },
-    { from_map: 'windward_stair_ii', to_map: 'pale_vault_glacier', via_warp: 'to_glacier', bidirectional: true },
+    // the low road is drifted shut until you've been over the top once (or were already past it)
+    // the low road is buried (2026-11): the pass goes stair_ii -> hartway_climb -> glacier, by its edges
+    { from_map: 'windward_stair_ii', to_map: 'hartway_climb', via_warp: 'to_hartway', bidirectional: true },
+    { from_map: 'hartway_climb', to_map: 'pale_vault_glacier', via_warp: 'to_vault', bidirectional: true },
     // Pale Vault interiors (door warps, both ways) + the Lamp-Line: the
     // undercroft door takes the aurora-oil (the earned loop, spine §5 shape
     // #6) — NEVER an ability gate (§0 rule 1: Ysolde is reachable on foot).

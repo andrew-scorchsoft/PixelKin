@@ -144,6 +144,101 @@ The lower switchbacks are walked; the wind-gap between the two halves needs the 
 Kite**. Reaching the high crags opens a **drop shortcut** back down to Galehigh, a quick way home
 for supplies.
 
+**The low road is buried.** From the high crags the old road north to the glacier is under a
+drift for good. The way on goes **east through the crag wall, round the Shoulder**, and out onto
+the Landing at the foot of the climbers' road *over the top*. Its ridges are a hand's width of
+snow with a drop on both sides: nobody can walk them, and the rope-warden lets nobody try alone.
+
+1. Take the drop shortcut back down to **Galehigh**. An old climber in a red jacket stands at
+   the **top of the town**, looking up at the Stair. Talk to him, and when he asks what you'd
+   say to a bad idea, **tell him no**. He agrees to guide you.
+2. Meet him on the Landing and **rope up**.
+3. Walk to the **east end of the shelf**. He edges across the first ridge, then you are led over
+   it a boot at a time. After each ridge he fixes a **rope ladder**, so nobody crosses it twice.
+4. At the top, sit down when he tells you to. Then take the **trail west** along the back of the
+   summit, straight down into the Pale Vault Glacier.
+
+The rope ladders stay fixed, so the pass is an ordinary walk from then on (ladders are climbed
+slowly, never at a run). There is a walkers' camp on the first shelf where you can rest. A save
+that had already reached the glacier finds the ladders already in place.
+
+| Trainer | Where | Team | Purse |
+|---------|-------|------|-------|
+| Kite-hand Perrin | Terraces | Sparrowcaw 28, Thrumvane 29 | 464 |
+| Terrace-farmer Sorrel | Terraces | Cirruff 29, Sparkrat 30 | 480 |
+| Wind-ward Tamsin | Skyloft | Thrumvane 29, Thrumble 30 | 600 |
+| Wind-ward Bran | Skyloft | Cirruff 30, Flintbeak 31 | 620 |
+
+Wild kin on the terraces run 28–30: Sparrowcaw, Thrumvane, Cirruff and Squallox.
+
+### Lampwarden Mira Vael (Storm)
+
+Mira waits at the launch ledge at the head of the Skyloft.
+
+| Kin | Level | Type |
+|-----|-------|------|
+| Thrumble | 30 | Storm |
+| Glacewing | 31 | Storm/Frost |
+| Flintbeak | 32 | Storm |
+| **Strikeaven** (ace) | 34 | Storm |
+
+Purse: 2,040 wicks.
+
+- **Bring:** Stone kin. They take **no damage at all** from Storm moves and hit Storm hard. Frost
+  is good too. Watch Glacewing: its Frost moves hurt Stone.
+- **Avoid:** Tide and Verdant kin, which Storm hits hard.
+- **Level:** 30–31.
+
+Win for the **Storm Gleam** and the Lantern Gift **Updraft Kite**: ride warm thermals up terraces
+and across short gaps.
+
+### Updraft Kite: what just opened
+
+- **The Wind-Eye**, a sky-grotto off Galehigh's high ledges: **Cumulance**, Hailwhirr and
+  Glacewing, plus 2 Beacon Charges, a Starglass Shard and a Lumen Drop.
+- **Windward Stair II** (the way on), and **Thunderroost** off it.
+- **Kiln Gully**, through the Ashfall's kiln stack.
+- **The Windward lookout** on the Ashfall, a kite crossing to Windward Stair I.
+- **The Lantern-car's Galehigh line** at the Crossroads.
+
+### Side quests at Galehigh
+
+- **"The Last Pane"** (Oda Kilnwright, at the Ashfall camp). Ride the kiln stack's thermal into
+  **Kiln Gully**, take the last pane of lamp-glass from the drying loft, and set it in the blind
+  lamp by Galehigh's kite-stall. Reward: 1,200 wicks. Kiln Gully also holds a Beacon Charge and
+  the **Star-chart: Shardstorm**, and its wild kin (33–35) include the rare **Scorchwing**.
+- **"The Crag-tender's Kettle"** (the crag-tender on Windward Stair I). Pick the wind-burnt
+  ledge-herb from a high Galehigh terrace (Updraft Kite) and carry it up to her. Reward: the
+  **Warm Flask**, a strong heal.
+- **"A Kite for the Waystone Kid"**: after the Storm Gleam, the kite-maker has a kite the
+  Waykeeper ordered for the kid at the Vesper Crossroads. Ride the Lantern-car down and deliver
+  it.
+
+## The Windward Stair
+
+**Where next? North up the Windward Stair to the Pale Vault Glacier.**
+
+The lower switchbacks are walked; the wind-gap between the two halves needs the **Updraft
+Kite**. Reaching the high crags opens a **drop shortcut** back down to Galehigh, a quick way home
+for supplies.
+
+**The low road is drifted shut.** From the high crags the road north to the glacier is buried,
+so the way on is *over the top*, up the climbers' steps in the crag beside the road. The
+rope-warden there lets nobody climb alone:
+
+1. Take the drop shortcut back down to **Galehigh**. An old climber in a red jacket stands at
+   the **top of the town**, looking up at the Stair. Talk to him, and when he asks what you'd
+   say to a bad idea, **tell him no**. He agrees to guide you.
+2. Meet him at the steps on the high crags and **rope up**.
+3. Follow him over. He walks each narrow ridge first; walk up to the ridge and he leads. After
+   each one he fixes a **rope ladder**, so you never have to cross that ridge again.
+4. At the top, sit down when he tells you to. Then take the **safe trail at the east end** down
+   into the Pale Vault Glacier.
+
+Once you have been over, the low road is dug out and stays open, and the rope ladders stay
+fixed. There is a walkers' camp on the first shelf where you can rest. A save that had already
+reached the glacier is not held up by any of this.
+
 | Trainer | Where | Team | Purse |
 |---------|-------|------|-------|
 | Crag-hand Edda | Lower Stair | Sparkrat 34, Flintbeak 35 | 560 |

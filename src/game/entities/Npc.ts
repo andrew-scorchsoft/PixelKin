@@ -114,6 +114,7 @@ const SPRITE_SHEETS: Record<string, string> = {
   kite_weaver: 'kite_weaver',
   frost_herder: 'frost_herder',
   pass_walker: 'pass_walker',
+  greg: 'greg', // Paul's old rope partner (the Hartway, 2026-11) — his own sheet
   sun_keeper: 'sun_keeper',
   star_watcher: 'star_watcher',
   hollowing_acolyte: 'hollowing_acolyte',

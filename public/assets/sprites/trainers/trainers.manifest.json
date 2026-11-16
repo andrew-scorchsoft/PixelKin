@@ -84,6 +84,11 @@
       "width": 128,
       "height": 128
     },
+    "greg": {
+      "path": "assets/sprites/trainers/greg.webp",
+      "width": 128,
+      "height": 128
+    },
     "hollow_gardener": {
       "path": "assets/sprites/trainers/hollow_gardener.webp",
       "width": 128,

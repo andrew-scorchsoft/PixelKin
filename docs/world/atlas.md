@@ -451,6 +451,20 @@ the GBC→GBA voice budget the skill enforces, and write mp3 loops into
 
 ---
 
+### The Hartway — *the climbers' road over the Windward pass (main path; ships silently)*
+
+- **Kind:** route (`hartway_climb`) · **Region:** north · **Gate:** none on the map's edges — its two ridges are
+  solid crest tiles only the `edge` op crosses, roped to Greg (`flag:greg_roped`); it sits edge-to-edge between
+  `windward_stair_ii` (east annex, the Shoulder) and `pale_vault_glacier` (east edge); the old low road is buried
+- **Graphics:** alpine: shared `snow` / `glacierwall` / ice faces, with the `hartway_set` **gulf** (the night under a
+  ridge) on both sides of the Staircase and the Whiteback. The Seat: a silvered bench, a cairn, the climbers' bothy
+  the kin took back.
+- **Story:** `walkthrough/12-the-hartway.md`. Greg leads, you say "No, Greg"; the Sunstag herd climbs in the mist.
+- **Music:** reuses `windward-stair-a`; bed `amb-wind`; the reel's `world-mist-herd`.
+- **Kin (35-36, day twins):** Glacewing, Flintbeak, Sparkrat, Thrumble, Geolace; Dawnfawn in the high grass.
+
+---
+
 ### The Sere — *Galehigh's dry side (optional, mid-game; ships silently)*
 
 <img src="../../assets/concept-art/areas/the-sere.webp" alt="The Sere — concept art" width="480">

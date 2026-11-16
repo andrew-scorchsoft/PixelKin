@@ -9,6 +9,7 @@ import {
   type ActorFrames,
   actionTextureKey,
   ensurePlaceholderCharacter,
+  HAUL,
   HUMAN_WALK_FRAMES,
   STEP_MS,
 } from './Actor';
@@ -48,6 +49,8 @@ const RUN_MS = Math.round(STEP_MS * 0.6);
 const RIDE_MS = Math.round(STEP_MS * 0.4);
 /** Carried by glare ice or a rail: brisk and even, whatever you press. */
 const SLIDE_MS = Math.round(STEP_MS * 0.5);
+/** One rung of a ladder: slower than a step, and hauled (Actor.HAUL), never run. */
+const CLIMB_MS = Math.round(STEP_MS * 1.7);
 /** The player's runner-riding walk-sheet (same 4×4 layout). Optional — a drawn
  *  wheel under the walking sprite stands in when it isn't packed. */
 const PLAYER_RIDE_SHEET = 'player_indi_runner';
@@ -404,9 +407,20 @@ export class Player extends Actor {
   ): boolean {
     const done = (x: number, y: number) => this.arrived(x, y, dir, t, onArrive);
     if (p.kind === 'step') {
-      if (!this.step(dir, () => true, done, ms)) return false;
+      // A LADDER is climbed, not walked: back to the camera, hand over hand (the
+      // sprite mirrors each rung, so the reaching arm alternates), one hauled rung
+      // at a time and never at a run. Stepping off the top or bottom walks again.
+      const onLadder = p.deck?.kind === 'ladder' || t.rules.spanAt(this.tx, this.ty)?.kind === 'ladder';
+      const climbing = p.deck?.kind === 'ladder';
+      if (!this.step(dir, () => true, done, onLadder ? CLIMB_MS : ms, onLadder ? HAUL : 'Linear')) return false;
       if (p.deck || Player.drawnOverDeck(t.rules, p.to.tx, p.to.ty)) this.elevated = true;
-      if (p.deck?.kind === 'ladder') this.playWalkAs('up');
+      if (onLadder) {
+        this.sprite.anims.timeScale = STEP_MS / CLIMB_MS;
+        this.playWalkAs('up');
+        this.sprite.setFlipX(climbing ? !this.sprite.flipX : false);
+      } else if (this.sprite.flipX) {
+        this.sprite.setFlipX(false);
+      }
       return true;
     }
     if (p.kind === 'pass') {
@@ -432,6 +446,7 @@ export class Player extends Actor {
     const span = t.rules.spanAt(x, y);
     this.elevated = Player.drawnOverDeck(t.rules, x, y);
     if (span?.kind === 'ladder') this.setFacing('up');
+    else if (this.sprite.flipX) this.sprite.setFlipX(false);
     onArrive(x, y);
   }
 }

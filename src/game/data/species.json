@@ -4735,6 +4735,13 @@
      "rarity": "common",
      "min": 56,
      "max": 60
+    },
+    {
+     "area": "hartway_foot",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 17,
+     "max": 19
     }
    ],
    "scripted": false,
@@ -5552,6 +5559,20 @@
      "max": 32
     },
     {
+     "area": "hartway_climb",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 35,
+     "max": 36
+    },
+    {
+     "area": "hartway_climb",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
      "area": "old_seams_ii",
      "terrain": "cave",
      "rarity": "common",
@@ -5787,6 +5808,13 @@
     },
     {
      "area": "saltreach_fen_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 17,
+     "max": 19
+    },
+    {
+     "area": "hartway_foot",
      "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 17,
@@ -6869,6 +6897,13 @@
      "rarity": "common",
      "min": 55,
      "max": 58
+    },
+    {
+     "area": "hartway_foot",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 17,
+     "max": 18
     }
    ],
    "scripted": false,
@@ -7614,6 +7649,13 @@
      "rarity": "common",
      "min": 56,
      "max": 59
+    },
+    {
+     "area": "hartway_foot",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 17,
+     "max": 19
     }
    ],
    "scripted": false,
@@ -7911,6 +7953,13 @@
      "rarity": "uncommon",
      "min": 21,
      "max": 23
+    },
+    {
+     "area": "hartway_foot",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 18,
+     "max": 19
     }
    ],
    "scripted": false,
@@ -8891,6 +8940,20 @@
     },
     {
      "area": "windward_stair_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 56,
+     "max": 62
+    },
+    {
+     "area": "hartway_climb",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 35,
+     "max": 36
+    },
+    {
+     "area": "hartway_climb",
      "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 56,
@@ -10816,6 +10879,20 @@
      "rarity": "common",
      "min": 31,
      "max": 33
+    },
+    {
+     "area": "hartway_climb",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 35,
+     "max": 36
+    },
+    {
+     "area": "hartway_climb",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 56,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -11029,6 +11106,13 @@
     },
     {
      "area": "windward_stair_ii",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 64
+    },
+    {
+     "area": "hartway_climb",
      "terrain": "tall_grass",
      "rarity": "uncommon",
      "min": 57,
@@ -11470,6 +11554,20 @@
      "max": 64
     },
     {
+     "area": "hartway_climb",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 35,
+     "max": 36
+    },
+    {
+     "area": "hartway_climb",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 57,
+     "max": 63
+    },
+    {
      "area": "farlamp_sound",
      "terrain": "tall_grass",
      "rarity": "rare",
@@ -11824,6 +11922,20 @@
      "rarity": "common",
      "min": 31,
      "max": 33
+    },
+    {
+     "area": "hartway_climb",
+     "terrain": "tall_grass",
+     "rarity": "common",
+     "min": 35,
+     "max": 36
+    },
+    {
+     "area": "hartway_climb",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 62
     }
    ],
    "scripted": false,
@@ -14488,6 +14600,20 @@
      "rarity": "uncommon",
      "min": 57,
      "max": 64
+    },
+    {
+     "area": "hartway_climb",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 36,
+     "max": 36
+    },
+    {
+     "area": "hartway_climb",
+     "terrain": "tall_grass",
+     "rarity": "uncommon",
+     "min": 57,
+     "max": 63
     },
     {
      "area": "sunvault_climb_iii",

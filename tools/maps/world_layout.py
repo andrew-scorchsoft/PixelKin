@@ -74,6 +74,7 @@ NODE_KINDS: dict[str, str] = {
     # north
     "cinderwind_scarp": "route", "galehigh_terraces": "town", "lanternway_galehigh": "route",
     "wind_eye": "landmark", "windward_stair_i": "route", "windward_stair_ii": "route",
+    "hartway_climb": "route",  # the climbers' road over the Hartshoulder (2026-11)
     "the_sere": "route",  # Galehigh's dry side (2026-11); the Rio Tower is its interior
     "thunderroost": "landmark", "pale_vault_glacier": "town",
     "cinderwind_ashfall": "route", "cinderwind_kiln": "landmark",  # Lane A (walkthrough/10 Part II)
@@ -325,8 +326,9 @@ ROADS: list[tuple[str, str, str]] = [
     ("galehigh_terraces", "windward_stair_i", "road"),
     ("galehigh_terraces", "the_sere", "road"),
     ("windward_stair_i", "windward_stair_ii", "gate"),
+    ("windward_stair_ii", "hartway_climb", "road"),      # round the Shoulder to the Landing
+    ("hartway_climb", "pale_vault_glacier", "road"),     # the Seat's trail, west into the town
     ("windward_stair_ii", "thunderroost", "gate"),
-    ("windward_stair_ii", "pale_vault_glacier", "road"),
     ("windward_stair_ii", "galehigh_terraces", "gate"),  # late shortcut
     # west
     ("pale_vault_glacier", "hushfrost_pass_i", "road"),

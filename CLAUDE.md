@@ -218,6 +218,7 @@ go digging on every task.
   **Thunder Table** restaurant at the top). Relight the three **Calling Rods** (`flag:sere_rod_1..3` → derived
   `flag:sere_storm_called`), eat at the Table and the rolling thunder crosses the Sere (`script.rio_thunder`, the
   `frames` op); the first storm leaves the `emergent` milagro card on the tablecloth. Content `regions/sere.ts`.
+  **The Hartway** (2026-11, MAIN PATH, Paul's story, SHIPS SILENTLY, `walkthrough/12-the-hartway.md`): the last pitch of the Windward pass (`hartway_climb`, lv 35-36, between `windward_stair_ii` and `pale_vault_glacier`). It SLOTS INTO the pass by its edges (v1.51: Stair II's east annex "the Shoulder" → the Landing; the Seat's trail → Pale Vault's east edge; the old low road is buried, no portal steps). Its two ridges are SOLID crest tiles only the `edge` op crosses, so the mountain is the gate (old saves get the rope ladders via the derived `flag:hart_rope_1/2`), and nobody climbs alone: Hollis → **Greg** fetched from the top of Galehigh (promise to say "No, Greg"; own sprite `greg`) → the Staircase and the Whiteback with Greg leading (three choices, rope ladders fixed behind you) → the Seat, where the Sunstag herd climbs in the mist → the safe trail down. Greg never names his partner on the main path; Paul's rope-end and telling Paul are optional extras. Content `regions/hartway.ts`.
 - **The journey is canon, written before the game.** `docs/world/walkthrough/` is the
   start-to-finish **user-journey blueprint** — golden thread, five interlocking arcs (Wren,
   the Hollowing/Còr, Fenn, the celestial calendar, festivals), the level curve, the
@@ -402,6 +403,12 @@ free instead of re-deriving it.
   `node tools/build/bump_version.mjs minor` (a patch for a tiny fix) — it updates `package.json`
   AND `src/game/version.ts` (shown on the title screen + browser tab), then refresh the lock with
   `npm install --package-lock-only`. Players check that number to know they're on the new build.
+- **Changelog spoiler rule (STANDING — apply it without being asked).** `src/game/data/changelog.json` is read
+  in-game and on the website by the very people the hidden content was built for. Before writing ANY entry, check each
+  note: does it name or describe (a) hidden real-people content — anything of Paul's (the full list is in the "world has
+  changed" gotcha below; new Paul content joins that list in the same commit), or (b) an ending, late-story or
+  post-credits surprise? If yes, that note is NOT written. A round that is only hidden content gets NO entry at all (the
+  version still bumps). When unsure, leave it out. Seeds/hints for hidden content are hidden too.
 - If the branch's PR has already been merged, restart the branch from `origin/main` and open a
   NEW PR for the follow-up work (never stack onto the merged one).
 
@@ -1295,7 +1302,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   **The changelog must NEVER spoil the hidden real-people content** (owner's rule, 2026-10 — the
   people it was built for read the notice AND the website): nothing about Paul or his things — the Booji-Wooji
   Man / S4–S5, the Chickenpig, the Lifting House gym, Paul's house, the Wayward Arms, the
-  Reckoning Works' walking-man story and Bettany Rook's drovers story there, the Bright Bubble bar in Dawnstead (Paul's fizz-bubbles memory), Agent Pellow + the newspaper man in the Galehigh inn (the WANTED joke; Paul always promises the story "over a whiskey sometime" and never tells it), Paul's dog the Old Girl and Kathleen's tidy solicitor's desk, the beacon-road man with the case. Also the whole **Sere** — the desert east of Galehigh, the **Rio Tower**, the Thunder Table, the
+  Reckoning Works' walking-man story and Bettany Rook's drovers story there, the Bright Bubble bar in Dawnstead (Paul's fizz-bubbles memory), Agent Pellow + the newspaper man in the Galehigh inn (the WANTED joke; Paul always promises the story "over a whiskey sometime" and never tells it), Paul's dog the Old Girl and Kathleen's tidy solicitor's desk, the beacon-road man with the case. Also the whole **Hartway** (Greg, Hollis, the Hartshoulder, the Whiteback, the Seat and the herd in the mist — Paul's climbing stories; it is on the MAIN PATH, so the guide walks players through it without those names). Also the whole **Sere** — the desert east of Galehigh, the **Rio Tower**, the Thunder Table, the
   Thousandfold, the Calling Rods and the rolling-thunder scene (owner's call, 2026-11; `guide.mjs` FORBIDDEN carries
   the names). Those changes ship
   silently; an entry covers only general changes (and none at all is fine).
@@ -1345,7 +1352,9 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   the climax never strands; Fenn's Starlamp rides Wren's un-missable crossroads join band) →
   `script.dawn_breaks` (sets `flag:dawn` ITSELF, then the **`cinematic` op** — the runner hook
   persists FIRST, stops world music, and hands to CinematicScene; nothing after the op plays, so
-  it must be a script's LAST step). `ENDING_CREDITS` (dawnbreak panels + credits) routes → Title;
+  it must be a script's LAST step). `ENDING_CREDITS` (dawnbreak panels + credits) hands on to **`THE_DEPOT`** (2026-11, its own script so skipping the roll
+  never skips it, and `skippable: false` so it is always watched; the roll shows a bottom strip — the beat's `creditsNote` + "B: SKIP" — and Andrew's last hints + the NEXT panel say to stay past the credits: the old coach depot, the departures board, the ticket punched with eight stars — the journey you finished
+  was one you chose, and now you choose the next; Paul's own idea, never named, never in the changelog) → Title;
   Continue resumes at the summit with `flag:dawn` held — the post-game's door.
 - **Crown interludes cut AWAY to Còr, then return (X-4, `content/interludes.ts`).** On the
   first idle frame a crown's `requires` are held, `WorldScene.runCrownInterlude` stages the
@@ -1560,6 +1569,32 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   (`assets/backgrounds/cinematic/thunder/`, packed by `tools/assets/pack_thunder_frames.py`), sound is synthesised
   (`tools/audio/thunder_roll.py`). New desert/canyon terrain = the `sere_set` accent (`build_sere_set.py`); props =
   `sereforge.py`. Record a scene with `shoot.mjs --script <ref> --video <dir>` (silent webm; mux audio with ffmpeg).
+- **Seeding hidden quests is WORDS ONLY, on people who already talk.** The Hartway's Greg and the tower are hinted from
+  Pearlmoor on (the innkeep, the fisher and the Quay elder after the Tide; Kathleen, Rose and the pinboard in Paul's
+  house): a page appended to an existing line, never a new NPC, never the quest's name, never what happens there.
+- **A ladder that appears later = a flag-gated span (2026-11).** `SpanZone.requires_flag`/`hidden_when_flag` (Traversal.ts ⇄
+  `worldmodel.span_at(…, thrown)` ⇄ `check_traversal.mjs`): the span isn't there until its flag is, so the cliff under it
+  stays solid. Pair it with a `solid:false` object carrying the SAME flag (the Hartway's `hartway_rope_ladder`); a `setFlag`
+  mid-scene drops both live. The road it shortcuts must be walkable without it.
+- **The `frames` op takes `captions` (2026-11):** one entry per still (a string, pages, or null); a captioned frame shows its
+  words in a band on the picture and waits for Confirm, so a whole scene can be told ON the stills (the Hartway's Whiteback and
+  mist-herd reels; packed by `tools/assets/pack_hartway_frames.py`). `frameSfx` fires a cue as a frame lands. A ridge = ordinary
+  ground one tile wide inside `gulf` terrain (`hartway_set`, the drop; `build_hartway_set.py`). To READ as a ridge and not a path
+  between pits (the 2026-11 look review): leave the crest plain snow (never a trail family), rag the gulf outline, never leave a
+  1-wide gulf strip (the set has no end/strip caps), and the gulf draws a rock FACE under any snow to its north. Far-off lights in the
+  drop are PINNED tiles (`gulf_town`/`gulf_lane`), never a scattered fill variant.
+- **A save can outlive its map (2026-11).** `WorldScene.create` wakes a save made on a map that no longer exists at its last rest
+  point (and drops a rest point on a removed map); a map whose LAYOUT changed gets a row in `RELAID_MAPS` (map id → the version that
+  re-laid it) so an older save standing there is re-validated to standable ground. When a mid-path gate is added, every stage-aware
+  keeper needs a branch for saves ALREADY past it that still opens the quest (the Hartway's `flag:pass_open` stages set `q_hartway`).
+- **Headless input must HOLD keys.** `InputController` polls key state per frame, so a Playwright `keyboard.press` (down+up at once) is
+  dropped at low fps; in an ad-hoc harness use down → wait ~160 ms → up, and never edit source while one runs (Vite reloads the page).
+- **A ridge/ledge nobody should stroll across is SOLID + the `edge` op (2026-11).** Pin a thin crest tile on a colliding cell
+  (`hartway_set` `crest_*`: 2px of snow on a rock fin, the line LOW in the cell so boots sit on it) and carry actors over with
+  `{op:'edge', actor, path, speed, teeter}` (hauled steps, a lean per step). Never make a "precarious" crossing ordinary walkable
+  ground. Ladder spans are CLIMBED by the player automatically (`Player.execute`: slow, `Actor.HAUL`, back to camera).
+- **Widening a shipped map without reshuffling its rng deco:** pad the finished layers after the scatter (`build_windward_stair_ii.py`
+  `_widen`, 28 → 38) — the way to add "map tiles elsewhere" so a new map can sit edge-to-edge in `world_geometry`.
 - **One-way exits are `travel`, not warps** (Lowtinder's well climb into Tinderwick): audit_warps
   rejects a warp with no return; a scripted `travel` is the legal one-way door.
 

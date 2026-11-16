@@ -1,0 +1,196 @@
+{
+  "name": "hartway_set",
+  "image": "assets/tilesets/hartway_set.webp",
+  "tile_width": 16,
+  "tile_height": 16,
+  "columns": 8,
+  "tile_count": 30,
+  "tiles": [
+    {
+      "index": 0,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "corner_nw",
+      "collides": true
+    },
+    {
+      "index": 1,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "edge_n",
+      "collides": true
+    },
+    {
+      "index": 2,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "corner_ne",
+      "collides": true
+    },
+    {
+      "index": 3,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "edge_w",
+      "collides": true
+    },
+    {
+      "index": 4,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 5,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "edge_e",
+      "collides": true
+    },
+    {
+      "index": 6,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "corner_sw",
+      "collides": true
+    },
+    {
+      "index": 7,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "edge_s",
+      "collides": true
+    },
+    {
+      "index": 8,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "corner_se",
+      "collides": true
+    },
+    {
+      "index": 9,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "strip_h",
+      "collides": true
+    },
+    {
+      "index": 10,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "strip_v",
+      "collides": true
+    },
+    {
+      "index": 11,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "inner_nw",
+      "collides": true
+    },
+    {
+      "index": 12,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "inner_ne",
+      "collides": true
+    },
+    {
+      "index": 13,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "inner_sw",
+      "collides": true
+    },
+    {
+      "index": 14,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "inner_se",
+      "collides": true
+    },
+    {
+      "index": 15,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 16,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 17,
+      "role": "void",
+      "terrain": "gulf",
+      "autotile": "fill",
+      "collides": true
+    },
+    {
+      "index": 18,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 19,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 20,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 21,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 22,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 23,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 24,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 25,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 26,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 27,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 28,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 29,
+      "role": "void",
+      "collides": true
+    }
+  ]
+}

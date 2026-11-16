@@ -370,13 +370,23 @@
     },
     {
       "id": "windward_stair_ii",
-      "x": 173,
+      "x": 178,
       "y": 194,
-      "gx": 17,
+      "gx": 18,
       "gy": 19,
       "kind": "route",
       "region": "north",
       "name": "Windward Stair"
+    },
+    {
+      "id": "hartway_climb",
+      "x": 207,
+      "y": 181,
+      "gx": 21,
+      "gy": 18,
+      "kind": "route",
+      "region": "north",
+      "name": "The Hartway"
     },
     {
       "id": "the_sere",
@@ -392,7 +402,7 @@
       "id": "thunderroost",
       "x": 183,
       "y": 192,
-      "gx": 18,
+      "gx": 19,
       "gy": 19,
       "kind": "landmark",
       "region": "north",
@@ -1431,15 +1441,45 @@
         ],
         [
           18,
-          20
-        ],
-        [
-          17,
-          20
-        ],
-        [
-          17,
           19
+        ]
+      ]
+    },
+    {
+      "a": "windward_stair_ii",
+      "b": "hartway_climb",
+      "kind": "road",
+      "path": [
+        [
+          18,
+          19
+        ],
+        [
+          18,
+          18
+        ],
+        [
+          21,
+          18
+        ]
+      ]
+    },
+    {
+      "a": "hartway_climb",
+      "b": "pale_vault_glacier",
+      "kind": "road",
+      "path": [
+        [
+          21,
+          18
+        ],
+        [
+          21,
+          17
+        ],
+        [
+          18,
+          17
         ]
       ]
     },
@@ -1449,31 +1489,12 @@
       "kind": "gate",
       "path": [
         [
-          17,
-          19
-        ],
-        [
           18,
           19
-        ]
-      ]
-    },
-    {
-      "a": "windward_stair_ii",
-      "b": "pale_vault_glacier",
-      "kind": "road",
-      "path": [
+        ],
         [
-          17,
+          19,
           19
-        ],
-        [
-          17,
-          17
-        ],
-        [
-          18,
-          17
         ]
       ]
     },
@@ -1483,12 +1504,8 @@
       "kind": "gate",
       "path": [
         [
-          17,
+          18,
           19
-        ],
-        [
-          17,
-          25
         ],
         [
           18,
@@ -2388,6 +2405,7 @@
     "glowmoss_deep_b1f": "glowmoss_deep",
     "gullcry_rock": "gullcry_rock",
     "gullwrack_hut": "farlamp_gullwrack",
+    "hartway_climb": "hartway_climb",
     "helia_vault": "helia_vault",
     "hollowfen_stillworks": "hollowfen_stillworks",
     "hushfrost_pass_i": "hushfrost_pass_i",

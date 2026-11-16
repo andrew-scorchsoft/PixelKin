@@ -169,6 +169,14 @@ const STRANDED_WITHOUT: Record<string, AbilityId> = {
   coldfog_marches_i: 'emberward',
 };
 
+/** Maps whose LAYOUT changed in a release (map id -> the version that re-laid it): a save
+ *  from before it, standing there, has its tile re-validated on load. */
+const RELAID_MAPS: Record<string, string> = {
+  hartway_climb: '1.51',
+  windward_stair_ii: '1.51', // the low road's landing tiles are under the drift now
+  pale_vault_glacier: '1.51',
+};
+
 export class WorldScene extends Phaser.Scene {
   private ready = false;
   private _modal = false;
@@ -324,8 +332,11 @@ export class WorldScene extends Phaser.Scene {
     // A save made on a map whose every exit later became Gift-gated (the 1.12
     // world-geometry pass retired the Crossroads' marsh road) would load into a
     // sealed pocket — wake those players at their last rest point instead.
+    // A rest point on a map that no longer exists (a retired area) is no rest point.
+    if (this.respawn && !MAP_REGISTRY[this.respawn.map]) this.respawn = undefined;
     const strandedBy = STRANDED_WITHOUT[data.mapId];
-    if (strandedBy && !this.abilities.has(strandedBy)) {
+    // ...and a save made ON a map a later release removed wakes at the last hearth too.
+    if (!MAP_REGISTRY[data.mapId] || (strandedBy && !this.abilities.has(strandedBy))) {
       const home = this.respawn ?? {
         map: VESPERHOLM_GRAPH.start_map,
         tx: VESPERHOLM_GRAPH.start_at.tx,
@@ -338,7 +349,11 @@ export class WorldScene extends Phaser.Scene {
     }
 
     const spawn = data.spawn ?? this.defaultSpawn(data.mapId);
-    void this.enterMap(data.mapId, spawn, spawn.facing, true);
+    // A map re-laid since the save was made: its stored tile may now be a wall or a drop,
+    // so re-validate it to the nearest standable ground.
+    const relaid = RELAID_MAPS[data.mapId];
+    const stale = !!relaid && data.version_from !== undefined && compareVersions(data.version_from, relaid) < 0;
+    void this.enterMap(data.mapId, spawn, spawn.facing, true, stale);
   }
 
   private defaultSpawn(mapId: string): { tx: number; ty: number; facing?: Facing } {

@@ -1232,6 +1232,27 @@
       "tw": 1,
       "th": 2
     },
+    "hartway_bench": {
+      "path": "assets/sprites/objects/hartway_bench.webp",
+      "width": 32,
+      "height": 16,
+      "tw": 2,
+      "th": 1
+    },
+    "hartway_rope_ladder": {
+      "path": "assets/sprites/objects/hartway_rope_ladder.webp",
+      "width": 16,
+      "height": 80,
+      "tw": 1,
+      "th": 5
+    },
+    "hartway_ruin_hut": {
+      "path": "assets/sprites/objects/hartway_ruin_hut.webp",
+      "width": 64,
+      "height": 64,
+      "tw": 4,
+      "th": 4
+    },
     "hoard_broom": {
       "path": "assets/sprites/objects/hoard_broom.webp",
       "width": 16,

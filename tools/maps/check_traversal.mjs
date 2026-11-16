@@ -73,6 +73,8 @@ function fixture() {
       { id: 'trestle', kind: 'bridge', axis: 'h', under: true, rect: { tx: 5, ty: 8, w: 5, h: 1 } },
       { id: 'ladder', kind: 'ladder', axis: 'v', rect: { tx: 12, ty: 6, w: 1, h: 1 } },
       { id: 'cliff_ladder', kind: 'ladder', axis: 'v', rect: { tx: 2, ty: 6, w: 1, h: 1 } },
+      // a rope ladder fixed later: there only once its flag is held
+      { id: 'rope_ladder', kind: 'ladder', axis: 'v', rect: { tx: 7, ty: 6, w: 1, h: 1 }, requires_flag: 'flag:rope' },
     ],
     jumps: [{ id: 'ramp', at: { tx: 9, ty: 9 }, dir: 'left', length: 3 }],
   };
@@ -104,7 +106,7 @@ function engineReach(T, d) {
   const inb = (x, y) => x >= 0 && y >= 0 && x < d.w && y < d.h;
   const ground = (x, y) => inb(x, y) && d.ground[y][x];
   const reached = new Set();
-  const levers = [...new Set(d.flows.flatMap((f) => [f.requires_flag, f.hidden_when_flag].filter(Boolean)))];
+  const levers = [...new Set([...d.flows, ...d.spans].flatMap((f) => [f.requires_flag, f.hidden_when_flag].filter(Boolean)))];
   if (levers.length > 8) throw new Error(`${d.id}: ${levers.length} lever flags — too many combinations to walk`);
   const combos = [];
   for (let bits = 0; bits < 1 << levers.length; bits++) {

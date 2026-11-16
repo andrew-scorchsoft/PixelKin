@@ -814,6 +814,23 @@ SERE_ENCOUNTERS = {
 for _slug, _rows_ in SERE_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
+# The Hartway (2026-11, MAIN PATH: the climbers' road from Windward Stair II over to Pale
+# Vault; the high crags' own table, 35-36 + day twins): mirrors of the BUILT in-map tables
+# (tools/maps/build_hartway_climb.py). Dawnfawn graze only the high grass above the Seat.
+def _hart(rows):
+    return _rows("hartway_climb", rows)
+HARTWAY_ENCOUNTERS = {
+    "glacewing": _hart([(35, 36, "common"), (57, 63, "common")]),
+    "flintbeak": _hart([(35, 36, "common"), (56, 62, "common")]),
+    "sparkrat":  _hart([(35, 36, "common"), (56, 62, "uncommon")]),
+    "thrumble":  _hart([(35, 36, "common"), (57, 62, "uncommon")]),
+    "geolace":   _hart([(35, 36, "uncommon"), (56, 62, "uncommon")]),
+    "cirruff":   _hart([(57, 64, "uncommon")]),
+    "dawnfawn":  _hart([(36, 36, "uncommon"), (57, 63, "uncommon")]),
+}
+for _slug, _rows_ in HARTWAY_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
 # The Wild Ways — Sunvault Climb rebuild (S, 09-the-wild-ways §2 S, 2026-10): the
 # Gilt Face + the Sun Ledges' BUILT in-map tables (tools/maps/build_sunvault_climb_iii/_iv.py),
 # night (48-49) + day twins. Same W6 weight->rarity rule.
@@ -1190,6 +1207,8 @@ CURATED_AREAS = {
     "cinderwind_ashfall", "cinderwind_kiln",
     # The Sere (2026-11): Galehigh's dry side (mirrored above, SERE_ENCOUNTERS)
     "the_sere",
+    # The Hartway (2026-11): the climbers' road over to Pale Vault (HARTWAY_ENCOUNTERS)
+    "hartway_climb",
     # The Wild Ways — Sunvault Climb rebuild (S): the two new face maps
     "sunvault_climb_iii", "sunvault_climb_iv",
     # The Wild Ways — the Rimeway (C)

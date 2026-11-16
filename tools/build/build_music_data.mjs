@@ -45,6 +45,7 @@ const HIDDEN = ['wakeful-fair', 'battle-wakeful'];
  *  cue's "where", and a cue only they play is left off the page entirely. */
 const HIDDEN_MAPS = new Set([
     'the_sere', 'rio_tower_1', 'rio_tower_2', 'rio_tower_top',
+    'hartway_climb', // the Hartway (2026-11): Paul's climbing story
     // Paul's places (S4/S5/S7 + the hidden real-people rooms) — CLAUDE.md's never-spoil list
     'pearlmoor_lifting_house', 'pearlmoor_lifting_house_b1', 'pearlmoor_wanderwood', 'pearlmoor_wanderwood_far',
     'wayward_rise', 'wayward_arms', 'paul_house_1', 'paul_house_2', 'paul_house_3', 'dawnstead_bar',

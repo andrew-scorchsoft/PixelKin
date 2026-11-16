@@ -7,7 +7,7 @@
  */
 import Phaser from 'phaser';
 import type { CutsceneStep, ActorRef } from '@game/content/types';
-import { Actor, STEP_MS } from '@game/entities/Actor';
+import { Actor, HAUL, STEP_MS } from '@game/entities/Actor';
 import type { Facing, EncounterTerrain, AbilityId } from '@game/data/world/types';
 import { DialogueBox } from '@game/ui/DialogueBox';
 import { StarterSelect } from '@game/ui/StarterSelect';
@@ -244,6 +244,52 @@ async function walkTo(
 }
 
 /**
+ * EDGE along a precarious line (the `edge` op): hauled, slow steps through the
+ * waypoints with collision ignored — the scene is the only way across — while the
+ * sprite leans from foot to foot. Ends upright on the last waypoint.
+ */
+async function edgeAlong(
+  scene: Phaser.Scene,
+  actor: Actor,
+  path: { tx: number; ty: number }[],
+  speed = 0.45,
+  sidle?: Facing,
+  teeter: number[] = [],
+): Promise<void> {
+  const ms = Math.round(STEP_MS / Math.max(0.2, Math.min(2, speed || 0.45)));
+  const scale = actor.sprite.anims.timeScale;
+  actor.sprite.anims.timeScale = STEP_MS / ms;
+  let lean = 1;
+  for (let i = 0; i < path.length; i++) {
+    const wp = path[i];
+    for (let guard = 0; guard < 64 && (actor.tx !== wp.tx || actor.ty !== wp.ty); guard++) {
+      let facing: Facing;
+      if (actor.tx < wp.tx) facing = 'right';
+      else if (actor.tx > wp.tx) facing = 'left';
+      else if (actor.ty < wp.ty) facing = 'down';
+      else facing = 'up';
+      const arrived = new Promise<boolean>((resolve) => {
+        if (!actor.step(facing, () => true, () => resolve(true), ms, HAUL)) resolve(false);
+      });
+      if (sidle) actor.playWalkAs(sidle);
+      lean = -lean;
+      scene.tweens.add({ targets: actor.sprite, angle: lean * 5, duration: ms / 2, yoyo: true, ease: 'Sine.easeInOut' });
+      if (!(await arrived)) break;
+    }
+    if (teeter.includes(i)) {
+      actor.stopWalking();
+      if (sidle) actor.setFacing(sidle);
+      await shakeActorSprite(scene, actor, 520, 1);
+      await delay(scene, 260);
+    }
+  }
+  actor.sprite.anims.timeScale = scale;
+  actor.sprite.setAngle(0);
+  actor.stopWalking();
+  if (sidle) actor.setFacing(sidle);
+}
+
+/**
  * Substitute the player's name into a line. `{name}` is the only token, and it
  * degrades to a neutral address when the player has never been asked — so a
  * writer can use it anywhere without checking whether the naming beat has played.
@@ -305,6 +351,11 @@ async function runStep(ctx: CutsceneContext, step: CutsceneStep): Promise<boolea
     case 'move': {
       const actor = ctx.getActor(step.actor);
       if (actor) await walkTo(actor, step.to.tx, step.to.ty, ctx.canEnter, step.speed);
+      return true;
+    }
+    case 'edge': {
+      const actor = ctx.getActor(step.actor);
+      if (actor) await edgeAlong(scene, actor, step.path, step.speed, step.sidle, step.teeter);
       return true;
     }
     case 'hideActor': {

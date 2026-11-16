@@ -65,6 +65,12 @@ const ANY_OF: [WorldFlag, WorldFlag[]][] = [
   // Galehigh's winch to the skyloft, Pale Vault's undercroft arch
   ['flag:skyloft_open', ['flag:q_north_kite_blessed', 'gleam:storm']],
   ['flag:undercroft_open', ['flag:q_north_aurora_oil', 'gleam:frost']],
+  // the Windward pass's low road (2026-11): dug out once you've been over the Hartway
+  // to the Seat — or you were already past the pass when the drift arrived (old saves)
+  // the Hartway's rope ladders: fixed by Greg, OR already there for a save from beyond the pass
+  ['flag:hart_rope_1', ['flag:hart_ladder_1', 'chart:pale-vault-glacier', 'gleam:frost', 'gleam:solar', 'gleam:lunar']],
+  ['flag:hart_rope_2', ['flag:hart_ladder_2', 'chart:pale-vault-glacier', 'gleam:frost', 'gleam:solar', 'gleam:lunar']],
+  ['flag:pass_open', ['flag:hart_b3_done', 'flag:hart_mist_seen', 'chart:pale-vault-glacier', 'gleam:frost', 'gleam:solar', 'gleam:lunar']],
   // the Scarp's rockfall (10 Part II): cleared once you've come round by the Ashfall
   ['flag:scarp_short_open', ['flag:scarp_rockfall_clear', 'gleam:storm']],
   // the climb out of Cinderhead Deep waits on Otho (or you're already past Mira)
@@ -89,6 +95,8 @@ const COUNT_AT_LEAST: { flag: WorldFlag; prefix: string; min: number }[] = [
   // The Sere (2026-11): the three Calling Rods relit = the storm has its road again;
   // and every dish on the Thunder Table's slate tried once.
   { flag: 'flag:sere_storm_called', prefix: 'flag:sere_rod_', min: 3 },
+  // the Hartway: you said "No, Greg" all three times
+  { flag: 'flag:hart_sense_all', prefix: 'flag:hart_sense_', min: 3 },
   { flag: 'flag:rio_menu_full', prefix: 'flag:rio_dish_', min: 3 },
 ];
 

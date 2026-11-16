@@ -133,6 +133,18 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:q_south_wander_word', 'flag:q_south_wander_lamp'],
     done_flag: 'flag:q_south_wander_done',
   },
+  // THE HARTWAY (content/regions/hartway.ts): MAIN PATH — fetch Greg from Galehigh, go
+  // over the Hartshoulder with him to Pale Vault. (Paul's epilogue is optional and unlisted.)
+  {
+    id: 'north_a_rope_for_two',
+    name: 'A Rope for Two',
+    region: 'north',
+    giver: 'Hollis, the rope-warden on the Windward Stair',
+    blurb: 'Pale Vault is over the Hartway now. Nobody climbs alone, the ridges can\'t be walked without a leader, and only Greg still knows them. Fetch him from Galehigh and rope up.',
+    start_flag: 'flag:q_hartway',
+    stage_flags: ['flag:greg_found', 'flag:hart_p1_done', 'flag:hart_p2_done'],
+    done_flag: 'flag:hart_mist_seen',
+  },
   // S7 "Just One More Cup" — the Wakeful Fair (content/regions/brewfair.ts). The
   // stages are the doors the caffeine opens (ANY_OF flags, so they never un-tick
   // when the wake clears the cups) and the trip's end; the card is its own count.

@@ -389,6 +389,10 @@ export interface SpanZone {
   axis: 'h' | 'v';
   /** A bridge you can also pass beneath, crossing the axis (the underpass). */
   under?: boolean;
+  /** Only there while this flag is held (a rope ladder someone has yet to fix). */
+  requires_flag?: WorldFlag;
+  /** Gone once this flag is held. */
+  hidden_when_flag?: WorldFlag;
 }
 
 export interface JumpPad {

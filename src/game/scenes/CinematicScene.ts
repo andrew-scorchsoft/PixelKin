@@ -47,6 +47,9 @@ export class CinematicScene extends Phaser.Scene {
   private activeBox?: DialogueBox;
   private currentPanel?: Phaser.GameObjects.Image;
   private creditsRoll?: Phaser.GameObjects.Container;
+  /** The "B: SKIP" strip held along the bottom while the credits roll. */
+  private creditsHud?: Phaser.GameObjects.Container;
+  private canSkip = true;
   private next: { scene: string; data?: unknown } = { scene: 'World' };
 
   constructor() {
@@ -67,6 +70,7 @@ export class CinematicScene extends Phaser.Scene {
 
     const script = getCinematic(data.scriptId);
     this.next = data.next ?? script?.next ?? { scene: 'World' };
+    this.canSkip = script?.skippable !== false;
     if (!script) {
       this.finish();
       return;
@@ -80,7 +84,7 @@ export class CinematicScene extends Phaser.Scene {
   update(): void {
     if (this.finished) return;
     this.skipInput?.update();
-    if (!this.skipped && this.skipInput?.justPressed(InputAction.Cancel)) {
+    if (!this.skipped && this.canSkip && this.skipInput?.justPressed(InputAction.Cancel)) {
       this.skipped = true;
       this.finish();
     }
@@ -92,7 +96,7 @@ export class CinematicScene extends Phaser.Scene {
       await this.enterBeat(beat);
       if (this.skipped) return;
       if (beat.credits?.length) {
-        await this.runCredits(beat.credits, beat.creditsTitle);
+        await this.runCredits(beat.credits, beat.creditsTitle, beat.creditsNote);
       } else if (beat.lines?.length) {
         const box = new DialogueBox(this, this.sfx);
         this.activeBox = box;
@@ -112,9 +116,18 @@ export class CinematicScene extends Phaser.Scene {
    * `this.skipped` (watched in update → finish), and this resolves on the next
    * frame so the loop unwinds. All text rides makeText + theme tokens.
    */
-  private async runCredits(sections: CreditsSection[], title?: string): Promise<void> {
+  private async runCredits(sections: CreditsSection[], title?: string, note?: string): Promise<void> {
     const col = this.add.container(0, 0).setDepth(theme.depth.tint + 1).setScrollFactor(0);
     this.creditsRoll = col;
+
+    // The skip strip: always on screen while the roll runs, so nobody has to guess that
+    // Cancel skips — and, when the script says so, that something follows the credits.
+    const hud = this.add.container(0, 0).setDepth(theme.depth.tint + 2).setScrollFactor(0).setAlpha(0);
+    this.creditsHud = hud;
+    hud.add(this.add.rectangle(0, GAME_HEIGHT - 13, GAME_WIDTH, 13, 0x000000, 0.6).setOrigin(0, 0));
+    if (note) hud.add(makeText(this, 4, GAME_HEIGHT - 10, note, theme.text.key));
+    if (this.canSkip) hud.add(makeText(this, GAME_WIDTH - 4, GAME_HEIGHT - 10, 'B: SKIP', theme.text.dim).setOrigin(1, 0));
+    this.tweens.add({ targets: hud, alpha: 1, duration: 600, delay: 900 });
 
     const centre = GAME_WIDTH / 2;
     const lineH = 11;
@@ -168,6 +181,8 @@ export class CinematicScene extends Phaser.Scene {
       };
       this.events.on(Phaser.Scenes.Events.UPDATE, watch);
     });
+    hud.destroy();
+    this.creditsHud = undefined;
   }
 
   /** Cross-dissolve to the beat's panel, swap the music bed, fire any punctuation. */
@@ -240,6 +255,8 @@ export class CinematicScene extends Phaser.Scene {
     this.activeBox = undefined;
     this.creditsRoll?.destroy(); // tear down an in-flight credits scroll on skip
     this.creditsRoll = undefined;
+    this.creditsHud?.destroy();
+    this.creditsHud = undefined;
     void this.music.fadeToSilence(theme.transition.fadeMs);
     this.cameras.main.fadeOut(theme.transition.fadeMs, 0, 0, 0);
     this.cameras.main.once('camerafadeoutcomplete', () => {
