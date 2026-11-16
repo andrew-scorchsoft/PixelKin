@@ -399,7 +399,7 @@ export const DIALOGUE: DialogueRegistry = {
   'npc.pearlmoor_innkeep': [
     { speaker: 'INNKEEP', text: "Rest your feet. The quay's hanging fresh lanterns for the Tide-blessing." },
     { speaker: 'INNKEEP', text: 'They say when Reyl relights the Tide, the shallows answer a lit lamp.' },
-    { speaker: 'INNKEEP', text: 'An old climber drinks here some winters. Sits facing the big hill behind the town all night, and never once goes up it.' },
+    { speaker: 'INNKEEP', text: 'An old climber stopped here once on his way north. Said he was going to look at a mountain. Not climb it. Just look.' },
   ],
   'npc.pearlmoor_fisher': [
     { speaker: 'FISHER', text: 'Tide-blessing soon! We ask the sea to bring our lights home.' },

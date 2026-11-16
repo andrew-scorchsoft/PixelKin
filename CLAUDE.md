@@ -218,7 +218,7 @@ go digging on every task.
   **Thunder Table** restaurant at the top). Relight the three **Calling Rods** (`flag:sere_rod_1..3` → derived
   `flag:sere_storm_called`), eat at the Table and the rolling thunder crosses the Sere (`script.rio_thunder`, the
   `frames` op); the first storm leaves the `emergent` milagro card on the tablecloth. Content `regions/sere.ts`.
-  **The Hartway** (2026-11, optional, Paul content, SHIPS SILENTLY, `walkthrough/12-the-hartway.md`): the mountain behind Wayward Rise (`hartway_foot` west off the Rise, `hartway_climb` up the steps; lv 17-22). Nobody climbs alone: quest "A Rope for Two" — Hollis → Paul's rope-end → **Greg** (Paul's old rope partner, own sprite `greg`) in the far Wanderwood → the Staircase and the Whiteback with Greg leading (three "No, Greg" choices) → the Seat, where the Sunstag herd climbs in the mist → tell Paul. Content `regions/hartway.ts`.
+  **The Hartway** (2026-11, MAIN PATH, Paul's story, SHIPS SILENTLY, `walkthrough/12-the-hartway.md`): the last pitch of the Windward pass (`hartway_climb`, lv 35-36, between `windward_stair_ii` and `pale_vault_glacier`). The low road is drifted shut (`flag:pass_open`, a derived ANY_OF so old saves pass) and nobody climbs alone: Hollis → **Greg** fetched from the top of Galehigh (promise to say "No, Greg"; own sprite `greg`) → the Staircase and the Whiteback with Greg leading (three choices, rope ladders fixed behind you) → the Seat, where the Sunstag herd climbs in the mist → the safe trail down. Greg never names his partner on the main path; Paul's rope-end and telling Paul are optional extras. Content `regions/hartway.ts`.
 - **The journey is canon, written before the game.** `docs/world/walkthrough/` is the
   start-to-finish **user-journey blueprint** — golden thread, five interlocking arcs (Wren,
   the Hollowing/Còr, Fenn, the celestial calendar, festivals), the level curve, the
@@ -1302,7 +1302,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   **The changelog must NEVER spoil the hidden real-people content** (owner's rule, 2026-10 — the
   people it was built for read the notice AND the website): nothing about Paul or his things — the Booji-Wooji
   Man / S4–S5, the Chickenpig, the Lifting House gym, Paul's house, the Wayward Arms, the
-  Reckoning Works' walking-man story and Bettany Rook's drovers story there, the Bright Bubble bar in Dawnstead (Paul's fizz-bubbles memory), Agent Pellow + the newspaper man in the Galehigh inn (the WANTED joke; Paul always promises the story "over a whiskey sometime" and never tells it), Paul's dog the Old Girl and Kathleen's tidy solicitor's desk, the beacon-road man with the case. Also the whole **Hartway** (Greg, Hollis, the Hartshoulder, the Whiteback, the Seat and the herd in the mist — Paul's climbing stories). Also the whole **Sere** — the desert east of Galehigh, the **Rio Tower**, the Thunder Table, the
+  Reckoning Works' walking-man story and Bettany Rook's drovers story there, the Bright Bubble bar in Dawnstead (Paul's fizz-bubbles memory), Agent Pellow + the newspaper man in the Galehigh inn (the WANTED joke; Paul always promises the story "over a whiskey sometime" and never tells it), Paul's dog the Old Girl and Kathleen's tidy solicitor's desk, the beacon-road man with the case. Also the whole **Hartway** (Greg, Hollis, the Hartshoulder, the Whiteback, the Seat and the herd in the mist — Paul's climbing stories; it is on the MAIN PATH, so the guide walks players through it without those names). Also the whole **Sere** — the desert east of Galehigh, the **Rio Tower**, the Thunder Table, the
   Thousandfold, the Calling Rods and the rolling-thunder scene (owner's call, 2026-11; `guide.mjs` FORBIDDEN carries
   the names). Those changes ship
   silently; an entry covers only general changes (and none at all is fine).
@@ -1569,7 +1569,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   (`assets/backgrounds/cinematic/thunder/`, packed by `tools/assets/pack_thunder_frames.py`), sound is synthesised
   (`tools/audio/thunder_roll.py`). New desert/canyon terrain = the `sere_set` accent (`build_sere_set.py`); props =
   `sereforge.py`. Record a scene with `shoot.mjs --script <ref> --video <dir>` (silent webm; mux audio with ffmpeg).
-- **Seeding hidden quests is WORDS ONLY, on people who already talk.** The Hartway and the tower are hinted from
+- **Seeding hidden quests is WORDS ONLY, on people who already talk.** The Hartway's Greg and the tower are hinted from
   Pearlmoor on (the innkeep, the fisher and the Quay elder after the Tide; Kathleen, Rose and the pinboard in Paul's
   house): a page appended to an existing line, never a new NPC, never the quest's name, never what happens there.
 - **A ladder that appears later = a flag-gated span (2026-11).** `SpanZone.requires_flag`/`hidden_when_flag` (Traversal.ts ⇄

@@ -885,16 +885,6 @@
       },
       "activation": "interact",
       "ref": "sign.wayward_guestbook"
-    },
-    {
-      "id": "greg_slate",
-      "kind": "script",
-      "at": {
-        "tx": 2,
-        "ty": 6
-      },
-      "activation": "interact",
-      "ref": "script.hartway_arms_slate"
     }
   ],
   "encounters": [],

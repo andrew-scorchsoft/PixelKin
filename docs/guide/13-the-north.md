@@ -144,6 +144,23 @@ The lower switchbacks are walked; the wind-gap between the two halves needs the 
 Kite**. Reaching the high crags opens a **drop shortcut** back down to Galehigh, a quick way home
 for supplies.
 
+**The low road is drifted shut.** From the high crags the road north to the glacier is buried,
+so the way on is *over the top*, up the climbers' steps in the crag beside the road. The
+rope-warden there lets nobody climb alone:
+
+1. Take the drop shortcut back down to **Galehigh**. An old climber in a red jacket stands at
+   the **top of the town**, looking up at the Stair. Talk to him, and when he asks what you'd
+   say to a bad idea, **tell him no**. He agrees to guide you.
+2. Meet him at the steps on the high crags and **rope up**.
+3. Follow him over. He walks each narrow ridge first; walk up to the ridge and he leads. After
+   each one he fixes a **rope ladder**, so you never have to cross that ridge again.
+4. At the top, sit down when he tells you to. Then take the **safe trail at the east end** down
+   into the Pale Vault Glacier.
+
+Once you have been over, the low road is dug out and stays open, and the rope ladders stay
+fixed. There is a walkers' camp on the first shelf where you can rest. A save that had already
+reached the glacier is not held up by any of this.
+
 | Trainer | Where | Team | Purse |
 |---------|-------|------|-------|
 | Crag-hand Edda | Lower Stair | Sparkrat 34, Flintbeak 35 | 560 |

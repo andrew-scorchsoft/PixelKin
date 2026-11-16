@@ -133,17 +133,17 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:q_south_wander_word', 'flag:q_south_wander_lamp'],
     done_flag: 'flag:q_south_wander_done',
   },
-  // THE HARTWAY (content/regions/hartway.ts): find Greg, climb the Hartshoulder with
-  // him, sit on the Seat, tell Paul. Hidden content like the rest of Paul's.
+  // THE HARTWAY (content/regions/hartway.ts): MAIN PATH — fetch Greg from Galehigh, go
+  // over the Hartshoulder with him to Pale Vault. (Paul's epilogue is optional and unlisted.)
   {
-    id: 's8_a_rope_for_two',
+    id: 'north_a_rope_for_two',
     name: 'A Rope for Two',
-    region: 'south',
-    giver: 'Hollis, the rope-warden at Hartway Foot',
-    blurb: 'Nobody climbs the Hartway alone, and only Greg still knows its ridges. Find him, rope up, and go up to the Seat at the top of the mountain.',
+    region: 'north',
+    giver: 'Hollis, the rope-warden on the Windward Stair',
+    blurb: 'The low road to Pale Vault is drifted shut. The way is over the top, nobody climbs alone, and only Greg still knows the ridges. Fetch him from Galehigh and rope up.',
     start_flag: 'flag:q_hartway',
-    stage_flags: ['flag:greg_token', 'flag:greg_found', 'flag:hart_p1_done', 'flag:hart_p2_done', 'flag:hart_mist_seen'],
-    done_flag: 'flag:q_hartway_done',
+    stage_flags: ['flag:greg_found', 'flag:hart_p1_done', 'flag:hart_p2_done'],
+    done_flag: 'flag:hart_mist_seen',
   },
   // S7 "Just One More Cup" — the Wakeful Fair (content/regions/brewfair.ts). The
   // stages are the doors the caffeine opens (ANY_OF flags, so they never un-tick

@@ -615,6 +615,18 @@ for (x, y) in [(9, 5), (22, 4), (29, 5), (3, 12), (12, 14), (18, 15),
     if (x, y) not in avoid and deco[y * W + x] == 0:
         deco[y * W + x] = gid("boulder")
 
+# ---- THE HARTWAY (2026-11): the safe trail down off the Seat arrives here (and climbs back)
+import warp_markers as _wm
+_wm.add(m, _wm.marker("steps_hartway", "steps_s", 23, 27))
+m["warps"].append({"id": "to_hartway", "at": {"tx": 23, "ty": 27}, "trigger": "step_on",
+                   "to_map": "hartway_climb", "to": {"tx": 27, "ty": 2}, "facing": "down",
+                   "transition": "fade"})
+deco[27 * W + 23] = 0
+m["triggers"].append({"id": "sign_hartway_top", "kind": "sign", "at": {"tx": 22, "ty": 27},
+                      "activation": "interact", "ref": "sign.hartway_top"})
+deco[27 * W + 22] = gid("sign")
+owed.append("sign.hartway_top")
+
 m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + terrain_layers + [
     {"name": "deco", "role": "deco", "depth": 5, "data": deco},
     {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)},

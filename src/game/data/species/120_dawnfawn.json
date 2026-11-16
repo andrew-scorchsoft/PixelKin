@@ -106,8 +106,15 @@
       "area": "hartway_climb",
       "terrain": "tall_grass",
       "rarity": "uncommon",
-      "min": 21,
-      "max": 22
+      "min": 36,
+      "max": 36
+    },
+    {
+      "area": "hartway_climb",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 57,
+      "max": 63
     },
     {
       "area": "sunvault_climb_iii",

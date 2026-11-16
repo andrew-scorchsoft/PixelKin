@@ -286,14 +286,8 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     // the wood's own bed carries on up the hill (it resumes, no restart)
     music: 'assets/audio/music/lowleaf-hollow-b.mp3',
   },
-  // THE HARTWAY (2026-11): the foot of the Hartshoulder west of the Rise, and the old
-  // climbers' road up it (walked with Greg; hartway_set = the drop beside its ridges).
-  hartway_foot: {
-    json: 'assets/maps/hartway_foot.json',
-    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
-    kind: 'route',
-    music: 'assets/audio/music/lowleaf-hollow-b.mp3',
-  },
+  // THE HARTWAY (2026-11): the climbers' road over the Hartshoulder, from the Windward
+  // Stair's high crags to Pale Vault (walked with Greg; hartway_set = the drop beside its ridges).
   hartway_climb: {
     json: 'assets/maps/hartway_climb.json',
     tilesets: {

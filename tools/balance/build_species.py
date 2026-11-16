@@ -814,22 +814,19 @@ SERE_ENCOUNTERS = {
 for _slug, _rows_ in SERE_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
-# The Hartway (2026-11, optional, off Wayward Rise; lv 17-22): mirrors of the BUILT
-# in-map tables (tools/maps/build_hartway_foot.py / build_hartway_climb.py). The fawns
-# only graze the Seat's high grass once the herd has come up in the mist.
+# The Hartway (2026-11, MAIN PATH: the climbers' road from Windward Stair II over to Pale
+# Vault; the high crags' own table, 35-36 + day twins): mirrors of the BUILT in-map tables
+# (tools/maps/build_hartway_climb.py). Dawnfawn graze only the high grass above the Seat.
+def _hart(rows):
+    return _rows("hartway_climb", rows)
 HARTWAY_ENCOUNTERS = {
-    "sporeling":  _rows("hartway_foot", [(17, 18, "common")]),
-    "barkhelm":   _rows("hartway_foot", [(17, 19, "common")]) + _rows("hartway_climb", [(19, 20, "common")]),
-    "mossglow":   _rows("hartway_foot", [(17, 19, "uncommon")]),
-    "pebbit":     _rows("hartway_foot", [(17, 19, "uncommon")]) + _rows("hartway_climb", [(19, 20, "common")]),
-    "glowsip":    _rows("hartway_foot", [(18, 19, "uncommon")]),
-    "sparrowcaw": _rows("hartway_climb", [(19, 22, "common")]),
-    "chillpip":   _rows("hartway_climb", [(19, 22, "common")]),
-    "fossik":     _rows("hartway_climb", [(20, 21, "uncommon")]),
-    "snowcune":   _rows("hartway_climb", [(20, 22, "common")]),
-    "hushvole":   _rows("hartway_climb", [(20, 22, "common")]),
-    "geolace":    _rows("hartway_climb", [(21, 22, "uncommon")]),
-    "dawnfawn":   _rows("hartway_climb", [(21, 22, "uncommon")]),
+    "glacewing": _hart([(35, 36, "common"), (57, 63, "common")]),
+    "flintbeak": _hart([(35, 36, "common"), (56, 62, "common")]),
+    "sparkrat":  _hart([(35, 36, "common"), (56, 62, "uncommon")]),
+    "thrumble":  _hart([(35, 36, "common"), (57, 62, "uncommon")]),
+    "geolace":   _hart([(35, 36, "uncommon"), (56, 62, "uncommon")]),
+    "cirruff":   _hart([(57, 64, "uncommon")]),
+    "dawnfawn":  _hart([(36, 36, "uncommon"), (57, 63, "uncommon")]),
 }
 for _slug, _rows_ in HARTWAY_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
@@ -1210,8 +1207,8 @@ CURATED_AREAS = {
     "cinderwind_ashfall", "cinderwind_kiln",
     # The Sere (2026-11): Galehigh's dry side (mirrored above, SERE_ENCOUNTERS)
     "the_sere",
-    # The Hartway (2026-11): the mountain behind Wayward Rise (HARTWAY_ENCOUNTERS)
-    "hartway_foot", "hartway_climb",
+    # The Hartway (2026-11): the climbers' road over to Pale Vault (HARTWAY_ENCOUNTERS)
+    "hartway_climb",
     # The Wild Ways — Sunvault Climb rebuild (S): the two new face maps
     "sunvault_climb_iii", "sunvault_climb_iv",
     # The Wild Ways — the Rimeway (C)

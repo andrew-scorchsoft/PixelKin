@@ -142,6 +142,20 @@
       "max": 32
     },
     {
+      "area": "hartway_climb",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 35,
+      "max": 36
+    },
+    {
+      "area": "hartway_climb",
+      "terrain": "tall_grass",
+      "rarity": "uncommon",
+      "min": 56,
+      "max": 62
+    },
+    {
       "area": "old_seams_ii",
       "terrain": "cave",
       "rarity": "common",

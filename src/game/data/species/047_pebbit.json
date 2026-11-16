@@ -100,13 +100,6 @@
       "rarity": "uncommon",
       "min": 17,
       "max": 19
-    },
-    {
-      "area": "hartway_climb",
-      "terrain": "tall_grass",
-      "rarity": "common",
-      "min": 19,
-      "max": 20
     }
   ],
   "scripted": false,

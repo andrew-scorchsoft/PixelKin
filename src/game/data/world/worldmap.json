@@ -109,26 +109,6 @@
       "name": "Wayward Rise"
     },
     {
-      "id": "hartway_foot",
-      "x": 55,
-      "y": 296,
-      "gx": 6,
-      "gy": 30,
-      "kind": "route",
-      "region": "south",
-      "name": "Hartway Foot"
-    },
-    {
-      "id": "hartway_climb",
-      "x": 51,
-      "y": 291,
-      "gx": 5,
-      "gy": 29,
-      "kind": "landmark",
-      "region": "south",
-      "name": "The Hartway"
-    },
-    {
       "id": "tinderwick_bay",
       "x": 77,
       "y": 449,
@@ -397,6 +377,16 @@
       "kind": "route",
       "region": "north",
       "name": "Windward Stair"
+    },
+    {
+      "id": "hartway_climb",
+      "x": 187,
+      "y": 182,
+      "gx": 19,
+      "gy": 18,
+      "kind": "route",
+      "region": "north",
+      "name": "The Hartway"
     },
     {
       "id": "the_sere",
@@ -988,40 +978,6 @@
       ]
     },
     {
-      "a": "wayward_rise",
-      "b": "hartway_foot",
-      "kind": "road",
-      "path": [
-        [
-          8,
-          30
-        ],
-        [
-          6,
-          30
-        ]
-      ]
-    },
-    {
-      "a": "hartway_foot",
-      "b": "hartway_climb",
-      "kind": "gate",
-      "path": [
-        [
-          6,
-          30
-        ],
-        [
-          5,
-          30
-        ],
-        [
-          5,
-          29
-        ]
-      ]
-    },
-    {
       "a": "pearlmoor_wanderwood",
       "b": "wayward_rise",
       "kind": "road",
@@ -1494,6 +1450,44 @@
         [
           17,
           19
+        ]
+      ]
+    },
+    {
+      "a": "windward_stair_ii",
+      "b": "hartway_climb",
+      "kind": "gate",
+      "path": [
+        [
+          17,
+          19
+        ],
+        [
+          17,
+          18
+        ],
+        [
+          19,
+          18
+        ]
+      ]
+    },
+    {
+      "a": "hartway_climb",
+      "b": "pale_vault_glacier",
+      "kind": "gate",
+      "path": [
+        [
+          19,
+          18
+        ],
+        [
+          19,
+          17
+        ],
+        [
+          18,
+          17
         ]
       ]
     },
@@ -2443,7 +2437,6 @@
     "gullcry_rock": "gullcry_rock",
     "gullwrack_hut": "farlamp_gullwrack",
     "hartway_climb": "hartway_climb",
-    "hartway_foot": "hartway_foot",
     "helia_vault": "helia_vault",
     "hollowfen_stillworks": "hollowfen_stillworks",
     "hushfrost_pass_i": "hushfrost_pass_i",

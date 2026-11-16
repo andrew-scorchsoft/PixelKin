@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """
-The Hartway (hartway_climb) — the old climbers' road up THE HARTSHOULDER, the
-mountain behind Wayward Rise (2026-11, docs/world/walkthrough/12-the-hartway.md).
+The Hartway (hartway_climb) — the climbers' road over THE HARTSHOULDER, the last
+pitch of the Windward pass: from the high crags (windward_stair_ii) up and over to
+Pale Vault (2026-11, docs/world/walkthrough/12-the-hartway.md). MAIN PATH: the low
+road out of the crags is drifted shut until you've been over the top once.
 
 A STORY climb, walked with GREG (content/regions/hartway.ts): nobody goes up alone,
 Greg goes first on the ridges, and once a ridge is behind you he fixes a ROPE LADDER
 down the cliff so nobody has to do that again.
 
 Tiers, bottom to top (south = lower, the facekit convention):
-  T0  the Landing   (rows 44-47)  the steps up from hartway_foot land at (14,47)
+  T0  the Landing   (rows 44-47)  the steps up from the crags land at (14,47)
   A   band A        (rows 39-43)  ROPE LADDER 1 at x8 — `flag:hart_ladder_1`
       THE STAIRCASE               a one-wide rock rib through the gulf (x19-27)
   T1  the Shelf     (rows 33-38)  the walkers' camp (a rest point)
@@ -17,16 +19,24 @@ Tiers, bottom to top (south = lower, the facekit convention):
   U   the High Shelf (rows 14-27) west (x2-7) and east (x21-27) of THE GULF;
       THE WHITEBACK               the snow ridge across it (the story ridge)
   C   band C        (rows 12-13)  the safe trail's gap at x24-25
-  S   THE SEAT      (rows 2-11)   the bench, the bothy the kin took back, the view
+  S   THE SEAT      (rows 2-11)   the bench, the bothy the kin took back, the view,
+                                  and the safe trail down to Pale Vault (27,2)
 
 The two ridges are ordinary ground one tile wide inside `gulf` terrain (hartway_set:
 the drop, solid). The two rope ladders are flag-gated `spans` (SpanZone.requires_flag)
 with a matching flag-gated `hartway_rope_ladder` object, so art and collision appear
 together the moment Greg kicks the ladder over the edge.
 
-HANDSHAKES: the notch (14,48) `to_foot` -> hartway_foot (10,5); the foot's `to_climb`
-lands at our (14,47). Both are mid-map portals (a mountain over other ground never
-places in world_geometry).
+HANDSHAKES (all mid-map portals: a mountain over other ground never places in
+world_geometry):
+  the notch (14,48) `to_crags` -> windward_stair_ii (17,6); its `to_hartway` (17,5)
+      lands at our (14,47) and wants `flag:greg_roped`.
+  the Seat's steps (27,2) `to_vault` -> pale_vault_glacier (23,27); its `to_hartway`
+      there lands back on (27,2).
+
+Greg's stages and the story bands all want `flag:greg_roped`: a save that was already
+past the pass (flag:pass_open by a later milestone) finds a quiet mountain it can
+still walk, and can fetch Greg from Galehigh any time to hear the story.
 
 Run:  python3 tools/maps/build_hartway_climb.py [--show]
 """
@@ -121,8 +131,13 @@ for y in range(H):
 
 # ---- the way down: the notch back to the foot ------------------------------------------
 wm.add(m, wm.marker("steps_down", "steps_s", 14, 48))
-m["warps"].append({"id": "to_foot", "at": {"tx": 14, "ty": 48}, "trigger": "step_on",
-                   "to_map": "hartway_foot", "to": {"tx": 10, "ty": 5}, "facing": "down",
+m["warps"].append({"id": "to_crags", "at": {"tx": 14, "ty": 48}, "trigger": "step_on",
+                   "to_map": "windward_stair_ii", "to": {"tx": 17, "ty": 6}, "facing": "down",
+                   "transition": "fade"})
+# ---- the way on: the safe trail down off the Seat into Pale Vault ------------------------
+wm.add(m, wm.marker("steps_vault", "steps_s", 27, 2))
+m["warps"].append({"id": "to_vault", "at": {"tx": 27, "ty": 2}, "trigger": "step_on",
+                   "to_map": "pale_vault_glacier", "to": {"tx": 23, "ty": 27}, "facing": "up",
                    "transition": "fade"})
 
 # ---- THE ROPE LADDERS (Greg fixes each once its ridge is behind you) -------------------
@@ -146,7 +161,7 @@ def greg(gid_: str, at, facing, ref, req=None, hide=None):
     m["npcs"].append(n)
 
 
-greg("greg_t0", (21, 46), "left", "script.greg_t0", None, "flag:hart_p1_done")
+greg("greg_t0", (21, 46), "left", "script.greg_t0", "flag:greg_roped", "flag:hart_p1_done")
 greg("greg_t1", (26, 36), "left", "script.greg_wait", "flag:hart_p1_done", "flag:hart_ladder_1")
 greg("greg_t1b", (6, 34), "left", "script.greg_t1b", "flag:hart_ladder_1", "flag:hart_b1_done")
 greg("greg_uw", (6, 23), "right", "script.greg_uw", "flag:hart_b1_done", "flag:hart_p2_done")
@@ -171,7 +186,7 @@ def beat(tid: str, cells, ref: str, req=None, hide=None):
     owed.append(ref)
 
 
-beat("staircase", [(20, 46)], "script.hart_staircase", None, "flag:hart_p1_done")
+beat("staircase", [(20, 46)], "script.hart_staircase", "flag:greg_roped", "flag:hart_p1_done")
 beat("ladder_one", [(25, 37)], "script.hart_ladder_one", "flag:hart_p1_done", "flag:hart_ladder_1")
 beat("chimney", [(5, 33)], "script.hart_chimney", "flag:hart_ladder_1", "flag:hart_b1_done")
 beat("whiteback", [(7, 22)], "script.hart_whiteback", "flag:hart_b1_done", "flag:hart_p2_done")
@@ -239,30 +254,27 @@ m["objects"] += [
     {"id": "rocks_seat", "sprite": "hushfrost_snow_boulders", "at": {"tx": 9, "ty": 9}, "w": 2, "h": 2},
 ]
 
-# ---- encounters (band 19-22; the High Grass gains the fawns once the herd has passed) ------
+# ---- encounters (the high crags' own table, 35-36; night/day pairs) ------------------------
 def T(*r):
     return [{"kin_id": k, "weight": w_, "min_level": lo, "max_level": hi} for (k, w_, lo, hi) in r]
 
 
-LOW = T((47, 28, 19, 20), (62, 24, 19, 20), (88, 22, 19, 21), (77, 16, 19, 21), (50, 10, 20, 21))
-HIGH = T((77, 28, 20, 22), (80, 24, 20, 22), (83, 20, 20, 22), (88, 18, 20, 22), (74, 10, 21, 22))
-PASTURE = T((77, 24, 20, 22), (80, 22, 20, 22), (83, 18, 20, 22), (88, 16, 20, 22), (120, 20, 21, 22))
-low = mk.make_grid(W, H)
-high = mk.make_grid(W, H)
+NIGHT = T((95, 25, 35, 36), (89, 25, 35, 36), (45, 20, 35, 36), (98, 20, 35, 36), (74, 10, 35, 36))
+DAY = T((95, 25, 57, 63), (89, 20, 56, 62), (45, 15, 56, 62), (98, 15, 57, 62), (74, 10, 56, 62),
+        (91, 15, 57, 64))
+# THE HIGH GRASS above the Seat: the herd leaves its fawns here
+FAWN_NIGHT = NIGHT + T((120, 15, 36, 36))
+FAWN_DAY = DAY + T((120, 12, 57, 63))
+crag = mk.make_grid(W, H)
 grass = mk.make_grid(W, H)
 for i in range(W * H):
     if g["tuft"][i]:
-        y = i // W
-        (grass if y <= 5 else high if y <= 27 else low)[i] = 1
-m["encounters"] += pt.zones_from_grid(low, W, H, terrain="tall_grass", rate=0.09, table=LOW,
-                                      id_prefix="low")
-m["encounters"] += pt.zones_from_grid(high, W, H, terrain="tall_grass", rate=0.09, table=HIGH,
-                                      id_prefix="high")
-for z in pt.zones_from_grid(grass, W, H, terrain="tall_grass", rate=0.10, table=HIGH,
-                            id_prefix="pasture"):
-    m["encounters"].append({**z, "hidden_when_flag": "flag:hart_mist_seen"})
-    m["encounters"].append({**z, "id": z["id"] + "_herd", "table": PASTURE,
-                            "requires_flag": "flag:hart_mist_seen"})
+        (grass if i // W <= 5 else crag)[i] = 1
+m["encounters"] += fk.night_day(
+    pt.zones_from_grid(crag, W, H, terrain="tall_grass", rate=0.09, table=NIGHT, id_prefix="crag"), DAY)
+m["encounters"] += fk.night_day(
+    pt.zones_from_grid(grass, W, H, terrain="tall_grass", rate=0.10, table=FAWN_NIGHT,
+                       id_prefix="pasture"), FAWN_DAY)
 
 sn = [gid("snow0"), gid("snow1"), gid("snow2"), gid("snow3")]
 base = [rng.choice(sn) if rng.random() < 0.5 else sn[0] for _ in range(W * H)]

@@ -309,6 +309,40 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
     {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)},
 ]
 
+# ---- THE HARTWAY (2026-11, content/regions/hartway.ts) — the pass goes OVER ---------------
+# The low road north (to_glacier) is drifted shut until you've been over the top once
+# (flag:pass_open, DERIVED: the Seat reached, or any later milestone — old saves pass).
+# The climbers' steps go up out of a notch in the north crag (17,5) -> hartway_climb;
+# Hollis the rope-warden lets nobody up alone (flag:greg_roped). Added after the scatter
+# so the crags' rng-rolled deco doesn't reshuffle.
+import warp_markers as _wm
+glacier[5 * W + 17] = 0
+frosttuft[5 * W + 17] = 0
+deco[5 * W + 17] = 0
+_wm.add(m, _wm.marker("steps_hartway", "steps_n", 17, 3))
+m["warps"].append({"id": "to_hartway", "at": {"tx": 17, "ty": 5}, "trigger": "step_on",
+                   "to_map": "hartway_climb", "to": {"tx": 14, "ty": 47}, "facing": "up",
+                   "transition": "fade", "requires_flag": "flag:greg_roped",
+                   "blocked_ref": "script.hartway_gate"})
+for _w in m["warps"]:
+    if _w["id"].startswith("to_glacier"):
+        _w["requires_flag"] = "flag:pass_open"
+        _w["blocked_ref"] = "script.hartway_low_road"
+m["npcs"] += [
+    {"id": "hollis", "at": {"tx": 15, "ty": 8}, "facing": "down", "sprite": "pass_walker",
+     "movement": "static", "dialogue_ref": "script.hartway_hollis"},
+    {"id": "greg_foot", "at": {"tx": 19, "ty": 7}, "facing": "left", "sprite": "greg",
+     "movement": "static", "dialogue_ref": "script.greg_rope_up",
+     "requires_flag": "flag:greg_found", "hidden_when_flag": "flag:greg_roped"},
+]
+deco[8 * W + 15] = 0
+deco[7 * W + 19] = 0
+m["triggers"].append({"id": "sign_hartway_steps", "kind": "sign", "at": {"tx": 16, "ty": 6},
+                      "activation": "interact", "ref": "sign.hartway_steps"})
+deco[6 * W + 16] = gid("sign")
+owed += ["script.hartway_gate", "script.hartway_low_road", "script.hartway_hollis",
+         "script.greg_rope_up", "sign.hartway_steps"]
+
 if __name__ == "__main__":
     # warp marker: the drop home — rock steps once the crags shortcut opens
     wm.add(m, wm.marker("drop_steps", "steps_s", 4, 21, requires_flag="flag:shortcut_windward"))

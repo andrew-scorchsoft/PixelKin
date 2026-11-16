@@ -680,9 +680,7 @@ export const SCRIPTS: ScriptRegistry = {
           ops: [{ op: 'run', ref: 'script.paul_milagro_cards' }],
         },
         // THE HARTWAY (content/regions/hartway.ts): his old rope partner, and the hill
-        { label: 'Greg?', if_flag: 'flag:q_hartway', unless_flag: 'flag:greg_token', ops: [{ op: 'run', ref: 'script.hartway_paul_greg' }] },
-        { label: 'Greg?', if_flag: 'flag:greg_token', unless_flag: 'flag:greg_found', ops: [{ op: 'run', ref: 'script.hartway_paul_greg_again' }] },
-        { label: 'Greg?', if_flag: 'flag:greg_found', unless_flag: 'flag:hart_mist_seen', ops: [{ op: 'run', ref: 'script.hartway_paul_climbing' }] },
+        { label: 'Greg?', if_flag: 'flag:greg_met', unless_flag: 'flag:hart_mist_seen', ops: [{ op: 'run', ref: 'script.hartway_paul_router' }] },
         { label: 'The Hartway', if_flag: 'flag:hart_mist_seen', unless_flag: 'flag:q_hartway_done', ops: [{ op: 'run', ref: 'script.hartway_paul_told' }] },
         { label: 'The Hartway', if_flag: 'flag:q_hartway_done', ops: [{ op: 'run', ref: 'script.hartway_paul_after' }] },
         {
@@ -5269,8 +5267,8 @@ export const SCRIPTS: ScriptRegistry = {
       text: 'Mira Vael keeps the Storm at [[the Galehigh Terraces]]: out the Deep\'s far door, up Cinderwind Scarp, over the Ashfall Shelf.',
     },
     {
-      op: 'say', if_flag: 'gleam:storm', unless_flag: 'gleam:frost', speaker: 'ANDREW',
-      text: 'Ysolde Frost keeps the Frost at [[the Pale Vault Glacier]], [[up the Windward Stair]]. The Kite clears the crags. Wrap up.',
+      // Storm -> Frost: one line, staged on the pass (content/regions/hartway.ts chain)
+      op: 'run', if_flag: 'gleam:storm', unless_flag: 'gleam:frost', ref: 'script.andrew_hint_frost',
     },
     {
       op: 'say', if_flag: 'gleam:frost', unless_flag: 'gleam:solar', speaker: 'ANDREW',

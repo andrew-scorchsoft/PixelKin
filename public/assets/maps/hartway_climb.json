@@ -49,6 +49,18 @@
       "bob": false
     },
     {
+      "id": "steps_vault",
+      "sprite": "markers_steps_s",
+      "at": {
+        "tx": 27,
+        "ty": 2
+      },
+      "w": 1,
+      "h": 1,
+      "solid": false,
+      "bob": false
+    },
+    {
       "id": "rope_ladder_1",
       "sprite": "hartway_rope_ladder",
       "at": {
@@ -247,18 +259,33 @@
   ],
   "warps": [
     {
-      "id": "to_foot",
+      "id": "to_crags",
       "at": {
         "tx": 14,
         "ty": 48
       },
       "trigger": "step_on",
-      "to_map": "hartway_foot",
+      "to_map": "windward_stair_ii",
       "to": {
-        "tx": 10,
-        "ty": 5
+        "tx": 17,
+        "ty": 6
       },
       "facing": "down",
+      "transition": "fade"
+    },
+    {
+      "id": "to_vault",
+      "at": {
+        "tx": 27,
+        "ty": 2
+      },
+      "trigger": "step_on",
+      "to_map": "pale_vault_glacier",
+      "to": {
+        "tx": 23,
+        "ty": 27
+      },
+      "facing": "up",
       "transition": "fade"
     }
   ],
@@ -272,6 +299,7 @@
       },
       "activation": "step_on",
       "ref": "script.hart_staircase",
+      "requires_flag": "flag:greg_roped",
       "hidden_when_flag": "flag:hart_p1_done"
     },
     {
@@ -417,136 +445,7 @@
   ],
   "encounters": [
     {
-      "id": "low_a",
-      "terrain": "tall_grass",
-      "rect": {
-        "tx": 12,
-        "ty": 33,
-        "w": 6,
-        "h": 2
-      },
-      "encounter_rate": 0.09,
-      "table": [
-        {
-          "kin_id": 47,
-          "weight": 28,
-          "min_level": 19,
-          "max_level": 20
-        },
-        {
-          "kin_id": 62,
-          "weight": 24,
-          "min_level": 19,
-          "max_level": 20
-        },
-        {
-          "kin_id": 88,
-          "weight": 22,
-          "min_level": 19,
-          "max_level": 21
-        },
-        {
-          "kin_id": 77,
-          "weight": 16,
-          "min_level": 19,
-          "max_level": 21
-        },
-        {
-          "kin_id": 50,
-          "weight": 10,
-          "min_level": 20,
-          "max_level": 21
-        }
-      ]
-    },
-    {
-      "id": "low_b",
-      "terrain": "tall_grass",
-      "rect": {
-        "tx": 14,
-        "ty": 37,
-        "w": 5,
-        "h": 2
-      },
-      "encounter_rate": 0.09,
-      "table": [
-        {
-          "kin_id": 47,
-          "weight": 28,
-          "min_level": 19,
-          "max_level": 20
-        },
-        {
-          "kin_id": 62,
-          "weight": 24,
-          "min_level": 19,
-          "max_level": 20
-        },
-        {
-          "kin_id": 88,
-          "weight": 22,
-          "min_level": 19,
-          "max_level": 21
-        },
-        {
-          "kin_id": 77,
-          "weight": 16,
-          "min_level": 19,
-          "max_level": 21
-        },
-        {
-          "kin_id": 50,
-          "weight": 10,
-          "min_level": 20,
-          "max_level": 21
-        }
-      ]
-    },
-    {
-      "id": "low_c",
-      "terrain": "tall_grass",
-      "rect": {
-        "tx": 2,
-        "ty": 44,
-        "w": 4,
-        "h": 4
-      },
-      "encounter_rate": 0.09,
-      "table": [
-        {
-          "kin_id": 47,
-          "weight": 28,
-          "min_level": 19,
-          "max_level": 20
-        },
-        {
-          "kin_id": 62,
-          "weight": 24,
-          "min_level": 19,
-          "max_level": 20
-        },
-        {
-          "kin_id": 88,
-          "weight": 22,
-          "min_level": 19,
-          "max_level": 21
-        },
-        {
-          "kin_id": 77,
-          "weight": 16,
-          "min_level": 19,
-          "max_level": 21
-        },
-        {
-          "kin_id": 50,
-          "weight": 10,
-          "min_level": 20,
-          "max_level": 21
-        }
-      ]
-    },
-    {
-      "id": "high_a",
+      "id": "crag_a",
       "terrain": "tall_grass",
       "rect": {
         "tx": 2,
@@ -557,39 +456,40 @@
       "encounter_rate": 0.09,
       "table": [
         {
-          "kin_id": 77,
-          "weight": 28,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
         },
         {
-          "kin_id": 80,
-          "weight": 24,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 89,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
         },
         {
-          "kin_id": 83,
+          "kin_id": 45,
           "weight": 20,
-          "min_level": 20,
-          "max_level": 22
+          "min_level": 35,
+          "max_level": 36
         },
         {
-          "kin_id": 88,
-          "weight": 18,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 98,
+          "weight": 20,
+          "min_level": 35,
+          "max_level": 36
         },
         {
           "kin_id": 74,
           "weight": 10,
-          "min_level": 21,
-          "max_level": 22
+          "min_level": 35,
+          "max_level": 36
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
     },
     {
-      "id": "high_b",
+      "id": "crag_b",
       "terrain": "tall_grass",
       "rect": {
         "tx": 26,
@@ -600,36 +500,419 @@
       "encounter_rate": 0.09,
       "table": [
         {
-          "kin_id": 77,
-          "weight": 28,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
         },
         {
-          "kin_id": 80,
-          "weight": 24,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 89,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
         },
         {
-          "kin_id": 83,
+          "kin_id": 45,
           "weight": 20,
-          "min_level": 20,
-          "max_level": 22
+          "min_level": 35,
+          "max_level": 36
         },
         {
-          "kin_id": 88,
-          "weight": 18,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 98,
+          "weight": 20,
+          "min_level": 35,
+          "max_level": 36
         },
         {
           "kin_id": 74,
           "weight": 10,
-          "min_level": 21,
-          "max_level": 22
+          "min_level": 35,
+          "max_level": 36
         }
-      ]
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "crag_c",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 12,
+        "ty": 33,
+        "w": 6,
+        "h": 2
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 89,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 45,
+          "weight": 20,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 98,
+          "weight": 20,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 74,
+          "weight": 10,
+          "min_level": 35,
+          "max_level": 36
+        }
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "crag_d",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 14,
+        "ty": 37,
+        "w": 5,
+        "h": 2
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 89,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 45,
+          "weight": 20,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 98,
+          "weight": 20,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 74,
+          "weight": 10,
+          "min_level": 35,
+          "max_level": 36
+        }
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "crag_e",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 44,
+        "w": 4,
+        "h": 4
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 89,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 45,
+          "weight": 20,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 98,
+          "weight": 20,
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 74,
+          "weight": 10,
+          "min_level": 35,
+          "max_level": 36
+        }
+      ],
+      "hidden_when_flag": "flag:dawn"
+    },
+    {
+      "id": "crag_a_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 14,
+        "w": 3,
+        "h": 6
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 89,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 45,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 98,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 62
+        },
+        {
+          "kin_id": 74,
+          "weight": 10,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 91,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "crag_b_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 26,
+        "ty": 14,
+        "w": 2,
+        "h": 5
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 89,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 45,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 98,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 62
+        },
+        {
+          "kin_id": 74,
+          "weight": 10,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 91,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "crag_c_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 12,
+        "ty": 33,
+        "w": 6,
+        "h": 2
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 89,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 45,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 98,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 62
+        },
+        {
+          "kin_id": 74,
+          "weight": 10,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 91,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "crag_d_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 14,
+        "ty": 37,
+        "w": 5,
+        "h": 2
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 89,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 45,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 98,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 62
+        },
+        {
+          "kin_id": 74,
+          "weight": 10,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 91,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
+    },
+    {
+      "id": "crag_e_day",
+      "terrain": "tall_grass",
+      "rect": {
+        "tx": 2,
+        "ty": 44,
+        "w": 4,
+        "h": 4
+      },
+      "encounter_rate": 0.09,
+      "table": [
+        {
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 57,
+          "max_level": 63
+        },
+        {
+          "kin_id": 89,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 45,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 98,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 62
+        },
+        {
+          "kin_id": 74,
+          "weight": 10,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 91,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 64
+        }
+      ],
+      "requires_flag": "flag:dawn"
     },
     {
       "id": "pasture_a",
@@ -643,40 +926,46 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 77,
-          "weight": 28,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
         },
         {
-          "kin_id": 80,
-          "weight": 24,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 89,
+          "weight": 25,
+          "min_level": 35,
+          "max_level": 36
         },
         {
-          "kin_id": 83,
+          "kin_id": 45,
           "weight": 20,
-          "min_level": 20,
-          "max_level": 22
+          "min_level": 35,
+          "max_level": 36
         },
         {
-          "kin_id": 88,
-          "weight": 18,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 98,
+          "weight": 20,
+          "min_level": 35,
+          "max_level": 36
         },
         {
           "kin_id": 74,
           "weight": 10,
-          "min_level": 21,
-          "max_level": 22
+          "min_level": 35,
+          "max_level": 36
+        },
+        {
+          "kin_id": 120,
+          "weight": 15,
+          "min_level": 36,
+          "max_level": 36
         }
       ],
-      "hidden_when_flag": "flag:hart_mist_seen"
+      "hidden_when_flag": "flag:dawn"
     },
     {
-      "id": "pasture_a_herd",
+      "id": "pasture_a_day",
       "terrain": "tall_grass",
       "rect": {
         "tx": 19,
@@ -687,37 +976,49 @@
       "encounter_rate": 0.1,
       "table": [
         {
-          "kin_id": 77,
-          "weight": 24,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 95,
+          "weight": 25,
+          "min_level": 57,
+          "max_level": 63
         },
         {
-          "kin_id": 80,
-          "weight": 22,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 89,
+          "weight": 20,
+          "min_level": 56,
+          "max_level": 62
         },
         {
-          "kin_id": 83,
-          "weight": 18,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 45,
+          "weight": 15,
+          "min_level": 56,
+          "max_level": 62
         },
         {
-          "kin_id": 88,
-          "weight": 16,
-          "min_level": 20,
-          "max_level": 22
+          "kin_id": 98,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 62
+        },
+        {
+          "kin_id": 74,
+          "weight": 10,
+          "min_level": 56,
+          "max_level": 62
+        },
+        {
+          "kin_id": 91,
+          "weight": 15,
+          "min_level": 57,
+          "max_level": 64
         },
         {
           "kin_id": 120,
-          "weight": 20,
-          "min_level": 21,
-          "max_level": 22
+          "weight": 12,
+          "min_level": 57,
+          "max_level": 63
         }
       ],
-      "requires_flag": "flag:hart_mist_seen"
+      "requires_flag": "flag:dawn"
     }
   ],
   "npcs": [
@@ -731,6 +1032,7 @@
       "sprite": "greg",
       "movement": "static",
       "dialogue_ref": "script.greg_t0",
+      "requires_flag": "flag:greg_roped",
       "hidden_when_flag": "flag:hart_p1_done"
     },
     {

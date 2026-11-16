@@ -24,7 +24,7 @@ This file is the **spine**. The region files carry the beat-by-beat walkthrough:
 - [`08-the-peril-thread.md`](./08-the-peril-thread.md) — the peril thread: the Dusk made visible (fallen stars), escalating per region, healed by each Gleam
 - [`09-the-wild-ways.md`](./09-the-wild-ways.md) — the Wild Ways: the Wick-Run, the Mirelights, the Rimeway, the Old Seams (optional traversal set-pieces)
 - [`10-the-farlamp-isles.md`](./10-the-farlamp-isles.md) — the expansion round: Ashfall Shelf + Kiln Gully, Lowtinder / Tinderwick Bay, the post-dawn Farlamp Isles
-- [`12-the-hartway.md`](./12-the-hartway.md) — the mountain behind Wayward Rise, climbed with Greg (optional, hidden Paul content)
+- [`12-the-hartway.md`](./12-the-hartway.md) — the climbers' road over the Windward pass to Pale Vault, walked with Greg (MAIN PATH; Paul's story, ships silently)
 - [`11-the-hollowing-country.md`](./11-the-hollowing-country.md) — Stillwater + the Mourning Fields off Coldfog I (in progress)
 
 ---

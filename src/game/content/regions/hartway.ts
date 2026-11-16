@@ -1,10 +1,13 @@
 /**
- * THE HARTWAY (2026-11) — the old climbers' road up the Hartshoulder, the mountain
- * behind Wayward Rise, walked with GREG. Paul content: post-Chickenpig by
- * construction (it hangs off the Rise) and SHIPS SILENTLY like the rest — never in
- * the changelog, the guide or the website. Spec: docs/world/walkthrough/12-the-hartway.md.
- * Builders: tools/maps/build_hartway_foot.py, build_hartway_climb.py; art
- * hartforge.py + hartway_set; stills assets/backgrounds/cinematic/hartway/.
+ * THE HARTWAY (2026-11) — the climbers' road over the Hartshoulder: the last pitch of
+ * the Windward pass, from the high crags (windward_stair_ii) over the top to Pale
+ * Vault, walked with GREG. MAIN PATH: the low road is drifted shut until you've been
+ * over once (flag:pass_open). It is also Paul content, so it still SHIPS SILENTLY:
+ * never in the changelog; the guide describes the step without the hidden names.
+ * Spec: docs/world/walkthrough/12-the-hartway.md. Builders: build_hartway_climb.py +
+ * the blocks in build_windward_stair_ii.py / build_pale_vault_glacier.py /
+ * build_galehigh_terraces.py; art hartforge.py + hartway_set; stills
+ * assets/backgrounds/cinematic/hartway/.
  *
  * The true story under it (Paul's, told to the owner): Paul went alpine hiking with
  * GREG, who was experienced and utterly confident; Greg went first, and Paul's job
@@ -15,27 +18,31 @@
  * roll up the mountain with a great herd inside it, shadows all around them, using
  * the mist as cover to climb.
  *
- * In the game the PLAYER takes Paul's end of the rope. Greg hasn't climbed since Paul
- * stopped ("nobody to tell me no"). The herd is the SUNSTAGS (#121), the light of old
- * summers in their antlers: the Hartway is the harts' own way up.
+ * In the game the PLAYER takes Paul's end of the rope. Greg hasn't climbed since his
+ * partner stopped ("nobody to tell me no"). The herd is the SUNSTAGS (#121), the light
+ * of old summers in their antlers: the Hartway is the harts' own way up.
  *
  * The loop (all flags):
- *   flag:q_hartway        the rule heard (Hollis) or Greg met: "find Greg" opens — JOURNAL
- *   flag:greg_met         you've talked to Greg in the far Wanderwood
- *   flag:greg_token       Paul gave you his ROPE-END (the knot Greg will know)
- *   flag:greg_found       Greg said yes -> he waits at Hartway Foot
+ *   flag:q_hartway        the rule heard (Hollis / the drifted road) or Greg met — JOURNAL
+ *   flag:greg_met         you've talked to Greg in Galehigh
+ *   flag:greg_found       Greg said yes (you promised to say "No, Greg") -> he waits at the steps
  *   flag:greg_roped       tied in -> the steps open (the warp's requires_flag)
  *   flag:hart_p1_done     the Staircase is behind you
  *   flag:hart_ladder_1    Greg's rope ladder down band A (a flag-gated span + object)
  *   flag:hart_b1_done     the chimney beat (flag:hart_sense_1 if you said "No, Greg")
  *   flag:hart_p2_done     the Whiteback is behind you (flag:hart_sense_2: roped short)
  *   flag:hart_ladder_2    the second rope ladder (band B, east)
- *   flag:hart_b3_begun/_done  the cornice beat at the Seat (flag:hart_sense_3)
+ *   flag:hart_b3_begun/_done  the lip beat at the Seat (flag:hart_sense_3)
  *   flag:hart_sense_all   DERIVED (FlagStore COUNT_AT_LEAST flag:hart_sense_ x3)
  *   flag:hart_mist_seen   you sat on the Seat and the herd came up in the mist
- *   flag:q_hartway_done   you told Paul
+ *   flag:pass_open        DERIVED (FlagStore ANY_OF): the Seat reached, or you were
+ *                         already past the pass -> the low road is dug out for good
  *
- * Never progression; a lost choice costs nothing (Greg is embarrassed, never hurt).
+ * OPTIONAL, for players who know Paul (S4+): his lamp menu gains "Greg?" once the quest
+ * is open -> PAUL'S ROPE-END (flag:greg_token) -> Greg knows the knot (extra lines);
+ * and afterwards you can tell Paul (flag:q_hartway_done). None of it gates anything.
+ *
+ * A lost choice costs nothing (Greg is embarrassed, never hurt).
  */
 import type { CutsceneStep, DialogueRegistry, ScriptRegistry } from '../types';
 
@@ -91,10 +98,10 @@ const rest = (line: string): CutsceneStep[] => [
 ];
 
 const HOLLIS_HOOK: CutsceneStep[] = [
-  h('Hollis. I keep the ropes at the foot of the Hartshoulder. That road up the crag is the Hartway: the old climbers\' road.'),
+  h('Hollis, rope-warden. The low road to Pale Vault is drifted shut, and will be till spring. The only way now is over: the Hartway.'),
   h('One rule, older than me: [[nobody goes up alone]]. Two on a rope. One with the nerve, one with the sense.'),
   h('And the ridges want someone who knows them. There\'s one left who does: [[Greg]]. He\'s not been up since his partner hung up his boots.'),
-  h('Find him and the steps are yours. His old partner will know where he\'s got to: [[the walking man, at the dark lamp on Pearlmoor\'s breakwater]].'),
+  h('He\'s down in [[Galehigh, at the top of the town]], staring up here like the hill owes him money. Fetch him and the steps are yours.'),
   { op: 'setFlag', flag: HOOK },
 ];
 
@@ -103,12 +110,11 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
   ...chain(
     'script.hartway_hollis',
     [
-      [DONE, [h('You sat on the Seat, then. And the harts came up? Eleven winters I\'ve kept these ropes dry for that.')]],
-      [MIST, [h('You\'ve a look on you. You saw something up there. Don\'t tell me. [[Tell the walking man]]. It\'s his hill too.')]],
+      [MIST, [h('You sat on the Seat, then. And the harts came up? Eleven winters I\'ve kept these ropes dry for that. The low road\'s dug out now, too.')]],
       [ROPED, [h('Two on a rope. Mind him on the ridges. He\'ll say it\'s fine. "Fine" is his favourite word.')]],
       [FOUND, [h('Well, I never. He\'s over by the steps, pretending he isn\'t nervous. Go and [[rope up]].')]],
-      [TOKEN, [h('Is that Paul\'s knot? Then you\'ve all you need but the man himself. [[Find Greg]] and show him that.')]],
-      [HOOK, [h('No Greg, no steps. Ask [[the walking man on Pearlmoor\'s breakwater]] where his old rope partner\'s hiding.')]],
+      ['flag:pass_open', [h('You\'ve been over already? Then the low road\'s yours. The Hartway\'s still worth the walk, mind, if you can get [[Greg]] up from Galehigh.')]],
+      [HOOK, [h('No Greg, no steps. He\'s in [[Galehigh, top of the town]], looking up at the Stair. Tell him Hollis says it\'s time.')]],
     ],
     HOLLIS_HOOK,
   ),
@@ -117,16 +123,40 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     'script.hartway_gate',
     [
       [FOUND, [n('Greg is waiting by the steps with a rope in his hands. Best not go up without it.')]],
-      [HOOK, [h('Not alone! [[Find Greg]] first. The walking man on the breakwater will know where he is.')]],
+      [HOOK, [h('Not alone! [[Fetch Greg]] first. Galehigh, top of the town.')]],
     ],
-    [n('You\'ve one foot on the steps when a voice calls across the grass.'), ...HOLLIS_HOOK],
+    [n('You\'ve one foot on the steps when a voice calls across the snow.'), ...HOLLIS_HOOK],
   ),
-  'script.hartway_foot_rest': rest('Hollis\'s fire, banked low under the awning. Bedrolls, a kettle, rope drying on a line.'),
+  // Andrew's Storm -> Frost wayfinding line, staged on the pass (exactly one plays)
+  ...chain(
+    'script.andrew_hint_frost',
+    [
+      ['flag:pass_open', [{ op: 'say', speaker: 'ANDREW', text: 'Ysolde Frost keeps the Frost at [[the Pale Vault Glacier]], [[over the Windward Stair]]. Wrap up.' }]],
+      [ROPED, [{ op: 'say', speaker: 'ANDREW', text: 'Roped to that climber? Then it\'s [[the steps on the Stair\'s high crags]], and over the top to Pale Vault. Mind the ridges.' }]],
+      [FOUND, [{ op: 'say', speaker: 'ANDREW', text: 'He said yes? He\'ll be [[at the steps on the Windward Stair\'s high crags]], by the rope-warden. Go and rope up.' }]],
+      [HOOK, [{ op: 'say', speaker: 'ANDREW', text: 'Low road\'s drifted shut, I hear. The climber you want is [[at the top of Galehigh]]: red jacket, staring at the hill. Promise to tell him no.' }]],
+    ],
+    [{ op: 'say', speaker: 'ANDREW', text: 'Ysolde Frost keeps the Frost at [[the Pale Vault Glacier]], [[up the Windward Stair]]. The Kite clears the crags. Wrap up.' }],
+  ),
+  // the drifted low road (the north exit's blocked_ref)
+  'script.hartway_low_road': [
+    n('The low road north is gone under a drift three lamps deep. Nobody is walking to Pale Vault this way before spring.'),
+    n('Climbers\' steps go up out of the crag just west of the road. A woman with a coil of rope is watching you look at them.', { unless_flag: HOOK }),
+    n('The way now is over the top: [[the steps in the crag]], with Greg on the rope.', { if_flag: HOOK }),
+  ],
   'script.hartway_camp': rest('A walkers\' camp against the cliff, the fire still lit. Somebody keeps it going. You never see who.'),
 
   // ---- Paul at his lamp: "Greg?" (content/scripts.ts booji_paul_lamp options) ------------
+  ...chain(
+    'script.hartway_paul_router',
+    [
+      [FOUND, [{ op: 'run', ref: 'script.hartway_paul_climbing' }]],
+      [TOKEN, [{ op: 'run', ref: 'script.hartway_paul_greg_again' }]],
+    ],
+    [{ op: 'run', ref: 'script.hartway_paul_greg' }],
+  ),
   'script.hartway_paul_greg': [
-    p('Greg! Hollis sent you, did she? Is he STILL not climbing? Daft old goat.'),
+    p('Greg! You\'ve met Greg? Up in the kite town? Is he STILL not climbing? Daft old goat.'),
     p('We did the high country together for years. Greg had the nerve. He\'d look at a cliff and see a staircase.'),
     p('I was the one who said "No, Greg." That was the whole job. Nerve at the front of the rope, sense at the back.'),
     p('Then my knees took a vote, and I stopped. And he wouldn\'t go up with anybody else. Nobody to tell him no, he said.'),
@@ -135,11 +165,10 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     { op: 'giveItem', item: 'paul_rope_end', count: 1 },
     { op: 'say', text: 'Got PAUL\'S ROPE-END!' },
     p('Give him that. He\'ll know the knot. Tell him the one holding it [[has got the sense now]].'),
-    p('He\'ll be somewhere he can see the hill and not climb it. Start at [[the Wayward Arms]]. He never could walk past a slate.'),
     { op: 'setFlag', flag: TOKEN },
   ],
   'script.hartway_paul_greg_again': [
-    p('Not found him? [[The Wayward Arms]] first, then wherever his slate says he\'s gone. Show him the knot.'),
+    p('He\'s in [[Galehigh, top of the town]], you said. Show him the knot. Then stand well back.'),
   ],
   'script.hartway_paul_climbing': [
     p('He said yes? To YOU? Ha! Then go on. And when he says "it\'s fine", that\'s your cue.'),
@@ -172,54 +201,65 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     p('The hill\'s still there, then. Good. I like knowing somebody\'s sat on that bench.'),
   ],
 
-  // ---- the trail: the slate at the Wayward Arms -------------------------------------------
-  'script.hartway_arms_slate': [
-    n('A slate of tabs, propped on the long table. One name has more chalk marks than all the others put together: GREG.'),
-    n('Under his tally, in a cheerful hand: "Gone to look at the hill from [[the far side of the wood]]. Back when I\'ve stopped looking. Put it on the slate. G."', { if_flag: HOOK }),
-  ],
-
-  // ---- Greg, on his stump in the far Wanderwood --------------------------------------------
+  // ---- Greg, at the top of Galehigh, looking up at the Stair ------------------------------
+  // Three stages (latest first): asked to come (HOOK) -> the promise; met; first meeting.
+  // Paul's rope-end, if you happen to carry it, gets its own beat inside the promise.
   ...chain(
-    'script.greg_wood',
+    'script.greg_town',
     [
       [
-        TOKEN,
+        HOOK,
         [
-          n('You hold out the knotted rope-end.'),
-          { op: 'emote', actor: 'greg_wood', emote: 'alert', holdMs: 800 },
-          g('...Where did you get that.'),
-          g('That\'s Paul\'s knot. He tied it wrong for thirty years and it never once slipped.'),
-          n('You tell him what Paul said: the one holding it has got the sense now.'),
-          g('Did he. DID he.'),
-          { op: 'shakeActor', actor: 'greg_wood', ms: 700 },
-          g('Ha! Cheeky old sod. All right. ALL right.'),
-          { op: 'takeItem', item: 'paul_rope_end', count: 1 },
-          g('Same deal as ever: I go first, and you say "No, Greg" when I need it. You\'ll know when. Paul always did.'),
-          g('[[Meet me at Hartway Foot]], west off Wayward Rise. I need to find my boots.'),
+          g('Hollis sent you. Course she did. The low road\'s shut and she needs her ridges walked.'),
+          g('I don\'t climb any more. I only ever had the nerve. My partner had the sense, and he packed it in.'),
+          { op: 'run', ref: 'script.greg_knot', if_flag: TOKEN },
+          g('Unless. Tell me this. I say: "that snow bridge\'ll hold, I\'ll just nip across." What do YOU say?'),
+          {
+            op: 'choice',
+            prompt: 'What do you say?',
+            options: [
+              { label: 'NO, GREG.', ops: [{ op: 'run', ref: 'script.greg_yes' }] },
+              {
+                label: 'After you?',
+                ops: [g('...And that\'s how you get two people in a hole. Have a think. I\'ll be here. I\'m always here.')],
+              },
+            ],
+          },
           { op: 'setFlag', flag: 'flag:greg_met' },
-          { op: 'setFlag', flag: HOOK },
-          { op: 'setFlag', flag: FOUND },
-          { op: 'hideActor', actor: 'greg_wood' },
         ],
       ],
-      [
-        'flag:greg_met',
-        [
-          g('Still looking. It\'s still there. That\'s the trouble with hills.'),
-          g('Hollis sent you? Kind of her. No. Not without someone to tell me no.', { if_flag: HOOK }),
-        ],
-      ],
+      ['flag:greg_met', [g('Still looking. It\'s still there. That\'s the trouble with hills.')]],
     ],
     [
-      n('A stocky man in a red jacket sits on a stump, looking up through a gap in the trees. Up there, a very long way up, is a mountain.'),
+      n('A stocky man in a red jacket stands at the top of the town with his hands in his pockets, looking up at the Stair.'),
       g('Evening. Don\'t mind me. Just looking at the hill.'),
-      g('The Hartshoulder. I\'ve been up it more times than I\'ve had hot dinners. Not for years, mind.'),
-      g('My rope partner packed it in. Walks now, on the flat. Keeps a dark lamp on [[Pearlmoor\'s breakwater]], last I heard.'),
-      g('And I don\'t climb without someone to tell me no. So. I look.'),
+      g('The Hartshoulder, top of the Stair. I\'ve been over it more times than I\'ve had hot dinners. Not for years, mind.'),
+      g('My rope partner packed it in. Walks on the flat now, down south somewhere. And I don\'t climb without someone to tell me no.'),
+      g('So. I look.'),
       { op: 'setFlag', flag: 'flag:greg_met' },
-      { op: 'setFlag', flag: HOOK },
     ],
   ),
+  'script.greg_yes': [
+    { op: 'emote', actor: 'greg_town', emote: 'alert', holdMs: 700 },
+    g('...Say that again. No, don\'t. I heard it. Haven\'t heard it in years.'),
+    { op: 'shakeActor', actor: 'greg_town', ms: 600 },
+    g('Ha! All right. ALL right. Same deal I always had: I go first, and you say that when I need it. You\'ll know when.'),
+    g('[[Meet me at the steps on the high crags]], by Hollis. I need to find my boots.'),
+    { op: 'setFlag', flag: 'flag:greg_met' },
+    { op: 'setFlag', flag: FOUND },
+    { op: 'hideActor', actor: 'greg_town' },
+  ],
+  // only if you carry Paul's rope-end (a player who knows the walking man)
+  'script.greg_knot': [
+    n('You hold out the knotted rope-end.'),
+    { op: 'emote', actor: 'greg_town', emote: 'alert', holdMs: 800 },
+    g('...Where did you get that.'),
+    g('That\'s Paul\'s knot. He tied it wrong for thirty years and it never once slipped.'),
+    n('You tell him what Paul said: the one holding it has got the sense now.'),
+    g('Did he. DID he. Cheeky old sod.'),
+    { op: 'takeItem', item: 'paul_rope_end', count: 1 },
+    g('Well. If HE vouches for you. Still. I\'ll hear it from you.'),
+  ],
   'script.greg_rope_up': [
     g('Found the boots. One had a mouse in it. We\'ve come to an arrangement.'),
     n('Greg ties you in: a bowline, checked twice. Then checked again by Hollis, who doesn\'t trust either of you.'),
@@ -235,7 +275,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
   ],
   'script.hart_staircase': [
     { op: 'letterbox', on: true },
-    g('The Staircase. A rib of rock with the night on both sides of it. Paul hated this bit.'),
+    g('The Staircase. A rib of rock with the night on both sides of it. My old partner hated this bit.'),
     g('I go first. You watch where I put my feet, and you put yours there. Nowhere else.'),
     { op: 'move', actor: 'player', to: { tx: 19, ty: 46 } },
     { op: 'face', actor: 'player', facing: 'right' },
@@ -290,7 +330,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
           label: 'NO, GREG.',
           ops: [
             { op: 'setFlag', flag: 'flag:hart_sense_1' },
-            g('...That is EXACTLY the face Paul used to make. Fine. Ladder.'),
+            g('...That is EXACTLY the face my partner used to make. Fine. Ladder.'),
           ],
         },
         {
@@ -318,7 +358,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     g('The Whiteback. Now, the proper trail goes round the back of the mountain. Three hours. Safe as a sofa.'),
     g('Or: straight over the top of that. Half an hour. The snow\'s frozen hard as a table. Good purchase.'),
     n('It is a ridge of snow one boot wide, with nothing at all on either side of it.'),
-    g('I wouldn\'t take you if it wasn\'t fine. Paul wouldn\'t have crossed it alone in a month of Sundays. With me, he did.'),
+    g('I wouldn\'t take you if it wasn\'t fine. My partner wouldn\'t have crossed it alone in a month of Sundays. With me, he did.'),
     {
       op: 'choice',
       prompt: 'What do you say?',
@@ -365,7 +405,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     },
     { op: 'setFlag', flag: 'flag:hart_p2_done' },
     { op: 'travel', map: 'hartway_climb', to: { tx: 22, ty: 20 }, facing: 'right' },
-    g('Don\'t tell Paul. ...No. DO tell Paul. He\'ll want to know I haven\'t changed.'),
+    g('Don\'t tell anyone. ...No. DO. If you ever meet a man who walks everywhere, tell HIM. He\'ll want to know I haven\'t changed.'),
     g('Same thing happened with him, you know. A ridge just like it. My legs went then, too. I said "table" then, too.'),
     g('Right. I\'m putting a ladder on this shelf before either of us has another idea.'),
     { op: 'move', actor: 'greg_ue', to: { tx: 25, ty: 21 }, speed: 2 },
@@ -387,7 +427,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     { op: 'setFlag', flag: 'flag:hart_b3_begun' },
     { op: 'travel', map: 'hartway_climb', to: { tx: 24, ty: 10 }, facing: 'left' },
     n('Greg comes puffing up the trail behind you, and stops dead.'),
-    g('The Seat. Top of the Hartway. Paul and I must have sat on that bench a hundred times.'),
+    g('The Seat. Top of the Hartway. My partner and I must have sat on that bench a hundred times.'),
     g('See the bothy? Climbers built it. Nobody\'s been up in eleven winters, so the kin moved in. A nest in the roof. Something asleep in the hearth.'),
     g('Good. It\'s theirs. We only ever borrowed the place.'),
     g('Now, the BEST view is off the snow lip, out past the cairn. Sticks right out over the drop. I\'ll just nip out and—'),
@@ -420,14 +460,15 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     },
     { op: 'move', actor: 'greg_seat', to: { tx: 15, ty: 10 }, speed: 1.5 },
     { op: 'face', actor: 'greg_seat', facing: 'down' },
-    g('[[Come and sit]]. You\'ve earned the bench.'),
+    g('Come and sit. You\'ve earned the bench.'),
     { op: 'setFlag', flag: 'flag:hart_b3_done' },
+    { op: 'run', ref: 'script.hart_seat_first' },
   ],
   ...chain(
     'script.greg_bench',
     [
       [DONE, [g('Paul laughed? Good. And he kept the stone? Ha. Tell him there\'s room on the bench. I\'ll be here a while yet.')]],
-      [MIST, [g('I\'m stopping up here a bit. You go on down and [[tell Paul]]. He\'s at his lamp. He\'s always at his lamp.')]],
+      [MIST, [g('I\'m stopping up here a bit. [[Pale Vault\'s down the trail, east end]]. Go on. I\'ll catch you up in a year or two.')]],
     ],
     [g('Sit down! [[The bench]]. Go on. It\'s the best seat in Vesperholm and nobody\'s used it in eleven winters.')],
   ),
@@ -458,30 +499,29 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
           },
         ],
       ],
-      [
-        'flag:hart_b3_done',
-        [
-          { op: 'letterbox', on: true },
-          n('You sit. Greg sits. The bench creaks at both of you.'),
-          { op: 'run', ref: 'script.hart_mist_reel' },
-          g('The Hartway. That\'s why it\'s called that. It was never our road. It\'s theirs. We borrowed it, same as the bothy.'),
-          g('Eleven winters of dark, and they still know the way up.'),
-          g('They\'ll have left a fawn or two in [[the high grass]] behind us, mind. They always did.'),
-          g('Climbers\' custom: you take one stone down from the Seat. Paul never would. Said he\'d only have to carry it back up.'),
-          { op: 'sfx', key: 'world-keyitem' },
-          { op: 'giveItem', item: 'seat_stone', count: 1 },
-          { op: 'say', text: 'Got a STONE FROM THE SEAT!' },
-          g('[[Take that down to Paul]]. Tell him the hill\'s still here. Tell him about the legs, if you must.'),
-          { op: 'run', ref: 'script.hart_sense_gift', if_flag: 'flag:hart_sense_all' },
-          { op: 'setFlag', flag: MIST },
-          { op: 'letterbox', on: false },
-        ],
-      ],
+      ['flag:hart_b3_done', [{ op: 'run', ref: 'script.hart_seat_first' }]],
     ],
     [n('An old bench, silver with weather, facing out over the drop. There is a small brass plate on the top slat, worn quite smooth.')],
   ),
+  'script.hart_seat_first': [
+    { op: 'letterbox', on: true },
+    n('You sit. Greg sits. The bench creaks at both of you.'),
+    { op: 'run', ref: 'script.hart_mist_reel' },
+    g('The Hartway. That\'s why it\'s called that. It was never our road. It\'s theirs. We borrowed it, same as the bothy.'),
+    g('Eleven winters of dark, and they still know the way up.'),
+    g('They\'ll have left a fawn or two in [[the high grass]] behind us, mind. They always did.'),
+    g('Climbers\' custom: you take one stone down from the Seat. My partner never would. Said he\'d only have to carry it back up.'),
+    { op: 'sfx', key: 'world-keyitem' },
+    { op: 'giveItem', item: 'seat_stone', count: 1 },
+    { op: 'say', text: 'Got a STONE FROM THE SEAT!' },
+    g('Pale Vault\'s [[down the safe trail, east end of the Seat]]. And Hollis\'ll have the low road dug out behind us by now.'),
+    { op: 'say', speaker: 'GREG', if_flag: TOKEN, text: 'And [[take that stone to Paul]], when you\'re next south. Tell him the hill\'s still here. Tell him about the legs, if you must.' },
+    { op: 'run', ref: 'script.hart_sense_gift', if_flag: 'flag:hart_sense_all' },
+    { op: 'setFlag', flag: MIST },
+    { op: 'letterbox', on: false },
+  ],
   'script.hart_sense_gift': [
-    g('And you said no. Three times out of three. That\'s better than Paul managed in his first ten years.'),
+    g('And you said no. Three times out of three. That\'s better than my partner managed in his first ten years.'),
     g('These were for the day I met someone with more sense than me. Low bar. Still. You cleared it.'),
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'beacon_charge', count: 2 },
@@ -499,17 +539,17 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
       captions: [
         [
           'The whole valley, all the way down to the sea.',
-          'GREG: That\'s Pearlmoor, with the Old Light. And that one beacon, off on its own? Tinderwick.',
+          'GREG: All the way south. That\'s Pearlmoor, with the Old Light. And that one beacon, off on its own? Tinderwick.',
           'From up here the towns are only lamps. Small ones. Somebody has kept every one of them lit.',
-          'GREG: Paul used to say you can\'t see anybody\'s troubles from up here. Only that they\'ve left a light on.',
+          'GREG: My partner used to say you can\'t see anybody\'s troubles from up here. Only that they\'ve left a light on.',
         ],
         [
-          'GREG: ...Hello. See that? Mist, coming in off the fen. Watch the bottom of it.',
+          'GREG: ...Hello. See that? Mist, coming up out of the valleys. Watch the bottom of it.',
           'Something is moving inside the mist. Lights. Dozens of them, low and golden, all going the same way.',
         ],
         [
           'The mist climbs the mountain like a tide coming in. The lights climb with it.',
-          'GREG (whispering): Sit still. Not a word. Paul and I saw this once. I\'ve spent years half sure I dreamed it.',
+          'GREG (whispering): Sit still. Not a word. I saw this once, years back, with my partner. I\'ve been half sure I dreamed it.',
         ],
         [
           'Then the mist is all around you. And so are they.',
@@ -527,12 +567,6 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
   ],
 
   // ---- caches ------------------------------------------------------------------------------------
-  'script.pickup_hartway_foot': [
-    { op: 'sfx', key: 'world-pickup' },
-    { op: 'giveItem', item: 'warm_balm', count: 2 },
-    { op: 'say', text: 'A climber\'s tin, wedged under the crag. Two WARM BALMS!' },
-    { op: 'setFlag', flag: 'flag:picked_hartway_foot' },
-  ],
   'script.pickup_hartway_shelf': [
     { op: 'sfx', key: 'world-pickup' },
     { op: 'giveItem', item: 'glow_charge', count: 2 },
@@ -554,16 +588,12 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
 };
 
 export const HARTWAY_DIALOGUE: DialogueRegistry = {
-  'sign.wayward_hartway': [{ text: 'WEST: [[the Hartway]], and the foot of the Hartshoulder.' }],
-  'sign.hartway_foot': [
-    { text: 'HARTWAY FOOT\nNORTH: the steps up to [[the Hartway]]. EAST: Wayward Rise.' },
-  ],
   'sign.hartway_steps': [
-    { text: 'THE HARTWAY\nThe old climbers\' road up the Hartshoulder. [[Nobody climbs alone]]: see the rope-warden.' },
+    { text: 'THE HARTWAY\nThe climbers\' road over the Hartshoulder to Pale Vault. [[Nobody climbs alone]]: see the rope-warden.' },
     { text: 'Scratched underneath: "To the Seat: one day. To the Seat with Greg: quicker, and you\'ll wish it wasn\'t."' },
   ],
-  'sign.hartway_bothy': [
-    { text: 'The rope-warden\'s bothy. Coils of rope on every peg, each one tagged with a name and a year. The newest tag is eleven winters old.' },
+  'sign.hartway_top': [
+    { text: 'THE HARTWAY\nUp these steps: the Seat, and the climbers\' road down to the Windward Stair.' },
   ],
   'sign.hartway_staircase': [{ text: 'THE STAIRCASE\nOne at a time. Leader first.' }],
   'sign.hartway_whiteback': [

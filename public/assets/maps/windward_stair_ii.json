@@ -93,6 +93,18 @@
       "walk_under": true
     },
     {
+      "id": "steps_hartway",
+      "sprite": "markers_steps_n",
+      "at": {
+        "tx": 17,
+        "ty": 3
+      },
+      "w": 1,
+      "h": 2,
+      "solid": false,
+      "bob": false
+    },
+    {
       "id": "drop_steps",
       "sprite": "markers_steps_s",
       "at": {
@@ -269,7 +281,9 @@
         "ty": 28
       },
       "facing": "up",
-      "transition": "fade"
+      "transition": "fade",
+      "requires_flag": "flag:pass_open",
+      "blocked_ref": "script.hartway_low_road"
     },
     {
       "id": "to_glacier_e",
@@ -284,7 +298,9 @@
         "ty": 28
       },
       "facing": "up",
-      "transition": "fade"
+      "transition": "fade",
+      "requires_flag": "flag:pass_open",
+      "blocked_ref": "script.hartway_low_road"
     },
     {
       "id": "to_roost",
@@ -318,6 +334,23 @@
       "facing": "down",
       "requires_flag": "flag:shortcut_windward",
       "transition": "fade"
+    },
+    {
+      "id": "to_hartway",
+      "at": {
+        "tx": 17,
+        "ty": 5
+      },
+      "trigger": "step_on",
+      "to_map": "hartway_climb",
+      "to": {
+        "tx": 14,
+        "ty": 47
+      },
+      "facing": "up",
+      "transition": "fade",
+      "requires_flag": "flag:greg_roped",
+      "blocked_ref": "script.hartway_gate"
     }
   ],
   "triggers": [
@@ -482,6 +515,16 @@
       },
       "activation": "interact",
       "ref": "sign.windward_roost"
+    },
+    {
+      "id": "sign_hartway_steps",
+      "kind": "sign",
+      "at": {
+        "tx": 16,
+        "ty": 6
+      },
+      "activation": "interact",
+      "ref": "sign.hartway_steps"
     },
     {
       "id": "w2_shrine_look",
@@ -936,6 +979,30 @@
       "hidden_when_flag": "flag:picked_windward_kit"
     },
     {
+      "id": "hollis",
+      "at": {
+        "tx": 15,
+        "ty": 8
+      },
+      "facing": "down",
+      "sprite": "pass_walker",
+      "movement": "static",
+      "dialogue_ref": "script.hartway_hollis"
+    },
+    {
+      "id": "greg_foot",
+      "at": {
+        "tx": 19,
+        "ty": 7
+      },
+      "facing": "left",
+      "sprite": "greg",
+      "movement": "static",
+      "dialogue_ref": "script.greg_rope_up",
+      "requires_flag": "flag:greg_found",
+      "hidden_when_flag": "flag:greg_roped"
+    },
+    {
       "id": "amb_geolace",
       "at": {
         "tx": 21,
@@ -1089,7 +1156,7 @@
         198,
         255,
         261,
-        256,
+        267,
         262,
         257,
         221,
@@ -1116,9 +1183,9 @@
         197,
         199,
         199,
-        258,
         267,
-        260,
+        197,
+        259,
         197,
         224,
         226,
@@ -1823,7 +1890,7 @@
         0,
         0,
         0,
-        0,
+        117,
         0,
         0,
         0,

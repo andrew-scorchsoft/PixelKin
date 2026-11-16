@@ -29,6 +29,11 @@ export const NEXT_GOALS: GoalStage[] = [
   { flag: 'gleam:lunar', text: 'The Crown is whole: climb the Umbral Spire, up the mountain road north of the Vesper Crossroads.' },
   { flag: 'gleam:solar', text: 'Lunar Gleam: Nessa Cole at Nightreach Observatory, top of the Sunvault Climb.' },
   { flag: 'gleam:frost', text: 'Solar Gleam: Lucan Pyre in the Sunken Solarium, west through Hushfrost Pass.' },
+  // the Windward pass (content/regions/hartway.ts; mirrors script.andrew_hint_frost)
+  { flag: 'flag:pass_open', text: 'Frost Gleam: Ysolde Frost at the Pale Vault Glacier, over the Windward Stair.' },
+  { flag: 'flag:greg_roped', text: 'Go over the Hartway with Greg: the steps on the Windward Stair\'s high crags.' },
+  { flag: 'flag:greg_found', text: 'Meet Greg at the steps on the Windward Stair\'s high crags and rope up.' },
+  { flag: 'flag:q_hartway', text: 'Fetch Greg from the top of Galehigh: nobody climbs the Hartway alone.' },
   { flag: 'gleam:storm', text: 'Frost Gleam: Ysolde Frost at the Pale Vault Glacier, up the Windward Stair.' },
   { flag: 'gleam:stone', text: 'Storm Gleam: Mira Vael on the Galehigh Terraces, up Cinderwind Scarp and over the Ashfall Shelf.' },
   { flag: 'gleam:verdant', text: 'Stone Gleam: Otho Grist at Cinderhead Mine, through the deep wood behind Lowleaf.' },

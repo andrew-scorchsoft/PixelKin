@@ -1490,6 +1490,18 @@
       "requires_flag": "gleam:storm"
     },
     {
+      "id": "greg_town",
+      "at": {
+        "tx": 11,
+        "ty": 3
+      },
+      "facing": "up",
+      "sprite": "greg",
+      "movement": "static",
+      "dialogue_ref": "script.greg_town",
+      "hidden_when_flag": "flag:greg_found"
+    },
+    {
       "id": "letter_mira",
       "at": {
         "tx": 14,

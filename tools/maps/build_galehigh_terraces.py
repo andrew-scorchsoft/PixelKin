@@ -593,6 +593,14 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
     {"name": "above", "role": "above", "depth": 20, "data": mk.make_grid(W, H)},
 ]
 
+# ---- THE HARTWAY (2026-11): GREG, at the top of the town, looking up at the Stair he
+# won't climb ("nobody to tell me no") until you say you will. After the scatter.
+m["npcs"].append({"id": "greg_town", "at": {"tx": 11, "ty": 3}, "facing": "up",
+                  "sprite": "greg", "movement": "static", "dialogue_ref": "script.greg_town",
+                  "hidden_when_flag": "flag:greg_found"})
+deco[3 * W + 11] = 0
+owed.append("script.greg_town")
+
 if __name__ == "__main__":
     # warp marker: the crag stair cut up the north lip once the shortcut opens
     wm.add(m, wm.marker("crag_stair", "steps_n", 21, 2, requires_flag="flag:shortcut_windward"))

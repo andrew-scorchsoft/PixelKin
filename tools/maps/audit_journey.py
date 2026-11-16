@@ -159,6 +159,8 @@ DERIVED_ANY = [
     ("flag:oldlight_open", ["flag:q_south_bell", "gleam:tide"]),
     ("flag:q_south_rope_or_later", ["flag:q_south_has_rope", "gleam:tide"]),
     ("flag:skyloft_open", ["flag:q_north_kite_blessed", "gleam:storm"]),
+    ("flag:pass_open", ["flag:hart_b3_done", "flag:hart_mist_seen", "chart:pale-vault-glacier",
+                        "gleam:frost", "gleam:solar", "gleam:lunar"]),
     ("flag:undercroft_open", ["flag:q_north_aurora_oil", "gleam:frost"]),
     ("flag:brew_was_perky", ["flag:brew_perky"]),
     ("flag:brew_was_buzzing", ["flag:brew_buzzing"]),
