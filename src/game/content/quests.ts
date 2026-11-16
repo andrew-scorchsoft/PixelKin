@@ -133,6 +133,18 @@ export const QUESTS: QuestRegistry = [
     stage_flags: ['flag:q_south_wander_word', 'flag:q_south_wander_lamp'],
     done_flag: 'flag:q_south_wander_done',
   },
+  // THE HARTWAY (content/regions/hartway.ts): find Greg, climb the Hartshoulder with
+  // him, sit on the Seat, tell Paul. Hidden content like the rest of Paul's.
+  {
+    id: 's8_a_rope_for_two',
+    name: 'A Rope for Two',
+    region: 'south',
+    giver: 'Hollis, the rope-warden at Hartway Foot',
+    blurb: 'Nobody climbs the Hartway alone, and only Greg still knows its ridges. Find him, rope up, and go up to the Seat at the top of the mountain.',
+    start_flag: 'flag:q_hartway',
+    stage_flags: ['flag:greg_token', 'flag:greg_found', 'flag:hart_p1_done', 'flag:hart_p2_done', 'flag:hart_mist_seen'],
+    done_flag: 'flag:q_hartway_done',
+  },
   // S7 "Just One More Cup" — the Wakeful Fair (content/regions/brewfair.ts). The
   // stages are the doors the caffeine opens (ANY_OF flags, so they never un-tick
   // when the wake clears the cups) and the trip's end; the card is its own count.

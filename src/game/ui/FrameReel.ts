@@ -19,6 +19,8 @@ import { theme } from './theme';
 import { loadImage } from '@game/systems/sprites/loadImage';
 import { InputController, InputAction } from '@game/systems/input/InputController';
 import type { Sfx } from '@game/systems/audio/Sfx';
+import { makeText } from './Text';
+import { stripMarks } from './textMarks';
 
 export interface FrameReelSpec {
   frames: string[];
@@ -27,7 +29,20 @@ export interface FrameReelSpec {
   flash?: number[];
   sfx?: string;
   flashSfx?: string;
+  /**
+   * Words ON the stills (an illustrated story): one entry per frame, null for a
+   * silent frame. A captioned frame shows each page in a band along the bottom and
+   * waits for Confirm instead of the timer; an uncaptioned frame holds `holdMs`.
+   */
+  captions?: (string | string[] | null)[];
+  /** One-shot cues fired as a frame lands (frame index -> sfx key). */
+  frameSfx?: Record<number, string>;
 }
+
+const CAPTION_H = 42;
+const CAPTION_PAD = 6;
+const CAPTION_LINES = 3;
+const CAPTION_MIN_MS = 350;
 
 const DEPTH = theme.depth.toast + 5;
 const DEFAULT_HOLD = 1400;
@@ -62,9 +77,52 @@ export class FrameReel {
 
     let skipped = false;
     const input = new InputController(scene);
+    let confirmed = false;
     const tick = (): void => {
       input.update();
       if (input.justPressed(InputAction.Cancel)) skipped = true;
+      if (input.justPressed(InputAction.Confirm)) confirmed = true;
+    };
+
+    // the caption band (built once, shown only on captioned frames)
+    const band = scene.add
+      .rectangle(0, GAME_HEIGHT - CAPTION_H, GAME_WIDTH, CAPTION_H, 0x000000, 0.72)
+      .setOrigin(0, 0)
+      .setScrollFactor(0)
+      .setDepth(DEPTH + 50)
+      .setAlpha(0);
+    const words = makeText(scene, CAPTION_PAD, GAME_HEIGHT - CAPTION_H + CAPTION_PAD, '', theme.text.narrate)
+      .setScrollFactor(0)
+      .setDepth(DEPTH + 51)
+      .setWordWrapWidth(GAME_WIDTH - CAPTION_PAD * 2)
+      .setLineSpacing(2)
+      .setAlpha(0);
+    const more = makeText(scene, GAME_WIDTH - CAPTION_PAD - 8, GAME_HEIGHT - 11, '\u25bc', theme.text.key)
+      .setScrollFactor(0)
+      .setDepth(DEPTH + 51)
+      .setAlpha(0);
+    const blink = scene.tweens.add({ targets: more, y: more.y + 2, duration: 420, yoyo: true, repeat: -1 });
+    const say = async (pages: string[]): Promise<void> => {
+      await this.tween(band, 1, 180);
+      // a long page is re-flowed into band-sized pages (CAPTION_LINES lines each)
+      const flowed: string[] = [];
+      for (const page of pages) {
+        const lines = words.getWrappedText(stripMarks(page));
+        for (let k = 0; k < lines.length; k += CAPTION_LINES) flowed.push(lines.slice(k, k + CAPTION_LINES).join('\n'));
+      }
+      for (const page of flowed) {
+        if (skipped) break;
+        words.setText(page).setAlpha(1);
+        more.setAlpha(0);
+        await this.wait(CAPTION_MIN_MS, () => skipped);
+        confirmed = false;
+        more.setAlpha(1);
+        await this.wait(600000, () => skipped || confirmed);
+        void this.sfx?.play('ui-confirm');
+      }
+      words.setAlpha(0);
+      more.setAlpha(0);
+      await this.tween(band, 0, 180);
     };
     scene.events.on(Phaser.Scenes.Events.UPDATE, tick);
 
@@ -88,7 +146,15 @@ export class FrameReel {
           scene.cameras.main.flash(260, 235, 240, 255);
           scene.cameras.main.shake(380, 0.006);
         }
-        await this.wait(hold, () => skipped);
+        const cue = spec.frameSfx?.[i];
+        if (cue) void this.sfx?.play(cue);
+        const cap = spec.captions?.[i];
+        if (cap && cap.length) {
+          await this.wait(Math.min(hold, 500), () => skipped);
+          await say(Array.isArray(cap) ? cap : [cap]);
+        } else {
+          await this.wait(hold, () => skipped);
+        }
       }
       // let the last still breathe, then go to black
       for (const img of shown) void this.tween(img, 0, 700);
@@ -96,6 +162,10 @@ export class FrameReel {
     } finally {
       scene.events.off(Phaser.Scenes.Events.UPDATE, tick);
       input.destroy();
+      blink.remove();
+      band.destroy();
+      words.destroy();
+      more.destroy();
       for (const img of shown) img.destroy();
     }
     await this.tween(black, 0, 450);

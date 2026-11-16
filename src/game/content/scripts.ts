@@ -679,6 +679,12 @@ export const SCRIPTS: ScriptRegistry = {
           label: 'Your cards?',
           ops: [{ op: 'run', ref: 'script.paul_milagro_cards' }],
         },
+        // THE HARTWAY (content/regions/hartway.ts): his old rope partner, and the hill
+        { label: 'Greg?', if_flag: 'flag:q_hartway', unless_flag: 'flag:greg_token', ops: [{ op: 'run', ref: 'script.hartway_paul_greg' }] },
+        { label: 'Greg?', if_flag: 'flag:greg_token', unless_flag: 'flag:greg_found', ops: [{ op: 'run', ref: 'script.hartway_paul_greg_again' }] },
+        { label: 'Greg?', if_flag: 'flag:greg_found', unless_flag: 'flag:hart_mist_seen', ops: [{ op: 'run', ref: 'script.hartway_paul_climbing' }] },
+        { label: 'The Hartway', if_flag: 'flag:hart_mist_seen', unless_flag: 'flag:q_hartway_done', ops: [{ op: 'run', ref: 'script.hartway_paul_told' }] },
+        { label: 'The Hartway', if_flag: 'flag:q_hartway_done', ops: [{ op: 'run', ref: 'script.hartway_paul_after' }] },
         {
           label: 'Too much coffee?',
           if_flag: 'flag:q_south_wander_done',

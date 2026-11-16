@@ -59,6 +59,7 @@ NODE_KINDS: dict[str, str] = {
     "dimglass_coast_ii": "route", "tideglass_cavern": "landmark", "gullcry_rock": "landmark",
     "pearlmoor_quay": "town", "pearlmoor_breakwater": "landmark", "pearlmoor_wanderwood": "landmark",
     "wayward_rise": "landmark",
+    "hartway_foot": "route", "hartway_climb": "landmark",  # the Hartshoulder (2026-11), west of the Rise
     # Lane E (10 Part III): the bay under the beach + the drowned old town
     "tinderwick_bay": "route", "lowtinder": "town",
     "dawnstead": "town",
@@ -294,6 +295,8 @@ ROADS: list[tuple[str, str, str]] = [
     ("tinderwick_bay", "lowtinder", "gate"),
     ("pearlmoor_quay", "pearlmoor_breakwater", "gate"),
     ("pearlmoor_quay", "pearlmoor_wanderwood", "road"),   # up through the allotment
+    ("wayward_rise", "hartway_foot", "road"),             # west under the washing line
+    ("hartway_foot", "hartway_climb", "gate"),            # the steps (roped to Greg)
     ("pearlmoor_wanderwood", "wayward_rise", "road"),     # north out of the glade
     ("umbral_spire", "dawnstead", "gate"),
     # the bay road home (Saltreach Fen I's drowned road -> the Crossroads)

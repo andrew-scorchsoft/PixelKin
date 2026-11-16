@@ -181,8 +181,10 @@ class MapModel:
                 for x in range(r["tx"], r["tx"] + r["w"]):
                     self._span_at.setdefault((x, y), sp)
         # switch states to model: unconditional only, or every switch thrown
+        # (a flag-gated SPAN — a rope ladder fixed later — is a switch too)
         self._states = [False, True] if any(
-            f.get("requires_flag") or f.get("hidden_when_flag") for f in self.flows) else [False]
+            f.get("requires_flag") or f.get("hidden_when_flag")
+            for f in self.flows + self.spans) else [False]
 
     @property
     def one_way(self) -> bool:
@@ -202,8 +204,17 @@ class MapModel:
             return f
         return None
 
-    def span_at(self, x: int, y: int):
-        return self._span_at.get((x, y))
+    def span_at(self, x: int, y: int, thrown: bool | None = None):
+        """The span on this tile. `thrown` None = flag-blind (you are standing on
+        it, so it is there); True/False = only if it exists in that switch state."""
+        sp = self._span_at.get((x, y))
+        if sp is None or thrown is None:
+            return sp
+        if sp.get("requires_flag") and not thrown:
+            return None
+        if sp.get("hidden_when_flag") and thrown:
+            return None
+        return sp
 
     @staticmethod
     def _along(sp, dx, dy) -> bool:
@@ -225,7 +236,7 @@ class MapModel:
         f = self.flow_at(x, y, thrown)
         if f and f.get("kind") != "ice" and LEDGE_DIR.get(f.get("dir")) == (-dx, -dy):
             return False
-        sp = self.span_at(x, y)
+        sp = self.span_at(x, y, thrown)
         if sp:
             return self._along(sp, dx, dy) and not (npc_block and (x, y) in npc_block)
         return self._ground_open(x, y, abilities, npc_block)
@@ -245,7 +256,7 @@ class MapModel:
             lx, ly = tx + dx * (n - 1), ty + dy * (n - 1)
             if self._enterable(lx, ly, dx, dy, abilities, npc_block, thrown):
                 return lx, ly
-        sp = self.span_at(tx, ty)
+        sp = self.span_at(tx, ty, thrown)
         if sp:
             if self._along(sp, dx, dy):
                 return None if (npc_block and (tx, ty) in npc_block) else (tx, ty)
@@ -253,13 +264,13 @@ class MapModel:
                 return None
             cx, cy = tx, ty
             while True:
-                s2 = self.span_at(cx, cy)
+                s2 = self.span_at(cx, cy, thrown)
                 if not (s2 and s2.get("under") and not self._along(s2, dx, dy)):
                     break
                 if not self._ground_open(cx, cy, abilities, npc_block):
                     return None
                 cx, cy = cx + dx, cy + dy
-            if self.span_at(cx, cy) or not self._enterable(cx, cy, dx, dy, abilities, npc_block, thrown):
+            if self.span_at(cx, cy, thrown) or not self._enterable(cx, cy, dx, dy, abilities, npc_block, thrown):
                 return None
             return cx, cy
         if not self._enterable(tx, ty, dx, dy, abilities, npc_block, thrown):

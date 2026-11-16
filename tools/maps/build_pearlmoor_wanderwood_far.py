@@ -301,6 +301,15 @@ mk.scatter_decor(deco, base, W, H, rng, density=0.10,
                      if path[y * W + x] or tree[y * W + x] or grass[y * W + x]
                      or pond[y * W + x] or deco[y * W + x]})
 
+# THE HARTWAY (2026-11, content/regions/hartway.ts): GREG on his stump by the stones,
+# looking up at the hill he won't climb — until you bring him Paul's knot. Placed AFTER
+# the scatter so the wood's rng-rolled deco doesn't reshuffle.
+m["npcs"].append({"id": "greg_wood", "at": {"tx": 22, "ty": 18}, "facing": "up",
+                  "sprite": "greg", "movement": "static", "dialogue_ref": "script.greg_wood",
+                  "hidden_when_flag": "flag:greg_found"})
+deco[18 * W + 22] = 0
+owed.append("script.greg_wood")
+
 # audit_flow WARNs, accepted by design: `free-pass` (the far side is a DISCOVERY
 # pocket off an already-gated optional wood — the grass is there to wander into,
 # never a toll; S5 is about recognition, not difficulty) and `loop` (no one-way

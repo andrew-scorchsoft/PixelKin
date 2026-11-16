@@ -1,0 +1,20 @@
+{
+  "gulf_corner_nw": 0,
+  "gulf_edge_n": 1,
+  "gulf_corner_ne": 2,
+  "gulf_edge_w": 3,
+  "gulf_fill": 4,
+  "gulf_edge_e": 5,
+  "gulf_corner_sw": 6,
+  "gulf_edge_s": 7,
+  "gulf_corner_se": 8,
+  "gulf_strip_h": 9,
+  "gulf_strip_v": 10,
+  "gulf_inner_nw": 11,
+  "gulf_inner_ne": 12,
+  "gulf_inner_sw": 13,
+  "gulf_inner_se": 14,
+  "gulf_fill_v1": 15,
+  "gulf_fill_v2": 16,
+  "gulf_fill_v3": 17
+}

@@ -1,0 +1,132 @@
+{
+  "name": "hartway_set",
+  "columns": 8,
+  "tiles": [
+    {
+      "file": "000_gulf_corner_nw.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "corner_nw"
+    },
+    {
+      "file": "001_gulf_edge_n.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "edge_n"
+    },
+    {
+      "file": "002_gulf_corner_ne.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "corner_ne"
+    },
+    {
+      "file": "003_gulf_edge_w.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "edge_w"
+    },
+    {
+      "file": "004_gulf_fill.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "fill"
+    },
+    {
+      "file": "005_gulf_edge_e.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "edge_e"
+    },
+    {
+      "file": "006_gulf_corner_sw.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "corner_sw"
+    },
+    {
+      "file": "007_gulf_edge_s.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "edge_s"
+    },
+    {
+      "file": "008_gulf_corner_se.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "corner_se"
+    },
+    {
+      "file": "009_gulf_strip_h.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "strip_h"
+    },
+    {
+      "file": "010_gulf_strip_v.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "strip_v"
+    },
+    {
+      "file": "011_gulf_inner_nw.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "inner_nw"
+    },
+    {
+      "file": "012_gulf_inner_ne.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "inner_ne"
+    },
+    {
+      "file": "013_gulf_inner_sw.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "inner_sw"
+    },
+    {
+      "file": "014_gulf_inner_se.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "inner_se"
+    },
+    {
+      "file": "015_gulf_fill_v1.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "fill"
+    },
+    {
+      "file": "016_gulf_fill_v2.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "fill"
+    },
+    {
+      "file": "017_gulf_fill_v3.png",
+      "role": "void",
+      "collides": true,
+      "terrain": "gulf",
+      "autotile": "fill"
+    }
+  ]
+}

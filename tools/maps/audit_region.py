@@ -118,6 +118,8 @@ GRANTS["wickrun_crest"] = ["flag:wickrun_riding", "flag:tallow_lift_freed"]   # 
 GRANTS["rimeway_fold"] = ["flag:rimeway_ice_core"]
 GRANTS["pale_vault_glacier"].append("flag:has_frostglass_lens")
 GRANTS["rimeway_descent"] = ["flag:rime_gate_open"]
+# The Hartway: Greg ties you in at the foot (script.greg_rope_up), opening the steps.
+GRANTS.setdefault("hartway_foot", []).append("flag:greg_roped")
 # the Reckoning-Works (C2, "The Long Way Round"): Ketterly/Nib + the Paul story in the
 # works; the wandering clerks are found on the Fold, the Ascent and in Pale Vault
 GRANTS["reckoning_works"] = ["flag:q_works_begun", "flag:works_met_ketterly", "flag:q_works_nib",

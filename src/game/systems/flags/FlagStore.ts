@@ -89,6 +89,8 @@ const COUNT_AT_LEAST: { flag: WorldFlag; prefix: string; min: number }[] = [
   // The Sere (2026-11): the three Calling Rods relit = the storm has its road again;
   // and every dish on the Thunder Table's slate tried once.
   { flag: 'flag:sere_storm_called', prefix: 'flag:sere_rod_', min: 3 },
+  // the Hartway: you said "No, Greg" all three times
+  { flag: 'flag:hart_sense_all', prefix: 'flag:hart_sense_', min: 3 },
   { flag: 'flag:rio_menu_full', prefix: 'flag:rio_dish_', min: 3 },
 ];
 

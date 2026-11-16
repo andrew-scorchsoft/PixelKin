@@ -118,6 +118,8 @@ const TREND_SKIP_AREAS = new Set([
   'rimeway_ascent', 'rimeway_fold', 'rimeway_descent',
   // the Sere (2026-11): Galehigh's dry side, optional, lv 30-34 (rarer Storm lines)
   'the_sere',
+  // the Hartway (2026-11): the mountain behind Wayward Rise, optional, lv 17-22
+  'hartway_foot', 'hartway_climb',
 ]);
 for (const s of SPECIES) {
   for (const e of s.encounters ?? []) {

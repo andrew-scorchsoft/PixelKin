@@ -105,6 +105,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { map_id: 'pearlmoor_oldlight_top', region: 'south' }, // interior: the Winding Room — Tam's card, the net-floats (flag:q_south_jest_done)
     { map_id: 'pearlmoor_wanderwood_far', region: 'south', optional: true, reward: 'S5: the Far Side — Mags\'s griddle, the Answering Lamp, the glass steps (all optional)' },
     { map_id: 'wayward_rise', region: 'south', optional: true, reward: 'the Wayward Arms: an open bar, a corner chair, a stranger, a night talked away (a rest point)' }, // north of the Wanderwood
+    { map_id: 'hartway_foot', region: 'south', optional: true }, // route: the foot of the Hartshoulder, the rope-warden's bothy
+    { map_id: 'hartway_climb', region: 'south', optional: true, reward: 'the Hartway, climbed with Greg: the Staircase, the Whiteback, the Seat and the herd in the mist; Dawnfawn #120 in the high grass' },
     { map_id: 'wayward_arms', region: 'south', optional: true }, // interior: the Wayward Arms' bar + snug
     { map_id: 'paul_house_1', region: 'south', optional: true, reward: 'Paul\'s house: three floors of travel, t-shirts and a WANTED poster — and Frederika, who loves the Chickenpig' }, // interior: the kitchen-hall
     { map_id: 'paul_house_2', region: 'south', optional: true }, // interior: the T-shirt museum
@@ -312,6 +314,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     // ... and north out of the glade, up onto Wayward Rise and the old hotel (2026-10).
     { from_map: 'pearlmoor_wanderwood', to_map: 'wayward_rise', via_warp: 'to_rise', bidirectional: true },
     { from_map: 'wayward_rise', to_map: 'wayward_arms', via_warp: 'enter_hotel', bidirectional: true },
+    { from_map: 'wayward_rise', to_map: 'hartway_foot', via_warp: 'to_hartway', bidirectional: true },
+    { from_map: 'hartway_foot', to_map: 'hartway_climb', via_warp: 'to_climb', requires_flag: 'flag:greg_roped', bidirectional: true },
     { from_map: 'wayward_rise', to_map: 'paul_house_1', via_warp: 'enter_paul_house', bidirectional: true },
     { from_map: 'paul_house_1', to_map: 'paul_house_2', via_warp: 'up_stairs', bidirectional: true },
     { from_map: 'paul_house_2', to_map: 'paul_house_3', via_warp: 'up_stairs', bidirectional: true },

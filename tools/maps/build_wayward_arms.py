@@ -112,6 +112,10 @@ def build() -> dict:
          "sprite": "npc_man", "movement": "static",
          "dialogue_ref": "script.wayward_stranger"},
     ]
+    # THE HARTWAY (2026-11): the slate of tabs on the long table — Greg's is the longest,
+    # and (once you're looking for him) it says where he's gone
+    triggers.append({"id": "greg_slate", "kind": "script", "at": {"tx": 2, "ty": 6},
+                     "activation": "interact", "ref": "script.hartway_arms_slate"})
     return mapdef("wayward_arms", "The Wayward Arms", W, H, WARM_SET,
                   base, over, objects, warps, triggers, npcs,
                   "assets/audio/music/inn-rest.mp3")

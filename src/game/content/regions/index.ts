@@ -50,6 +50,7 @@ import { DROWNLIGHT_DIALOGUE, DROWNLIGHT_SCRIPTS } from './drownlight';
 import { BREWFAIR_DIALOGUE, BREWFAIR_SCRIPTS } from './brewfair';
 // The Sere + the Rio Tower (2026-11): Galehigh's dry side, the Thunder Table.
 import { SERE_DIALOGUE, SERE_SCRIPTS } from './sere';
+import { HARTWAY_DIALOGUE, HARTWAY_SCRIPTS } from './hartway';
 
 export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...SOUTH_SCRIPTS,
@@ -80,6 +81,7 @@ export const REGION_EXTRA_SCRIPTS: ScriptRegistry = {
   ...DROWNLIGHT_SCRIPTS, // Lane N2
   ...BREWFAIR_SCRIPTS, // S7
   ...SERE_SCRIPTS,
+  ...HARTWAY_SCRIPTS,
 };
 
 export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
@@ -111,4 +113,5 @@ export const REGION_EXTRA_DIALOGUE: DialogueRegistry = {
   ...DROWNLIGHT_DIALOGUE, // Lane N2
   ...BREWFAIR_DIALOGUE, // S7
   ...SERE_DIALOGUE,
+  ...HARTWAY_DIALOGUE,
 };

@@ -198,6 +198,19 @@ export const ITEMS: ItemRegistry = {
     desc: 'A little box painted with suns, moons and eyes, from Paul. The Booji-Wooji Man left his cards lying about for strangers to find; folk all over Vesperholm have one. Your collection: START > MILAGROS.',
     category: 'key',
   },
+  // THE HARTWAY (content/regions/hartway.ts): Paul's token for Greg, and the stone you bring down
+  paul_rope_end: {
+    id: 'paul_rope_end',
+    name: 'Paul\'s Rope-End',
+    desc: 'A short end of old climbing rope, tied in one fat knot. Tied wrong, apparently. It has never once slipped.',
+    category: 'key',
+  },
+  seat_stone: {
+    id: 'seat_stone',
+    name: 'Stone from the Seat',
+    desc: 'A small grey stone from the top of the Hartway. Climbers\' custom: you take one down.',
+    category: 'key',
+  },
   paul_cup: {
     id: 'paul_cup',
     name: 'Paul\'s Tin Cup',

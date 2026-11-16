@@ -451,6 +451,19 @@ the GBC→GBA voice budget the skill enforces, and write mp3 loops into
 
 ---
 
+### The Hartway — *the mountain behind Wayward Rise (optional; ships silently)*
+
+- **Kind:** route x2 (`hartway_foot`, `hartway_climb`) · **Region:** south · **Gate:** `flag:greg_roped` (nobody climbs alone)
+- **Graphics:** the foot is Rise-green under a first grey crag (the rope-warden's bothy, rock steps). The climb is
+  alpine: shared `snow` / `glacierwall` / ice faces, with the `hartway_set` **gulf** (the night under a ridge) on
+  both sides of the Staircase and the Whiteback. The Seat: a silvered bench, a cairn, the climbers' bothy the kin took back.
+- **Story:** `walkthrough/12-the-hartway.md`. Greg leads, you say "No, Greg"; the Sunstag herd climbs in the mist.
+- **Music:** reuses `lowleaf-hollow-b` (foot) and `windward-stair-a` (climb); bed `amb-wind`; the reel's `world-mist-herd`.
+- **Kin (17-22):** Sporeling, Barkhelm, Mossglow, Pebbit, Glowsip (foot); Pebbit, Barkhelm, Sparrowcaw, Chillpip,
+  Fossik, Snowcune, Hushvole, Geolace (climb); Dawnfawn in the high grass after the herd.
+
+---
+
 ### The Sere — *Galehigh's dry side (optional, mid-game; ships silently)*
 
 <img src="../../assets/concept-art/areas/the-sere.webp" alt="The Sere — concept art" width="480">

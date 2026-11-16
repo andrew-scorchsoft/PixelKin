@@ -112,6 +112,20 @@
       "rarity": "common",
       "min": 56,
       "max": 59
+    },
+    {
+      "area": "hartway_foot",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 17,
+      "max": 19
+    },
+    {
+      "area": "hartway_climb",
+      "terrain": "tall_grass",
+      "rarity": "common",
+      "min": 19,
+      "max": 20
     }
   ],
   "scripted": false,

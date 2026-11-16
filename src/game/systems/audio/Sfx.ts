@@ -29,7 +29,7 @@ const DEDUPE_MS = 90;
 const CUE_DEDUPE_MS: Record<string, number> = { 'ui-text-blip': 70 };
 // The Rio Tower's rolling thunder is the scene itself (music faded out under it):
 // it plays at the score's level, not the one-shot trim, so the storm fills the room.
-const CUE_TRIM: Record<string, number> = { 'ui-text-blip': 0.45, 'world-thunder-roll': 2.6, 'world-thunder-crack': 2.4 };
+const CUE_TRIM: Record<string, number> = { 'ui-text-blip': 0.45, 'world-thunder-roll': 2.6, 'world-thunder-crack': 2.4, 'world-mist-herd': 2.4 };
 const lastPlayed = new Map<string, number>();
 /** The score's base level (MusicDirector's default `baseVolume`) for `asMusic` jingles. */
 const MUSIC_LEVEL = 0.45;

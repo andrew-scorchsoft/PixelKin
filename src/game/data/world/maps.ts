@@ -286,6 +286,28 @@ export const MAP_REGISTRY: Record<string, MapRegistryEntry> = {
     // the wood's own bed carries on up the hill (it resumes, no restart)
     music: 'assets/audio/music/lowleaf-hollow-b.mp3',
   },
+  // THE HARTWAY (2026-11): the foot of the Hartshoulder west of the Rise, and the old
+  // climbers' road up it (walked with Greg; hartway_set = the drop beside its ridges).
+  hartway_foot: {
+    json: 'assets/maps/hartway_foot.json',
+    tilesets: { vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp' },
+    kind: 'route',
+    music: 'assets/audio/music/lowleaf-hollow-b.mp3',
+  },
+  hartway_climb: {
+    json: 'assets/maps/hartway_climb.json',
+    tilesets: {
+      vesper_overworld_set: 'assets/tilesets/vesper_overworld_set.webp',
+      traverse_set: 'assets/tilesets/traverse_set.webp',
+      hartway_set: 'assets/tilesets/hartway_set.webp',
+    },
+    kind: 'route',
+    music: 'assets/audio/music/windward-stair-a.mp3',
+    battle_backdrops: [
+      'assets/backgrounds/battle/windward-stair-a.webp',
+      'assets/backgrounds/battle/windward-stair-b.webp',
+    ],
+  },
   wayward_arms: {
     json: 'assets/maps/wayward_arms.json',
     tilesets: { interior_set: 'assets/tilesets/interior_set.webp' },

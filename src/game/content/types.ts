@@ -208,6 +208,11 @@ type CutsceneStepBase =
       flash?: number[];
       sfx?: string;
       flashSfx?: string;
+      /** Words on the stills: one entry per frame (a string, pages, or null). A captioned
+       *  frame waits for Confirm; see ui/FrameReel. */
+      captions?: (string | string[] | null)[];
+      /** One-shot cues fired as a frame lands (frame index -> sfx key). */
+      frameSfx?: Record<number, string>;
     }
   | { op: 'sfx'; key: string }
   | { op: 'music'; key: string | null } // swap the bed (crossfades when one is playing)

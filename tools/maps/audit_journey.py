@@ -172,6 +172,7 @@ DERIVED_COUNT = [("flag:driftletters_3", "flag:driftletter_", 3),
                  ("flag:brew_seeing", "flag:brewcup_", 12),
                  ("flag:brew_card_full", "flag:brew_stamp_", 17),
                  ("flag:sere_storm_called", "flag:sere_rod_", 3),
+                 ("flag:hart_sense_all", "flag:hart_sense_", 3),
                  ("flag:rio_menu_full", "flag:rio_dish_", 3)]
 LAMPLIGHT = [("flag:lamplight_warmlight", 2), ("flag:lamplight_brightlight", 4),
              ("flag:lamplight_starlight", 6), ("flag:lamplight_radiant", 8)]

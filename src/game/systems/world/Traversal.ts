@@ -79,7 +79,13 @@ export class Traversal {
   }
 
   spanAt(tx: number, ty: number): SpanZone | undefined {
-    return this.spans.find((s) => inRect(s.rect, tx, ty));
+    // A flag-gated span (a rope ladder fixed later) simply isn't there until its flag says so.
+    return this.spans.find(
+      (s) =>
+        inRect(s.rect, tx, ty) &&
+        !(s.requires_flag && !this.isHeld(s.requires_flag)) &&
+        !(s.hidden_when_flag && this.isHeld(s.hidden_when_flag)),
+    );
   }
 
   jumpAt(tx: number, ty: number): JumpPad | undefined {

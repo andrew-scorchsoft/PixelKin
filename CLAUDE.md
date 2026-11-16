@@ -218,6 +218,7 @@ go digging on every task.
   **Thunder Table** restaurant at the top). Relight the three **Calling Rods** (`flag:sere_rod_1..3` → derived
   `flag:sere_storm_called`), eat at the Table and the rolling thunder crosses the Sere (`script.rio_thunder`, the
   `frames` op); the first storm leaves the `emergent` milagro card on the tablecloth. Content `regions/sere.ts`.
+  **The Hartway** (2026-11, optional, Paul content, SHIPS SILENTLY, `walkthrough/12-the-hartway.md`): the mountain behind Wayward Rise (`hartway_foot` west off the Rise, `hartway_climb` up the steps; lv 17-22). Nobody climbs alone: quest "A Rope for Two" — Hollis → Paul's rope-end → **Greg** (Paul's old rope partner, own sprite `greg`) in the far Wanderwood → the Staircase and the Whiteback with Greg leading (three "No, Greg" choices) → the Seat, where the Sunstag herd climbs in the mist → tell Paul. Content `regions/hartway.ts`.
 - **The journey is canon, written before the game.** `docs/world/walkthrough/` is the
   start-to-finish **user-journey blueprint** — golden thread, five interlocking arcs (Wren,
   the Hollowing/Còr, Fenn, the celestial calendar, festivals), the level curve, the
@@ -1295,7 +1296,7 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   **The changelog must NEVER spoil the hidden real-people content** (owner's rule, 2026-10 — the
   people it was built for read the notice AND the website): nothing about Paul or his things — the Booji-Wooji
   Man / S4–S5, the Chickenpig, the Lifting House gym, Paul's house, the Wayward Arms, the
-  Reckoning Works' walking-man story and Bettany Rook's drovers story there, the Bright Bubble bar in Dawnstead (Paul's fizz-bubbles memory), Agent Pellow + the newspaper man in the Galehigh inn (the WANTED joke; Paul always promises the story "over a whiskey sometime" and never tells it), Paul's dog the Old Girl and Kathleen's tidy solicitor's desk, the beacon-road man with the case. Also the whole **Sere** — the desert east of Galehigh, the **Rio Tower**, the Thunder Table, the
+  Reckoning Works' walking-man story and Bettany Rook's drovers story there, the Bright Bubble bar in Dawnstead (Paul's fizz-bubbles memory), Agent Pellow + the newspaper man in the Galehigh inn (the WANTED joke; Paul always promises the story "over a whiskey sometime" and never tells it), Paul's dog the Old Girl and Kathleen's tidy solicitor's desk, the beacon-road man with the case. Also the whole **Hartway** (Greg, Hollis, the Hartshoulder, the Whiteback, the Seat and the herd in the mist — Paul's climbing stories). Also the whole **Sere** — the desert east of Galehigh, the **Rio Tower**, the Thunder Table, the
   Thousandfold, the Calling Rods and the rolling-thunder scene (owner's call, 2026-11; `guide.mjs` FORBIDDEN carries
   the names). Those changes ship
   silently; an entry covers only general changes (and none at all is fine).
@@ -1560,6 +1561,14 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   (`assets/backgrounds/cinematic/thunder/`, packed by `tools/assets/pack_thunder_frames.py`), sound is synthesised
   (`tools/audio/thunder_roll.py`). New desert/canyon terrain = the `sere_set` accent (`build_sere_set.py`); props =
   `sereforge.py`. Record a scene with `shoot.mjs --script <ref> --video <dir>` (silent webm; mux audio with ffmpeg).
+- **A ladder that appears later = a flag-gated span (2026-11).** `SpanZone.requires_flag`/`hidden_when_flag` (Traversal.ts ⇄
+  `worldmodel.span_at(…, thrown)` ⇄ `check_traversal.mjs`): the span isn't there until its flag is, so the cliff under it
+  stays solid. Pair it with a `solid:false` object carrying the SAME flag (the Hartway's `hartway_rope_ladder`); a `setFlag`
+  mid-scene drops both live. The road it shortcuts must be walkable without it.
+- **The `frames` op takes `captions` (2026-11):** one entry per still (a string, pages, or null); a captioned frame shows its
+  words in a band on the picture and waits for Confirm, so a whole scene can be told ON the stills (the Hartway's Whiteback and
+  mist-herd reels; packed by `tools/assets/pack_hartway_frames.py`). `frameSfx` fires a cue as a frame lands. A ridge = ordinary
+  ground one tile wide inside `gulf` terrain (`hartway_set`, the drop; `build_hartway_set.py`).
 - **One-way exits are `travel`, not warps** (Lowtinder's well climb into Tinderwick): audit_warps
   rejects a warp with no return; a scripted `travel` is the legal one-way door.
 

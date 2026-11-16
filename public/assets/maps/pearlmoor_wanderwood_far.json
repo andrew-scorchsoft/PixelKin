@@ -766,6 +766,18 @@
       "hidden_when_flag": "flag:picked_wander_far_steps"
     },
     {
+      "id": "greg_wood",
+      "at": {
+        "tx": 22,
+        "ty": 18
+      },
+      "facing": "up",
+      "sprite": "greg",
+      "movement": "static",
+      "dialogue_ref": "script.greg_wood",
+      "hidden_when_flag": "flag:greg_found"
+    },
+    {
       "id": "amb_snoozlet",
       "at": {
         "tx": 17,

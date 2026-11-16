@@ -814,6 +814,26 @@ SERE_ENCOUNTERS = {
 for _slug, _rows_ in SERE_ENCOUNTERS.items():
     EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
 
+# The Hartway (2026-11, optional, off Wayward Rise; lv 17-22): mirrors of the BUILT
+# in-map tables (tools/maps/build_hartway_foot.py / build_hartway_climb.py). The fawns
+# only graze the Seat's high grass once the herd has come up in the mist.
+HARTWAY_ENCOUNTERS = {
+    "sporeling":  _rows("hartway_foot", [(17, 18, "common")]),
+    "barkhelm":   _rows("hartway_foot", [(17, 19, "common")]) + _rows("hartway_climb", [(19, 20, "common")]),
+    "mossglow":   _rows("hartway_foot", [(17, 19, "uncommon")]),
+    "pebbit":     _rows("hartway_foot", [(17, 19, "uncommon")]) + _rows("hartway_climb", [(19, 20, "common")]),
+    "glowsip":    _rows("hartway_foot", [(18, 19, "uncommon")]),
+    "sparrowcaw": _rows("hartway_climb", [(19, 22, "common")]),
+    "chillpip":   _rows("hartway_climb", [(19, 22, "common")]),
+    "fossik":     _rows("hartway_climb", [(20, 21, "uncommon")]),
+    "snowcune":   _rows("hartway_climb", [(20, 22, "common")]),
+    "hushvole":   _rows("hartway_climb", [(20, 22, "common")]),
+    "geolace":    _rows("hartway_climb", [(21, 22, "uncommon")]),
+    "dawnfawn":   _rows("hartway_climb", [(21, 22, "uncommon")]),
+}
+for _slug, _rows_ in HARTWAY_ENCOUNTERS.items():
+    EXTRA_ENCOUNTERS.setdefault(_slug, []).extend(_rows_)
+
 # The Wild Ways — Sunvault Climb rebuild (S, 09-the-wild-ways §2 S, 2026-10): the
 # Gilt Face + the Sun Ledges' BUILT in-map tables (tools/maps/build_sunvault_climb_iii/_iv.py),
 # night (48-49) + day twins. Same W6 weight->rarity rule.
@@ -1190,6 +1210,8 @@ CURATED_AREAS = {
     "cinderwind_ashfall", "cinderwind_kiln",
     # The Sere (2026-11): Galehigh's dry side (mirrored above, SERE_ENCOUNTERS)
     "the_sere",
+    # The Hartway (2026-11): the mountain behind Wayward Rise (HARTWAY_ENCOUNTERS)
+    "hartway_foot", "hartway_climb",
     # The Wild Ways — Sunvault Climb rebuild (S): the two new face maps
     "sunvault_climb_iii", "sunvault_climb_iv",
     # The Wild Ways — the Rimeway (C)

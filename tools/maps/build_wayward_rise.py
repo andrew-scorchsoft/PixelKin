@@ -74,6 +74,12 @@ for y in range(H - 3, H):
 # cliff mass on a green reads as a grey slab — level-design §11 r8)
 mk.organic_border(tree, W, H, top=1, depth=3, bumps=[(4, 3, 1), (18, 3, 1)], rng=rng)
 
+# THE HARTWAY (2026-11): a west mouth under Paul's washing line, the old climbers'
+# road out to the foot of the Hartshoulder (rows 14-15 -> hartway_foot rows 12-13)
+for y in (14, 15):
+    for x in range(0, 5):
+        tree[y * W + x] = 0
+
 # ---- the hotel + its lane ------------------------------------------------------------
 m: dict = {
     "id": "wayward_rise", "display_name": "Wayward Rise",
@@ -136,6 +142,10 @@ def lane(points):
                 y += 1 if y1 > y else -1
 
 
+# THE HARTWAY: the lane in from the west mouth, fading out onto the green
+for y in (14, 15):
+    for x in range(0, 6):
+        path[y * W + x] = 1
 # up from the wood's mouth, bending west to the hotel's apron
 lane([(19, H - 1), (19, 12), (12, 12), (12, 11)])
 
@@ -239,6 +249,13 @@ for (x, y) in [(3, 13), (7, 17), (8, 14), (2, 15), (5, 2), (17, 2), (10, 13), (1
     i = y * W + x
     if not (tree[i] or pond[i] or cliff[i] or path[i]) and (x, y) not in _solid_objs:
         deco[i] = gid("boulder")
+
+# ---- warps: the west mouth out to the Hartway (hartway_foot, straight WEST) ----------
+for y, sfx in ((14, ""), (15, "_e")):
+    m["warps"].append({"id": f"to_hartway{sfx}", "at": {"tx": 0, "ty": y},
+                       "trigger": "step_on", "to_map": "hartway_foot",
+                       "to": {"tx": 28, "ty": y - 2}, "facing": "left", "transition": "fade"})
+owed += pt.sign(m, deco, W, sid="wayward_hartway", at=(7, 15))
 
 # ---- warps: the mouth back down into the Wanderwood ---------------------------------
 for x, sfx in ((19, ""), (20, "_e")):
