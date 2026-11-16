@@ -30,12 +30,22 @@ main path Greg never names his partner; a player who knows Paul gets the rest.
 
 | Step | Where | Flag |
 |---|---|---|
-| The low road north is drifted shut (`to_glacier` wants `flag:pass_open`) | `windward_stair_ii` | — |
-| Hollis the rope-warden: *nobody goes up alone*; Greg is in Galehigh | `windward_stair_ii` (the steps' `blocked_ref` runs the same hook) | `flag:q_hartway` |
+| The low road north is BURIED (sealed under a drift, both ends); the road goes east round the Shoulder | `windward_stair_ii` (the east annex) | — |
+| Hollis the rope-warden on the Landing: *nobody goes up alone*; Greg is in Galehigh | `hartway_climb` (stepping up to the Staircase alone runs the same hook) | `flag:q_hartway` |
 | Greg at the top of the town; promise to say "No, Greg" | `galehigh_terraces` (`greg_town`) | `flag:greg_found` |
-| Rope up at the steps → they open | `windward_stair_ii` | `flag:greg_roped` |
+| Rope up on the Landing → the Staircase beat arms | `hartway_climb` | `flag:greg_roped` |
 | The climb (below) | `hartway_climb` | `flag:hart_*` |
-| The safe trail down off the Seat | → `pale_vault_glacier` | `flag:pass_open` (derived) |
+| The trail west off the Seat | → `pale_vault_glacier` (edge link) | `flag:pass_open` (derived) |
+
+**The Hartway slots INTO the pass (v1.51).** No closed road, no steps into a side zone: Stair II
+gained a ten-column east annex (the Shoulder) so the climb sits edge-to-edge between the two
+maps — in by its west edge at the foot (rows 45-46), out by its west edge at the Seat (rows 9-10).
+
+**The ridges cannot be walked.** The Staircase and the Whiteback are solid `gulf` cells wearing a
+pinned `crest_*` tile: a two-pixel line of snow on a fin of rock. The `edge` cutscene op carries
+Greg and then the player across (hauled steps, the sprite teetering), so the mountain itself is
+the gate: without Greg you stop at the first ridge. Ladders are climbed with a real climb
+animation (back to the camera, hand over hand, never at a run) everywhere a ladder span exists.
 
 Greg is visible in Galehigh from the first visit ("just looking at the hill"), before the
 player knows they will need him.
@@ -58,8 +68,9 @@ player knows they will need him.
 
 `flag:pass_open` is a FlagStore `ANY_OF`: the Seat reached (`hart_b3_done` / `hart_mist_seen`),
 or the player was already past the pass (`chart:pale-vault-glacier`, `gleam:frost` or later).
-Those saves walk the low road as before; the Hartway stays there for them, and fetching Greg
-from Galehigh still plays the whole story. Greg's stages and the story bands want
+Those saves find both rope ladders already fixed (`flag:hart_rope_1/2`, ANY_OF: Greg's own
+`hart_ladder_n` or the same later milestones), so the pass is walkable end to end; fetching Greg
+from Galehigh still plays the whole story (he "tries the old pegs" instead of fixing new ones). Greg's stages and the story bands want
 `flag:greg_roped`, so a mountain walked without him is simply quiet.
 
 ### Optional, for players who know Paul
@@ -77,9 +88,10 @@ from Galehigh still plays the whole story. Greg's stages and the story bands wan
   drops it, and walk the player to the bench before "you sit".
 - The player follows Greg out onto the Whiteback before the reel starts, so the showpiece ridge
   is walked, not only watched.
-- The exit off the Seat is led to (a trail up the east side, steps set into the north wall) and
-  signed; the Lumen Drop cache costs a detour into the high grass.
-- The steps' gate ropes you in on the spot once Greg has agreed (gate-keepers come to you).
+- The exit off the Seat is the trail west along its back (signed); the Lumen Drop cache costs a
+  detour into the high grass.
+- Stepping up to the Staircase ropes you in on the spot once Greg has agreed, and he leads
+  straight off (gate-keepers come to you).
 - Iron pegs are signed at both ladder sites before the ladders exist: a seeded lock, not a
   false lead.
 
@@ -90,17 +102,21 @@ from Galehigh still plays the whole story. Greg's stages and the story bands wan
   (`hartway_rope_ladder`). Mirrored in `worldmodel.py`; `check_traversal.mjs` walks it.
 - **Captions on the `frames` op**: `captions` (per frame: a string, pages, or null) puts words
   on the stills and waits for Confirm; `frameSfx` fires a cue as a frame lands.
-- **`hartway_set`**: the `gulf` family (the drop beside a ridge), drawn over `snow`.
+- **`hartway_set`**: the `gulf` family (the drop beside a ridge), drawn over `snow`, plus the
+  ten pinned `crest_*` tiles (a ridge nobody can walk).
+- **The `edge` op**: `{op:'edge', actor, path, speed?, sidle?, teeter?}` walks an actor along a
+  line that collides (hauled steps via `Actor.HAUL`, a lean each step, optional stop-and-wobble).
+- **Ladder climbing**: `Player.execute` climbs any `kind:'ladder'` span (slower, hauled, back to
+  the camera, mirrored each rung).
 
 ## Validation hooks
 
-- `windward_stair_ii`: `to_hartway` (17,5) requires `flag:greg_roped`, `blocked_ref`
-  `script.hartway_gate`; `to_glacier(_e)` require `flag:pass_open`, `blocked_ref`
-  `script.hartway_low_road`.
-- `hartway_climb`: `to_crags` (14,48) and `to_vault` (27,2) are ungated; spans `rope_ladder_1/2`
-  require `flag:hart_ladder_1/2`; both ridges are walkable without them.
-- `pale_vault_glacier`: `to_hartway` (23,27) lands on the Seat's steps.
+- `windward_stair_ii` (W=38): `to_hartway(_s)` on the east edge (37,16)/(37,17), ungated; the
+  old `to_glacier` warps are gone (the north gap is sealed, a drift + `sign.hartway_low_road`).
+- `hartway_climb`: `to_crags(_s)` (0,45)/(0,46) and `to_vault(_s)` (0,9)/(0,10), ungated; spans
+  `rope_ladder_1/2` require `flag:hart_rope_1/2`; both ridges are SOLID (pinned crest tiles).
+- `pale_vault_glacier`: `to_hartway(_s)` on the east edge (31,10)/(31,11); the south gap is sealed.
 - Band 35–36 + day twins (`HARTWAY_ENCOUNTERS` in `build_species.py`; `CURATED_AREAS`).
 - `audit_journey` replays the whole chain to reach the Frost Gleam; `audit_region` GRANTS:
-  `greg_roped` on Stair II, `pass_open` on the climb.
-- Geometry: every link is a mid-map portal (a mountain over other ground never places).
+  `greg_roped`, `hart_rope_1/2` and `pass_open` on the climb.
+- Geometry: both links are EDGE links, so the map places (`world_geometry.py --check`).

@@ -376,8 +376,8 @@ export const VESPERHOLM_GRAPH: WorldGraph = {
     { from_map: 'galehigh_terraces', to_map: 'windward_stair_i', via_warp: 'to_stair', bidirectional: true },
     { from_map: 'windward_stair_i', to_map: 'windward_stair_ii', via_warp: 'to_stair_ii', requires_ability: 'updraft_kite', bidirectional: true },
     // the low road is drifted shut until you've been over the top once (or were already past it)
-    { from_map: 'windward_stair_ii', to_map: 'pale_vault_glacier', via_warp: 'to_glacier', requires_flag: 'flag:pass_open', bidirectional: true },
-    { from_map: 'windward_stair_ii', to_map: 'hartway_climb', via_warp: 'to_hartway', requires_flag: 'flag:greg_roped', bidirectional: true },
+    // the low road is buried (2026-11): the pass goes stair_ii -> hartway_climb -> glacier, by its edges
+    { from_map: 'windward_stair_ii', to_map: 'hartway_climb', via_warp: 'to_hartway', bidirectional: true },
     { from_map: 'hartway_climb', to_map: 'pale_vault_glacier', via_warp: 'to_vault', bidirectional: true },
     // Pale Vault interiors (door warps, both ways) + the Lamp-Line: the
     // undercroft door takes the aurora-oil (the earned loop, spine §5 shape

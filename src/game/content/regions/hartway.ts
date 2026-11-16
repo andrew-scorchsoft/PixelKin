@@ -1,8 +1,12 @@
 /**
  * THE HARTWAY (2026-11) — the climbers' road over the Hartshoulder: the last pitch of
  * the Windward pass, from the high crags (windward_stair_ii) over the top to Pale
- * Vault, walked with GREG. MAIN PATH: the low road is drifted shut until you've been
- * over once (flag:pass_open). It is also Paul content, so it still SHIPS SILENTLY:
+ * Vault, walked with GREG. MAIN PATH, joined to the pass by its EDGES: the low road
+ * is buried for good, the road comes round the Shoulder onto the Landing, and the
+ * Seat's trail walks down into Pale Vault. The two RIDGES are solid crest tiles that
+ * nobody can walk: the `edge` op takes Greg and then you across, a boot at a time, so
+ * without Greg the mountain itself stops you (no gate, no closed road).
+ * It is also Paul content, so it still SHIPS SILENTLY:
  * never in the changelog; the guide describes the step without the hidden names.
  * Spec: docs/world/walkthrough/12-the-hartway.md. Builders: build_hartway_climb.py +
  * the blocks in build_windward_stair_ii.py / build_pale_vault_glacier.py /
@@ -25,8 +29,8 @@
  * The loop (all flags):
  *   flag:q_hartway        the rule heard (Hollis / the drifted road) or Greg met — JOURNAL
  *   flag:greg_met         you've talked to Greg in Galehigh
- *   flag:greg_found       Greg said yes (you promised to say "No, Greg") -> he waits at the steps
- *   flag:greg_roped       tied in -> the steps open (the warp's requires_flag)
+ *   flag:greg_found       Greg said yes (you promised to say "No, Greg") -> he waits on the Landing
+ *   flag:greg_roped       tied in -> the Staircase beat arms (he leads, you are edged across)
  *   flag:hart_p1_done     the Staircase is behind you
  *   flag:hart_ladder_1    Greg's rope ladder down band A (a flag-gated span + object)
  *   flag:hart_b1_done     the chimney beat (flag:hart_sense_1 if you said "No, Greg")
@@ -35,8 +39,10 @@
  *   flag:hart_b3_begun/_done  the lip beat at the Seat (flag:hart_sense_3)
  *   flag:hart_sense_all   DERIVED (FlagStore COUNT_AT_LEAST flag:hart_sense_ x3)
  *   flag:hart_mist_seen   you sat on the Seat and the herd came up in the mist
+ *   flag:hart_rope_1/2    DERIVED (ANY_OF): Greg's ladder, or a milestone from beyond the
+ *                         pass -> the rope-ladder spans + objects (old saves never locked out)
  *   flag:pass_open        DERIVED (FlagStore ANY_OF): the Seat reached, or you were
- *                         already past the pass -> the low road is dug out for good
+ *                         already past the pass (stages Hollis / Andrew / the NEXT panel)
  *
  * OPTIONAL, for players who know Paul (S4+): his lamp menu gains "Greg?" once the quest
  * is open -> PAUL'S ROPE-END (flag:greg_token) -> Greg knows the knot (extra lines);
@@ -98,69 +104,97 @@ const rest = (line: string): CutsceneStep[] => [
 ];
 
 const HOLLIS_HOOK: CutsceneStep[] = [
-  h('Hollis, rope-warden. The low road to Pale Vault is drifted shut, and will be till spring. The only way now is over: the Hartway.'),
+  h('Hollis, rope-warden. This is the Landing: the foot of the Hartway. The low road went under the drift, so Pale Vault is over the top now.'),
   h('One rule, older than me: [[nobody goes up alone]]. Two on a rope. One with the nerve, one with the sense.'),
-  h('And the ridges want someone who knows them. There\'s one left who does: [[Greg]]. He\'s not been up since his partner hung up his boots.'),
-  h('He\'s down in [[Galehigh, at the top of the town]], staring up here like the hill owes him money. [[The drop-steps in the south-west crag]] put you out beside him.'),
+  h('You don\'t WALK a ridge up here. You edge it, a boot at a time, behind someone who knows it. There\'s one left who does: [[Greg]].'),
+  h('He\'s in [[Galehigh, at the top of the town]], staring up here like the hill owes him money. [[The drop-steps in the crags\' south-west corner]] put you out beside him.'),
   { op: 'setFlag', flag: HOOK },
 ];
+
+/** The top of the Staircase: Greg fixes the first rope ladder (so nobody edges it twice). */
+function ladderOne(greg: string): CutsceneStep[] {
+  return [
+    g('There. You\'re a climber. Don\'t tell Hollis I said so.'),
+    g('Now. So nobody ever has to do that again...'),
+    { op: 'move', actor: greg, to: { tx: 17, ty: 36 }, speed: 2 },
+    { op: 'cameraFocus', to: { tx: 9, ty: 40 }, ms: 700 }, // the ladder's whole drop, clear of the text box
+    { op: 'move', actor: greg, to: { tx: 9, ty: 36 }, speed: 2 },
+    { op: 'move', actor: greg, to: { tx: 9, ty: 38 }, speed: 2 },
+    { op: 'face', actor: greg, facing: 'left' },
+    n('Greg knocks two iron pegs into the lip of the shelf and kicks a rope ladder over the edge. It unrolls all the way down to the Landing.', { unless_flag: 'flag:hart_rope_1' }),
+    n('Greg kneels at the old rope ladder, tries both pegs, and gives it a kick. It holds.', { if_flag: 'flag:hart_rope_1' }),
+    { op: 'sfx', key: 'world-chest' },
+    { op: 'setFlag', flag: 'flag:hart_ladder_1' },
+    g('A ladder! I never used to bother. I used to think ladders were cheating.'),
+    { op: 'move', actor: greg, to: { tx: 9, ty: 36 }, speed: 2 },
+    { op: 'move', actor: greg, to: { tx: 6, ty: 36 }, speed: 2 },
+    { op: 'move', actor: greg, to: { tx: 6, ty: 34 }, speed: 2 },
+    { op: 'face', actor: greg, facing: 'left' },
+    { op: 'cameraReset', ms: 600 },
+    n('He waves from the far end of the shelf, by [[the iron ladder]].'),
+  ];
+}
 
 export const HARTWAY_SCRIPTS: ScriptRegistry = {
   // ---- Hartway Foot: the rope-warden and the gate ----------------------------------------
   ...chain(
     'script.hartway_hollis',
     [
-      [MIST, [h('You sat on the Seat, then. And the harts came up? Eleven winters I\'ve kept these ropes dry for that. The low road\'s dug out now, too.')]],
+      [MIST, [h('You sat on the Seat, then. And the harts came up? Eleven winters I\'ve kept these ropes dry for that.')]],
       [ROPED, [h('Two on a rope. Mind him on the ridges. He\'ll say it\'s fine. "Fine" is his favourite word.')]],
-      [FOUND, [h('Well, I never. He\'s over by the steps, pretending he isn\'t nervous. Go and [[rope up]].')]],
-      // a save that was already past the pass: the low road is theirs, and the quest still opens
+      [FOUND, [h('Well, I never. He\'s just along the shelf, pretending he isn\'t nervous. Go and [[rope up]].')]],
+      // a save that was already past the pass: the ladders are theirs, and the quest still opens
       [
         'flag:pass_open',
         [
-          h('The low road\'s yours. But the Hartway goes over the top, and [[nobody climbs it alone]]: two on a rope.'),
+          h('You were over this pass before my ladders were news. They\'re yours. But the ridges are the real Hartway, and [[nobody edges one alone]].'),
           h('If you want it, fetch [[Greg]]. He\'s in [[Galehigh, top of the town]], staring up here like the hill owes him money.'),
           { op: 'setFlag', flag: HOOK },
         ],
       ],
-      [HOOK, [h('No Greg, no steps. He\'s in [[Galehigh, top of the town]], looking up at the Stair. Tell him Hollis says it\'s time.')]],
+      [HOOK, [h('No Greg, no ridges. He\'s in [[Galehigh, top of the town]], looking up at the Stair. Tell him Hollis says it\'s time.')]],
     ],
     HOLLIS_HOOK,
   ),
-  // the steps' blocked_ref: the warden calls over (or Greg's waiting to tie you in)
+  // the foot of the Staircase, alone: the crest can't be walked, and the warden says so
+  // (or Greg's waiting to tie you in, and leads you straight onto it)
   ...chain(
     'script.hartway_gate',
     [
-      // gate-keepers come to YOU: he ties you in right here, and the steps carry you on up
-      [FOUND, [n('Greg steps across with a rope already in his hands.'), { op: 'run', ref: 'script.greg_rope_up' }]],
-      [HOOK, [h('Not alone! [[Fetch Greg]] first. Galehigh, top of the town.')]],
+      // gate-keepers come to YOU: he ties you in right here and leads off (the same-tile
+      // travel re-enters the map mid-scene, so the roped Greg is there to be directed)
+      [
+        FOUND,
+        [
+          n('Greg comes along the shelf with a rope already in his hands.'),
+          { op: 'run', ref: 'script.greg_rope_up' },
+          { op: 'travel', map: 'hartway_climb', to: { tx: 21, ty: 46 }, facing: 'right' },
+          { op: 'run', ref: 'script.hart_staircase' },
+        ],
+      ],
+      [HOOK, [n('The rib of rock ahead is narrower than your boot.'), h('Not alone! [[Fetch Greg]] first. Galehigh, top of the town.')]],
       [
         'flag:pass_open',
         [
-          n('You\'ve one foot on the steps when a voice calls across the snow.'),
-          h('Not alone! That\'s the Hartway, and it takes two on a rope. Fetch [[Greg]] from [[Galehigh, top of the town]].'),
+          n('The rib of rock ahead is narrower than your boot. A voice calls along the shelf.'),
+          h('Not alone! That\'s the Staircase, and it takes two on a rope. Fetch [[Greg]] from [[Galehigh, top of the town]].'),
           { op: 'setFlag', flag: HOOK },
         ],
       ],
     ],
-    [n('You\'ve one foot on the steps when a voice calls across the snow.'), ...HOLLIS_HOOK],
+    [n('The rib of rock ahead is narrower than your boot, with the night on both sides. A voice calls along the shelf.'), ...HOLLIS_HOOK],
   ),
   // Andrew's Storm -> Frost wayfinding line, staged on the pass (exactly one plays)
   ...chain(
     'script.andrew_hint_frost',
     [
-      ['flag:pass_open', [{ op: 'say', speaker: 'ANDREW', text: 'Ysolde Frost keeps the Frost at [[the Pale Vault Glacier]], [[over the Windward Stair]]. Wrap up.' }]],
-      [ROPED, [{ op: 'say', speaker: 'ANDREW', text: 'Roped to that climber? Then it\'s [[the steps on the Stair\'s high crags]], and over the top to Pale Vault. Mind the ridges.' }]],
-      [FOUND, [{ op: 'say', speaker: 'ANDREW', text: 'He said yes? He\'ll be [[at the steps on the Windward Stair\'s high crags]], by the rope-warden. Go and rope up.' }]],
-      [HOOK, [{ op: 'say', speaker: 'ANDREW', text: 'Low road\'s drifted shut, I hear. The climber you want is [[at the top of Galehigh]]: red jacket, staring at the hill. Promise to tell him no.' }]],
+      ['flag:pass_open', [{ op: 'say', speaker: 'ANDREW', text: 'Ysolde Frost keeps the Frost at [[the Pale Vault Glacier]], [[over the Windward Stair and the Hartway]]. Wrap up.' }]],
+      [ROPED, [{ op: 'say', speaker: 'ANDREW', text: 'Roped to that climber? Then it\'s [[the Hartway, east round the Shoulder from the Stair\'s high crags]]. He leads on the ridges. Mind them.' }]],
+      [FOUND, [{ op: 'say', speaker: 'ANDREW', text: 'He said yes? He\'ll be [[on the Hartway\'s Landing, east round the Shoulder from the high crags]], by the rope-warden. Go and rope up.' }]],
+      [HOOK, [{ op: 'say', speaker: 'ANDREW', text: 'Pale Vault\'s over the Hartway now, and nobody climbs it alone. The climber you want is [[at the top of Galehigh]]: red jacket, staring at the hill. Promise to tell him no.' }]],
     ],
-    [{ op: 'say', speaker: 'ANDREW', text: 'Ysolde Frost keeps the Frost at [[the Pale Vault Glacier]], [[up the Windward Stair]]. The Kite clears the crags. Wrap up.' }],
+    [{ op: 'say', speaker: 'ANDREW', text: 'Ysolde Frost keeps the Frost at [[the Pale Vault Glacier]], [[up the Windward Stair and over the Hartway]]. The Kite clears the crags. Wrap up.' }],
   ),
-  // the drifted low road (the north exit's blocked_ref)
-  'script.hartway_low_road': [
-    n('The low road north is gone under a drift three lamps deep. Nobody is walking to Pale Vault this way before spring.'),
-    n('Climbers\' steps go up out of the crag just west of the road. A woman with a coil of rope is watching you look at them.', { unless_flag: HOOK }),
-    n('The way now is over the top: [[the steps in the crag]], with Greg on the rope.', { if_flag: HOOK }),
-  ],
   'script.hartway_camp': rest('A walkers\' camp against the cliff, the fire still lit. Somebody keeps it going. You never see who.'),
 
   // ---- Paul at his lamp: "Greg?" (content/scripts.ts booji_paul_lamp options) ------------
@@ -227,7 +261,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
       [
         HOOK,
         [
-          g('Hollis sent you. Course she did. The low road\'s shut and she needs her ridges walked.'),
+          g('Hollis sent you. Course she did. The low road\'s gone and she needs her ridges walked.'),
           g('I don\'t climb any more. I only ever had the nerve. My partner had the sense, and he packed it in.'),
           { op: 'run', ref: 'script.greg_knot', if_flag: TOKEN, unless_flag: 'flag:greg_knot_seen' },
           g('Unless. Tell me this. I say: "that snow bridge\'ll hold, I\'ll just nip across." What do YOU say?'),
@@ -261,7 +295,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     g('...Say that again. No, don\'t. I heard it. Haven\'t heard it in years.'),
     { op: 'shakeActor', actor: 'greg_town', ms: 600 },
     g('Ha! All right. ALL right. Same deal I always had: I go first, and you say that when I need it. You\'ll know when.'),
-    g('[[Meet me at the steps on the high crags]], by Hollis. I need to find my boots.'),
+    g('[[Meet me on the Landing, the foot of the Hartway]], by Hollis: east round the Shoulder from the high crags. I need to find my boots.'),
     { op: 'setFlag', flag: 'flag:greg_met' },
     { op: 'setFlag', flag: FOUND },
     { op: 'hideActor', actor: 'greg_town' },
@@ -281,7 +315,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
   'script.greg_rope_up': [
     g('Found the boots. One had a mouse in it. We\'ve come to an arrangement.'),
     n('Greg ties you in: a bowline, checked twice. Then checked again by Hollis, who doesn\'t trust either of you.'),
-    g('Right. [[Up the steps]]. I\'ll be at the top of them before you are. I go first. That\'s the deal.'),
+    g('Right. [[The east end of the shelf: the Staircase]]. You don\'t walk it, you edge it. I go first. That\'s the deal.'),
     { op: 'setFlag', flag: ROPED },
     { op: 'hideActor', actor: 'greg_foot' },
   ],
@@ -299,40 +333,21 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     { op: 'face', actor: 'player', facing: 'right' },
     { op: 'cameraFocus', to: { tx: 22, ty: 42 }, ms: 700 },
     { op: 'move', actor: 'greg_t0', to: { tx: 21, ty: 46 }, speed: 1.4 },
-    { op: 'move', actor: 'greg_t0', to: { tx: 21, ty: 43 }, speed: 1.4 },
-    { op: 'move', actor: 'greg_t0', to: { tx: 23, ty: 43 }, speed: 1.4 },
-    { op: 'move', actor: 'greg_t0', to: { tx: 23, ty: 41 }, speed: 1.4 },
-    { op: 'hop', actor: 'greg_t0', times: 1 },
-    { op: 'move', actor: 'greg_t0', to: { tx: 25, ty: 41 }, speed: 1.4 },
-    { op: 'move', actor: 'greg_t0', to: { tx: 25, ty: 37 }, speed: 1.4 },
+    // the crest is SOLID ground-for-nobody: only the `edge` op crosses it
+    { op: 'edge', actor: 'greg_t0', path: [{ tx: 21, ty: 43 }, { tx: 23, ty: 43 }, { tx: 23, ty: 41 }, { tx: 25, ty: 41 }, { tx: 25, ty: 37 }], speed: 0.8, teeter: [2] },
     { op: 'move', actor: 'greg_t0', to: { tx: 26, ty: 36 }, speed: 1.4 },
     { op: 'face', actor: 'greg_t0', facing: 'down' },
-    g('See? Nothing to it! Your turn! Don\'t look down!'),
+    g('See? Nothing to it! Your turn! Arms out! Don\'t look down!'),
+    { op: 'move', actor: 'player', to: { tx: 21, ty: 46 }, speed: 0.6 },
+    { op: 'edge', actor: 'player', path: [{ tx: 21, ty: 43 }, { tx: 23, ty: 43 }, { tx: 23, ty: 41 }, { tx: 25, ty: 41 }, { tx: 25, ty: 37 }], speed: 0.42, teeter: [1, 3] },
+    { op: 'face', actor: 'player', facing: 'right' },
     g('...You looked down.'),
-    { op: 'cameraReset', ms: 600 },
-    { op: 'letterbox', on: false },
     { op: 'setFlag', flag: 'flag:hart_p1_done' },
+    ...ladderOne('greg_t0'),
+    { op: 'letterbox', on: false },
   ],
-  // the top of the Staircase: the first rope ladder
-  'script.hart_ladder_one': [
-    g('There. You\'re a climber. Don\'t tell Hollis I said so.'),
-    g('Now. So nobody ever has to do that again...'),
-    { op: 'move', actor: 'greg_t1', to: { tx: 17, ty: 36 }, speed: 2 },
-    { op: 'cameraFocus', to: { tx: 9, ty: 40 }, ms: 700 }, // the ladder's whole drop, clear of the text box
-    { op: 'move', actor: 'greg_t1', to: { tx: 9, ty: 36 }, speed: 2 },
-    { op: 'move', actor: 'greg_t1', to: { tx: 9, ty: 38 }, speed: 2 },
-    { op: 'face', actor: 'greg_t1', facing: 'left' },
-    n('Greg knocks two iron pegs into the lip of the shelf and kicks a rope ladder over the edge. It unrolls all the way down to the Landing.'),
-    { op: 'sfx', key: 'world-chest' },
-    { op: 'setFlag', flag: 'flag:hart_ladder_1' },
-    g('A ladder! I never used to bother. I used to think ladders were cheating.'),
-    { op: 'move', actor: 'greg_t1', to: { tx: 9, ty: 36 }, speed: 2 },
-    { op: 'move', actor: 'greg_t1', to: { tx: 6, ty: 36 }, speed: 2 },
-    { op: 'move', actor: 'greg_t1', to: { tx: 6, ty: 34 }, speed: 2 },
-    { op: 'face', actor: 'greg_t1', facing: 'left' },
-    { op: 'cameraReset', ms: 600 },
-    n('He waves from the far end of the shelf, by [[the iron ladder]].'),
-  ],
+  // a save from before the two scenes were one: the ladder beat on its own, at the rib's top
+  'script.hart_ladder_one': ladderOne('greg_t1'),
   'script.greg_t1b': [
     g('[[Iron ladder]], just here. Camp\'s behind me if your kin want a sit-down first. Somebody always leaves the fire in.'),
   ],
@@ -394,10 +409,12 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     { op: 'move', actor: 'player', to: { tx: 7, ty: 21 } },
     { op: 'face', actor: 'player', facing: 'down' },
     { op: 'move', actor: 'greg_uw', to: { tx: 6, ty: 22 }, speed: 1 },
-    { op: 'move', actor: 'greg_uw', to: { tx: 11, ty: 22 }, speed: 1 },
-    // ...and you follow him out onto it (two legs: the corner at (8,21) is the drop)
-    { op: 'move', actor: 'player', to: { tx: 7, ty: 22 }, speed: 0.8 },
-    { op: 'move', actor: 'player', to: { tx: 9, ty: 22 }, speed: 0.8 },
+    { op: 'move', actor: 'greg_uw', to: { tx: 7, ty: 22 }, speed: 1 },
+    { op: 'cameraFocus', to: { tx: 11, ty: 21 }, ms: 700 },
+    { op: 'edge', actor: 'greg_uw', path: [{ tx: 12, ty: 22 }], speed: 0.9 },
+    // ...and you are edged out after him, onto a line of snow no wider than your hand
+    { op: 'move', actor: 'player', to: { tx: 7, ty: 22 }, speed: 0.6 },
+    { op: 'edge', actor: 'player', path: [{ tx: 10, ty: 22 }], speed: 0.42, teeter: [0] },
     { op: 'musicFade', ms: 900 },
     {
       op: 'frames',
@@ -433,7 +450,8 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     { op: 'move', actor: 'greg_ue', to: { tx: 25, ty: 21 }, speed: 2 },
     { op: 'move', actor: 'greg_ue', to: { tx: 25, ty: 26 }, speed: 2 },
     { op: 'face', actor: 'greg_ue', facing: 'down' },
-    n('Two pegs, one kick. A second rope ladder unrolls down the face to the camp shelf.'),
+    n('Two pegs, one kick. A second rope ladder unrolls down the face to the camp shelf.', { unless_flag: 'flag:hart_rope_2' }),
+    n('Greg tries the pegs on the old rope ladder down to the camp shelf. They hold.', { if_flag: 'flag:hart_rope_2' }),
     { op: 'sfx', key: 'world-chest' },
     { op: 'setFlag', flag: 'flag:hart_ladder_2' },
     g('There. From now on the Whiteback\'s for looking at. [[The trail\'s safe from here: north, up to the Seat]]. After you, for once.'),
@@ -539,7 +557,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     { op: 'sfx', key: 'world-keyitem' },
     { op: 'giveItem', item: 'seat_stone', count: 1 },
     { op: 'say', text: 'Got a STONE FROM THE SEAT!' },
-    g('Pale Vault\'s [[down the safe trail, north-east corner of the Seat]]. And Hollis\'ll have the low road dug out behind us by now.'),
+    g('Pale Vault\'s [[down the trail, west off the Seat]]. You can see its lamps from here. And the ladders are fixed behind us: nobody edges a ridge twice.'),
     { op: 'say', speaker: 'GREG', if_flag: TOKEN, text: 'And [[take that stone to Paul]], when you\'re next south. Tell him the hill\'s still here. Tell him about the legs, if you must.' },
     { op: 'run', ref: 'script.hart_sense_gift', if_flag: 'flag:hart_sense_all' },
     { op: 'setFlag', flag: MIST },
@@ -614,11 +632,17 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
 
 export const HARTWAY_DIALOGUE: DialogueRegistry = {
   'sign.hartway_steps': [
-    { text: 'THE HARTWAY\nThe climbers\' road over the Hartshoulder to Pale Vault. [[Nobody climbs alone]]: see the rope-warden.' },
+    { text: 'THE SHOULDER\n[[Down and east: the Hartway]], the climbers\' road over the Hartshoulder to Pale Vault. [[Nobody climbs alone]]: see the rope-warden.' },
     { text: 'Scratched underneath: "To the Seat: one day. To the Seat with Greg: quicker, and you\'ll wish it wasn\'t."' },
   ],
   'sign.hartway_top': [
-    { text: 'THE HARTWAY\nUp these steps: the Seat, and the climbers\' road down to the Windward Stair.' },
+    { text: 'THE HARTWAY\n[[East]]: the Seat, and the climbers\' road down to the Windward Stair. [[West]]: Pale Vault.' },
+  ],
+  'sign.hartway_foot': [
+    { text: 'THE LANDING\nFoot of the Hartway. [[East: the Staircase.]] Nobody goes up alone.' },
+  ],
+  'sign.hartway_low_road': [
+    { text: 'THE LOW ROAD\nUnder the drift, and staying there. [[The way is over the Hartway.]]' },
   ],
   'sign.hartway_staircase': [{ text: 'THE STAIRCASE\nOne at a time. Leader first.' }],
   'sign.hartway_whiteback': [
@@ -626,7 +650,7 @@ export const HARTWAY_DIALOGUE: DialogueRegistry = {
   ],
   'sign.hartway_seat': [
     { text: 'THE SEAT\nTop of the Hartway. Sit. Look. Take one stone down.' },
-    { text: 'Pale Vault: [[the safe trail, north-east corner]].' },
+    { text: 'Pale Vault: [[the trail west]].' },
   ],
   'sign.hartway_pegs': [
     { text: 'Old iron pegs, hammered into the lip of the rock. Whatever used to hang from them is long gone.' },

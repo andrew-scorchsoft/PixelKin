@@ -67,6 +67,9 @@ const ANY_OF: [WorldFlag, WorldFlag[]][] = [
   ['flag:undercroft_open', ['flag:q_north_aurora_oil', 'gleam:frost']],
   // the Windward pass's low road (2026-11): dug out once you've been over the Hartway
   // to the Seat — or you were already past the pass when the drift arrived (old saves)
+  // the Hartway's rope ladders: fixed by Greg, OR already there for a save from beyond the pass
+  ['flag:hart_rope_1', ['flag:hart_ladder_1', 'chart:pale-vault-glacier', 'gleam:frost', 'gleam:solar', 'gleam:lunar']],
+  ['flag:hart_rope_2', ['flag:hart_ladder_2', 'chart:pale-vault-glacier', 'gleam:frost', 'gleam:solar', 'gleam:lunar']],
   ['flag:pass_open', ['flag:hart_b3_done', 'flag:hart_mist_seen', 'chart:pale-vault-glacier', 'gleam:frost', 'gleam:solar', 'gleam:lunar']],
   // the Scarp's rockfall (10 Part II): cleared once you've come round by the Ashfall
   ['flag:scarp_short_open', ['flag:scarp_rockfall_clear', 'gleam:storm']],

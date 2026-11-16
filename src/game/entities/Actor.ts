@@ -117,6 +117,17 @@ const FACING_DELTA: Record<Facing, { dx: number; dy: number }> = {
 /** Default step duration in ms (one tile). */
 export const STEP_MS = 160;
 
+/**
+ * HAUL — a tile covered in two pulls with a held beat between them (reach, pull;
+ * reach, pull): the curve that makes a ladder rung or a careful step on a ridge read
+ * as effort instead of a glide. Pass it as `Actor.step`'s `ease`.
+ */
+export const HAUL = (t: number): number => {
+  const half = t < 0.5 ? 0 : 0.5;
+  const k = Math.min(1, ((t < 0.5 ? t : t - 0.5) * 2) / 0.7); // 70% moving, 30% holding
+  return half + 0.5 * (k * k * (3 - 2 * k));
+};
+
 export class Actor {
   readonly sprite: Phaser.GameObjects.Sprite;
   tx: number;
@@ -185,7 +196,7 @@ export class Actor {
    */
   /** Show the walk cycle of `facing` without changing the logical facing (a
    *  ladder is climbed facing the rungs whichever way you go). */
-  protected playWalkAs(facing: Facing): void {
+  playWalkAs(facing: Facing): void {
     if (this.frames.walk) this.sprite.play(`${this.textureKey}__walk_${facing}`, true);
   }
 
@@ -243,6 +254,8 @@ export class Actor {
     canEnter: (tx: number, ty: number) => boolean,
     onArrive?: (tx: number, ty: number) => void,
     durationMs = STEP_MS,
+    /** How the tile is covered: 'Linear' walks; a custom curve (HAUL) climbs or edges. */
+    ease: string | ((t: number) => number) = 'Linear',
   ): boolean {
     if (this.moving || this.acting) return false;
     this.setFacing(facing);
@@ -264,7 +277,7 @@ export class Actor {
       x,
       y,
       duration: durationMs,
-      ease: 'Linear',
+      ease,
       onComplete: () => {
         // Don't stop here — if another step follows, the cycle carries on
         // seamlessly. `stopWalking()` settles us to idle once movement ends.

@@ -326,10 +326,9 @@ ROADS: list[tuple[str, str, str]] = [
     ("galehigh_terraces", "windward_stair_i", "road"),
     ("galehigh_terraces", "the_sere", "road"),
     ("windward_stair_i", "windward_stair_ii", "gate"),
-    ("windward_stair_ii", "hartway_climb", "gate"),      # the steps (roped to Greg)
-    ("hartway_climb", "pale_vault_glacier", "gate"),     # the safe trail down off the Seat
+    ("windward_stair_ii", "hartway_climb", "road"),      # round the Shoulder to the Landing
+    ("hartway_climb", "pale_vault_glacier", "road"),     # the Seat's trail, west into the town
     ("windward_stair_ii", "thunderroost", "gate"),
-    ("windward_stair_ii", "pale_vault_glacier", "road"),
     ("windward_stair_ii", "galehigh_terraces", "gate"),  # late shortcut
     # west
     ("pale_vault_glacier", "hushfrost_pass_i", "road"),

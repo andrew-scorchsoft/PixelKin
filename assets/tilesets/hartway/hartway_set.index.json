@@ -18,5 +18,15 @@
   "gulf_fill_v2": 16,
   "gulf_fill_v3": 17,
   "gulf_town": 18,
-  "gulf_lane": 19
+  "gulf_lane": 19,
+  "crest_ns": 20,
+  "crest_ew": 21,
+  "crest_ne": 22,
+  "crest_nw": 23,
+  "crest_se": 24,
+  "crest_sw": 25,
+  "crest_ns_foot": 26,
+  "crest_ns_head": 27,
+  "crest_ew_west": 28,
+  "crest_ew_east": 29
 }

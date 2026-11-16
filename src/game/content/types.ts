@@ -120,6 +120,12 @@ type CutsceneStepBase =
   | { op: 'wait'; ms: number }
   // `speed` multiplies the walk pace (2 = a run, 0.5 = a slow, heavy walk; default 1).
   | { op: 'move'; actor: ActorRef; to: TileCoord; speed?: number }
+  // EDGE an actor along a precarious line — a ridge crest, a ledge, a rope — that
+  // nobody can WALK: tile by tile through `path` (axis-aligned waypoints), collision
+  // ignored, each step hauled and slow, the sprite teetering as it goes. `sidle`
+  // keeps the body turned one way (a shimmy with the back to the wall); `teeter`
+  // lists path indexes where the actor stops dead and wobbles before going on.
+  | { op: 'edge'; actor: ActorRef; path: TileCoord[]; speed?: number; sidle?: Facing; teeter?: number[] }
   // Sprite ACTING (no art needed — tweens on the actor's sprite, never its tile):
   | { op: 'hop'; actor: ActorRef; times?: number; height?: number } // a startled jump in place
   | { op: 'hideActor'; actor: ActorRef } // vanish an NPC on the spot (gone for good once its flag swap refreshes at scene end)

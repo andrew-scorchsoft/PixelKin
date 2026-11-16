@@ -2,15 +2,17 @@
 """
 The Hartway (hartway_climb) — the climbers' road over THE HARTSHOULDER, the last
 pitch of the Windward pass: from the high crags (windward_stair_ii) up and over to
-Pale Vault (2026-11, docs/world/walkthrough/12-the-hartway.md). MAIN PATH: the low
-road out of the crags is drifted shut until you've been over the top once.
+Pale Vault (2026-11, docs/world/walkthrough/12-the-hartway.md). MAIN PATH, and it
+SLOTS INTO the pass by its edges: the road out of the crags comes round the shoulder
+and walks in at the foot (west edge, rows 45-46); the Seat's trail walks out to Pale
+Vault at the top (west edge, rows 9-10). No steps, no portal, no closed road.
 
 A STORY climb, walked with GREG (content/regions/hartway.ts): nobody goes up alone,
 Greg goes first on the ridges, and once a ridge is behind you he fixes a ROPE LADDER
 down the cliff so nobody has to do that again.
 
 Tiers, bottom to top (south = lower, the facekit convention):
-  T0  the Landing   (rows 44-47)  the steps up from the crags land at (14,47)
+  T0  the Landing   (rows 44-47)  the road in from the crags (west edge, rows 45-46)
   A   band A        (rows 39-43)  ROPE LADDER 1 at x8 — `flag:hart_ladder_1`
       THE STAIRCASE               a one-wide rock rib through the gulf (x19-27)
   T1  the Shelf     (rows 33-38)  the walkers' camp (a rest point)
@@ -20,23 +22,24 @@ Tiers, bottom to top (south = lower, the facekit convention):
       THE WHITEBACK               the snow ridge across it (the story ridge)
   C   band C        (rows 12-13)  the safe trail's gap at x24-25
   S   THE SEAT      (rows 2-11)   the bench, the bothy the kin took back, the view,
-                                  and the safe trail down to Pale Vault (27,2)
+                                  and the safe trail west into Pale Vault (rows 9-10)
 
-The two ridges are ordinary ground one tile wide inside `gulf` terrain (hartway_set:
-the drop, solid). The two rope ladders are flag-gated `spans` (SpanZone.requires_flag)
-with a matching flag-gated `hartway_rope_ladder` object, so art and collision appear
-together the moment Greg kicks the ladder over the edge.
+THE RIDGES CANNOT BE WALKED. The Staircase and the Whiteback are solid `gulf` cells
+wearing a pinned CREST tile (hartway_set `crest_*`): a two-pixel line of snow on a fin
+of rock, far narrower than a pair of boots. The only way along one is the `edge`
+cutscene op, roped to Greg — so without him the mountain stops you at the first ridge,
+and nobody needs a gate. The two rope ladders are flag-gated `spans` with a matching
+flag-gated `hartway_rope_ladder` object: art and collision appear together the moment
+Greg kicks the ladder over the edge, and from then on nobody edges a ridge again.
 
-HANDSHAKES (all mid-map portals: a mountain over other ground never places in
-world_geometry):
-  the notch (14,48) `to_crags` -> windward_stair_ii (17,6); its `to_hartway` (17,5)
-      lands at our (14,47) and wants `flag:greg_roped`.
-  the Seat's steps (27,2) `to_vault` -> pale_vault_glacier (23,27); its `to_hartway`
-      there lands back on (27,2).
+  ladders hang on `flag:hart_rope_1/2` — DERIVED (FlagStore ANY_OF): Greg's own
+  `flag:hart_ladder_n`, OR any milestone from beyond the pass. A save that crossed
+  before the Hartway existed finds the ladders already fixed (never locked out), and
+  can still fetch Greg from Galehigh to hear the story.
 
-Greg's stages and the story bands all want `flag:greg_roped`: a save that was already
-past the pass (flag:pass_open by a later milestone) finds a quiet mountain it can
-still walk, and can fetch Greg from Galehigh any time to hear the story.
+HANDSHAKES (edge links — the map PLACES in world_geometry):
+  west edge rows 45-46  <->  windward_stair_ii east edge (37,16)/(37,17)
+  west edge rows 9-10   <->  pale_vault_glacier east edge (31,10)/(31,11)
 
 Run:  python3 tools/maps/build_hartway_climb.py [--show]
 """
@@ -60,7 +63,6 @@ HART_REF = mk.register_tileset(
 c = fk.Canvas(W, H, ".")
 c.rect(0, 0, W - 1, 1, "#").rect(0, 0, 1, H - 1, "#").rect(28, 0, 29, H - 1, "#")
 c.rect(0, 48, W - 1, H - 1, "#")
-c.put([(14, 48)], "=")                                  # the notch the steps drop out of
 
 # band A + rope ladder 1 (gated: cells stay band; the span + object come below)
 c.band(2, 27, 39, lip=2, face=3)
@@ -79,30 +81,30 @@ c.rect(8, 12, 20, 27, "G")
 c.put([(8, 14), (9, 14), (19, 14), (20, 14), (20, 15), (8, 26), (8, 27), (9, 27), (20, 26),
        (20, 27), (8, 17), (20, 23)], ".")              # snow bites back into the rim
 c.put([(7, 24), (7, 25)], "G")                         # ...and the drop bites into the shelf
-STAIRCASE = [(21, 45), (21, 44), (21, 43), (22, 43), (23, 43), (23, 42), (23, 41),
-             (24, 41), (25, 41), (25, 40), (25, 39), (25, 38)]
-WHITEBACK = ([(x, 22) for x in range(8, 14)] + [(13, 21), (13, 20), (14, 20), (15, 20), (16, 20),
-                                                (16, 19), (17, 19), (18, 19), (17, 20), (18, 20), (19, 20),
-                                                (20, 20)])
-c.put(STAIRCASE + WHITEBACK, ".")
+# The two ridges, as the cells they cross IN ORDER, shelf to shelf (first and last are
+# the shelf tiles they leave from and land on). They stay gulf: see `crest` below.
+STAIRCASE = [(21, 46), (21, 45), (21, 44), (21, 43), (22, 43), (23, 43), (23, 42), (23, 41),
+             (24, 41), (25, 41), (25, 40), (25, 39), (25, 38), (25, 37)]
+WHITEBACK = ([(7, 22)] + [(x, 22) for x in range(8, 14)] + [(13, 21)]
+             + [(x, 20) for x in range(13, 22)])
 
 # ---- the trodden line ----------------------------------------------------------------
-c.rect(8, 46, 21, 46, "=").rect(14, 46, 14, 47, "=").rect(8, 44, 8, 46, "=")     # T0
+c.rect(0, 45, 7, 46, "=").rect(8, 46, 21, 46, "=").rect(8, 44, 8, 46, "=")        # T0: in by the west edge
 c.rect(5, 36, 25, 36, "=").rect(25, 36, 25, 37, "=").rect(5, 33, 5, 36, "=")     # T1
 c.rect(8, 36, 8, 38, "=").rect(24, 33, 24, 36, "=")
 c.rect(5, 22, 7, 22, "=").rect(5, 22, 5, 27, "=")                                # U-west
 c.rect(21, 20, 25, 20, "=").rect(24, 12, 25, 27, "=")                            # U-east + gap
-c.rect(15, 9, 27, 9, "=").rect(24, 9, 25, 11, "=").rect(27, 2, 27, 9, "=")       # the Seat + the trail on
+c.rect(0, 9, 3, 10, "=").rect(4, 9, 25, 9, "=").rect(24, 9, 25, 11, "=")         # the Seat + the trail out west
 
 # ---- frost-tuft (the encounter tile) ---------------------------------------------------
-c.rect(2, 44, 5, 47, '"')                     # T0 west
+c.rect(2, 47, 7, 47, '"').rect(10, 44, 13, 45, '"')   # T0: under the lane, and a bank by the pegs
 c.rect(12, 33, 17, 34, '"')                   # T1, behind the camp
 c.rect(14, 37, 18, 38, '"')                   # T1 south lip
 c.rect(2, 14, 4, 19, '"')                     # the high shelf, west
 c.rect(26, 14, 27, 18, '"')                   # the high shelf, east
 c.rect(19, 2, 26, 5, '"')                     # THE HIGH GRASS above the Seat
 # a few boulders on open ground
-c.put([(10, 44), (24, 47), (3, 37), (20, 34), (3, 25), (22, 24), (14, 4), (3, 9)], "o")
+c.put([(3, 44), (24, 47), (3, 37), (20, 34), (3, 25), (22, 24), (14, 4), (3, 11)], "o")
 rows = c.rows()
 prows = [r.replace("G", " ") for r in rows]   # facekit ignores the gulf (its own terrain)
 
@@ -136,20 +138,38 @@ for y in range(H):
         if rows[y][x] == "G":
             gulf[y * W + x] = 1
 
-# ---- the way down: the notch back to the foot ------------------------------------------
-wm.add(m, wm.marker("steps_down", "steps_s", 14, 48))
-m["warps"].append({"id": "to_crags", "at": {"tx": 14, "ty": 48}, "trigger": "step_on",
-                   "to_map": "windward_stair_ii", "to": {"tx": 17, "ty": 6}, "facing": "down",
-                   "transition": "fade"})
-# ---- the way on: the safe trail down off the Seat into Pale Vault ------------------------
-wm.add(m, wm.marker("steps_vault", "steps_n", 27, 0))   # set into the north wall, like the crags' steps
-m["warps"].append({"id": "to_vault", "at": {"tx": 27, "ty": 2}, "trigger": "step_on",
-                   "to_map": "pale_vault_glacier", "to": {"tx": 23, "ty": 27}, "facing": "up",
-                   "transition": "fade"})
+# ---- the edges: the road in at the foot, the trail out at the top -------------------------
+for k, (hy, sy) in enumerate(((45, 16), (46, 17))):
+    m["warps"].append({"id": "to_crags" + ("_s" if k else ""), "at": {"tx": 0, "ty": hy},
+                       "trigger": "step_on", "to_map": "windward_stair_ii",
+                       "to": {"tx": 36, "ty": sy}, "facing": "left", "transition": "fade"})
+for k, (hy, gy) in enumerate(((9, 10), (10, 11))):
+    m["warps"].append({"id": "to_vault" + ("_s" if k else ""), "at": {"tx": 0, "ty": hy},
+                       "trigger": "step_on", "to_map": "pale_vault_glacier",
+                       "to": {"tx": 30, "ty": gy}, "facing": "left", "transition": "fade"})
+
+# ---- THE CREST: one pinned tile per ridge cell (solid; crossed only by the `edge` op) ------
+def crest(path):
+    d = {(0, -1): "n", (0, 1): "s", (-1, 0): "w", (1, 0): "e"}
+    for i in range(1, len(path) - 1):
+        (x, y) = path[i]
+        ends = "".join(sorted(d[(q[0] - x, q[1] - y)] for q in (path[i - 1], path[i + 1])))
+        name = {"ns": "crest_ns", "ew": "crest_ew", "en": "crest_ne", "nw": "crest_nw",
+                "es": "crest_se", "sw": "crest_sw"}[ends]
+        if i == 1 or i == len(path) - 2:                 # an end: drawn over the gulf's rim
+            shelf = path[0] if i == 1 else path[-1]
+            name = {"n": "crest_ns_head", "s": "crest_ns_foot", "w": "crest_ew_west",
+                    "e": "crest_ew_east"}[d[(shelf[0] - x, shelf[1] - y)]]
+        assert rows[y][x] == "G", (x, y)
+        pin[(x, y)] = name
+
+
+crest(STAIRCASE)
+crest(WHITEBACK)
 
 # ---- THE ROPE LADDERS (Greg fixes each once its ridge is behind you) -------------------
 for n, (x, y0) in ((1, (8, 39)), (2, (24, 28))):
-    flag = f"flag:hart_ladder_{n}"
+    flag = f"flag:hart_rope_{n}"
     m.setdefault("spans", []).append({"id": f"rope_ladder_{n}", "kind": "ladder", "axis": "v",
                                       "rect": {"tx": x, "ty": y0, "w": 1, "h": 5},
                                       "requires_flag": flag})
@@ -168,6 +188,15 @@ def greg(gid_: str, at, facing, ref, req=None, hide=None):
     m["npcs"].append(n)
 
 
+# the foot: Hollis the rope-warden keeps the Landing; Greg waits by her once he's said yes
+m["npcs"] += [
+    {"id": "hollis", "at": {"tx": 14, "ty": 45}, "facing": "down", "sprite": "pass_walker",
+     "movement": "static", "dialogue_ref": "script.hartway_hollis"},
+    {"id": "greg_foot", "at": {"tx": 15, "ty": 45}, "facing": "down", "sprite": "greg",
+     "movement": "static", "dialogue_ref": "script.greg_rope_up",
+     "requires_flag": "flag:greg_found", "hidden_when_flag": "flag:greg_roped"},
+]
+owed += ["script.hartway_hollis", "script.greg_rope_up"]
 greg("greg_t0", (22, 46), "left", "script.greg_t0", "flag:greg_roped", "flag:hart_p1_done")
 greg("greg_t1", (26, 36), "left", "script.greg_wait", "flag:hart_p1_done", "flag:hart_ladder_1")
 greg("greg_t1b", (6, 34), "left", "script.greg_t1b", "flag:hart_ladder_1", "flag:hart_b1_done")
@@ -193,7 +222,9 @@ def beat(tid: str, cells, ref: str, req=None, hide=None):
     owed.append(ref)
 
 
+# the foot of the Staircase: with Greg, the crossing; without him, the warden's voice
 beat("staircase", [(21, 46)], "script.hart_staircase", "flag:greg_roped", "flag:hart_p1_done")
+beat("staircase_alone", [(21, 46)], "script.hartway_gate", None, "flag:greg_roped")
 beat("ladder_one", [(25, 37)], "script.hart_ladder_one", "flag:hart_p1_done", "flag:hart_ladder_1")
 beat("chimney", [(5, 33)], "script.hart_chimney", "flag:hart_ladder_1", "flag:hart_b1_done")
 beat("whiteback", [(7, 22)], "script.hart_whiteback", "flag:hart_b1_done", "flag:hart_p2_done")
@@ -209,7 +240,7 @@ owed.append("script.hartway_camp")
 
 # ---- THE SEAT ---------------------------------------------------------------------------
 m["objects"] += [
-    {"id": "ruin_hut", "sprite": "hartway_ruin_hut", "at": {"tx": 8, "ty": 6}, "w": 4, "h": 4,
+    {"id": "ruin_hut", "sprite": "hartway_ruin_hut", "at": {"tx": 8, "ty": 5}, "w": 4, "h": 4,
      "overhang": 2},
     {"id": "spyglass", "sprite": "windward_spyglass", "at": {"tx": 20, "ty": 10}, "w": 2, "h": 2,
      "overhang": 1, "walk_under": True},
@@ -222,7 +253,7 @@ m["objects"] += [
 for x in (13, 14):
     m["triggers"].append({"id": f"seat_{x}", "kind": "cutscene", "at": {"tx": x, "ty": 10},
                           "activation": "interact", "ref": "script.hart_seat"})
-m["triggers"].append({"id": "hut_door", "kind": "sign", "at": {"tx": 10, "ty": 10},
+m["triggers"].append({"id": "hut_door", "kind": "sign", "at": {"tx": 10, "ty": 9},
                       "activation": "interact", "ref": "sign.hartway_hut"})
 owed += ["script.hart_seat", "sign.hartway_hut"]
 
@@ -238,9 +269,11 @@ for aid, kin, (x, y), r in [("amb_hut_a", 77, (12, 7), 1), ("amb_hut_b", 88, (3,
 owed += pt.sign(m, deco, W, sid="hartway_staircase", at=(18, 47))
 owed += pt.sign(m, deco, W, sid="hartway_whiteback", at=(4, 23))
 owed += pt.sign(m, deco, W, sid="hartway_seat", at=(23, 8))
+owed += pt.sign(m, deco, W, sid="hartway_foot", at=(6, 44))
+owed += pt.sign(m, deco, W, sid="hartway_top", at=(5, 8))
 owed += pt.cache(m, cid="hartway_shelf", at=(27, 34))
 owed += pt.cache(m, cid="hartway_high", at=(2, 16))
-owed += pt.cache(m, cid="hartway_seat", at=(22, 2))       # in the high grass: a detour that pays
+owed += pt.cache(m, cid="hartway_seat", at=(26, 3))       # in the high grass: a detour that pays
 # the rope ladders' pegs, before the ladders: a seeded lock, not a false lead
 owed += pt.sign(m, deco, W, sid="hartway_pegs", at=(9, 44))
 m["triggers"].append({"id": "sign_hartway_pegs_high", "kind": "sign", "at": {"tx": 26, "ty": 26},
@@ -250,8 +283,6 @@ deco[26 * W + 26] = gid("sign")
 # ---- dressing (a landmark on every screen) ------------------------------------------------
 m["objects"] += [
     {"id": "pine_landing", "sprite": "windward_bent_pine", "at": {"tx": 16, "ty": 43}, "w": 2, "h": 3,
-     "overhang": 2, "walk_under": True},
-    {"id": "pine_t0", "sprite": "hushfrost_snow_pine", "at": {"tx": 6, "ty": 44}, "w": 2, "h": 3,
      "overhang": 2, "walk_under": True},
     {"id": "pine_t1", "sprite": "hushfrost_snow_pine_big", "at": {"tx": 19, "ty": 32}, "w": 3, "h": 4,
      "overhang": 3, "walk_under": True},
@@ -268,7 +299,7 @@ m["objects"] += [
     {"id": "drift_ue", "sprite": "hushfrost_snowdrift", "at": {"tx": 21, "ty": 24}, "w": 3, "h": 2},
     {"id": "pine_seat", "sprite": "hushfrost_snow_pine", "at": {"tx": 2, "ty": 2}, "w": 2, "h": 3,
      "overhang": 2, "walk_under": True},
-    {"id": "rocks_seat", "sprite": "hushfrost_snow_boulders", "at": {"tx": 4, "ty": 8}, "w": 2, "h": 2},
+    {"id": "rocks_seat", "sprite": "hushfrost_snow_boulders", "at": {"tx": 5, "ty": 6}, "w": 2, "h": 2},
 ]
 
 # ---- encounters (the high crags' own table, 35-36; night/day pairs) ------------------------
@@ -315,7 +346,7 @@ if __name__ == "__main__":
     if "--show" in sys.argv:
         print("\n".join(f"{y:3d} {r}" for y, r in enumerate(rows)))
     # three far-off lights in the drop (deliberate, never scattered)
-    pin.update({(11, 17): "gulf_town", (17, 25): "gulf_lane", (25, 44): "gulf_lane"})
+    pin.update({(11, 17): "gulf_town", (17, 25): "gulf_lane", (26, 44): "gulf_lane"})
     ok = mk.finalize(m, scale=3, pin_base=pin)
     pt.report(owed)
     print("PASS" if ok else "FAIL")

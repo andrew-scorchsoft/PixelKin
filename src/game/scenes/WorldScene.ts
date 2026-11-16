@@ -172,7 +172,9 @@ const STRANDED_WITHOUT: Record<string, AbilityId> = {
 /** Maps whose LAYOUT changed in a release (map id -> the version that re-laid it): a save
  *  from before it, standing there, has its tile re-validated on load. */
 const RELAID_MAPS: Record<string, string> = {
-  hartway_climb: '1.50',
+  hartway_climb: '1.51',
+  windward_stair_ii: '1.51', // the low road's landing tiles are under the drift now
+  pale_vault_glacier: '1.51',
 };
 
 export class WorldScene extends Phaser.Scene {

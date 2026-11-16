@@ -120,6 +120,69 @@ def gulf_tile(role: str, v: int = 0):
     return img(a)
 
 
+# ---- THE CREST: a ridge nobody can simply walk ------------------------------------------
+# One pinned tile per ridge cell, drawn over the gulf: a two-pixel line of snow on a
+# fin of rock. It is far narrower than a pair of boots, which is the point — the tile
+# COLLIDES, and the only way along it is the `edge` cutscene op, roped to a leader.
+#   crest_<dirs>   dirs = which sides the line runs out to (ns, ew, ne, nw, se, sw)
+#   crest_ns_foot / _head, crest_ew_west / _east   the four ends, drawn over the gulf's
+#   own rim tile so the line meets the shelf it leaves from.
+CREST = {
+    "crest_ns": ("ns", "fill"), "crest_ew": ("ew", "fill"),
+    "crest_ne": ("ne", "fill"), "crest_nw": ("nw", "fill"),
+    "crest_se": ("se", "fill"), "crest_sw": ("sw", "fill"),
+    "crest_ns_foot": ("ns", "edge_s"), "crest_ns_head": ("ns", "edge_n"),
+    "crest_ew_west": ("ew", "edge_w"), "crest_ew_east": ("ew", "edge_e"),
+}
+
+
+def crest_tile(dirs: str, role: str = "fill"):
+    a = np.asarray(gulf_tile(role, 0).convert("RGBA")).astype(np.int16).copy()
+    line = np.zeros((16, 16), bool)
+    # the line wanders a pixel (wind-carved), but always leaves a tile at x7-8 / y10-11:
+    # low in the cell, so a figure standing on the tile has its boots ON the line
+    wob_ns = {3: -1, 4: -1, 5: -1, 13: 1, 14: 1}
+    wob_ew = {2: -1, 3: -1, 4: -1, 11: 1, 12: 1}
+    if "n" in dirs:
+        for y in range(0, 12):
+            x0 = 7 + (wob_ns.get(y, 0) if "s" in dirs or y < 9 else 0)
+            line[y, x0:x0 + 2] = True
+    if "s" in dirs:
+        for y in range(10, 16):
+            x0 = 7 + wob_ns.get(y, 0)
+            line[y, x0:x0 + 2] = True
+    if "w" in dirs:
+        for x in range(0, 9):
+            y0 = 10 + wob_ew.get(x, 0)
+            line[y0:y0 + 2, x] = True
+    if "e" in dirs:
+        for x in range(7, 16):
+            y0 = 10 + wob_ew.get(x, 0)
+            line[y0:y0 + 2, x] = True
+    snow_lit, snow_shade = (238, 243, 252), (170, 184, 216)
+    for y in range(16):
+        for x in range(16):
+            if line[y, x]:
+                # lit from the north-west: the line's west/north pixel is the bright one
+                bright = (x == 0 or not line[y, x - 1]) if dirs == "ns" else (y == 0 or not line[y - 1, x])
+                a[y, x, :3] = snow_lit if bright else snow_shade
+                continue
+            up = next((d for d in range(1, 10) if y - d >= 0 and line[y - d, x]), None)
+            side = min([d for d in range(1, 4)
+                        if (x - d >= 0 and line[y, x - d]) or (x + d < 16 and line[y, x + d])] or [9])
+            above = y + 1 < 16 and line[y + 1, x]
+            if up is not None:                                   # the fin's south FACE
+                col = ROCK[min(len(ROCK) - 1, up - 1)]
+                if (x * 5) % 7 == 2 and up > 2:
+                    col = sh(col, 0.80)
+                a[y, x, :3] = col
+            elif side <= 3:                                      # its flanks, falling away
+                a[y, x, :3] = ROCK[side * 3 - 2]
+            elif above:                                          # a dark back edge
+                a[y, x, :3] = ROCK[6]
+    return img(a)
+
+
 ROLES = ["corner_nw", "edge_n", "corner_ne", "edge_w", "fill", "edge_e",
          "corner_sw", "edge_s", "corner_se", "strip_h", "strip_v",
          "inner_nw", "inner_ne", "inner_sw", "inner_se"]
@@ -150,6 +213,10 @@ def main() -> None:
     # APPENDED: the two far-off lights (never scattered — a builder pins them, a few a map)
     add("gulf_town", gulf_fill(1, "town"), role="void", collides=True)
     add("gulf_lane", gulf_fill(2, "lane"), role="void", collides=True)
+
+    # APPENDED: the crest (the Staircase and the Whiteback — pinned, cell by cell)
+    for name, (dirs, role) in CREST.items():
+        add(name, crest_tile(dirs, role), role="void", collides=True)
 
     manifest = {"name": "hartway_set", "columns": 8, "tiles": tiles}
     (TILES_DIR / "tileset.manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")

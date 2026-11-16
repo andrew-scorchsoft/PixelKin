@@ -218,7 +218,7 @@ go digging on every task.
   **Thunder Table** restaurant at the top). Relight the three **Calling Rods** (`flag:sere_rod_1..3` → derived
   `flag:sere_storm_called`), eat at the Table and the rolling thunder crosses the Sere (`script.rio_thunder`, the
   `frames` op); the first storm leaves the `emergent` milagro card on the tablecloth. Content `regions/sere.ts`.
-  **The Hartway** (2026-11, MAIN PATH, Paul's story, SHIPS SILENTLY, `walkthrough/12-the-hartway.md`): the last pitch of the Windward pass (`hartway_climb`, lv 35-36, between `windward_stair_ii` and `pale_vault_glacier`). The low road is drifted shut (`flag:pass_open`, a derived ANY_OF so old saves pass) and nobody climbs alone: Hollis → **Greg** fetched from the top of Galehigh (promise to say "No, Greg"; own sprite `greg`) → the Staircase and the Whiteback with Greg leading (three choices, rope ladders fixed behind you) → the Seat, where the Sunstag herd climbs in the mist → the safe trail down. Greg never names his partner on the main path; Paul's rope-end and telling Paul are optional extras. Content `regions/hartway.ts`.
+  **The Hartway** (2026-11, MAIN PATH, Paul's story, SHIPS SILENTLY, `walkthrough/12-the-hartway.md`): the last pitch of the Windward pass (`hartway_climb`, lv 35-36, between `windward_stair_ii` and `pale_vault_glacier`). It SLOTS INTO the pass by its edges (v1.51: Stair II's east annex "the Shoulder" → the Landing; the Seat's trail → Pale Vault's east edge; the old low road is buried, no portal steps). Its two ridges are SOLID crest tiles only the `edge` op crosses, so the mountain is the gate (old saves get the rope ladders via the derived `flag:hart_rope_1/2`), and nobody climbs alone: Hollis → **Greg** fetched from the top of Galehigh (promise to say "No, Greg"; own sprite `greg`) → the Staircase and the Whiteback with Greg leading (three choices, rope ladders fixed behind you) → the Seat, where the Sunstag herd climbs in the mist → the safe trail down. Greg never names his partner on the main path; Paul's rope-end and telling Paul are optional extras. Content `regions/hartway.ts`.
 - **The journey is canon, written before the game.** `docs/world/walkthrough/` is the
   start-to-finish **user-journey blueprint** — golden thread, five interlocking arcs (Wren,
   the Hollowing/Còr, Fenn, the celestial calendar, festivals), the level curve, the
@@ -1589,6 +1589,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   keeper needs a branch for saves ALREADY past it that still opens the quest (the Hartway's `flag:pass_open` stages set `q_hartway`).
 - **Headless input must HOLD keys.** `InputController` polls key state per frame, so a Playwright `keyboard.press` (down+up at once) is
   dropped at low fps; in an ad-hoc harness use down → wait ~160 ms → up, and never edit source while one runs (Vite reloads the page).
+- **A ridge/ledge nobody should stroll across is SOLID + the `edge` op (2026-11).** Pin a thin crest tile on a colliding cell
+  (`hartway_set` `crest_*`: 2px of snow on a rock fin, the line LOW in the cell so boots sit on it) and carry actors over with
+  `{op:'edge', actor, path, speed, teeter}` (hauled steps, a lean per step). Never make a "precarious" crossing ordinary walkable
+  ground. Ladder spans are CLIMBED by the player automatically (`Player.execute`: slow, `Actor.HAUL`, back to camera).
+- **Widening a shipped map without reshuffling its rng deco:** pad the finished layers after the scatter (`build_windward_stair_ii.py`
+  `_widen`, 28 → 38) — the way to add "map tiles elsewhere" so a new map can sit edge-to-edge in `world_geometry`.
 - **One-way exits are `travel`, not warps** (Lowtinder's well climb into Tinderwick): audit_warps
   rejects a warp with no return; a scripted `travel` is the legal one-way door.
 

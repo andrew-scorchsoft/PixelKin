@@ -140,7 +140,7 @@ export const QUESTS: QuestRegistry = [
     name: 'A Rope for Two',
     region: 'north',
     giver: 'Hollis, the rope-warden on the Windward Stair',
-    blurb: 'The low road to Pale Vault is drifted shut. The way is over the top, nobody climbs alone, and only Greg still knows the ridges. Fetch him from Galehigh and rope up.',
+    blurb: 'Pale Vault is over the Hartway now. Nobody climbs alone, the ridges can\'t be walked without a leader, and only Greg still knows them. Fetch him from Galehigh and rope up.',
     start_flag: 'flag:q_hartway',
     stage_flags: ['flag:greg_found', 'flag:hart_p1_done', 'flag:hart_p2_done'],
     done_flag: 'flag:hart_mist_seen',

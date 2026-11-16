@@ -310,38 +310,75 @@ m["layers"] = [{"name": "base", "role": "base", "depth": 0, "data": base}] + ter
 ]
 
 # ---- THE HARTWAY (2026-11, content/regions/hartway.ts) — the pass goes OVER ---------------
-# The low road north (to_glacier) is drifted shut until you've been over the top once
-# (flag:pass_open, DERIVED: the Seat reached, or any later milestone — old saves pass).
-# The climbers' steps go up out of a notch in the north crag (17,5) -> hartway_climb;
-# Hollis the rope-warden lets nobody up alone (flag:greg_roped). Added after the scatter
-# so the crags' rng-rolled deco doesn't reshuffle.
-import warp_markers as _wm
-glacier[5 * W + 17] = 0
-frosttuft[5 * W + 17] = 0
-deco[5 * W + 17] = 0
-_wm.add(m, _wm.marker("steps_hartway", "steps_n", 17, 3))
-m["warps"].append({"id": "to_hartway", "at": {"tx": 17, "ty": 5}, "trigger": "step_on",
-                   "to_map": "hartway_climb", "to": {"tx": 14, "ty": 47}, "facing": "up",
-                   "transition": "fade", "requires_flag": "flag:greg_roped",
-                   "blocked_ref": "script.hartway_gate"})
-for _w in m["warps"]:
-    if _w["id"].startswith("to_glacier"):
-        _w["requires_flag"] = "flag:pass_open"
-        _w["blocked_ref"] = "script.hartway_low_road"
-m["npcs"] += [
-    {"id": "hollis", "at": {"tx": 15, "ty": 8}, "facing": "down", "sprite": "pass_walker",
-     "movement": "static", "dialogue_ref": "script.hartway_hollis"},
-    {"id": "greg_foot", "at": {"tx": 19, "ty": 7}, "facing": "left", "sprite": "greg",
-     "movement": "static", "dialogue_ref": "script.greg_rope_up",
-     "requires_flag": "flag:greg_found", "hidden_when_flag": "flag:greg_roped"},
+# The pass used to walk straight out of the north crag into Pale Vault. That low road is
+# buried now (the north exit is sealed under a drift), and the way on is the climbers'
+# road: east through the crag wall, round THE SHOULDER (a ten-column annex added on the
+# east side so the Hartway can sit edge-to-edge between this map and Pale Vault — see
+# docs/world/geometry.md), and out by the east edge at rows 16-17 -> hartway_climb.
+# All of it is done AFTER the scatter, on the finished layers, so the crags' own
+# rng-rolled deco doesn't reshuffle: the map is widened in place, 28 -> 38.
+W0, W = W, 38
+
+
+def _widen(data, fill):
+    out = []
+    for y in range(H):
+        out += data[y * W0:(y + 1) * W0] + [fill(x, y) for x in range(W0, W)]
+    return out
+
+
+for _l in m["layers"]:
+    if _l["name"] == "base":
+        _src = _l["data"]
+        _l["data"] = _widen(_src, lambda x, y: _src[(y * 7 + x * 3) % len(_src)])
+    else:
+        _l["data"] = _widen(_l["data"], lambda x, y: 0)
+m["width"] = W
+_layer = {(_l.get("terrain") or _l["name"]): _l["data"] for _l in m["layers"]}
+_gl, _trail, deco = _layer["glacierwall"], _layer["snowtrail"], _layer["deco"]
+
+# the annex is solid crag...
+for y in range(H):
+    for x in range(W0, W):
+        _gl[y * W + x] = 1
+# ...the old low road is buried...
+m["warps"] = [_w for _w in m["warps"] if not _w["id"].startswith("to_glacier")]
+for (x, y) in [(20, 0), (21, 0), (20, 1), (21, 1)]:
+    _gl[y * W + x] = 1
+    deco[y * W + x] = 0
+m["objects"].append({"id": "low_road_drift", "sprite": "windward_snow_drift",
+                     "at": {"tx": 20, "ty": 2}, "w": 2, "h": 1})
+for x in (20, 21):
+    deco[2 * W + x] = 0
+    m["triggers"].append({"id": f"sign_low_road_{x}", "kind": "sign", "at": {"tx": x, "ty": 2},
+                          "activation": "interact", "ref": "sign.hartway_low_road"})
+# ...and the Shoulder is cut through it: east out of the high crags, a yard at the bend,
+# then down and out east.
+_open = ([(x, y) for x in range(26, 34) for y in (6, 7)]
+         + [(x, y) for x in range(30, 36) for y in range(8, 13)]
+         + [(x, y) for x in (32, 33) for y in range(13, 18)]
+         + [(x, y) for x in range(32, 38) for y in (16, 17)])
+for (x, y) in _open:
+    _gl[y * W + x] = 0
+    deco[y * W + x] = 0
+    _layer["frosttuft"][y * W + x] = 0
+for (x, y) in ([(x, 7) for x in range(24, 33)] + [(32, y) for y in range(7, 17)]
+               + [(x, 16) for x in range(32, 38)]):
+    _trail[y * W + x] = 1
+for _k, (sy, hy) in enumerate(((16, 45), (17, 46))):
+    m["warps"].append({"id": "to_hartway" + ("_s" if _k else ""), "at": {"tx": 37, "ty": sy},
+                       "trigger": "step_on", "to_map": "hartway_climb",
+                       "to": {"tx": 1, "ty": hy}, "facing": "right", "transition": "fade"})
+m["objects"] += [
+    {"id": "cairn_shoulder", "sprite": "windward_cairn", "at": {"tx": 34, "ty": 8}, "w": 2, "h": 3,
+     "overhang": 2, "walk_under": True},
+    {"id": "pine_shoulder", "sprite": "windward_bent_pine", "at": {"tx": 30, "ty": 10}, "w": 2, "h": 3,
+     "overhang": 2, "walk_under": True},
+    {"id": "flags_shoulder", "sprite": "windward_prayer_flags", "at": {"tx": 34, "ty": 14}, "w": 4, "h": 2,
+     "overhang": 2, "walk_under": True, "solid": False},
 ]
-deco[8 * W + 15] = 0
-deco[7 * W + 19] = 0
-m["triggers"].append({"id": "sign_hartway_steps", "kind": "sign", "at": {"tx": 15, "ty": 5},
-                      "activation": "interact", "ref": "sign.hartway_steps"})
-deco[5 * W + 15] = gid("sign")
-owed += ["script.hartway_gate", "script.hartway_low_road", "script.hartway_hollis",
-         "script.greg_rope_up", "sign.hartway_steps"]
+owed += pt.sign(m, deco, W, sid="hartway_steps", at=(31, 8))
+owed += ["sign.hartway_low_road"]
 
 if __name__ == "__main__":
     # warp marker: the drop home — rock steps once the crags shortcut opens

@@ -370,9 +370,9 @@
     },
     {
       "id": "windward_stair_ii",
-      "x": 173,
+      "x": 178,
       "y": 194,
-      "gx": 17,
+      "gx": 18,
       "gy": 19,
       "kind": "route",
       "region": "north",
@@ -380,9 +380,9 @@
     },
     {
       "id": "hartway_climb",
-      "x": 187,
-      "y": 182,
-      "gx": 19,
+      "x": 207,
+      "y": 181,
+      "gx": 21,
       "gy": 18,
       "kind": "route",
       "region": "north",
@@ -402,7 +402,7 @@
       "id": "thunderroost",
       "x": 183,
       "y": 192,
-      "gx": 18,
+      "gx": 19,
       "gy": 19,
       "kind": "landmark",
       "region": "north",
@@ -1441,14 +1441,6 @@
         ],
         [
           18,
-          20
-        ],
-        [
-          17,
-          20
-        ],
-        [
-          17,
           19
         ]
       ]
@@ -1456,18 +1448,18 @@
     {
       "a": "windward_stair_ii",
       "b": "hartway_climb",
-      "kind": "gate",
+      "kind": "road",
       "path": [
         [
-          17,
+          18,
           19
         ],
         [
-          17,
+          18,
           18
         ],
         [
-          19,
+          21,
           18
         ]
       ]
@@ -1475,14 +1467,14 @@
     {
       "a": "hartway_climb",
       "b": "pale_vault_glacier",
-      "kind": "gate",
+      "kind": "road",
       "path": [
         [
-          19,
+          21,
           18
         ],
         [
-          19,
+          21,
           17
         ],
         [
@@ -1497,31 +1489,12 @@
       "kind": "gate",
       "path": [
         [
-          17,
-          19
-        ],
-        [
           18,
           19
-        ]
-      ]
-    },
-    {
-      "a": "windward_stair_ii",
-      "b": "pale_vault_glacier",
-      "kind": "road",
-      "path": [
+        ],
         [
-          17,
+          19,
           19
-        ],
-        [
-          17,
-          17
-        ],
-        [
-          18,
-          17
         ]
       ]
     },
@@ -1531,12 +1504,8 @@
       "kind": "gate",
       "path": [
         [
-          17,
+          18,
           19
-        ],
-        [
-          17,
-          25
         ],
         [
           18,

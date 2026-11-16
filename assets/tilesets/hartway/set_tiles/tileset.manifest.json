@@ -137,6 +137,56 @@
       "file": "019_gulf_lane.png",
       "role": "void",
       "collides": true
+    },
+    {
+      "file": "020_crest_ns.png",
+      "role": "void",
+      "collides": true
+    },
+    {
+      "file": "021_crest_ew.png",
+      "role": "void",
+      "collides": true
+    },
+    {
+      "file": "022_crest_ne.png",
+      "role": "void",
+      "collides": true
+    },
+    {
+      "file": "023_crest_nw.png",
+      "role": "void",
+      "collides": true
+    },
+    {
+      "file": "024_crest_se.png",
+      "role": "void",
+      "collides": true
+    },
+    {
+      "file": "025_crest_sw.png",
+      "role": "void",
+      "collides": true
+    },
+    {
+      "file": "026_crest_ns_foot.png",
+      "role": "void",
+      "collides": true
+    },
+    {
+      "file": "027_crest_ns_head.png",
+      "role": "void",
+      "collides": true
+    },
+    {
+      "file": "028_crest_ew_west.png",
+      "role": "void",
+      "collides": true
+    },
+    {
+      "file": "029_crest_ew_east.png",
+      "role": "void",
+      "collides": true
     }
   ]
 }

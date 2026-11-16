@@ -4,7 +4,7 @@
   "tile_width": 16,
   "tile_height": 16,
   "columns": 8,
-  "tile_count": 20,
+  "tile_count": 30,
   "tiles": [
     {
       "index": 0,
@@ -139,6 +139,56 @@
     },
     {
       "index": 19,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 20,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 21,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 22,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 23,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 24,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 25,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 26,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 27,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 28,
+      "role": "void",
+      "collides": true
+    },
+    {
+      "index": 29,
       "role": "void",
       "collides": true
     }
