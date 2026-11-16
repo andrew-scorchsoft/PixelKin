@@ -1583,6 +1583,12 @@ keep entries one or two lines, concrete, and prune what's gone stale.
   between pits (the 2026-11 look review): leave the crest plain snow (never a trail family), rag the gulf outline, never leave a
   1-wide gulf strip (the set has no end/strip caps), and the gulf draws a rock FACE under any snow to its north. Far-off lights in the
   drop are PINNED tiles (`gulf_town`/`gulf_lane`), never a scattered fill variant.
+- **A save can outlive its map (2026-11).** `WorldScene.create` wakes a save made on a map that no longer exists at its last rest
+  point (and drops a rest point on a removed map); a map whose LAYOUT changed gets a row in `RELAID_MAPS` (map id → the version that
+  re-laid it) so an older save standing there is re-validated to standable ground. When a mid-path gate is added, every stage-aware
+  keeper needs a branch for saves ALREADY past it that still opens the quest (the Hartway's `flag:pass_open` stages set `q_hartway`).
+- **Headless input must HOLD keys.** `InputController` polls key state per frame, so a Playwright `keyboard.press` (down+up at once) is
+  dropped at low fps; in an ad-hoc harness use down → wait ~160 ms → up, and never edit source while one runs (Vite reloads the page).
 - **One-way exits are `travel`, not warps** (Lowtinder's well climb into Tinderwick): audit_warps
   rejects a warp with no return; a scripted `travel` is the legal one-way door.
 

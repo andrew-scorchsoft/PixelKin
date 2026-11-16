@@ -113,7 +113,15 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
       [MIST, [h('You sat on the Seat, then. And the harts came up? Eleven winters I\'ve kept these ropes dry for that. The low road\'s dug out now, too.')]],
       [ROPED, [h('Two on a rope. Mind him on the ridges. He\'ll say it\'s fine. "Fine" is his favourite word.')]],
       [FOUND, [h('Well, I never. He\'s over by the steps, pretending he isn\'t nervous. Go and [[rope up]].')]],
-      ['flag:pass_open', [h('You\'ve been over already? Then the low road\'s yours. The Hartway\'s still worth the walk, mind, if you can get [[Greg]] up from Galehigh.')]],
+      // a save that was already past the pass: the low road is theirs, and the quest still opens
+      [
+        'flag:pass_open',
+        [
+          h('The low road\'s yours. But the Hartway goes over the top, and [[nobody climbs it alone]]: two on a rope.'),
+          h('If you want it, fetch [[Greg]]. He\'s in [[Galehigh, top of the town]], staring up here like the hill owes him money.'),
+          { op: 'setFlag', flag: HOOK },
+        ],
+      ],
       [HOOK, [h('No Greg, no steps. He\'s in [[Galehigh, top of the town]], looking up at the Stair. Tell him Hollis says it\'s time.')]],
     ],
     HOLLIS_HOOK,
@@ -125,6 +133,14 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
       // gate-keepers come to YOU: he ties you in right here, and the steps carry you on up
       [FOUND, [n('Greg steps across with a rope already in his hands.'), { op: 'run', ref: 'script.greg_rope_up' }]],
       [HOOK, [h('Not alone! [[Fetch Greg]] first. Galehigh, top of the town.')]],
+      [
+        'flag:pass_open',
+        [
+          n('You\'ve one foot on the steps when a voice calls across the snow.'),
+          h('Not alone! That\'s the Hartway, and it takes two on a rope. Fetch [[Greg]] from [[Galehigh, top of the town]].'),
+          { op: 'setFlag', flag: HOOK },
+        ],
+      ],
     ],
     [n('You\'ve one foot on the steps when a voice calls across the snow.'), ...HOLLIS_HOOK],
   ),
@@ -213,7 +229,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
         [
           g('Hollis sent you. Course she did. The low road\'s shut and she needs her ridges walked.'),
           g('I don\'t climb any more. I only ever had the nerve. My partner had the sense, and he packed it in.'),
-          { op: 'run', ref: 'script.greg_knot', if_flag: TOKEN },
+          { op: 'run', ref: 'script.greg_knot', if_flag: TOKEN, unless_flag: 'flag:greg_knot_seen' },
           g('Unless. Tell me this. I say: "that snow bridge\'ll hold, I\'ll just nip across." What do YOU say?'),
           {
             op: 'choice',
@@ -260,6 +276,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     g('Did he. DID he. Cheeky old sod.'),
     { op: 'takeItem', item: 'paul_rope_end', count: 1 },
     g('Well. If HE vouches for you. Still. I\'ll hear it from you.'),
+    { op: 'setFlag', flag: 'flag:greg_knot_seen' },
   ],
   'script.greg_rope_up': [
     g('Found the boots. One had a mouse in it. We\'ve come to an arrangement.'),
@@ -301,7 +318,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     g('There. You\'re a climber. Don\'t tell Hollis I said so.'),
     g('Now. So nobody ever has to do that again...'),
     { op: 'move', actor: 'greg_t1', to: { tx: 17, ty: 36 }, speed: 2 },
-    { op: 'cameraFocus', to: { tx: 12, ty: 37 }, ms: 700 },
+    { op: 'cameraFocus', to: { tx: 9, ty: 40 }, ms: 700 }, // the ladder's whole drop, clear of the text box
     { op: 'move', actor: 'greg_t1', to: { tx: 9, ty: 36 }, speed: 2 },
     { op: 'move', actor: 'greg_t1', to: { tx: 9, ty: 38 }, speed: 2 },
     { op: 'face', actor: 'greg_t1', facing: 'left' },
@@ -412,7 +429,7 @@ export const HARTWAY_SCRIPTS: ScriptRegistry = {
     g('Don\'t tell anyone. ...No. DO. If you ever meet a man who walks everywhere, tell HIM. He\'ll want to know I haven\'t changed.'),
     g('Same thing happened with him, you know. A ridge just like it. My legs went then, too. I said "table" then, too.'),
     g('Right. I\'m putting a ladder on this shelf before either of us has another idea.'),
-    { op: 'cameraFocus', to: { tx: 24, ty: 26 }, ms: 700 },
+    { op: 'cameraFocus', to: { tx: 24, ty: 29 }, ms: 700 }, // Greg AND the ladder's top rungs above the text box
     { op: 'move', actor: 'greg_ue', to: { tx: 25, ty: 21 }, speed: 2 },
     { op: 'move', actor: 'greg_ue', to: { tx: 25, ty: 26 }, speed: 2 },
     { op: 'face', actor: 'greg_ue', facing: 'down' },
